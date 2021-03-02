@@ -2,7 +2,7 @@ import React from 'react';
 import {FormInput} from '../../.';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faAt} from '@fortawesome/free-solid-svg-icons';
-const FormInputDemo = () => {
+export const FormInputDemo = () => {
   const [value, setValue] = React.useState('')
   const handleChange = event => {
     setValue(event.currentTarget.value)
@@ -47,5 +47,3 @@ const FormInputDemo = () => {
     />
   )
 }
-
-export default FormInputDemo
