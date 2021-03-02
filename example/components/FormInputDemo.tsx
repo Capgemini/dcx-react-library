@@ -1,5 +1,10 @@
+<<<<<<< HEAD:example/components/FormInputDemo.jsx
 import React from 'react';
 import {FormInput} from 'dcx-react-library';
+=======
+import * as React from 'react';
+import {FormInput} from '../../dist';
+>>>>>>> feature/input-part-2:example/components/FormInputDemo.tsx
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faAt} from '@fortawesome/free-solid-svg-icons';
 export const FormInputDemo = () => {
