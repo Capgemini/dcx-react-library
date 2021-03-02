@@ -62,6 +62,7 @@
     "@storybook/react": "^6.1.19",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
+    "@testing-library/react-hooks": "^5.0.3",
     "@types/jest": "^26.0.20",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
@@ -112,6 +113,7 @@
     ]
   },
   "dependencies": {
+    "@cesium133/forgjs": "^1.1.11",
     "styled-components": "^5.2.1"
   },
   "resolutions": {

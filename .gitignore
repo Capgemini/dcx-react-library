@@ -3,3 +3,6 @@
 node_modules
 .cache
 dist
+coverage
+.parcel-cache
+example/.parcel-cache/*
