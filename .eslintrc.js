@@ -1,1 +1,3 @@
-// of we want to add more eslint rules
+module.exports = {
+    parser: "babel-eslint",
+};

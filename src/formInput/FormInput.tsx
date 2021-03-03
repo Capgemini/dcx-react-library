@@ -1,5 +1,5 @@
-import React from 'react'
-import {useValidationOnChange} from '../common'
+import React from 'react';
+import { useValidationOnChange } from '../common';
 interface FormInputProps {
   name: string;
   type: string;
@@ -7,7 +7,7 @@ interface FormInputProps {
   validation: {
     rule: any;
     message: string;
-  }
+  };
   inputProps?: any;
   errorProps?: any;
   prefix?: any;
@@ -27,24 +27,27 @@ export const FormInput: React.FC<FormInputProps> = ({
   onChange,
   isValid,
 }) => {
-  const {validity, onValueChange} = useValidationOnChange(validation);
+  const { validity, onValueChange } = useValidationOnChange(validation);
 
   React.useEffect(() => {
-    isValid(validity.valid)
-  }, [validity.valid])
+    isValid(validity.valid);
+  }, [validity.valid]);
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     onValueChange(event);
     onChange(event);
-  }
+  };
 
   return (
-    <div style={{width: '97%', marginBottom: '15px'}} data-testid="form-input">
-      <div style={{display: 'flex'}}>
+    <div
+      style={{ width: '97%', marginBottom: '15px' }}
+      data-testid="form-input"
+    >
+      <div style={{ display: 'flex' }}>
         {prefix && <div data-testid="form-input-prefix">{prefix}</div>}
         <input
           data-testid="form-input-input"
-          style={{width: '100%'}}
+          style={{ width: '100%' }}
           name={name}
           type={type}
           value={value}
@@ -66,5 +69,5 @@ export const FormInput: React.FC<FormInputProps> = ({
         ) : null}
       </div>
     </div>
-  )
-}
+  );
+};
