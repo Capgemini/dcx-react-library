@@ -14,7 +14,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
-    "test:ci": "tsdx test --ci --reporters='default' --reporters='./github-actions-reporter'",
+    "test:ci": "jest --ci --reporters='default' --reporters='./github-actions-reporter'",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
