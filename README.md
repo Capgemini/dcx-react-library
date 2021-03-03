@@ -106,5 +106,3 @@ Two actions are added by default:
 CJS, ESModules, and UMD module formats are supported.
 
 The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-// testing slack integration
