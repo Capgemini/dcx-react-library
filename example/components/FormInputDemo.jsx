@@ -44,6 +44,7 @@ export const FormInputDemo = () => {
           <FontAwesomeIcon icon={faAt} />
         </div>
       }
+      errorPosition="bottom"
     />
   )
 }

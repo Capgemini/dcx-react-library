@@ -61,18 +61,17 @@ export const FormInput: React.FC<FormInputProps> = ({
         {...errorProps}
       >
         {!validity.valid ? (
-          <div data-testid="form-input-error" {...errorMessage}>{validity.message}</div>
+          <div role="error" {...errorMessage}>{validity.message}</div>
         ) : null}
       </div>
   )
 
   return (
-    <div style={{width: '97%', marginBottom: '15px'}} data-testid="form-input">
+    <div style={{width: '97%', marginBottom: '15px'}} role="form-input">
       {errorPosition && errorPosition === position.TOP && <ErrorMessage/>}
       <div style={{display: 'flex'}}>
-        {prefix && <div data-testid="form-input-prefix">{prefix}</div>}
+        {prefix && <div role="prefix">{prefix}</div>}
         <input
-          data-testid="form-input-input"
           style={{width: '100%'}}
           name={name}
           type={type}
@@ -81,7 +80,7 @@ export const FormInput: React.FC<FormInputProps> = ({
           {...inputProps}
           aria-label={ariaLabel || name}
         />
-        {suffix && <div data-testid="form-input-suffix">{suffix}</div>}
+        {suffix && <div role="suffix">{suffix}</div>}
       </div>
       {errorPosition && errorPosition === position.BOTTOM && <ErrorMessage/>}
     </div>

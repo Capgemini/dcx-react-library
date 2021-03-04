@@ -1,1 +1,1 @@
-export {FormInput} from './FormInput'
+export {FormInput, position} from './FormInput'
