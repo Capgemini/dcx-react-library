@@ -2,7 +2,8 @@ version: 2.1
 orbs:
   node: circleci/node@3.0.0
 workflows:
-  commands: curl -o- -L https://yarnpkg.com/install.sh | bash
+  commands:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
   node-tests:
     jobs:
       - node/test
