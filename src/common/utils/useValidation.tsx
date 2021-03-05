@@ -1,9 +1,9 @@
 import React from 'react';
-import {Rule} from '@cesium133/forgjs';
+import { Rule } from '@cesium133/forgjs';
 
 interface Validation {
-  rule: any
-  message: string
+  rule: any;
+  message: string;
 }
 
 /**
@@ -12,16 +12,16 @@ interface Validation {
  * @param value
  */
 const isValid = (validation: Validation, value: string) => {
-  const floatRule: any = new Rule(validation.rule, validation.message)
-  let rule: any = value
+  const floatRule: any = new Rule(validation.rule, validation.message);
+  let rule: any = value;
   if (validation.rule.type === 'float' || validation.rule.type === 'int') {
-    rule = parseFloat(value)
+    rule = parseFloat(value);
   }
   return {
     valid: floatRule.test(rule),
     floatRule,
-  }
-}
+  };
+};
 
 /**
  * This custom hooks accept in input the element to validate and the validation rule
@@ -44,20 +44,20 @@ const isValid = (validation: Validation, value: string) => {
  * @param validation
  */
 const useValidation = (value: string, validation: Validation) => {
-  const [validity, setValid] = React.useState({valid: true, message: ''})
+  const [validity, setValid] = React.useState({ valid: true, message: '' });
   React.useEffect(() => {
-    const {valid, floatRule} = isValid(validation, value)
+    const { valid, floatRule } = isValid(validation, value);
     setValid({
       valid,
       message: floatRule.error,
-    })
-  }, [value])
+    });
+  }, [value]);
 
   return {
     validity,
     setValid,
-  }
-}
+  };
+};
 
 /**
  * This custom hooks accept in input a validation rule and provide in
@@ -76,17 +76,17 @@ const useValidation = (value: string, validation: Validation) => {
  */
 
 const useValidationOnChange = (validation: Validation) => {
-  const [validity, setValid] = React.useState({valid: true, message: ''})
+  const [validity, setValid] = React.useState({ valid: true, message: '' });
 
   const onValueChange = (evt: React.FormEvent<HTMLInputElement>) => {
-    const {valid, floatRule} = isValid(validation, evt.currentTarget.value)
+    const { valid, floatRule } = isValid(validation, evt.currentTarget.value);
     setValid({
       valid,
       message: floatRule.error,
-    })
-  }
+    });
+  };
 
-  return {validity, onValueChange}
-}
+  return { validity, onValueChange };
+};
 
-export {useValidation, useValidationOnChange}
+export { useValidation, useValidationOnChange };

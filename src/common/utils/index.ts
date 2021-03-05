@@ -1,1 +1,1 @@
-export {useValidation, useValidationOnChange} from './useValidation';
+export { useValidation, useValidationOnChange } from './useValidation';
