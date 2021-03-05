@@ -1,21 +1,60 @@
 import React from 'react'
 import {useValidationOnChange} from '../common'
 interface FormInputProps {
+  /** 
+   * input name 
+  **/
   name: string;
+  /** 
+   * input name 
+  **/
   type: string;
+  /** 
+   * input name 
+  **/
   value: any;
+  /** 
+   * pass the validation rules(please refer to forgJS) and the message you want to display
+  **/
   validation: {
     rule: any;
     message: string;
   }
+  /** 
+   * allow to customise the input with all the properites needed
+  **/
   inputProps?: any;
+  /** 
+   * allow to customise the error message with all the properites needed
+  **/
   errorProps?: any;
+  /** 
+   * generic parameter to pass whatever element before the input
+  **/
   prefix?: any;
+  /** 
+   * generic parameter to pass whatever element after the input
+  **/
   suffix?: any;
+  /** 
+   * function that will trigger all the time there's a change in the input
+  **/
   onChange: (event: React.FormEvent<HTMLInputElement>) => void;
+  /** 
+   * function that will check if is vald or not based on the validation rules 
+  **/
   isValid: (valid: boolean) => void;
+  /** 
+   * error message
+  **/
   errorMessage?: any;
+  /** 
+   * error position - top or bottom 
+  **/
   errorPosition?: position;
+  /** 
+   * input ariaLabel 
+  **/
   ariaLabel?: string; 
 }
 
@@ -61,18 +100,17 @@ export const FormInput: React.FC<FormInputProps> = ({
         {...errorProps}
       >
         {!validity.valid ? (
-          <div data-testid="form-input-error" {...errorMessage}>{validity.message}</div>
+          <div role="error" {...errorMessage}>{validity.message}</div>
         ) : null}
       </div>
   )
 
   return (
-    <div style={{width: '97%', marginBottom: '15px'}} data-testid="form-input">
+    <div style={{width: '97%', marginBottom: '15px'}} role="form-input">
       {errorPosition && errorPosition === position.TOP && <ErrorMessage/>}
       <div style={{display: 'flex'}}>
-        {prefix && <div data-testid="form-input-prefix">{prefix}</div>}
+        {prefix && <div role="prefix">{prefix}</div>}
         <input
-          data-testid="form-input-input"
           style={{width: '100%'}}
           name={name}
           type={type}
@@ -81,7 +119,7 @@ export const FormInput: React.FC<FormInputProps> = ({
           {...inputProps}
           aria-label={ariaLabel || name}
         />
-        {suffix && <div data-testid="form-input-suffix">{suffix}</div>}
+        {suffix && <div role="suffix">{suffix}</div>}
       </div>
       {errorPosition && errorPosition === position.BOTTOM && <ErrorMessage/>}
     </div>
