@@ -1,10 +1,7 @@
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node
 workflows:
   node-tests:
     jobs:
-      - run: |
-          curl -o- -L https://yarnpkg.com/install.sh | bash
-          echo 'export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"' >> $BASH_ENV
       - node/test
