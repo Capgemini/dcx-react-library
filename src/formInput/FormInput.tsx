@@ -1,6 +1,6 @@
 import React from 'react';
 import { useValidationOnChange } from '../common';
-import { useValidationOnChange } from '../common'
+import { useValidationOnChange } from '../common';
 interface FormInputProps {
   /**
    * input name
