@@ -1,15 +1,13 @@
 import React from 'react';
-import {FormInput} from 'dcx-react-library';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faAt} from '@fortawesome/free-solid-svg-icons';
+import { FormInput } from 'dcx-react-library';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAt } from '@fortawesome/free-solid-svg-icons';
 export const FormInputDemo = () => {
-  const [value, setValue] = React.useState('')
-  const handleChange = event => {
-    setValue(event.currentTarget.value)
-  }
-  const handleValidity = valid => {
-    console.log(valid)
-  }
+  const [value, setValue] = React.useState('');
+  const handleChange = (event) => {
+    setValue(event.currentTarget.value);
+  };
+  const handleValidity = (valid) => valid;
   return (
     <FormInput
       name="password"
@@ -21,7 +19,7 @@ export const FormInputDemo = () => {
         placeholder: 'enter your email',
       }}
       errorProps={{
-        style: {fontSize: '10px', color: 'red', fontWeight: 'bold'},
+        style: { fontSize: '10px', color: 'red', fontWeight: 'bold' },
       }}
       validation={{
         rule: {
@@ -46,5 +44,5 @@ export const FormInputDemo = () => {
       }
       errorPosition="bottom"
     />
-  )
-}
+  );
+};

@@ -1,11 +1,11 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { FormInputDemo } from './components/FormInputDemo';
+import { FormInputDemo } from './components/FormInputDemo.jsx';
 const App = () => {
   return (
     <div>
-      <FormInputDemo/>
+      <FormInputDemo />
     </div>
   );
 };

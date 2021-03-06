@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useValidationOnChange } from '../common';
 interface FormInputProps {
   /**
@@ -6,19 +7,19 @@ interface FormInputProps {
    **/
   name: string;
   /**
-   * input name
+   * input type
    **/
   type: string;
   /**
-   * input name
+   * input value
    **/
   value: any;
   /**
    * pass the validation rules(please refer to forgJS) and the message you want to display
    **/
   validation: {
-    rule: any;
-    message: string;
+    rule: any,
+    message: string,
   };
   /**
    * allow to customise the input with all the properites needed
@@ -125,4 +126,23 @@ export const FormInput: React.FC<FormInputProps> = ({
       {errorPosition && errorPosition === position.BOTTOM && <ErrorMessage />}
     </div>
   );
+};
+
+FormInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  value: PropTypes.object.isRequired,
+  validation: PropTypes.exact({
+    rule: PropTypes.object.isRequired,
+    message: PropTypes.string.isRequired,
+  }).isRequired,
+  inputProps: PropTypes.object,
+  errorProps: PropTypes.object,
+  prefix: PropTypes.object,
+  suffix: PropTypes.object,
+  onChange: PropTypes.func.prototype,
+  isValid: PropTypes.func.prototype,
+  errorMessage: PropTypes.object,
+  errorPosition: PropTypes.oneOf<position>([position.TOP, position.BOTTOM]),
+  ariaLabel: PropTypes.string,
 };
