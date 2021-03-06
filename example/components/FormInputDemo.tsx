@@ -9,15 +9,11 @@ export const FormInputDemo = () => {
     setValue(event.currentTarget.value);
   };
 
+  //Im using this set only for the valid one
   const [valueValid, setValueValid] = React.useState('');
   const [showValid, setShowValid] = React.useState(true);
-  const handleChangeValid = event => {
-    setValueValid(event.currentTarget.value);
-  };
-  const handleValidity = valid => {
-    debugger;
-    setShowValid(valid);
-  };
+  const handleChangeValid = event => setValueValid(event.currentTarget.value);
+  const handleValidity = valid => setShowValid(valid);
 
   return (
     <>
