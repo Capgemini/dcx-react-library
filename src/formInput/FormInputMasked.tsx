@@ -44,13 +44,12 @@ export const FormInputMasked: React.FC<Props> = ({
 
   useEffect(() => {
     if (inputRef.current && mask && onChange) {
+      const { current } = inputRef;
       mask.on('accept', () => {
-        if (inputRef.current) {
-          onChange({
-            value: inputRef.current.value,
-            unmaskedValue: mask.unmaskedValue,
-          });
-        }
+        onChange({
+          value: current.value,
+          unmaskedValue: mask.unmaskedValue,
+        });
       });
     }
   }, [mask, onChange]);
