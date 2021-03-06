@@ -75,10 +75,7 @@ const useValidation = (value: string, validation: Validation) => {
  * @param validation
  */
 
-const useValidationOnChange = (validation: Validation | undefined) => {
-  if (!validation) {
-    return { validity: null, onValueChange: null };
-  }
+const useValidationOnChange = (validation: Validation) => {
   const [validity, setValid] = React.useState({ valid: true, message: '' });
 
   const onValueChange = (evt: React.FormEvent<HTMLInputElement>) => {
