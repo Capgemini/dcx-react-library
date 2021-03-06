@@ -13,7 +13,7 @@ interface FormInputProps {
   /**
    * input value
    **/
-  value: any;
+  value: string;
   /**
    * pass the validation rules(please refer to forgJS) and the message you want to display
    **/
@@ -131,7 +131,7 @@ export const FormInput: React.FC<FormInputProps> = ({
 FormInput.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  value: PropTypes.object.isRequired,
+  value: PropTypes.string.isRequired,
   validation: PropTypes.exact({
     rule: PropTypes.object.isRequired,
     message: PropTypes.string.isRequired,
@@ -140,8 +140,8 @@ FormInput.propTypes = {
   errorProps: PropTypes.object,
   prefix: PropTypes.object,
   suffix: PropTypes.object,
-  onChange: PropTypes.func.prototype,
-  isValid: PropTypes.func.prototype,
+  onChange: PropTypes.func.isRequired,
+  isValid: PropTypes.func.isRequired,
   errorMessage: PropTypes.object,
   errorPosition: PropTypes.oneOf<position>([position.TOP, position.BOTTOM]),
   ariaLabel: PropTypes.string,
