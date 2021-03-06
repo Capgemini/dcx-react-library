@@ -16,7 +16,7 @@ type FormInputProps = {
   /**
    * pass the validation rules(please refer to forgJS) and the message you want to display
    **/
-  validation: {
+  validation?: {
     rule: any;
     message: string;
   };
@@ -43,7 +43,7 @@ type FormInputProps = {
   /**
    * function that will check if is vald or not based on the validation rules
    **/
-  isValid: (valid: boolean) => void;
+  isValid?: (valid: boolean) => void;
   /**
    * error message
    **/
@@ -88,11 +88,11 @@ export const FormInput = ({
   const { validity, onValueChange } = useValidationOnChange(validation);
 
   React.useEffect(() => {
-    isValid(validity.valid);
-  }, [validity.valid]);
+    if (isValid && validity) isValid(validity.valid);
+  }, [validity?.valid]);
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    onValueChange(event);
+    if (onValueChange) onValueChange(event);
     onChange(event);
   };
 
@@ -105,8 +105,8 @@ export const FormInput = ({
       }}
       {...errorProps}
     >
-      {!validity.valid ? (
-        <div role={roles.error} {...errorMessage}>
+      {validity && !validity.valid ? (
+        <div role="error" {...errorMessage}>
           {validity.message}
         </div>
       ) : null}
