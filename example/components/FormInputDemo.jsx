@@ -7,7 +7,9 @@ export const FormInputDemo = () => {
   const handleChange = (event) => {
     setValue(event.currentTarget.value);
   };
-  const handleValidity = (valid) => valid;
+  const handleValidity = (valid) => {
+    () => ({});
+  };
   return (
     <FormInput
       name="password"
