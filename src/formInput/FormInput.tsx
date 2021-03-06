@@ -63,7 +63,7 @@ export enum position {
   BOTTOM = 'bottom',
 }
 
-export const FormInput: React.FC<FormInputProps> = ({
+export const FormInput = ({
   name,
   type,
   value,
@@ -77,7 +77,7 @@ export const FormInput: React.FC<FormInputProps> = ({
   errorMessage,
   errorPosition,
   ariaLabel,
-}) => {
+}: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation);
 
   React.useEffect(() => {
