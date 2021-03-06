@@ -36,54 +36,28 @@ const DummyComponent = ({ pos }: any) => {
 describe('FormInput', () => {
   it('should display the formInput content', () => {
     const handleChange = jest.fn();
-    const handleValidity = jest.fn();
     render(
       <FormInput
         name="password"
         type="text"
         value="test"
         onChange={handleChange}
-        isValid={handleValidity}
         inputProps={{
           placeholder: 'enter your email',
-        }}
-        errorProps={{
-          style: { fontSize: '10px', color: 'red', fontWeight: 'bold' },
-        }}
-        validation={{
-          rule: {
-            type: 'password',
-            minLength: 8,
-            uppercase: 1,
-            numbers: 1,
-            matchesOneOf: ['@', '_', '-', '.', '!'],
-          },
-          message: 'the value have to be float and more then 100',
         }}
       />
     );
     expect(screen.getByRole('form-input')).toBeInTheDocument();
   });
+
   it('should display the formInput prefix content', () => {
     const handleChange = jest.fn();
-    const handleValidity = jest.fn();
     render(
       <FormInput
         name="password"
         type="text"
         value="@_-bddcd6A"
         onChange={handleChange}
-        isValid={handleValidity}
-        validation={{
-          rule: {
-            type: 'password',
-            minLength: 8,
-            uppercase: 1,
-            numbers: 1,
-            matchesOneOf: ['@', '_', '-', '.', '!'],
-          },
-          message: 'the value have to be float and more then 100',
-        }}
         prefix={<div>prefix</div>}
       />
     );
@@ -96,24 +70,12 @@ describe('FormInput', () => {
 
   it('should display the formInput prefix content', () => {
     const handleChange = jest.fn();
-    const handleValidity = jest.fn();
     render(
       <FormInput
         name="password"
         type="text"
         value="test"
         onChange={handleChange}
-        isValid={handleValidity}
-        validation={{
-          rule: {
-            type: 'password',
-            minLength: 8,
-            uppercase: 1,
-            numbers: 1,
-            matchesOneOf: ['@', '_', '-', '.', '!'],
-          },
-          message: 'the value have to be float and more then 100',
-        }}
         suffix={<div>suffix</div>}
       />
     );

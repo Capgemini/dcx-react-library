@@ -74,10 +74,7 @@ export const FormInput = ({
   name,
   type,
   value,
-  validation = {
-    rule: null,
-    message: '',
-  },
+  validation = null,
   inputProps,
   errorProps,
   prefix,
