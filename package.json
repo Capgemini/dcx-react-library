@@ -15,7 +15,7 @@
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "lint:fix": "tsdx lint --fix",
+    "lint:fix": "tsdx lint src --fix",
     "prepare": "tsdx build && husky install",
     "size": "size-limit",
     "analyze": "size-limit --why",
@@ -24,12 +24,6 @@
   },
   "peerDependencies": {
     "react": ">=16"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint --fix",
-      "pre-push": "tsdx test"
-    }
   },
   "prettier": {
     "printWidth": 80,
