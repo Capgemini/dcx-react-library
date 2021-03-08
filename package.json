@@ -17,7 +17,7 @@
     "test:coverage": "tsdx test --coverage",
     "lint": "tsdx lint ./src/**/*.{ts,tsx} ./example/components/*.{jsx,tsx}",
     "lint:fix": "tsdx lint ./src/**/*.{ts,tsx} ./example/components/*.{jsx,tsx} --fix",
-    "prepare": "husky install",
+    "prepare": "tsdx build && husky install",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
