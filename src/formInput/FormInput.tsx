@@ -63,6 +63,13 @@ export enum position {
   BOTTOM = 'bottom',
 }
 
+export const roles = {
+  error: 'error',
+  formInput: 'form-input',
+  prefix: 'prefix',
+  suffix: 'suffix',
+};
+
 export const FormInput = ({
   name,
   type,
@@ -99,7 +106,7 @@ export const FormInput = ({
       {...errorProps}
     >
       {!validity.valid ? (
-        <div role="error" {...errorMessage}>
+        <div role={roles.error} {...errorMessage}>
           {validity.message}
         </div>
       ) : null}
@@ -107,10 +114,10 @@ export const FormInput = ({
   );
 
   return (
-    <div style={{ width: '97%', marginBottom: '15px' }} role="form-input">
+    <div style={{ width: '97%', marginBottom: '15px' }} role={roles.formInput}>
       {errorPosition && errorPosition === position.TOP && <ErrorMessage />}
       <div style={{ display: 'flex' }}>
-        {prefix && <div role="prefix">{prefix}</div>}
+        {prefix && <div role={roles.prefix}>{prefix}</div>}
         <input
           style={{ width: '100%' }}
           name={name}
@@ -120,7 +127,7 @@ export const FormInput = ({
           {...inputProps}
           aria-label={ariaLabel || name}
         />
-        {suffix && <div role="suffix">{suffix}</div>}
+        {suffix && <div role={roles.suffix}>{suffix}</div>}
       </div>
       {errorPosition && errorPosition === position.BOTTOM && <ErrorMessage />}
     </div>
