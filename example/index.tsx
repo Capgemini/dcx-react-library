@@ -3,13 +3,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { FormInputDemo } from './components/FormInputDemo';
 import { FormInputMaskedDemo } from './components/FormInputMaskedDemo';
-const App = () => {
-  return (
-    <div>
-      <FormInputDemo />
-      <FormInputMaskedDemo />
-    </div>
-  );
-};
+const App = () => (
+  <div>
+    <FormInputDemo />
+    <FormInputMaskedDemo />
+  </div>
+);
 
 ReactDOM.render(<App />, document.getElementById('root'));
