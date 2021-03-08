@@ -16,10 +16,7 @@ type FormInputProps = {
   /**
    * pass the validation rules(please refer to forgJS) and the message you want to display
    **/
-  validation?: {
-    rule: any;
-    message: string;
-  };
+  validation?: { rule: any; message: string } | any;
   /**
    * allow to customise the input with all the properites needed
    **/
