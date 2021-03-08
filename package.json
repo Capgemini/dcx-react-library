@@ -25,9 +25,14 @@
   "peerDependencies": {
     "react": ">=16"
   },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "tsdx lint", "git add"
+    ]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "lint-staged"
     }
   },
   "prettier": {
