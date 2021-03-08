@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -11,19 +11,21 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "dcx-react-library": "file:..",
     "react-app-polyfill": "^1.0.0"
   },
   "alias": {
     "react": "../node_modules/react",
     "react-dom": "../node_modules/react-dom/profiling",
-    "scheduler/tracing": "../node_modules/scheduler/tracing-profiling"
+    "scheduler/tracing": "../node_modules/scheduler/tracing-profiling",
+    "dcx-react-library": "../."
   },
   "devDependencies": {
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.8.4",
-    "parcel": "^2.0.0-beta.1",
-    "postcss": "^8.2.1",
+    "parcel": "^1.12.3",
     "typescript": "^3.4.5"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
   }
 }

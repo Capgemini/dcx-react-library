@@ -103,7 +103,7 @@ export const FormInput = ({
       {...errorProps}
     >
       {validity && !validity.valid ? (
-        <div role="error" {...errorMessage}>
+        <div role={roles.error} {...errorMessage}>
           {validity.message}
         </div>
       ) : null}
