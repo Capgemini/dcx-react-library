@@ -95,7 +95,7 @@ DCX Component Library uses [Rollup](https://rollupjs.org) as a bundler and gener
 
 ### Commit Messages
 
-Commit message MUST be prefixed with one of the following depending on the content of the commit
+Commit message MUST be prefixed with one of the following depending on the content of the commit. See [what-is-commitlint](https://github.com/conventional-changelog/commitlint/#) for details.
 
 ```
 [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test] [type-enum]
