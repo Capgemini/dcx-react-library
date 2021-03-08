@@ -80,6 +80,9 @@ export const FormInput = ({
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation);
 
+  debugger;
+  console.log('asdasd');
+
   React.useEffect(() => {
     isValid(validity.valid);
   }, [validity.valid]);
