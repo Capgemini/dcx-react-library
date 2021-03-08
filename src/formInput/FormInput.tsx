@@ -82,6 +82,7 @@ export const FormInput = ({
 
   debugger;
   console.log('asdasd');
+  debugger;
 
   React.useEffect(() => {
     isValid(validity.valid);
