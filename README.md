@@ -93,6 +93,19 @@ DCX Component Library uses [Rollup](https://rollupjs.org) as a bundler and gener
 
 ## Continuous Integration
 
+### Commit Messages
+
+Commit message MUST be prefixed with one of the following depending on the content of the commit. See [what-is-commitlint](https://github.com/conventional-changelog/commitlint/#) for details.
+
+```
+[build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test] [type-enum]
+
+git commit -m "build: {{ name of build config change }}"
+git commit -m "feat: {{ name of feature }}"
+git commit -m "fix: {{ name of bug }}"
+git commit -m "test: {{ name of test }}"
+```
+
 ### GitHub Actions
 
 Two actions are added by default:
