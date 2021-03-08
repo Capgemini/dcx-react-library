@@ -15,7 +15,6 @@
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "test:coverage": "tsdx test --coverage",
-    "commit": "commit",
     "lint": "tsdx lint ./src/**/*.{ts,tsx} ./example/**/*.{jsx,tsx}",
     "lint:fix": "tsdx lint ./src/**/*.{ts,tsx} ./example/**/*.{jsx,tsx} --fix",
     "prepare": "husky install",
