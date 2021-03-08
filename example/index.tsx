@@ -6,7 +6,7 @@ import { FormInputMaskedDemo } from './components/FormInputMaskedDemo';
 const App = () => (
   <div>
     <FormInputDemo />
-    <FormInputMaskedDemo />
+    {/* <FormInputMaskedDemo /> */}
   </div>
 );
 
