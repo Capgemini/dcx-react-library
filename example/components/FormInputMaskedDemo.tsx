@@ -25,7 +25,7 @@ export const FormInputMaskedDemo = () => {
         type="text"
         name="daniele"
       />
-      <span>Typed value: {typedValue}</span>
+      <div>Typed value: {typedValue}</div>
     </>
   );
 };
