@@ -14,9 +14,9 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint src/**/*.{ts,tsx}",
-    "lint:fix": "tsdx lint src/**/*.{ts,tsx} --fix",
-    "prepare": "tsdx build",
+    "lint": "tsdx lint ./src/**/*.{ts,tsx} ./example/**/*.{jsx,tsx}",
+    "lint:fix": "tsdx lint ./src/**/*.{ts,tsx} ./example/**/*.{jsx,tsx} --fix",
+    "prepare": "husky install",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
@@ -25,14 +25,9 @@
   "peerDependencies": {
     "react": ">=16"
   },
-  "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "tsdx lint", "git add"
-    ]
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "tsdx lint ./src/**/*.{jsx,ts,tsx} ./example/**/*.{jsx,tsx}"
     }
   },
   "prettier": {
@@ -125,7 +120,6 @@
   "dependencies": {
     "@cesium133/forgjs": "^1.1.11",
     "imask": "^6.0.7",
-    "lint-staged": "^10.5.4",
     "styled-components": "^5.2.1"
   },
   "resolutions": {
