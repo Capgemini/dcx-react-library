@@ -9,7 +9,7 @@ export type MaskedEvent = {
 type FormInputMaskedProps = {
   /**
    * define all the option you want to pass to mask your input
-   * please refer to https://imask.js.org/ to see the list of options available
+   * please refer to https://imask.js.org/ to look for the available options
    */
   options: IMask.AnyMaskedOptions;
   /**
