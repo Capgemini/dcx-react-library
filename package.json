@@ -15,8 +15,8 @@
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "test:coverage": "tsdx test --coverage",
-    "lint": "tsdx lint ./src/**/*.{ts,tsx} ./example/**/*.{jsx,tsx}",
-    "lint:fix": "tsdx lint ./src/**/*.{ts,tsx} ./example/**/*.{jsx,tsx} --fix",
+    "lint": "tsdx lint ./src/**/*.{ts,tsx} ./example/components/*.{jsx,tsx}",
+    "lint:fix": "tsdx lint ./src/**/*.{ts,tsx} ./example/components/*.{jsx,tsx} --fix",
     "prepare": "husky install",
     "size": "size-limit",
     "analyze": "size-limit --why",
@@ -28,7 +28,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint ./src/**/*.{jsx,ts,tsx} ./example/**/*.{jsx,tsx}",
+      "pre-commit": "tsdx lint ./src/**/*.{jsx,ts,tsx} ./example/components/*.{jsx,tsx}",
       "pre-push": "tsdx test --coverage"
     }
   },
