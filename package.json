@@ -14,6 +14,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
+    "test:coverage": "tsdx test --coverage",
     "lint": "tsdx lint ./src/**/*.{ts,tsx} ./example/**/*.{jsx,tsx}",
     "lint:fix": "tsdx lint ./src/**/*.{ts,tsx} ./example/**/*.{jsx,tsx} --fix",
     "prepare": "husky install",
@@ -27,7 +28,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint ./src/**/*.{jsx,ts,tsx} ./example/**/*.{jsx,tsx}"
+      "pre-commit": "tsdx lint ./src/**/*.{jsx,ts,tsx} ./example/**/*.{jsx,tsx}",
+      "pre-push": "tsdx test --coverage"
     }
   },
   "prettier": {

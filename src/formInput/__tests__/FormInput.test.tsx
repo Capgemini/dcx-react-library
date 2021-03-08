@@ -62,6 +62,7 @@ describe('FormInput', () => {
         }}
       />
     );
+    expect(true).toBe(false);
     expect(screen.getByRole('form-input')).toBeInTheDocument();
   });
   it('should display the formInput prefix content', () => {
