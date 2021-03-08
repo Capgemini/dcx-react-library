@@ -74,6 +74,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "jest-css-modules": "^2.1.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "postcss": "^8.2.6",
     "postcss-loader": "^5.0.0",
     "react": "^17.0.1",
@@ -117,6 +118,7 @@
   },
   "dependencies": {
     "@cesium133/forgjs": "^1.1.11",
+    "imask": "^6.0.7",
     "styled-components": "^5.2.1"
   },
   "resolutions": {

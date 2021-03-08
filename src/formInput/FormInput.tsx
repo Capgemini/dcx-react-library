@@ -1,16 +1,16 @@
 import React from 'react';
 import { useValidationOnChange } from '../common';
-interface FormInputProps {
+type FormInputProps = {
   /**
    * input name
    **/
   name: string;
   /**
-   * input name
+   * input type
    **/
   type: string;
   /**
-   * input name
+   * input value
    **/
   value: any;
   /**
@@ -56,14 +56,14 @@ interface FormInputProps {
    * input ariaLabel
    **/
   ariaLabel?: string;
-}
+};
 
 export enum position {
   TOP = 'top',
   BOTTOM = 'bottom',
 }
 
-export const FormInput: React.FC<FormInputProps> = ({
+export const FormInput = ({
   name,
   type,
   value,
@@ -77,7 +77,7 @@ export const FormInput: React.FC<FormInputProps> = ({
   errorMessage,
   errorPosition,
   ariaLabel,
-}) => {
+}: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation);
 
   React.useEffect(() => {
