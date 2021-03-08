@@ -65,7 +65,7 @@ export enum position {
 
 export const roles = {
   error: 'error',
-  formInput: 'formInput',
+  formInput: 'form-input',
   prefix: 'prefix',
   suffix: 'suffix',
 };
