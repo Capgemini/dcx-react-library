@@ -61,6 +61,7 @@
     "@babel/core": "^7.13.1",
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
+    "@parcel/transformer-posthtml": "2.0.0-nightly.612",
     "@size-limit/preset-small-lib": "^4.9.2",
     "@storybook/addon-controls": "^6.1.19",
     "@storybook/addon-docs": "^6.1.19",
