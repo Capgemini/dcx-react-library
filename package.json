@@ -16,7 +16,7 @@
     "test": "tsdx test --passWithNoTests",
     "test:coverage": "tsdx test --coverage",
     "lint": "tsdx lint ./src/**/*.{ts,tsx} ./example/components/*.{jsx,tsx}",
-    "lint:fix": "tsdx lint ./src/**/*.{ts,tsx} ./example/components/*.{jsx,tsx} --fix",
+    "lint:fix": "tsdx lint ./src/**/*.{ts,tsx} ./example/components/*.{tsx} --fix",
     "prepare": "tsdx build && husky install",
     "size": "size-limit",
     "analyze": "size-limit --why",
@@ -28,13 +28,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint ./src/**/*.{jsx,ts,tsx} ./example/components/*.{jsx,tsx}",
+      "pre-commit": "tsdx lint ./src/**/*.{jsx,ts,tsx} ./example/components/*.{tsx}",
       "pre-push": "tsdx test --coverage",
       "commit-msg": "yarn commitlint --edit"
     }
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"] 
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "prettier": {
     "printWidth": 80,
