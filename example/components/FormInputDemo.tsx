@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormInput, position } from '../../.';
+import { FormInput, position } from 'dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
 export const FormInputDemo = () => {
