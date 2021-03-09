@@ -113,9 +113,19 @@ Two actions are added by default:
 - `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
 - `size` which comments cost comparison of your library on every pull request using [size-limit](https://github.com/ai/size-limit)
 
-
 ## Module Formats
 
 CJS, ESModules, and UMD module formats are supported.
 
 The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/daniele-zurico"><img src="https://avatars.githubusercontent.com/u/3193095?v=4" width="100px;" alt=""/><br /><sub><b>Daniele Zurico</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Ibabalola"><img src="https://avatars.githubusercontent.com/u/11960286?v=4" width="100px;" alt=""/><br /><sub><b>Isaac Babalola</b></sub></a></td>
+  </tr>
+</table>
