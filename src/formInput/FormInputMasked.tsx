@@ -29,6 +29,9 @@ type FormInputMaskedProps = {
    **/
   type?: string;
 
+  /**
+   * you can define your own properties
+   */
   props?: any;
   /**
    * input aria-label
@@ -42,8 +45,8 @@ export const FormInputMasked = ({
   value,
   name,
   type,
-  props,
   ariaLabel,
+  ...props
 }: FormInputMaskedProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [mask, setMask] = useState<IMask.InputMask<
@@ -77,9 +80,9 @@ export const FormInputMasked = ({
   return (
     <input
       ref={inputRef}
+      {...props}
       name={name}
       type={type}
-      {...props}
       aria-label={ariaLabel || name}
     />
   );
