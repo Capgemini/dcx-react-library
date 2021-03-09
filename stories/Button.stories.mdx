@@ -1,0 +1,24 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Button } from '../src';
+import './style.css';
+
+<Meta title="DCXLibrary/Form/Button" component={Button} />
+
+### An example of 'un-styled' Button
+<Canvas>
+  <Story name="un-styled">
+    {() => {
+      const handleClick = _event => {
+        console.log('Button clicked')
+      }
+
+      return (
+        <Button
+          onClick={handleClick}
+        >Ok</Button>
+      )
+    }}
+  </Story>
+</Canvas>
+
+<Props of={Button} />
