@@ -134,7 +134,7 @@ Thanks goes to these wonderful people
     </td>
     <td align="center">
       <a href="https://github.com/Ibabalola">
-        <img src="https://avatars.githubusercontent.com/u/11960286?v=4" width="100px;" alt="isac-babalola"/>
+        <img src="https://avatars.githubusercontent.com/u/11960286?v=4" width="100px;" alt="isaac-babalola"/>
         <br />
         <sub><b>Isaac Babalola</b></sub>
       </a>
