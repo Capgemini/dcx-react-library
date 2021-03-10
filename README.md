@@ -125,7 +125,19 @@ Thanks goes to these wonderful people
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/daniele-zurico"><img src="https://avatars.githubusercontent.com/u/3193095?v=4" width="100px;" alt=""/><br /><sub><b>Daniele Zurico</b></sub></a></td>
-    <td align="center"><a href="https://github.com/Ibabalola"><img src="https://avatars.githubusercontent.com/u/11960286?v=4" width="100px;" alt=""/><br /><sub><b>Isaac Babalola</b></sub></a></td>
+    <td align="center">
+      <a href="https://github.com/daniele-zurico">
+        <img src="https://avatars.githubusercontent.com/u/3193095?v=4" width="100px;" alt="daniele-zurico"/>
+        <br />
+        <sub><b>Daniele Zurico</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Ibabalola">
+        <img src="https://avatars.githubusercontent.com/u/11960286?v=4" width="100px;" alt="isac-babalola"/>
+        <br />
+        <sub><b>Isaac Babalola</b></sub>
+      </a>
+    </td>
   </tr>
 </table>
