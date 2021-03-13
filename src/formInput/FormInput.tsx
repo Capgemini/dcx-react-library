@@ -1,5 +1,6 @@
 import React from 'react';
-import { useValidationOnChange } from '../common';
+import { useValidationOnChange, position, roles } from '../common';
+
 type FormInputProps = {
   /**
    * input name
@@ -53,18 +54,6 @@ type FormInputProps = {
    * input ariaLabel
    **/
   ariaLabel?: string;
-};
-
-export enum position {
-  TOP = 'top',
-  BOTTOM = 'bottom',
-}
-
-export const roles = {
-  error: 'error',
-  formInput: 'form-input',
-  prefix: 'prefix',
-  suffix: 'suffix',
 };
 
 export const FormInput = ({

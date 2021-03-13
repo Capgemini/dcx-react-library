@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormRadio } from '../src/formRadio/FormRadio';
+import './style.css';
+
+<Meta title="DCXLibrary/Form/Radio/documentation" component={FormRadio} />
+
+# FormRadio
+
+Radio components ready to use in your form.
+
+## Usage
+
+Use the radio component when users can only select one option from a list.
+
+An example with all the available properties is:
+
+```js
+<FormRadio
+  id='radio-id'
+  name='radio-name'
+  value={value}
+  label='radio-label'
+  controlsProps={{
+    style: { display: 'grid' }
+  }}
+  inputProps={{
+    checked
+  }}
+  radioProps={{ 
+    style: { width: 0, height: 0 } 
+  }}
+  labelProps={{
+    style: { display: 'flex' }
+  }}
+  labelTextProps={{
+    style: { lineHeight: 1 }
+  }}
+  onChange={handleChange}
+  onClick={handleClick}
+/>
+```
+
+<Props of={FormRadio} />

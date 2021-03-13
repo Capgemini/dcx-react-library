@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { FormInput, position } from 'dcx-react-library';
+import { FormInput } from 'dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
+import { position } from '../../src/common';
+
 export const FormInputDemo = () => {
   //Im using the same one for the 3 demos
   const [value, setValue] = React.useState('');
