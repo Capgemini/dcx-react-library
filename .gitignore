@@ -6,3 +6,4 @@ dist
 coverage
 .parcel-cache
 example/.parcel-cache/*
+.vscode/
