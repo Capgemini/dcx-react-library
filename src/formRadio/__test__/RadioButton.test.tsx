@@ -9,18 +9,20 @@ describe('FormRadio', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormRadio 
-        id="myId" 
-        name="group1" 
+      <FormRadio
+        id="myId"
+        name="group1"
         value="choice 1"
         label="my label"
         onChange={handleChange}
       />
-     );
+    );
     const getById = queryByAttribute.bind(null, 'id');
 
     expect(screen.getByRole('form-radio')).toBeInTheDocument();
-    expect(screen.getByLabelText('my label').getAttribute('value')).toBe('choice 1');
+    expect(screen.getByLabelText('my label').getAttribute('value')).toBe(
+      'choice 1'
+    );
     expect(screen.getByLabelText('my label')).toBeInTheDocument();
     expect(getById(screen.getByRole('form-radio'), 'myId')).toBeInTheDocument();
   });
@@ -29,15 +31,15 @@ describe('FormRadio', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormRadio 
-        id="myId" 
-        name="group1" 
+      <FormRadio
+        id="myId"
+        name="group1"
         value="choice 1"
         label="my label"
         onChange={handleChange}
       />
     );
-    
+
     fireEvent['click'](screen.getByLabelText('my label'));
 
     expect(handleChange).toHaveBeenCalled();
@@ -47,14 +49,9 @@ describe('FormRadio', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormRadio 
-        id="myId" 
-        name="group1" 
-        value="choice 1"
-        label="my label"
-      />
+      <FormRadio id="myId" name="group1" value="choice 1" label="my label" />
     );
-    
+
     fireEvent['click'](screen.getByLabelText('my label'));
 
     expect(handleChange).not.toHaveBeenCalled();
