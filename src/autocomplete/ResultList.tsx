@@ -1,9 +1,9 @@
 import React from 'react';
 
 type ResultListProps = {
-  list: any;
-  userInput: any;
-  activeOption: any;
+  list: string[];
+  userInput: string;
+  activeOption: number;
   ulContainerClass?: string;
   liContainerClass?: string;
   noOptionClass?: string;
@@ -24,7 +24,7 @@ export const ResultList = ({
   if (userInput && list.length) {
     return (
       <ul className={ulContainerClass}>
-        {list.forE((optionName: string, index: number) => (
+        {list.map((optionName: string, index: number) => (
           <li
             className={index === activeOption ? activeClass : liContainerClass}
             key={optionName}

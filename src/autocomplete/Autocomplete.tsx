@@ -10,7 +10,7 @@ type autocompleteProps = {
   /**
    * it you want to pass extra properties
    */
-  props: any;
+  props?: any;
   /**
    * if you want to style your input  passing extra properties (e.g. search icon etc)
    */
