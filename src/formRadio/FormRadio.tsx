@@ -3,21 +3,21 @@ import { Roles } from '../common';
 
 type FormRadioProps = {
   /**
-   * radio id
-   */
-  id?: string;
-  /**
    * radio name
    */
   name: string;
+  /**
+   * radio label
+   */
+  label: string;
   /**
    * radio value
    */
   value: string;
   /**
-   * radio label
+   * radio id
    */
-  label: string;
+  id?: string;
   /**
    * allows for customisation of the radio label with all the properites needed
    **/
