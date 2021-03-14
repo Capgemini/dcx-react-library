@@ -14,11 +14,11 @@ type autocompleteProps = {
   /**
    * if you want to style your input  passing extra properties (e.g. search icon etc)
    */
-  suffixProps?: any;
+  suffix?: any;
   /**
    * if you want to style your input passing extra properties (e.g. search icon etc)
    */
-  prefixProps?: any;
+  prefix?: any;
   /**
    * if you want to pass a style class to the result UL list
    */
@@ -36,6 +36,10 @@ type autocompleteProps = {
    */
   resultActiveClass?: string;
   /**
+   * optional text for not found element
+   */
+  notFoundText?: string;
+  /**
    * event that return the selected value
    */
   onSelected?: (value: string) => void;
@@ -43,8 +47,9 @@ type autocompleteProps = {
 
 export const Autocomplete = ({
   options,
-  suffixProps,
-  prefixProps,
+  suffix,
+  prefix,
+  notFoundText,
   resultActiveClass,
   resultUlClass,
   resultlLiClass,
@@ -73,8 +78,8 @@ export const Autocomplete = ({
     setActiveOption(0);
     setFilterList([]);
     setShowOptions(false);
-    setUserInput(evt.currentTarget.innerText);
-    if (onSelected) onSelected(evt.currentTarget.innerText);
+    setUserInput(evt.currentTarget.innerHTML);
+    if (onSelected) onSelected(evt.currentTarget.innerHTML);
   };
 
   const onKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
@@ -107,12 +112,8 @@ export const Autocomplete = ({
           inputProps={{
             onKeyDown: onKeyDown,
           }}
-          suffix={
-            suffixProps && <button type="submit">{...suffixProps}</button>
-          }
-          prefix={
-            prefixProps && <button type="submit">{...prefixProps}</button>
-          }
+          suffix={suffix && <button type="submit">{...suffix}</button>}
+          prefix={prefix && <button type="submit">{...prefix}</button>}
           {...props}
         />
       </div>
@@ -121,6 +122,7 @@ export const Autocomplete = ({
           list={filterList}
           userInput={userInput}
           activeOption={activeOption}
+          noelFoundText={notFoundText}
           onClick={handleClick}
           activeClass={resultActiveClass}
           ulContainerClass={resultUlClass}
