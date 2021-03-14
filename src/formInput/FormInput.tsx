@@ -120,7 +120,9 @@ export const FormInput = ({
         />
         {suffix && <div role={Roles.suffix}>{suffix}</div>}
       </div>
-      {errorPosition && errorPosition === ErrorPosition.BOTTOM && <ErrorMessage />}
+      {errorPosition && errorPosition === ErrorPosition.BOTTOM && (
+        <ErrorMessage />
+      )}
     </div>
   );
 };
