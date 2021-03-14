@@ -10,7 +10,7 @@ import "./style.css";
 In this section we're using the formRadio component providing the GovUk style passing the relative `className`. Feel free to use your own css and style the formRadio as you prefer
 
 <Canvas>
-  <Story name="basic">
+  <Story name="inline">
     {() => {
       const [value, setValue] = React.useState('');
       const handleChange = event => setValue(event.currentTarget.value);
@@ -26,6 +26,194 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: 'govuk-label govuk-radios__label'
             }}
             inputProps={{
+              className: 'govuk-radios__input'
+            }}
+            itemProps={{
+              className: 'govuk-radios__item'
+            }}
+            onChange={handleChange}
+          />
+          <FormRadio
+            id="changed-name"
+            name="changed-name"
+            value="No"
+            label="No"
+            labelProps={{
+              className: 'govuk-label govuk-radios__label'
+            }}
+            inputProps={{
+              className: 'govuk-radios__input'
+            }}
+            itemProps={{
+              className: 'govuk-radios__item'
+            }}
+            onChange={handleChange}
+          />
+        </div>
+      )
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="stacked">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const handleChange = event => setValue(event.currentTarget.value);
+      
+      return (
+        <div className="govuk-radios">
+          <FormRadio
+            id="changed-name"
+            name="changed-name"
+            value="England"
+            label="England"
+            labelProps={{
+              className: 'govuk-label govuk-radios__label'
+            }}
+            inputProps={{
+              className: 'govuk-radios__input'
+            }}
+            itemProps={{
+              className: 'govuk-radios__item'
+            }}
+            onChange={handleChange}
+          />
+          <FormRadio
+            id="changed-name"
+            name="changed-name"
+            value="Scotland"
+            label="Scotland"
+            labelProps={{
+              className: 'govuk-label govuk-radios__label'
+            }}
+            inputProps={{
+              className: 'govuk-radios__input'
+            }}
+            itemProps={{
+              className: 'govuk-radios__item'
+            }}
+            onChange={handleChange}
+          />
+          <FormRadio
+            id="changed-name"
+            name="changed-name"
+            value="Wales"
+            label="Wales"
+            labelProps={{
+              className: 'govuk-label govuk-radios__label'
+            }}
+            inputProps={{
+              className: 'govuk-radios__input'
+            }}
+            itemProps={{
+              className: 'govuk-radios__item'
+            }}
+            onChange={handleChange}
+          />
+          <FormRadio
+            id="changed-name"
+            name="changed-name"
+            value="Northern Ireland"
+            label="Northern Ireland"
+            labelProps={{
+              className: 'govuk-label govuk-radios__label'
+            }}
+            inputProps={{
+              className: 'govuk-radios__input'
+            }}
+            itemProps={{
+              className: 'govuk-radios__item'
+            }}
+            onChange={handleChange}
+          />
+        </div>
+      )
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="disabled">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const handleChange = event => setValue(event.currentTarget.value);
+      
+      return (
+        <div className="govuk-radios">
+          <FormRadio
+            id="changed-name"
+            name="changed-name"
+            value="Yes"
+            label="Yes"
+            labelProps={{
+              className: 'govuk-label govuk-radios__label'
+            }}
+            inputProps={{
+              className: 'govuk-radios__input'
+            }}
+            itemProps={{
+              className: 'govuk-radios__item'
+            }}
+            onChange={handleChange}
+          />
+          <FormRadio
+            id="changed-name"
+            name="changed-name"
+            value="No"
+            label="No"
+            labelProps={{
+              className: 'govuk-label govuk-radios__label'
+            }}
+            inputProps={{
+              className: 'govuk-radios__input'
+            }}
+            itemProps={{
+              className: 'govuk-radios__item'
+            }}
+            onChange={handleChange}
+          />
+          <FormRadio
+            id="changed-name"
+            name="changed-name"
+            value="Maybe"
+            label="Maybe"
+            labelProps={{
+              className: 'govuk-label govuk-radios__label'
+            }}
+            inputProps={{
+              disabled: true,
+              className: 'govuk-radios__input'
+            }}
+            itemProps={{
+              className: 'govuk-radios__item'
+            }}
+            onChange={handleChange}
+          />
+        </div>
+      )
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="preselected">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const handleChange = event => setValue(event.currentTarget.value);
+      
+      return (
+        <div className="govuk-radios">
+          <FormRadio
+            id="changed-name"
+            name="changed-name"
+            value="Yes"
+            label="Yes"
+            labelProps={{
+              className: 'govuk-label govuk-radios__label'
+            }}
+            inputProps={{
+              defaultChecked: true,
               className: 'govuk-radios__input'
             }}
             itemProps={{

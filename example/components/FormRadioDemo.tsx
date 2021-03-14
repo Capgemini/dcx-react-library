@@ -9,7 +9,7 @@ export const FormRadioDemo = () => {
 
   return (
     <>
-      <h1>Basic Radio stacked</h1>
+      <h1>Basic Single Radios Stacked</h1>
       <FormRadio
         id="radio-1"
         name="group1"
