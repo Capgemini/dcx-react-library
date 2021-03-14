@@ -50,25 +50,19 @@ export const FormRadio = ({
   labelProps,
   ariaLabel,
   onChange,
-}: FormRadioProps) => {
-  const handleChange = (event: React.ChangeEventHandler<HTMLInputElement>) => {
-    onChange && onChange(event);
-  };
-
-  return (
-    <div {...itemProps} role={Roles.formRadio}>
-      <input
-        id={id}
-        type="radio"
-        name={name}
-        value={value}
-        aria-label={ariaLabel || name}
-        {...inputProps}
-        onChange={handleChange}
-      />
-      <label {...labelProps} htmlFor={id}>
-        {label}
-      </label>
-    </div>
-  );
-};
+}: FormRadioProps) => (
+  <div {...itemProps} role={Roles.formRadio}>
+    <input
+      id={id}
+      type="radio"
+      name={name}
+      value={value}
+      aria-label={ariaLabel || name}
+      {...inputProps}
+      onChange={onChange}
+    />
+    <label {...labelProps} htmlFor={id}>
+      {label}
+    </label>
+  </div>
+);
