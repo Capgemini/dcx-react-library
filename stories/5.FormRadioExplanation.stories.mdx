@@ -26,7 +26,7 @@ An example with all the available properties is:
     style: { display: 'grid' }
   }}
   inputProps={{
-    checked
+    className: 'class-name'
   }}
   radioProps={{ 
     style: { width: 0, height: 0 } 
@@ -37,8 +37,9 @@ An example with all the available properties is:
   labelTextProps={{
     style: { lineHeight: 1 }
   }}
-  onChange={handleChange}
-  onClick={handleClick}
+  onChange={ handleChange }
+  selected={ true }
+  disabled={ true }
 />
 ```
 

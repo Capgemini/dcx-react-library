@@ -15,7 +15,7 @@ type FormRadioProps = {
    */
   value: string;
   /**
-   * label
+   * radio label
    */
   label: string;
   /**
@@ -35,6 +35,14 @@ type FormRadioProps = {
    **/
   ariaLabel?: string;
   /**
+   * specifies whether the radio should be disabled
+   */
+  disabled?: boolean;
+  /**
+   * specifies whether the radio should be selected
+   */
+  selected?: boolean;
+  /**
    * function that will trigger all the time there's a change on the radio
    **/
   onChange?: (event: React.ChangeEventHandler<HTMLInputElement>) => void;
@@ -50,6 +58,8 @@ export const FormRadio = ({
   labelProps,
   ariaLabel,
   onChange,
+  disabled,
+  selected,
 }: FormRadioProps) => (
   <div {...itemProps} role={Roles.formRadio}>
     <input
@@ -58,8 +68,10 @@ export const FormRadio = ({
       name={name}
       value={value}
       aria-label={ariaLabel || name}
-      {...inputProps}
+      disabled={disabled}
+      checked={selected}
       onChange={onChange}
+      {...inputProps}
     />
     <label {...labelProps} htmlFor={id}>
       {label}

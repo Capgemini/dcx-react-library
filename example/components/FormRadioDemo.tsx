@@ -16,9 +16,7 @@ export const FormRadioDemo = () => {
         value={value}
         label="Radio 1 label text"
         onChange={handleChange}
-        inputProps={{
-          defaultChecked: true,
-        }}
+        selected={true}
       />
       <FormRadio
         id="radio-2"
@@ -40,9 +38,7 @@ export const FormRadioDemo = () => {
         value={value}
         label="Radio 4 label text"
         onChange={handleChange}
-        inputProps={{
-          disabled: true,
-        }}
+        disabled={true}
       />
     </>
   );

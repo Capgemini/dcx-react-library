@@ -37,4 +37,6 @@ the available properties are:
 | **inputProps**       | string                                             | null    | **false** | allows for customisation of the inputs with all the properites needed |
 | **itemProps**        | string                                             | null    | **false** | allows for customisation of the with all the properites needed        |
 | **ariaLabel**        | string                                             | null    | **false** | aria-label of the radio                                               |
-| **onChange**         | (event: React.FormEvent<HTMLInputElement>) => void | null    | **false**  | Dispatch the current value of the input                               |
+| **onChange**         | (event: React.FormEvent<HTMLInputElement>) => void | null    | **false** | Dispatch the current value of the input                               |
+| **selected**         | boolean                                            | null    | **false** | default checked of the radio                                          |
+| **disabled**         | boolean                                            | null    | **false** | set the radio as disabled                                             |
