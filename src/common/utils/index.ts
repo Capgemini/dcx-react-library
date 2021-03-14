@@ -1,11 +1,11 @@
 export { useValidation, useValidationOnChange } from './useValidation';
 
-export enum position {
+export enum Position {
   TOP = 'top',
   BOTTOM = 'bottom',
 }
 
-export const roles = {
+export const Roles = {
   error: 'error',
   formInput: 'form-input',
   formRadio: 'form-radio',

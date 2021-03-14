@@ -1,5 +1,5 @@
 import React from 'react';
-import { useValidationOnChange, position, roles } from '../common';
+import { useValidationOnChange, Position, Roles } from '../common';
 
 type FormInputProps = {
   /**
@@ -49,7 +49,7 @@ type FormInputProps = {
   /**
    * error position - top or bottom
    **/
-  errorPosition?: position;
+  errorPosition?: Position;
   /**
    * input ariaLabel
    **/
@@ -92,7 +92,7 @@ export const FormInput = ({
       {...errorProps}
     >
       {validity && !validity.valid ? (
-        <div role={roles.error} {...errorMessage}>
+        <div role={Roles.error} {...errorMessage}>
           {validity.message}
         </div>
       ) : null}
@@ -100,10 +100,10 @@ export const FormInput = ({
   );
 
   return (
-    <div style={{ width: '97%', marginBottom: '15px' }} role={roles.formInput}>
-      {errorPosition && errorPosition === position.TOP && <ErrorMessage />}
+    <div style={{ width: '97%', marginBottom: '15px' }} role={Roles.formInput}>
+      {errorPosition && errorPosition === Position.TOP && <ErrorMessage />}
       <div style={{ display: 'flex' }}>
-        {prefix && <div role={roles.prefix}>{prefix}</div>}
+        {prefix && <div role={Roles.prefix}>{prefix}</div>}
         <input
           style={{ width: '100%' }}
           name={name}
@@ -113,9 +113,9 @@ export const FormInput = ({
           {...inputProps}
           aria-label={ariaLabel || name}
         />
-        {suffix && <div role={roles.suffix}>{suffix}</div>}
+        {suffix && <div role={Roles.suffix}>{suffix}</div>}
       </div>
-      {errorPosition && errorPosition === position.BOTTOM && <ErrorMessage />}
+      {errorPosition && errorPosition === Position.BOTTOM && <ErrorMessage />}
     </div>
   );
 };

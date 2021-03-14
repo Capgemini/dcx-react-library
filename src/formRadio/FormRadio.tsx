@@ -1,5 +1,5 @@
 import React from 'react';
-import { roles } from '../common';
+import { Roles } from '../common';
 
 type FormRadioProps = {
   /**
@@ -56,7 +56,7 @@ export const FormRadio = ({
   };
 
   return (
-    <div {...itemProps} role={roles.formRadio}>
+    <div {...itemProps} role={Roles.formRadio}>
       <input
         id={id}
         type="radio"

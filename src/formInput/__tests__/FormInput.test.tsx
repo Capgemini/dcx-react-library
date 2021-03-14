@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { FormInput } from '../FormInput';
-import { position } from '../../common';
+import { Position } from '../../common';
 import userEvent from '@testing-library/user-event';
 
 const DummyComponent = ({ pos }: any) => {
@@ -84,21 +84,21 @@ describe('FormInput', () => {
   });
 
   it('should display the formInput error', () => {
-    render(<DummyComponent pos={position.BOTTOM} />);
+    render(<DummyComponent pos={Position.BOTTOM} />);
     const input = screen.getByRole('textbox');
     userEvent.type(input, 'TEST VALUE');
     expect(screen.getByRole('error')).toBeInTheDocument();
   });
 
   it('should display the formInput error message', () => {
-    render(<DummyComponent pos={position.BOTTOM} />);
+    render(<DummyComponent pos={Position.BOTTOM} />);
     const input = screen.getByRole('textbox');
     userEvent.type(input, 'TEST VALUE');
     expect(screen.getByRole('error')).toContainHTML('is invalid');
   });
 
   it('should display the formInput error message on top', () => {
-    const { container } = render(<DummyComponent pos={position.TOP} />);
+    const { container } = render(<DummyComponent pos={Position.TOP} />);
     const input = screen.getByRole('textbox');
     userEvent.type(input, 'TEST VALUE');
     let error: any;
@@ -108,7 +108,7 @@ describe('FormInput', () => {
   });
 
   it('should display the formInput error message on the bottom', () => {
-    const { container } = render(<DummyComponent pos={position.BOTTOM} />);
+    const { container } = render(<DummyComponent pos={Position.BOTTOM} />);
     const input = screen.getByRole('textbox');
     userEvent.type(input, 'TEST VALUE');
     let error: any;
