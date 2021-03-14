@@ -1,5 +1,5 @@
 import React from 'react';
-import { useValidationOnChange, Position, Roles } from '../common';
+import { useValidationOnChange, Roles } from '../common';
 
 type FormInputProps = {
   /**
@@ -49,12 +49,17 @@ type FormInputProps = {
   /**
    * error position - top or bottom
    **/
-  errorPosition?: Position;
+  errorPosition?: ErrorPosition;
   /**
    * input ariaLabel
    **/
   ariaLabel?: string;
 };
+
+export enum ErrorPosition {
+  TOP = 'top',
+  BOTTOM = 'bottom',
+}
 
 export const FormInput = ({
   name,
@@ -101,7 +106,7 @@ export const FormInput = ({
 
   return (
     <div style={{ width: '97%', marginBottom: '15px' }} role={Roles.formInput}>
-      {errorPosition && errorPosition === Position.TOP && <ErrorMessage />}
+      {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
       <div style={{ display: 'flex' }}>
         {prefix && <div role={Roles.prefix}>{prefix}</div>}
         <input
@@ -115,7 +120,7 @@ export const FormInput = ({
         />
         {suffix && <div role={Roles.suffix}>{suffix}</div>}
       </div>
-      {errorPosition && errorPosition === Position.BOTTOM && <ErrorMessage />}
+      {errorPosition && errorPosition === ErrorPosition.BOTTOM && <ErrorMessage />}
     </div>
   );
 };
