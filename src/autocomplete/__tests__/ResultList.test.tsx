@@ -77,7 +77,7 @@ describe('ResultList', () => {
         activeOption={1}
         onClick={handleClick}
         noOptionClass="noOptionClass"
-        noelFoundText="nada de nada"
+        noElFoundText="nada de nada"
       />
     );
     const emEl: any = container.querySelector('em');
