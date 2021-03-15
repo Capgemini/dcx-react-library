@@ -8,7 +8,7 @@ type ResultListProps = {
   liContainerClass?: string;
   noOptionClass?: string;
   activeClass?: string;
-  noelFoundText?: string;
+  noElFoundText?: string;
   onClick: any;
 };
 
@@ -20,7 +20,7 @@ export const ResultList = ({
   liContainerClass,
   activeClass,
   noOptionClass,
-  noelFoundText,
+  noElFoundText,
   onClick,
 }: ResultListProps) => {
   if (userInput && list.length) {
@@ -40,7 +40,7 @@ export const ResultList = ({
   } else {
     return (
       <div className={noOptionClass}>
-        <em>{noelFoundText || 'No Option!'}</em>
+        <em>{noElFoundText || 'No Option!'}</em>
       </div>
     );
   }

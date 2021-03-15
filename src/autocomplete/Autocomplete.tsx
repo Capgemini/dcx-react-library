@@ -8,11 +8,11 @@ type autocompleteProps = {
    */
   options: string[];
   /**
-   * it you want to pass extra properties
+   * if you want to pass extra properties
    */
   props?: any;
   /**
-   * if you want to style your input  passing extra properties (e.g. search icon etc)
+   * if you want to style your input passing extra properties (e.g. search icon etc)
    */
   suffix?: any;
   /**
@@ -122,7 +122,7 @@ export const Autocomplete = ({
           list={filterList}
           userInput={userInput}
           activeOption={activeOption}
-          noelFoundText={notFoundText}
+          noElFoundText={notFoundText}
           onClick={handleClick}
           activeClass={resultActiveClass}
           ulContainerClass={resultUlClass}

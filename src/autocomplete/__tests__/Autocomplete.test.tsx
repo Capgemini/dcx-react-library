@@ -47,7 +47,7 @@ describe('FormInput', () => {
     expect(noOptionTag.innerHTML).toBe('No Option!');
   });
 
-  it('should selected the options on click', () => {
+  it('should allow to click on the first item and select as choice', () => {
     render(<Autocomplete options={['daniele', 'destiny', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     userEvent.type(input, 'd');
@@ -58,12 +58,12 @@ describe('FormInput', () => {
     expect(input.value).toBe('daniele');
   });
 
-  it('should call the onSelected function if specified the options on click', () => {
-    const handleonSelected = jest.fn();
+  it('should call the onSelected function if the function is provided', () => {
+    const handleOnSelected = jest.fn();
     render(
       <Autocomplete
         options={['daniele', 'destiny', 'isaac']}
-        onSelected={handleonSelected}
+        onSelected={handleOnSelected}
       />
     );
     const input: any = screen.getByRole('textbox');
@@ -72,10 +72,10 @@ describe('FormInput', () => {
       .getAllByRole('listitem')
       .filter((listitem: any) => listitem.textContent === 'daniele');
     fireEvent.click(item[0]);
-    expect(handleonSelected).toBeCalled();
+    expect(handleOnSelected).toBeCalled();
   });
 
-  it('should higlight the selected options on keyDown', () => {
+  it('should highlight the selected option(s) on keyDown', () => {
     render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
@@ -90,7 +90,7 @@ describe('FormInput', () => {
     expect(input.value).toBe('darren');
   });
 
-  it('should higlight the selected options on keyUp', () => {
+  it('hould highlight the selected option(s) on keyUp', () => {
     render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     userEvent.type(input, 'da');
@@ -115,7 +115,7 @@ describe('FormInput', () => {
     expect(listItems[0].className).toBe('activeClass');
   });
 
-  it('should higlight the first one as active if you try to keyUp', () => {
+  it('should highlight the first one as active if you try to keyUp', () => {
     render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
