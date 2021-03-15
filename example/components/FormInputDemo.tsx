@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { FormInput, position } from 'dcx-react-library';
+import { FormInput, ErrorPosition } from 'dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
+
 export const FormInputDemo = () => {
   //Im using the same one for the 3 demos
   const [value, setValue] = React.useState('');
@@ -121,7 +122,7 @@ export const FormInputDemo = () => {
           message:
             'your password need to be min 8 chars 1 Uppercase, 1 Number and one special character',
         }}
-        errorPosition={position.BOTTOM}
+        errorPosition={ErrorPosition.BOTTOM}
         prefix={
           <div
             style={{

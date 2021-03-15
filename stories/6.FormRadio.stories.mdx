@@ -1,0 +1,24 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormRadio } from '../src/formRadio/FormRadio';
+import "./style.css";
+
+<Meta title="DCXLibrary/Form/Radio" component={FormRadio} />
+
+### An example of 'un-styled' Input
+<Canvas>
+  <Story name="un-styled">
+      {() => {
+      return (
+        <FormRadio
+            id="radio-1"
+            name="group1"
+            value="value"
+            label="text example"
+        />
+      );
+    }}
+    />
+  </Story>
+</Canvas>
+
+<Props of={FormRadio} />
