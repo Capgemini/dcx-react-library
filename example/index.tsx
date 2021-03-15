@@ -1,15 +1,20 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { FormInputDemo } from './components/FormInputDemo';
-import { FormInputMaskedDemo } from './components/FormInputMaskedDemo';
-import { FormRadioDemo } from './components/FormRadioDemo';
+
+import {
+  FormInputDemo,
+  FormInputMaskedDemo,
+  AutocompleteDemo,
+  FormRadioDemo,
+} from './components';
 
 const App = () => (
   <div>
     <FormInputDemo />
     <FormInputMaskedDemo />
     <FormRadioDemo />
+    <AutocompleteDemo />
   </div>
 );
 
