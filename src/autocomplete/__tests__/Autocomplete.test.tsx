@@ -145,4 +145,28 @@ describe('FormInput', () => {
     fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
     expect(handleSelected).toBeCalled();
   });
+
+  it('should display an hint label if specified', () => {
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'darren', 'isaac']}
+        resultActiveClass="activeClass"
+        hintText="search names"
+      />
+    );
+    const hintTag: any = container.querySelector('label');
+    expect(hintTag.innerHTML).toBe('search names');
+  });
+  it('should display an hint class if specified', () => {
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'darren', 'isaac']}
+        resultActiveClass="activeClass"
+        hintText="search names"
+        hintClass="labelClass"
+      />
+    );
+    const hintTag: any = container.querySelector('label');
+    expect(hintTag.className).toBe('labelClass');
+  });
 });

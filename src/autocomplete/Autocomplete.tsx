@@ -8,6 +8,14 @@ type autocompleteProps = {
    */
   options: string[];
   /**
+   * you can specify a description label to provide additional information
+   */
+  hintText?: string;
+  /**
+   * you can style the look and feel of your hint text
+   */
+  hintClass?: string;
+  /**
    * if you want to pass extra properties
    */
   props?: any;
@@ -47,6 +55,8 @@ type autocompleteProps = {
 
 export const Autocomplete = ({
   options,
+  hintText,
+  hintClass,
   suffix,
   prefix,
   notFoundText,
@@ -104,6 +114,7 @@ export const Autocomplete = ({
   return (
     <>
       <div className="search">
+        {hintText && <label className={hintClass}>{hintText}</label>}
         <FormInput
           name="autocompleteSearch"
           type="text"

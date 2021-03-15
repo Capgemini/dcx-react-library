@@ -20,6 +20,7 @@ export const AutocompleteDemo = () => {
         ]}
         suffixProps={<FontAwesomeIcon icon={faAt} />}
         onSelected={handleSelected}
+        hintText="search the list of fruits"
       />
       selected: {selected}
     </>
