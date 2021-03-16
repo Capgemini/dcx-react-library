@@ -24,6 +24,10 @@ type autocompleteProps = {
    */
   hintText?: string;
   /**
+   * allow to specify extra properties on the input
+   */
+  inputProps?: any;
+  /**
    * you can style the look and feel of your hint text
    */
   hintClass?: string;
@@ -65,10 +69,22 @@ type autocompleteProps = {
   onSelected?: (value: string) => void;
 };
 
+//remove the default style from a button
+const unstyleBtn = {
+  background: 'none',
+  color: 'inherit',
+  border: 'none',
+  padding: 0,
+  font: 'inherit',
+  cursor: 'pointer',
+  outline: 'inherit',
+};
+
 export const Autocomplete = ({
   options,
   minCharsBeforeSearch = 1,
   debounceMs = 0,
+  inputProps,
   defaultValue = '',
   hintText,
   hintClass,
@@ -146,9 +162,22 @@ export const Autocomplete = ({
           onChange={onChange}
           inputProps={{
             onKeyDown: onKeyDown,
+            ...inputProps,
           }}
-          suffix={suffix && <button type="submit">{...suffix}</button>}
-          prefix={prefix && <button type="submit">{...prefix}</button>}
+          suffix={
+            suffix && (
+              <button type="submit" style={unstyleBtn}>
+                {suffix}
+              </button>
+            )
+          }
+          prefix={
+            prefix && (
+              <button type="submit" style={unstyleBtn}>
+                {prefix}
+              </button>
+            )
+          }
           {...props}
         />
       </div>

@@ -105,7 +105,7 @@ export const FormInput = ({
   );
 
   return (
-    <div style={{ width: '97%', marginBottom: '15px' }} role={Roles.formInput}>
+    <div role={Roles.formInput}>
       {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
       <div style={{ display: 'flex' }}>
         {prefix && <div role={Roles.prefix}>{prefix}</div>}
