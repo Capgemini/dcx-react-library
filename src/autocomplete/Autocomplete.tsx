@@ -26,7 +26,7 @@ type autocompleteProps = {
   /**
    * allow to specify extra properties on the input
    */
-  inputProps: any;
+  inputProps?: any;
   /**
    * you can style the look and feel of your hint text
    */
