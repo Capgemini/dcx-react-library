@@ -97,6 +97,21 @@ describe('FormInput', () => {
     expect(input.value).toBe('daniele');
   });
 
+  it(`should allow to select the first item even if the list of choices is uppercase`, async () => {
+    render(<Autocomplete options={['Daniele', 'destiny', 'isaac']} />);
+    const input: any = screen.getByRole('textbox');
+    jest.useFakeTimers('modern');
+    await act(() => userEvent.type(input, 'd'));
+    act(() => {
+      jest.runAllTimers();
+    });
+    const item: any = screen
+      .getAllByRole('listitem')
+      .filter((listitem: any) => listitem.textContent === 'Daniele');
+    fireEvent.click(item[0]);
+    expect(input.value).toBe('Daniele');
+  });
+
   it('should call the onSelected function if the function is provided', async () => {
     const handleOnSelected = jest.fn();
     render(

@@ -89,8 +89,8 @@ export const Autocomplete = ({
 
   const delayedFilterResults = React.useCallback(
     debounce(value => {
-      const filtered = options.filter(
-        optionName => optionName.toLowerCase().indexOf(value.toLowerCase()) > -1
+      const filtered = options.filter(optionsName =>
+        optionsName.toLowerCase().includes(value.toLowerCase())
       );
       setActiveOption(0);
       setFilterList(filtered);
