@@ -20,6 +20,7 @@ export const AutocompleteDemo = () => {
         ]}
         suffix={<FontAwesomeIcon icon={faAt} />}
         prefix={<FontAwesomeIcon icon={faAt} />}
+        defaultValue="Papaya"
         minCharsBeforeSearch={1}
         debounceMs={2000}
         onSelected={handleSelected}

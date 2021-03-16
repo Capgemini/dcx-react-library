@@ -147,8 +147,8 @@ export const Autocomplete = ({
           inputProps={{
             onKeyDown: onKeyDown,
           }}
-          suffix={suffix && <button type="submit">{...suffix}</button>}
-          prefix={prefix && <button type="submit">{...prefix}</button>}
+          suffix={suffix && <button type="submit">{suffix}</button>}
+          prefix={prefix && <button type="submit">{prefix}</button>}
           {...props}
         />
       </div>
