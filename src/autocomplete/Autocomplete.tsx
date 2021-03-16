@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
 import { FormInput } from '../formInput';
 import { ResultList } from './ResultList';
-
+import { debounce } from 'lodash';
 type autocompleteProps = {
   /**
    * you need to provide a list of values to filter
    */
   options: string[];
+  /**
+   * specify the number of character to press before the option are displayed
+   */
+  minCharsBeforeSearch?: number;
+  /**
+   * will allow to delay the filter results (the value is in ms)
+   */
+  debounceMs?: number;
+  /**
+   * will pass the default value
+   */
+  defaultValue?: string;
   /**
    * you can specify a description label to provide additional information
    */
@@ -55,6 +67,9 @@ type autocompleteProps = {
 
 export const Autocomplete = ({
   options,
+  minCharsBeforeSearch = 1,
+  debounceMs = 0,
+  defaultValue = '',
   hintText,
   hintClass,
   suffix,
@@ -70,18 +85,24 @@ export const Autocomplete = ({
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
   const [showOptions, setShowOptions] = useState<boolean>(false);
-  const [userInput, setUserInput] = useState<string>('');
+  const [userInput, setUserInput] = useState<string>(defaultValue);
+
+  const delayedFilterResults = React.useCallback(
+    debounce(value => {
+      const filtered = options.filter(optionsName =>
+        optionsName.toLowerCase().includes(value.toLowerCase())
+      );
+      setActiveOption(0);
+      setFilterList(filtered);
+      setShowOptions(true);
+    }, debounceMs),
+    []
+  );
 
   const onChange = (evt: React.FormEvent<HTMLInputElement>) => {
     const { value } = evt.currentTarget;
-    //TODO IMPROVE THE SEARCH
-    const filtered = options.filter(
-      optionName => optionName.toLowerCase().indexOf(value.toLowerCase()) > -1
-    );
-    setActiveOption(0);
-    setFilterList(filtered);
-    setShowOptions(true);
     setUserInput(value);
+    delayedFilterResults(value);
   };
 
   const handleClick = (evt: React.FormEvent<HTMLInputElement>) => {
@@ -111,6 +132,9 @@ export const Autocomplete = ({
     }
   };
 
+  const displayResultList = (): boolean =>
+    showOptions && userInput.length >= minCharsBeforeSearch;
+
   return (
     <>
       <div className="search">
@@ -128,7 +152,7 @@ export const Autocomplete = ({
           {...props}
         />
       </div>
-      {showOptions && (
+      {displayResultList() && (
         <ResultList
           list={filterList}
           userInput={userInput}

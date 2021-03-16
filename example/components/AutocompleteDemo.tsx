@@ -18,7 +18,10 @@ export const AutocompleteDemo = () => {
           'Pomegranate',
           'Pineapple',
         ]}
-        suffixProps={<FontAwesomeIcon icon={faAt} />}
+        suffix={<FontAwesomeIcon icon={faAt} />}
+        prefix={<FontAwesomeIcon icon={faAt} />}
+        minCharsBeforeSearch={1}
+        debounceMs={2000}
         onSelected={handleSelected}
         hintText="search the list of fruits"
       />

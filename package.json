@@ -76,6 +76,7 @@
     "@testing-library/react-hooks": "^5.0.3",
     "@testing-library/user-event": "^12.8.1",
     "@types/jest": "^26.0.20",
+    "@types/lodash": "^4.14.168",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/styled-components": "^5.1.7",
@@ -130,6 +131,7 @@
   "dependencies": {
     "@cesium133/forgjs": "^1.1.11",
     "imask": "^6.0.7",
+    "lodash": "^4.17.21",
     "styled-components": "^5.2.1"
   },
   "resolutions": {
