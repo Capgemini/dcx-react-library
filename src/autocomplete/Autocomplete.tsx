@@ -69,6 +69,17 @@ type autocompleteProps = {
   onSelected?: (value: string) => void;
 };
 
+//remove the default style from a button
+const unstyleBtn = {
+  background: 'none',
+  color: 'inherit',
+  border: 'none',
+  padding: 0,
+  font: 'inherit',
+  cursor: 'pointer',
+  outline: 'inherit',
+};
+
 export const Autocomplete = ({
   options,
   minCharsBeforeSearch = 1,
@@ -155,36 +166,14 @@ export const Autocomplete = ({
           }}
           suffix={
             suffix && (
-              <button
-                type="submit"
-                style={{
-                  background: 'none',
-                  color: 'inherit',
-                  border: 'none',
-                  padding: 0,
-                  font: 'inherit',
-                  cursor: 'pointer',
-                  outline: 'inherit',
-                }}
-              >
+              <button type="submit" style={unstyleBtn}>
                 {suffix}
               </button>
             )
           }
           prefix={
             prefix && (
-              <button
-                type="submit"
-                style={{
-                  background: 'none',
-                  color: 'inherit',
-                  border: 'none',
-                  padding: 0,
-                  font: 'inherit',
-                  cursor: 'pointer',
-                  outline: 'inherit',
-                }}
-              >
+              <button type="submit" style={unstyleBtn}>
                 {prefix}
               </button>
             )
