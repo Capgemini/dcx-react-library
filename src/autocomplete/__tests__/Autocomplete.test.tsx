@@ -67,7 +67,7 @@ describe('FormInput', () => {
     expect(noOptionTag.innerHTML).toBe('No Option!');
   });
 
-  it('should allow to click on the first item and select as choice', async () => {
+  it('should allow to select the first item', async () => {
     render(<Autocomplete options={['daniele', 'destiny', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
@@ -122,7 +122,7 @@ describe('FormInput', () => {
     expect(input.value).toBe('darren');
   });
 
-  it('hould highlight the selected option(s) on keyUp', async () => {
+  it('should highlight the selected option(s) on keyUp', async () => {
     render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
