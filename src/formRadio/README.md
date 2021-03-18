@@ -16,9 +16,9 @@ An example with all the available properties is:
   label='radio-label'
   value={value}
   id='radio-id'
-  hint='my hint'
+  hintText='my hint'
   hintProps={{
-    className: 'class-name'
+    className: 'class-name', id: 'hint-id'
   }}
   controlsProps={{
     style: {display: 'grid'}
@@ -52,7 +52,7 @@ the available properties are:
 | **value**            | string                                             | null    | **true**  | value of the radio                                                    |
 | **label**            | string                                             | null    | **false** | label of the radio                                                    |
 | **labelProps**       | string                                             | null    | **false** | allows for customisation of the label with all the properites needed  |
-| **hint**             | string                                             | null    | **false** | hint for the radio                                                    |
+| **hintText**         | string                                             | null    | **false** | hint text for the radio                                                    |
 | **hintProps**        | string                                             | null    | **false** | allows for customisation of the hint with all the properites needed  |
 | **inputProps**       | string                                             | null    | **false** | allows for customisation of the inputs with all the properites needed |
 | **itemProps**        | string                                             | null    | **false** | allows for customisation of the with all the properites needed        |

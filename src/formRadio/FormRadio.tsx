@@ -19,9 +19,9 @@ type FormRadioProps = {
    **/
   id?: string;
   /**
-   * radio hint
+   * radio hint text
    **/
-  hint?: string;
+  hintText?: string;
   /**
    * allows for customisation of the radio hint with all the properites needed
    **/
@@ -68,7 +68,7 @@ export const FormRadio = ({
   onChange,
   disabled,
   selected,
-  hint,
+  hintText,
   hintProps,
 }: FormRadioProps) => (
   <div {...itemProps} role={Roles.formRadio}>
@@ -86,6 +86,6 @@ export const FormRadio = ({
     <label {...labelProps} htmlFor={id}>
       {label}
     </label>
-    {hint && <div {...hintProps}>{hint}</div>}
+    {hintText && <div {...hintProps}>{hintText}</div>}
   </div>
 );
