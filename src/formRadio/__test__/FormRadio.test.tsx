@@ -5,7 +5,7 @@ import '@testing-library/jest-dom';
 import { FormRadio } from '../FormRadio';
 
 describe('FormRadio', () => {
-  it('should display the formRadio content', () => {
+  it('should render a radio', () => {
     render(
       <FormRadio id="myId" name="group1" value="choice 1" label="my label" />
     );
@@ -84,5 +84,23 @@ describe('FormRadio', () => {
 
     expect(getById(container, 'myId')).not.toBeChecked();
     expect(getById(container, 'myId')).toBeDisabled();
+  });
+
+  it('should render hint text', () => {
+    render(
+      <FormRadio
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label="my label"
+        hint="my hint"
+      />
+    );
+
+    expect(screen.getByRole('form-radio')).toBeInTheDocument();
+    expect(screen.getByLabelText('my label').getAttribute('value')).toBe(
+      'choice 1'
+    );
+    expect(screen.getByText('my hint')).toBeInTheDocument();
   });
 });

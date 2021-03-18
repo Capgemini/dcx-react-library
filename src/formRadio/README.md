@@ -12,14 +12,32 @@ An example with all the available properties is:
 
 ```js
 <FormRadio
-  id="radio-1"
-  name="group1"
+  name='radio-name'
+  label='radio-label'
   value={value}
-  label="Radio 1 label text"
-  onChange={handleChange}
-  inputProps={{
-    defaultChecked: true,
+  id='radio-id'
+  hint='my hint'
+  hintProps={{
+    className: 'class-name'
   }}
+  controlsProps={{
+    style: {display: 'grid'}
+  }}
+  inputProps={{
+    className: 'class-name'
+  }}
+  radioProps={{ 
+    style: {width: 0, height: 0} 
+  }}
+  labelProps={{
+    style: {display: 'flex'}
+  }}
+  labelTextProps={{
+    style: {lineHeight: 1}
+  }}
+  onChange={handleChange}
+  selected={true}
+  disabled={true}
 />
 ```
 
@@ -34,6 +52,8 @@ the available properties are:
 | **value**            | string                                             | null    | **true**  | value of the radio                                                    |
 | **label**            | string                                             | null    | **false** | label of the radio                                                    |
 | **labelProps**       | string                                             | null    | **false** | allows for customisation of the label with all the properites needed  |
+| **hint**             | string                                             | null    | **false** | hint for the radio                                                    |
+| **hintProps**        | string                                             | null    | **false** | allows for customisation of the hint with all the properites needed  |
 | **inputProps**       | string                                             | null    | **false** | allows for customisation of the inputs with all the properites needed |
 | **itemProps**        | string                                             | null    | **false** | allows for customisation of the with all the properites needed        |
 | **ariaLabel**        | string                                             | null    | **false** | aria-label of the radio                                               |

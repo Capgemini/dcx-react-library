@@ -4,20 +4,28 @@ import { Roles } from '../common';
 type FormRadioProps = {
   /**
    * radio name
-   */
+   **/
   name: string;
   /**
    * radio label
-   */
+   **/
   label: string;
   /**
    * radio value
-   */
+   **/
   value: string;
   /**
    * radio id
-   */
+   **/
   id?: string;
+  /**
+   * radio hint
+   **/
+  hint?: string;
+  /**
+   * allows for customisation of the radio hint with all the properites needed
+   **/
+  hintProps?: string;
   /**
    * allows for customisation of the radio label with all the properites needed
    **/
@@ -60,6 +68,8 @@ export const FormRadio = ({
   onChange,
   disabled,
   selected,
+  hint,
+  hintProps,
 }: FormRadioProps) => (
   <div {...itemProps} role={Roles.formRadio}>
     <input
@@ -76,5 +86,6 @@ export const FormRadio = ({
     <label {...labelProps} htmlFor={id}>
       {label}
     </label>
+    {hint && <div {...hintProps}>{hint}</div>}
   </div>
 );
