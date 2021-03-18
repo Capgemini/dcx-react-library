@@ -97,10 +97,6 @@ describe('FormRadio', () => {
       />
     );
 
-    expect(screen.getByRole('form-radio')).toBeInTheDocument();
-    expect(screen.getByLabelText('my label').getAttribute('value')).toBe(
-      'choice 1'
-    );
     expect(screen.getByText('my hint')).toBeInTheDocument();
   });
 });
