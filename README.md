@@ -93,6 +93,8 @@ The appropriate paths are configured in `package.json` and `dist/index.js` accor
 
 ## Contributors ✨
 
+If you want to contribute please refer to the CONTRIBUTING.md[https://github.com/Capgemini/dcx-react-library/blob/main/CONTRIBUTING.md] section.
+
 Thanks goes to these wonderful people
 
 <table>
