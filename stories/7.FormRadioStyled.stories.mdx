@@ -23,13 +23,13 @@ In this section we're using the formRadio component providing the GovUk style pa
             value="Yes"
             label="Yes"
             labelProps={{
-              className: 'govuk-label govuk-radios__label'
+              className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: 'govuk-radios__input'
+              className: "govuk-radios__input"
             }}
             itemProps={{
-              className: 'govuk-radios__item'
+              className: "govuk-radios__item"
             }}
             onChange={handleChange}
           />
@@ -39,13 +39,13 @@ In this section we're using the formRadio component providing the GovUk style pa
             value="No"
             label="No"
             labelProps={{
-              className: 'govuk-label govuk-radios__label'
+              className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: 'govuk-radios__input'
+              className: "govuk-radios__input"
             }}
             itemProps={{
-              className: 'govuk-radios__item'
+              className: "govuk-radios__item"
             }}
             onChange={handleChange}
           />
@@ -69,13 +69,13 @@ In this section we're using the formRadio component providing the GovUk style pa
             value="England"
             label="England"
             labelProps={{
-              className: 'govuk-label govuk-radios__label'
+              className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: 'govuk-radios__input'
+              className: "govuk-radios__input"
             }}
             itemProps={{
-              className: 'govuk-radios__item'
+              className: "govuk-radios__item"
             }}
             onChange={handleChange}
           />
@@ -85,13 +85,13 @@ In this section we're using the formRadio component providing the GovUk style pa
             value="Scotland"
             label="Scotland"
             labelProps={{
-              className: 'govuk-label govuk-radios__label'
+              className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: 'govuk-radios__input'
+              className: "govuk-radios__input"
             }}
             itemProps={{
-              className: 'govuk-radios__item'
+              className: "govuk-radios__item"
             }}
             onChange={handleChange}
           />
@@ -101,13 +101,13 @@ In this section we're using the formRadio component providing the GovUk style pa
             value="Wales"
             label="Wales"
             labelProps={{
-              className: 'govuk-label govuk-radios__label'
+              className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: 'govuk-radios__input'
+              className: "govuk-radios__input"
             }}
             itemProps={{
-              className: 'govuk-radios__item'
+              className: "govuk-radios__item"
             }}
             onChange={handleChange}
           />
@@ -117,13 +117,13 @@ In this section we're using the formRadio component providing the GovUk style pa
             value="Northern Ireland"
             label="Northern Ireland"
             labelProps={{
-              className: 'govuk-label govuk-radios__label'
+              className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: 'govuk-radios__input'
+              className: "govuk-radios__input"
             }}
             itemProps={{
-              className: 'govuk-radios__item'
+              className: "govuk-radios__item"
             }}
             onChange={handleChange}
           />
@@ -147,13 +147,13 @@ In this section we're using the formRadio component providing the GovUk style pa
             value="Yes"
             label="Yes"
             labelProps={{
-              className: 'govuk-label govuk-radios__label'
+              className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: 'govuk-radios__input'
+              className: "govuk-radios__input"
             }}
             itemProps={{
-              className: 'govuk-radios__item'
+              className: "govuk-radios__item"
             }}
             onChange={handleChange}
           />
@@ -163,13 +163,13 @@ In this section we're using the formRadio component providing the GovUk style pa
             value="No"
             label="No"
             labelProps={{
-              className: 'govuk-label govuk-radios__label'
+              className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: 'govuk-radios__input'
+              className: "govuk-radios__input"
             }}
             itemProps={{
-              className: 'govuk-radios__item'
+              className: "govuk-radios__item"
             }}
             onChange={handleChange}
           />
@@ -179,13 +179,13 @@ In this section we're using the formRadio component providing the GovUk style pa
             value="Maybe"
             label="Maybe"
             labelProps={{
-              className: 'govuk-label govuk-radios__label'
+              className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: 'govuk-radios__input'
+              className: "govuk-radios__input"
             }}
             itemProps={{
-              className: 'govuk-radios__item'
+              className: "govuk-radios__item"
             }}
             onChange={handleChange}
             disabled={true}
@@ -210,13 +210,13 @@ In this section we're using the formRadio component providing the GovUk style pa
             value="Yes"
             label="Yes"
             labelProps={{
-              className: 'govuk-label govuk-radios__label'
+              className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: 'govuk-radios__input'
+              className: "govuk-radios__input"
             }}
             itemProps={{
-              className: 'govuk-radios__item'
+              className: "govuk-radios__item"
             }}
             onChange={handleChange}
             selected={true}
@@ -227,13 +227,67 @@ In this section we're using the formRadio component providing the GovUk style pa
             value="No"
             label="No"
             labelProps={{
-              className: 'govuk-label govuk-radios__label'
+              className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: 'govuk-radios__input'
+              className: "govuk-radios__input"
             }}
             itemProps={{
-              className: 'govuk-radios__item'
+              className: "govuk-radios__item"
+            }}
+            onChange={handleChange}
+          />
+        </div>
+      )
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="with hints">
+    {() => {
+      const [value, setValue] = React.useState("");
+      const handleChange = event => setValue(event.currentTarget.value);
+      
+      return (
+        <div className="govuk-radios govuk-radios--inline">
+          <FormRadio
+            id="changed-name"
+            name="changed-name"
+            value="Sign in with Government Gateway"
+            label="Sign in with Government Gateway"
+            labelProps={{
+              className: "govuk-label govuk-radios__label"
+            }}
+            inputProps={{
+              className: "govuk-radios__input"
+            }}
+            itemProps={{
+              className: "govuk-radios__item"
+            }}
+            hintText="You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
+            hintProps={{
+              className: "govuk-hint govuk-radios__hint", id: "sign-in-item-hint"
+            }}
+            onChange={handleChange}
+          />
+          <FormRadio
+            id="changed-name"
+            name="changed-name"
+            value="Sign in with GOV.UK Verify"
+            label="Sign in with GOV.UK Verify"
+            labelProps={{
+              className: "govuk-label govuk-radios__label"
+            }}
+            inputProps={{
+              className: "govuk-radios__input"
+            }}
+            itemProps={{
+              className: "govuk-radios__item"
+            }}
+            hintText="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+            hintProps={{
+              className: "govuk-hint govuk-radios__hint", id: "sign-in-2-item-hint"
             }}
             onChange={handleChange}
           />
@@ -245,6 +299,40 @@ In this section we're using the formRadio component providing the GovUk style pa
 
 The css we used to styled the formRadio component is the following:
 ```css
+.govuk-hint {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    display: block;
+    margin-bottom: 15px;
+    color: #505a5f
+}
+
+@media print {
+    .govuk-hint {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-hint {
+        font-size:19px;
+        font-size: 1.1875rem;
+        line-height: 1.31579
+    }
+}
+
+@media print {
+    .govuk-hint {
+        font-size: 14pt;
+        line-height: 1.15
+    }
+}
+
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl)
   + .govuk-hint {
   margin-bottom: 10px;

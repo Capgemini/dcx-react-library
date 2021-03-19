@@ -18,28 +18,32 @@ An example with all the available properties is:
 
 ```js
 <FormRadio
-  id='radio-id'
   name='radio-name'
-  value={value}
   label='radio-label'
+  value={value}
+  id='radio-id'
+  hintText='my hint'
+  hintProps={{
+    className: 'class-name'
+  }}
   controlsProps={{
-    style: { display: 'grid' }
+    style: {display: 'grid'}
   }}
   inputProps={{
     className: 'class-name'
   }}
   radioProps={{ 
-    style: { width: 0, height: 0 } 
+    style: {width: 0, height: 0} 
   }}
   labelProps={{
-    style: { display: 'flex' }
+    style: {display: 'flex'}
   }}
   labelTextProps={{
-    style: { lineHeight: 1 }
+    style: {lineHeight: 1}
   }}
-  onChange={ handleChange }
-  selected={ true }
-  disabled={ true }
+  onChange={handleChange}
+  selected={true}
+  disabled={true}
 />
 ```
 
