@@ -1,0 +1,67 @@
+export { ErrorMessage } from './ErrorMessage';
+export { Hint } from './Hint';
+export { Legend } from './Legend';
+
+type VisuallyHidden = {
+  /**
+   * classes of visually hidden text
+   */
+  classes?: string;
+  /**
+   * visually hidden text
+   */
+  text: string;
+};
+
+export type ErrorMessageProps = {
+  /**
+   * error message
+   */
+  text: string;
+  /**
+   * error classes
+   */
+  classes?: string;
+  /**
+   * error id
+   **/
+  id?: string;
+  /**
+   * visually hidden text of the error
+   */
+  visuallyHiddenText?: VisuallyHidden;
+};
+
+export type HintProps = {
+  /**
+   * hint text
+   **/
+  text: string;
+  /**
+   * class names to customise hint
+   **/
+  classes?: string;
+  /**
+   * hint id
+   **/
+  id?: string;
+};
+
+export type LegendProps = {
+  /**
+   * legend text
+   **/
+  text: string;
+  /**
+   * legend class names to customise legend
+   **/
+  classes?: string;
+  /**
+   * states whether legend should be a heading
+   **/
+  isHeading?: boolean;
+  /**
+   * heading class names to customise heading
+   **/
+  headingClasses?: string;
+};

@@ -93,7 +93,9 @@ describe('FormRadio', () => {
         name="group1"
         value="choice 1"
         label="my label"
-        hintText="my hint"
+        hint={{
+          text: 'my hint',
+        }}
       />
     );
 

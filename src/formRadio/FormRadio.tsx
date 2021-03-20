@@ -1,75 +1,71 @@
 import React from 'react';
 import { Roles } from '../common';
+import { Hint, HintProps } from '../common/components';
 
-type FormRadioProps = {
-  /**
-   * radio name
-   **/
-  name: string;
+export type FormRadioProps = {
   /**
    * radio label
-   **/
+   */
   label: string;
   /**
    * radio value
-   **/
+   */
   value: string;
   /**
-   * radio id
-   **/
-  id?: string;
-  /**
-   * radio hint text
-   **/
-  hintText?: string;
-  /**
-   * allows for customisation of the radio hint with all the properites needed
-   **/
-  hintProps?: string;
-  /**
-   * allows for customisation of the radio label with all the properites needed
-   **/
-  labelProps?: any;
-  /**
-   * allows for customisation of the radio input with all the properites needed
-   **/
-  inputProps?: any;
-  /**
-   * allows for customisation of the radio input with all the properites needed
-   **/
-  itemProps?: any;
-  /**
    * radio ariaLabel
-   **/
+   */
   ariaLabel?: string;
   /**
    * specifies whether the radio should be disabled
    */
   disabled?: boolean;
   /**
+   * radio hint text
+   */
+  hint?: HintProps;
+  /**
+   * radio id
+   */
+  id?: string;
+  /**
+   * allows for customisation of the radio input with all the properites needed
+   */
+  inputProps?: any;
+  /**
+   * allows for customisation of the radio input with all the properites needed
+   */
+  itemProps?: any;
+  /**
+   * allows for customisation of the radio label with all the properites needed
+   */
+  labelProps?: any;
+  /**
+   * radio name
+   */
+  name?: string;
+  /**
    * specifies whether the radio should be selected
    */
   selected?: boolean;
   /**
    * function that will trigger all the time there's a change on the radio
-   **/
+   */
   onChange?: (event: React.ChangeEventHandler<HTMLInputElement>) => void;
 };
 
 export const FormRadio = ({
-  id,
-  name,
-  value,
   label,
+  value,
+  id,
+  ariaLabel,
+  disabled,
+  hint,
   inputProps,
   itemProps,
+  name,
   labelProps,
-  ariaLabel,
-  onChange,
-  disabled,
   selected,
-  hintText,
-  hintProps,
+  onChange,
 }: FormRadioProps) => (
   <div {...itemProps} role={Roles.formRadio}>
     <input
@@ -86,6 +82,6 @@ export const FormRadio = ({
     <label {...labelProps} htmlFor={id}>
       {label}
     </label>
-    {hintText && <div {...hintProps}>{hintText}</div>}
+    {hint && <Hint {...hint} />}
   </div>
 );

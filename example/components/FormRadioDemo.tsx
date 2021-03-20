@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormRadio } from 'dcx-react-library';
+import { FormRadio, FormGroup } from 'dcx-react-library';
 
 export const FormRadioDemo = () => {
   const [value, setValue] = React.useState('');
@@ -9,37 +9,52 @@ export const FormRadioDemo = () => {
 
   return (
     <>
-      <h1>Basic Single Radios Stacked</h1>
+      <h1>Basic Single Radio</h1>
       <FormRadio
         id="radio-1"
         name="group1"
         value={value}
-        label="Radio 1 label text"
+        label="Single Radio 1 label text"
         onChange={handleChange}
         selected={true}
       />
-      <FormRadio
-        id="radio-2"
-        name="group1"
-        value={value}
-        label="Radio 2 label text"
-        onChange={handleChange}
+      <br />
+      <FormGroup
+        name="group2"
+        items={[
+          {
+            id: 'radio-2',
+            label: 'Option 1',
+            selected: true,
+            value: value,
+            onChange: handleChange,
+          },
+          {
+            id: 'radio-3',
+            label: 'Option 2',
+            value: value,
+            onChange: handleChange,
+          },
+          {
+            id: 'radio-4',
+            label: 'Option 3',
+            disabled: true,
+            hint: {
+              text: 'Hint text for this item',
+            },
+            value: value,
+            onChange: handleChange,
+          },
+        ]}
+        hint={{
+          text: 'This is some hint text',
+        }}
+        legend={{
+          text: 'Basic Group Radios',
+          isHeading: true,
+        }}
       />
-      <FormRadio
-        id="radio-3"
-        name="group1"
-        value={value}
-        label="Radio 3 label text"
-        onChange={handleChange}
-      />
-      <FormRadio
-        id="radio-4"
-        name="group1"
-        value={value}
-        label="Radio 4 label text"
-        onChange={handleChange}
-        disabled={true}
-      />
+      <br />
     </>
   );
 };

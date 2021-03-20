@@ -1,1 +1,1 @@
-export { FormRadio } from './FormRadio';
+export { FormRadio, FormRadioProps } from './FormRadio';
