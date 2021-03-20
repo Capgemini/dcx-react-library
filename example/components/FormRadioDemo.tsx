@@ -9,34 +9,40 @@ export const FormRadioDemo = () => {
 
   return (
     <>
-      <h1>Basic Single Radio</h1>
+      <h1>Basic Single Radio Buttons</h1>
       <FormRadio
-        id="radio-1"
+        id="single-1"
         name="group1"
         value={value}
+        selected={true}
         label="Single Radio 1 label text"
         onChange={handleChange}
-        selected={true}
+      />
+      <FormRadio
+        id="single-2"
+        name="group1"
+        value={value}
+        label="Single Radio 2 label text"
+        onChange={handleChange}
       />
       <br />
       <FormGroup
         name="group2"
         items={[
           {
-            id: 'radio-2',
+            id: 'radio-1',
             label: 'Option 1',
-            selected: true,
             value: value,
             onChange: handleChange,
           },
           {
-            id: 'radio-3',
+            id: 'radio-2',
             label: 'Option 2',
             value: value,
             onChange: handleChange,
           },
           {
-            id: 'radio-4',
+            id: 'radio-3',
             label: 'Option 3',
             disabled: true,
             hint: {
