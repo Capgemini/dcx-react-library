@@ -8,7 +8,7 @@ describe('FormGroup', () => {
   it('should render a form group', () => {
     render(
       <FormGroup
-        classes=""
+        groupClasses=""
         id=""
         name=""
         legend={{
@@ -34,7 +34,7 @@ describe('FormGroup', () => {
   it('should render a form group with a legend', () => {
     render(
       <FormGroup
-        classes=""
+        groupClasses=""
         id=""
         name=""
         legend={{
@@ -61,7 +61,7 @@ describe('FormGroup', () => {
   it('should render a form group title', () => {
     render(
       <FormGroup
-        classes=""
+        groupClasses=""
         id=""
         name=""
         legend={{
@@ -87,7 +87,7 @@ describe('FormGroup', () => {
   it('should render a form group with hint text', () => {
     render(
       <FormGroup
-        classes=""
+        groupClasses=""
         id=""
         name=""
         legend={{
@@ -116,7 +116,7 @@ describe('FormGroup', () => {
   it('should render a form group with an error message', () => {
     render(
       <FormGroup
-        classes=""
+        groupClasses=""
         id=""
         name=""
         legend={{
@@ -148,7 +148,7 @@ describe('FormGroup', () => {
   it('should render a form group of radio inputs', () => {
     render(
       <FormGroup
-        classes=""
+        groupClasses=""
         id=""
         name=""
         legend={{
@@ -176,7 +176,7 @@ describe('FormGroup', () => {
 
     render(
       <FormGroup
-        classes=""
+        groupClasses=""
         id=""
         name=""
         legend={{
