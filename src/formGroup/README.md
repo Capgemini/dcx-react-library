@@ -14,10 +14,32 @@ An example with all the available properties is:
 <FormGroup
   name='radio-name'
   items={[
-      {
-          label: 'label-name',
-          value: 'value'
-      }
+    {
+      label: 'label-name',
+      value: 'value',
+      ariaLabel: 'aria-label',
+      disabled: false,
+      hint: {
+        text: 'hint-text',
+        classes: 'classes',
+        id: 'hint id'
+      },
+      id: 'item id',
+      inputProps: {
+        class: 'my-class-for-input'
+      },
+      itemProps: {
+        style: {
+          display: 'block'
+        }
+      },
+      labelProps: {
+        style: {
+          fontWeight: '10px'
+        }
+      },
+      selected: true
+    }
   ]}
   ariaDescribedBy='aria-described-by'
   error={{
@@ -31,7 +53,10 @@ An example with all the available properties is:
   id='id'
   itemsClasses='items-classes'
   legend={
-    text='heading text'
+    text='heading text',
+    classes='classes for legend',
+    isHeading=true,
+    headingClasses='classes for heading'
   }
 />
 ```

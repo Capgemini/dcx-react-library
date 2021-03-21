@@ -24,10 +24,6 @@ type FormGroupProps = {
    */
   ariaDescribedBy?: string;
   /**
-   * form group class names
-   */
-  groupClasses?: string;
-  /**
    * form group error
    */
   error?: ErrorMessageProps;
@@ -35,6 +31,10 @@ type FormGroupProps = {
    * form group fieldset class names
    */
   fieldsetClasses?: string;
+  /**
+   * form group class names
+   */
+  groupClasses?: string;
   /**
    * form group hint
    */

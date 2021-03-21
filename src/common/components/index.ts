@@ -4,13 +4,13 @@ export { Legend } from './Legend';
 
 type VisuallyHidden = {
   /**
-   * classes of visually hidden text
-   */
-  classes?: string;
-  /**
    * visually hidden text
    */
   text: string;
+  /**
+   * classes of visually hidden text
+   */
+  classes?: string;
 };
 
 export type ErrorMessageProps = {
