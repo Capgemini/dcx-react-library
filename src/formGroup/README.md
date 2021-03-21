@@ -58,6 +58,7 @@ An example with all the available properties is:
     isHeading=true,
     headingClasses='classes for heading'
   }
+  onChange={handleChange}
 />
 ```
 
@@ -77,3 +78,4 @@ the available properties are:
 | **id**               | string                                             | null    | **false** | id of the group                                                       |
 | **itemClasses**      | string                                             | null    | **false** | allows for customisation of the group of items                        |
 | **legend**           | <LegendProps>                                      | null    | **false** | title of the form group                                               |
+| **onChange**         | (event: React.FormEvent<HTMLInputElement>) => void | null    | **false** | Dispatch the current value of the input                               |
