@@ -1,26 +1,31 @@
 import React from 'react';
-import { render, screen, queryByAttribute } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Hint } from '../Hint';
 
 describe('Hint', () => {
-  it('will render a hint', () => {
+  it('will render hint component', () => {
+    const { container } = render(
+      <Hint id="hint-id" text="This is a hint text" />
+    );
+
+    expect(container.querySelector('#hint-id')).toBeTruthy();
+  });
+
+  it('will render the hint text', () => {
     render(<Hint text="This is a hint text" />);
     expect(screen.getByText('This is a hint text')).toBeInTheDocument();
   });
 
   it('will render a hint with an id', () => {
-    const { container } = render(
-      <Hint text="This is a hint text" id="my-id" />
-    );
-    const getById = queryByAttribute.bind(null, 'id');
-    expect(getById(container, 'my-id')).toBeInTheDocument();
+    render(<Hint text="This is a hint text" id="my-id" />);
+    expect(screen.getByText('This is a hint text').id).toBe('my-id');
   });
 
   it('will render a hint with a customised heading', () => {
-    render(<Hint text="This is a hint text" classes="my-classes" />);
-    expect(screen.getByText('This is a hint text')?.classList).toContain(
-      'my-classes'
+    const { container } = render(
+      <Hint text="This is a hint text" classes="my-classes" />
     );
+    expect(container.querySelector('.my-classes')).toBeInTheDocument();
   });
 });
