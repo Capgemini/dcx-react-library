@@ -145,8 +145,8 @@ describe('FormGroup', () => {
     expect(screen.getByText('oops!! we have an error')).toBeInTheDocument();
   });
 
-  it('should render a form group of radio inputs', () => {
-    render(
+  it('should render a form group of input items', () => {
+    const { container } = render(
       <FormGroup
         groupClasses=""
         id=""
@@ -167,12 +167,44 @@ describe('FormGroup', () => {
         ]}
       />
     );
-    expect(screen.getAllByRole('form-radio').length).toBe(2);
+    expect(container.querySelectorAll('input').length).toBe(2);
   });
 
-  it('should call on change of a radio input', () => {
-    const handlePositiveChange = jest.fn();
-    const handleNegativeChange = jest.fn();
+  it('should call on change of an item if an input has changed', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <FormGroup
+        groupClasses=""
+        id=""
+        name="group1"
+        legend={{
+          text: 'Have you changed your name?',
+          isHeading: true,
+        }}
+        items={[
+          {
+            inputProps: {
+              'data-testid': 'custom-item',
+            },
+            value: 'yes',
+            label: 'Yes',
+          },
+          {
+            value: 'no',
+            label: 'No',
+          },
+        ]}
+        onChange={handleChange}
+      />
+    );
+
+    fireEvent.click(screen.getByTestId('custom-item'));
+    expect(handleChange).toHaveBeenCalled();
+  });
+
+  it('should not call on change if undefined', () => {
+    const handleChange = jest.fn();
 
     render(
       <FormGroup
@@ -190,25 +222,86 @@ describe('FormGroup', () => {
             },
             value: 'yes',
             label: 'Yes',
-            onChange: handlePositiveChange,
           },
           {
             value: 'no',
             label: 'No',
-            onChange: handleNegativeChange,
           },
         ]}
       />
     );
 
     fireEvent.click(screen.getByTestId('custom-item'));
-    expect(handlePositiveChange).toHaveBeenCalled();
-    expect(handleNegativeChange).not.toHaveBeenCalled();
+    expect(handleChange).not.toHaveBeenCalled();
   });
 
-  it('should not call on change if undefined', () => {});
+  it('should set radio as checked if specified', () => {
+    const handleChange = jest.fn();
 
-  it('should set radio as checked if specified', () => {});
+    render(
+      <FormGroup
+        groupClasses=""
+        id=""
+        name=""
+        legend={{
+          text: 'Have you changed your name?',
+          isHeading: true,
+        }}
+        items={[
+          {
+            inputProps: {
+              'data-testid': 'custom-item',
+            },
+            value: 'yes',
+            label: 'Yes',
+            selected: true,
+          },
+          {
+            value: 'no',
+            label: 'No',
+          },
+        ]}
+        onChange={handleChange}
+      />
+    );
 
-  it('should set radio as disabled if specified', () => {});
+    expect(screen.getByTestId('custom-item')).toBeChecked();
+  });
+
+  it('should set radio as disabled if specified', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <FormGroup
+        groupClasses=""
+        id=""
+        name=""
+        legend={{
+          text: 'Have you changed your name?',
+          isHeading: true,
+        }}
+        items={[
+          {
+            inputProps: {
+              'data-testid': 'custom-item',
+            },
+            value: 'yes',
+            label: 'Yes',
+            selected: true,
+          },
+          {
+            inputProps: {
+              'data-testid': 'custom-item-2',
+            },
+            value: 'no',
+            label: 'No',
+            disabled: true,
+          },
+        ]}
+        onChange={handleChange}
+      />
+    );
+
+    expect(screen.getByTestId('custom-item-2')).toBeDisabled();
+  });
 });

@@ -7,13 +7,70 @@ import { FormRadio } from '../FormRadio';
 describe('FormRadio', () => {
   it('should render a radio', () => {
     render(
-      <FormRadio id="myId" name="group1" value="choice 1" label="my label" />
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        inputProps={{ name: 'group1' }}
+      />
     );
 
     expect(screen.getByRole('form-radio')).toBeInTheDocument();
+  });
+
+  it('should render a radio with a label', () => {
+    render(
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        inputProps={{ name: 'group1' }}
+      />
+    );
+
+    expect(screen.getByLabelText('my label')).toBeInTheDocument();
+  });
+
+  it('should render a radio with a value', () => {
+    render(
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        inputProps={{ name: 'group1' }}
+      />
+    );
+
     expect(screen.getByLabelText('my label').getAttribute('value')).toBe(
       'choice 1'
     );
+  });
+  it('should render a radio with aria label match name if unspecified', () => {
+    render(
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        inputProps={{ name: 'group1' }}
+      />
+    );
+
+    expect(screen.getByLabelText('my label').getAttribute('aria-label')).toBe(
+      'group1'
+    );
+  });
+
+  it('should render a radio with an id', () => {
+    const { container } = render(
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        inputProps={{ name: 'group1' }}
+      />
+    );
+
+    expect(container.querySelector('#myId')).toBeInTheDocument();
   });
 
   it('should call on change', () => {
@@ -22,10 +79,9 @@ describe('FormRadio', () => {
     render(
       <FormRadio
         id="myId"
-        name="group1"
         value="choice 1"
         label="my label"
-        onChange={handleChange}
+        inputProps={{ name: 'group1', onChange: handleChange }}
       />
     );
 
@@ -38,7 +94,12 @@ describe('FormRadio', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormRadio id="myId" name="group1" value="choice 1" label="my label" />
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        inputProps={{ name: 'group1' }}
+      />
     );
 
     fireEvent['click'](screen.getByLabelText('my label'));
@@ -52,11 +113,10 @@ describe('FormRadio', () => {
     render(
       <FormRadio
         id="myId"
-        name="group1"
         value="choice 1"
         label="my label"
         selected={true}
-        onChange={handleChange}
+        inputProps={{ name: 'group1', onChange: handleChange }}
       />
     );
     const container: HTMLElement = screen.getByRole('form-radio');
@@ -72,11 +132,10 @@ describe('FormRadio', () => {
     render(
       <FormRadio
         id="myId"
-        name="group1"
         value="choice 1"
         label="my label"
         disabled={true}
-        onChange={handleChange}
+        inputProps={{ name: 'group1', onChange: handleChange }}
       />
     );
     const container: HTMLElement = screen.getByRole('form-radio');
@@ -90,12 +149,12 @@ describe('FormRadio', () => {
     render(
       <FormRadio
         id="myId"
-        name="group1"
         value="choice 1"
         label="my label"
         hint={{
           text: 'my hint',
         }}
+        inputProps={{ name: 'group1' }}
       />
     );
 

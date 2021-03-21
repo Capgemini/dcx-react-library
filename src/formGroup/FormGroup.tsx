@@ -51,6 +51,10 @@ type FormGroupProps = {
    * form group legend properties
    */
   legend?: LegendProps;
+  /**
+   * function that will trigger all the time there's a change of choice
+   */
+  onChange?: (event: React.ChangeEventHandler<HTMLInputElement>) => void;
 };
 
 export const FormGroup = ({
@@ -64,9 +68,14 @@ export const FormGroup = ({
   id,
   itemsClasses,
   legend,
+  onChange,
 }: FormGroupProps) => {
   const formGroupItems = items.map((item: FormRadioProps, index: number) => (
-    <FormRadio name={name} key={`${id}_${index.toString()}`} {...item} />
+    <FormRadio
+      key={`${id}_${index.toString()}`}
+      {...item}
+      inputProps={{ ...item.inputProps, name, onChange }}
+    />
   ));
 
   return (

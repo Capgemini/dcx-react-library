@@ -22,14 +22,16 @@ An example with all the available properties is:
   value={value}
   ariaLabel='aria-label'
   disabled={true}
-  hint={
+  hint={{
     text: 'hint text',
     classes: 'class names',
     id: 'hint-id'
-  }
+  }}
   id='radio-id'
   inputProps={{
-    className: 'class-name'
+    className: 'class-name',
+    name: 'radio-name',
+    onChange: handleChange
   }}
   itemProps={{
     className: 'class-name'
@@ -37,9 +39,7 @@ An example with all the available properties is:
   labelProps={{
     style: {display: 'flex'}
   }}
-  name='radio-name'
   selected={true}
-  onChange={handleChange}
 />
 ```
 

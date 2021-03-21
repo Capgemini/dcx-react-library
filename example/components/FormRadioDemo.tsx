@@ -12,18 +12,22 @@ export const FormRadioDemo = () => {
       <h1>Basic Single Radio Buttons</h1>
       <FormRadio
         id="single-1"
-        name="group1"
         value={value}
         selected={true}
         label="Single Radio 1 label text"
-        onChange={handleChange}
+        inputProps={{
+          name: 'group1',
+          onChange: handleChange,
+        }}
       />
       <FormRadio
         id="single-2"
-        name="group1"
         value={value}
         label="Single Radio 2 label text"
-        onChange={handleChange}
+        inputProps={{
+          name: 'group1',
+          onChange: handleChange,
+        }}
       />
       <br />
       <FormGroup
@@ -32,14 +36,12 @@ export const FormRadioDemo = () => {
           {
             id: 'radio-1',
             label: 'Option 1',
-            value: value,
-            onChange: handleChange,
+            value: 'value-1',
           },
           {
             id: 'radio-2',
             label: 'Option 2',
-            value: value,
-            onChange: handleChange,
+            value: 'value-2',
           },
           {
             id: 'radio-3',
@@ -48,8 +50,7 @@ export const FormRadioDemo = () => {
             hint: {
               text: 'Hint text for this item',
             },
-            value: value,
-            onChange: handleChange,
+            value: 'value-3',
           },
         ]}
         hint={{
@@ -59,6 +60,7 @@ export const FormRadioDemo = () => {
           text: 'Basic Group Radios',
           isHeading: true,
         }}
+        onChange={handleChange}
       />
       <br />
     </>
