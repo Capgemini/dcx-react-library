@@ -43,12 +43,20 @@ An example with all the available properties is:
   ]}
   ariaDescribedBy='aria-described-by'
   error={{
-      text: 'error-text'
+     text: 'error message'
+     classes: 'error-classes'
+     id: 'error-id',
+     visuallyHiddenText: {
+         classes='visually-hidden-classes',
+         text='visually hidden text'
+     }
   }}
   fieldsetClasses='fieldset-classes'
   groupClasses='group-classes'
   hint={{
-      text='hint-text'
+      text='hint-text',
+      classes: 'class names',
+      id: 'hint-id'
   }}
   id='id'
   itemsClasses='items-classes'

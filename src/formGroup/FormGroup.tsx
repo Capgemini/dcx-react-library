@@ -3,12 +3,13 @@ import { Roles } from '../common';
 import {
   ErrorMessage,
   ErrorMessageProps,
+  FormRadioProps,
   Hint,
   HintProps,
   Legend,
   LegendProps,
 } from '../common/components';
-import { FormRadio, FormRadioProps } from '../formRadio/index';
+import { FormRadio } from '../formRadio/index';
 
 type FormGroupProps = {
   /**
