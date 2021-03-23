@@ -19,35 +19,35 @@ In this section we're using the formRadio component providing the GovUk style pa
         <div className="govuk-radios govuk-radios--inline">
           <FormRadio
             id="changed-name"
-            name="changed-name"
             value="Yes"
             label="Yes"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-name",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            onChange={handleChange}
           />
           <FormRadio
             id="changed-name"
-            name="changed-name"
             value="No"
             label="No"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-name",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            onChange={handleChange}
           />
         </div>
       )
@@ -65,67 +65,67 @@ In this section we're using the formRadio component providing the GovUk style pa
         <div className="govuk-radios">
           <FormRadio
             id="changed-country"
-            name="changed-country"
             value="England"
             label="England"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-country",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            onChange={handleChange}
           />
           <FormRadio
             id="changed-country"
-            name="changed-country"
             value="Scotland"
             label="Scotland"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-country",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            onChange={handleChange}
           />
           <FormRadio
             id="changed-country"
-            name="changed-country"
             value="Wales"
             label="Wales"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-country",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            onChange={handleChange}
           />
           <FormRadio
             id="changed-country"
-            name="changed-country"
             value="Northern Ireland"
             label="Northern Ireland"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-country",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            onChange={handleChange}
           />
         </div>
       )
@@ -143,51 +143,51 @@ In this section we're using the formRadio component providing the GovUk style pa
         <div className="govuk-radios">
           <FormRadio
             id="changed-name-disabled"
-            name="changed-name-disabled"
             value="Yes"
             label="Yes"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-name-disabled",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            onChange={handleChange}
           />
           <FormRadio
             id="changed-name-disabled"
-            name="changed-name-disabled"
             value="No"
             label="No"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-name-disabled",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            onChange={handleChange}
           />
           <FormRadio
             id="changed-name-disabled"
-            name="changed-name-disabled"
             value="Maybe"
             label="Maybe"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-name-disabled",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            onChange={handleChange}
             disabled={true}
           />
         </div>
@@ -206,36 +206,36 @@ In this section we're using the formRadio component providing the GovUk style pa
         <div className="govuk-radios">
           <FormRadio
             id="changed-name-preselected"
-            name="changed-name-preselected"
             value="Yes"
             label="Yes"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-name-preselected",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            onChange={handleChange}
             selected={true}
           />
           <FormRadio
             id="changed-name-preselected"
-            name="changed-name-preselected"
             value="No"
             label="No"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-name-preselected",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            onChange={handleChange}
           />
         </div>
       )
@@ -252,44 +252,46 @@ In this section we're using the formRadio component providing the GovUk style pa
       return (
         <div className="govuk-radios govuk-radios--inline">
           <FormRadio
-            id="changed-name"
-            name="changed-name"
+            id="changed-name-with-hint-1"
             value="Sign in with Government Gateway"
             label="Sign in with Government Gateway"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-name-with-hint",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            hintText="You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
-            hintProps={{
-              className: "govuk-hint govuk-radios__hint", id: "sign-in-item-hint"
+            hint={{
+              text: "You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.",
+              classes: "govuk-hint govuk-radios__hint",
+              id: "sign-in-item-hint"
             }}
-            onChange={handleChange}
           />
           <FormRadio
-            id="changed-name"
-            name="changed-name"
+            id="changed-name-with-hint-2"
             value="Sign in with GOV.UK Verify"
             label="Sign in with GOV.UK Verify"
             labelProps={{
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input"
+              className: "govuk-radios__input",
+              name: "changed-name-with-hint",
+              onChange: handleChange
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
-            hintText="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
-            hintProps={{
-              className: "govuk-hint govuk-radios__hint", id: "sign-in-2-item-hint"
+            hint={{
+              text: "You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.",
+              classes: "govuk-hint govuk-radios__hint",
+              id: "sign-in-2-item-hint"
             }}
-            onChange={handleChange}
           />
         </div>
       )

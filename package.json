@@ -14,6 +14,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
+    "test:cache": "tsdx test --no-cache",
     "test:coverage": "tsdx test --coverage",
     "lint": "tsdx lint src ./example/**/*.{tsx,ts} ./example/**/*.{tsx,ts}",
     "lint:fix": "tsdx lint src ./example/*.tsx ./example/**/*.{tsx,ts} --fix",
