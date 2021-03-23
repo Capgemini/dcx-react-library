@@ -12,7 +12,6 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "test:cache": "tsdx test --no-cache",
     "test:coverage": "tsdx test --coverage",
@@ -24,7 +23,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build-typography": "tsc src/typography/index.ts --outDir dist/",
-    "generate-typography": "yarn build-typography && node dist/index.js"
+    "generate-typography": "yarn build-typography && node dist/index.js",
+    "build": "tsdx build && yarn build-typography"
   },
   "peerDependencies": {
     "react": ">=16"

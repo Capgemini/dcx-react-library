@@ -5,3 +5,5 @@ export * from './formCheckbox';
 export * from './autocomplete/Autocomplete';
 export * from './button';
 export * from './typography/generateComponent';
+export * from './typography/generateStyle';
+export { DynamicComponent } from './common/components/DynamicComponent';

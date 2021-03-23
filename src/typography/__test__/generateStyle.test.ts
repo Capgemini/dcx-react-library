@@ -15,11 +15,27 @@ describe('generateStyle', () => {
       },
     };
     const branded = brandedComponentStyle(input);
-    expect(branded).toEqual({
+    expect(branded.style).toEqual({
       color: '#6a737c',
       fontSize: '12px',
       fontWeight: 'bold',
-      tag: 'label',
     });
+  });
+
+  it('should generate the correct tag from a json input', () => {
+    const input = {
+      tag: 'label',
+      color: {
+        value: '#6a737c',
+      },
+      fontWeight: {
+        value: 'bold',
+      },
+      fontSize: {
+        value: '12px',
+      },
+    };
+    const branded = brandedComponentStyle(input);
+    expect(branded.tag).toBe('label');
   });
 });

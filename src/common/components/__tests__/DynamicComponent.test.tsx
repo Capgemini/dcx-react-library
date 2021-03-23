@@ -11,7 +11,7 @@ export const Title = (props: any) => {
   };
 
   return (
-    <DynamicComponent {...style} {...props}>
+    <DynamicComponent dynamicStyle={style} tag="h1">
       {props.children}
     </DynamicComponent>
   );
@@ -24,9 +24,7 @@ export const Subtitle = (props: any) => {
   };
 
   return (
-    <DynamicComponent {...style} {...props}>
-      {props.children}
-    </DynamicComponent>
+    <DynamicComponent dynamicStyle={style}>{props.children}</DynamicComponent>
   );
 };
 

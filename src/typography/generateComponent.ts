@@ -6,10 +6,10 @@ import React from 'react';
 import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
 import jsonStyle from '{{inputFolder}}/{{fileName}}';
 export const {{componentName}} = (props: any) => {
-  const style: any = brandedComponentStyle(jsonStyle.{{jsonPath}});
+  const branded: any = brandedComponentStyle(jsonStyle.{{jsonPath}});
 
   return (
-    <DynamicComponent {...style} {...props}>
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag}>
       {props.children}
     </DynamicComponent>
   );
@@ -51,6 +51,9 @@ export const generateComponent = (
     '.json',
     '.tsx'
   )}`;
+  // create the folder if doesn't exist
+  fs.mkdirSync(outputFolder, { recursive: true });
+  // create the file
   fs.writeFileSync(fileName, component);
 };
 

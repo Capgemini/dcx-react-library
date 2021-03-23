@@ -2,6 +2,9 @@ import * as React from 'react';
 import { FormInput, ErrorPosition } from 'dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
+import { Label } from './typography/Label';
+import { Title } from './typography/Title';
+import { Subtitle } from './typography/Subtitle';
 
 export const FormInputDemo = () => {
   //Im using the same one for the 3 demos
@@ -145,6 +148,11 @@ export const FormInputDemo = () => {
         }
       />
       <div>isValid:{showValid.toString()}</div>
+
+      <h1>TYPOGRAPHY</h1>
+      <Label>Label</Label>
+      <Title>Title</Title>
+      <Subtitle>Subtitle</Subtitle>
     </>
   );
 };

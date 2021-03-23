@@ -1,6 +1,14 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
+//TODO I would like to use the types instead of any but it complains
+type DynamicComponent = {
+  tag?: string;
+  dynamicStyle?: any;
+  props: any;
+  children?: any;
+};
+
 /**
  *  will generate a new component that will accept whatever property or tag. If a tag is not specified will default as div
  *  @example:
@@ -12,15 +20,19 @@ import { createUseStyles } from 'react-jss';
     will return:
     <H1 class={class}> test </H1> with the correct look and feel
  **/
-export const DynamicComponent = ({ tag, children, ...props }: any) => {
+export const DynamicComponent = ({ tag, dynamicStyle, ...props }: any) => {
   const Component = tag;
   const styles: any = createUseStyles({
     style: {
-      ...props,
+      ...dynamicStyle,
     },
   });
   const classes = styles();
-  return <Component className={classes.style}>{children}</Component>;
+  return (
+    <Component className={classes.style} {...props}>
+      {props.children}
+    </Component>
+  );
 };
 
 DynamicComponent.defaultProps = {

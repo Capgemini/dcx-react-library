@@ -6,3 +6,5 @@ dist
 coverage
 .parcel-cache
 example/.parcel-cache/*
+example/components/typography/*
+example/typography-template/*
