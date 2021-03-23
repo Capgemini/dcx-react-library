@@ -1,0 +1,15 @@
+{
+    "label": {
+        "tag": "label",
+        "color": {
+            "value": "#6a737c"
+        },
+        "fontWeight": {
+            "value": "bold"
+        },
+        "fontSize": {
+            "value": "12px"
+        }
+    }      
+}
+  

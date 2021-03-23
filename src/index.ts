@@ -4,3 +4,4 @@ export * from './formRadio';
 export * from './formCheckbox';
 export * from './autocomplete/Autocomplete';
 export * from './button';
+export * from './typography/generateComponent';
