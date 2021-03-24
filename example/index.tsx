@@ -7,6 +7,7 @@ import {
   FormInputMaskedDemo,
   AutocompleteDemo,
   FormRadioDemo,
+  FormCheckboxDemo,
 } from './components';
 
 const App = () => (
@@ -15,6 +16,7 @@ const App = () => (
     <FormInputMaskedDemo />
     <FormRadioDemo />
     <AutocompleteDemo />
+    <FormCheckboxDemo />
   </div>
 );
 
