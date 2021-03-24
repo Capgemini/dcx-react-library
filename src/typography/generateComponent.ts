@@ -31,7 +31,8 @@ export const generateComponentTemplate = (
   return template
     .replace('{{inputFolder}}/{{fileName}}', `./${inputFolder}/${inputFile}`)
     .replace('{{jsonPath}}', jsonPath)
-    .replace(/{{componentName}}/g, componentName);
+    .replace(/{{componentName}}/g, componentName)
+    .replace(/\/\//g, '/');
 };
 
 /**

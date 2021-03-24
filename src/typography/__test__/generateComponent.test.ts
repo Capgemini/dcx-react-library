@@ -100,4 +100,12 @@ describe('generateComponent', () => {
     );
     expect(component).toContain(outputFile);
   });
+
+  it('should generate the new react component and remove the // from the template if the input contains a / at the end', () => {
+    const component = componentGenerator.generateComponentTemplate(
+      'stories/typographyDemo/input/',
+      'label.json'
+    );
+    expect(component).toContain(outputFile);
+  });
 });
