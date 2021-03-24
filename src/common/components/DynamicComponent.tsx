@@ -1,12 +1,10 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
-//TODO I would like to use the types instead of any but it complains
 type DynamicComponent = {
-  tag?: string;
-  dynamicStyle?: any;
-  props: any;
-  children?: any;
+  tag: keyof JSX.IntrinsicElements;
+  dynamicStyle?: React.CSSProperties;
+  children: JSX.Element;
 };
 
 /**
@@ -20,7 +18,11 @@ type DynamicComponent = {
     will return:
     <H1 class={class}> test </H1> with the correct look and feel
  **/
-export const DynamicComponent = ({ tag, dynamicStyle, ...props }: any) => {
+export const DynamicComponent = ({
+  tag,
+  dynamicStyle,
+  ...props
+}: DynamicComponent) => {
   const Component = tag;
   const styles: any = createUseStyles({
     style: {
