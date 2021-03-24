@@ -5,6 +5,7 @@ export const Roles = {
   formInput: 'form-input',
   formRadio: 'form-radio',
   formCheckbox: 'form-checkbox',
+  formGroup: 'form-group',
   prefix: 'prefix',
   suffix: 'suffix',
 };
