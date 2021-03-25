@@ -7,7 +7,7 @@ export const Title = (props: any) => {
   const style: any = {
     tag: 'h1',
     color: 'red',
-    fontWietght: 'bold',
+    fontWeight: 'bold',
   };
 
   return (
@@ -20,7 +20,7 @@ export const Title = (props: any) => {
 export const Subtitle = (props: any) => {
   const style: any = {
     color: 'red',
-    fontWietght: 'bold',
+    fontWeight: 'bold',
   };
 
   return (
