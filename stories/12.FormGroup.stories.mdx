@@ -91,7 +91,7 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
                     legend={{
                         text: "Have you changed your name?",
                         classes: "govuk-fieldset__legend govuk-fieldset__legend",
-                        sHeading: true,
+                        isHeading: true,
                         headingClasses: "govuk-fieldset__heading"
                     }}
                 />
@@ -149,7 +149,7 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
 </Canvas>
 
 <Canvas>
-    <Story name="items-with-hints">
+    <Story name="items with hints">
         {() => {
             return (
                 <FormGroup
@@ -196,6 +196,101 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
                     itemsClasses="govuk-radios"
                     legend={{
                         text: "How do you want to sign in?",
+                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l",
+                        isHeading: true,
+                        headingClasses: "govuk-fieldset__heading"
+                    }}
+                />
+            )
+        }}
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="filter">
+        {() => {
+            return (
+                <FormGroup
+                    name="filter-change"
+                    inputProps={{
+                        className: "govuk-radios__input"
+                    }}
+                    itemProps={{
+                        className: "govuk-radios__item"
+                    }}
+                    labelProps={{
+                        className: "govuk-label govuk-radios__label"
+                    }}                   
+                    items={[{
+                        label: "Monthly",
+                        value: "month",
+                        id: "changed-name-month"
+                    },
+                    {
+                        label: "Yearly",
+                        value: "year",
+                        id: "changed-name-year"                    
+                    }]}
+                    groupClasses="govuk-radios govuk-radios--small"
+                    fieldsetClasses="govuk-fieldset"
+                    itemsClasses="govuk-radios govuk-radios--small"
+                    legend={{
+                        text: "Filter",
+                        classes: "govuk-fieldset__legend govuk-fieldset__legend--m",
+                        isHeading: true,
+                        headingClasses: "govuk-fieldset__heading"
+                    }}
+                />
+            )
+        }}
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="error message">
+        {() => {
+            return (
+                <FormGroup
+                    name="change-name-error"
+                    inputProps={{
+                        className: "govuk-radios__input"
+                    }}
+                    itemProps={{
+                        className: "govuk-radios__item"
+                    }}
+                    labelProps={{
+                        className: "govuk-label govuk-radios__label"
+                    }}
+                    items={[{
+                        label: "Yes",
+                        value: "yes",
+                        id: "change-name-yes-error"
+                    },
+                    {
+                        label: "No",
+                        value: "no",
+                        id: "change-name-no-error"                     
+                    }]}
+                    ariaDescribedBy="changed-name-hint changed-name-error"
+                    groupClasses="govuk-form-group govuk-form-group--error"
+                    fieldsetClasses="govuk-fieldset"
+                    error={{
+                        text: "Select yes if you have changed your name",
+                        classes: "govuk-error-message",
+                        id: "changed-name-error",
+                        visuallyHiddenText: {
+                            text: "Error:",
+                            classes: "govuk-visually-hidden"
+                        }
+                    }}
+                    hint={{
+                        id: "changed-name-hint",
+                        text: "This includes changing your last name or spelling your name differently.",
+                        classes: "govuk-hint"
+                    }}
+                    itemsClasses="govuk-radios govuk-radios--inline"
+                    legend={{
+                        text: "Have you changed your name?",
                         classes: "govuk-fieldset__legend govuk-fieldset__legend--l",
                         isHeading: true,
                         headingClasses: "govuk-fieldset__heading"
@@ -313,6 +408,44 @@ The css we used to styled the formGroup component is the following:
 
 .govuk-radios__input:disabled+.govuk-radios__label {
     opacity: .5
+}
+
+.govuk-visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    border: 0 !important;
+    white-space: nowrap !important
+}
+
+.govuk-visually-hidden-focusable {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important
+}
+
+.govuk-visually-hidden-focusable:active,.govuk-visually-hidden-focusable:focus {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    margin: inherit !important;
+    overflow: visible !important;
+    clip: auto !important;
+    -webkit-clip-path: none !important;
+    clip-path: none !important;
+    white-space: inherit !important
 }
 ```
 
