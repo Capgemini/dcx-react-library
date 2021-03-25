@@ -21,6 +21,15 @@ An example with all the available properties is:
 ```js
 <FormGroup
     name='name-of-group'
+    inputProps={{
+        className: 'shared input class names'
+    }}
+    itemProps={{
+        className: 'shared item class names'
+    }}
+    labelProps={{
+        className: 'shared label class names'
+    }}
     items={[
         {
             label: 'item-label',
@@ -80,6 +89,7 @@ An example with all the available properties is:
         }
     ]}
     ariaDescribedBy='aria-described-by'
+    ariaLabelledBy='aria-labelled-by'
     groupClassess='group-classes'
     error={{
        text: 'error message'

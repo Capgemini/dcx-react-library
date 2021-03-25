@@ -235,7 +235,7 @@ describe('FormGroup', () => {
     expect(handleChange).not.toHaveBeenCalled();
   });
 
-  it('should set radio as checked if specified', () => {
+  it('should render the first item as checked', () => {
     const handleChange = jest.fn();
 
     render(
@@ -268,7 +268,7 @@ describe('FormGroup', () => {
     expect(screen.getByTestId('custom-item')).toBeChecked();
   });
 
-  it('should set radio as disabled if specified', () => {
+  it('should render the first item as disabled', () => {
     const handleChange = jest.fn();
 
     render(
@@ -303,5 +303,74 @@ describe('FormGroup', () => {
     );
 
     expect(screen.getByTestId('custom-item-2')).toBeDisabled();
+  });
+
+  it('should render a form group with shared values', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <FormGroup
+        groupClasses=""
+        id=""
+        name="shared-name"
+        inputProps={{
+          className: 'shared-input-class',
+        }}
+        itemProps={{
+          className: 'shared-item-class',
+        }}
+        labelProps={{
+          className: 'shared-label-class',
+        }}
+        legend={{
+          text: 'Have you changed your name?',
+          isHeading: true,
+        }}
+        items={[
+          {
+            inputProps: {
+              'data-testid': 'custom-item',
+            },
+            labelProps: {
+              id: 'yesId',
+            },
+            value: 'yes',
+            label: 'Yes',
+          },
+          {
+            inputProps: {
+              'data-testid': 'custom-item-2',
+            },
+            labelProps: {
+              id: 'NoId',
+            },
+            value: 'no',
+            label: 'No',
+          },
+        ]}
+        onChange={handleChange}
+      />
+    );
+
+    expect(screen.getByTestId('custom-item').getAttribute('name')).toBe(
+      'shared-name'
+    );
+    expect(screen.getByTestId('custom-item-2').getAttribute('name')).toBe(
+      'shared-name'
+    );
+
+    expect(screen.getByTestId('custom-item').getAttribute('class')).toBe(
+      'shared-input-class'
+    );
+    expect(screen.getByTestId('custom-item-2').getAttribute('class')).toBe(
+      'shared-input-class'
+    );
+
+    expect(screen.getByLabelText('Yes').getAttribute('class')).toBe(
+      'shared-input-class'
+    );
+    expect(screen.getByLabelText('No').getAttribute('class')).toBe(
+      'shared-input-class'
+    );
   });
 });

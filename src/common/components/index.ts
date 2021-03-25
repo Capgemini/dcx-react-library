@@ -84,6 +84,10 @@ export type FormRadioProps = {
    */
   ariaDescribedBy?: string;
   /**
+   * radio ariaLabelledBy
+   */
+  ariaLabelledBy?: string;
+  /**
    * specifies whether the radio should be disabled
    */
   disabled?: boolean;

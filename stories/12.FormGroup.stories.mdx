@@ -14,33 +14,24 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
             return (
                 <FormGroup
                     name="change-name"
+                    inputProps={{
+                        className: "govuk-radios__input"
+                    }}
+                    itemProps={{
+                        className: "govuk-radios__item"
+                    }}
+                    labelProps={{
+                        className: "govuk-label govuk-radios__label"
+                    }}
                     items={[{
                         label: "Yes",
                         value: "yes",
-                        id: "change-name",
-                        inputProps: {
-                            className: "govuk-radios__input"
-                        },
-                        itemProps: {
-                            className: "govuk-radios__item"
-                        },
-                        labelProps: {
-                            className: "govuk-label govuk-radios__label"
-                        }
+                        id: "change-name"
                     },
                     {
                         label: "No",
                         value: "no",
-                        id: "change-name-2",
-                        inputProps: {
-                            className: "govuk-radios__input"
-                        },
-                        itemProps: {
-                            className: "govuk-radios__item"
-                        },
-                        labelProps: {
-                            className: "govuk-label govuk-radios__label"
-                        }                      
+                        id: "change-name-2"                     
                     }]}
                     ariaDescribedBy="changed-name-hint"
                     groupClasses="govuk-form-group"
@@ -69,33 +60,24 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
             return (
                 <FormGroup
                     name="change-name-2"
+                    inputProps={{
+                        className: "govuk-radios__input"
+                    }}
+                    itemProps={{
+                        className: "govuk-radios__item"
+                    }}
+                    labelProps={{
+                        className: "govuk-label govuk-radios__label"
+                    }}                   
                     items={[{
                         label: "Yes",
                         value: "yes",
-                        id: "change-name-2-1",
-                        inputProps: {
-                            className: "govuk-radios__input"
-                        },
-                        itemProps: {
-                            className: "govuk-radios__item"
-                        },
-                        labelProps: {
-                            className: "govuk-label govuk-radios__label"
-                        }
+                        id: "change-name-2-1"
                     },
                     {
                         label: "No",
                         value: "no",
-                        id: "change-name-2-2",
-                        inputProps: {
-                            className: "govuk-radios__input"
-                        },
-                        itemProps: {
-                            className: "govuk-radios__item"
-                        },
-                        labelProps: {
-                            className: "govuk-label govuk-radios__label"
-                        }                      
+                        id: "change-name-2-2"                    
                     }]}
                     ariaDescribedBy="changed-name-hint"
                     groupClasses="govuk-form-group"
@@ -124,61 +106,34 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
             return (
                 <FormGroup
                     name="where-do-you-live"
+                    inputProps={{
+                        className: "govuk-radios__input"
+                    }}
+                    itemProps={{
+                        className: "govuk-radios__item"
+                    }}
+                    labelProps={{
+                        className: "govuk-label govuk-radios__label"
+                    }}
                     items={[{
                         label: "England",
                         value: "england",
-                        id: "where-do-you-live",
-                        inputProps: {
-                            className: "govuk-radios__input"
-                        },
-                        itemProps: {
-                            className: "govuk-radios__item"
-                        },
-                        labelProps: {
-                            className: "govuk-label govuk-radios__label"
-                        }
+                        id: "where-do-you-live"
                     },
                     {
                         label: "Scotland",
                         value: "scotland",
-                        id: "where-do-you-live-2",
-                        inputProps: {
-                            className: "govuk-radios__input"
-                        },
-                        itemProps: {
-                            className: "govuk-radios__item"
-                        },
-                        labelProps: {
-                            className: "govuk-label govuk-radios__label"
-                        }
+                        id: "where-do-you-live-2"
                     },
                     {
                         label: "Wales",
                         value: "wales",
-                        id: "where-do-you-live-3",
-                        inputProps: {
-                            className: "govuk-radios__input"
-                        },
-                        itemProps: {
-                            className: "govuk-radios__item"
-                        },
-                        labelProps: {
-                            className: "govuk-label govuk-radios__label"
-                        }
+                        id: "where-do-you-live-3"
                     },
                     {
                         label: "Northern Ireland",
                         value: "northen-ireland",
-                        id: "where-do-you-live-4",
-                        inputProps: {
-                            className: "govuk-radios__input"
-                        },
-                        itemProps: {
-                            className: "govuk-radios__item"
-                        },
-                        labelProps: {
-                            className: "govuk-label govuk-radios__label"
-                        }
+                        id: "where-do-you-live-4"
                     }]}
                     groupClasses="govuk-form-group"
                     fieldsetClasses="govuk-fieldset"
@@ -199,19 +154,19 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
             return (
                 <FormGroup
                     name="sign-in"
+                    inputProps={{
+                        className: "govuk-radios__input"
+                    }}
+                    itemProps={{
+                        className: "govuk-radios__item"
+                    }}
+                    labelProps={{
+                        className: "govuk-label govuk-radios__label"
+                    }}
                     items={[{
                         label: "Sign in with Government Gateway",
                         value: "government-gateway",
                         id: "sign-in",
-                        inputProps: {
-                            className: "govuk-radios__input"
-                        },
-                        itemProps: {
-                            className: "govuk-radios__item"
-                        },
-                        labelProps: {
-                            className: "govuk-label govuk-radios__label"
-                        },
                         hint: {
                            text: "You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.",
                            classes: "govuk-hint govuk-radios__hint",
@@ -223,15 +178,6 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
                         label: "Sign in with GOV.UK Verify",
                         value: "govuk-verify",
                         id: "sign-in-2",
-                        inputProps: {
-                            className: "govuk-radios__input"
-                        },
-                        itemProps: {
-                            className: "govuk-radios__item"
-                        },
-                        labelProps: {
-                            className: "govuk-label govuk-radios__label"
-                        },
                         hint: {
                            text: "You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.",
                            classes: "govuk-hint govuk-radios__hint",

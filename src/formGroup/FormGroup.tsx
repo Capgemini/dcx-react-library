@@ -45,9 +45,21 @@ type FormGroupProps = {
    */
   id?: string;
   /**
+   * form group input properties for all items
+   */
+  inputProps?: any;
+  /**
+   * form group item properties for all items
+   */
+  itemProps?: any;
+  /**
    * form group items class names
    */
   itemsClasses?: string;
+  /**
+   * form group label properties for all items
+   */
+  labelProps?: any;
   /**
    * form group legend properties
    */
@@ -67,7 +79,10 @@ export const FormGroup = ({
   fieldsetClasses,
   hint,
   id,
+  inputProps,
+  itemProps,
   itemsClasses,
+  labelProps,
   legend,
   onChange,
 }: FormGroupProps) => {
@@ -75,7 +90,9 @@ export const FormGroup = ({
     <FormRadio
       key={`${id}_${index.toString()}`}
       {...item}
-      inputProps={{ ...item.inputProps, name, onChange }}
+      inputProps={{ ...inputProps, ...item.inputProps, name, onChange }}
+      itemProps={{ ...itemProps, ...item.itemProps }}
+      labelProps={{ ...labelProps, ...item.labelProps }}
     />
   ));
 
