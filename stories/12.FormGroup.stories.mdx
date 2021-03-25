@@ -1,0 +1,176 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormGroup } from '../src/formGroup/FormGroup';
+import './style.css';
+
+<Meta title="DCXLibrary/Form/Group/HMRC" component={FormGroup} />
+
+# GOVUK Style
+
+In this section we're using the formRadio component providing the GovUk style passing the relative `className`. Feel free to use your own css and style the formRadio as you prefer
+
+<Canvas>
+    <Story name="question">
+        {() => {
+            return (
+                <FormGroup
+                    name="change-name"
+                    items={[{
+                        label: "Yes",
+                        value: "yes",
+                        id: "change-name",
+                        inputProps: {
+                            className: "govuk-radios__input"
+                        },
+                        itemProps: {
+                            className: "govuk-radios__item"
+                        },
+                        labelProps: {
+                            className: "govuk-label govuk-radios__label"
+                        }
+                    },
+                    {
+                        label: "No",
+                        value: "no",
+                        id: "change-name-2",
+                        inputProps: {
+                            className: "govuk-radios__input"
+                        },
+                        itemProps: {
+                            className: "govuk-radios__item"
+                        },
+                        labelProps: {
+                            className: "govuk-label govuk-radios__label"
+                        }                      
+                    }]}
+                    ariaDescribedBy="changed-name-hint"
+                    groupClasses="govuk-form-group"
+                    fieldsetClasses="govuk-fieldset"
+                    hint={{
+                        id: "changed-name-hint",
+                        text: "This includes changing your last name or spelling your name differently.",
+                        classes: "govuk-hint"
+                    }}
+                    itemsClasses="govuk-radios govuk-radios--inline"
+                    legend={{
+                        text: "Have you changed your name?",
+                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l",
+                        isHeading: true,
+                        headingClasses: "govuk-fieldset__heading"
+                    }}
+                />
+            )
+        }}
+    </Story>
+</Canvas>
+
+The css we used to styled the formGroup component is the following:
+```css
+.govuk-radios__input {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: -2px;
+    left: -2px;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    opacity: 0
+}
+
+.govuk-radios__item {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    display: block;
+    position: relative;
+    min-height: 40px;
+    margin-bottom: 10px;
+    padding-left: 40px;
+    clear: left
+}
+
+.govuk-label {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #0b0c0c;
+    display: block;
+    margin-bottom: 5px
+}
+
+.govuk-hint {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    display: block;
+    margin-bottom: 15px;
+    color: #505a5f
+}
+
+.govuk-fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0
+}
+
+.govuk-fieldset__legend {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #0b0c0c;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table;
+    max-width: 100%;
+    margin-bottom: 10px;
+    padding: 0;
+    white-space: normal
+}
+
+.govuk-fieldset:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.govuk-radios__item:last-child,.govuk-radios__item:last-of-type {
+    margin-bottom: 0
+}
+
+.govuk-radios__input:focus+.govuk-radios__label:before {
+    border-width: 4px;
+    -webkit-box-shadow: 0 0 0 4px #fd0;
+    box-shadow: 0 0 0 4px #fd0
+}
+
+.govuk-radios__input:checked+.govuk-radios__label:after {
+    opacity: 1
+}
+
+.govuk-radios__input:disabled,.govuk-radios__input:disabled+.govuk-radios__label {
+    cursor: default
+}
+
+.govuk-radios__input:disabled+.govuk-radios__label {
+    opacity: .5
+}
+```
+
+<Props of={FormGroup} />
