@@ -9,7 +9,7 @@ import './style.css';
 In this section we're using the FormGroup component providing the GOV.UK Design System styles by passing the relative `className`. Feel free to use your own css and style the FormGroup as you prefer
 
 <Canvas>
-    <Story name="heading-titled">
+    <Story name="inline">
         {() => {
             return (
                 <FormGroup
@@ -186,6 +186,73 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
                     legend={{
                         text: "Where do you live?",
                         classes: "govuk-fieldset__legend govuk-fieldset__legend--l"
+                    }}
+                />
+            )
+        }}
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="items-with-hints">
+        {() => {
+            return (
+                <FormGroup
+                    name="sign-in"
+                    items={[{
+                        label: "Sign in with Government Gateway",
+                        value: "government-gateway",
+                        id: "sign-in",
+                        inputProps: {
+                            className: "govuk-radios__input"
+                        },
+                        itemProps: {
+                            className: "govuk-radios__item"
+                        },
+                        labelProps: {
+                            className: "govuk-label govuk-radios__label"
+                        },
+                        hint: {
+                           text: "You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.",
+                           classes: "govuk-hint govuk-radios__hint",
+                           id: "sign-in-item-hint"
+                        },
+                        ariaDescribedBy: "sign-in-item-hint"
+                    },
+                    {
+                        label: "Sign in with GOV.UK Verify",
+                        value: "govuk-verify",
+                        id: "sign-in-2",
+                        inputProps: {
+                            className: "govuk-radios__input"
+                        },
+                        itemProps: {
+                            className: "govuk-radios__item"
+                        },
+                        labelProps: {
+                            className: "govuk-label govuk-radios__label"
+                        },
+                        hint: {
+                           text: "You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.",
+                           classes: "govuk-hint govuk-radios__hint",
+                           id: "sign-in-2-item-hint"
+                        },
+                        ariaDescribedBy: "sign-in-item-hint"
+                    }]}
+                    ariaDescribedBy="sign-in-hint"
+                    groupClasses="govuk-form-group"
+                    fieldsetClasses="govuk-fieldset"
+                    hint={{
+                        id: "sign-in-hint",
+                        text: "You’ll need an account to prove your identity and complete your Self Assessment",
+                        classes: "govuk-hint"
+                    }}
+                    itemsClasses="govuk-radios"
+                    legend={{
+                        text: "How do you want to sign in?",
+                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l",
+                        isHeading: true,
+                        headingClasses: "govuk-fieldset__heading"
                     }}
                 />
             )

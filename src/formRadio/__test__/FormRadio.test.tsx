@@ -152,12 +152,17 @@ describe('FormRadio', () => {
         value="choice 1"
         label="my label"
         hint={{
+          id: 'my-hint',
           text: 'my hint',
         }}
         inputProps={{ name: 'group1' }}
+        ariaDescribedBy="my-hint-item-hint"
       />
     );
 
     expect(screen.getByText('my hint')).toBeInTheDocument();
+    expect(
+      screen.getByLabelText('my label').getAttribute('aria-describedby')
+    ).toBe('my-hint-item-hint');
   });
 });

@@ -15,6 +15,7 @@ An example with all the available properties is:
   label='radio-label'
   value={value}
   ariaLabel='aria-label'
+  ariaDescribedBy='aria-described-by'
   disabled={true}
   hint={
     text: 'hint text',
@@ -46,6 +47,7 @@ the available properties are:
 | **label**            | string                                             | null    | **false** | label of the radio                                                    |
 | **value**            | string                                             | null    | **true**  | value of the radio                                                    |
 | **ariaLabel**        | string                                             | null    | **false** | aria-label of the radio                                               |
+| **ariaDescribedBy**  | string                                             | null    | **false** | aria-described-by of the radio                                        |
 | **disabled**         | boolean                                            | null    | **false** | set the radio as disabled                                             |
 | **hint**             | <HintProps>                                        | null    | **false** | hint text for the radio                                               |
 | **id**               | string                                             | null    | **false** | id of the radio                                                       |
