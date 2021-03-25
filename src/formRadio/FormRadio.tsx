@@ -23,7 +23,7 @@ export const FormRadio = ({
       value={value}
       aria-label={ariaLabel || inputProps.name}
       aria-describedby={ariaDescribedBy || ''}
-      aria-labelledby={ariaLabelledBy || labelProps.id}
+      aria-labelledby={ariaLabelledBy || labelProps ? labelProps.id : ''}
       disabled={disabled}
       checked={selected}
       {...inputProps}
