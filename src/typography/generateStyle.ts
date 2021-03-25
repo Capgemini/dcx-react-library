@@ -1,6 +1,6 @@
 export const brandedComponentStyle = (typographyComp: any) => {
   let style: any = {};
-  let tag: string = '';
+  let tag = undefined;
   Object.keys(typographyComp).forEach((key: string) => {
     if (key === 'tag') {
       tag = typographyComp[key];
