@@ -4,7 +4,7 @@ const mock = require('mock-fs');
 const outputFile = `
 import React from 'react';
 import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
-import jsonStyle from './stories/typographyDemo/input/label.json';
+import jsonStyle from '../stories/typographyDemo/input/label.json';
 export const Label = (props: any) => {
   const branded: any = brandedComponentStyle(jsonStyle.label);
 
@@ -96,7 +96,8 @@ describe('generateComponent', () => {
   it('should generate the new react component from the template', () => {
     const component = componentGenerator.generateComponentTemplate(
       'stories/typographyDemo/input',
-      'label.json'
+      'label.json',
+      'components/'
     );
     expect(component).toContain(outputFile);
   });
@@ -104,7 +105,8 @@ describe('generateComponent', () => {
   it('should generate the new react component and remove the // from the template if the input contains a / at the end', () => {
     const component = componentGenerator.generateComponentTemplate(
       'stories/typographyDemo/input/',
-      'label.json'
+      'label.json',
+      'components/'
     );
     expect(component).toContain(outputFile);
   });

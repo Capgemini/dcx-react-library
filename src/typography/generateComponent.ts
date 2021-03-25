@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import { capitalize } from 'lodash';
-
+const path = require('path');
 const template = `
 import React from 'react';
 import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
@@ -24,12 +24,14 @@ export const {{componentName}} = (props: any) => {
  */
 export const generateComponentTemplate = (
   inputFolder: string,
-  inputFile: string
+  inputFile: string,
+  outputFolder: string
 ): string => {
   const componentName = capitalize(inputFile.replace('.json', ''));
   const jsonPath = inputFile.replace('.json', '');
+  const relativePath = path.relative(outputFolder, inputFolder);
   return template
-    .replace('{{inputFolder}}/{{fileName}}', `./${inputFolder}/${inputFile}`)
+    .replace('{{inputFolder}}/{{fileName}}', `${relativePath}/${inputFile}`)
     .replace('{{jsonPath}}', jsonPath)
     .replace(/{{componentName}}/g, componentName)
     .replace(/\/\//g, '/');
@@ -47,7 +49,11 @@ export const generateComponent = (
   inputFolder: string,
   outputFolder: string
 ) => {
-  const component = generateComponentTemplate(inputFolder, inputFile);
+  const component = generateComponentTemplate(
+    inputFolder,
+    inputFile,
+    outputFolder
+  );
   const fileName = `${outputFolder}/${capitalize(inputFile).replace(
     '.json',
     '.tsx'
