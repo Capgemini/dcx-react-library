@@ -9,7 +9,7 @@ import './style.css';
 In this section we're using the FormGroup component providing the GOV.UK Design System styles by passing the relative `className`. Feel free to use your own css and style the FormGroup as you prefer
 
 <Canvas>
-    <Story name="question">
+    <Story name="heading-titled">
         {() => {
             return (
                 <FormGroup
@@ -56,6 +56,136 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
                         classes: "govuk-fieldset__legend govuk-fieldset__legend--l",
                         isHeading: true,
                         headingClasses: "govuk-fieldset__heading"
+                    }}
+                />
+            )
+        }}
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="titled">
+        {() => {
+            return (
+                <FormGroup
+                    name="change-name-2"
+                    items={[{
+                        label: "Yes",
+                        value: "yes",
+                        id: "change-name-2-1",
+                        inputProps: {
+                            className: "govuk-radios__input"
+                        },
+                        itemProps: {
+                            className: "govuk-radios__item"
+                        },
+                        labelProps: {
+                            className: "govuk-label govuk-radios__label"
+                        }
+                    },
+                    {
+                        label: "No",
+                        value: "no",
+                        id: "change-name-2-2",
+                        inputProps: {
+                            className: "govuk-radios__input"
+                        },
+                        itemProps: {
+                            className: "govuk-radios__item"
+                        },
+                        labelProps: {
+                            className: "govuk-label govuk-radios__label"
+                        }                      
+                    }]}
+                    ariaDescribedBy="changed-name-hint"
+                    groupClasses="govuk-form-group"
+                    fieldsetClasses="govuk-fieldset"
+                    hint={{
+                        id: "changed-name-hint",
+                        text: "This includes changing your last name or spelling your name differently.",
+                        classes: "govuk-hint"
+                    }}
+                    itemsClasses="govuk-radios govuk-radios--inline"
+                    legend={{
+                        text: "Have you changed your name?",
+                        classes: "govuk-fieldset__legend govuk-fieldset__legend",
+                        sHeading: true,
+                        headingClasses: "govuk-fieldset__heading"
+                    }}
+                />
+            )
+        }}
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="stacked">
+        {() => {
+            return (
+                <FormGroup
+                    name="where-do-you-live"
+                    items={[{
+                        label: "England",
+                        value: "england",
+                        id: "where-do-you-live",
+                        inputProps: {
+                            className: "govuk-radios__input"
+                        },
+                        itemProps: {
+                            className: "govuk-radios__item"
+                        },
+                        labelProps: {
+                            className: "govuk-label govuk-radios__label"
+                        }
+                    },
+                    {
+                        label: "Scotland",
+                        value: "scotland",
+                        id: "where-do-you-live-2",
+                        inputProps: {
+                            className: "govuk-radios__input"
+                        },
+                        itemProps: {
+                            className: "govuk-radios__item"
+                        },
+                        labelProps: {
+                            className: "govuk-label govuk-radios__label"
+                        }
+                    },
+                    {
+                        label: "Wales",
+                        value: "wales",
+                        id: "where-do-you-live-3",
+                        inputProps: {
+                            className: "govuk-radios__input"
+                        },
+                        itemProps: {
+                            className: "govuk-radios__item"
+                        },
+                        labelProps: {
+                            className: "govuk-label govuk-radios__label"
+                        }
+                    },
+                    {
+                        label: "Northern Ireland",
+                        value: "northen-ireland",
+                        id: "where-do-you-live-4",
+                        inputProps: {
+                            className: "govuk-radios__input"
+                        },
+                        itemProps: {
+                            className: "govuk-radios__item"
+                        },
+                        labelProps: {
+                            className: "govuk-label govuk-radios__label"
+                        }
+                    }]}
+                    groupClasses="govuk-form-group"
+                    fieldsetClasses="govuk-fieldset"
+                    itemsClasses="govuk-radios"
+                    legend={{
+                        text: "Where do you live?",
+                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l"
                     }}
                 />
             )
