@@ -7,6 +7,8 @@ export const FormRadio = ({
   value,
   id,
   ariaLabel,
+  ariaDescribedBy,
+  ariaLabelledBy,
   disabled,
   hint,
   inputProps,
@@ -20,6 +22,8 @@ export const FormRadio = ({
       type="radio"
       value={value}
       aria-label={ariaLabel || inputProps.name}
+      aria-describedby={ariaDescribedBy || ''}
+      aria-labelledby={ariaLabelledBy || labelProps ? labelProps.id : ''}
       disabled={disabled}
       checked={selected}
       {...inputProps}

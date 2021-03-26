@@ -13,6 +13,15 @@ An example with all the available properties is:
 ```js
 <FormGroup
   name='radio-name'
+  inputProps={{
+    className: 'my-shared-class-for-inputs'
+  }}
+  itemProps={{
+    className: 'my-shared-class-for-items'
+  }}
+  labelProps={{
+    className: 'my-shared-class-for-labels'
+  }}
   items={[
     {
       label: 'label-name',
@@ -42,6 +51,7 @@ An example with all the available properties is:
     }
   ]}
   ariaDescribedBy='aria-described-by'
+  ariaLabelledBy='aria-labelled-by'
   error={{
      text: 'error message'
      classes: 'error-classes'
@@ -84,6 +94,9 @@ the available properties are:
 | **groupClasses**     | string                                             | null    | **false** | allows for customisation of the entire group                          |
 | **hint**             | <HintProps>                                        | null    | **false** | hint text for the group                                               |
 | **id**               | string                                             | null    | **false** | id of the group                                                       |
+| **inputProps**       | <any>                                              | null    | **false** | allows for customisation of all inputs with all the properites needed |
 | **itemClasses**      | string                                             | null    | **false** | allows for customisation of the group of items                        |
+| **itemProps**        | <any>                                              | null    | **false** | allows for customisation of all containers with properties needed     |
+| **labelProps**       | <any>                                              | null    | **false** | allows for customisation of all labels with all the properites needed |
 | **legend**           | <LegendProps>                                      | null    | **false** | title of the form group                                               |
 | **onChange**         | (event: React.FormEvent<HTMLInputElement>) => void | null    | **false** | Dispatch the current value of the input                               |

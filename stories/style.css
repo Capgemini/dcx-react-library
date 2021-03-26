@@ -1,3 +1,37 @@
+.govuk-form-group {
+    margin-bottom: 20px
+}
+
+.govuk-form-group:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-form-group {
+        margin-bottom:30px
+    }
+}
+
+.govuk-form-group .govuk-form-group:last-of-type {
+    margin-bottom: 0
+}
+
+.govuk-form-group--error {
+    padding-left: 15px;
+    border-left: 5px solid #d4351c
+}
+
+.govuk-form-group--error .govuk-form-group {
+    padding: 0;
+    border: 0
+}
+
+.govuk-character-count .govuk-form-group,.govuk-character-count .govuk-textarea {
+    margin-bottom: 5px
+}
+
 .govuk-input {
     font-family: "GDS Transport",arial,sans-serif;
     font-weight: 400;
@@ -14,11 +48,13 @@
     border-radius: 0;
     appearance: none;
 }
+
 .govuk-input:focus {
     outline: 3px solid #fd0;
     outline-offset: 0;
     box-shadow: inset 0 0 0 2px;
 }
+
 .govuk-input__suffix {
     font-family: "GDS Transport",arial,sans-serif;
     font-weight: 400;
@@ -75,6 +111,203 @@
     margin-bottom: 15px;
     clear: both;
     color: #d4351c;
+}
+
+.govuk-fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0
+}
+
+.govuk-fieldset:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+@supports not (caret-color: auto) {
+    .govuk-fieldset,x:-moz-any-link {
+        display:table-cell
+    }
+}
+
+.govuk-fieldset__legend {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #0b0c0c;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table;
+    max-width: 100%;
+    margin-bottom: 10px;
+    padding: 0;
+    white-space: normal
+}
+
+@media print {
+    .govuk-fieldset__legend {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-fieldset__legend {
+        font-size:19px;
+        font-size: 1.1875rem;
+        line-height: 1.31579
+    }
+}
+
+@media print {
+    .govuk-fieldset__legend {
+        font-size: 14pt;
+        line-height: 1.15
+    }
+}
+
+@media print {
+    .govuk-fieldset__legend {
+        color: #000
+    }
+}
+
+.govuk-fieldset__legend--xl {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 32px;
+    font-size: 2rem;
+    line-height: 1.09375;
+    margin-bottom: 15px
+}
+
+@media print {
+    .govuk-fieldset__legend--xl {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-fieldset__legend--xl {
+        font-size:48px;
+        font-size: 3rem;
+        line-height: 1.04167
+    }
+}
+
+@media print {
+    .govuk-fieldset__legend--xl {
+        font-size: 32pt;
+        line-height: 1.15
+    }
+}
+
+.govuk-fieldset__legend--l {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.04167;
+    margin-bottom: 15px
+}
+
+@media print {
+    .govuk-fieldset__legend--l {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-fieldset__legend--l {
+        font-size:36px;
+        font-size: 2.25rem;
+        line-height: 1.11111
+    }
+}
+
+@media print {
+    .govuk-fieldset__legend--l {
+        font-size: 24pt;
+        line-height: 1.05
+    }
+}
+
+.govuk-fieldset__legend--m {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 1.11111;
+    margin-bottom: 15px
+}
+
+@media print {
+    .govuk-fieldset__legend--m {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-fieldset__legend--m {
+        font-size:24px;
+        font-size: 1.5rem;
+        line-height: 1.25
+    }
+}
+
+@media print {
+    .govuk-fieldset__legend--m {
+        font-size: 18pt;
+        line-height: 1.15
+    }
+}
+
+.govuk-fieldset__legend--s {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25
+}
+
+@media print {
+    .govuk-fieldset__legend--s {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-fieldset__legend--s {
+        font-size:19px;
+        font-size: 1.1875rem;
+        line-height: 1.31579
+    }
+}
+
+@media print {
+    .govuk-fieldset__legend--s {
+        font-size: 14pt;
+        line-height: 1.15
+    }
+}
+
+.govuk-fieldset__heading {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit
 }
 
 .govuk-hint {
@@ -566,6 +799,44 @@
         -webkit-box-shadow: 0 0 0 4px #fd0;
         box-shadow: 0 0 0 4px #fd0
     }
+}
+
+.govuk-visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    border: 0 !important;
+    white-space: nowrap !important
+}
+
+.govuk-visually-hidden-focusable {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important
+}
+
+.govuk-visually-hidden-focusable:active,.govuk-visually-hidden-focusable:focus {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    margin: inherit !important;
+    overflow: visible !important;
+    clip: auto !important;
+    -webkit-clip-path: none !important;
+    clip-path: none !important;
+    white-space: inherit !important
 }
 
 .autocomplete__label {
