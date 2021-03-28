@@ -10,7 +10,7 @@ type ButtonProps = {
   /**
    * handler for the click event
    */
-  onClick: any;
+  onClick: (evt: React.MouseEvent<HTMLButtonElement>) => void;
   /**
    * define the button type: button/submit/reset - by default button
    */
@@ -57,7 +57,7 @@ export const Button = ({
     []
   );
 
-  const handleClick = (evt: any) => {
+  const handleClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
     setDisable(true);
     delayNextClick();
     onClick(evt);
