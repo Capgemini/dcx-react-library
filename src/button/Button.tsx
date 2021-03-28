@@ -30,11 +30,11 @@ type ButtonProps = {
   /**
    * allow to add an image before the label
    */
-  customPrefixImg?: Element;
+  customPrefixImg?: JSX.Element;
   /**
    * allow to add an image after the label
    */
-  customPostfixImg?: Element;
+  customPostfixImg?: JSX.Element;
 };
 
 export const Button = ({
