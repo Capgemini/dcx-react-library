@@ -12,7 +12,6 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "test:cache": "tsdx test --no-cache",
     "test:coverage": "tsdx test --coverage",
@@ -22,7 +21,10 @@
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-presentational-component": "tsc src/generatePresentationalComponent/createPresentationalComponent.ts --outDir dist/",
+    "create-presentational-component": "yarn build-presentational-component && node dist/createPresentationalComponent.js",
+    "build": "tsdx build && yarn build-presentational-component"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -62,6 +64,7 @@
     "@babel/core": "^7.13.1",
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
+    "@rollup/plugin-json": "^4.1.0",
     "@size-limit/preset-small-lib": "^4.9.2",
     "@storybook/addon-controls": "^6.1.19",
     "@storybook/addon-docs": "^6.1.19",
@@ -78,6 +81,7 @@
     "@testing-library/user-event": "^12.8.1",
     "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.168",
+    "@types/mock-fs": "^4.13.0",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/styled-components": "^5.1.7",
@@ -88,11 +92,14 @@
     "jest": "^26.6.3",
     "jest-css-modules": "^2.1.0",
     "jest-environment-jsdom-sixteen": "^1.0.3",
+    "jest-util": "^26.6.2",
+    "mock-fs": "^4.13.0",
     "postcss": "^8.2.6",
     "postcss-loader": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-is": "^17.0.1",
+    "react-jss": "^10.6.0",
     "remove": "^0.1.5",
     "resolve-url-loader": "^3.1.2",
     "rollup-plugin-postcss": "^4.0.0",
@@ -101,6 +108,7 @@
     "size-limit": "^4.9.2",
     "storybook-css-modules-preset": "^1.0.6",
     "ts-jest": "^26.5.2",
+    "ts-node": "^9.1.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.1.0",
     "typescript": "^4.2.2"
@@ -114,7 +122,8 @@
       "!src/**/index.{ts,tsx}",
       "!src/typings.d.ts",
       "!<rootDir>/node_modules/",
-      "!<rootDir>/path/to/dir/"
+      "!<rootDir>/path/to/dir/",
+      "!src/generatePresentationalComponent/createPresentationalComponent.ts"
     ],
     "coverageThreshold": {
       "global": {
@@ -132,10 +141,6 @@
   "dependencies": {
     "@cesium133/forgjs": "^1.1.11",
     "imask": "^6.0.7",
-    "lodash": "^4.17.21",
-    "styled-components": "^5.2.1"
-  },
-  "resolutions": {
-    "styled-components": "^5"
+    "lodash": "^4.17.21"
   }
 }

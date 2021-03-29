@@ -2296,6 +2296,11 @@ evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
     md5.js "^1.3.4"
     safe-buffer "^5.1.1"
 
+example@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/example/-/example-0.0.0.tgz#510cb4d65a9f742ceba236920ec7c508a65954f6"
+  integrity sha1-UQy01lqfdCzrojaSDsfFCKZZVPY=
+
 expand-brackets@^2.1.4:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/expand-brackets/-/expand-brackets-2.1.4.tgz#b77735e315ce30f6b6eff0f83b04151a22449622"
