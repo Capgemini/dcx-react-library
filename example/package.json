@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
-    "generate-typography": "node ../dist/index.js"
+    "generate-presentational-component": "node ../dist/createPresentationalComponent.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",

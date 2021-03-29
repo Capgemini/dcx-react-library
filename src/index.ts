@@ -4,6 +4,6 @@ export * from './formRadio';
 export * from './formCheckbox';
 export * from './autocomplete/Autocomplete';
 export * from './button';
-export * from './typography/generateComponent';
-export * from './typography/generateStyle';
+export * from './generatePresentationalComponent/generateComponent';
+export * from './generatePresentationalComponent/generateStyle';
 export { DynamicComponent } from './common/components/DynamicComponent';

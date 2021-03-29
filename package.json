@@ -22,9 +22,9 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build-typography": "tsc src/typography/index.ts --outDir dist/",
-    "generate-typography": "yarn build-typography && node dist/index.js",
-    "build": "tsdx build && yarn build-typography"
+    "build-presentational-component": "tsc src/generatePresentationalComponent/createPresentationalComponent.ts --outDir dist/",
+    "create-presentational-component": "yarn build-presentational-component && node dist/createPresentationalComponent.js",
+    "build": "tsdx build && yarn build-presentational-component"
   },
   "peerDependencies": {
     "react": ">=16"
