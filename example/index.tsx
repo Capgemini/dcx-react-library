@@ -8,6 +8,7 @@ import {
   AutocompleteDemo,
   FormRadioDemo,
   FormCheckboxDemo,
+  ButtonDemo,
 } from './components';
 import { Login } from './pages/Login';
 const App = () => (
@@ -33,6 +34,9 @@ const App = () => (
           <li>
             <Link to="/AutocompleteDemo">AutocompleteDemo</Link>
           </li>
+          <li>
+            <Link to="/ButtonDemo">ButtonDemo</Link>
+          </li>
         </ul>
       </nav>
       <Switch>
@@ -42,6 +46,7 @@ const App = () => (
         <Route path="/radio" exact component={FormRadioDemo} />
         <Route path="/checkbox" exact component={FormCheckboxDemo} />
         <Route path="/AutocompleteDemo" component={AutocompleteDemo} />
+        <Route path="/ButtonDemo" component={ButtonDemo} />
       </Switch>
     </BrowserRouter>
   </div>
