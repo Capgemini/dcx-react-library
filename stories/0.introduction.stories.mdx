@@ -1,0 +1,37 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormInput } from '../src/formInput/FormInput';
+import './style.css';
+
+<Meta title="DCXLibrary/introduction" component={FormInput} />
+
+# dcx-react-library
+
+`dcx-react-library` is a react library with a set of components ready to use in your project.
+
+There're already planty of libraries available in react that will help you to speedup your productivity however most of them contains quite a lot of css and are really hard to style based on your project requirements.
+
+dcx-react-library, instead, is is **UI/UX agnostic** so you need to provide your style to have the look and feel you prefer.
+
+## Installation
+
+To use dcx-react-library you need to type in your terminal:
+
+```js
+yarn add dcx-react-library
+```
+
+## Usage
+
+As soon the installation is completed you can use all the components built for you.
+
+For example:
+
+```js
+import {Button} from 'dcx-react-library`;
+
+function App() {
+  return (
+      <Button label="start" onClick={()=>{}}/>
+  )
+}
+```

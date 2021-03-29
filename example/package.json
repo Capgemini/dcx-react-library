@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
-    "generate-presentational-component": "node ../dist/createPresentationalComponent.js"
+    "generate-presentational-component": "../bin/dcx-generate-presentational-component"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",

@@ -71,7 +71,7 @@ describe('generateComponent', () => {
       'stories/typographyDemo/output',
     ];
     const args = process.argv;
-    componentGenerator.init();
+    componentGenerator.generatePresentationalComponent();
     expect(args[2]).toBe('--input');
     expect(args[3]).toBe('stories/typographyDemo/input');
     expect(args[4]).toBe('--output');
@@ -81,7 +81,7 @@ describe('generateComponent', () => {
   it('should throw an error if the input and output are not set', () => {
     process.argv = ['node', 'jest'];
     expect(() => {
-      componentGenerator.init();
+      componentGenerator.generatePresentationalComponent();
     }).toThrow('usage: --input <dirName> --output <dirName>');
   });
 
