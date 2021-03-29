@@ -122,7 +122,8 @@
       "!src/**/index.{ts,tsx}",
       "!src/typings.d.ts",
       "!<rootDir>/node_modules/",
-      "!<rootDir>/path/to/dir/"
+      "!<rootDir>/path/to/dir/",
+      "!src/generatePresentationalComponent/createPresentationalComponent.ts"
     ],
     "coverageThreshold": {
       "global": {
