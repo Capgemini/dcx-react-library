@@ -373,4 +373,35 @@ describe('FormGroup', () => {
       'shared-input-class'
     );
   });
+
+  it('should render a divider', () => {
+    const { container } = render(
+      <FormGroup
+        groupClasses=""
+        id=""
+        name=""
+        legend={{
+          text: 'Have you changed your name?',
+          isHeading: true,
+        }}
+        items={[
+          {
+            value: 'yes',
+            label: 'Yes',
+          },
+          {
+            id: 'my-divider-id',
+            classes: 'class-for-divider',
+            text: "I'm a divider",
+          },
+          {
+            value: 'no',
+            label: 'No',
+          },
+        ]}
+      />
+    );
+
+    expect(container.querySelector('#my-divider-id')).toBeTruthy();
+  });
 });
