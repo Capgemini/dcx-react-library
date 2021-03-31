@@ -119,7 +119,8 @@ export const FormGroup = ({
         <FormRadio
           key={`${id}_${index.toString()}`}
           {...item}
-          inputProps={{ ...inputProps, ...item.inputProps, name, onChange }}
+          name={name}
+          inputProps={{ ...inputProps, ...item.inputProps, onChange }}
           itemProps={{ ...itemProps, ...item.itemProps }}
           labelProps={{ ...labelProps, ...item.labelProps }}
         />

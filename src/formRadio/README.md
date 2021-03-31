@@ -13,6 +13,7 @@ An example with all the available properties is:
 ```js
 <FormRadio
   label='radio-label'
+  name='radio-name'
   value={value}
   ariaLabel='aria-label'
   ariaDescribedBy='aria-described-by'
@@ -26,7 +27,6 @@ An example with all the available properties is:
   id='radio-id'
   inputProps={{
     className: 'class-name',
-    name: 'radio-name',
     onChange: handleChange
   }}
   itemProps={{
@@ -45,7 +45,7 @@ the available properties are:
 
 | Property             | Type                                               | Default | Required  | Description                                                           |
 | -------------------- | -------------------------------------------------- | ------- | --------- | --------------------------------------------------------------------- |
-| **label**            | string                                             | null    | **false** | label of the radio                                                    |
+| **label**            | string                                             | null    | **true**  | label of the radio                                                    |
 | **value**            | string                                             | null    | **true**  | value of the radio                                                    |
 | **ariaLabel**        | string                                             | null    | **false** | aria-label of the radio                                               |
 | **ariaDescribedBy**  | string                                             | null    | **false** | aria-described-by of the radio                                        |
@@ -55,4 +55,5 @@ the available properties are:
 | **inputProps**       | <any>                                              | null    | **false** | allows for customisation of the inputs with all the properites needed |
 | **itemProps**        | <any>                                              | null    | **false** | allows for customisation of the container with properties needed      |
 | **labelProps**       | <any>                                              | null    | **false** | allows for customisation of the label with all the properites needed  |
+| **name**             | string                                             | null    | **false** | name of the radio                                                     |
 | **selected**         | boolean                                            | null    | **false** | default checked of the radio                                          |

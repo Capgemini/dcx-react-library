@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Roles } from '../common';
 import { Hint, FormRadioProps } from '../common/components';
 
@@ -14,6 +15,7 @@ export const FormRadio = ({
   inputProps,
   itemProps,
   labelProps,
+  name,
   selected,
 }: FormRadioProps) => (
   <div {...itemProps} role={Roles.formRadio}>
@@ -21,7 +23,8 @@ export const FormRadio = ({
       id={id}
       type="radio"
       value={value}
-      aria-label={ariaLabel || inputProps.name}
+      name={name}
+      aria-label={ariaLabel || name}
       aria-describedby={ariaDescribedBy || ''}
       aria-labelledby={ariaLabelledBy || labelProps ? labelProps.id : ''}
       disabled={disabled}
@@ -34,3 +37,7 @@ export const FormRadio = ({
     {hint && <Hint {...hint} />}
   </div>
 );
+
+FormRadio.propTypes = {
+  name: PropTypes.string.isRequired,
+};
