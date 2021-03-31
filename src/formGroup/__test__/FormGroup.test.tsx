@@ -391,7 +391,7 @@ describe('FormGroup', () => {
           },
           {
             id: 'my-divider-id',
-            classes: 'class-for-divider',
+            className: 'class-for-divider',
             text: "I'm a divider",
           },
           {

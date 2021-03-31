@@ -51,7 +51,7 @@ An example with all the available properties is:
     },
     {
       text: 'or',
-      classes: 'divider classes',
+      className: 'divider classes',
       id: 'divider-id'
     }
   ]}

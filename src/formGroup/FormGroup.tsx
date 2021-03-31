@@ -19,7 +19,7 @@ type DividerProps = {
   /**
    * class names to customise divider
    **/
-  classes?: string;
+  className?: string;
   /**
    * divider id
    **/
@@ -111,7 +111,7 @@ export const FormGroup = ({
         <div
           key={`${id}_${index.toString()}`}
           id={item.id}
-          className={item.classes}
+          className={item.className}
         >
           {item.text}
         </div>
