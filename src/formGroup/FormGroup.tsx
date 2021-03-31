@@ -11,6 +11,21 @@ import {
 } from '../common/components';
 import { FormRadio } from '../formRadio/index';
 
+type DividerProps = {
+  /**
+   * divider text
+   **/
+  text: string;
+  /**
+   * class names to customise divider
+   **/
+  className?: string;
+  /**
+   * divider id
+   **/
+  id?: string;
+};
+
 type FormGroupProps = {
   /**
    * form group name
@@ -19,7 +34,7 @@ type FormGroupProps = {
   /**
    * form group items
    */
-  items: FormRadioProps[];
+  items: (FormRadioProps | DividerProps)[];
   /**
    * form group aria-describedby
    */
@@ -86,15 +101,30 @@ export const FormGroup = ({
   legend,
   onChange,
 }: FormGroupProps) => {
-  const formGroupItems = items.map((item: FormRadioProps, index: number) => (
-    <FormRadio
-      key={`${id}_${index.toString()}`}
-      {...item}
-      inputProps={{ ...inputProps, ...item.inputProps, name, onChange }}
-      itemProps={{ ...itemProps, ...item.itemProps }}
-      labelProps={{ ...labelProps, ...item.labelProps }}
-    />
-  ));
+  const isDivider = (
+    item: DividerProps | FormRadioProps
+  ): item is DividerProps => (item as FormRadioProps).label === undefined;
+
+  const formGroupItems = items.map(
+    (item: DividerProps | FormRadioProps, index: number) =>
+      isDivider(item) ? (
+        <div
+          key={`${id}_${index.toString()}`}
+          id={item.id}
+          className={item.className}
+        >
+          {item.text}
+        </div>
+      ) : (
+        <FormRadio
+          key={`${id}_${index.toString()}`}
+          {...item}
+          inputProps={{ ...inputProps, ...item.inputProps, name, onChange }}
+          itemProps={{ ...itemProps, ...item.itemProps }}
+          labelProps={{ ...labelProps, ...item.labelProps }}
+        />
+      )
+  );
 
   return (
     <div id={id} className={groupClasses} role={Roles.formGroup}>

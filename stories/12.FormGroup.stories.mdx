@@ -301,6 +301,64 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
     </Story>
 </Canvas>
 
+<Canvas>
+    <Story name="with a text divider">
+        {() => {
+            return (
+                <FormGroup
+                    name="where-do-you-live-divider"
+                    inputProps={{
+                        className: "govuk-radios__input"
+                    }}
+                    itemProps={{
+                        className: "govuk-radios__item"
+                    }}
+                    labelProps={{
+                        className: "govuk-label govuk-radios__label"
+                    }}
+                    items={[{
+                        label: "England",
+                        value: "england",
+                        id: "where-do-you-live-divider"
+                    },
+                    {
+                        label: "Scotland",
+                        value: "scotland",
+                        id: "where-do-you-live-divider-2"
+                    },
+                    {
+                        label: "Wales",
+                        value: "wales",
+                        id: "where-do-you-live-divider-3"
+                    },
+                    {
+                        label: "Northern Ireland",
+                        value: "northen-ireland",
+                        id: "where-do-you-live-divider-4"
+                    },
+                    {
+                        className: "govuk-radios__divider",
+                        text: "or",
+                    },
+                    {
+                        label: "I am a British citizen living abroad",
+                        value: "living-abroad",
+                        id: "where-do-you-live-divider-5"
+                    }
+                    ]}
+                    groupClasses="govuk-form-group"
+                    fieldsetClasses="govuk-fieldset"
+                    itemsClasses="govuk-radios"
+                    legend={{
+                        text: "Where do you live?",
+                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l"
+                    }}
+                />
+            )
+        }}
+    </Story>
+</Canvas>
+
 The css we used to styled the formGroup component is the following:
 ```css
 .govuk-radios__input {
@@ -446,6 +504,52 @@ The css we used to styled the formGroup component is the following:
     -webkit-clip-path: none !important;
     clip-path: none !important;
     white-space: inherit !important
+}
+
+.govuk-radios__divider {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #0b0c0c;
+  width: 40px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+@media print {
+  .govuk-radios__divider {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-radios__divider {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .govuk-radios__divider {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+@media print {
+  .govuk-radios__divider {
+    color: #000;
+  }
+}
+
+.govuk-radios--small .govuk-radios__divider {
+  width: 24px;
+  margin-bottom: 5px;
 }
 ```
 

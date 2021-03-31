@@ -48,6 +48,11 @@ An example with all the available properties is:
         }
       },
       selected: true
+    },
+    {
+      text: 'or',
+      className: 'divider classes',
+      id: 'divider-id'
     }
   ]}
   ariaDescribedBy='aria-described-by'
@@ -87,7 +92,7 @@ the available properties are:
 | Property             | Type                                               | Default | Required  | Description                                                           |
 | -------------------- | -------------------------------------------------- | ------- | --------- | --------------------------------------------------------------------- |
 | **name**             | string                                             | null    | **true**  | name of the group                                                     |
-| **items**            | <T>                                                | null    | **true**  | list of items in group                                                |
+| **items**            | <T|DividerProps>                                   | null    | **true**  | list of items in group                                                |
 | **ariaDescribedBy**  | string                                             | null    | **false** | IDs of the elements that describe the object                          |
 | **error**            | <ErrorProps>                                       | null    | **false** | validation errors in the group                                        |
 | **fieldsetClasses**  | string                                             | null    | **false** | allows for customisation of group's fieldset                          |
