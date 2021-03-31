@@ -1,65 +1,6 @@
 import React from 'react';
 import { useValidationOnChange, Roles } from '../common';
-
-type FormInputProps = {
-  /**
-   * input name
-   **/
-  name: string;
-  /**
-   * input type
-   **/
-  type: string;
-  /**
-   * input value
-   **/
-  value: any;
-  /**
-   * pass the validation rules(please refer to forgJS) and the message you want to display
-   **/
-  validation?: { rule: any; message: string } | any;
-  /**
-   * allow to customise the input with all the properites needed
-   **/
-  inputProps?: any;
-  /**
-   * allow to customise the error message with all the properites needed
-   **/
-  errorProps?: any;
-  /**
-   * generic parameter to pass whatever element before the input
-   **/
-  prefix?: any;
-  /**
-   * generic parameter to pass whatever element after the input
-   **/
-  suffix?: any;
-  /**
-   * function that will trigger all the time there's a change in the input
-   **/
-  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
-  /**
-   * function that will check if is vald or not based on the validation rules
-   **/
-  isValid?: (valid: boolean) => void;
-  /**
-   * error message
-   **/
-  errorMessage?: any;
-  /**
-   * error position - top or bottom
-   **/
-  errorPosition?: ErrorPosition;
-  /**
-   * input ariaLabel
-   **/
-  ariaLabel?: string;
-};
-
-export enum ErrorPosition {
-  TOP = 'top',
-  BOTTOM = 'bottom',
-}
+import { ErrorPosition, FormInputProps } from '../common/components';
 
 export const FormInput = ({
   name,

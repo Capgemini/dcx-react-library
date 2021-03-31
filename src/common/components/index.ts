@@ -12,6 +12,11 @@ type VisuallyHidden = {
   classes?: string;
 };
 
+export enum ErrorPosition {
+  TOP = 'top',
+  BOTTOM = 'bottom',
+}
+
 export type ErrorMessageProps = {
   /**
    * error message
@@ -65,6 +70,61 @@ export type LegendProps = {
   headingClasses?: string;
 };
 
+export type FormInputProps = {
+  /**
+   * input name
+   **/
+  name: string;
+  /**
+   * input type
+   **/
+  type: string;
+  /**
+   * input value
+   **/
+  value: any;
+  /**
+   * pass the validation rules(please refer to forgJS) and the message you want to display
+   **/
+  validation?: { rule: any; message: string } | any;
+  /**
+   * allow to customise the input with all the properites needed
+   **/
+  inputProps?: any;
+  /**
+   * allow to customise the error message with all the properites needed
+   **/
+  errorProps?: any;
+  /**
+   * generic parameter to pass whatever element before the input
+   **/
+  prefix?: any;
+  /**
+   * generic parameter to pass whatever element after the input
+   **/
+  suffix?: any;
+  /**
+   * function that will trigger all the time there's a change in the input
+   **/
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
+  /**
+   * function that will check if is vald or not based on the validation rules
+   **/
+  isValid?: (valid: boolean) => void;
+  /**
+   * error message
+   **/
+  errorMessage?: any;
+  /**
+   * error position - top or bottom
+   **/
+  errorPosition?: ErrorPosition;
+  /**
+   * input ariaLabel
+   **/
+  ariaLabel?: string;
+};
+
 export type FormRadioProps = {
   /**
    * radio label
@@ -110,6 +170,10 @@ export type FormRadioProps = {
    * allows for customisation of the radio label with all the properites needed
    */
   labelProps?: any;
+  /**
+   * radio name
+   */
+  name?: string;
   /**
    * specifies whether the radio should be selected
    */
