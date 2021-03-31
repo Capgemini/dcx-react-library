@@ -1,6 +1,11 @@
 import { debounce } from 'lodash';
 import React from 'react';
-import { BUTTON_TYPE } from './index';
+
+export enum BUTTON_TYPE {
+  BUTTON = 'button',
+  SUBMIT = 'submit',
+  RESET = 'reset',
+}
 
 type ButtonProps = {
   /**

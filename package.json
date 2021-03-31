@@ -22,9 +22,10 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build-presentational-component": "tsc src/generatePresentationalComponent/createPresentationalComponent.ts --outDir dist/",
-    "create-presentational-component": "yarn build-presentational-component && node dist/createPresentationalComponent.js",
-    "build": "tsdx build && yarn build-presentational-component"
+    "build": "tsdx build"
+  },
+  "bin": {
+    "dcx-generate-presentational-component": "./bin/dcx-generate-presentational-component"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -99,7 +100,6 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-is": "^17.0.1",
-    "react-jss": "^10.6.0",
     "remove": "^0.1.5",
     "resolve-url-loader": "^3.1.2",
     "rollup-plugin-postcss": "^4.0.0",
@@ -141,6 +141,7 @@
   "dependencies": {
     "@cesium133/forgjs": "^1.1.11",
     "imask": "^6.0.7",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "react-jss": "^10.6.0"
   }
 }

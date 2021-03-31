@@ -83,7 +83,7 @@ export const fetchAllFilesFromFolder = (
  * @usage
  * yarn generate-typography  --input stories/typographyDemo/input --output stories/typographyDemo/output
  */
-export const init = () => {
+export const generatePresentationalComponent = () => {
   const args = process.argv;
   if (
     args[2] === '--input' &&

@@ -1,0 +1,83 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormInput } from '../src/formInput/FormInput';
+import './style.css';
+
+<Meta title="DCXLibrary/generate-components" component={FormInput} />
+
+## Generate presentational components
+
+When a new project starts the first thing the developer needs to do is to create a set of base functional components that match the look and feel defined by the UX/UI designer.
+
+Example:
+
+- Title
+- Subtitle
+- Label
+- Hint
+
+These components do not perform any action but they store a common style that is usable in the application. `dcx-react-library` create this component for you.
+
+### Usage
+
+in your package.json in the script section add a new command:
+
+```json
+"scripts": {
+    ...
+    "gpc": "yarn dcx-generate-presentational-component"
+  }
+```
+
+note: you don't have to write `gpc` feel free to use the name that you prefer.
+
+In your project create a new folder:
+
+```
+  <root>
+  |-> /component-template
+```
+
+under `component-template` you can place all the `.json` template that will describe your presentational components.
+
+For example:
+
+- title.json
+
+```json
+{
+  "title": {
+    "tag": "h1",
+    "color": {
+      "value": "black"
+    },
+    "fontWeight": {
+      "value": "bold"
+    },
+    "fontSize": {
+      "value": "32px"
+    }
+  }
+}
+```
+
+These json files will contains:
+
+- the name of the component. This name will need to match the name of the file. For example if the file is called `title.json` the key for the object will be `title` (**mandatory**);
+- the tag. It will specify the tag attribute of the component (**optional** if not specified will be a div);
+- the css properties are **camel-case** (all the css attributes are valid).
+
+In the title example we will create a new component as `h2` and will have a black color, with `font-weight:bold` and `font-size:20px`.
+
+After you created you templates you can run the command:
+
+```
+gpc --input <folder_input> --output <folder_output>
+
+```
+
+for example:
+
+```
+gpc --input /component-template --output /src/components
+
+```
