@@ -1,8 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { FormInput } from '../FormInput';
-import { ErrorPosition } from '../../common/components';
+import { ErrorPosition, FormInput } from '../FormInput';
 import userEvent from '@testing-library/user-event';
 
 const DummyComponent = ({ pos }: any) => {

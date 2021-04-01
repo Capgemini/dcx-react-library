@@ -39,5 +39,21 @@ export const FormRadio = ({
 );
 
 FormRadio.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  ariaLabel: PropTypes.string,
+  ariaDescribedBy: PropTypes.string,
+  ariaLabelledBy: PropTypes.string,
+  disabled: PropTypes.bool,
+  hint: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    classes: PropTypes.string,
+    id: PropTypes.string,
+  }),
+  id: PropTypes.string,
+  inputProps: PropTypes.any,
+  itemProps: PropTypes.any,
+  labelProps: PropTypes.any,
   name: PropTypes.string.isRequired,
+  selected: PropTypes.bool,
 };
