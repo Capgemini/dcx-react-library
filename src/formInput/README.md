@@ -69,10 +69,10 @@ the available properties are:
 | **name**       | string                                             | null    | **true**  | name of the input                                |
 | **type**       | string                                             | null    | **true**  | type of the input                                |
 | **value**      | any                                                | null    | **true**  | value of the input                               |
-| **validation** | { rule: any message: string }                      | null    | **true**  | set of rules to define the validity of the input |
+| **validation** | { rule: any message: string }                      | null    | **false** | set of rules to define the validity of the input |
 | **inputProps** | any                                                | null    | **false** | Extends the properties for the input             |
 | **errorProps** | any                                                | null    | **false** | Extends the properties for the error message     |
 | **prefix**     | any                                                | null    | **false** | Extend the input with another prefix component   |
 | **suffix**     | any                                                | null    | **false** | Extend the input with another suffix component}  |
-| **onChange**   | (event: React.FormEvent<HTMLInputElement>) => void | null    | **true**  | Dispatch the current value of the input          |
-| **isValid**    | (valid: boolean) => void                           | null    | **true**  | Dispatch if the element is valid or not          |
+| **onChange**   | (event: React.FormEvent<HTMLInputElement>) => void | null    | **false** | Dispatch the current value of the input          |
+| **isValid**    | (valid: boolean) => void                           | null    | **false** | Dispatch if the element is valid or not          |

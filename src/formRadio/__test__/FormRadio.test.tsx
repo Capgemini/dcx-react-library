@@ -139,4 +139,45 @@ describe('FormRadio', () => {
       screen.getByLabelText('my label').getAttribute('aria-describedby')
     ).toBe('my-hint-item-hint');
   });
+
+  it('should not render an input field', () => {
+    const { container } = render(
+      <FormRadio
+        value="choice 1"
+        label="my label"
+        conditional={{
+          name: 'input-field-name',
+          label: 'label',
+          type: 'text',
+          value: {},
+          id: 'my-input',
+        }}
+        name="group1"
+      />
+    );
+
+    expect(container.querySelector('#my-input')).not.toBeInTheDocument();
+  });
+
+  it('should render an input field when selected', () => {
+    const { container } = render(
+      <FormRadio
+        id="choice-1"
+        value="choice 1"
+        label="my label"
+        conditional={{
+          name: 'input-field-name',
+          label: 'label',
+          type: 'text',
+          value: {},
+          id: 'my-input',
+        }}
+        name="group1"
+      />
+    );
+
+    fireEvent['click'](screen.getByLabelText('my label'));
+
+    expect(container.querySelector('#my-input')).toBeInTheDocument();
+  });
 });
