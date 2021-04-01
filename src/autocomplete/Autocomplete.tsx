@@ -67,6 +67,10 @@ type autocompleteProps = {
    * event that return the selected value
    */
   onSelected?: (value: string) => void;
+  /**
+   * this method is useful if you want to provide the options dynamically
+   */
+  onChange?: (value: string) => void;
 };
 
 //remove the default style from a button
@@ -96,6 +100,7 @@ export const Autocomplete = ({
   resultlLiClass,
   resultNoOptionClass,
   onSelected,
+  onChange,
   props,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
@@ -115,11 +120,32 @@ export const Autocomplete = ({
     []
   );
 
-  const onChange = (evt: React.FormEvent<HTMLInputElement>) => {
+  const debounceSearch = React.useCallback(
+    debounce(value => {
+      //@ts-ignore
+      onChange(value);
+    }, debounceMs),
+    []
+  );
+
+  const handleChange = (evt: React.FormEvent<HTMLInputElement>) => {
     const { value } = evt.currentTarget;
     setUserInput(value);
-    delayedFilterResults(value);
+
+    if (onChange) {
+      debounceSearch(value);
+    } else {
+      delayedFilterResults(value);
+    }
   };
+
+  React.useEffect(() => {
+    if (onChange) {
+      setActiveOption(0);
+      setFilterList(options);
+      setShowOptions(true);
+    }
+  }, [options, onChange]);
 
   const handleClick = (evt: React.FormEvent<HTMLInputElement>) => {
     setActiveOption(0);
@@ -159,9 +185,10 @@ export const Autocomplete = ({
           name="autocompleteSearch"
           type="text"
           value={userInput}
-          onChange={onChange}
+          onChange={handleChange}
           inputProps={{
             onKeyDown: onKeyDown,
+            autoComplete: 'off',
             ...inputProps,
           }}
           suffix={
