@@ -359,6 +359,90 @@ In this section we're using the FormGroup component providing the GOV.UK Design 
     </Story>
 </Canvas>
 
+<Canvas>
+    <Story name="conditionally revealing content">
+        {() => {
+            return (
+                <FormGroup
+                    name="contact"
+                    inputProps={{
+                        className: "govuk-radios__input"
+                    }}
+                    itemProps={{
+                        className: "govuk-radios__item"
+                    }}
+                    labelProps={{
+                        className: "govuk-label govuk-radios__label"
+                    }}                   
+                    items={[{
+                        label: "Email",
+                        value: "email",
+                        id: "contact",
+                        ariaDataControls: "conditional-contact",
+                        conditional: {
+                            name: "contact-by-email",
+                            label: "Email address",
+                            type: "email",
+                            className: "govuk-radios__conditional govuk-radios__conditional--hidden",
+                            groupClassName: "govuk-form-group",
+                            id: "conditional-contact",
+                            inputClassName: "govuk-input govuk-!-width-one-third",
+                            inputId: "contact-by-email"
+                        }
+                    },
+                    {
+                        label: "Phone",
+                        value: "phone",
+                        id: "contact-2",
+                        ariaDataControls: "conditional-contact-2",
+                        conditional: {
+                            name: "contact-by-phone",
+                            label: "Phone number",
+                            type: "tel",
+                            className: "govuk-radios__conditional govuk-radios__conditional--hidden",
+                            groupClassName: "govuk-form-group",
+                            id: "conditional-contact-2",
+                            inputClassName: "govuk-input govuk-!-width-one-third",
+                            inputId: "contact-by-phone"
+                        }
+                    },
+                    {
+                        label: "Text message",
+                        value: "text",
+                        id: "contact-3",
+                        ariaDataControls: "conditional-contact-3",
+                        conditional: {
+                            name: "contact-by-text",
+                            label: "Mobile phone number",
+                            type: "tel",
+                            className: "govuk-radios__conditional govuk-radios__conditional--hidden",
+                            groupClassName: "govuk-form-group",
+                            id: "conditional-contact-3",
+                            inputClassName: "govuk-input govuk-!-width-one-third",
+                            inputId: "contact-by-text"
+                        }
+                    }]}
+                    ariaDescribedBy="contact-hint"
+                    groupClasses="govuk-form-group"
+                    fieldsetClasses="govuk-fieldset"
+                    hint={{
+                        id: "contact-hint",
+                        text: "Select one option.",
+                        classes: "govuk-hint"
+                    }}
+                    itemsClasses="govuk-radios govuk-radios--conditional"
+                    legend={{
+                        text: "How would you prefer to be contacted?",
+                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l",
+                        isHeading: true,
+                        headingClasses: "govuk-fieldset__heading"
+                    }}
+                />
+            )
+        }}
+    </Story>
+</Canvas>
+
 The css we used to styled the formGroup component is the following:
 ```css
 .govuk-radios__input {
