@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Roles } from '../common';
 import {
@@ -24,31 +24,22 @@ export const FormRadio = ({
   labelProps,
   name,
   selected,
+  onChange,
 }: FormRadioProps) => {
-  const [isSelected, setSelected] = useState(selected);
-  const handleClickEvent = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!_.isEmpty(conditional)) {
-      setSelected(event.currentTarget.checked);
-    }
-  };
+  const conditionalReveal = (): boolean =>
+    !_.isEmpty(conditional) && selected === true;
 
-  const conditionalReveal = (): boolean | undefined =>
-    !_.isEmpty(conditional) && isSelected;
-
-  const conditionalEl = (conditional: ConditionalInputProps | undefined) => (
-    <div className={conditional?.className} id={conditional?.id}>
-      <div className={conditional?.groupClassName}>
-        <label
-          className={conditional?.labelClassName}
-          htmlFor={conditional?.id}
-        >
-          {conditional?.label}
+  const conditionalEl = (conditional: ConditionalInputProps) => (
+    <div className={conditional.className} id={conditional.id}>
+      <div className={conditional.groupClassName}>
+        <label className={conditional.labelClassName} htmlFor={conditional.id}>
+          {conditional.label}
         </label>
         <input
-          className={conditional?.inputClassName}
-          id={conditional?.inputId}
-          name={conditional?.name}
-          type={conditional?.type}
+          className={conditional.inputClassName}
+          id={conditional.inputId}
+          name={conditional.name}
+          type={conditional.type}
         />
       </div>
     </div>
@@ -68,13 +59,15 @@ export const FormRadio = ({
         disabled={disabled}
         checked={selected}
         {...inputProps}
-        onClick={handleClickEvent}
+        onChange={onChange}
       />
       <label {...labelProps} htmlFor={id}>
         {label}
       </label>
       {hint && <Hint {...hint} />}
-      {conditionalReveal() && conditionalEl(conditional)}
+      {conditional !== undefined &&
+        conditionalReveal() &&
+        conditionalEl(conditional)}
     </div>
   );
 };

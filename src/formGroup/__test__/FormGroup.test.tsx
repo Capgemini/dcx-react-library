@@ -6,6 +6,8 @@ import { FormGroup } from '../FormGroup';
 
 describe('FormGroup', () => {
   it('should render a form group', () => {
+    const handleChange = jest.fn();
+
     render(
       <FormGroup
         groupClasses=""
@@ -19,10 +21,12 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            onChange: handleChange,
           },
         ]}
       />
@@ -32,6 +36,8 @@ describe('FormGroup', () => {
   });
 
   it('should render a form group with a legend', () => {
+    const handleChange = jest.fn();
+
     render(
       <FormGroup
         groupClasses=""
@@ -44,10 +50,12 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            onChange: handleChange,
           },
         ]}
       />
@@ -59,6 +67,8 @@ describe('FormGroup', () => {
   });
 
   it('should render a form group title', () => {
+    const handleChange = jest.fn();
+
     render(
       <FormGroup
         groupClasses=""
@@ -72,10 +82,12 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            onChange: handleChange,
           },
         ]}
       />
@@ -85,6 +97,8 @@ describe('FormGroup', () => {
   });
 
   it('should render a form group with hint text', () => {
+    const handleChange = jest.fn();
+
     render(
       <FormGroup
         groupClasses=""
@@ -98,10 +112,12 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            onChange: handleChange,
           },
         ]}
         hint={{
@@ -114,6 +130,8 @@ describe('FormGroup', () => {
   });
 
   it('should render a form group with an error message', () => {
+    const handleChange = jest.fn();
+
     render(
       <FormGroup
         groupClasses=""
@@ -133,10 +151,12 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            onChange: handleChange,
           },
         ]}
       />
@@ -146,6 +166,8 @@ describe('FormGroup', () => {
   });
 
   it('should render a form group of input items', () => {
+    const handleChange = jest.fn();
+
     const { container } = render(
       <FormGroup
         groupClasses=""
@@ -159,10 +181,12 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            onChange: handleChange,
           },
         ]}
       />
@@ -172,6 +196,7 @@ describe('FormGroup', () => {
 
   it('should call on change of an item if an input has changed', () => {
     const handleChange = jest.fn();
+    const handleItemChange = jest.fn();
 
     render(
       <FormGroup
@@ -189,10 +214,12 @@ describe('FormGroup', () => {
             },
             value: 'yes',
             label: 'Yes',
+            onChange: handleItemChange,
           },
           {
             value: 'no',
             label: 'No',
+            onChange: handleItemChange,
           },
         ]}
         onChange={handleChange}
@@ -200,11 +227,12 @@ describe('FormGroup', () => {
     );
 
     fireEvent.click(screen.getByTestId('custom-item'));
-    expect(handleChange).toHaveBeenCalled();
+    expect(handleItemChange).toHaveBeenCalled();
   });
 
   it('should not call on change if undefined', () => {
     const handleChange = jest.fn();
+    const handleItemChange = jest.fn();
 
     render(
       <FormGroup
@@ -222,10 +250,12 @@ describe('FormGroup', () => {
             },
             value: 'yes',
             label: 'Yes',
+            onChange: handleItemChange,
           },
           {
             value: 'no',
             label: 'No',
+            onChange: handleItemChange,
           },
         ]}
       />
@@ -255,10 +285,12 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             selected: true,
+            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -288,6 +320,7 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             selected: true,
+            onChange: handleChange,
           },
           {
             inputProps: {
@@ -296,6 +329,7 @@ describe('FormGroup', () => {
             value: 'no',
             label: 'No',
             disabled: true,
+            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -336,6 +370,7 @@ describe('FormGroup', () => {
             },
             value: 'yes',
             label: 'Yes',
+            onChange: handleChange,
           },
           {
             inputProps: {
@@ -346,6 +381,7 @@ describe('FormGroup', () => {
             },
             value: 'no',
             label: 'No',
+            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -375,6 +411,8 @@ describe('FormGroup', () => {
   });
 
   it('should render a divider', () => {
+    const handleChange = jest.fn();
+
     const { container } = render(
       <FormGroup
         groupClasses=""
@@ -388,6 +426,7 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            onChange: handleChange,
           },
           {
             id: 'my-divider-id',
@@ -397,6 +436,7 @@ describe('FormGroup', () => {
           {
             value: 'no',
             label: 'No',
+            onChange: handleChange,
           },
         ]}
       />

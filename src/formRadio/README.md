@@ -37,6 +37,7 @@ An example with all the available properties is:
     style: {display: 'flex'}
   }}
   selected={true}
+  onChange={handleChangeHandler}
 />
 ```
 
@@ -60,3 +61,4 @@ the available properties are:
 | **labelProps**       | <any>                                              | null    | **false** | allows for customisation of the label with all the properites needed  |
 | **name**             | string                                             | null    | **false** | name of the radio                                                     |
 | **selected**         | boolean                                            | null    | **false** | default checked of the radio                                          |
+| **onChange**         | (event: React.FormEvent<HTMLInputElement>) => void | null    | **true**  | Dispatch the current value of the input                               |

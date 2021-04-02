@@ -25,13 +25,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             name="changed-name"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-name"
@@ -41,13 +41,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             name="changed-name"
+            onChange={handleChange}
           />
         </div>
       )
@@ -71,13 +71,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             name="changed-country"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-country"
@@ -87,13 +87,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             name="changed-country"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-country"
@@ -103,13 +103,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             name="changed-country"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-country"
@@ -119,13 +119,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             name="changed-country"
+            onChange={handleChange}
           />
         </div>
       )
@@ -149,13 +149,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             name="changed-name-disabled"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-name-disabled"
@@ -165,13 +165,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             name="changed-name-disabled"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-name-disabled"
@@ -181,14 +181,14 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             disabled={true}
             name="changed-name-disabled"
+            onChange={handleChange}
           />
         </div>
       )
@@ -212,14 +212,14 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             selected={true}
             name="changed-name-preselected"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-name-preselected"
@@ -229,13 +229,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             name="changed-name-preselected"
+            onChange={handleChange}
           />
         </div>
       )
@@ -259,8 +259,7 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
@@ -271,6 +270,7 @@ In this section we're using the formRadio component providing the GovUk style pa
               id: "sign-in-item-hint"
             }}
             name="changed-name-with-hint"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-name-with-hint-2"
@@ -280,8 +280,7 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
@@ -292,6 +291,7 @@ In this section we're using the formRadio component providing the GovUk style pa
               id: "sign-in-2-item-hint"
             }}
             name="changed-name-with-hint"
+            onChange={handleChange}
           />
         </div>
       )

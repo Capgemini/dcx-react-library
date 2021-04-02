@@ -84,7 +84,7 @@ export const FormInput = ({
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     if (onValueChange) onValueChange(event);
-    if (onChange) onChange(event);
+    onChange(event);
   };
 
   const ErrorMessage = () => (

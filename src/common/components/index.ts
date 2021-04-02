@@ -136,6 +136,10 @@ export type FormRadioProps = {
    * specifies whether the radio should be selected
    */
   selected?: boolean;
+  /**
+   * function that will trigger all the time there's a change in the radio
+   */
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
 };
 
 export type HintProps = {
