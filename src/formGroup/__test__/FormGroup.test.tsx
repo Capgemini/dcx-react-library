@@ -444,4 +444,32 @@ describe('FormGroup', () => {
 
     expect(container.querySelector('#my-divider-id')).toBeTruthy();
   });
+
+  it('should not render a form group with less than 2 items', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormGroup
+        groupClasses=""
+        id="my-group"
+        name=""
+        legend={{
+          text: 'Have you changed your name?',
+          isHeading: true,
+        }}
+        items={[
+          {
+            value: 'yes',
+            label: 'Yes',
+            onChange: handleChange,
+          },
+        ]}
+      />
+    );
+
+    expect(container.querySelector('#my-group')).not.toBeInTheDocument();
+    expect(
+      screen.getByText('Can not render a Form Group with less than 2 items')
+    ).toBeInTheDocument();
+  });
 });

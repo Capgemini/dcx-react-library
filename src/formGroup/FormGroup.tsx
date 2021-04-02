@@ -143,7 +143,7 @@ export const FormGroup = ({
       )
   );
 
-  return (
+  return items && items.length > 1 ? (
     <div id={id} className={groupClasses} role={Roles.formGroup}>
       <fieldset
         className={fieldsetClasses}
@@ -155,5 +155,7 @@ export const FormGroup = ({
         <div className={itemsClasses}>{formGroupItems}</div>
       </fieldset>
     </div>
+  ) : (
+    <div>Can not render a Form Group with less than 2 items</div>
   );
 };
