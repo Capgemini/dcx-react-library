@@ -90,4 +90,5 @@ FormRadio.propTypes = {
   labelProps: PropTypes.any,
   name: PropTypes.string.isRequired,
   selected: PropTypes.bool,
+  onChange: PropTypes.func,
 };
