@@ -7,4 +7,5 @@ export const Roles = {
   formGroup: 'form-group',
   prefix: 'prefix',
   suffix: 'suffix',
+  progress: 'progress',
 };
