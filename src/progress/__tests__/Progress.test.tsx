@@ -36,7 +36,7 @@ describe('Progress', () => {
     );
 
     expect(container.querySelector('#progress-id')).toBeTruthy();
-    expect(container.querySelector('label')?.innerHTML).toBe('Progress:');
+    expect(container.querySelector('label')?.innerHTML).toBe('Progress: ');
   });
 
   it('should render a fallback progress bar with a className', () => {
