@@ -6,24 +6,48 @@ import { FormRadio } from '../FormRadio';
 
 describe('FormRadio', () => {
   it('should render a radio', () => {
+    const handleChange = jest.fn();
+
     render(
-      <FormRadio id="myId" value="choice 1" label="my label" name="group 1" />
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group 1"
+        onChange={handleChange}
+      />
     );
 
     expect(screen.getByRole('form-radio')).toBeInTheDocument();
   });
 
   it('should render a radio with a label', () => {
+    const handleChange = jest.fn();
+
     render(
-      <FormRadio id="myId" value="choice 1" label="my label" name="group1" />
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group1"
+        onChange={handleChange}
+      />
     );
 
     expect(screen.getByLabelText('my label')).toBeInTheDocument();
   });
 
   it('should render a radio with a value', () => {
+    const handleChange = jest.fn();
+
     render(
-      <FormRadio id="myId" value="choice 1" label="my label" name="group1" />
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group1"
+        onChange={handleChange}
+      />
     );
 
     expect(screen.getByLabelText('my label').getAttribute('value')).toBe(
@@ -32,8 +56,16 @@ describe('FormRadio', () => {
   });
 
   it('should render a radio with aria label match name if unspecified', () => {
+    const handleChange = jest.fn();
+
     render(
-      <FormRadio id="myId" value="choice 1" label="my label" name="group1" />
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group1"
+        onChange={handleChange}
+      />
     );
 
     expect(screen.getByLabelText('my label').getAttribute('aria-label')).toBe(
@@ -42,8 +74,16 @@ describe('FormRadio', () => {
   });
 
   it('should render a radio with an id', () => {
+    const handleChange = jest.fn();
+
     const { container } = render(
-      <FormRadio id="myId" value="choice 1" label="my label" name="group1" />
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group1"
+        onChange={handleChange}
+      />
     );
 
     expect(container.querySelector('#myId')).toBeInTheDocument();
@@ -58,25 +98,13 @@ describe('FormRadio', () => {
         value="choice 1"
         label="my label"
         name="group1"
-        inputProps={{ onChange: handleChange }}
+        onChange={handleChange}
       />
     );
 
     fireEvent['click'](screen.getByLabelText('my label'));
 
     expect(handleChange).toHaveBeenCalled();
-  });
-
-  it('should not call on change if undefined', () => {
-    const handleChange = jest.fn();
-
-    render(
-      <FormRadio id="myId" value="choice 1" label="my label" name="group1" />
-    );
-
-    fireEvent['click'](screen.getByLabelText('my label'));
-
-    expect(handleChange).not.toHaveBeenCalled();
   });
 
   it('should set radio as checked if specified', () => {
@@ -89,7 +117,7 @@ describe('FormRadio', () => {
         label="my label"
         selected={true}
         name="group1"
-        inputProps={{ onChange: handleChange }}
+        onChange={handleChange}
       />
     );
     const container: HTMLElement = screen.getByRole('form-radio');
@@ -109,7 +137,7 @@ describe('FormRadio', () => {
         label="my label"
         name="group1"
         disabled={true}
-        inputProps={{ onChange: handleChange }}
+        onChange={handleChange}
       />
     );
     const container: HTMLElement = screen.getByRole('form-radio');
@@ -120,6 +148,8 @@ describe('FormRadio', () => {
   });
 
   it('should render hint text', () => {
+    const handleChange = jest.fn();
+
     render(
       <FormRadio
         id="myId"
@@ -131,6 +161,7 @@ describe('FormRadio', () => {
         }}
         name="group1"
         ariaDescribedBy="my-hint-item-hint"
+        onChange={handleChange}
       />
     );
 
@@ -138,5 +169,53 @@ describe('FormRadio', () => {
     expect(
       screen.getByLabelText('my label').getAttribute('aria-describedby')
     ).toBe('my-hint-item-hint');
+  });
+
+  it('should not render an input field', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormRadio
+        value="choice 1"
+        label="my label"
+        conditional={{
+          name: 'input-field-name',
+          label: 'label',
+          type: 'text',
+          value: {},
+          id: 'my-input',
+        }}
+        name="group1"
+        onChange={handleChange}
+      />
+    );
+
+    expect(container.querySelector('#my-input')).not.toBeInTheDocument();
+  });
+
+  it('should render an input field when selected', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormRadio
+        id="choice-1"
+        value="choice 1"
+        label="my label"
+        conditional={{
+          name: 'input-field-name',
+          label: 'label',
+          type: 'text',
+          value: {},
+          id: 'my-input',
+        }}
+        name="group1"
+        selected={true}
+        onChange={handleChange}
+      />
+    );
+
+    fireEvent['click'](screen.getByLabelText('my label'));
+
+    expect(container.querySelector('#my-input')).toBeInTheDocument();
   });
 });

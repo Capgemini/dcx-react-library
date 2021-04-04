@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Roles } from '../common';
 import {
   ErrorMessage,
@@ -82,7 +82,7 @@ type FormGroupProps = {
   /**
    * function that will trigger all the time there's a change of choice
    */
-  onChange?: (event: React.ChangeEventHandler<HTMLInputElement>) => void;
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
 };
 
 export const FormGroup = ({
@@ -101,6 +101,15 @@ export const FormGroup = ({
   legend,
   onChange,
 }: FormGroupProps) => {
+  const findSelection = (items: (FormRadioProps | DividerProps)[]) =>
+    items.find(
+      (item: FormRadioProps | DividerProps) => (item as FormRadioProps).selected
+    );
+
+  const [selection, setSelection] = useState(
+    (findSelection(items) as FormRadioProps)?.value
+  );
+
   const isDivider = (
     item: DividerProps | FormRadioProps
   ): item is DividerProps => (item as FormRadioProps).label === undefined;
@@ -120,14 +129,21 @@ export const FormGroup = ({
           key={`${id}_${index.toString()}`}
           {...item}
           name={name}
-          inputProps={{ ...inputProps, ...item.inputProps, onChange }}
+          inputProps={{ ...inputProps, ...item.inputProps }}
           itemProps={{ ...itemProps, ...item.itemProps }}
           labelProps={{ ...labelProps, ...item.labelProps }}
+          selected={selection === item.value}
+          onChange={e => {
+            setSelection(e.currentTarget.value);
+            item.onChange(e);
+
+            if (onChange) onChange(e);
+          }}
         />
       )
   );
 
-  return (
+  return items && items.length > 1 ? (
     <div id={id} className={groupClasses} role={Roles.formGroup}>
       <fieldset
         className={fieldsetClasses}
@@ -139,5 +155,7 @@ export const FormGroup = ({
         <div className={itemsClasses}>{formGroupItems}</div>
       </fieldset>
     </div>
+  ) : (
+    <div>Can not render a Form Group with less than 2 items</div>
   );
 };

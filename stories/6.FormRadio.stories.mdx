@@ -8,12 +8,17 @@ import "./style.css";
 <Canvas>
   <Story name="un-styled">
       {() => {
+        const [value, setValue] = React.useState('')
+        const handleChange = event => {
+          setValue(event.currentTarget.value);
+        }
       return (
         <FormRadio
           label="text example"
           name="group1"
           value="value"
           id="radio-1"
+          onChange={handleChange}
         />
       );
     }}

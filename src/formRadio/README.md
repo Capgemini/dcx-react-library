@@ -16,6 +16,7 @@ An example with all the available properties is:
   name='radio-name'
   value={value}
   ariaLabel='aria-label'
+  ariaDataControls='aria-data-controls'
   ariaDescribedBy='aria-described-by'
   ariaLabelledBy='aria-labelled-by'
   disabled={true}
@@ -36,6 +37,7 @@ An example with all the available properties is:
     style: {display: 'flex'}
   }}
   selected={true}
+  onChange={handleChangeHandler}
 />
 ```
 
@@ -48,6 +50,8 @@ the available properties are:
 | **label**            | string                                             | null    | **true**  | label of the radio                                                    |
 | **value**            | string                                             | null    | **true**  | value of the radio                                                    |
 | **ariaLabel**        | string                                             | null    | **false** | aria-label of the radio                                               |
+| **ariaDataControls** | string                                             | null    | **false** | aria-data-controls of the radio                                       |
+| **conditionaly**     | <conditionalProps>                                 | null    | **false** | conditional reveal for input field                                    |
 | **ariaDescribedBy**  | string                                             | null    | **false** | aria-described-by of the radio                                        |
 | **disabled**         | boolean                                            | null    | **false** | set the radio as disabled                                             |
 | **hint**             | <HintProps>                                        | null    | **false** | hint text for the radio                                               |
@@ -57,3 +61,4 @@ the available properties are:
 | **labelProps**       | <any>                                              | null    | **false** | allows for customisation of the label with all the properites needed  |
 | **name**             | string                                             | null    | **false** | name of the radio                                                     |
 | **selected**         | boolean                                            | null    | **false** | default checked of the radio                                          |
+| **onChange**         | (event: React.FormEvent<HTMLInputElement>) => void | null    | **true**  | Dispatch the current value of the input                               |

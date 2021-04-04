@@ -22,6 +22,16 @@ An example with all the available properties is:
   value={value}
   ariaLabel='aria-label'
   ariaDescribedBy='aria-described-by'
+  conditional={{
+    name: "conditional-reveal",
+    label: "label",
+    type: "text",
+    className: "classes",
+    groupClassName: "group-classes",
+    id: "conditional-id",
+    inputClassName: "input-classes",
+    inputId: "input-id"
+  }}
   disabled={true}
   hint={{
     text: 'hint text',
@@ -41,6 +51,7 @@ An example with all the available properties is:
   }}
   name='radio-name'
   selected={true}
+  onChange={handleChange}
 />
 ```
 
