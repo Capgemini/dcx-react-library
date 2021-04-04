@@ -38,7 +38,13 @@ export const Progress = ({
 }: ProgressProps) => (
   <>
     <label className={labelClassName} htmlFor={id}>{`${label}: `}</label>
-    <progress id={id} max={max} value={value} role={Roles.progress}>
+    <progress
+      id={id}
+      className={className}
+      max={max}
+      value={value}
+      role={Roles.progress}
+    >
       <div id={id} className={className}>
         <span
           style={{

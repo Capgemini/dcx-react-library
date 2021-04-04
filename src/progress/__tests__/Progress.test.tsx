@@ -45,5 +45,6 @@ describe('Progress', () => {
     );
 
     expect(container.querySelector('div')?.className).toBe('my-class');
+    expect(container.querySelector('div')?.className).toBe('my-class');
   });
 });
