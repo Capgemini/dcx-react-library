@@ -1,5 +1,7 @@
 # DCX Component library
 
+To see the full list of components built in dcx-react-library have a look on our [storybook-showcase](https://6069a6f47f4b9f002171f8e1-asppmttfxd.chromatic.com/?path=/story/dcxlibrary-introduction--page)
+
 ## Commands
 
 DCX Component Library scaffolds your new library inside `/src`, and also sets up a [Parcel-based](https://parceljs.org) playground for it inside `/example`.

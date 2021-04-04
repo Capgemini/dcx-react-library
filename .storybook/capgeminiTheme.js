@@ -24,7 +24,7 @@ export default create({
   inputBg: 'white',
   inputBorder: '#2b0a3d',
   inputTextColor: 'black',
-  inputBorderRadius: 4,
+  inputBorderRadius: 6,
 
   brandTitle: 'Capgemini storybook',
   brandUrl: 'https://www.capgemini.com',
