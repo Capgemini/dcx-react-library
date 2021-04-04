@@ -1,0 +1,55 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Progress } from '../src/progress/Progress';
+import './progress/style.css';
+
+<Meta title="DCXLibrary/Progress/HTML5" component={Progress} />
+
+# HTML5 Style
+
+In this section we're using the progress component providing styling passing the relative `className`. Feel free to use your own css and style the progress as you prefer
+
+<Canvas>
+    <Story name="customised">
+        {() => {
+            return (
+                <Progress
+                    label="Progress"
+                    max={100}
+                    value={80}
+                    className="progress1"
+                />
+            )
+        }}
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="gradient-background">
+        {() => {
+            const animate = () => {
+                const p = document.querySelector('#progress-2');
+                if (p) {
+                    p.setAttribute('value', 80);
+                };
+            };
+            const timerId = setInterval(() => {
+                animate();
+            }, 2000);
+            window.unload = function() {
+                clearInterval(timerId);
+            }
+            return (
+                <Progress
+                    label="Progress"
+                    max={100}
+                    value={0}
+                    className="progress2"
+                    id="progress-2"
+                    labelClassName="myLabel"
+                />
+            )
+        }}
+    </Story>
+</Canvas>
+
+<Props of={Progress} />
