@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/Capgemini/dcx-react-library.svg?style=svg&circle-token=01302eaa7b002e8deb236a1b6869348bdb703f02)](LINK)
+
 # DCX Component library
 
 To see the full list of components built in dcx-react-library have a look on our [storybook-showcase](https://6069a6f47f4b9f002171f8e1-asppmttfxd.chromatic.com/?path=/story/dcxlibrary-introduction--page)
