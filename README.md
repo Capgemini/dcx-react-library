@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/Capgemini/dcx-react-library.svg?style=svg&circle-token=01302eaa7b002e8deb236a1b6869348bdb703f02)](LINK)
+[![CircleCI](https://circleci.com/gh/Capgemini/dcx-react-library.svg?style=svg&circle-token=c05d3eb49441c9985f5424f28f788f1a31556503)](LINK)
 
 # DCX Component library
 
