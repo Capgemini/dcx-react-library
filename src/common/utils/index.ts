@@ -8,4 +8,5 @@ export const Roles = {
   prefix: 'prefix',
   suffix: 'suffix',
   progress: 'progress',
+  toggle: 'form-toggle',
 };

@@ -1,0 +1,60 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Toggle } from '../src/toggle/Toggle';
+
+<Meta title="DCXLibrary/Form/Toggle/documentation" component={Toggle} />
+
+# Progress
+
+Toggle component ready to use in your UI
+
+Toggle is UI/UX agnostic so you need to provide your style to have the look
+and feel you prefer.
+
+## Usage
+
+Use the toggle component when users need to toggle a value
+
+An example with all the available properties is:
+
+```js
+<Toggle
+  checked={checked}
+  onChange={e => {
+    setChecked(e);
+  }}
+  onColor="orange"
+  offColor="gray"
+  disabled={true}
+  borderRadius="0"
+  customOnLabel={
+    <FontAwesomeIcon
+      icon={faCheck}
+      style={{
+        fontSize: '12px',
+        display: 'flex',
+        justifyContent: 'flex-start',
+        marginLeft: '4px',
+        alignItems: 'center',
+        height: '100%',
+        color: 'white',
+      }}
+    />
+  }
+  customOffLabel={
+    <FontAwesomeIcon
+      style={{
+        fontSize: '12px',
+        display: 'flex',
+        justifyContent: 'flex-end',
+        marginRight: '4px',
+        alignItems: 'center',
+        height: '100%',
+        color: 'white',
+      }}
+      icon={faPowerOff}
+    />
+  }
+/>
+```
+
+<Props of={Toggle} />
