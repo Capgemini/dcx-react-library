@@ -10,6 +10,7 @@ import {
   FormCheckboxDemo,
   ButtonDemo,
   ProgressDemo,
+  ToggleDemo,
 } from './components';
 import { Login } from './pages/Login';
 const App = () => (
@@ -41,6 +42,9 @@ const App = () => (
           <li>
             <Link to="/progress">ProgressDemo</Link>
           </li>
+          <li>
+            <Link to="/toggle">ToggleDemo</Link>
+          </li>
         </ul>
       </nav>
       <Switch>
@@ -52,6 +56,7 @@ const App = () => (
         <Route path="/AutocompleteDemo" component={AutocompleteDemo} />
         <Route path="/ButtonDemo" component={ButtonDemo} />
         <Route path="/progress" component={ProgressDemo} />
+        <Route path="/toggle" component={ToggleDemo} />
       </Switch>
     </BrowserRouter>
   </div>
