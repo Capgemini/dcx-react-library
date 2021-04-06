@@ -21,3 +21,25 @@ import { FormSelect } from '../src/formSelect/FormSelect';
     }}
   </Story>
 </Canvas>
+
+### Examples of basic Select
+
+<Canvas>
+  <Story name="color">
+    {() => {
+      const [checked, setChecked] = React.useState(false);
+      return (
+        <div>
+             <FormSelect
+                id="myId"
+                name="the name"
+                options={[{ label: 'option1', value: 'value1' }, { label: 'option2', value: 'value2' }]}
+                selectProps = {{
+                  style: {fontSize: '20px', color: 'blue', fontWeight: 'bold'},
+                }}
+             />
+         </div>
+      );
+    }}
+  </Story>
+</Canvas>
