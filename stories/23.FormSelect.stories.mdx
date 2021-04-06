@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormSelect } from '../src/formSelect/FormSelect';
+
+<Meta title="DCXLibrary/Form/FormSelect" component={FormSelect} />
+
+### Examples of basic Select
+
+<Canvas>
+  <Story name="basic">
+    {() => {
+      const [checked, setChecked] = React.useState(false);
+      return (
+        <div>
+                 <FormSelect
+                    id="myId"
+                    name="the name"
+                    options={[{ label: 'option1', value: 'value1' }, { label: 'option2', value: 'value2' }]}
+                 />
+              </div>
+      );
+    }}
+  </Story>
+</Canvas>
