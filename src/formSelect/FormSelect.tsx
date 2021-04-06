@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Roles } from '../common';
 
 export type SelectOption = {
@@ -42,6 +42,12 @@ export const FormSelect = ({
   selectProps,
   optionProps,
 }: FormSelectProps) => {
+  const [value, setValue] = useState<string>();
+
+  const handleChange = (evt: React.FormEvent<HTMLSelectElement>) => {
+    setValue(evt.currentTarget.value);
+  };
+
   const selectOptions = options.map((item: SelectOption) => (
     <option value={item.value} key={item.value} {...optionProps}>
       {item.label}
@@ -50,7 +56,13 @@ export const FormSelect = ({
 
   return (
     <div role={Roles.formSelect}>
-      <select name={name} id={id} {...selectProps}>
+      <select
+        value={value}
+        onChange={handleChange}
+        name={name}
+        id={id}
+        {...selectProps}
+      >
         {selectOptions}
       </select>
     </div>
