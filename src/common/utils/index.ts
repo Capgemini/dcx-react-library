@@ -9,4 +9,5 @@ export const Roles = {
   suffix: 'suffix',
   progress: 'progress',
   toggle: 'form-toggle',
+  formSelect: 'form-select',
 };
