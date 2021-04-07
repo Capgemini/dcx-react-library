@@ -1,1 +1,1 @@
-export { FormSelect } from './FormSelect';
+export { FormSelect, SelectOption, FormSelectProps } from './FormSelect';

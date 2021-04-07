@@ -8,15 +8,21 @@ import { FormSelect } from '../src/formSelect/FormSelect';
 <Canvas>
   <Story name="basic">
     {() => {
-      const [checked, setChecked] = React.useState(false);
+      const [value, setValue] = React.useState('');
+      const handleChange = evt => {
+        setValue(evt.currentTarget.value);
+      };
       return (
-        <div>
-                 <FormSelect
-                    id="myId"
-                    name="the name"
-                    options={[{ label: 'option1', value: 'value1' }, { label: 'option2', value: 'value2' }]}
-                 />
-              </div>
+        <FormSelect
+          id="myId"
+          name="the name"
+          value={value}
+          onChange={handleChange}
+          options={[
+            { label: 'option1', value: 'value1' },
+            { label: 'option2', value: 'value2' },
+          ]}
+        />
       );
     }}
   </Story>
@@ -27,18 +33,24 @@ import { FormSelect } from '../src/formSelect/FormSelect';
 <Canvas>
   <Story name="color">
     {() => {
-      const [checked, setChecked] = React.useState(false);
+      const [value, setValue] = React.useState('');
+      const handleChange = evt => {
+        setValue(evt.currentTarget.value);
+      };
       return (
-        <div>
-             <FormSelect
-                id="myId"
-                name="the name"
-                options={[{ label: 'option1', value: 'value1' }, { label: 'option2', value: 'value2' }]}
-                selectProps = {{
-                  style: {fontSize: '20px', color: 'blue', fontWeight: 'bold'},
-                }}
-             />
-         </div>
+        <FormSelect
+          id="myId"
+          name="the name"
+          value={value}
+          onChange={handleChange}
+          options={[
+            { label: 'option1', value: 'value1' },
+            { label: 'option2', value: 'value2' },
+          ]}
+          selectProps={{
+            style: { fontSize: '20px', color: 'blue', fontWeight: 'bold' },
+          }}
+        />
       );
     }}
   </Story>
