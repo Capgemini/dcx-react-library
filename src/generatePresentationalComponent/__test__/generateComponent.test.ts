@@ -9,7 +9,7 @@ export const Label = (props: any) => {
   const branded: any = brandedComponentStyle(jsonStyle.label);
 
   return (
-    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag}>
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} {...props}>
       {props.children}
     </DynamicComponent>
   );
