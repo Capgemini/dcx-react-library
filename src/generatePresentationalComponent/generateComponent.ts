@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import { capitalize } from 'lodash';
 const camelCase = require('camelcase');
 const path = require('path');
 const template = `
@@ -58,10 +57,10 @@ export const generateComponent = (
     inputFile,
     outputFolder
   );
-  const fileName = `${outputFolder}/${capitalize(inputFile).replace(
+  const fileName = `${outputFolder}/${camelCase((inputFile).replace(
     '.json',
-    '.tsx'
-  )}`;
+    ''
+  ), {pascalCase: true, preserveConsecutiveUppercase: true})}.tsx`;
   // create the folder if doesn't exist
   fs.mkdirSync(outputFolder, { recursive: true });
   // create the file
