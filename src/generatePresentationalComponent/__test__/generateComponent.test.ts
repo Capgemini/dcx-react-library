@@ -23,7 +23,7 @@ export const HeadingOne = (props: any) => {
   const branded: any = brandedComponentStyle(jsonStyle.headingOne);
 
   return (
-    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag}>
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} {...props}>
       {props.children}
     </DynamicComponent>
   );
@@ -37,7 +37,7 @@ export const HeadingOne = (props: any) => {
   const branded: any = brandedComponentStyle(jsonStyle.heading-one);
 
   return (
-    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag}>
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} {...props}>
       {props.children}
     </DynamicComponent>
   );
