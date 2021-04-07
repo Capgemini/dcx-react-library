@@ -1,20 +1,26 @@
-import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Props, ArgsTable } from '@storybook/addon-docs/blocks';
 import { Button } from '../src/button/Button';
 
 <Meta title="DCXLibrary/Form/Button" component={Button} />
 
+
+export const Template = (args) => <Button {...args}/>
+
+
 ### An example of 'un-styled' Button
 <Canvas>
-  <Story name="un-styled">
-      {() => {
+  <Story name="un-styled" args={{label: 'Register', disabled: false, ariaLabel: 'unstyled-button', disableClickForMs:2000}}>
+      {(args) => {
         const buttonHandler = evt => {
             console.log(evt)
         }
       return (
         <Button
-            label="Start Now"
+            label={args.label}
+            disabled={args.disabled}
             onClick={buttonHandler}
-            disableClickForMs={2000}
+            ariaLabel={args.ariaLabel}
+            disableClickForMs={args.disableClickForMs}
             customPostfixImg={
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -45,4 +51,4 @@ import { Button } from '../src/button/Button';
   </Story>
 </Canvas>
 
-<Props of={Button} />
+<ArgsTable of={Button} />
