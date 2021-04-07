@@ -9,7 +9,7 @@ export const {{componentName}} = (props: any) => {
   const branded: any = brandedComponentStyle(jsonStyle.{{jsonPath}});
 
   return (
-    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag}>
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} {...props}>
       {props.children}
     </DynamicComponent>
   );
