@@ -18,27 +18,27 @@ export type FormSelectProps = {
    */
   name: string;
   /**
-   * select id
-   */
-  id?: string;
-  /**
    * select options
    */
   options: SelectOption[];
   /**
-   * allow to customise the select with all the properites needed
+   * select id
+   */
+  id?: string;
+  /**
+   * allow to customise the select with all the properties needed
    **/
   selectProps?: any;
   /**
-   * allow to customise the select options with all the properites needed
+   * allow to customise the select options with all the properties needed
    **/
   optionProps?: any;
 };
 
 export const FormSelect = ({
   name,
-  id,
   options,
+  id,
   selectProps,
   optionProps,
 }: FormSelectProps) => {
@@ -60,7 +60,7 @@ export const FormSelect = ({
         value={value}
         onChange={handleChange}
         name={name}
-        id={id}
+        id={id || 'formSelect'}
         {...selectProps}
       >
         {selectOptions}
