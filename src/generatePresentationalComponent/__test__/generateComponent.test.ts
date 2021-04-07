@@ -15,6 +15,34 @@ export const Label = (props: any) => {
   );
 };`;
 
+const outputCamelFile = `
+import React from 'react';
+import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
+import jsonStyle from '../stories/typographyDemo/headingOne/headingOne.json';
+export const HeadingOne = (props: any) => {
+  const branded: any = brandedComponentStyle(jsonStyle.headingOne);
+
+  return (
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag}>
+      {props.children}
+    </DynamicComponent>
+  );
+};`;
+
+const outputCamelFile2 = `
+import React from 'react';
+import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
+import jsonStyle from '../stories/typographyDemo/headingOne/heading-one.json';
+export const HeadingOne = (props: any) => {
+  const branded: any = brandedComponentStyle(jsonStyle.heading-one);
+
+  return (
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag}>
+      {props.children}
+    </DynamicComponent>
+  );
+};`;
+
 const inputFile = {
   'label.json': {
     tag: 'label',
@@ -109,5 +137,23 @@ describe('generateComponent', () => {
       'components/'
     );
     expect(component).toContain(outputFile);
+  });
+
+  it('should camelCase the componentName', () => {
+    const component = componentGenerator.generateComponentTemplate(
+      'stories/typographyDemo/headingOne/',
+      'headingOne.json',
+      'components/'
+    );
+    expect(component).toContain(outputCamelFile);
+  });
+
+  it('should camelCase the name', () => {
+    const component = componentGenerator.generateComponentTemplate(
+      'stories/typographyDemo/headingOne/',
+      'heading-one.json',
+      'components/'
+    );
+    expect(component).toContain(outputCamelFile2);
   });
 });
