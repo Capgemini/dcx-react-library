@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import { capitalize } from 'lodash';
+const camelCase = require('camelcase');
 const path = require('path');
 const template = `
 import React from 'react';
@@ -27,7 +28,10 @@ export const generateComponentTemplate = (
   inputFile: string,
   outputFolder: string
 ): string => {
-  const componentName = capitalize(inputFile.replace('.json', ''));
+  const componentName = camelCase(inputFile.replace('.json', ''), {
+    pascalCase: true,
+    preserveConsecutiveUppercase: true,
+  });
   const jsonPath = inputFile.replace('.json', '');
   const relativePath = path.relative(outputFolder, inputFolder);
   return template
