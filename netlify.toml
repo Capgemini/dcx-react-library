@@ -1,3 +1,3 @@
 [build]
   base    = "example"
-  publish = "/showcase/"
+  publish = "/build/"
