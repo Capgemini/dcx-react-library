@@ -7,7 +7,7 @@ describe('Progress', () => {
   it('should render an indeterminate progress bar', () => {
     const { container } = render(<Progress label="Progress" max={100} />);
 
-    expect(screen.getByRole('progress')).toBeInTheDocument();
+    expect(screen.getByRole('progressbar')).toBeInTheDocument();
     expect(container.querySelector('span')?.getAttribute('style')).toBeNull();
     expect(container.querySelector('span')?.innerHTML).toBe('');
   });
@@ -17,7 +17,7 @@ describe('Progress', () => {
       <Progress label="Progress" max={100} value={80} />
     );
 
-    expect(screen.getByRole('progress')).toBeInTheDocument();
+    expect(screen.getByRole('progressbar')).toBeInTheDocument();
     expect(container.querySelector('span')?.getAttribute('style')).toEqual(
       'width: 80px;'
     );

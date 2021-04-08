@@ -1,5 +1,4 @@
 import React from 'react';
-import { Roles } from '../common';
 
 type ProgressProps = {
   /**
@@ -38,13 +37,7 @@ export const Progress = ({
 }: ProgressProps) => (
   <>
     <label className={labelClassName} htmlFor={id}>{`${label}: `}</label>
-    <progress
-      id={id}
-      className={className}
-      max={max}
-      value={value}
-      role={Roles.progress}
-    >
+    <progress id={id} className={className} max={max} value={value}>
       <div id={id} className={className}>
         <span
           style={{

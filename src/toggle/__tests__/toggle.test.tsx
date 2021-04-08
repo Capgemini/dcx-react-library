@@ -28,7 +28,7 @@ describe('Toggle', () => {
         offColor="gray"
       />
     );
-    expect(screen.getByRole('form-toggle')).toBeInTheDocument();
+    expect(screen.getByRole('switch')).toBeInTheDocument();
   });
   it('should handle the onChange', () => {
     const onChangeHandle = jest.fn();
@@ -40,13 +40,13 @@ describe('Toggle', () => {
         offColor="gray"
       />
     );
-    const toggle = screen.getByRole('form-toggle');
+    const toggle = screen.getByRole('switch');
     fireEvent.click(toggle);
     expect(onChangeHandle).toHaveBeenCalledTimes(1);
   });
   it('should check the toggle', () => {
     render(<DummyToggle />);
-    const toggle = screen.getByRole('form-toggle');
+    const toggle = screen.getByRole('switch');
     fireEvent.click(toggle);
     const check: any = screen.getByRole('switch');
     expect(check.checked).toBeTruthy();

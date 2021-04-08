@@ -47,10 +47,10 @@ describe('FormInput', () => {
         }}
       />
     );
-    expect(screen.getByRole('form-input')).toBeInTheDocument();
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 
-  it('should display the formInput prefix content', () => {
+  it('should display the formInput properties', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
@@ -58,7 +58,7 @@ describe('FormInput', () => {
         type="text"
         value="@_-bddcd6A"
         onChange={handleChange}
-        prefix={<div>prefix</div>}
+        prefix={<div data-testid="prefix">prefix</div>}
       />
     );
     const input: any = screen.getByRole('textbox');
@@ -68,7 +68,7 @@ describe('FormInput', () => {
     expect(input).toBeInTheDocument();
   });
 
-  it('should display the formInput prefix content', () => {
+  it('should display the formInput suffix content', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
@@ -76,10 +76,10 @@ describe('FormInput', () => {
         type="text"
         value="test"
         onChange={handleChange}
-        suffix={<div>suffix</div>}
+        suffix={<div data-testid="suffix">suffix</div>}
       />
     );
-    expect(screen.getByRole('suffix')).toBeInTheDocument();
+    expect(screen.getByTestId('suffix')).toBeInTheDocument();
   });
 
   it('should display the formInput error', () => {

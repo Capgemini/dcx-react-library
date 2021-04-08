@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Roles } from '../common';
 import {
   ErrorMessage,
   ErrorMessageProps,
@@ -144,7 +143,7 @@ export const FormGroup = ({
   );
 
   return items && items.length > 1 ? (
-    <div id={id} className={groupClasses} role={Roles.formGroup}>
+    <div id={id} className={groupClasses}>
       <fieldset
         className={fieldsetClasses}
         aria-describedby={ariaDescribedBy || ''}

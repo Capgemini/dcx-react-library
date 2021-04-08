@@ -70,13 +70,13 @@ describe('FormInput', () => {
       <Autocomplete
         options={['daniele', 'isaac']}
         debounceMs={100}
-        prefix={<div>prefix</div>}
-        suffix={<div>prefix</div>}
+        prefix={<div data-testid="prefix">prefix</div>}
+        suffix={<div data-testid="suffix">prefix</div>}
       />
     );
 
-    expect(screen.getByRole('suffix')).toBeInTheDocument();
-    expect(screen.getByRole('prefix')).toBeInTheDocument();
+    expect(screen.getByTestId('suffix')).toBeInTheDocument();
+    expect(screen.getByTestId('prefix')).toBeInTheDocument();
   });
 
   it('should display available options', async () => {

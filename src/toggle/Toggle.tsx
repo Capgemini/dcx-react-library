@@ -1,5 +1,4 @@
 import React from 'react';
-import { Roles } from '../common';
 import style from './toggle.module.css';
 
 interface ToggleProps {
@@ -67,7 +66,6 @@ export const Toggle = ({
         filter: disabled ? 'brightness(0.9)' : 'unset',
       }}
       className={`${style.switch} ${className || ''}`}
-      role={Roles.toggle}
     >
       <div
         className={`${style.switchBg} ${checked ? style.isChecked : ''}`}

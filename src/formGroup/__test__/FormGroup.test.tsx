@@ -32,7 +32,7 @@ describe('FormGroup', () => {
       />
     );
 
-    expect(screen.getByRole('form-group')).toBeInTheDocument();
+    expect(screen.getByRole('group')).toBeInTheDocument();
   });
 
   it('should render a form group with a legend', () => {
@@ -63,7 +63,7 @@ describe('FormGroup', () => {
 
     const legend: string = '<legend>Have you changed your name?</legend>';
 
-    expect(screen.getByRole('form-group')).toContainHTML(legend);
+    expect(screen.getByRole('group')).toContainHTML(legend);
   });
 
   it('should render a form group title', () => {
