@@ -71,7 +71,7 @@ describe('FormInput', () => {
         options={['daniele', 'isaac']}
         debounceMs={100}
         prefix={<div data-testid="prefix">prefix</div>}
-        suffix={<div data-testid="suffix">prefix</div>}
+        suffix={<div data-testid="suffix">suffix</div>}
       />
     );
 
