@@ -15,6 +15,28 @@ afterEach(() => {
   jest.clearAllTimers();
 });
 
+const DummyLoadingButton = ({ loadingLabel }: any) => {
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const handleClick = () => {
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 1000);
+  };
+
+  return (
+    <Button
+      isLoading={isLoading}
+      onClick={handleClick}
+      label="Register"
+      loadingLabel={loadingLabel}
+      customPrefixImg={<img id="prefixImg" alt="" src="" />}
+      customPostfixImg={<img id="postfixmg" alt="" src="" />}
+      customLoadingPostImage={<img id="postLoadingImg" alt="" src="" />}
+      customLoadingPreImage={<img id="preLoadingImg" alt="" src="" />}
+    />
+  );
+};
+
 describe('Button', () => {
   it('should render', () => {
     const handleClick = jest.fn();
@@ -114,5 +136,54 @@ describe('Button', () => {
       jest.runAllTimers();
     });
     expect(button).not.toBeDisabled();
+  });
+
+  it('should disable the button if is in loading state', () => {
+    render(<DummyLoadingButton />);
+    const button: any = screen.getByRole('button');
+    act(() => userEvent.click(button));
+    act(() => {
+      jest.runAllTimers();
+    });
+    expect(button).not.toBeDisabled();
+  });
+  it('should display a different label if is loading state', () => {
+    render(<DummyLoadingButton loadingLabel="Loading..." />);
+    const button: any = screen.getByRole('button');
+    act(() => userEvent.click(button));
+    expect(button.innerHTML).toContain('Loading...');
+    act(() => {
+      jest.runAllTimers();
+    });
+    expect(button.innerHTML).toContain('Register');
+  });
+  it('should display a different prefix and postfix if is loading state', () => {
+    render(<DummyLoadingButton loadingLabel="Loading..." />);
+    const button: any = screen.getByRole('button');
+    act(() => userEvent.click(button));
+    expect(button.innerHTML).toContain(
+      '<img id="preLoadingImg" alt="" src="">Loading...<img id="postLoadingImg" alt="" src="">'
+    );
+    act(() => {
+      jest.runAllTimers();
+    });
+    expect(button.innerHTML).toContain(
+      '<img id="prefixImg" alt="" src="">Register<img id="postfixmg" alt="" src="">'
+    );
+  });
+
+  it('should display the same label in loading state', () => {
+    render(<DummyLoadingButton />);
+    const button: any = screen.getByRole('button');
+    act(() => userEvent.click(button));
+    expect(button.innerHTML).toContain(
+      '<img id="preLoadingImg" alt="" src="">Register<img id="postLoadingImg" alt="" src="">'
+    );
+    act(() => {
+      jest.runAllTimers();
+    });
+    expect(button.innerHTML).toContain(
+      '<img id="prefixImg" alt="" src="">Register<img id="postfixmg" alt="" src="">'
+    );
   });
 });

@@ -40,6 +40,23 @@ type ButtonProps = {
    * allow to add an image after the label
    */
   customPostfixImg?: JSX.Element;
+
+  /**
+   * determine if there's a loading status
+   */
+  isLoading?: boolean;
+  /**
+   * a custom loding label
+   */
+  loadingLabel?: string;
+  /**
+   * allow to add an image before the label when loading
+   */
+  customLoadingPreImage?: JSX.Element;
+  /**
+   * allow to add an image after the label when loading
+   */
+  customLoadingPostImage?: JSX.Element;
 };
 
 export const Button = ({
@@ -51,10 +68,13 @@ export const Button = ({
   disableClickForMs = 0,
   customPrefixImg,
   customPostfixImg,
+  isLoading,
+  loadingLabel,
+  customLoadingPreImage,
+  customLoadingPostImage,
   ...props
 }: ButtonProps) => {
-  const [disable, setDisable] = React.useState(disabled);
-
+  const [disable, setDisable] = React.useState<boolean>(disabled);
   const delayNextClick = React.useCallback(
     debounce(() => {
       setDisable(false);
@@ -62,11 +82,29 @@ export const Button = ({
     []
   );
 
+  React.useEffect(() => {
+    if (isLoading === true) {
+      setDisable(true);
+    } else if (isLoading === false) {
+      setDisable(false);
+    }
+  }, [isLoading]);
+
   const handleClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
     setDisable(true);
-    delayNextClick();
+    if (disableClickForMs) delayNextClick();
     onClick(evt);
   };
+
+  let prefix: JSX.Element = <></>;
+  let postfix: JSX.Element = <></>;
+  if (isLoading) {
+    prefix = <>{customLoadingPreImage}</>;
+    postfix = <>{customLoadingPostImage}</>;
+  } else {
+    if (customPrefixImg) prefix = <>{customPrefixImg}</>;
+    if (customPostfixImg) postfix = <>{customPostfixImg}</>;
+  }
 
   return (
     <button
@@ -76,9 +114,9 @@ export const Button = ({
       aria-label={ariaLabel}
       {...props}
     >
-      {customPrefixImg && <>{customPrefixImg}</>}
-      {label}
-      {customPostfixImg && <>{customPostfixImg}</>}
+      {prefix}
+      {isLoading && loadingLabel ? loadingLabel : label}
+      {postfix}
     </button>
   );
 };

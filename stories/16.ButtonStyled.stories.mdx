@@ -65,6 +65,29 @@ In this section we're using the formInput component providing the GovUk style pa
   </Story>
 </Canvas>
 
+* feel free to add a custom icon before or after the label using the attributes **customLoadingPostImage** and/or **customLoadingPreImage**
+
+<Canvas>
+  <Story name="loading">
+    {() => {
+      const [isLoading, setIsLoading] = React.useState(false);
+      const buttonHandler = evt => {
+        setIsLoading(true);
+        setTimeout(() => setIsLoading(false), 2000);
+      };
+      return (
+        <Button
+          label="Register"
+          className="govuk-button"
+          onClick={buttonHandler}
+          isLoading={isLoading}
+          loadingLabel="Loading..."
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 The css we used to styled the button component is the following:
 
 ```css
