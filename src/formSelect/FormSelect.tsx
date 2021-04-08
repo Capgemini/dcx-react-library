@@ -41,6 +41,10 @@ export type FormSelectProps = {
    * allow to customise the select options with all the properties needed
    **/
   optionProps?: any;
+  /**
+   * define the aria-label
+   */
+  ariaLabel?: string;
 };
 
 export const FormSelect = ({
@@ -51,24 +55,30 @@ export const FormSelect = ({
   id,
   selectProps,
   optionProps,
+  ariaLabel,
 }: FormSelectProps) => {
   const selectOptions = options.map((item: SelectOption) => (
-    <option value={item.value} key={item.value} {...optionProps}>
+    <option
+      value={item.value}
+      key={item.value}
+      aria-label={Roles.listItem}
+      id={item.label}
+      {...optionProps}
+    >
       {item.label}
     </option>
   ));
 
   return (
-    <div role={Roles.formSelect}>
-      <select
-        value={value}
-        onChange={onChange}
-        name={name || 'formSelect'}
-        id={id || 'formSelect'}
-        {...selectProps}
-      >
-        {selectOptions}
-      </select>
-    </div>
+    <select
+      value={value}
+      onChange={onChange}
+      name={name || 'formSelect'}
+      id={id || 'formSelect'}
+      aria-label={ariaLabel || Roles.list}
+      {...selectProps}
+    >
+      {selectOptions}
+    </select>
   );
 };
