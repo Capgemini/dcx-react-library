@@ -11,6 +11,7 @@ import {
   ButtonDemo,
   ProgressDemo,
   ToggleDemo,
+  FormSelectDemo,
 } from './components';
 import { Login } from './pages/Login';
 const App = () => (
@@ -45,6 +46,9 @@ const App = () => (
           <li>
             <Link to="/toggle">ToggleDemo</Link>
           </li>
+          <li>
+            <Link to="/select">SelectDemo</Link>
+          </li>
         </ul>
       </nav>
       <Switch>
@@ -57,6 +61,7 @@ const App = () => (
         <Route path="/ButtonDemo" component={ButtonDemo} />
         <Route path="/progress" component={ProgressDemo} />
         <Route path="/toggle" component={ToggleDemo} />
+        <Route path="/select" component={FormSelectDemo} />
       </Switch>
     </BrowserRouter>
   </div>
