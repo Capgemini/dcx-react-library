@@ -92,6 +92,14 @@ git commit -m "fix: {{ name of bug }}"
 git commit -m "test: {{ name of test }}"
 ```
 
+## Deploy the example folder
+
+The example folder is deployed on the following url: https://dcx-react-library.netlify.app
+
+- cd example
+- yarn build (this step is important - at the moment the folder example link to the library npm modules so we can't perform a build on netlify)
+  when the branch is merged on `main` the new version will be deployed automatically
+
 ## Module Formats
 
 CJS, ESModules, and UMD module formats are supported.
