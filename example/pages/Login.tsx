@@ -13,34 +13,51 @@ export const Login = () => {
     } else {
       setPassword(value);
     }
+  };
 
-    if (usernameValid && passwordValid) {
+  const [usernameValid, setUsernameValid] = React.useState(false);
+  const [passwordValid, setPasswordValid] = React.useState(false);
+  const handleUserNameValidity = (valid, isErrorMessageVisible) => {
+    setUsernameValid(valid);
+    setUsernameErrorState(isErrorMessageVisible);
+    checkFormValidity({ username: valid, password: passwordValid });
+  };
+  const handlePasswordValidity = (valid, isErrorMessageVisible) => {
+    setPasswordValid(valid);
+    setPasswordErrorState(isErrorMessageVisible);
+    checkFormValidity({ username: usernameValid, password: valid });
+  };
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [formValid, setFormValid] = React.useState(false);
+  const buttonHandler = () => {
+    // send data / set loading
+    setIsLoading(true);
+    if (formValid) {
+      // it's valid
+    }
+    setTimeout(() => setIsLoading(false), 1000);
+  };
+
+  const checkFormValidity = formValidObj => {
+    const { username, password } = formValidObj;
+    if (username && password) {
       setFormValid(true);
     } else {
       setFormValid(false);
     }
   };
 
-  const [usernameValid, setUsernameValid] = React.useState('');
-  const [passwordValid, setPasswordValid] = React.useState('');
-  const handleUserNameValidity = valid => setUsernameValid(valid);
-  const handlePasswordValidity = valid => setPasswordValid(valid);
-
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [formValid, setFormValid] = React.useState(false);
-  const buttonHandler = () => {
-    // send data / set loading
-    setIsLoading(true);
-
-    setTimeout(() => setIsLoading(false), 1000);
-  };
+  const [userNameErrorState, setUsernameErrorState] = React.useState(false);
+  const [passwordErrorState, setPasswordErrorState] = React.useState(false);
 
   return (
     <>
       <div className="login-container">
         <HeadingOne>Log In</HeadingOne>
         <form>
-          <div className={`form-group ${!usernameValid ? 'has-error' : ''}`}>
+          <div
+            className={`form-group ${userNameErrorState ? 'has-error' : ''}`}
+          >
             <Label htmlFor="username" className="control-label">
               Username
             </Label>
@@ -69,13 +86,15 @@ export const Login = () => {
             />
           </div>
 
-          <div className={`form-group ${!passwordValid ? 'has-error' : ''}`}>
+          <div
+            className={`form-group ${passwordErrorState ? 'has-error' : ''}`}
+          >
             <Label htmlFor="password" className="control-label">
               Password
             </Label>
             <FormInput
               name="password"
-              type="text"
+              type="password"
               value={password}
               onChange={handleChange}
               isValid={handlePasswordValidity}
