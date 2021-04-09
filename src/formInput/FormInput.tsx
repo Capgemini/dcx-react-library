@@ -76,7 +76,7 @@ export const FormInput = ({
   errorPosition,
   ariaLabel,
 }: FormInputProps) => {
-  const { validity, onValueChange } = useValidationOnChange(validation);
+  const { validity, onValueChange } = useValidationOnChange(validation, value);
 
   React.useEffect(() => {
     if (isValid && validity) isValid(validity.valid);
