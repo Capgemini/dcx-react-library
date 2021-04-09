@@ -31,6 +31,8 @@ export const Login = () => {
   const buttonHandler = () => {
     // send data / set loading
     setIsLoading(true);
+
+    setTimeout(() => setIsLoading(false), 1000);
   };
 
   return (
@@ -111,7 +113,19 @@ export const Login = () => {
             type="submit"
           />
         </form>
-        {formValid.toString()}
+        <div className="link-container">
+          <Button
+            label="Forgotten Password"
+            className="btn btn-sm btn-link"
+            type="button"
+          />
+
+          <Button
+            label="Sign Up!"
+            className="btn btn-sm btn-link"
+            type="button"
+          />
+        </div>
       </div>
     </>
   );
