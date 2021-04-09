@@ -79,7 +79,7 @@ export const FormInput = ({
   errorMessage,
   errorPosition,
   ariaLabel,
-  displayErrorOnLoad = true,
+  displayErrorOnLoad = false,
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
   const [showErrorOnLoad, setShowErrorOnLoad] = React.useState<boolean>(
