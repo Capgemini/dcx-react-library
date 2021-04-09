@@ -88,14 +88,7 @@ export const FormInput = ({
   };
 
   const ErrorMessage = () => (
-    <div
-      style={{
-        fontSize: '10px',
-        color: 'red',
-        fontWeight: 'bold',
-      }}
-      {...errorProps}
-    >
+    <div {...errorProps}>
       {validity && !validity.valid ? (
         <div role={Roles.error} {...errorMessage}>
           {validity.message}
