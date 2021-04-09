@@ -1,3 +1,6 @@
+[build.development]
+  base    = "example"
+  command = "yarn build"
 [build]
   base    = "example"
   publish = "/build/"
