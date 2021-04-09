@@ -7,11 +7,17 @@ export const Login = () => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const handleChange = event => {
-    const targetName = event.currentTarget.name;
-    if (targetName === 'username') {
-      setUsername(event.currentTarget.value);
+    const { name, value } = event.currentTarget;
+    if (name === 'username') {
+      setUsername(value);
     } else {
-      setPassword(event.currentTarget.value);
+      setPassword(value);
+    }
+
+    if (usernameValid && passwordValid) {
+      setFormValid(true);
+    } else {
+      setFormValid(false);
     }
   };
 
@@ -23,75 +29,86 @@ export const Login = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [formValid, setFormValid] = React.useState(false);
   const buttonHandler = () => {
+    // send data / set loading
     setIsLoading(true);
-    if (usernameValid && passwordValid) {
-      setFormValid(true);
-    } else {
-      setFormValid(false);
-    }
-    setTimeout(() => setIsLoading(false), 2000);
   };
 
   return (
     <>
-      <div class="login-container">
+      <div className="login-container">
         <HeadingOne>Log In</HeadingOne>
         <form>
-          <Label for="username">Username</Label>
-          <FormInput
-            name="username"
-            type="text"
-            value={username}
-            onChange={handleChange}
-            isValid={handleUserNameValidity}
-            inputProps={{
-              placeholder: 'Enter your username',
-              autoComplete: 'username',
-            }}
-            errorProps={{
-              className: 'error',
-            }}
-            validation={{
-              rule: {
-                type: 'string',
-                notEmpty: true,
-              },
-              message: 'Please enter a username',
-            }}
-            errorPosition="bottom"
-          />
+          <div className={`form-group ${!usernameValid ? 'has-error' : ''}`}>
+            <Label htmlFor="username" className="control-label">
+              Username
+            </Label>
+            <FormInput
+              name="username"
+              type="text"
+              value={username}
+              onChange={handleChange}
+              isValid={handleUserNameValidity}
+              inputProps={{
+                placeholder: 'Enter your username',
+                autoComplete: 'username',
+                className: 'form-control',
+              }}
+              errorProps={{
+                className: 'help-block',
+              }}
+              validation={{
+                rule: {
+                  type: 'string',
+                  notEmpty: true,
+                },
+                message: 'Please enter a username',
+              }}
+              errorPosition="bottom"
+            />
+          </div>
 
-          <Label for="password">Password</Label>
-          <FormInput
-            name="password"
-            type="text"
-            value={password}
-            onChange={handleChange}
-            isValid={handlePasswordValidity}
-            inputProps={{
-              placeholder: 'Enter your password',
-              autoComplete: 'current-password',
-            }}
-            validation={{
-              rule: {
-                type: 'password',
-                minLength: 8,
-                uppercase: 1,
-                numbers: 1,
-                matchesOneOf: ['@', '_', '-', '.', '!'],
-              },
-              message:
-                'Your password needs to be at least 8 chars, include 1 Uppercase, 1 Number and one special character',
-            }}
-            errorPosition="bottom"
-          />
+          <div className={`form-group ${!passwordValid ? 'has-error' : ''}`}>
+            <Label htmlFor="password" className="control-label">
+              Password
+            </Label>
+            <FormInput
+              name="password"
+              type="text"
+              value={password}
+              onChange={handleChange}
+              isValid={handlePasswordValidity}
+              inputProps={{
+                placeholder: 'Enter your password',
+                autoComplete: 'current-password',
+                className: 'form-control',
+              }}
+              errorProps={{
+                className: 'help-block',
+              }}
+              validation={{
+                rule: {
+                  type: 'password',
+                  minLength: 8,
+                  uppercase: 1,
+                  numbers: 1,
+                  matchesOneOf: ['@', '_', '-', '.', '!'],
+                },
+                message:
+                  'Your password needs to be at least 8 chars, include 1 Uppercase, 1 Number and one special character',
+              }}
+              errorPosition="bottom"
+            />
+          </div>
 
           <Button
             label="Login"
             onClick={buttonHandler}
             isLoading={isLoading}
+            disabled={!formValid}
             loadingLabel="loading..."
             customLoadingPreImage={<span>spinner</span>}
+            className="btn btn-primary"
+            type="submit"
           />
         </form>
         {formValid.toString()}

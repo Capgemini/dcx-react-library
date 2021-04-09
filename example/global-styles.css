@@ -19,14 +19,6 @@ div[role="form-input"] input {
     box-sizing: border-box;
 }
 
-div[role="form-input"] div[role="error"] {
-    color: #a94442;
-    display: block;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
-
 .login-container {
     display: grid;
     justify-content: center;
