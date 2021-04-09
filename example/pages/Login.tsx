@@ -1,100 +1,101 @@
 import * as React from 'react';
-import { FormInput, ErrorPosition } from 'dcx-react-library';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAt } from '@fortawesome/free-solid-svg-icons';
+import { FormInput, Button } from 'dcx-react-library';
+import { Label } from '../generated-components/Label';
+import { HeadingOne } from '../generated-components/HeadingOne';
 
 export const Login = () => {
-  //Im using the same one for the 3 demos
-  const [value, setValue] = React.useState('');
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const handleChange = event => {
-    setValue(event.currentTarget.value);
+    const targetName = event.currentTarget.name;
+    if (targetName === 'username') {
+      setUsername(event.currentTarget.value);
+    } else {
+      setPassword(event.currentTarget.value);
+    }
   };
 
-  //Im using this set only for the valid one
-  const [valueValid, setValueValid] = React.useState('');
-  const [showValid, setShowValid] = React.useState(true);
-  const handleChangeValid = event => setValueValid(event.currentTarget.value);
-  const handleValidity = valid => setShowValid(valid);
+  const [usernameValid, setUsernameValid] = React.useState('');
+  const [passwordValid, setPasswordValid] = React.useState('');
+  const handleUserNameValidity = valid => setUsernameValid(valid);
+  const handlePasswordValidity = valid => setPasswordValid(valid);
+
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [formValid, setFormValid] = React.useState(false);
+  const buttonHandler = () => {
+    setIsLoading(true);
+    if (usernameValid && passwordValid) {
+      setFormValid(true);
+    } else {
+      setFormValid(false);
+    }
+    setTimeout(() => setIsLoading(false), 2000);
+  };
 
   return (
     <>
-      <h1>Prefix and suffix</h1>
-      <FormInput
-        name="password"
-        type="text"
-        value={value}
-        onChange={handleChange}
-        inputProps={{
-          placeholder: 'enter your email',
-        }}
-        prefix={
-          <div
-            style={{
-              border: '1px solid #d2d2d2',
-              padding: '5px',
+      <div class="login-container">
+        <HeadingOne>Log In</HeadingOne>
+        <form>
+          <Label for="username">Username</Label>
+          <FormInput
+            name="username"
+            type="text"
+            value={username}
+            onChange={handleChange}
+            isValid={handleUserNameValidity}
+            inputProps={{
+              placeholder: 'Enter your username',
+              autoComplete: 'username',
             }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
-        suffix={
-          <div
-            style={{
-              border: '1px solid #d2d2d2',
-              padding: '5px',
+            errorProps={{
+              className: 'error',
             }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
-      />
-      <h1>password</h1>
-      <FormInput
-        name="password"
-        type="text"
-        value={valueValid}
-        onChange={handleChangeValid}
-        isValid={handleValidity}
-        inputProps={{
-          placeholder: 'enter your password',
-        }}
-        errorProps={{
-          style: { fontSize: '10px', color: 'red', fontWeight: 'bold' },
-        }}
-        validation={{
-          rule: {
-            type: 'password',
-            minLength: 8,
-            uppercase: 1,
-            numbers: 1,
-            matchesOneOf: ['@', '_', '-', '.', '!'],
-          },
-          message:
-            'your password need to be min 8 chars 1 Uppercase, 1 Number and one special character',
-        }}
-        errorPosition={ErrorPosition.BOTTOM}
-        prefix={
-          <div
-            style={{
-              border: '1px solid #d2d2d2',
-              padding: '5px',
+            validation={{
+              rule: {
+                type: 'string',
+                notEmpty: true,
+              },
+              message: 'Please enter a username',
             }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
-        suffix={
-          <div
-            style={{
-              border: '1px solid #d2d2d2',
-              padding: '5px',
+            errorPosition="bottom"
+          />
+
+          <Label for="password">Password</Label>
+          <FormInput
+            name="password"
+            type="text"
+            value={password}
+            onChange={handleChange}
+            isValid={handlePasswordValidity}
+            inputProps={{
+              placeholder: 'Enter your password',
+              autoComplete: 'current-password',
             }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
-      />
-      <div>isValid:{showValid.toString()}</div>
+            validation={{
+              rule: {
+                type: 'password',
+                minLength: 8,
+                uppercase: 1,
+                numbers: 1,
+                matchesOneOf: ['@', '_', '-', '.', '!'],
+              },
+              message:
+                'Your password needs to be at least 8 chars, include 1 Uppercase, 1 Number and one special character',
+            }}
+            errorPosition="bottom"
+          />
+
+          <Button
+            label="Login"
+            onClick={buttonHandler}
+            isLoading={isLoading}
+            loadingLabel="loading..."
+            customLoadingPreImage={<span>spinner</span>}
+          />
+        </form>
+        {formValid.toString()}
+      </div>
     </>
   );
 };
