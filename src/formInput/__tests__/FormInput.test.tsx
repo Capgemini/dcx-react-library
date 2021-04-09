@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import { ErrorPosition, FormInput } from '../FormInput';
 import userEvent from '@testing-library/user-event';
 
-const DummyComponent = ({ pos }: any) => {
+const DummyComponent = ({ pos, displayErrorOnLoad = true }: any) => {
   const [value, setValue] = React.useState('');
   const [isValid, setValid] = React.useState<boolean | string>('');
   const handleInputChange = (evt: any) => setValue(evt.currentTarget.value);
@@ -20,6 +20,7 @@ const DummyComponent = ({ pos }: any) => {
         errorPosition={pos}
         onChange={handleInputChange}
         isValid={handleValidity}
+        displayErrorOnLoad={displayErrorOnLoad}
         errorProps={{
           'data-testid': 'error-container',
         }}
@@ -129,5 +130,14 @@ describe('FormInput', () => {
     const input = screen.getByRole('textbox');
     userEvent.type(input, '@_-bddcd6A');
     expect(validLabel.innerHTML).toBe('true');
+  });
+
+  it('should not display the error message on load', () => {
+    render(
+      <DummyComponent pos={ErrorPosition.BOTTOM} displayErrorOnLoad={false} />
+    );
+    expect(() => screen.getByText('is invalid')).toThrow(
+      'Unable to find an element'
+    );
   });
 });
