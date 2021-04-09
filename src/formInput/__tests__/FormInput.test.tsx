@@ -6,30 +6,36 @@ import userEvent from '@testing-library/user-event';
 
 const DummyComponent = ({ pos }: any) => {
   const [value, setValue] = React.useState('');
+  const [isValid, setValid] = React.useState<boolean | string>('');
   const handleInputChange = (evt: any) => setValue(evt.currentTarget.value);
-  const handleValidity = jest.fn();
+  const handleValidity = (valid: boolean) => {
+    setValid(valid);
+  };
   return (
-    <FormInput
-      name="password"
-      type="text"
-      value={value}
-      errorPosition={pos}
-      onChange={handleInputChange}
-      isValid={handleValidity}
-      errorProps={{
-        'data-testid': 'error-container',
-      }}
-      validation={{
-        rule: {
-          type: 'password',
-          minLength: 8,
-          uppercase: 1,
-          numbers: 1,
-          matchesOneOf: ['@', '_', '-', '.', '!'],
-        },
-        message: 'is invalid',
-      }}
-    />
+    <>
+      <FormInput
+        name="password"
+        type="text"
+        value={value}
+        errorPosition={pos}
+        onChange={handleInputChange}
+        isValid={handleValidity}
+        errorProps={{
+          'data-testid': 'error-container',
+        }}
+        validation={{
+          rule: {
+            type: 'password',
+            minLength: 8,
+            uppercase: 1,
+            numbers: 1,
+            matchesOneOf: ['@', '_', '-', '.', '!'],
+          },
+          message: 'is invalid',
+        }}
+      />
+      <label data-testid="check-validity">{isValid.toString()}</label>
+    </>
   );
 };
 
@@ -114,5 +120,14 @@ describe('FormInput', () => {
     if (container.firstChild && container.firstChild.lastChild)
       error = container.firstChild.lastChild.childNodes[0];
     expect(error.innerHTML).toBe('is invalid');
+  });
+
+  it('should return validation false on startup if the validation rules are not met', () => {
+    render(<DummyComponent pos={ErrorPosition.BOTTOM} />);
+    const validLabel = screen.getByTestId('check-validity');
+    expect(validLabel.innerHTML).toBe('false');
+    const input = screen.getByRole('textbox');
+    userEvent.type(input, '@_-bddcd6A');
+    expect(validLabel.innerHTML).toBe('true');
   });
 });
