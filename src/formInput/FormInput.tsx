@@ -41,7 +41,7 @@ type FormInputProps = {
   /**
    * function that will check if is vald or not based on the validation rules
    **/
-  isValid?: (valid: boolean) => void;
+  isValid?: (valid: boolean, errorMessageVisible?: boolean) => void;
   /**
    * error message
    **/
@@ -54,6 +54,10 @@ type FormInputProps = {
    * input ariaLabel
    **/
   ariaLabel?: string;
+  /**
+   * it will allow you to do not display the error message on load
+   */
+  displayErrorOnLoad?: boolean;
 };
 
 export enum ErrorPosition {
@@ -75,21 +79,26 @@ export const FormInput = ({
   errorMessage,
   errorPosition,
   ariaLabel,
+  displayErrorOnLoad = true,
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
-
+  const [showErrorOnLoad, setShowErrorOnLoad] = React.useState<boolean>(
+    displayErrorOnLoad
+  );
   React.useEffect(() => {
-    if (isValid && validity) isValid(validity.valid);
-  }, [validity?.valid]);
+    if (isValid && validity)
+      isValid(validity.valid, showErrorOnLoad && !validity.valid);
+  }, [validity?.valid, showErrorOnLoad]);
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setShowErrorOnLoad(true);
     if (onValueChange) onValueChange(event);
     onChange(event);
   };
 
   const ErrorMessage = () => (
     <div {...errorProps}>
-      {validity && !validity.valid ? (
+      {validity && !validity.valid && showErrorOnLoad ? (
         <div role={Roles.error} {...errorMessage}>
           {validity.message}
         </div>
