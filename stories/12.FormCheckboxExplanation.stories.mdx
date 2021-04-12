@@ -1,0 +1,46 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormCheckbox } from '../src/formCheckbox/FormCheckbox';
+import './style.css';
+
+<Meta title="DCXLibrary/Form/Checkbox/documentation" component={FormCheckbox} />
+
+# FormCheckbox
+
+A checkbox component ready to use in your form.
+
+FormCheckbox is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
+
+## Usage
+
+Use the checkbox component when users can only select one option from a list.
+
+An example with all the available properties is:
+
+```js
+<FormCheckbox
+  label="checkbox-label"
+  value={value}
+  ariaLabel="aria-label"
+  disabled={true}
+  hint={{
+    text: 'hint text',
+    classes: 'class names',
+    id: 'hint-id',
+  }}
+  id="checkbox-id"
+  inputProps={{
+    className: 'class-name',
+    name: 'checkbox-name',
+    onChange: handleChange,
+  }}
+  itemProps={{
+    className: 'class-name',
+  }}
+  labelProps={{
+    style: { display: 'flex' },
+  }}
+  defaultChecked={true}
+/>
+```
+
+<Props of={FormCheckbox} />
