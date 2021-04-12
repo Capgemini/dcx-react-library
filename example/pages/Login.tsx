@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { FormInput, Button } from 'dcx-react-library';
-import { Label } from '../generated-components/Label';
-import { HeadingOne } from '../generated-components/HeadingOne';
+import { Label, HeadingOne } from '../generated-components';
 import { usernameValidation, passwordValidation } from './validationRules';
 import './login.scss';
 
@@ -25,50 +24,50 @@ enum LOGIN_ACTIONS {
   SET_ISPASSWORD_VALID = 'setPasswordValid',
 }
 
-export const Login = () => {
-  function reducer(state, action) {
-    switch (action.type) {
-      case LOGIN_ACTIONS.UPDATE_USERNAME:
-        return {
-          ...state,
-          username: action.value,
-        };
-      case LOGIN_ACTIONS.UPDATE_PASSWORD:
-        return {
-          ...state,
-          password: action.value,
-        };
-      case LOGIN_ACTIONS.SET_ISLOADING:
-        return {
-          ...state,
-          isLoading: action.value,
-        };
-      case LOGIN_ACTIONS.SET_ISFORM_VALID:
-        return {
-          ...state,
-          isFormValid: action.value,
-        };
-      case LOGIN_ACTIONS.SET_ISUSERNAME_VALID:
-        return {
-          ...state,
-          validation: {
-            ...state.validation,
-            usernameValid: action.value,
-          },
-        };
-      case LOGIN_ACTIONS.SET_ISPASSWORD_VALID:
-        return {
-          ...state,
-          validation: {
-            ...state.validation,
-            passwordValid: action.value,
-          },
-        };
-      default:
-        throw new Error();
-    }
+function reducer(state, action) {
+  switch (action.type) {
+    case LOGIN_ACTIONS.UPDATE_USERNAME:
+      return {
+        ...state,
+        username: action.value,
+      };
+    case LOGIN_ACTIONS.UPDATE_PASSWORD:
+      return {
+        ...state,
+        password: action.value,
+      };
+    case LOGIN_ACTIONS.SET_ISLOADING:
+      return {
+        ...state,
+        isLoading: action.value,
+      };
+    case LOGIN_ACTIONS.SET_ISFORM_VALID:
+      return {
+        ...state,
+        isFormValid: action.value,
+      };
+    case LOGIN_ACTIONS.SET_ISUSERNAME_VALID:
+      return {
+        ...state,
+        validation: {
+          ...state.validation,
+          usernameValid: action.value,
+        },
+      };
+    case LOGIN_ACTIONS.SET_ISPASSWORD_VALID:
+      return {
+        ...state,
+        validation: {
+          ...state.validation,
+          passwordValid: action.value,
+        },
+      };
+    default:
+      throw new Error();
   }
+}
 
+export const Login = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const handleInputChange = event => {

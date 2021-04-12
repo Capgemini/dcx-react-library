@@ -1,5 +1,13 @@
 .login-container {
   display: grid;
-  padding: 14em;
   gap: 1.8em;
+  justify-content: center;
+
+  form {
+    min-width: 18em;
+  }
+
+  .help-block {
+    max-width: 18em;
+  }
 }
