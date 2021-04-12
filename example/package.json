@@ -5,12 +5,14 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --out-dir build",
+    "generate-presentational-component": "../bin/dcx-generate-presentational-component"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "example": "^0.0.0",
     "react-app-polyfill": "^1.0.0",
     "react-router-dom": "^5.2.0"
   },

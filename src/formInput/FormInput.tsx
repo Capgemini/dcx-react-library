@@ -41,7 +41,7 @@ type FormInputProps = {
   /**
    * function that will check if is vald or not based on the validation rules
    **/
-  isValid?: (valid: boolean) => void;
+  isValid?: (valid: boolean, errorMessageVisible?: boolean) => void;
   /**
    * error message
    **/
@@ -54,6 +54,10 @@ type FormInputProps = {
    * input ariaLabel
    **/
   ariaLabel?: string;
+  /**
+   * it will allow you to do not display the error message on load
+   */
+  displayErrorOnLoad?: boolean;
 };
 
 export enum ErrorPosition {
@@ -75,28 +79,26 @@ export const FormInput = ({
   errorMessage,
   errorPosition,
   ariaLabel,
+  displayErrorOnLoad = false,
 }: FormInputProps) => {
-  const { validity, onValueChange } = useValidationOnChange(validation);
-
+  const { validity, onValueChange } = useValidationOnChange(validation, value);
+  const [showErrorOnLoad, setShowErrorOnLoad] = React.useState<boolean>(
+    displayErrorOnLoad
+  );
   React.useEffect(() => {
-    if (isValid && validity) isValid(validity.valid);
-  }, [validity?.valid]);
+    if (isValid && validity)
+      isValid(validity.valid, showErrorOnLoad && !validity.valid);
+  }, [validity?.valid, showErrorOnLoad]);
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setShowErrorOnLoad(true);
     if (onValueChange) onValueChange(event);
     onChange(event);
   };
 
   const ErrorMessage = () => (
-    <div
-      style={{
-        fontSize: '10px',
-        color: 'red',
-        fontWeight: 'bold',
-      }}
-      {...errorProps}
-    >
-      {validity && !validity.valid ? (
+    <div {...errorProps}>
+      {validity && !validity.valid && showErrorOnLoad ? (
         <div role={Roles.error} {...errorMessage}>
           {validity.message}
         </div>
@@ -105,10 +107,10 @@ export const FormInput = ({
   );
 
   return (
-    <div role={Roles.formInput}>
+    <div>
       {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
       <div style={{ display: 'flex' }}>
-        {prefix && <div role={Roles.prefix}>{prefix}</div>}
+        {prefix && <div>{prefix}</div>}
         <input
           style={{ width: '100%' }}
           name={name}
@@ -118,7 +120,7 @@ export const FormInput = ({
           {...inputProps}
           aria-label={ariaLabel || name}
         />
-        {suffix && <div role={Roles.suffix}>{suffix}</div>}
+        {suffix && <div>{suffix}</div>}
       </div>
       {errorPosition && errorPosition === ErrorPosition.BOTTOM && (
         <ErrorMessage />

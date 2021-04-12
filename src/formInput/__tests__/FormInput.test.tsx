@@ -1,35 +1,42 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { FormInput, ErrorPosition } from '../FormInput';
+import { ErrorPosition, FormInput } from '../FormInput';
 import userEvent from '@testing-library/user-event';
 
-const DummyComponent = ({ pos }: any) => {
+const DummyComponent = ({ pos, displayErrorOnLoad = true }: any) => {
   const [value, setValue] = React.useState('');
+  const [isValid, setValid] = React.useState<boolean | string>('');
   const handleInputChange = (evt: any) => setValue(evt.currentTarget.value);
-  const handleValidity = jest.fn();
+  const handleValidity = (valid: boolean) => {
+    setValid(valid);
+  };
   return (
-    <FormInput
-      name="password"
-      type="text"
-      value={value}
-      errorPosition={pos}
-      onChange={handleInputChange}
-      isValid={handleValidity}
-      errorProps={{
-        'data-testid': 'error-container',
-      }}
-      validation={{
-        rule: {
-          type: 'password',
-          minLength: 8,
-          uppercase: 1,
-          numbers: 1,
-          matchesOneOf: ['@', '_', '-', '.', '!'],
-        },
-        message: 'is invalid',
-      }}
-    />
+    <>
+      <FormInput
+        name="password"
+        type="text"
+        value={value}
+        errorPosition={pos}
+        onChange={handleInputChange}
+        isValid={handleValidity}
+        displayErrorOnLoad={displayErrorOnLoad}
+        errorProps={{
+          'data-testid': 'error-container',
+        }}
+        validation={{
+          rule: {
+            type: 'password',
+            minLength: 8,
+            uppercase: 1,
+            numbers: 1,
+            matchesOneOf: ['@', '_', '-', '.', '!'],
+          },
+          message: 'is invalid',
+        }}
+      />
+      <label data-testid="check-validity">{isValid.toString()}</label>
+    </>
   );
 };
 
@@ -47,10 +54,10 @@ describe('FormInput', () => {
         }}
       />
     );
-    expect(screen.getByRole('form-input')).toBeInTheDocument();
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 
-  it('should display the formInput prefix content', () => {
+  it('should display the formInput properties', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
@@ -58,7 +65,7 @@ describe('FormInput', () => {
         type="text"
         value="@_-bddcd6A"
         onChange={handleChange}
-        prefix={<div>prefix</div>}
+        prefix={<div data-testid="prefix">prefix</div>}
       />
     );
     const input: any = screen.getByRole('textbox');
@@ -68,7 +75,7 @@ describe('FormInput', () => {
     expect(input).toBeInTheDocument();
   });
 
-  it('should display the formInput prefix content', () => {
+  it('should display the formInput suffix content', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
@@ -76,10 +83,10 @@ describe('FormInput', () => {
         type="text"
         value="test"
         onChange={handleChange}
-        suffix={<div>suffix</div>}
+        suffix={<div data-testid="suffix">suffix</div>}
       />
     );
-    expect(screen.getByRole('suffix')).toBeInTheDocument();
+    expect(screen.getByTestId('suffix')).toBeInTheDocument();
   });
 
   it('should display the formInput error', () => {
@@ -114,5 +121,23 @@ describe('FormInput', () => {
     if (container.firstChild && container.firstChild.lastChild)
       error = container.firstChild.lastChild.childNodes[0];
     expect(error.innerHTML).toBe('is invalid');
+  });
+
+  it('should return validation false on startup if the validation rules are not met', () => {
+    render(<DummyComponent pos={ErrorPosition.BOTTOM} />);
+    const validLabel = screen.getByTestId('check-validity');
+    expect(validLabel.innerHTML).toBe('false');
+    const input = screen.getByRole('textbox');
+    userEvent.type(input, '@_-bddcd6A');
+    expect(validLabel.innerHTML).toBe('true');
+  });
+
+  it('should not display the error message on load', () => {
+    render(
+      <DummyComponent pos={ErrorPosition.BOTTOM} displayErrorOnLoad={false} />
+    );
+    expect(() => screen.getByText('is invalid')).toThrow(
+      'Unable to find an element'
+    );
   });
 });

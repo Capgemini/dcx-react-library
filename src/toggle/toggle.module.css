@@ -1,0 +1,37 @@
+.switch {
+  display: inline-block;
+  height: 20px;
+  position: relative;
+  width: 40px;
+  margin-bottom: 0;
+  user-select: none;
+}
+
+.switchBg {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+  transition: background-color 0.2s;
+}
+
+.switchInput {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.switchHandle {
+  bottom: 2px;
+  height: 16px;
+  left: 2px;
+  position: absolute;
+  width: 16px;
+  transform: translateX(0);
+  outline: none;
+}
+
+.switchHandle.isChecked {
+  transform: translateX(20px);
+}

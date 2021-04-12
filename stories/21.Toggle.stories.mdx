@@ -1,0 +1,130 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Toggle } from '../src/toggle/Toggle';
+
+<Meta title="DCXLibrary/Form/Toggle" component={Toggle} />
+
+### Examples of basic Toggle
+
+<Canvas>
+  <Story name="basic">
+    {() => {
+      const [checked, setChecked] = React.useState(false);
+      return (
+        <Toggle
+          checked={checked}
+          onChange={e => {
+            setChecked(e);
+          }}
+          onColor="green"
+          offColor="gray"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples of disabled Toggle
+
+<Canvas>
+  <Story name="disabled">
+    {() => {
+      const [checked, setChecked] = React.useState(false);
+      return (
+        <Toggle
+          checked={checked}
+          onChange={e => {
+            setChecked(e);
+          }}
+          onColor="green"
+          offColor="gray"
+          disabled={true}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples of Toggle with different colors
+
+<Canvas>
+  <Story name="different colors">
+    {() => {
+      const [checked, setChecked] = React.useState(true);
+      return (
+        <Toggle
+          checked={checked}
+          onChange={e => {
+            setChecked(e);
+          }}
+          onColor="orange"
+          offColor="gray"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples of Toggle with different border radius
+
+<Canvas>
+  <Story name="different shape">
+    {() => {
+      const [checked, setChecked] = React.useState(false);
+      return (
+        <Toggle
+          checked={checked}
+          onChange={e => {
+            setChecked(e);
+          }}
+          onColor="orange"
+          offColor="gray"
+          borderRadius="0"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples of Toggle with custom label
+
+- feel free to use your own component and css
+
+<Canvas>
+  <Story name="custom label">
+    {() => {
+      const [checked, setChecked] = React.useState(false);
+      return (
+        <Toggle
+          checked={checked}
+          onChange={e => {
+            setChecked(e);
+          }}
+          onColor="orange"
+          offColor="gray"
+          customOnLabel={<div style={{
+              fontSize: '12px',
+              display: 'flex',
+              justifyContent: 'flex-start',
+              marginLeft: '6px',
+              alignItems: 'center',
+              height: '100%',
+              color: 'white',
+              marginBottom: '4px'
+            }}>on</div>}
+          customOffLabel={<div style={{
+              fontSize: '12px',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              marginRight: '6px',
+              alignItems: 'center',
+              height: '100%',
+              color: 'white',
+              marginBottom: '2px'
+            }}>off</div>}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Props of={Toggle} />

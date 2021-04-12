@@ -25,13 +25,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-name",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
+            name="changed-name"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-name"
@@ -41,13 +41,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-name",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
+            name="changed-name"
+            onChange={handleChange}
           />
         </div>
       )
@@ -71,13 +71,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-country",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
+            name="changed-country"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-country"
@@ -87,13 +87,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-country",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
+            name="changed-country"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-country"
@@ -103,13 +103,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-country",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
+            name="changed-country"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-country"
@@ -119,13 +119,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-country",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
+            name="changed-country"
+            onChange={handleChange}
           />
         </div>
       )
@@ -149,13 +149,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-name-disabled",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
+            name="changed-name-disabled"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-name-disabled"
@@ -165,13 +165,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-name-disabled",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
+            name="changed-name-disabled"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-name-disabled"
@@ -181,14 +181,14 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-name-disabled",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             disabled={true}
+            name="changed-name-disabled"
+            onChange={handleChange}
           />
         </div>
       )
@@ -212,14 +212,14 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-name-preselected",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
             selected={true}
+            name="changed-name-preselected"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-name-preselected"
@@ -229,13 +229,13 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-name-preselected",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
             }}
+            name="changed-name-preselected"
+            onChange={handleChange}
           />
         </div>
       )
@@ -259,9 +259,7 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-name-with-hint",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
@@ -271,6 +269,8 @@ In this section we're using the formRadio component providing the GovUk style pa
               classes: "govuk-hint govuk-radios__hint",
               id: "sign-in-item-hint"
             }}
+            name="changed-name-with-hint"
+            onChange={handleChange}
           />
           <FormRadio
             id="changed-name-with-hint-2"
@@ -280,9 +280,7 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-label govuk-radios__label"
             }}
             inputProps={{
-              className: "govuk-radios__input",
-              name: "changed-name-with-hint",
-              onChange: handleChange
+              className: "govuk-radios__input"
             }}
             itemProps={{
               className: "govuk-radios__item"
@@ -292,6 +290,8 @@ In this section we're using the formRadio component providing the GovUk style pa
               classes: "govuk-hint govuk-radios__hint",
               id: "sign-in-2-item-hint"
             }}
+            name="changed-name-with-hint"
+            onChange={handleChange}
           />
         </div>
       )
@@ -652,160 +652,6 @@ The css we used to styled the formRadio component is the following:
 .govuk-radios--inline.govuk-radios--conditional .govuk-radios__item {
   margin-right: 0;
   float: none;
-}
-
-.govuk-radios__divider {
-  font-family: 'GDS Transport', arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.25;
-  color: #0b0c0c;
-  width: 40px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-@media print {
-  .govuk-radios__divider {
-    font-family: sans-serif;
-  }
-}
-
-@media (min-width: 40.0625em) {
-  .govuk-radios__divider {
-    font-size: 19px;
-    font-size: 1.1875rem;
-    line-height: 1.31579;
-  }
-}
-
-@media print {
-  .govuk-radios__divider {
-    font-size: 14pt;
-    line-height: 1.15;
-  }
-}
-
-@media print {
-  .govuk-radios__divider {
-    color: #000;
-  }
-}
-
-.govuk-radios__conditional {
-  margin-bottom: 15px;
-  margin-left: 18px;
-  padding-left: 33px;
-  border-left: 4px solid #b1b4b6;
-}
-
-@media (min-width: 40.0625em) {
-  .govuk-radios__conditional {
-    margin-bottom: 20px;
-  }
-}
-
-.js-enabled .govuk-radios__conditional--hidden {
-  display: none;
-}
-
-.govuk-radios__conditional > :last-child {
-  margin-bottom: 0;
-}
-
-.govuk-radios--small .govuk-radios__item {
-  min-height: 0;
-  margin-bottom: 0;
-  padding-left: 34px;
-  float: left;
-}
-
-.govuk-radios--small .govuk-radios__item:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-.govuk-radios--small .govuk-radios__input {
-  left: -10px;
-}
-
-.govuk-radios--small .govuk-radios__label {
-  margin-top: -2px;
-  padding: 13px 15px 13px 1px;
-  float: left;
-}
-
-@media (min-width: 40.0625em) {
-  .govuk-radios--small .govuk-radios__label {
-    padding: 11px 15px 10px 1px;
-  }
-}
-
-.govuk-radios--small .govuk-radios__label:before {
-  top: 8px;
-  width: 24px;
-  height: 24px;
-}
-
-.govuk-radios--small .govuk-radios__label:after {
-  top: 15px;
-  left: 7px;
-  border-width: 5px;
-}
-
-.govuk-radios--small .govuk-radios__hint {
-  padding: 0;
-  clear: both;
-  pointer-events: none;
-}
-
-.govuk-radios--small .govuk-radios__conditional {
-  margin-left: 10px;
-  padding-left: 20px;
-  clear: both;
-}
-
-.govuk-radios--small .govuk-radios__divider {
-  width: 24px;
-  margin-bottom: 5px;
-}
-
-.govuk-radios--small
-  .govuk-radios__item:hover
-  .govuk-radios__input:not(:disabled)
-  + .govuk-radios__label:before {
-  -webkit-box-shadow: 0 0 0 10px #b1b4b6;
-  box-shadow: 0 0 0 10px #b1b4b6;
-}
-
-.govuk-radios--small
-  .govuk-radios__item:hover
-  .govuk-radios__input:focus
-  + .govuk-radios__label:before {
-  -webkit-box-shadow: 0 0 0 4px #fd0, 0 0 0 10px #b1b4b6;
-  box-shadow: 0 0 0 4px #fd0, 0 0 0 10px #b1b4b6;
-}
-
-@media (hover: none), (pointer: coarse) {
-  .govuk-radios--small
-    .govuk-radios__item:hover
-    .govuk-radios__input:not(:disabled)
-    + .govuk-radios__label:before {
-    -webkit-box-shadow: initial;
-    box-shadow: initial;
-  }
-
-  .govuk-radios--small
-    .govuk-radios__item:hover
-    .govuk-radios__input:focus
-    + .govuk-radios__label:before {
-    -webkit-box-shadow: 0 0 0 4px #fd0;
-    box-shadow: 0 0 0 4px #fd0;
-  }
 }
 ```
 

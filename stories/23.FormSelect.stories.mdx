@@ -1,0 +1,54 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormSelect } from '../src/formSelect/FormSelect';
+
+<Meta title="DCXLibrary/Form/Select" component={FormSelect} />
+
+### Examples of basic Select
+
+<Canvas>
+  <Story name="basic">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const handleChange = evt => {
+        setValue(evt.currentTarget.value);
+      };
+      return (
+        <FormSelect
+          value={value}
+          onChange={handleChange}
+          options={[
+            { label: 'option1', value: 'value1' },
+            { label: 'option2', value: 'value2' },
+          ]}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples of basic Select
+
+<Canvas>
+  <Story name="color">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const handleChange = evt => {
+        setValue(evt.currentTarget.value);
+      };
+      return (
+        <FormSelect
+          name="the name"
+          value={value}
+          onChange={handleChange}
+          options={[
+            { label: 'option1', value: 'value1' },
+            { label: 'option2', value: 'value2' },
+          ]}
+          selectProps={{
+            style: { fontSize: '20px', color: 'blue', fontWeight: 'bold' },
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>

@@ -20,4 +20,6 @@ jobs:
       # run lint
       - run: yarn lint
       # run tests!
-      - run: yarn test && ./node_modules/.bin/codecov
+      - run: yarn test --runInBand --logHeapUsage && ./node_modules/.bin/codecov
+      # deploy storybook
+      - run: yarn chromatic --project-token=c6317a751fef --auto-accept-changes

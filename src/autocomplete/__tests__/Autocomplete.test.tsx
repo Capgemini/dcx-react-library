@@ -6,6 +6,42 @@ import { Autocomplete } from '../';
 import userEvent from '@testing-library/user-event';
 import { act } from '@testing-library/react-hooks';
 
+const firstSearch = [
+  'Papaya',
+  'Persimmon',
+  'Paw Paw',
+  'Prickly Pear',
+  'Peach',
+  'Pomegranate',
+  'Pineapple',
+];
+const secondSearch = ['Persimmon', 'Peach'];
+const DummyAutoComplete = () => {
+  const handleOnChange = (value: string) => {
+    switch (value) {
+      case 'p':
+        setServerOptions(firstSearch);
+        break;
+      case 'pe':
+        setServerOptions(secondSearch);
+        break;
+      default:
+        setServerOptions(['no results']);
+    }
+  };
+  const [serverOptions, setServerOptions] = React.useState<string[]>([]);
+  return (
+    <Autocomplete
+      options={serverOptions}
+      onSelected={() => {}}
+      hintText="search the list of fruits dynamically"
+      onChange={handleOnChange}
+      debounceMs={100}
+      notFoundText=" "
+    />
+  );
+};
+
 describe('FormInput', () => {
   it('should display the formInput content', () => {
     render(<Autocomplete options={['daniele', 'isaac']} />);
@@ -34,13 +70,13 @@ describe('FormInput', () => {
       <Autocomplete
         options={['daniele', 'isaac']}
         debounceMs={100}
-        prefix={<div>prefix</div>}
-        suffix={<div>prefix</div>}
+        prefix={<div data-testid="prefix">prefix</div>}
+        suffix={<div data-testid="suffix">suffix</div>}
       />
     );
 
-    expect(screen.getByRole('suffix')).toBeInTheDocument();
-    expect(screen.getByRole('prefix')).toBeInTheDocument();
+    expect(screen.getByTestId('suffix')).toBeInTheDocument();
+    expect(screen.getByTestId('prefix')).toBeInTheDocument();
   });
 
   it('should display available options', async () => {
@@ -271,5 +307,24 @@ describe('FormInput', () => {
     });
     const listItems: any = screen.getAllByRole('listitem');
     expect(listItems.length).toBe(2);
+  });
+
+  it('should populate the list dynamically - i.e. fetch from the server', async () => {
+    render(<DummyAutoComplete />);
+    jest.useFakeTimers('modern');
+    const input: any = screen.getByRole('textbox');
+    await act(() => userEvent.type(input, 'p'));
+    act(() => {
+      jest.runAllTimers();
+    });
+    const listItemsFirst: any = screen.getAllByRole('listitem');
+
+    expect(listItemsFirst.length).toBe(7);
+    await act(() => userEvent.type(input, 'e'));
+    act(() => {
+      jest.runAllTimers();
+    });
+    const listItemsSecond: any = screen.getAllByRole('listitem');
+    expect(listItemsSecond.length).toBe(2);
   });
 });

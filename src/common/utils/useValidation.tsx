@@ -75,10 +75,20 @@ const useValidation = (value: string, validation: Validation) => {
  * @param validation
  */
 
-const useValidationOnChange = (validation: Validation | null) => {
-  const [validity, setValid] = React.useState({ valid: true, message: '' });
+const useValidationOnChange = (
+  validation: Validation | null,
+  value: string = ''
+) => {
+  let checkValidation = { valid: true, floatRule: { error: '' } };
+  if (validation) checkValidation = isValid(validation, value);
+
+  const [validity, setValid] = React.useState({
+    valid: checkValidation.valid,
+    message: checkValidation.floatRule.error,
+  });
 
   if (validation === null) return { validity: null, onValueChange: null };
+
   const onValueChange = (evt: React.FormEvent<HTMLInputElement>) => {
     const { valid, floatRule } = isValid(validation, evt.currentTarget.value);
     setValid({
@@ -86,7 +96,6 @@ const useValidationOnChange = (validation: Validation | null) => {
       message: floatRule.error,
     });
   };
-
   return { validity, onValueChange };
 };
 

@@ -1,5 +1,4 @@
-import React from 'react';
-import { Roles } from '../common';
+import React, { useState } from 'react';
 import {
   ErrorMessage,
   ErrorMessageProps,
@@ -11,6 +10,21 @@ import {
 } from '../common/components';
 import { FormRadio } from '../formRadio/index';
 
+type DividerProps = {
+  /**
+   * divider text
+   **/
+  text: string;
+  /**
+   * class names to customise divider
+   **/
+  className?: string;
+  /**
+   * divider id
+   **/
+  id?: string;
+};
+
 type FormGroupProps = {
   /**
    * form group name
@@ -19,7 +33,7 @@ type FormGroupProps = {
   /**
    * form group items
    */
-  items: FormRadioProps[];
+  items: (FormRadioProps | DividerProps)[];
   /**
    * form group aria-describedby
    */
@@ -45,9 +59,21 @@ type FormGroupProps = {
    */
   id?: string;
   /**
+   * form group input properties for all items
+   */
+  inputProps?: any;
+  /**
+   * form group item properties for all items
+   */
+  itemProps?: any;
+  /**
    * form group items class names
    */
   itemsClasses?: string;
+  /**
+   * form group label properties for all items
+   */
+  labelProps?: any;
   /**
    * form group legend properties
    */
@@ -55,7 +81,7 @@ type FormGroupProps = {
   /**
    * function that will trigger all the time there's a change of choice
    */
-  onChange?: (event: React.ChangeEventHandler<HTMLInputElement>) => void;
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
 };
 
 export const FormGroup = ({
@@ -67,20 +93,57 @@ export const FormGroup = ({
   fieldsetClasses,
   hint,
   id,
+  inputProps,
+  itemProps,
   itemsClasses,
+  labelProps,
   legend,
   onChange,
 }: FormGroupProps) => {
-  const formGroupItems = items.map((item: FormRadioProps, index: number) => (
-    <FormRadio
-      key={`${id}_${index.toString()}`}
-      {...item}
-      inputProps={{ ...item.inputProps, name, onChange }}
-    />
-  ));
+  const findSelection = (items: (FormRadioProps | DividerProps)[]) =>
+    items.find(
+      (item: FormRadioProps | DividerProps) => (item as FormRadioProps).selected
+    );
 
-  return (
-    <div id={id} className={groupClasses} role={Roles.formGroup}>
+  const [selection, setSelection] = useState(
+    (findSelection(items) as FormRadioProps)?.value
+  );
+
+  const isDivider = (
+    item: DividerProps | FormRadioProps
+  ): item is DividerProps => (item as FormRadioProps).label === undefined;
+
+  const formGroupItems = items.map(
+    (item: DividerProps | FormRadioProps, index: number) =>
+      isDivider(item) ? (
+        <div
+          key={`${id}_${index.toString()}`}
+          id={item.id}
+          className={item.className}
+        >
+          {item.text}
+        </div>
+      ) : (
+        <FormRadio
+          key={`${id}_${index.toString()}`}
+          {...item}
+          name={name}
+          inputProps={{ ...inputProps, ...item.inputProps }}
+          itemProps={{ ...itemProps, ...item.itemProps }}
+          labelProps={{ ...labelProps, ...item.labelProps }}
+          selected={selection === item.value}
+          onChange={e => {
+            setSelection(e.currentTarget.value);
+            item.onChange(e);
+
+            if (onChange) onChange(e);
+          }}
+        />
+      )
+  );
+
+  return items && items.length > 1 ? (
+    <div id={id} className={groupClasses}>
       <fieldset
         className={fieldsetClasses}
         aria-describedby={ariaDescribedBy || ''}
@@ -91,5 +154,7 @@ export const FormGroup = ({
         <div className={itemsClasses}>{formGroupItems}</div>
       </fieldset>
     </div>
+  ) : (
+    <div>Can not render a Form Group with less than 2 items</div>
   );
 };

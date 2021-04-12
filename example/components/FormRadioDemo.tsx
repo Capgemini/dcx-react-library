@@ -13,10 +13,9 @@ export const FormRadioDemo = () => {
       <FormRadio
         id="single-1"
         value={value}
-        selected={true}
         label="Single Radio 1 label text"
+        name="group1"
         inputProps={{
-          name: 'group1',
           onChange: handleChange,
         }}
       />
@@ -24,8 +23,8 @@ export const FormRadioDemo = () => {
         id="single-2"
         value={value}
         label="Single Radio 2 label text"
+        name="group1"
         inputProps={{
-          name: 'group1',
           onChange: handleChange,
         }}
       />
@@ -37,11 +36,13 @@ export const FormRadioDemo = () => {
             id: 'radio-1',
             label: 'Option 1',
             value: 'value-1',
+            onChange: handleChange,
           },
           {
             id: 'radio-2',
             label: 'Option 2',
             value: 'value-2',
+            onChange: handleChange,
           },
           {
             id: 'radio-3',
@@ -51,6 +52,7 @@ export const FormRadioDemo = () => {
               text: 'Hint text for this item',
             },
             value: 'value-3',
+            onChange: handleChange,
           },
         ]}
         hint={{

@@ -1,0 +1,143 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Button } from '../src/button/Button';
+import './style.css';
+
+<Meta title="DCXLibrary/Form/Button/HMRC" component={Button} />
+
+# GOVUK Style
+
+In this section we're using the formInput component providing the GovUk style passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
+
+<Canvas>
+  <Story name="basic">
+    {() => {
+      const buttonHandler = evt => {
+        console.log(evt);
+      };
+      return (
+        <Button
+          label="Save and continue"
+          className="govuk-button"
+          onClick={buttonHandler}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="with Image">
+    {() => {
+      const buttonHandler = evt => {
+        console.log(evt);
+      };
+      return (
+        <Button
+          label="Start now"
+          className="govuk-button"
+          customPostfixImg={
+            <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+            </svg>
+          }
+          onClick={buttonHandler}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="disabled">
+    {() => {
+      const buttonHandler = evt => {
+        console.log(evt);
+      };
+      return (
+        <Button
+          label="Disabled button"
+          disabled={true}
+          className="govuk-button"
+          onClick={buttonHandler}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+* feel free to add a custom icon before or after the label using the attributes **customLoadingPostImage** and/or **customLoadingPreImage**
+
+<Canvas>
+  <Story name="loading">
+    {() => {
+      const [isLoading, setIsLoading] = React.useState(false);
+      const buttonHandler = evt => {
+        setIsLoading(true);
+        setTimeout(() => setIsLoading(false), 2000);
+      };
+      return (
+        <Button
+          label="Register"
+          className="govuk-button"
+          onClick={buttonHandler}
+          isLoading={isLoading}
+          loadingLabel="Loading..."
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+The css we used to styled the button component is the following:
+
+```css
+.govuk-button {
+  font-family: 'GDS Transport', arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.1875;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 22px;
+  padding: 8px 10px 7px;
+  border: 2px solid transparent;
+  border-radius: 0;
+  color: #fff;
+  background-color: #00703c;
+  box-shadow: 0 2px 0 #002d18;
+  text-align: center;
+  vertical-align: top;
+  cursor: pointer;
+}
+.govuk-button:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -4px;
+  left: -2px;
+  background: transparent;
+}
+.govuk-button__start-icon {
+  margin-left: 5px;
+  vertical-align: middle;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.govuk-button--disabled,
+.govuk-button[disabled='disabled'],
+.govuk-button[disabled] {
+  opacity: 0.5;
+}
+
+```
+
+<Props of={Button} />
