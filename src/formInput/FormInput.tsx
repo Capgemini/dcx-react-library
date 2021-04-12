@@ -107,10 +107,10 @@ export const FormInput = ({
   );
 
   return (
-    <div role={Roles.formInput}>
+    <div>
       {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
       <div style={{ display: 'flex' }}>
-        {prefix && <div role={Roles.prefix}>{prefix}</div>}
+        {prefix && <div>{prefix}</div>}
         <input
           style={{ width: '100%' }}
           name={name}
@@ -120,7 +120,7 @@ export const FormInput = ({
           {...inputProps}
           aria-label={ariaLabel || name}
         />
-        {suffix && <div role={Roles.suffix}>{suffix}</div>}
+        {suffix && <div>{suffix}</div>}
       </div>
       {errorPosition && errorPosition === ErrorPosition.BOTTOM && (
         <ErrorMessage />

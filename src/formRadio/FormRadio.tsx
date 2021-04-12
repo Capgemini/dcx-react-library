@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Roles } from '../common';
+
 import {
   ConditionalInputProps,
   FormRadioProps,
@@ -46,7 +46,7 @@ export const FormRadio = ({
   );
 
   return (
-    <div {...itemProps} role={Roles.formRadio}>
+    <div {...itemProps}>
       <input
         id={id}
         type="radio"

@@ -18,7 +18,7 @@ describe('FormRadio', () => {
       />
     );
 
-    expect(screen.getByRole('form-radio')).toBeInTheDocument();
+    expect(screen.getByRole('radio')).toBeInTheDocument();
   });
 
   it('should render a radio with a label', () => {
@@ -118,9 +118,10 @@ describe('FormRadio', () => {
         selected={true}
         name="group1"
         onChange={handleChange}
+        itemProps={{ 'data-testid': 'radio-container' }}
       />
     );
-    const container: HTMLElement = screen.getByRole('form-radio');
+    const container: HTMLElement = screen.getByTestId('radio-container');
     const getById = queryByAttribute.bind(null, 'id');
 
     expect(getById(container, 'myId')).toBeChecked();
@@ -138,9 +139,10 @@ describe('FormRadio', () => {
         name="group1"
         disabled={true}
         onChange={handleChange}
+        itemProps={{ 'data-testid': 'radio-container' }}
       />
     );
-    const container: HTMLElement = screen.getByRole('form-radio');
+    const container: HTMLElement = screen.getByTestId('radio-container');
     const getById = queryByAttribute.bind(null, 'id');
 
     expect(getById(container, 'myId')).not.toBeChecked();
