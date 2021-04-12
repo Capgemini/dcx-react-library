@@ -81,7 +81,7 @@ export const Login = () => {
     dispatch({ type: 'setPasswordValid', value: valid });
     setPasswordErrorState(isErrorMessageVisible);
     checkFormValidity({
-      username: state.password.usernameValid,
+      username: state.validation.usernameValid,
       password: valid,
     });
   };
