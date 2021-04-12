@@ -90,6 +90,10 @@ export const Button = ({
     }
   }, [isLoading]);
 
+  React.useEffect(() => {
+    setDisable(disabled);
+  }, [disabled]);
+
   const handleClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
     setDisable(true);
     if (disableClickForMs) delayNextClick();
