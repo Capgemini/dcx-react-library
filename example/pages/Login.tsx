@@ -117,86 +117,90 @@ export const Login = () => {
   const [passwordErrorState, setPasswordErrorState] = React.useState(false);
 
   return (
-    <div className="login-container">
-      <HeadingOne>Log In</HeadingOne>
-      <form>
-        <div
-          className={['form-group', userNameErrorState ? 'has-error' : ''].join(
-            ' '
-          )}
-        >
-          <Label htmlFor="username" className="control-label">
-            Username
-          </Label>
-          <FormInput
-            name="username"
-            type="text"
-            value={state.username}
-            onChange={handleInputChange}
-            isValid={handleUserNameValidity}
-            inputProps={{
-              placeholder: 'Enter your username',
-              autoComplete: 'username',
-              className: 'form-control',
-            }}
-            errorProps={{
-              className: 'help-block',
-            }}
-            validation={usernameValidation}
-            errorPosition="bottom"
+    <div className="page-container">
+      <div className="login-container">
+        <HeadingOne>Log In</HeadingOne>
+        <form>
+          <div
+            className={[
+              'form-group',
+              userNameErrorState ? 'has-error' : '',
+            ].join(' ')}
+          >
+            <Label htmlFor="username" className="control-label">
+              Username
+            </Label>
+            <FormInput
+              name="username"
+              type="text"
+              value={state.username}
+              onChange={handleInputChange}
+              isValid={handleUserNameValidity}
+              inputProps={{
+                placeholder: 'Enter your username',
+                autoComplete: 'username',
+                className: 'form-control',
+              }}
+              errorProps={{
+                className: 'help-block',
+              }}
+              validation={usernameValidation}
+              errorPosition="bottom"
+            />
+          </div>
+
+          <div
+            className={[
+              'form-group',
+              passwordErrorState ? 'has-error' : '',
+            ].join(' ')}
+          >
+            <Label htmlFor="password" className="control-label">
+              Password
+            </Label>
+            <FormInput
+              name="password"
+              type="password"
+              value={state.password}
+              onChange={handleInputChange}
+              isValid={handlePasswordValidity}
+              inputProps={{
+                placeholder: 'Enter your password',
+                autoComplete: 'current-password',
+                className: 'form-control',
+              }}
+              errorProps={{
+                className: 'help-block',
+              }}
+              validation={passwordValidation}
+              errorPosition="bottom"
+            />
+          </div>
+
+          <Button
+            label="Login"
+            onClick={onSubmit}
+            isLoading={state.isLoading}
+            disabled={!state.isFormValid}
+            loadingLabel="loading..."
+            customLoadingPreImage={<span>spinner</span>}
+            className="btn btn-primary"
+            type="submit"
+          />
+        </form>
+        <div className="link-container">
+          <Button
+            label="Forgotten Password"
+            className="btn btn-sm btn-link"
+            type="button"
+          />
+
+          <Button
+            label="Sign Up!"
+            className="btn btn-sm btn-link"
+            type="button"
           />
         </div>
-
-        <div
-          className={['form-group', passwordErrorState ? 'has-error' : ''].join(
-            ' '
-          )}
-        >
-          <Label htmlFor="password" className="control-label">
-            Password
-          </Label>
-          <FormInput
-            name="password"
-            type="password"
-            value={state.password}
-            onChange={handleInputChange}
-            isValid={handlePasswordValidity}
-            inputProps={{
-              placeholder: 'Enter your password',
-              autoComplete: 'current-password',
-              className: 'form-control',
-            }}
-            errorProps={{
-              className: 'help-block',
-            }}
-            validation={passwordValidation}
-            errorPosition="bottom"
-          />
-        </div>
-
-        <Button
-          label="Login"
-          onClick={onSubmit}
-          isLoading={state.isLoading}
-          disabled={!state.isFormValid}
-          loadingLabel="loading..."
-          customLoadingPreImage={<span>spinner</span>}
-          className="btn btn-primary"
-          type="submit"
-        />
-      </form>
-      <div className="link-container">
-        <Button
-          label="Forgotten Password"
-          className="btn btn-sm btn-link"
-          type="button"
-        />
-
-        <Button
-          label="Sign Up!"
-          className="btn btn-sm btn-link"
-          type="button"
-        />
       </div>
     </div>
   );
