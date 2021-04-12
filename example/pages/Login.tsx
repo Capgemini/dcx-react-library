@@ -51,101 +51,103 @@ export const Login = () => {
   const [passwordErrorState, setPasswordErrorState] = React.useState(false);
 
   return (
-    <>
-      <div className="login-container">
-        <HeadingOne>Log In</HeadingOne>
-        <form>
-          <div
-            className={`form-group ${userNameErrorState ? 'has-error' : ''}`}
-          >
-            <Label htmlFor="username" className="control-label">
-              Username
-            </Label>
-            <FormInput
-              name="username"
-              type="text"
-              value={username}
-              onChange={handleChange}
-              isValid={handleUserNameValidity}
-              inputProps={{
-                placeholder: 'Enter your username',
-                autoComplete: 'username',
-                className: 'form-control',
-              }}
-              errorProps={{
-                className: 'help-block',
-              }}
-              validation={{
-                rule: {
-                  type: 'string',
-                  notEmpty: true,
-                },
-                message: 'Please enter a username',
-              }}
-              errorPosition="bottom"
-            />
-          </div>
-
-          <div
-            className={`form-group ${passwordErrorState ? 'has-error' : ''}`}
-          >
-            <Label htmlFor="password" className="control-label">
-              Password
-            </Label>
-            <FormInput
-              name="password"
-              type="password"
-              value={password}
-              onChange={handleChange}
-              isValid={handlePasswordValidity}
-              inputProps={{
-                placeholder: 'Enter your password',
-                autoComplete: 'current-password',
-                className: 'form-control',
-              }}
-              errorProps={{
-                className: 'help-block',
-              }}
-              validation={{
-                rule: {
-                  type: 'password',
-                  minLength: 8,
-                  uppercase: 1,
-                  numbers: 1,
-                  matchesOneOf: ['@', '_', '-', '.', '!'],
-                },
-                message:
-                  'Your password needs to be at least 8 chars, include 1 Uppercase, 1 Number and one special character',
-              }}
-              errorPosition="bottom"
-            />
-          </div>
-
-          <Button
-            label="Login"
-            onClick={buttonHandler}
-            isLoading={isLoading}
-            disabled={!formValid}
-            loadingLabel="loading..."
-            customLoadingPreImage={<span>spinner</span>}
-            className="btn btn-primary"
-            type="submit"
-          />
-        </form>
-        <div className="link-container">
-          <Button
-            label="Forgotten Password"
-            className="btn btn-sm btn-link"
-            type="button"
-          />
-
-          <Button
-            label="Sign Up!"
-            className="btn btn-sm btn-link"
-            type="button"
+    <div className="login-container">
+      <HeadingOne>Log In</HeadingOne>
+      <form>
+        <div
+          className={['form-group', userNameErrorState ? 'has-error' : ''].join(
+            ' '
+          )}
+        >
+          <Label htmlFor="username" className="control-label">
+            Username
+          </Label>
+          <FormInput
+            name="username"
+            type="text"
+            value={username}
+            onChange={handleChange}
+            isValid={handleUserNameValidity}
+            inputProps={{
+              placeholder: 'Enter your username',
+              autoComplete: 'username',
+              className: 'form-control',
+            }}
+            errorProps={{
+              className: 'help-block',
+            }}
+            validation={{
+              rule: {
+                type: 'string',
+                notEmpty: true,
+              },
+              message: 'Please enter a username',
+            }}
+            errorPosition="bottom"
           />
         </div>
+
+        <div
+          className={['form-group', passwordErrorState ? 'has-error' : ''].join(
+            ' '
+          )}
+        >
+          <Label htmlFor="password" className="control-label">
+            Password
+          </Label>
+          <FormInput
+            name="password"
+            type="password"
+            value={password}
+            onChange={handleChange}
+            isValid={handlePasswordValidity}
+            inputProps={{
+              placeholder: 'Enter your password',
+              autoComplete: 'current-password',
+              className: 'form-control',
+            }}
+            errorProps={{
+              className: 'help-block',
+            }}
+            validation={{
+              rule: {
+                type: 'password',
+                minLength: 8,
+                uppercase: 1,
+                numbers: 1,
+                matchesOneOf: ['@', '_', '-', '.', '!'],
+              },
+              message:
+                'Your password needs to be at least 8 chars, include 1 Uppercase, 1 Number and one special character',
+            }}
+            errorPosition="bottom"
+          />
+        </div>
+
+        <Button
+          label="Login"
+          onClick={buttonHandler}
+          isLoading={isLoading}
+          disabled={!formValid}
+          loadingLabel="loading..."
+          customLoadingPreImage={<span>spinner</span>}
+          className="btn btn-primary"
+          type="submit"
+        />
+      </form>
+      <div className="link-container">
+        <Button
+          label="Forgotten Password"
+          className="btn btn-sm btn-link"
+          type="button"
+        />
+
+        <Button
+          label="Sign Up!"
+          className="btn btn-sm btn-link"
+          type="button"
+        />
       </div>
-    </>
+    </div>
   );
 };
