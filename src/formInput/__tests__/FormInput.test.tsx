@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import { ErrorPosition, FormInput } from '../FormInput';
 import userEvent from '@testing-library/user-event';
 
-const DummyComponent = ({ pos, displayErrorOnLoad = true }: any) => {
+const DummyComponent = ({ pos, displayError = false }: any) => {
   const [value, setValue] = React.useState('');
   const [isValid, setValid] = React.useState<boolean | string>('');
   const handleInputChange = (evt: any) => setValue(evt.currentTarget.value);
@@ -20,7 +20,7 @@ const DummyComponent = ({ pos, displayErrorOnLoad = true }: any) => {
         errorPosition={pos}
         onChange={handleInputChange}
         isValid={handleValidity}
-        displayErrorOnLoad={displayErrorOnLoad}
+        displayError={displayError}
         errorProps={{
           'data-testid': 'error-container',
         }}
@@ -36,6 +36,42 @@ const DummyComponent = ({ pos, displayErrorOnLoad = true }: any) => {
         }}
       />
       <label data-testid="check-validity">{isValid.toString()}</label>
+    </>
+  );
+};
+
+const DummyComponentTriggerError = () => {
+  const handleInputChange = jest.fn();
+  const [displayError, setDisplayError] = React.useState(false);
+
+  const handleClick = () => {
+    setDisplayError(true);
+  };
+
+  return (
+    <>
+      <FormInput
+        name="password"
+        type="text"
+        value=""
+        onChange={handleInputChange}
+        displayError={displayError}
+        errorPosition={ErrorPosition.BOTTOM}
+        errorProps={{
+          'data-testid': 'error-container',
+        }}
+        validation={{
+          rule: {
+            type: 'password',
+            minLength: 8,
+            uppercase: 1,
+            numbers: 1,
+            matchesOneOf: ['@', '_', '-', '.', '!'],
+          },
+          message: 'is invalid',
+        }}
+      />
+      <button onClick={handleClick}>submit</button>
     </>
   );
 };
@@ -132,12 +168,18 @@ describe('FormInput', () => {
     expect(validLabel.innerHTML).toBe('true');
   });
 
-  it('should not display the error message on load', () => {
-    render(
-      <DummyComponent pos={ErrorPosition.BOTTOM} displayErrorOnLoad={false} />
-    );
+  it('should display the error message on load', () => {
+    render(<DummyComponent pos={ErrorPosition.BOTTOM} displayError={true} />);
+    expect(screen.getByRole('error')).toContainHTML('is invalid');
+  });
+
+  it('should display the error message without interact with the component', () => {
+    render(<DummyComponentTriggerError />);
     expect(() => screen.getByText('is invalid')).toThrow(
       'Unable to find an element'
     );
+    const button = screen.getByRole('button');
+    userEvent.click(button);
+    expect(screen.getByRole('error')).toContainHTML('is invalid');
   });
 });
