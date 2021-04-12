@@ -3,6 +3,7 @@ import { FormInput, Button } from 'dcx-react-library';
 import { Label } from '../generated-components/Label';
 import { HeadingOne } from '../generated-components/HeadingOne';
 import { capitalize } from 'lodash';
+import { usernameValidation, passwordValidation } from './validationRules';
 import './login.scss';
 
 export const Login = () => {
@@ -128,13 +129,7 @@ export const Login = () => {
             errorProps={{
               className: 'help-block',
             }}
-            validation={{
-              rule: {
-                type: 'string',
-                notEmpty: true,
-              },
-              message: 'Please enter a username',
-            }}
+            validation={usernameValidation}
             errorPosition="bottom"
           />
         </div>
@@ -161,17 +156,7 @@ export const Login = () => {
             errorProps={{
               className: 'help-block',
             }}
-            validation={{
-              rule: {
-                type: 'password',
-                minLength: 8,
-                uppercase: 1,
-                numbers: 1,
-                matchesOneOf: ['@', '_', '-', '.', '!'],
-              },
-              message:
-                'Your password needs to be at least 8 chars, include 1 Uppercase, 1 Number and one special character',
-            }}
+            validation={passwordValidation}
             errorPosition="bottom"
           />
         </div>
