@@ -2,45 +2,53 @@ import * as React from 'react';
 import { FormInput, Button } from 'dcx-react-library';
 import { Label } from '../generated-components/Label';
 import { HeadingOne } from '../generated-components/HeadingOne';
-import { capitalize } from 'lodash';
 import { usernameValidation, passwordValidation } from './validationRules';
 import './login.scss';
 
-export const Login = () => {
-  const initialState = {
-    username: '',
-    password: '',
-    isLoading: false,
-    isFormValid: false,
-    validation: {
-      usernameValid: false,
-      passwordValid: false,
-    },
-  };
+const initialState = {
+  username: '',
+  password: '',
+  isLoading: false,
+  isFormValid: false,
+  validation: {
+    usernameValid: false,
+    passwordValid: false,
+  },
+};
 
+enum LOGIN_ACTIONS {
+  UPDATE_USERNAME = 'updateUsername',
+  UPDATE_PASSWORD = 'updatePassword',
+  SET_ISLOADING = 'setIsLoading',
+  SET_ISFORM_VALID = 'setIsFormValid',
+  SET_ISUSERNAME_VALID = 'setUsernameValid',
+  SET_ISPASSWORD_VALID = 'setPasswordValid',
+}
+
+export const Login = () => {
   function reducer(state, action) {
     switch (action.type) {
-      case 'updateUsername':
+      case LOGIN_ACTIONS.UPDATE_USERNAME:
         return {
           ...state,
           username: action.value,
         };
-      case 'updatePassword':
+      case LOGIN_ACTIONS.UPDATE_PASSWORD:
         return {
           ...state,
           password: action.value,
         };
-      case 'setIsLoading':
+      case LOGIN_ACTIONS.SET_ISLOADING:
         return {
           ...state,
           isLoading: action.value,
         };
-      case 'setIsFormValid':
+      case LOGIN_ACTIONS.SET_ISFORM_VALID:
         return {
           ...state,
           isFormValid: action.value,
         };
-      case 'setUsernameValid':
+      case LOGIN_ACTIONS.SET_ISUSERNAME_VALID:
         return {
           ...state,
           validation: {
@@ -48,7 +56,7 @@ export const Login = () => {
             usernameValid: action.value,
           },
         };
-      case 'setPasswordValid':
+      case LOGIN_ACTIONS.SET_ISPASSWORD_VALID:
         return {
           ...state,
           validation: {
@@ -65,11 +73,11 @@ export const Login = () => {
 
   const handleInputChange = event => {
     const { name, value } = event.currentTarget;
-    dispatch({ type: `update${capitalize(name)}`, value });
+    dispatch({ type: LOGIN_ACTIONS[`UPDATE_${name.toUpperCase()}`], value });
   };
 
   const handleUserNameValidity = (valid, isErrorMessageVisible) => {
-    dispatch({ type: 'setUsernameValid', value: valid });
+    dispatch({ type: LOGIN_ACTIONS.SET_ISUSERNAME_VALID, value: valid });
     setUsernameErrorState(isErrorMessageVisible);
     checkFormValidity({
       username: valid,
@@ -78,7 +86,7 @@ export const Login = () => {
   };
 
   const handlePasswordValidity = (valid, isErrorMessageVisible) => {
-    dispatch({ type: 'setPasswordValid', value: valid });
+    dispatch({ type: LOGIN_ACTIONS.SET_ISPASSWORD_VALID, value: valid });
     setPasswordErrorState(isErrorMessageVisible);
     checkFormValidity({
       username: state.validation.usernameValid,
@@ -88,16 +96,22 @@ export const Login = () => {
 
   const onSubmit = () => {
     // send data / set loading
-    dispatch({ type: 'setIsLoading', value: true });
+    dispatch({ type: LOGIN_ACTIONS.SET_ISLOADING, value: true });
     if (state.isFormValid) {
       // it's valid
     }
-    setTimeout(() => dispatch({ type: 'setIsLoading', value: false }), 1000);
+    setTimeout(
+      () => dispatch({ type: LOGIN_ACTIONS.SET_ISLOADING, value: false }),
+      1000
+    );
   };
 
   const checkFormValidity = formValidObj => {
     const { username, password } = formValidObj;
-    dispatch({ type: 'setIsFormValid', value: username && password });
+    dispatch({
+      type: LOGIN_ACTIONS.SET_ISFORM_VALID,
+      value: username && password,
+    });
   };
 
   const [userNameErrorState, setUsernameErrorState] = React.useState(false);
