@@ -3,6 +3,7 @@ import { FormInput, Button } from 'dcx-react-library';
 import { Label } from '../generated-components/Label';
 import { HeadingOne } from '../generated-components/HeadingOne';
 import { capitalize } from 'lodash';
+import './login.scss';
 
 export const Login = () => {
   const initialState = {
