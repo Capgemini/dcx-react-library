@@ -2,49 +2,100 @@ import * as React from 'react';
 import { FormInput, Button } from 'dcx-react-library';
 import { Label } from '../generated-components/Label';
 import { HeadingOne } from '../generated-components/HeadingOne';
+import { capitalize } from 'lodash';
 
 export const Login = () => {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const handleChange = event => {
-    const { name, value } = event.currentTarget;
-    if (name === 'username') {
-      setUsername(value);
-    } else {
-      setPassword(value);
-    }
+  const initialState = {
+    username: '',
+    password: '',
+    isLoading: false,
+    isFormValid: false,
+    validation: {
+      usernameValid: false,
+      passwordValid: false,
+    },
   };
 
-  const [usernameValid, setUsernameValid] = React.useState(false);
-  const [passwordValid, setPasswordValid] = React.useState(false);
+  function reducer(state, action) {
+    switch (action.type) {
+      case 'updateUsername':
+        return {
+          ...state,
+          username: action.value,
+        };
+      case 'updatePassword':
+        return {
+          ...state,
+          password: action.value,
+        };
+      case 'setIsLoading':
+        return {
+          ...state,
+          isLoading: action.value,
+        };
+      case 'setIsFormValid':
+        return {
+          ...state,
+          isFormValid: action.value,
+        };
+      case 'setUsernameValid':
+        return {
+          ...state,
+          validation: {
+            ...state.validation,
+            usernameValid: action.value,
+          },
+        };
+      case 'setPasswordValid':
+        return {
+          ...state,
+          validation: {
+            ...state.validation,
+            passwordValid: action.value,
+          },
+        };
+      default:
+        throw new Error();
+    }
+  }
+
+  const [state, dispatch] = React.useReducer(reducer, initialState);
+
+  const handleInputChange = event => {
+    const { name, value } = event.currentTarget;
+    dispatch({ type: `update${capitalize(name)}`, value });
+  };
+
   const handleUserNameValidity = (valid, isErrorMessageVisible) => {
-    setUsernameValid(valid);
+    dispatch({ type: 'setUsernameValid', value: valid });
     setUsernameErrorState(isErrorMessageVisible);
-    checkFormValidity({ username: valid, password: passwordValid });
+    checkFormValidity({
+      username: valid,
+      password: state.validation.passwordValid,
+    });
   };
+
   const handlePasswordValidity = (valid, isErrorMessageVisible) => {
-    setPasswordValid(valid);
+    dispatch({ type: 'setPasswordValid', value: valid });
     setPasswordErrorState(isErrorMessageVisible);
-    checkFormValidity({ username: usernameValid, password: valid });
+    checkFormValidity({
+      username: state.password.usernameValid,
+      password: valid,
+    });
   };
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [formValid, setFormValid] = React.useState(false);
-  const buttonHandler = () => {
+
+  const onSubmit = () => {
     // send data / set loading
-    setIsLoading(true);
-    if (formValid) {
+    dispatch({ type: 'setIsLoading', value: true });
+    if (state.isFormValid) {
       // it's valid
     }
-    setTimeout(() => setIsLoading(false), 1000);
+    setTimeout(() => dispatch({ type: 'setIsLoading', value: false }), 1000);
   };
 
   const checkFormValidity = formValidObj => {
     const { username, password } = formValidObj;
-    if (username && password) {
-      setFormValid(true);
-    } else {
-      setFormValid(false);
-    }
+    dispatch({ type: 'setIsFormValid', value: username && password });
   };
 
   const [userNameErrorState, setUsernameErrorState] = React.useState(false);
@@ -65,8 +116,8 @@ export const Login = () => {
           <FormInput
             name="username"
             type="text"
-            value={username}
-            onChange={handleChange}
+            value={state.username}
+            onChange={handleInputChange}
             isValid={handleUserNameValidity}
             inputProps={{
               placeholder: 'Enter your username',
@@ -98,8 +149,8 @@ export const Login = () => {
           <FormInput
             name="password"
             type="password"
-            value={password}
-            onChange={handleChange}
+            value={state.password}
+            onChange={handleInputChange}
             isValid={handlePasswordValidity}
             inputProps={{
               placeholder: 'Enter your password',
@@ -126,9 +177,9 @@ export const Login = () => {
 
         <Button
           label="Login"
-          onClick={buttonHandler}
-          isLoading={isLoading}
-          disabled={!formValid}
+          onClick={onSubmit}
+          isLoading={state.isLoading}
+          disabled={!state.isFormValid}
           loadingLabel="loading..."
           customLoadingPreImage={<span>spinner</span>}
           className="btn btn-primary"
