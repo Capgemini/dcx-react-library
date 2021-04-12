@@ -1,5 +1,4 @@
 import React from 'react';
-import { Roles } from '../common';
 
 type FormCheckboxProps = {
   /**
@@ -71,7 +70,7 @@ export const FormCheckbox = ({
   hintText,
   hintProps,
 }: FormCheckboxProps) => (
-  <div {...itemProps} role={Roles.formCheckbox}>
+  <div {...itemProps}>
     <input
       id={id}
       type="checkbox"

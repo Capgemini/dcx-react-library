@@ -3,7 +3,7 @@ export const Roles = {
   error: 'error',
   formInput: 'form-input',
   formRadio: 'radio',
-  formCheckbox: 'form-checkbox',
+  formCheckbox: 'checkbox',
   formGroup: 'form-group',
   prefix: 'prefix',
   suffix: 'suffix',
