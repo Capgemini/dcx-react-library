@@ -11,6 +11,7 @@ import {
   ProgressDemo,
   ToggleDemo,
   FormSelectDemo,
+  MultiUploadDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -29,6 +30,7 @@ const App = () => (
         <Route path="/progress" component={ProgressDemo} />
         <Route path="/toggle" component={ToggleDemo} />
         <Route path="/select" component={FormSelectDemo} />
+        <Route path="/multiUpload" component={MultiUploadDemo} />
       </Switch>
     </BrowserRouter>
   </div>

@@ -38,6 +38,9 @@ export const Home = () => (
         <li>
           <Link to="/select">SelectDemo</Link>
         </li>
+        <li>
+          <Link to="/multiUpload">MultiUploadDemo</Link>
+        </li>
       </ul>
     </nav>
     <h1>Home</h1>
