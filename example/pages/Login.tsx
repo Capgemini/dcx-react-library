@@ -187,7 +187,7 @@ export const Login = () => {
             loadingLabel="loading..."
             customLoadingPreImage={
               <div className="loading-icon">
-                <FontAwesomeIcon icon={faSpinner} />
+                <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
               </div>
             }
             className={[
