@@ -10,6 +10,14 @@
   .help-block {
     max-width: 18em;
   }
+
+  .btn-loading {
+    display: flex;
+
+    .loading-icon {
+      margin-right: 0.5em;
+    }
+  }
 }
 
 .page-container {
