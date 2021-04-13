@@ -3,6 +3,8 @@ import { FormInput, Button } from 'dcx-react-library';
 import { Label, HeadingOne } from '../generated-components';
 import { usernameValidation, passwordValidation } from './validationRules';
 import './login.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const initialState = {
   username: '',
@@ -183,8 +185,15 @@ export const Login = () => {
             isLoading={state.isLoading}
             disabled={!state.isFormValid}
             loadingLabel="loading..."
-            customLoadingPreImage={<span>spinner</span>}
-            className="btn btn-primary"
+            customLoadingPreImage={
+              <div className="loading-icon">
+                <FontAwesomeIcon icon={faSpinner} />
+              </div>
+            }
+            className={[
+              'btn btn-primary',
+              state.isLoading ? 'btn-loading' : '',
+            ].join(' ')}
             type="submit"
           />
         </form>
