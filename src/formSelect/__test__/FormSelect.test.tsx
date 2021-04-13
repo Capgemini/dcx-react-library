@@ -23,16 +23,16 @@ const DummySelect = ({ name, id }: props) => {
 };
 
 describe('FormSelect', () => {
-  it('should display the fromSelect component', () => {
+  it('should display the formSelect component', () => {
     render(<DummySelect id="myId" name="the name" />);
-    const formSelect = screen.getByRole('form-select');
+    const formSelect = screen.getByRole('combobox');
     expect(formSelect).toBeInTheDocument();
   });
 
   it('should contain a select element inside fromSelect', () => {
     render(<DummySelect id="myId" name="the name" />);
-    const formSelect = screen.getByRole('form-select');
-    const selectElement = screen.getByRole('combobox');
+    const formSelect = screen.getByRole('combobox');
+    const selectElement = screen.getByRole('option');
     expect(formSelect).toContainElement(selectElement);
   });
 

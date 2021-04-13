@@ -10,7 +10,7 @@ describe('FormCheckbox', () => {
       <FormCheckbox id="myId" name="group1" value="choice 1" label="my label" />
     );
 
-    expect(screen.getByRole('form-checkbox')).toBeInTheDocument();
+    expect(screen.getByRole('checkbox')).toBeInTheDocument();
     expect(screen.getByLabelText('my label').getAttribute('value')).toBe(
       'choice 1'
     );
@@ -57,9 +57,10 @@ describe('FormCheckbox', () => {
         label="my label"
         defaultChecked={true}
         onChange={handleChange}
+        itemProps={{ 'data-testid': 'checkbox-container' }}
       />
     );
-    const container: HTMLElement = screen.getByRole('form-checkbox');
+    const container: HTMLElement = screen.getByTestId('checkbox-container');
     const getById = queryByAttribute.bind(null, 'id');
 
     expect(getById(container, 'myId')).toBeChecked();
@@ -77,9 +78,10 @@ describe('FormCheckbox', () => {
         label="my label"
         disabled={true}
         onChange={handleChange}
+        itemProps={{ 'data-testid': 'checkbox-container' }}
       />
     );
-    const container: HTMLElement = screen.getByRole('form-checkbox');
+    const container: HTMLElement = screen.getByTestId('checkbox-container');
     const getById = queryByAttribute.bind(null, 'id');
 
     expect(getById(container, 'myId')).not.toBeChecked();

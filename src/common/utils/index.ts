@@ -2,12 +2,13 @@ export { useValidation, useValidationOnChange } from './useValidation';
 export const Roles = {
   error: 'error',
   formInput: 'form-input',
-  formRadio: 'form-radio',
-  formCheckbox: 'form-checkbox',
+  formRadio: 'radio',
+  formCheckbox: 'checkbox',
   formGroup: 'form-group',
   prefix: 'prefix',
   suffix: 'suffix',
   progress: 'progress',
   toggle: 'form-toggle',
-  formSelect: 'form-select',
+  listItem: 'listitem',
+  list: 'list',
 };

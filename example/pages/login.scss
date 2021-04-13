@@ -1,0 +1,28 @@
+.login-container {
+  display: grid;
+  gap: 1.8em;
+  justify-content: center;
+
+  form {
+    min-width: 18em;
+  }
+
+  .help-block {
+    max-width: 18em;
+  }
+
+  .btn-loading {
+    display: flex;
+
+    .loading-icon {
+      margin-right: 0.5em;
+    }
+  }
+}
+
+.page-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+}
