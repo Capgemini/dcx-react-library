@@ -198,8 +198,8 @@ export const Login = () => {
           />
         </form>
         <div className="link-container">
-          <Link className="btn btn-sm btn-link">Forgotten Password</Link>
-          <Link className="btn btn-sm btn-link">Sign Up!</Link>
+          <Link>Forgotten Password</Link>
+          <Link>Sign Up!</Link>
         </div>
       </div>
     </div>
