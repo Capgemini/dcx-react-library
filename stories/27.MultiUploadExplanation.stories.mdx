@@ -1,0 +1,53 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { MultiUpload } from '../src/multiUpload/MultiUpload';
+import './style.css';
+
+<Meta title="DCXLibrary/Form/MultiUpload/documentation" component={MultiUpload} />
+
+# MultiUpload
+
+A multi upload component ready to use in your form. 
+
+MultiUpload is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
+
+## Usage
+
+Use the multi upload component when users need to upload file(s).
+
+It provides a conventional file upload with a label, hint text and error message. 
+
+An example with all the available properties is:
+
+```js
+<MultiUpload 
+    name="file-upload"
+    acceptedFormats=".json"
+    allowDirectories="allow"
+    ariaLabel="aria-label"
+    className="some-class-name"
+    error={{
+        text: "error message",
+        classes: "error class names",
+        id: "error-id",
+        visuallyHiddenText: {
+            text: "visuallyHiddenText",
+            classes: "visually hidden class"
+        }
+    }}
+    hint={{
+        text: "hint text",
+        classes: "classes for hint",
+        id: "hint-id"
+    }}
+    id="multiupload-id"
+    inputProperties={{
+        className: "class-name"
+    }}
+    label="Upload Label"
+    labelProperties={{
+        className: "class name for label"
+    }}
+/>
+```
+
+<Props of={MultiUpload} />

@@ -71,6 +71,7 @@ export const MultiUpload = ({
     {label && (
       <label {...labelProperties} htmlFor={id}>
         {label}
+        <span>{` `}</span>
       </label>
     )}
     {hint && <Hint {...hint} />}
