@@ -1,6 +1,6 @@
 {
     "link": {
       "tag": "a",
-      "props": ["href", "text", "ariaLabel"]
+      "props": ["href", "text"]
     }
   }
