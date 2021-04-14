@@ -91,16 +91,22 @@ The title will be an `H1` element (we defined "tag": "h1") and the same css prop
 
 - link.json
 
-the Link component will be an `a` element ("tag": "a") will have default properties ("target": "\_blank" and "rel": "noopener noreferrer") and will require 3 props ("href", "text", "ariaLabel").
+the Link component will be
+
+1. an `a` element ("tag": "a")
+2. will have default properties ("target": "\_blank" and "rel": "noopener noreferrer")
+3. will require 4 props ("href", "text", "ariaLabel", "classes")
+4. will interpolate the className with one of the props ("classes")
 
 ```json
 {
   "link": {
     "tag": "a",
-    "props": ["href", "text", "ariaLabel"],
+    "props": ["href", "text", "ariaLabel", "classes"],
     "defaultValues": {
       "target": "_blank",
-      "rel": "noopener noreferrer"
+      "rel": "noopener noreferrer",
+      "className": "{['btn', 'btn-sm', 'btn-link', classes].join(' ')}"
     },
     "color": {
       "value": "#337ab7"

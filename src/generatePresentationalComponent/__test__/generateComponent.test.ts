@@ -40,6 +40,19 @@ export const Link = ({href,text,ariaLabel,...props}: any) => {
   );
 };`;
 
+const linkFileWithProp = `import React from 'react';
+import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
+import jsonStyle from '../stories/typographyDemo/link/linkClass.json';
+export const LinkClass = ({href,text,ariaLabel,classes,...props}: any) => {
+  const branded: any = brandedComponentStyle(jsonStyle.linkClass);
+  const newProps = {href,text,ariaLabel,classes,...props};
+  return (
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} target="_blank" rel="noopener noreferrer" className={['btn', 'btn-sm', 'btn-link', classes].join(' ')}  {...newProps}>
+      {props.children}
+    </DynamicComponent>
+  );
+};`;
+
 const label = {
   label: {
     tag: 'label',
@@ -117,6 +130,18 @@ const link = {
   },
 };
 
+const linkClassesProp = {
+  linkClass: {
+    tag: 'a',
+    props: ['href', 'text', 'ariaLabel', 'classes'],
+    defaultValues: {
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      className: "{['btn', 'btn-sm', 'btn-link', classes].join(' ')}",
+    },
+  },
+};
+
 let generateComponent: any;
 beforeEach(() => {
   process.argv = [
@@ -139,6 +164,9 @@ beforeEach(() => {
       headingOne
     )}`,
     'stories/typographyDemo/link/link.json': `${JSON.stringify(link)}`,
+    'stories/typographyDemo/link/linkClass.json': `${JSON.stringify(
+      linkClassesProp
+    )}`,
   });
 });
 
@@ -213,5 +241,14 @@ describe('generateComponent', () => {
       'components/'
     );
     expect(component).toContain(linkFile);
+  });
+
+  it('should allow to interpolate the props', () => {
+    const component = componentGenerator.generateComponentTemplate(
+      'stories/typographyDemo/link/',
+      'linkClass.json',
+      'components/'
+    );
+    expect(component).toContain(linkFileWithProp);
   });
 });

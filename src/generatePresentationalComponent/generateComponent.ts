@@ -33,7 +33,11 @@ export const replaceDefaultValues = (inputFile: string, data: any) => {
     const def = parseFile[jsonPath].defaultValues;
 
     Object.keys(def).forEach(function(key) {
-      values = values.concat(`${key}="${def[key]}" `);
+      if (def[key].includes('{')) {
+        values = values.concat(`${key}=${def[key]} `);
+      } else {
+        values = values.concat(`${key}="${def[key]}" `);
+      }
     });
   }
   return values;

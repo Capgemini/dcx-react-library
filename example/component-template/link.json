@@ -1,6 +1,9 @@
 {
     "link": {
       "tag": "a",
-      "props": ["href", "text"]
+      "props": ["href", "text", "classes"],
+      "defaultValues": {
+        "className": "{['btn', 'btn-sm', 'btn-link', classes].join(' ')}"
+      }
     }
   }
