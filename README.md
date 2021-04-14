@@ -120,5 +120,19 @@ Thanks goes to these wonderful people
         <sub><b>Isaac Babalola</b></sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/alexwbbr">
+        <img src="https://avatars.githubusercontent.com/u/12614684?v=4" width="100px;" alt="alex-webber"/>
+        <br />
+        <sub><b>Alex Webber</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/nikkialgar">
+        <img src="https://avatars.githubusercontent.com/u/229638?v=4" width="100px;" alt="nikki-algar"/>
+        <br />
+        <sub><b>Nikki Algar</b></sub>
+      </a>
+    </td>
   </tr>
 </table>
