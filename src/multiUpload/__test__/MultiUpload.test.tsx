@@ -17,14 +17,36 @@ describe('MultiUpload', () => {
   });
 
   it('should render a multi upload that accepts .json only', () => {
-    render(<MultiUpload name="file-json" acceptedFormats=".json" />);
-    expect(screen.getByRole('button')).toHaveAttribute('accept', '.json');
+    render(
+      <MultiUpload
+        name="file-json"
+        acceptedFormats=".json"
+        inputProperties={{
+          'data-testid': 'my-file-upload',
+        }}
+      />
+    );
+    expect(screen.getByTestId('my-file-upload')).toHaveAttribute(
+      'accept',
+      '.json'
+    );
   });
 
   it('should render a multi upload that allow directories', () => {
-    render(<MultiUpload name="file-upload" allowDirectories={'allow'} />);
+    render(
+      <MultiUpload
+        name="file-upload"
+        allowDirectories={'allow'}
+        inputProperties={{
+          'data-testid': 'my-file-upload',
+        }}
+      />
+    );
 
-    expect(screen.getByRole('button')).toHaveAttribute('allowdirs', 'allow');
+    expect(screen.getByTestId('my-file-upload')).toHaveAttribute(
+      'allowdirs',
+      'allow'
+    );
   });
 
   it('should render a multi upload with hint text', () => {
