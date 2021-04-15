@@ -1,3 +1,36 @@
 input {
   max-width: 18em;
 }
+
+/* The sidebar menu */
+.sidenav {
+  height: 100%;
+  width: 15em;
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color: #53ACDB; 
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 1em;
+  color: #818181;
+  display: block;
+}
+
+.sidenav li{
+  text-decoration: none;
+}
+
+
+body {
+  margin-left: 15em;
+  padding: 1em;
+}
+
