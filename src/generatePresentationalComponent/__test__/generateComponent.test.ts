@@ -53,6 +53,19 @@ export const LinkClass = ({href,text,ariaLabel,className,...props}: any) => {
   );
 };`;
 
+const linkFileWithPropNOUserDef = `import React from 'react';
+import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
+import jsonStyle from '../stories/typographyDemo/link/linkClassNoDef.json';
+export const LinkClassNoDef = ({href,text,className,...props}: any) => {
+  const branded: any = brandedComponentStyle(jsonStyle.linkClassNoDef);
+  const newProps = {...props};
+  return (
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag}  {...newProps}>
+      {props.children}
+    </DynamicComponent>
+  );
+};`;
+
 const label = {
   label: {
     tag: 'label',
@@ -142,6 +155,13 @@ const linkClassesProp = {
   },
 };
 
+const linkClassNoDef = {
+  linkClassNoDef: {
+    tag: 'a',
+    props: ['href', 'text', 'className'],
+  },
+};
+
 let generateComponent: any;
 beforeEach(() => {
   process.argv = [
@@ -166,6 +186,9 @@ beforeEach(() => {
     'stories/typographyDemo/link/link.json': `${JSON.stringify(link)}`,
     'stories/typographyDemo/link/linkClass.json': `${JSON.stringify(
       linkClassesProp
+    )}`,
+    'stories/typographyDemo/link/linkClassNoDef.json': `${JSON.stringify(
+      linkClassNoDef
     )}`,
   });
 });
@@ -241,6 +264,15 @@ describe('generateComponent', () => {
       'components/'
     );
     expect(component).toContain(linkFile);
+  });
+
+  it('should allow to interpolate the props', () => {
+    const component = componentGenerator.generateComponentTemplate(
+      'stories/typographyDemo/link/',
+      'linkClassNoDef.json',
+      'components/'
+    );
+    expect(component).toContain(linkFileWithPropNOUserDef);
   });
 
   it('should allow to interpolate the props and excludes default props from newProps', () => {

@@ -24,16 +24,14 @@ export const {{componentName}} = ({{{userProps}}...props}: any) => {
 export const excludeFromPropsUserDef = (props: any[], defaultValues: any) => {
   let excludedProps: string[] = [];
   props.forEach(prop => {
-    if (defaultValues) {
-      let found = false;
-      Object.keys(defaultValues).forEach(function(key) {
-        const defaultProp = defaultValues[key];
-        if (defaultProp.includes(prop)) {
-          found = true;
-        }
-      });
-      if (!found) excludedProps.push(prop);
-    }
+    let found = false;
+    Object.keys(defaultValues).forEach(function(key) {
+      const defaultProp = defaultValues[key];
+      if (defaultProp.includes(prop)) {
+        found = true;
+      }
+    });
+    if (!found) excludedProps.push(prop);
   });
   return excludedProps;
 };
