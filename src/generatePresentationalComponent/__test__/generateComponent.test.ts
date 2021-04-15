@@ -1,70 +1,143 @@
 import * as componentGenerator from '../generateComponent';
 const mock = require('mock-fs');
 
-const outputFile = `
-import React from 'react';
+const outputFile = `import React from 'react';
 import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
 import jsonStyle from '../stories/typographyDemo/input/label.json';
-export const Label = (props: any) => {
+export const Label = ({...props}: any) => {
   const branded: any = brandedComponentStyle(jsonStyle.label);
-
+  const newProps = {...props};
   return (
-    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} {...props}>
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag}  {...newProps}>
       {props.children}
     </DynamicComponent>
   );
 };`;
 
-const outputCamelFile = `
-import React from 'react';
+const outputCamelFile = `import React from 'react';
 import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
 import jsonStyle from '../stories/typographyDemo/headingOne/headingOne.json';
-export const HeadingOne = (props: any) => {
+export const HeadingOne = ({...props}: any) => {
   const branded: any = brandedComponentStyle(jsonStyle.headingOne);
-
+  const newProps = {...props};
   return (
-    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} {...props}>
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag}  {...newProps}>
       {props.children}
     </DynamicComponent>
   );
 };`;
 
-const outputCamelFile2 = `
-import React from 'react';
+const linkFile = `import React from 'react';
 import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
-import jsonStyle from '../stories/typographyDemo/headingOne/heading-one.json';
-export const HeadingOne = (props: any) => {
-  const branded: any = brandedComponentStyle(jsonStyle.heading-one);
-
+import jsonStyle from '../stories/typographyDemo/link/link.json';
+export const Link = ({href,text,ariaLabel,...props}: any) => {
+  const branded: any = brandedComponentStyle(jsonStyle.link);
+  const newProps = {href,text,ariaLabel,...props};
   return (
-    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} {...props}>
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} target="_blank" rel="noopener noreferrer"  {...newProps}>
       {props.children}
     </DynamicComponent>
   );
 };`;
 
-const inputFile = {
-  'label.json': {
+const linkFileWithProp = `import React from 'react';
+import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
+import jsonStyle from '../stories/typographyDemo/link/linkClass.json';
+export const LinkClass = ({href,text,ariaLabel,classes,...props}: any) => {
+  const branded: any = brandedComponentStyle(jsonStyle.linkClass);
+  const newProps = {href,text,ariaLabel,classes,...props};
+  return (
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} target="_blank" rel="noopener noreferrer" className={['btn', 'btn-sm', 'btn-link', classes].join(' ')}  {...newProps}>
+      {props.children}
+    </DynamicComponent>
+  );
+};`;
+
+const label = {
+  label: {
     tag: 'label',
     color: {
-      value: '#6a737c',
+      value: 'red',
     },
-    fontWeight: {
-      value: 'bold',
+    display: {
+      value: 'inline-block',
     },
-    fontSize: {
-      value: '12px',
+    'max-width': {
+      value: '100%',
+    },
+    'margin-bottom': {
+      value: '5px',
+    },
+    'font-weight': {
+      value: '700',
     },
   },
 };
 
-const fileStructure = {
-  stories: {
-    typographyDemo: {
-      input: inputFile,
-      output: {
-        'Label.tsx': outputFile,
-      },
+const headingOne = {
+  headingOne: {
+    tag: 'h1',
+    color: {
+      value: 'red',
+    },
+    display: {
+      value: 'inline-block',
+    },
+    'max-width': {
+      value: '100%',
+    },
+    'margin-bottom': {
+      value: '5px',
+    },
+    'font-weight': {
+      value: '700',
+    },
+  },
+};
+
+const link = {
+  link: {
+    tag: 'a',
+    props: ['href', 'text', 'ariaLabel'],
+    defaultValues: {
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+    color: {
+      value: '#337ab7',
+    },
+    display: {
+      value: 'inline-block',
+    },
+    'max-width': {
+      value: '100%',
+    },
+    'font-weight': {
+      value: '400',
+    },
+    'font-size': {
+      value: '12px',
+    },
+    'line-height': {
+      value: 1.5,
+    },
+    cursor: {
+      value: 'pointer',
+    },
+    padding: {
+      value: '5px 10px',
+    },
+  },
+};
+
+const linkClassesProp = {
+  linkClass: {
+    tag: 'a',
+    props: ['href', 'text', 'ariaLabel', 'classes'],
+    defaultValues: {
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      className: "{['btn', 'btn-sm', 'btn-link', classes].join(' ')}",
     },
   },
 };
@@ -81,7 +154,20 @@ beforeEach(() => {
   ];
 
   generateComponent = jest.spyOn(componentGenerator, 'generateComponent');
-  mock(fileStructure);
+
+  mock({
+    'stories/typographyDemo/input/label.json': `${JSON.stringify(label)}`,
+    'stories/typographyDemo/headingOne/headingOne.json': `${JSON.stringify(
+      headingOne
+    )}`,
+    'stories/typographyDemo/headingOne/heading-one.json': `${JSON.stringify(
+      headingOne
+    )}`,
+    'stories/typographyDemo/link/link.json': `${JSON.stringify(link)}`,
+    'stories/typographyDemo/link/linkClass.json': `${JSON.stringify(
+      linkClassesProp
+    )}`,
+  });
 });
 
 afterAll(() => {
@@ -148,12 +234,21 @@ describe('generateComponent', () => {
     expect(component).toContain(outputCamelFile);
   });
 
-  it('should camelCase the name', () => {
+  it('should allow to pass props and defaultValues', () => {
     const component = componentGenerator.generateComponentTemplate(
-      'stories/typographyDemo/headingOne/',
-      'heading-one.json',
+      'stories/typographyDemo/link/',
+      'link.json',
       'components/'
     );
-    expect(component).toContain(outputCamelFile2);
+    expect(component).toContain(linkFile);
+  });
+
+  it('should allow to interpolate the props', () => {
+    const component = componentGenerator.generateComponentTemplate(
+      'stories/typographyDemo/link/',
+      'linkClass.json',
+      'components/'
+    );
+    expect(component).toContain(linkFileWithProp);
   });
 });

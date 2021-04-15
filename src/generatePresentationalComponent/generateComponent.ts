@@ -5,23 +5,44 @@ const template = `
 import React from 'react';
 import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
 import jsonStyle from '{{inputFolder}}/{{fileName}}';
-export const {{componentName}} = (props: any) => {
+export const {{componentName}} = ({{{userProps}}...props}: any) => {
   const branded: any = brandedComponentStyle(jsonStyle.{{jsonPath}});
-
+  const newProps = {{{userProps}}...props};
   return (
-    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} {...props}>
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} {{defaultValues}} {...newProps}>
       {props.children}
     </DynamicComponent>
   );
-};
-`;
+};`;
 
-/**
- * It will prepare the new React component from the given template
- * @param {*} inputFolder
- * @param {*} inputFile
- * @returns
- */
+export const replaceUserProps = (inputFile: string, data: any) => {
+  let userProps = '';
+  const jsonPath = inputFile.replace('.json', '');
+  const parseFile = JSON.parse(data);
+  if (parseFile[jsonPath].props) {
+    userProps = parseFile[jsonPath].props.join(',').concat(',');
+  }
+  return userProps;
+};
+
+export const replaceDefaultValues = (inputFile: string, data: any) => {
+  let values = '';
+  const jsonPath = inputFile.replace('.json', '');
+  const parseFile = JSON.parse(data);
+  if (parseFile[jsonPath].defaultValues) {
+    const def = parseFile[jsonPath].defaultValues;
+
+    Object.keys(def).forEach(function(key) {
+      if (def[key].includes('{')) {
+        values = values.concat(`${key}=${def[key]} `);
+      } else {
+        values = values.concat(`${key}="${def[key]}" `);
+      }
+    });
+  }
+  return values;
+};
+
 export const generateComponentTemplate = (
   inputFolder: string,
   inputFile: string,
@@ -31,13 +52,21 @@ export const generateComponentTemplate = (
     pascalCase: true,
     preserveConsecutiveUppercase: true,
   });
+
   const jsonPath = inputFile.replace('.json', '');
   const relativePath = path.relative(outputFolder, inputFolder);
+  const fullPath = path.join(inputFolder, inputFile);
+  const data = fs.readFileSync(fullPath, 'utf8');
+  const userProps = replaceUserProps(inputFile, data);
+  const defaultValues = replaceDefaultValues(inputFile, data);
+
   return template
     .replace('{{inputFolder}}/{{fileName}}', `${relativePath}/${inputFile}`)
     .replace('{{jsonPath}}', jsonPath)
     .replace(/{{componentName}}/g, componentName)
-    .replace(/\/\//g, '/');
+    .replace(/{{userProps}}/g, userProps)
+    .replace('{{defaultValues}}', defaultValues)
+    .replace(/(^[ \t]*\n)/gm, '');
 };
 
 /**

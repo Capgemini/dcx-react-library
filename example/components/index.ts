@@ -8,3 +8,4 @@ export { ProgressDemo } from './ProgressDemo';
 export { ToggleDemo } from './ToggleDemo';
 export { FormSelectDemo } from './FormSelectDemo';
 export { SideNavBar } from './SideNavBar';
+export { MultiUploadDemo } from './MultiUploadDemo';

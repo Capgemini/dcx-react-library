@@ -1,5 +1,6 @@
 export { useValidation, useValidationOnChange } from './useValidation';
 export const Roles = {
+  button: 'button',
   error: 'error',
   formInput: 'form-input',
   formRadio: 'radio',

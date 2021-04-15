@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FormInput, Button } from 'dcx-react-library';
-import { Label, HeadingOne } from '../generated-components';
+import { Label, HeadingOne, Link } from '../generated-components';
 import { usernameValidation, passwordValidation } from './validationRules';
 import './login.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -198,17 +198,8 @@ export const Login = () => {
           />
         </form>
         <div className="link-container">
-          <Button
-            label="Forgotten Password"
-            className="btn btn-sm btn-link"
-            type="button"
-          />
-
-          <Button
-            label="Sign Up!"
-            className="btn btn-sm btn-link"
-            type="button"
-          />
+          <Link>Forgotten Password</Link>
+          <Link>Sign Up!</Link>
         </div>
       </div>
     </div>

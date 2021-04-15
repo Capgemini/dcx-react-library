@@ -14,6 +14,7 @@ Example:
 - Subtitle
 - Label
 - Hint
+- Link
 
 These components do not perform any action but they store a common style that is usable in the application. `dcx-react-library` create this component for you.
 
@@ -41,7 +42,35 @@ under `component-template` you can place all the `.json` template that will desc
 
 For example:
 
+- label.json
+
+the label component will be a `div` element with the css properties:
+
+```css
+color: 'black'
+font-weight: 'bold'
+font-size: '32px'
+```
+
+```json
+{
+  "title": {
+    "color": {
+      "value": "black"
+    },
+    "fontWeight": {
+      "value": "bold"
+    },
+    "fontSize": {
+      "value": "32px"
+    }
+  }
+}
+```
+
 - title.json
+
+The title will be an `H1` element (we defined "tag": "h1") and the same css properties
 
 ```json
 {
@@ -60,10 +89,59 @@ For example:
 }
 ```
 
+- link.json
+
+the Link component will be
+
+1. an `a` element ("tag": "a")
+2. will have default properties ("target": "\_blank" and "rel": "noopener noreferrer")
+3. will require 4 props ("href", "text", "ariaLabel", "classes")
+4. will interpolate the className with one of the props ("classes")
+
+```json
+{
+  "link": {
+    "tag": "a",
+    "props": ["href", "text", "ariaLabel", "classes"],
+    "defaultValues": {
+      "target": "_blank",
+      "rel": "noopener noreferrer",
+      "className": "{['btn', 'btn-sm', 'btn-link', classes].join(' ')}"
+    },
+    "color": {
+      "value": "#337ab7"
+    },
+    "display": {
+      "value": "inline-block"
+    },
+    "max-width": {
+      "value": "100%"
+    },
+    "font-weight": {
+      "value": "400"
+    },
+    "font-size": {
+      "value": "12px"
+    },
+    "line-height": {
+      "value": 1.5
+    },
+    "cursor": {
+      "value": "pointer"
+    },
+    "padding": {
+      "value": "5px 10px"
+    }
+  }
+}
+```
+
 These json files will contains:
 
 - the name of the component. This name will need to match the name of the file. For example if the file is called `title.json` the key for the object will be `title` (**mandatory**);
 - the tag. It will specify the tag attribute of the component (**optional** if not specified will be a div);
+- the defaultValues. It will allow to pass static values to the component (**optional**);
+- the props. Will allow to use the component passing extra properties (**optional**);
 - the css properties are **camel-case** (all the css attributes are valid).
 
 In the title example we will create a new component as `h2` and will have a black color, with `font-weight:bold` and `font-size:20px`.
