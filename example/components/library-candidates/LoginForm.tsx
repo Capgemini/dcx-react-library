@@ -93,25 +93,58 @@ type LogInProps = {
    */
   submitEnabledByDefault?: boolean;
   /**
-   * If the form should be displaying the loading state
+   * The properties for the login button
+   * isLoading - If the form should be displaying the loading state
+   * buttonLabel - The text which will be visible on the button
+   * loadingMessage - The message which will appear when the button is in the laoding state
    */
-  isLoading: boolean;
+  buttonProps: {
+    isLoading: boolean;
+    buttonLabel?: string;
+    loadingMessage?: string;
+  };
   /**
-   * The validation rules for the username input
+   * The properties for the username input
+   * usernameValidation - The validation rules for the username input
+   * usernameLabel - The text which will be displayed above the username input
+   * usernamePlaceholder - The text which will be displayed inside the username input
    */
-  usernameValidation: { rule: any; message: string };
+  usernameProps: {
+    usernameValidation: { rule: any; message: string };
+    usernameLabel?: string;
+    usernamePlaceholder?: string;
+  };
   /**
-   * The validation for the password input
+   * The properties for the password input
+   * passwordValidation - The validation rules for the password input
+   * passwordLabel - The text which will be displayed above the password input
+   * passwordPlaceholder - The text which will be displayed inside the password input
    */
-  passwordValidation: { rule: any; message: string };
+  passwordProps: {
+    passwordValidation: { rule: any; message: string };
+    passwordLabel?: string;
+    passwordPlaceholder?: string;
+  };
 };
 
 export const LoginForm = ({
   onClick,
   submitEnabledByDefault = false,
-  isLoading = false,
-  usernameValidation,
-  passwordValidation,
+  buttonProps = {
+    isLoading: false,
+    buttonLabel: 'Login',
+    loadingMessage: 'loading...',
+  },
+  usernameProps = {
+    usernameValidation: { rule: {}, message: '' },
+    usernameLabel: 'Username',
+    usernamePlaceholder: 'Enter your username',
+  },
+  passwordProps = {
+    passwordValidation: { rule: {}, message: '' },
+    passwordLabel: 'Password',
+    passwordPlaceholder: 'Enter your password',
+  },
   ...props
 }: LogInProps) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
@@ -180,8 +213,9 @@ export const LoginForm = ({
           ' '
         )}
       >
+        {usernameProps.usernameLabel}
         <Label htmlFor="username" className="control-label">
-          Username
+          {usernameProps.usernameLabel}
         </Label>
         <FormInput
           name="username"
@@ -191,14 +225,14 @@ export const LoginForm = ({
           isValid={handleUserNameValidity}
           displayError={state.validation.displayUsernameError}
           inputProps={{
-            placeholder: 'Enter your username',
+            placeholder: usernameProps.usernamePlaceholder,
             autoComplete: 'username',
             className: 'form-control',
           }}
           errorProps={{
             className: 'help-block',
           }}
-          validation={usernameValidation}
+          validation={usernameProps.usernameValidation}
           errorPosition="bottom"
         />
       </div>
@@ -209,7 +243,7 @@ export const LoginForm = ({
         )}
       >
         <Label htmlFor="password" className="control-label">
-          Password
+          {passwordProps.passwordLabel}
         </Label>
         <FormInput
           name="password"
@@ -219,33 +253,34 @@ export const LoginForm = ({
           isValid={handlePasswordValidity}
           displayError={state.validation.displayPasswordError}
           inputProps={{
-            placeholder: 'Enter your password',
+            placeholder: passwordProps.passwordPlaceholder,
             autoComplete: 'current-password',
             className: 'form-control',
           }}
           errorProps={{
             className: 'help-block',
           }}
-          validation={passwordValidation}
+          validation={passwordProps.passwordValidation}
           errorPosition="bottom"
         />
       </div>
 
       <Button
-        label="Login"
+        label={buttonProps.buttonLabel}
         onClick={onSubmit}
-        isLoading={isLoading}
+        isLoading={buttonProps.isLoading}
         disabled={submitEnabledByDefault ? false : !state.isFormValid}
         disableClickForMs={1}
-        loadingLabel="loading..."
+        loadingLabel={buttonProps.loadingMessage}
         customLoadingPreImage={
           <div className="loading-icon">
             <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
           </div>
         }
-        className={['btn btn-primary', isLoading ? 'btn-loading' : ''].join(
-          ' '
-        )}
+        className={[
+          'btn btn-primary',
+          buttonProps.isLoading ? 'btn-loading' : '',
+        ].join(' ')}
         type="submit"
       />
     </form>

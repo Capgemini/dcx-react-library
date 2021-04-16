@@ -22,15 +22,27 @@ export const Login = () => {
     }
   };
 
+  const buttonProps = {
+    isLoading,
+  };
+
+  const usernameProps = {
+    usernameValidation,
+  };
+
+  const passwordProps = {
+    passwordValidation,
+  };
+
   return (
     <div className="page-container">
       <div className="login-container">
         <HeadingOne>Log In</HeadingOne>
         <LoginForm
-          isLoading={isLoading}
+          buttonProps={buttonProps}
+          usernameProps={usernameProps}
+          passwordProps={passwordProps}
           onClick={handleClick}
-          usernameValidation={usernameValidation}
-          passwordValidation={passwordValidation}
           submitEnabledByDefault={false}
         ></LoginForm>
         <div className="link-container">
