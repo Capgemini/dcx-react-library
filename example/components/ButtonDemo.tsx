@@ -5,17 +5,27 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 export const ButtonDemo = () => {
   const [isLoading, setIsLoading] = React.useState(false);
-
+  const [evt, setEvt] = React.useState('');
   const handleClick = () => {
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 10000);
   };
+  const handleSimpleClick = evt => {
+    setEvt(evt.currentTarget);
+  };
 
   return (
     <>
+      <h1>Simple props</h1>
+      <Button onClick={handleSimpleClick} label="Register" />
+      <label>{JSON.stringify(evt)}</label>
+      <h1>Simple props disable</h1>
+      <Button onClick={handleSimpleClick} label="Register" disabled={true} />
+      <label>{JSON.stringify(evt)}</label>
+      <h1>custom</h1>
       <Button
         label="Start Now"
-        onClick={() => {}}
+        onClick={handleSimpleClick}
         disableClickForMs={2000}
         customPostfixImg={
           <svg
