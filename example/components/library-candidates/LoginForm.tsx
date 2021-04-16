@@ -82,6 +82,10 @@ function reducer(state, action) {
 
 type LogInProps = {
   /**
+   * Any additional properties here will get added to the form element
+   */
+  formProps?: any;
+  /**
    * handler for the click event
    */
   onClick: (
@@ -133,7 +137,7 @@ export const LoginForm = ({
   buttonProps,
   usernameProps,
   passwordProps,
-  ...props
+  formProps,
 }: LogInProps) => {
   const {
     usernameValidation,
@@ -211,7 +215,7 @@ export const LoginForm = ({
   const [passwordErrorState, setPasswordErrorState] = React.useState(false);
 
   return (
-    <form {...props}>
+    <form {...formProps}>
       <div
         className={['form-group', userNameErrorState ? 'has-error' : ''].join(
           ' '
