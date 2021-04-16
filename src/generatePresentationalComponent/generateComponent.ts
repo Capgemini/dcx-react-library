@@ -7,7 +7,7 @@ import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
 import jsonStyle from '{{inputFolder}}/{{fileName}}';
 export const {{componentName}} = ({{{userProps}}...props}: any) => {
   const branded: any = brandedComponentStyle(jsonStyle.{{jsonPath}});
-  const newProps = {{{userProps}}...props};
+  const newProps = {{{userPropsWithoutDefaultValues}}...props};
   return (
     <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} {{defaultValues}} {...newProps}>
       {props.children}
@@ -15,16 +15,64 @@ export const {{componentName}} = ({{{userProps}}...props}: any) => {
   );
 };`;
 
-export const replaceUserProps = (inputFile: string, data: any) => {
-  let userProps = '';
-  const jsonPath = inputFile.replace('.json', '');
-  const parseFile = JSON.parse(data);
-  if (parseFile[jsonPath].props) {
-    userProps = parseFile[jsonPath].props.join(',').concat(',');
-  }
-  return userProps;
+/**
+ * It will exclude from the props all the userProps defined
+ * @param props
+ * @param defaultValues
+ * @returns
+ */
+export const excludeFromPropsUserDef = (props: any[], defaultValues: any) => {
+  let excludedProps: string[] = [];
+  props.forEach(prop => {
+    let found = false;
+    Object.keys(defaultValues).forEach(function(key) {
+      const defaultProp = defaultValues[key];
+      if (defaultProp.includes(prop)) {
+        found = true;
+      }
+    });
+    if (!found) excludedProps.push(prop);
+  });
+  return excludedProps;
 };
 
+/**
+ * It will return the result for the props and the userProps
+ * @param inputFile
+ * @param data
+ * @returns
+ */
+export const replaceUserProps = (inputFile: string, data: any) => {
+  let userProps = '';
+  let userPropsWithoutUserDef = '';
+  const jsonPath = inputFile.replace('.json', '');
+  const parseFile = JSON.parse(data);
+
+  if (parseFile[jsonPath].props) {
+    let propsArr = parseFile[jsonPath].props;
+    if (parseFile[jsonPath].defaultValues) {
+      const propsArrWithoutUserDef = excludeFromPropsUserDef(
+        propsArr,
+        parseFile[jsonPath].defaultValues
+      );
+      userPropsWithoutUserDef = propsArrWithoutUserDef.join(',').concat(',');
+    }
+
+    userProps = propsArr.join(',').concat(',');
+  }
+
+  return {
+    userPropsWithoutUserDef,
+    userProps,
+  };
+};
+
+/**
+ * It will interpolate all the values defiend in userProps that contain the curly brace
+ * @param inputFile
+ * @param data
+ * @returns
+ */
 export const replaceDefaultValues = (inputFile: string, data: any) => {
   let values = '';
   const jsonPath = inputFile.replace('.json', '');
@@ -43,6 +91,14 @@ export const replaceDefaultValues = (inputFile: string, data: any) => {
   return values;
 };
 
+/**
+ * It will generate the component replacing the given template
+ *
+ * @param inputFolder
+ * @param inputFile
+ * @param outputFolder
+ * @returns
+ */
 export const generateComponentTemplate = (
   inputFolder: string,
   inputFile: string,
@@ -57,7 +113,10 @@ export const generateComponentTemplate = (
   const relativePath = path.relative(outputFolder, inputFolder);
   const fullPath = path.join(inputFolder, inputFile);
   const data = fs.readFileSync(fullPath, 'utf8');
-  const userProps = replaceUserProps(inputFile, data);
+  const { userPropsWithoutUserDef, userProps } = replaceUserProps(
+    inputFile,
+    data
+  );
   const defaultValues = replaceDefaultValues(inputFile, data);
 
   return template
@@ -65,6 +124,7 @@ export const generateComponentTemplate = (
     .replace('{{jsonPath}}', jsonPath)
     .replace(/{{componentName}}/g, componentName)
     .replace(/{{userProps}}/g, userProps)
+    .replace('{{userPropsWithoutDefaultValues}}', userPropsWithoutUserDef)
     .replace('{{defaultValues}}', defaultValues)
     .replace(/(^[ \t]*\n)/gm, '');
 };
