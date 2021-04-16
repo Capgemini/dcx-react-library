@@ -130,23 +130,27 @@ type LogInProps = {
 export const LoginForm = ({
   onClick,
   submitEnabledByDefault = false,
-  buttonProps = {
-    isLoading: false,
-    buttonLabel: 'Login',
-    loadingMessage: 'loading...',
-  },
-  usernameProps = {
-    usernameValidation: { rule: {}, message: '' },
-    usernameLabel: 'Username',
-    usernamePlaceholder: 'Enter your username',
-  },
-  passwordProps = {
-    passwordValidation: { rule: {}, message: '' },
-    passwordLabel: 'Password',
-    passwordPlaceholder: 'Enter your password',
-  },
+  buttonProps,
+  usernameProps,
+  passwordProps,
   ...props
 }: LogInProps) => {
+  const {
+    usernameValidation,
+    usernameLabel = 'Username',
+    usernamePlaceholder = 'Enter your username',
+  } = usernameProps;
+  const {
+    passwordValidation,
+    passwordLabel = 'Password',
+    passwordPlaceholder = 'Enter your password',
+  } = passwordProps;
+  const {
+    isLoading = false,
+    buttonLabel = 'Login',
+    loadingMessage = 'loading...',
+  } = buttonProps;
+
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const handleInputChange = event => {
@@ -213,9 +217,8 @@ export const LoginForm = ({
           ' '
         )}
       >
-        {usernameProps.usernameLabel}
         <Label htmlFor="username" className="control-label">
-          {usernameProps.usernameLabel}
+          {usernameLabel}
         </Label>
         <FormInput
           name="username"
@@ -225,14 +228,14 @@ export const LoginForm = ({
           isValid={handleUserNameValidity}
           displayError={state.validation.displayUsernameError}
           inputProps={{
-            placeholder: usernameProps.usernamePlaceholder,
+            placeholder: usernamePlaceholder,
             autoComplete: 'username',
             className: 'form-control',
           }}
           errorProps={{
             className: 'help-block',
           }}
-          validation={usernameProps.usernameValidation}
+          validation={usernameValidation}
           errorPosition="bottom"
         />
       </div>
@@ -243,7 +246,7 @@ export const LoginForm = ({
         )}
       >
         <Label htmlFor="password" className="control-label">
-          {passwordProps.passwordLabel}
+          {passwordLabel}
         </Label>
         <FormInput
           name="password"
@@ -253,34 +256,33 @@ export const LoginForm = ({
           isValid={handlePasswordValidity}
           displayError={state.validation.displayPasswordError}
           inputProps={{
-            placeholder: passwordProps.passwordPlaceholder,
+            placeholder: passwordPlaceholder,
             autoComplete: 'current-password',
             className: 'form-control',
           }}
           errorProps={{
             className: 'help-block',
           }}
-          validation={passwordProps.passwordValidation}
+          validation={passwordValidation}
           errorPosition="bottom"
         />
       </div>
 
       <Button
-        label={buttonProps.buttonLabel}
+        label={buttonLabel}
         onClick={onSubmit}
-        isLoading={buttonProps.isLoading}
+        isLoading={isLoading}
         disabled={submitEnabledByDefault ? false : !state.isFormValid}
         disableClickForMs={1}
-        loadingLabel={buttonProps.loadingMessage}
+        loadingLabel={loadingMessage}
         customLoadingPreImage={
           <div className="loading-icon">
             <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
           </div>
         }
-        className={[
-          'btn btn-primary',
-          buttonProps.isLoading ? 'btn-loading' : '',
-        ].join(' ')}
+        className={['btn btn-primary', isLoading ? 'btn-loading' : ''].join(
+          ' '
+        )}
         type="submit"
       />
     </form>
