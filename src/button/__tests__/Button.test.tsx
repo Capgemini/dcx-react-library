@@ -186,4 +186,12 @@ describe('Button', () => {
       '<img id="prefixImg" alt="" src="">Register<img id="postfixmg" alt="" src="">'
     );
   });
+
+  it('should remain enable', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} label="Register" />);
+    const button: any = screen.getByRole('button');
+    act(() => userEvent.click(button));
+    expect(button.disable).toBeFalsy();
+  });
 });
