@@ -15,6 +15,9 @@ export const Home = () => (
           <Link to="/login">Login Example</Link>
         </li>
         <li>
+          <Link to="/register">Registration form Example</Link>
+        </li>
+        <li>
           <Link to="/masked">masked</Link>
         </li>
         <li>
