@@ -11,6 +11,14 @@ describe('FormInput', () => {
     expect(container).toBeInTheDocument();
   });
 
+  it('should render the component if the date are uppercase', () => {
+    const { container } = render(<FormDate dateFormat="DD/MM/YYYY" />);
+    const lblDate: any = container.querySelectorAll('label');
+    expect(lblDate[0].getAttribute('for')).toBe('dd');
+    expect(lblDate[1].getAttribute('for')).toBe('mm');
+    expect(lblDate[2].getAttribute('for')).toBe('yyyy');
+  });
+
   it('should render the class container', () => {
     const { container } = render(
       <FormDate dateFormat="dd/mm/yyyy" inputContainerClass="containerClass" />

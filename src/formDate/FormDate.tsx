@@ -9,11 +9,67 @@ type DateType = {
 };
 
 type FormDateProps = {
-  dateFormat: 'dd/mm/yyyy' | 'dd/mm/yy' | 'yyyy/mm/dd' | 'yy/mm/dd';
+  /**
+   * Different type format accepted
+   */
+  dateFormat:
+    | 'dd/mm/yyyy'
+    | 'DD/MM/YYYY'
+    | 'dd/mm/yy'
+    | 'DD/MM/YY'
+    | 'yyyy/mm/dd'
+    | 'YYYY/MM/DD'
+    | 'yy/mm/dd'
+    | 'YY/MM/DD';
+  /**
+   * optional className for the container
+   */
   inputContainerClass?: string;
+  /**
+   * optional className to style all the input
+   */
   inputClass?: string;
+  /**
+   * all the properties available to customise the year:
+   * // input label
+   * label?: string;
+   * //optional className for the input
+   * classNameInput?: string;
+   * //optional className for the label
+   * classNameLabel?: string;
+   * // optional className for the span
+   * classNameSpan?: string;
+   * // if you want to pass a custom Label (i.e. an h1 etc)
+   * customLabel?: JSX.Element;
+   */
   yearProps?: DateType;
+  /**
+   * all the properties available to customise the month:
+   * // input label
+   * label?: string;
+   * //optional className for the input
+   * classNameInput?: string;
+   * //optional className for the label
+   * classNameLabel?: string;
+   * // optional className for the span
+   * classNameSpan?: string;
+   * // if you want to pass a custom Label (i.e. an h1 etc)
+   * customLabel?: JSX.Element;
+   */
   monthProps?: DateType;
+  /**
+   * all the properties available to customise the day:
+   * // input label
+   * label?: string;
+   * //optional className for the input
+   * classNameInput?: string;
+   * //optional className for the label
+   * classNameLabel?: string;
+   * // optional className for the span
+   * classNameSpan?: string;
+   * // if you want to pass a custom Label (i.e. an h1 etc)
+   * customLabel?: JSX.Element;
+   */
   dayProps?: DateType;
 };
 
@@ -47,7 +103,7 @@ export const FormDate = ({
   monthProps,
   dayProps,
 }: FormDateProps) => {
-  const dateSplit: string[] = dateFormat.split('/');
+  const dateSplit: string[] = dateFormat.toLowerCase().split('/');
 
   const Date = dateSplit.map((value: string) => {
     switch (value.charAt(0)) {
