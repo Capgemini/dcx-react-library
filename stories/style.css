@@ -945,7 +945,7 @@
 }
 
 .govuk-file-upload {
-  font-family: "GDS Transport",arial,sans-serif;
+  font-family: 'GDS Transport', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
@@ -954,33 +954,33 @@
   line-height: 1.25;
   color: #0b0c0c;
   padding-top: 5px;
-  padding-bottom: 5px
+  padding-bottom: 5px;
 }
 
 @media print {
   .govuk-file-upload {
-      font-family: sans-serif
+    font-family: sans-serif;
   }
 }
 
 @media (min-width: 40.0625em) {
   .govuk-file-upload {
-      font-size:19px;
-      font-size: 1.1875rem;
-      line-height: 1.31579
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
   }
 }
 
 @media print {
   .govuk-file-upload {
-      font-size: 14pt;
-      line-height: 1.15
+    font-size: 14pt;
+    line-height: 1.15;
   }
 }
 
 @media print {
   .govuk-file-upload {
-      color: #000
+    color: #000;
   }
 }
 
@@ -991,7 +991,7 @@
   padding-left: 5px;
   outline: 3px solid #fd0;
   -webkit-box-shadow: inset 0 0 0 4px #0b0c0c;
-  box-shadow: inset 0 0 0 4px #0b0c0c
+  box-shadow: inset 0 0 0 4px #0b0c0c;
 }
 
 .govuk-file-upload:focus-within {
@@ -1001,5 +1001,60 @@
   padding-left: 5px;
   outline: 3px solid #fd0;
   -webkit-box-shadow: inset 0 0 0 4px #0b0c0c;
-  box-shadow: inset 0 0 0 4px #0b0c0c
+  box-shadow: inset 0 0 0 4px #0b0c0c;
+}
+
+.govuk-date-yearLabel {
+  margin-right: 20px;
+  margin-bottom: 0px;
+  width: 50px;
+}
+
+.govuk-date-monthLabel {
+  margin-right: 20px;
+  margin-bottom: 0px;
+  width: 50px;
+}
+.govuk-date-span {
+  font-family: nta, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgb(11, 12, 12);
+  display: block;
+  clear: none;
+  padding-bottom: 2px;
+  margin-bottom: 0px;
+}
+
+.govuk-date-dayLabel {
+  margin-right: 20px;
+  margin-bottom: 0px;
+  width: 70px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.govuk-date-input {
+  font-family: nta, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  margin-top: 0px;
+  padding: 5px;
+  border: 2px solid rgb(11, 12, 12);
+  border-radius: 0px;
+  appearance: none;
+  margin-bottom: 0px;
+}
+
+.govuk-date-input:focus {
+  outline: rgb(255, 191, 71) solid 3px;
+  outline-offset: 0px;
 }

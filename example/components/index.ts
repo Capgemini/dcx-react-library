@@ -8,4 +8,5 @@ export { ProgressDemo } from './ProgressDemo';
 export { ToggleDemo } from './ToggleDemo';
 export { FormSelectDemo } from './FormSelectDemo';
 export { MultiUploadDemo } from './MultiUploadDemo';
+export { FormDateDemo } from './FormDateDemo';
 export * from './library-candidates';
