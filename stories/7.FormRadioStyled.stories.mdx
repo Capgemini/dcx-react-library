@@ -12,8 +12,8 @@ In this section we're using the formRadio component providing the GovUk style pa
 <Canvas>
   <Story name="inline">
     {() => {
-      const [value, setValue] = React.useState('');
-      const handleChange = event => setValue(event.currentTarget.value);
+      const [value, setValue] = React.useState("");
+      const handleChange = event => setValue(event.target.value);
       
       return (
         <div className="govuk-radios govuk-radios--inline">
@@ -31,10 +31,10 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-radios__item"
             }}
             name="changed-name"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <FormRadio
-            id="changed-name"
+            id="changed-name-2"
             value="No"
             label="No"
             labelProps={{
@@ -47,7 +47,7 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-radios__item"
             }}
             name="changed-name"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
         </div>
       )
@@ -58,8 +58,8 @@ In this section we're using the formRadio component providing the GovUk style pa
 <Canvas>
   <Story name="stacked">
     {() => {
-      const [value, setValue] = React.useState('');
-      const handleChange = event => setValue(event.currentTarget.value);
+      const [value, setValue] = React.useState("");
+      const handleChange = event => setValue(event.target.value);
       
       return (
         <div className="govuk-radios">
@@ -77,10 +77,10 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-radios__item"
             }}
             name="changed-country"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <FormRadio
-            id="changed-country"
+            id="changed-country-2"
             value="Scotland"
             label="Scotland"
             labelProps={{
@@ -93,10 +93,10 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-radios__item"
             }}
             name="changed-country"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <FormRadio
-            id="changed-country"
+            id="changed-country-3"
             value="Wales"
             label="Wales"
             labelProps={{
@@ -109,10 +109,10 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-radios__item"
             }}
             name="changed-country"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <FormRadio
-            id="changed-country"
+            id="changed-country-4"
             value="Northern Ireland"
             label="Northern Ireland"
             labelProps={{
@@ -125,7 +125,7 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-radios__item"
             }}
             name="changed-country"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
         </div>
       )
@@ -136,8 +136,8 @@ In this section we're using the formRadio component providing the GovUk style pa
 <Canvas>
   <Story name="disabled">
     {() => {
-      const [value, setValue] = React.useState('');
-      const handleChange = event => setValue(event.currentTarget.value);
+      const [value, setValue] = React.useState("");
+      const handleChange = event => setValue(event.target.value);
       
       return (
         <div className="govuk-radios">
@@ -155,10 +155,10 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-radios__item"
             }}
             name="changed-name-disabled"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <FormRadio
-            id="changed-name-disabled"
+            id="changed-name-disabled-2"
             value="No"
             label="No"
             labelProps={{
@@ -171,10 +171,10 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-radios__item"
             }}
             name="changed-name-disabled"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <FormRadio
-            id="changed-name-disabled"
+            id="changed-name-disabled-3"
             value="Maybe"
             label="Maybe"
             labelProps={{
@@ -188,7 +188,7 @@ In this section we're using the formRadio component providing the GovUk style pa
             }}
             disabled={true}
             name="changed-name-disabled"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
         </div>
       )
@@ -199,8 +199,8 @@ In this section we're using the formRadio component providing the GovUk style pa
 <Canvas>
   <Story name="preselected">
     {() => {
-      const [value, setValue] = React.useState('');
-      const handleChange = event => setValue(event.currentTarget.value);
+      const [value, setValue] = React.useState("Yes");
+      const handleChange = event => setValue(event.target.value);
       
       return (
         <div className="govuk-radios">
@@ -219,10 +219,10 @@ In this section we're using the formRadio component providing the GovUk style pa
             }}
             selected={true}
             name="changed-name-preselected"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <FormRadio
-            id="changed-name-preselected"
+            id="changed-name-preselected-2"
             value="No"
             label="No"
             labelProps={{
@@ -235,7 +235,7 @@ In this section we're using the formRadio component providing the GovUk style pa
               className: "govuk-radios__item"
             }}
             name="changed-name-preselected"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
         </div>
       )
@@ -247,12 +247,12 @@ In this section we're using the formRadio component providing the GovUk style pa
   <Story name="with hints">
     {() => {
       const [value, setValue] = React.useState("");
-      const handleChange = event => setValue(event.currentTarget.value);
+      const handleChange = event => setValue(event.target.value);
       
       return (
         <div className="govuk-radios govuk-radios--inline">
           <FormRadio
-            id="changed-name-with-hint-1"
+            id="changed-name-with-hint"
             value="Sign in with Government Gateway"
             label="Sign in with Government Gateway"
             labelProps={{
@@ -270,7 +270,7 @@ In this section we're using the formRadio component providing the GovUk style pa
               id: "sign-in-item-hint"
             }}
             name="changed-name-with-hint"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
           <FormRadio
             id="changed-name-with-hint-2"
@@ -291,7 +291,7 @@ In this section we're using the formRadio component providing the GovUk style pa
               id: "sign-in-2-item-hint"
             }}
             name="changed-name-with-hint"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
         </div>
       )
@@ -303,7 +303,7 @@ In this section we're using the formRadio component providing the GovUk style pa
   <Story name="conditional reveal">
     {() => {
       const [value, setValue] = React.useState("");
-      const handleChange = event => setValue(event.currentTarget.value);
+      const handleChange = event => setValue(event.target.value);
       
       return (
         <div className="govuk-radios govuk-radios--inline">
@@ -332,7 +332,7 @@ In this section we're using the formRadio component providing the GovUk style pa
             }}
             name="contact"
             selected={true}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           />
         </div>
       )
