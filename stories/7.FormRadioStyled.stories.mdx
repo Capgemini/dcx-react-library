@@ -299,7 +299,49 @@ In this section we're using the formRadio component providing the GovUk style pa
   </Story>
 </Canvas>
 
+<Canvas>
+  <Story name="conditional reveal">
+    {() => {
+      const [value, setValue] = React.useState("");
+      const handleChange = event => setValue(event.currentTarget.value);
+      
+      return (
+        <div className="govuk-radios govuk-radios--inline">
+          <FormRadio
+            id="contact"
+            value="email"
+            label="Email"
+            labelProps={{
+              className: "govuk-label govuk-radios__label"
+            }}
+            inputProps={{
+              className: "govuk-radios__input"
+            }}
+            itemProps={{
+              className: "govuk-radios__item"
+            }}
+            conditional={{
+              name: "contact-by-email",
+              label: "Email address",
+              type: "email",
+              className: "govuk-radios__conditional govuk-radios__conditional--hidden",
+              groupClassName: "govuk-form-group",
+              id: "conditional-contact",
+              inputClassName: "govuk-input govuk-!-width-one-third",
+              inputId: "contact-by-email"
+            }}
+            name="contact"
+            selected={true}
+            onChange={handleChange}
+          />
+        </div>
+      )
+    }}
+  </Story>
+</Canvas>
+
 The css we used to styled the formRadio component is the following:
+
 ```css
 .govuk-hint {
     font-family: "GDS Transport",arial,sans-serif;
