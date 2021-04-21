@@ -139,7 +139,7 @@ export type FormRadioProps = {
   /**
    * function that will trigger all the time there's a change in the radio
    */
-  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
 };
 
 export type HintProps = {
