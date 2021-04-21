@@ -134,8 +134,7 @@ export const FormGroup = ({
           selected={selection === item.value}
           onChange={e => {
             setSelection(e.currentTarget.value);
-            item.onChange(e);
-
+            if (item.onChange) item.onChange(e);
             if (onChange) onChange(e);
           }}
         />

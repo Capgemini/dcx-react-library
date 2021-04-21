@@ -43,11 +43,24 @@ export const Link = ({href,text,ariaLabel,...props}: any) => {
 const linkFileWithProp = `import React from 'react';
 import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
 import jsonStyle from '../stories/typographyDemo/link/linkClass.json';
-export const LinkClass = ({href,text,ariaLabel,classes,...props}: any) => {
+export const LinkClass = ({href,text,ariaLabel,className,...props}: any) => {
   const branded: any = brandedComponentStyle(jsonStyle.linkClass);
-  const newProps = {href,text,ariaLabel,classes,...props};
+  const newProps = {href,text,ariaLabel,...props};
   return (
-    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} target="_blank" rel="noopener noreferrer" className={['btn', 'btn-sm', 'btn-link', classes].join(' ')}  {...newProps}>
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag} target="_blank" rel="noopener noreferrer" className={['btn', 'btn-sm', 'btn-link', className].join(' ')}  {...newProps}>
+      {props.children}
+    </DynamicComponent>
+  );
+};`;
+
+const linkFileWithPropNOUserDef = `import React from 'react';
+import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
+import jsonStyle from '../stories/typographyDemo/link/linkClassNoDef.json';
+export const LinkClassNoDef = ({href,text,className,...props}: any) => {
+  const branded: any = brandedComponentStyle(jsonStyle.linkClassNoDef);
+  const newProps = {...props};
+  return (
+    <DynamicComponent dynamicStyle={branded.style} tag={branded.tag}  {...newProps}>
       {props.children}
     </DynamicComponent>
   );
@@ -133,12 +146,19 @@ const link = {
 const linkClassesProp = {
   linkClass: {
     tag: 'a',
-    props: ['href', 'text', 'ariaLabel', 'classes'],
+    props: ['href', 'text', 'ariaLabel', 'className'],
     defaultValues: {
       target: '_blank',
       rel: 'noopener noreferrer',
-      className: "{['btn', 'btn-sm', 'btn-link', classes].join(' ')}",
+      className: "{['btn', 'btn-sm', 'btn-link', className].join(' ')}",
     },
+  },
+};
+
+const linkClassNoDef = {
+  linkClassNoDef: {
+    tag: 'a',
+    props: ['href', 'text', 'className'],
   },
 };
 
@@ -166,6 +186,9 @@ beforeEach(() => {
     'stories/typographyDemo/link/link.json': `${JSON.stringify(link)}`,
     'stories/typographyDemo/link/linkClass.json': `${JSON.stringify(
       linkClassesProp
+    )}`,
+    'stories/typographyDemo/link/linkClassNoDef.json': `${JSON.stringify(
+      linkClassNoDef
     )}`,
   });
 });
@@ -244,6 +267,15 @@ describe('generateComponent', () => {
   });
 
   it('should allow to interpolate the props', () => {
+    const component = componentGenerator.generateComponentTemplate(
+      'stories/typographyDemo/link/',
+      'linkClassNoDef.json',
+      'components/'
+    );
+    expect(component).toContain(linkFileWithPropNOUserDef);
+  });
+
+  it('should allow to interpolate the props and excludes default props from newProps', () => {
     const component = componentGenerator.generateComponentTemplate(
       'stories/typographyDemo/link/',
       'linkClass.json',
