@@ -22,7 +22,7 @@ const initialState = {
   theme: false,
   heardAbout: '',
   terms: false,
-  fruit: '',
+  language: '',
   isFormValid: false,
   validation: {
     usernameValid: false,
@@ -37,7 +37,7 @@ enum LOGIN_ACTIONS {
   UPDATE_THEME = 'updateTheme',
   UPDATE_HEARD_ABOUT = 'updateHeardAbout',
   UPDATE_TERMS = 'updateTerms',
-  UPDATE_FRUIT = 'updateFruit',
+  UPDATE_LANGUAGE = 'updateLanguage',
   SET_ISFORM_VALID = 'setIsFormValid',
   SET_DISPLAY_USERNAME_ERROR = 'setDisplayUsernameError',
   SET_ISUSERNAME_VALID = 'setUsernameValid',
@@ -75,10 +75,10 @@ function reducer(state, action) {
         ...state,
         terms: action.value,
       };
-    case LOGIN_ACTIONS.UPDATE_FRUIT:
+    case LOGIN_ACTIONS.UPDATE_LANGUAGE:
       return {
         ...state,
-        fruit: action.value,
+        language: action.value,
       };
     case LOGIN_ACTIONS.SET_ISFORM_VALID:
       return {
@@ -124,7 +124,7 @@ export const Register = () => {
       'country',
       'heardAbout',
       'terms',
-      'fruit',
+      'language',
     ].filter(name => state[name] === '' || !state[name]);
     dispatch({
       type: LOGIN_ACTIONS.SET_ISFORM_VALID,
@@ -252,20 +252,50 @@ export const Register = () => {
         </div>
 
         <div className="form-group">
-          <Label htmlFor="country-select">Country</Label>
+          <Autocomplete
+            options={[
+              'United Kingdom',
+              'France',
+              'Germany',
+              'Italy',
+              'United States of America',
+              'Spain',
+              'Japan',
+            ]}
+            defaultValue=""
+            minCharsBeforeSearch={2}
+            debounceMs={2000}
+            hintText="Please select which country you are from"
+            hintClass="hintClass"
+            resultUlClass="resultUlClass"
+            resultlLiClass="resultlLiClass"
+            resultNoOptionClass="resultNoOptionClass"
+            resultActiveClass="resultActiveClass"
+            notFoundText="No Country found"
+            onSelected={value => {
+              dispatch({
+                type: LOGIN_ACTIONS.UPDATE_COUNTRY,
+                value,
+              });
+              checkFormValidity();
+            }}
+          />
+        </div>
+
+        <div className="form-group">
+          <Label htmlFor="country-select">Language</Label>
           <FormSelect
             name="country-select"
-            value={state.country}
+            value={state.language}
             options={[
               { label: 'Please select', value: '' },
-              { label: 'United Kingdom', value: 'uk' },
-              { label: 'United States of America', value: 'usa' },
-              { label: 'Germany', value: 'de' },
-              { label: 'France', value: 'fr' },
+              { label: 'English', value: 'en_gb' },
+              { label: 'German', value: 'de_de' },
+              { label: 'French', value: 'fr_fr' },
             ]}
             onChange={evt => {
               dispatch({
-                type: LOGIN_ACTIONS.UPDATE_COUNTRY,
+                type: LOGIN_ACTIONS.UPDATE_LANGUAGE,
                 value: evt.currentTarget.value,
               });
               checkFormValidity();
@@ -358,37 +388,6 @@ export const Register = () => {
               classes: 'legend-class',
               isHeading: true,
               headingClasses: 'heading-class',
-            }}
-          />
-        </div>
-
-        <div className="form-group">
-          <Autocomplete
-            options={[
-              'Papaya',
-              'Persimmon',
-              'Paw Paw',
-              'Prickly Pear',
-              'Peach',
-              'Pomegranate',
-              'Pineapple',
-            ]}
-            defaultValue="Papaya"
-            minCharsBeforeSearch={2}
-            debounceMs={2000}
-            hintText="search the list of fruits"
-            hintClass="hintClass"
-            resultUlClass="resultUlClass"
-            resultlLiClass="resultlLiClass"
-            resultNoOptionClass="resultNoOptionClass"
-            resultActiveClass="resultActiveClass"
-            notFoundText="No fruit found"
-            onSelected={value => {
-              dispatch({
-                type: LOGIN_ACTIONS.UPDATE_FRUIT,
-                value,
-              });
-              checkFormValidity();
             }}
           />
         </div>
