@@ -12,6 +12,7 @@ import {
   ToggleDemo,
   FormSelectDemo,
   MultiUploadDemo,
+  FormDateDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -31,6 +32,7 @@ const App = () => (
         <Route path="/toggle" component={ToggleDemo} />
         <Route path="/select" component={FormSelectDemo} />
         <Route path="/multiUpload" component={MultiUploadDemo} />
+        <Route path="/formDate" component={FormDateDemo} />
       </Switch>
     </BrowserRouter>
   </div>
