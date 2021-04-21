@@ -1,0 +1,21 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-button-container {
+  display: flex;
+
+  .form-btn-label {
+    min-height: 20px;
+    padding-left: 10px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+  }
+}
+
+.register-form {
+  padding-left: 2em;
+  max-width: 50em;
+}

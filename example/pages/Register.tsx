@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { HeadingOne, Label } from '../generated-components';
-import './login.scss';
+import './register.scss';
 import { usernameValidation } from './validationRules';
 import {
   FormInput,
@@ -138,7 +138,7 @@ export const Register = () => {
   };
 
   return (
-    <div>
+    <div className="register-form">
       <HeadingOne>Register</HeadingOne>
       <form>
         <div
@@ -180,14 +180,11 @@ export const Register = () => {
             ariaLabel="male"
             ariaDescribedBy="gender-tag"
             id="gender-id-1"
-            inputProps={{
-              className: 'class-name',
-            }}
             itemProps={{
-              className: 'class-name',
+              className: 'form-button-container',
             }}
             labelProps={{
-              style: { display: 'flex' },
+              className: 'form-btn-label',
             }}
             name="radio-name"
             selected={state.gender === 'male'}
@@ -205,14 +202,11 @@ export const Register = () => {
             ariaLabel="female"
             ariaDescribedBy="gender-tag"
             id="gender-id-2"
-            inputProps={{
-              className: 'class-name',
-            }}
             itemProps={{
-              className: 'class-name',
+              className: 'form-button-container',
             }}
             labelProps={{
-              style: { display: 'flex' },
+              className: 'form-btn-label',
             }}
             name="radio-name"
             selected={state.gender === 'female'}
@@ -230,14 +224,11 @@ export const Register = () => {
             ariaLabel="other"
             ariaDescribedBy="gender-tag"
             id="gender-id-3"
-            inputProps={{
-              className: 'class-name',
-            }}
             itemProps={{
-              className: 'class-name',
+              className: 'form-button-container',
             }}
             labelProps={{
-              style: { display: 'flex' },
+              className: 'form-btn-label',
             }}
             name="radio-name"
             selected={state.gender === 'other'}
@@ -266,12 +257,15 @@ export const Register = () => {
             minCharsBeforeSearch={2}
             debounceMs={2000}
             hintText="Please select which country you are from"
-            hintClass="hintClass"
             resultUlClass="resultUlClass"
             resultlLiClass="resultlLiClass"
             resultNoOptionClass="resultNoOptionClass"
             resultActiveClass="resultActiveClass"
             notFoundText="No Country found"
+            inputProps={{
+              className: 'form-control',
+              placeholder: 'Enter your country',
+            }}
             onSelected={value => {
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_COUNTRY,
@@ -287,6 +281,9 @@ export const Register = () => {
           <FormSelect
             name="country-select"
             value={state.language}
+            selectProps={{
+              className: 'form-control',
+            }}
             options={[
               { label: 'Please select', value: '' },
               { label: 'English', value: 'en_gb' },
@@ -303,7 +300,7 @@ export const Register = () => {
           />
         </div>
 
-        <div className="form-group">
+        <div className="form-group flex-column">
           <Label htmlFor="theme">
             Would you want to use the light or dark theme
           </Label>
@@ -319,7 +316,7 @@ export const Register = () => {
             }}
             onColor="green"
             offColor="gray"
-            borderRadius="20"
+            borderRadius={20}
           />
         </div>
 
@@ -330,10 +327,10 @@ export const Register = () => {
               className: 'class-name',
             }}
             itemProps={{
-              className: 'class-name',
+              className: 'form-button-container',
             }}
             labelProps={{
-              className: 'class-name',
+              className: 'form-btn-label',
             }}
             items={[
               {
@@ -399,7 +396,7 @@ export const Register = () => {
             value={false}
             id="checkbox-id"
             inputProps={{
-              className: 'class-name',
+              type: 'checkbox',
               name: 'checkbox-name',
               onChange: () => {
                 dispatch({
@@ -409,11 +406,11 @@ export const Register = () => {
                 checkFormValidity();
               },
             }}
-            itemProps={{
-              className: 'class-name',
-            }}
             labelProps={{
-              style: { display: 'flex' },
+              className: 'form-btn-label',
+            }}
+            itemProps={{
+              className: 'form-button-container',
             }}
           />
         </div>
