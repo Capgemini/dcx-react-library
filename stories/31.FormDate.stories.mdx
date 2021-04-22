@@ -9,7 +9,135 @@ import './style.css';
 <Canvas>
   <Story name="basic">
     {() => {
-      return <FormDate dateFormat="dd/mm/yyyy" />;
+      const [isValid, setIsValid] = React.useState(false);
+      const [date, setDate] = React.useState(0);
+      const handleValidity = (valid, date) => {
+        setIsValid(valid);
+        setDate(date);
+      };
+      return (
+        <div>
+          <FormDate
+            dateFormat="dd/mm/yyyy"
+            handleValidity={(v, d) => handleValidity(v, d)}
+          />
+          <pre>isValid: {isValid.toString()}</pre>
+          <pre>date: {JSON.stringify(new Date(date))}</pre>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples Pre set date
+
+<Canvas>
+  <Story name="pre-set-date">
+    {() => {
+      const [isValid, setIsValid] = React.useState(false);
+      const [date, setDate] = React.useState(0);
+      const handleValidity = (valid, date) => {
+        setIsValid(valid);
+        setDate(date);
+      };
+      return (
+        <div>
+          <FormDate
+            handleValidity={(v, d) => handleValidity(v, d)}
+            dateFormat="dd/mm/yyyy"
+            day="29"
+            month="07"
+            year="1982"
+          />
+          <pre>isValid: {isValid.toString()}</pre>
+          <pre>date: {JSON.stringify(new Date(date))}</pre>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples Pre set date
+
+<Canvas>
+  <Story name="disabled">
+    {() => {
+      const [isValid, setIsValid] = React.useState(false);
+      const [date, setDate] = React.useState(0);
+      const handleValidity = (valid, date) => {
+        setIsValid(valid);
+        setDate(date);
+      };
+      return (
+        <div>
+          <FormDate
+            handleValidity={(v, d) => handleValidity(v, d)}
+            dateFormat="dd/mm/yyyy"
+            day="29"
+            month="07"
+            year="1982"
+            disabled={true}
+          />
+          <pre>isValid: {isValid.toString()}</pre>
+          <pre>date: {JSON.stringify(new Date(date))}</pre>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples Form Date with label
+
+<Canvas>
+  <Story name="label">
+    {() => {
+      const [isValid, setIsValid] = React.useState(false);
+      const [date, setDate] = React.useState(0);
+      const handleValidity = (valid, date) => {
+        setIsValid(valid);
+        setDate(date);
+      };
+      return (
+        <div>
+          <FormDate
+            handleValidity={(v, d) => handleValidity(v, d)}
+            dateFormat="dd/mm/yyyy"
+            yearProps={{ label: 'Year' }}
+            monthProps={{ label: 'Month' }}
+            dayProps={{ label: 'Day' }}
+          />
+          <pre>isValid: {isValid.toString()}</pre>
+          <pre>date: {JSON.stringify(new Date(date))}</pre>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### In the following example we specified as format: `yyyy/mm/dd`
+
+<Canvas>
+  <Story name="custom-date">
+    {() => {
+      const [isValid, setIsValid] = React.useState(false);
+      const [date, setDate] = React.useState(0);
+      const handleValidity = (valid, date) => {
+        setIsValid(valid);
+        setDate(date);
+      };
+      return (
+        <div>
+          <FormDate
+            handleValidity={(v, d) => handleValidity(v, d)}
+            dateFormat="yyyy/mm/dd"
+            yearProps={{ label: 'Year' }}
+            monthProps={{ label: 'Month' }}
+            dayProps={{ label: 'Day' }}
+          />
+          <pre>isValid: {isValid.toString()}</pre>
+          <pre>date: {JSON.stringify(new Date(date))}</pre>
+        </div>
+      );
     }}
   </Story>
 </Canvas>
@@ -19,50 +147,82 @@ import './style.css';
 <Canvas>
   <Story name="custom-label">
     {() => {
+      const [isValid, setIsValid] = React.useState(false);
+      const [date, setDate] = React.useState(0);
+      const handleValidity = (valid, date) => {
+        setIsValid(valid);
+        setDate(date);
+      };
       return (
-        <FormDate
-          dateFormat="dd/mm/yyyy"
-          yearProps={{
-            classNameLabel: 'yearLabel',
-            customLabel: <h3>Year</h3>,
-          }}
-          monthProps={{
-            classNameLabel: 'yearLabel',
-            customLabel: <h3>Month</h3>,
-          }}
-          dayProps={{
-            classNameLabel: 'yearLabel',
-            customLabel: <h3>Day</h3>,
-          }}
-        />
+        <div>
+          <FormDate
+            handleValidity={(v, d) => handleValidity(v, d)}
+            dateFormat="dd/mm/yyyy"
+            inputClass="input"
+            yearProps={{
+              classNameLabel: 'yearLabel',
+              customLabel: <h1>Year</h1>,
+            }}
+            monthProps={{
+              classNameLabel: 'yearLabel',
+              customLabel: <h1>Month</h1>,
+            }}
+            dayProps={{
+              classNameLabel: 'yearLabel',
+              customLabel: <h1>Day</h1>,
+            }}
+          />
+          <pre>isValid: {isValid.toString()}</pre>
+          <pre>date: {JSON.stringify(new Date(date))}</pre>
+        </div>
       );
     }}
   </Story>
 </Canvas>
 
-### Examples Form Date with custom label different date format
-
-In the following example we specified as format: `yyyy/mm/dd`
+### with error message
 
 <Canvas>
-  <Story name="different-date-format">
+  <Story name="error">
     {() => {
+      const [isValid, setIsValid] = React.useState(false);
+      const [date, setDate] = React.useState(0);
+      const [showError, setShowError] = React.useState(false);
+      const handleValidity = (valid, date) => {
+        setShowError(!valid);
+        setIsValid(valid);
+        setDate(date);
+      };
       return (
-        <FormDate
-          dateFormat="yyyy/mm/dd"
-          yearProps={{
-            classNameLabel: 'yearLabel',
-            customLabel: <h3>Year</h3>,
-          }}
-          monthProps={{
-            classNameLabel: 'yearLabel',
-            customLabel: <h3>Month</h3>,
-          }}
-          dayProps={{
-            classNameLabel: 'yearLabel',
-            customLabel: <h3>Day</h3>,
-          }}
-        />
+        <div>
+          <FormDate
+            handleValidity={(v, d) => handleValidity(v, d)}
+            inputContainerClass={showError ? 'errorContainer' : ''}
+            displayError={showError}
+            errorMessage={showError ? 'Enter a valid date' : null}
+            errorPosition="bottom"
+            errorClass="error"
+            dateFormat="dd/mm/yyyy"
+            inputClass="input"
+            yearProps={{
+              label: 'Year',
+              classNameLabel: 'yearLabel',
+              classNameSpan: 'span',
+            }}
+            monthProps={{
+              label: 'Month',
+              classNameLabel: 'yearLabel',
+              classNameSpan: 'span',
+            }}
+            dayProps={{
+              label: 'Day',
+              classNameLabel: 'yearLabel',
+              classNameSpan: 'span',
+            }}
+          />
+          <pre>isValid: {isValid.toString()}</pre>
+          <pre>date: {JSON.stringify(new Date(date))}</pre>
+        </div>
       );
     }}
   </Story>

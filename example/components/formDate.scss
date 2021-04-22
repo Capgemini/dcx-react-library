@@ -52,3 +52,23 @@ input::-webkit-inner-spin-button {
   outline: rgb(255, 191, 71) solid 3px;
   outline-offset: 0px;
 }
+
+.error {
+  font-family: nta, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  display: block;
+  margin-bottom: 15px;
+  clear: both;
+  color: rgb(177, 14, 30);
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  border-left: 4px solid rgb(177, 14, 30);
+  margin-right: 15px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
