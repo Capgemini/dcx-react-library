@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HeadingOne, Label } from '../generated-components';
 import './register.scss';
-import { usernameValidation } from './validationRules';
+import { usernameValidation, passwordValidation } from './validationRules';
 import {
   FormInput,
   Button,
@@ -13,10 +13,15 @@ import {
   Autocomplete,
 } from 'dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+  faSpinner,
+  faEye,
+  faEyeSlash,
+} from '@fortawesome/free-solid-svg-icons';
 
 const initialState = {
   username: '',
+  password: '',
   gender: '',
   country: '',
   theme: false,
@@ -27,11 +32,14 @@ const initialState = {
   validation: {
     usernameValid: false,
     displayUsernameError: false,
+    passwordValid: false,
+    displayPasswordError: false,
   },
 };
 
 enum LOGIN_ACTIONS {
   UPDATE_USERNAME = 'updateUsername',
+  UPDATE_PASSWORD = 'updatePassword',
   UPDATE_GENDER = 'updateGender',
   UPDATE_COUNTRY = 'updateCountry',
   UPDATE_THEME = 'updateTheme',
@@ -41,6 +49,8 @@ enum LOGIN_ACTIONS {
   SET_ISFORM_VALID = 'setIsFormValid',
   SET_DISPLAY_USERNAME_ERROR = 'setDisplayUsernameError',
   SET_ISUSERNAME_VALID = 'setUsernameValid',
+  SET_ISPASSWORD_VALID = 'setPasswordValid',
+  SET_DISPLAY_PASSWORD_ERROR = 'setDisplayPasswordError',
 }
 
 function reducer(state, action) {
@@ -49,6 +59,11 @@ function reducer(state, action) {
       return {
         ...state,
         username: action.value,
+      };
+    case LOGIN_ACTIONS.UPDATE_PASSWORD:
+      return {
+        ...state,
+        password: action.value,
       };
     case LOGIN_ACTIONS.UPDATE_GENDER:
       return {
@@ -101,6 +116,22 @@ function reducer(state, action) {
           usernameValid: action.value,
         },
       };
+    case LOGIN_ACTIONS.SET_ISPASSWORD_VALID:
+      return {
+        ...state,
+        validation: {
+          ...state.validation,
+          passwordValid: action.value,
+        },
+      };
+    case LOGIN_ACTIONS.SET_DISPLAY_PASSWORD_ERROR:
+      return {
+        ...state,
+        validation: {
+          ...state.validation,
+          displayPasswordError: action.value,
+        },
+      };
     default:
       throw new Error();
   }
@@ -110,6 +141,8 @@ export const Register = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const [isLoading, setIsLoading] = React.useState(false);
   const [userNameErrorState, setUsernameErrorState] = React.useState(false);
+  const [passwordErrorState, setPasswordErrorState] = React.useState(false);
+  const [passwordInputType, setPasswordInputType] = React.useState(false);
 
   const handleUserNameValidity = (valid, isErrorMessageVisible) => {
     dispatch({ type: LOGIN_ACTIONS.SET_ISUSERNAME_VALID, value: valid });
@@ -117,9 +150,20 @@ export const Register = () => {
     checkFormValidity();
   };
 
+  const handlePasswordValidity = (valid, isErrorMessageVisible) => {
+    dispatch({ type: LOGIN_ACTIONS.SET_ISPASSWORD_VALID, value: valid });
+    setPasswordErrorState(isErrorMessageVisible);
+    checkFormValidity();
+  };
+
+  const updatePasswordInput = () => {
+    setPasswordInputType(!passwordInputType);
+  };
+
   const checkFormValidity = () => {
     const fieldNames = [
       'username',
+      'password',
       'gender',
       'country',
       'heardAbout',
@@ -169,6 +213,49 @@ export const Register = () => {
             }}
             validation={usernameValidation}
             errorPosition="bottom"
+          />
+        </div>
+
+        <div
+          className={['form-group', passwordErrorState ? 'has-error' : ''].join(
+            ' '
+          )}
+        >
+          <Label htmlFor="password" className="control-label">
+            Password
+          </Label>
+          <FormInput
+            name="password"
+            type={!passwordInputType ? 'password' : 'text'}
+            value={state.password}
+            onChange={evt =>
+              dispatch({
+                type: LOGIN_ACTIONS.UPDATE_PASSWORD,
+                value: evt.currentTarget.value,
+              })
+            }
+            isValid={handlePasswordValidity}
+            displayError={state.validation.displayPasswordError}
+            inputProps={{
+              placeholder: 'Enter your password',
+              autoComplete: 'current-password',
+              className: 'form-control',
+            }}
+            errorProps={{
+              className: 'help-block',
+            }}
+            validation={passwordValidation}
+            errorPosition="bottom"
+            suffix={
+              <div
+                onClick={updatePasswordInput}
+                className="btn btn-default password-eye-btn"
+              >
+                <FontAwesomeIcon
+                  icon={!passwordInputType ? faEye : faEyeSlash}
+                />
+              </div>
+            }
           />
         </div>
 
@@ -254,8 +341,8 @@ export const Register = () => {
               'Japan',
             ]}
             defaultValue=""
-            minCharsBeforeSearch={2}
-            debounceMs={2000}
+            minCharsBeforeSearch={1}
+            debounceMs={500}
             hintText="Please select which country you are from"
             resultUlClass="resultUlClass"
             resultlLiClass="resultlLiClass"
@@ -314,7 +401,7 @@ export const Register = () => {
               });
               checkFormValidity();
             }}
-            onColor="green"
+            onColor="#369af1"
             offColor="gray"
             borderRadius={20}
           />

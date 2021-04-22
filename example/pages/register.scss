@@ -16,6 +16,28 @@
 }
 
 .register-form {
-  padding-left: 2em;
-  max-width: 50em;
+  display: grid;
+  gap: 1.8em;
+  justify-content: center;
+
+  form {
+    min-width: 18em;
+    max-width: 50em;
+  }
+
+  .help-block {
+    max-width: 18em;
+  }
+
+  .btn-loading {
+    display: flex;
+
+    .loading-icon {
+      margin-right: 0.5em;
+    }
+  }
+
+  .password-eye-btn {
+    border-color: transparent;
+  }
 }
