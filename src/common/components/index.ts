@@ -13,6 +13,17 @@ type VisuallyHidden = {
   classes?: string;
 };
 
+type HeadingProps = {
+  /**
+   * heading priority
+   */
+  priority: number;
+  /**
+   * heading class names to customise heading
+   **/
+  className?: string;
+};
+
 export type ConditionalInputProps = {
   /**
    * conditional input name
@@ -165,13 +176,9 @@ export type LegendProps = {
   /**
    * legend class names to customise legend
    **/
-  classes?: string;
+  className?: string;
   /**
-   * states whether legend should be a heading
-   **/
-  isHeading?: boolean;
-  /**
-   * heading class names to customise heading
-   **/
-  headingClasses?: string;
+   * legend heading
+   */
+  heading?: HeadingProps;
 };

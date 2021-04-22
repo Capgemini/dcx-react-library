@@ -15,7 +15,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -76,7 +78,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -106,7 +110,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -139,7 +145,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         error={{
           text: 'oops!! we have an error',
@@ -175,7 +183,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -205,7 +215,9 @@ describe('FormGroup', () => {
         name="group1"
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -241,7 +253,9 @@ describe('FormGroup', () => {
         name="group1"
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -275,7 +289,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -309,7 +325,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -344,7 +362,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -392,7 +412,9 @@ describe('FormGroup', () => {
         }}
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -454,7 +476,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -489,7 +513,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {

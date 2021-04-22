@@ -11,9 +11,6 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
     <Story name="inline">
         {() => {
-            const handleChange = (event) => {
-                // handle change
-            }
             return (
                 <FormGroup
                     name="change-name"
@@ -29,14 +26,12 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     items={[{
                         label: "Yes",
                         value: "yes",
-                        id: "change-name",
-                        onChange: (e) => handleChange(e)
+                        id: "change-name"
                     },
                     {
                         label: "No",
                         value: "no",
-                        id: "change-name-2",
-                        onChange: (e) => handleChange(e)                     
+                        id: "change-name-2"                    
                     }]}
                     ariaDescribedBy="changed-name-hint"
                     groupClasses="govuk-form-group"
@@ -49,9 +44,11 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     itemsClasses="govuk-radios govuk-radios--inline"
                     legend={{
                         text: "Have you changed your name?",
-                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l",
-                        isHeading: true,
-                        headingClasses: "govuk-fieldset__heading"
+                        className: "govuk-fieldset__legend govuk-fieldset__legend--l",
+                        heading: {
+                            priority: 1,
+                            className: "govuk-fieldset__heading"
+                        }
                     }}
                 />
             )
@@ -62,9 +59,6 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
     <Story name="titled">
         {() => {
-            const handleChange = (event) => {
-                // handle change
-            }
             return (
                 <FormGroup
                     name="change-name-2"
@@ -80,14 +74,12 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     items={[{
                         label: "Yes",
                         value: "yes",
-                        id: "change-name-2-1",
-                        onChange: (e) => handleChange(e)
+                        id: "change-name-2-1"
                     },
                     {
                         label: "No",
                         value: "no",
-                        id: "change-name-2-2",
-                        onChange: (e) => handleChange(e)                   
+                        id: "change-name-2-2"                 
                     }]}
                     ariaDescribedBy="changed-name-hint"
                     groupClasses="govuk-form-group"
@@ -100,9 +92,11 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     itemsClasses="govuk-radios govuk-radios--inline"
                     legend={{
                         text: "Have you changed your name?",
-                        classes: "govuk-fieldset__legend govuk-fieldset__legend",
-                        isHeading: true,
-                        headingClasses: "govuk-fieldset__heading"
+                        className: "govuk-fieldset__legend govuk-fieldset__legend",
+                        heading: {
+                            priority: 1,
+                            className: "govuk-fieldset__heading"
+                        }
                     }}
                 />
             )
@@ -113,9 +107,6 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
     <Story name="stacked">
         {() => {
-            const handleChange = (event) => {
-                // handle change
-            }
             return (
                 <FormGroup
                     name="where-do-you-live"
@@ -131,33 +122,29 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     items={[{
                         label: "England",
                         value: "england",
-                        id: "where-do-you-live",
-                        onChange: (e) => handleChange(e)
+                        id: "where-do-you-live"
                     },
                     {
                         label: "Scotland",
                         value: "scotland",
-                        id: "where-do-you-live-2",
-                        onChange: (e) => handleChange(e)
+                        id: "where-do-you-live-2"
                     },
                     {
                         label: "Wales",
                         value: "wales",
-                        id: "where-do-you-live-3",
-                        onChange: (e) => handleChange(e)
+                        id: "where-do-you-live-3"
                     },
                     {
                         label: "Northern Ireland",
                         value: "northen-ireland",
-                        id: "where-do-you-live-4",
-                        onChange: (e) => handleChange(e)
+                        id: "where-do-you-live-4"
                     }]}
                     groupClasses="govuk-form-group"
                     fieldsetClasses="govuk-fieldset"
                     itemsClasses="govuk-radios"
                     legend={{
                         text: "Where do you live?",
-                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l"
+                        className: "govuk-fieldset__legend govuk-fieldset__legend--l"
                     }}
                 />
             )
@@ -168,9 +155,6 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
     <Story name="items with hints">
         {() => {
-            const handleChange = (event) => {
-                // handle change
-            }
             return (
                 <FormGroup
                     name="sign-in"
@@ -192,8 +176,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                            classes: "govuk-hint govuk-radios__hint",
                            id: "sign-in-item-hint"
                         },
-                        ariaDescribedBy: "sign-in-item-hint",
-                        onChange: (e) => handleChange(e)
+                        ariaDescribedBy: "sign-in-item-hint"
                     },
                     {
                         label: "Sign in with GOV.UK Verify",
@@ -204,8 +187,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                            classes: "govuk-hint govuk-radios__hint",
                            id: "sign-in-2-item-hint"
                         },
-                        ariaDescribedBy: "sign-in-item-hint",
-                        onChange: (e) => handleChange(e)
+                        ariaDescribedBy: "sign-in-item-hint"
                     }]}
                     ariaDescribedBy="sign-in-hint"
                     groupClasses="govuk-form-group"
@@ -218,9 +200,11 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     itemsClasses="govuk-radios"
                     legend={{
                         text: "How do you want to sign in?",
-                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l",
-                        isHeading: true,
-                        headingClasses: "govuk-fieldset__heading"
+                        className: "govuk-fieldset__legend govuk-fieldset__legend--l",
+                        heading: {
+                            priority: 1,
+                            className: "govuk-fieldset__heading"
+                        }
                     }}
                 />
             )
@@ -231,9 +215,6 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
     <Story name="filter">
         {() => {
-            const handleChange = (event) => {
-                // handle change
-            }
             return (
                 <FormGroup
                     name="filter-change"
@@ -249,23 +230,23 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     items={[{
                         label: "Monthly",
                         value: "month",
-                        id: "changed-name-month",
-                        onChange: (e) => handleChange(e)
+                        id: "changed-name-month"
                     },
                     {
                         label: "Yearly",
                         value: "year",
-                        id: "changed-name-year",
-                        onChange: (e) => handleChange(e)                    
+                        id: "changed-name-year"                   
                     }]}
                     groupClasses="govuk-radios govuk-radios--small"
                     fieldsetClasses="govuk-fieldset"
                     itemsClasses="govuk-radios govuk-radios--small"
                     legend={{
                         text: "Filter",
-                        classes: "govuk-fieldset__legend govuk-fieldset__legend--m",
-                        isHeading: true,
-                        headingClasses: "govuk-fieldset__heading"
+                        className: "govuk-fieldset__legend govuk-fieldset__legend--m",
+                        heading: {
+                            priority: 1,
+                            className: "govuk-fieldset__heading"
+                        }
                     }}
                 />
             )
@@ -276,9 +257,6 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
     <Story name="error message">
         {() => {
-            const handleChange = (event) => {
-                // handle change
-            }
             return (
                 <FormGroup
                     name="change-name-error"
@@ -294,14 +272,12 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     items={[{
                         label: "Yes",
                         value: "yes",
-                        id: "change-name-yes-error",
-                        onChange: (e) => handleChange(e)
+                        id: "change-name-yes-error"
                     },
                     {
                         label: "No",
                         value: "no",
-                        id: "change-name-no-error",
-                        onChange: (e) => handleChange(e)                     
+                        id: "change-name-no-error"                     
                     }]}
                     ariaDescribedBy="changed-name-hint changed-name-error"
                     groupClasses="govuk-form-group govuk-form-group--error"
@@ -323,9 +299,11 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     itemsClasses="govuk-radios govuk-radios--inline"
                     legend={{
                         text: "Have you changed your name?",
-                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l",
-                        isHeading: true,
-                        headingClasses: "govuk-fieldset__heading"
+                        className: "govuk-fieldset__legend govuk-fieldset__legend--l",
+                        heading: {
+                            priority: 1,
+                            className: "govuk-fieldset__heading"
+                        }
                     }}
                 />
             )
@@ -336,9 +314,6 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
     <Story name="with a text divider">
         {() => {
-            const handleChange = (event) => {
-                // handle change
-            }
             return (
                 <FormGroup
                     name="where-do-you-live-divider"
@@ -354,26 +329,22 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     items={[{
                         label: "England",
                         value: "england",
-                        id: "where-do-you-live-divider",
-                        onChange: (e) => handleChange(e)
+                        id: "where-do-you-live-divider"
                     },
                     {
                         label: "Scotland",
                         value: "scotland",
-                        id: "where-do-you-live-divider-2",
-                        onChange: (e) => handleChange(e)
+                        id: "where-do-you-live-divider-2"
                     },
                     {
                         label: "Wales",
                         value: "wales",
-                        id: "where-do-you-live-divider-3",
-                        onChange: (e) => handleChange(e)
+                        id: "where-do-you-live-divider-3"
                     },
                     {
                         label: "Northern Ireland",
                         value: "northen-ireland",
-                        id: "where-do-you-live-divider-4",
-                        onChange: (e) => handleChange(e)
+                        id: "where-do-you-live-divider-4"
                     },
                     {
                         className: "govuk-radios__divider",
@@ -382,8 +353,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     {
                         label: "I am a British citizen living abroad",
                         value: "living-abroad",
-                        id: "where-do-you-live-divider-5",
-                        onChange: (e) => handleChange(e)
+                        id: "where-do-you-live-divider-5"
                     }
                     ]}
                     groupClasses="govuk-form-group"
@@ -391,7 +361,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     itemsClasses="govuk-radios"
                     legend={{
                         text: "Where do you live?",
-                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l"
+                        className: "govuk-fieldset__legend govuk-fieldset__legend--l"
                     }}
                 />
             )
@@ -402,9 +372,6 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
     <Story name="conditionally revealing content">
         {() => {
-            const handleChange = (event) => {
-                // handle change
-            }
             return (
                 <FormGroup
                     name="contact"
@@ -431,8 +398,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                             id: "conditional-contact",
                             inputClassName: "govuk-input govuk-!-width-one-third",
                             inputId: "contact-by-email"
-                        },
-                        onChange: (e) => handleChange(e)
+                        }
                     },
                     {
                         label: "Phone",
@@ -448,8 +414,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                             id: "conditional-contact-2",
                             inputClassName: "govuk-input govuk-!-width-one-third",
                             inputId: "contact-by-phone"
-                        },
-                        onChange: (e) => handleChange(e)
+                        }
                     },
                     {
                         label: "Text message",
@@ -465,8 +430,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                             id: "conditional-contact-3",
                             inputClassName: "govuk-input govuk-!-width-one-third",
                             inputId: "contact-by-text"
-                        },
-                        onChange: (e) => handleChange(e)
+                        }
                     }]}
                     ariaDescribedBy="contact-hint"
                     groupClasses="govuk-form-group"
@@ -479,9 +443,11 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                     itemsClasses="govuk-radios govuk-radios--conditional"
                     legend={{
                         text: "How would you prefer to be contacted?",
-                        classes: "govuk-fieldset__legend govuk-fieldset__legend--l",
-                        isHeading: true,
-                        headingClasses: "govuk-fieldset__heading"
+                        className: "govuk-fieldset__legend govuk-fieldset__legend--l",
+                        heading: {
+                            priority: 1,
+                            className: "govuk-fieldset__heading"
+                        }
                     }}
                 />
             )
