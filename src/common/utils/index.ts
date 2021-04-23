@@ -1,4 +1,5 @@
 export { useValidation, useValidationOnChange } from './useValidation';
+export { validateDateString } from './validDate';
 export const Roles = {
   button: 'button',
   error: 'error',
