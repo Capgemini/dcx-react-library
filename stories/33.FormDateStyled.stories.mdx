@@ -2,186 +2,35 @@ import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { FormDate } from '../src/formDate/FormDate';
 import './style.css';
 
-<Meta title="DCXLibrary/Form/Date/HMRC" component={FormDate} />
+<Meta title="DCXLibrary/Form/date/HMRC" component={FormDate} />
 
 # GOVUK Style
 
 In this section we're using the date input component providing the GovUk style passing the relative className. Feel free to use your own css and style the formInput as you prefer
 
-### Examples Pre set date
-
 <Canvas>
-  <Story name="pre-set-date">
+  <Story name="basic">
     {() => {
-      const [isValid, setIsValid] = React.useState(false);
-      const [date, setDate] = React.useState(0);
-      const handleValidity = (valid, date) => {
-        setIsValid(valid);
-        setDate(date);
-      };
       return (
-        <div>
-          <FormDate
-            dateFormat="dd/mm/yyyy"
-            inputClass="govuk-date-input"
-            day="29"
-            month="07"
-            year="1982"
-            handleValidity={(v, d) => handleValidity(v, d)}
-            yearProps={{
-              label: 'Year',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-            monthProps={{
-              label: 'Month',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-            dayProps={{
-              label: 'Day',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-          />
-          <pre>isValid: {isValid.toString()}</pre>
-          <pre>date: {JSON.stringify(new Date(date))}</pre>
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
-
-### Examples Pre set date disabled
-
-<Canvas>
-  <Story name="disabled">
-    {() => {
-      const [isValid, setIsValid] = React.useState(false);
-      const [date, setDate] = React.useState(0);
-      const handleValidity = (valid, date) => {
-        setIsValid(valid);
-        setDate(date);
-      };
-      return (
-        <div>
-          <FormDate
-            dateFormat="dd/mm/yyyy"
-            inputClass="govuk-date-input"
-            day="29"
-            month="07"
-            year="1982"
-            disabled={true}
-            handleValidity={(v, d) => handleValidity(v, d)}
-            yearProps={{
-              label: 'Year',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-            monthProps={{
-              label: 'Month',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-            dayProps={{
-              label: 'Day',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-          />
-          <pre>isValid: {isValid.toString()}</pre>
-          <pre>date: {JSON.stringify(new Date(date))}</pre>
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
-
-### In the following example we specified as format: `yyyy/mm/dd`
-
-<Canvas>
-  <Story name="custom-date">
-    {() => {
-      const [isValid, setIsValid] = React.useState(false);
-      const [date, setDate] = React.useState(0);
-      const handleValidity = (valid, date) => {
-        setIsValid(valid);
-        setDate(date);
-      };
-      return (
-        <div>
-          <FormDate
-            dateFormat="dd/mm/yyyy"
-            inputClass="govuk-date-input"
-            dateFormat="yyyy/mm/dd"
-            handleValidity={(v, d) => handleValidity(v, d)}
-            yearProps={{
-              label: 'Year',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-            monthProps={{
-              label: 'Month',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-            dayProps={{
-              label: 'Day',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-          />
-          <pre>isValid: {isValid.toString()}</pre>
-          <pre>date: {JSON.stringify(new Date(date))}</pre>
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
-
-### with error message
-
-<Canvas>
-  <Story name="error">
-    {() => {
-      const [isValid, setIsValid] = React.useState(false);
-      const [date, setDate] = React.useState(0);
-      const [showError, setShowError] = React.useState(false);
-      const handleValidity = (valid, date) => {
-        setShowError(!valid);
-        setIsValid(valid);
-        setDate(date);
-      };
-      return (
-        <div>
-          <FormDate
-            dateFormat="dd/mm/yyyy"
-            inputClass="govuk-date-input"
-            displayError={showError}
-            errorMessage={showError ? 'Enter a valid date' : null}
-            errorPosition="top"
-            errorClass="govuk-date-error"
-            inputContainerClass={showError ? 'govuk-date-errorContainer' : ''}
-            handleValidity={(v, d) => handleValidity(v, d)}
-            yearProps={{
-              label: 'Year',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-            monthProps={{
-              label: 'Month',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-            dayProps={{
-              label: 'Day',
-              classNameLabel: 'govuk-date-yearLabel',
-              classNameSpan: 'govuk-date-span',
-            }}
-          />
-          <pre>isValid: {isValid.toString()}</pre>
-          <pre>date: {JSON.stringify(new Date(date))}</pre>
-        </div>
+        <FormDate
+          dateFormat="dd/mm/yyyy"
+          inputClass="govuk-date-input"
+          yearProps={{
+            label: 'Year',
+            classNameLabel: 'govuk-date-yearLabel',
+            classNameSpan: 'govuk-date-span',
+          }}
+          monthProps={{
+            label: 'Month',
+            classNameLabel: 'govuk-date-yearLabel',
+            classNameSpan: 'govuk-date-span',
+          }}
+          dayProps={{
+            label: 'Day',
+            classNameLabel: 'govuk-date-yearLabel',
+            classNameSpan: 'govuk-date-span',
+          }}
+        />
       );
     }}
   </Story>
@@ -243,26 +92,6 @@ input::-webkit-inner-spin-button {
 .govuk-date-input:focus {
   outline: rgb(255, 191, 71) solid 3px;
   outline-offset: 0px;
-}
-
-.govuk-date-error {
-  font-family: nta, Arial, sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.25;
-  display: block;
-  margin-bottom: 15px;
-  clear: both;
-  color: rgb(177, 14, 30);
-}
-
-.govuk-date-errorContainer {
-  display: flex;
-  flex-direction: column;
-  border-left: 4px solid rgb(177, 14, 30);
-  margin-right: 15px;
-  padding-left: 10px;
-  margin-bottom: 20px;
 }
 ```
 
