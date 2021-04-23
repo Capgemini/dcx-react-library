@@ -151,17 +151,29 @@ export const Register = () => {
   const [userNameErrorState, setUsernameErrorState] = React.useState(false);
   const [passwordErrorState, setPasswordErrorState] = React.useState(false);
   const [passwordInputType, setPasswordInputType] = React.useState(false);
+  const [displayDobError, setDobError] = React.useState(false);
+
+  React.useEffect(() => {
+    checkFormValidity();
+  }, [
+    state.username,
+    state.password,
+    state.dateOfBirth,
+    state.gender,
+    state.country,
+    state.heardAbout,
+    state.terms,
+    state.language,
+  ]);
 
   const handleUserNameValidity = (valid, isErrorMessageVisible) => {
     dispatch({ type: LOGIN_ACTIONS.SET_ISUSERNAME_VALID, value: valid });
     setUsernameErrorState(isErrorMessageVisible);
-    checkFormValidity();
   };
 
   const handlePasswordValidity = (valid, isErrorMessageVisible) => {
     dispatch({ type: LOGIN_ACTIONS.SET_ISPASSWORD_VALID, value: valid });
     setPasswordErrorState(isErrorMessageVisible);
-    checkFormValidity();
   };
 
   const updatePasswordInput = () => {
@@ -268,7 +280,11 @@ export const Register = () => {
           />
         </div>
 
-        <div className="form-group">
+        <div
+          className={['form-group', displayDobError ? 'has-error' : ''].join(
+            ' '
+          )}
+        >
           <Label htmlFor="dateOfBirth">Date of Birth</Label>
           <FormDate
             handleValidity={(isValid, value) => {
@@ -277,23 +293,25 @@ export const Register = () => {
                   type: LOGIN_ACTIONS.UPDATE_DATE_OF_BIRTH,
                   value,
                 });
-                checkFormValidity();
               }
+              setDobError(!isValid);
             }}
+            errorClass="help-block"
             errorMessage="Please enter a valid date"
-            displayError={true}
+            displayError={displayDobError}
             dateFormat="dd/mm/yyyy"
+            inputContainerClass="date-of-birth-container"
             yearProps={{
               classNameInput: 'form-control',
-              customLabel: <h3>Year</h3>,
+              customLabel: <label>Year</label>,
             }}
             monthProps={{
               classNameInput: 'form-control',
-              customLabel: <h3>Month</h3>,
+              customLabel: <label>Month</label>,
             }}
             dayProps={{
               classNameInput: 'form-control',
-              customLabel: <h3>Day</h3>,
+              customLabel: <label>Day</label>,
             }}
           />
         </div>
@@ -319,7 +337,6 @@ export const Register = () => {
                 type: LOGIN_ACTIONS.UPDATE_GENDER,
                 value: evt.currentTarget.value,
               });
-              checkFormValidity();
             }}
           />
           <FormRadio
@@ -341,7 +358,6 @@ export const Register = () => {
                 type: LOGIN_ACTIONS.UPDATE_GENDER,
                 value: evt.currentTarget.value,
               });
-              checkFormValidity();
             }}
           />
           <FormRadio
@@ -363,7 +379,6 @@ export const Register = () => {
                 type: LOGIN_ACTIONS.UPDATE_GENDER,
                 value: evt.currentTarget.value,
               });
-              checkFormValidity();
             }}
           />
         </div>
@@ -395,7 +410,6 @@ export const Register = () => {
                 type: LOGIN_ACTIONS.UPDATE_COUNTRY,
                 value,
               });
-              checkFormValidity();
             }}
           />
         </div>
@@ -419,7 +433,6 @@ export const Register = () => {
                 type: LOGIN_ACTIONS.UPDATE_LANGUAGE,
                 value: evt.currentTarget.value,
               });
-              checkFormValidity();
             }}
           />
         </div>
@@ -436,7 +449,6 @@ export const Register = () => {
                 type: LOGIN_ACTIONS.UPDATE_THEME,
                 value,
               });
-              checkFormValidity();
             }}
             onColor="#369af1"
             offColor="gray"
@@ -466,7 +478,6 @@ export const Register = () => {
                     type: LOGIN_ACTIONS.UPDATE_HEARD_ABOUT,
                     value: evt.currentTarget.value,
                   });
-                  checkFormValidity();
                 },
               },
               {
@@ -478,7 +489,6 @@ export const Register = () => {
                     type: LOGIN_ACTIONS.UPDATE_HEARD_ABOUT,
                     value: evt.currentTarget.value,
                   });
-                  checkFormValidity();
                 },
               },
               {
@@ -490,7 +500,6 @@ export const Register = () => {
                     type: LOGIN_ACTIONS.UPDATE_HEARD_ABOUT,
                     value: evt.currentTarget.value,
                   });
-                  checkFormValidity();
                 },
               },
             ]}
@@ -527,7 +536,6 @@ export const Register = () => {
                   type: LOGIN_ACTIONS.UPDATE_TERMS,
                   value: !state.terms,
                 });
-                checkFormValidity();
               },
             }}
             labelProps={{
