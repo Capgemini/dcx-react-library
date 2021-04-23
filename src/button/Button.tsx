@@ -65,7 +65,7 @@ export const Button = ({
   type = BUTTON_TYPE.BUTTON,
   disabled = false,
   ariaLabel = `${type}-button`,
-  disableClickForMs = 0,
+  disableClickForMs,
   customPrefixImg,
   customPostfixImg,
   isLoading,
@@ -95,8 +95,10 @@ export const Button = ({
   }, [disabled]);
 
   const handleClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
-    setDisable(true);
-    if (disableClickForMs) delayNextClick();
+    if (disableClickForMs) {
+      setDisable(true);
+      delayNextClick();
+    }
     onClick(evt);
   };
 

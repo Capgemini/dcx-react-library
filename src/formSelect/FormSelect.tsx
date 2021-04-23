@@ -1,5 +1,11 @@
-import React from 'react';
-import { Roles } from '../common';
+import React, { useState, ChangeEvent } from 'react';
+import {
+  ErrorMessage,
+  ErrorMessageProps,
+  Hint,
+  HintProps,
+  Roles,
+} from '../common';
 
 export type SelectOption = {
   /**
@@ -10,6 +16,26 @@ export type SelectOption = {
    * select option value
    */
   value: string;
+  /**
+   * select className
+   */
+  className?: string;
+  /**
+   * select option disabled
+   */
+  disabled?: boolean;
+  /**
+   * select id
+   */
+  id?: string;
+  /**
+   * select option preselected
+   */
+  selected?: boolean;
+  /**
+   * select properties
+   */
+  selectProperties?: any;
 };
 
 export type FormSelectProps = {
@@ -20,11 +46,7 @@ export type FormSelectProps = {
   /**
    * handle the change when the user select the option
    */
-  onChange: (evt: React.FormEvent<HTMLSelectElement>) => void;
-  /**
-   * set the value
-   */
-  value: string;
+  onChange?: (evt: ChangeEvent<HTMLSelectElement>) => void;
   /**
    * select name
    */
@@ -45,40 +67,80 @@ export type FormSelectProps = {
    * define the aria-label
    */
   ariaLabel?: string;
+  /**
+   * select label
+   */
+  label?: string;
+  /**
+   * select label properties for optional label
+   */
+  labelProps?: any;
+  /**
+   * select label hint
+   */
+  hint?: HintProps;
+  /**
+   * select error
+   */
+  error?: ErrorMessageProps;
 };
 
 export const FormSelect = ({
   name,
   options,
   onChange,
-  value,
   id,
   selectProps,
   optionProps,
   ariaLabel,
+  label,
+  labelProps,
+  hint,
+  error,
 }: FormSelectProps) => {
+  const preselectedValue = options.find(option => option.selected);
+  const initialValue: string =
+    preselectedValue !== undefined ? preselectedValue.value : options[0].value;
+  const [value, setValue] = useState<string>(initialValue);
   const selectOptions = options.map((item: SelectOption) => (
     <option
       value={item.value}
       key={item.value}
       aria-label={Roles.listItem}
-      id={item.label}
+      id={item.id}
+      disabled={item.disabled}
+      className={item.className}
+      {...item.selectProperties}
       {...optionProps}
     >
       {item.label}
     </option>
   ));
 
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setValue(event.target.value);
+    if (onChange) onChange(event);
+  };
+
   return (
-    <select
-      value={value}
-      onChange={onChange}
-      name={name || 'formSelect'}
-      id={id || 'formSelect'}
-      aria-label={ariaLabel || Roles.list}
-      {...selectProps}
-    >
-      {selectOptions}
-    </select>
+    <>
+      {label && (
+        <label {...labelProps} htmlFor={id}>
+          {label}
+        </label>
+      )}
+      {hint && <Hint {...hint} />}
+      {error && <ErrorMessage {...error} />}
+      <select
+        value={value}
+        onChange={handleChange}
+        name={name || 'formSelect'}
+        id={id || 'formSelect'}
+        aria-label={ariaLabel || Roles.list}
+        {...selectProps}
+      >
+        {selectOptions}
+      </select>
+    </>
   );
 };

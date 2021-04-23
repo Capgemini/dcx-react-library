@@ -15,7 +15,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -76,7 +78,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -106,7 +110,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -139,7 +145,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         error={{
           text: 'oops!! we have an error',
@@ -175,7 +183,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -205,7 +215,9 @@ describe('FormGroup', () => {
         name="group1"
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -230,6 +242,42 @@ describe('FormGroup', () => {
     expect(handleItemChange).toHaveBeenCalled();
   });
 
+  it('should not call on change of an item if the on change is not defined', () => {
+    const handleChange = jest.fn();
+    const handleItemChange = jest.fn();
+
+    render(
+      <FormGroup
+        groupClasses=""
+        id=""
+        name="group1"
+        legend={{
+          text: 'Have you changed your name?',
+          heading: {
+            priority: 1,
+          },
+        }}
+        items={[
+          {
+            inputProps: {
+              'data-testid': 'custom-item',
+            },
+            value: 'yes',
+            label: 'Yes',
+          },
+          {
+            value: 'no',
+            label: 'No',
+          },
+        ]}
+        onChange={handleChange}
+      />
+    );
+
+    fireEvent.click(screen.getByTestId('custom-item'));
+    expect(handleItemChange).not.toHaveBeenCalled();
+  });
+
   it('should not call on change if undefined', () => {
     const handleChange = jest.fn();
     const handleItemChange = jest.fn();
@@ -241,7 +289,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -275,7 +325,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -310,7 +362,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -358,7 +412,9 @@ describe('FormGroup', () => {
         }}
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -420,7 +476,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
@@ -455,7 +513,9 @@ describe('FormGroup', () => {
         name=""
         legend={{
           text: 'Have you changed your name?',
-          isHeading: true,
+          heading: {
+            priority: 1,
+          },
         }}
         items={[
           {
