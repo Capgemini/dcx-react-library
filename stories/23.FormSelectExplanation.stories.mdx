@@ -17,17 +17,13 @@ Use the FormSelect component when users need to select a value form a list
 An example with all the available properties is:
 
 ```js
-const [value, setValue] = React.useState('');
-return (
   <FormSelect
     options={[
       { label: 'option1', value: 'value1' },
       { label: 'option2', value: 'value2' },
     ]}
-    value={value}
-    onChange={evt => setValue(evt.currentTarget.value)}
+    onChange={handleChange}
   />
-);
 ```
 
 <Props of={FormSelect} />
