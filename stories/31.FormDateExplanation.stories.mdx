@@ -1,0 +1,53 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormDate } from '../src/formDate/FormDate';
+import './style.css';
+
+<Meta title="DCXLibrary/Form/date/documentation" component={FormDate} />
+
+# Form Date
+
+A form date component ready to use in your form.
+
+FormDate is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
+
+## Usage
+
+Use the form date component when you want to enforce the correct format of a date.
+
+It provides the ability to specify your date format. The allowed formats are:
+
+- `dd/mm/yyyy`
+- `dd/mm/yy`
+- `yyyy/mm/dd`
+- `yy/mm/dd`
+
+An example with all the available properties is:
+
+```js
+<FormDate
+  dateFormat="dd/mm/yyyy"
+  inputContainerClass="classContainer"
+  inputClass="inputClass"
+  yearProps={{
+    classNameLabel: 'yearLabel',
+    customLabel: <CustomComponent>Year</CustomComponent>, //you can specify your customLabel component
+    classNameLabel: 'yearLabel',
+    classNameSpan: 'span',
+  }}
+  monthProps={{
+    label: 'Month',
+    classNameInput: 'classInput',
+    classNameLabel: 'monthLabel',
+    classNameSpan: 'classSpan',
+  }}
+  dayProps={{
+    classNameLabel: 'dayLabel',
+    label: 'Day',
+    classNameInput: 'classInput',
+    classNameLabel: 'classDayLabel',
+    classNameSpan: 'classSpan',
+  }}
+/>
+```
+
+<Props of={FormDate} />
