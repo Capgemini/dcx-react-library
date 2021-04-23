@@ -254,14 +254,13 @@ export const FormDate = ({
     }
   });
   return (
-    <div
-      style={{ display: 'flex', flexDirection: 'column' }}
-      className={inputContainerClass}
-    >
+    <div className={inputContainerClass}>
       {errorPosition === 'top' && showError && (
         <ErrorMessage text={errorMessage} classes={errorClass} />
       )}
-      <div style={{ display: 'flex', flexDirection: 'row' }}>{DateComp}</div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto' }}>
+        {DateComp}
+      </div>
       {errorPosition === 'bottom' && showError && (
         <ErrorMessage text={errorMessage} classes={errorClass} />
       )}
