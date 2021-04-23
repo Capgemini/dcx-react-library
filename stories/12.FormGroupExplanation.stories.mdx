@@ -108,19 +108,21 @@ An example with all the available properties is:
        }
     }}
     fieldsetClasses='fieldset classes'
-    hint={
+    hint={{
         text: 'hint-text',
         classes: 'class names',
         id: 'hint-id'
-    }
+    }}
     id='id'
     itemsClasses='class names for the group items'
-    legend={
-        text='heading',
-        classes='legend classes',
-        isHeading=true,
-        headingClasses='heading classes'
-    }
+    legend={{
+        text: 'heading',
+        className: 'legend classes',
+        heading: {
+            priority: 2,
+            className: 'heading class name'
+        }
+    }}
     onChange={handleChange}
 />
 ```

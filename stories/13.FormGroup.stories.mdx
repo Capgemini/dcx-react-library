@@ -7,27 +7,28 @@ import "./style.css";
 ### An example of 'un-styled' FormGroup of radio buttons
 <Canvas>
   <Story name="un-styled">
-      {() => {
-        const handleChange = event => {
-          // handle change
-        }
-        return (
-            <FormGroup
-                name='name-of-group'
-                items={[
-                    {
-                        label: 'item-label',
-                        value: 'yes',
-                        onChange: (e) => handleChange(e)
-                    },
-                    {
-                        label: 'item-label',
-                        value: 'no',
-                        onChange: (e) => handleChange(e)
-                    }
-                ]}
-            />
-        );
+    {() => {
+      return (
+        <FormGroup
+            name='name-of-group'
+            legend={{
+              text: 'Heading text customisable by a given priority of type number between 1 to 6 (inclusive)',
+              heading: {
+                priority: 2
+              }
+            }}
+            items={[
+              {
+                label: 'item-label',
+                value: 'yes'
+              },
+              {
+                label: 'item-label',
+                value: 'no'
+              }
+            ]}
+        />
+      );
     }}
     />
   </Story>
@@ -35,22 +36,18 @@ import "./style.css";
 
 <Canvas>
   <Story name="error">
-      {() => {
-        const handleChange = event => {
-          // handle change
-        }
-        return (
-            <FormGroup
-                name='name-of-group'
-                items={[
-                    {
-                        label: 'item-label',
-                        value: 'yes',
-                        onChange: (e) => handleChange(e)
-                    }
-                ]}
-            />
-        );
+    {() => {
+      return (
+        <FormGroup
+          name='name-of-group'
+          items={[
+            {
+              label: 'item-label',
+              value: 'yes'
+            }
+          ]}
+        />
+      );
     }}
     />
   </Story>

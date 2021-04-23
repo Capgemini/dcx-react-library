@@ -60,7 +60,9 @@ export const FormRadioDemo = () => {
         }}
         legend={{
           text: 'Basic Group Radios',
-          isHeading: true,
+          heading: {
+            priority: 4,
+          },
         }}
         onChange={handleChange}
       />
