@@ -11,6 +11,7 @@ import {
   Toggle,
   FormGroup,
   Autocomplete,
+  FormDate,
 } from 'dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -22,6 +23,7 @@ import {
 const initialState = {
   username: '',
   password: '',
+  dateOfBirth: '',
   gender: '',
   country: '',
   theme: false,
@@ -40,6 +42,7 @@ const initialState = {
 enum LOGIN_ACTIONS {
   UPDATE_USERNAME = 'updateUsername',
   UPDATE_PASSWORD = 'updatePassword',
+  UPDATE_DATE_OF_BIRTH = 'updateDateOfBirth',
   UPDATE_GENDER = 'updateGender',
   UPDATE_COUNTRY = 'updateCountry',
   UPDATE_THEME = 'updateTheme',
@@ -64,6 +67,11 @@ function reducer(state, action) {
       return {
         ...state,
         password: action.value,
+      };
+    case LOGIN_ACTIONS.UPDATE_DATE_OF_BIRTH:
+      return {
+        ...state,
+        dateOfBirth: action.value,
       };
     case LOGIN_ACTIONS.UPDATE_GENDER:
       return {
@@ -164,6 +172,7 @@ export const Register = () => {
     const fieldNames = [
       'username',
       'password',
+      'dateOfBirth',
       'gender',
       'country',
       'heardAbout',
@@ -256,6 +265,36 @@ export const Register = () => {
                 />
               </div>
             }
+          />
+        </div>
+
+        <div className="form-group">
+          <Label htmlFor="dateOfBirth">Date of Birth</Label>
+          <FormDate
+            handleValidity={(isValid, value) => {
+              if (isValid) {
+                dispatch({
+                  type: LOGIN_ACTIONS.UPDATE_DATE_OF_BIRTH,
+                  value,
+                });
+                checkFormValidity();
+              }
+            }}
+            errorMessage="Please enter a valid date"
+            displayError={true}
+            dateFormat="dd/mm/yyyy"
+            yearProps={{
+              classNameInput: 'form-control',
+              customLabel: <h3>Year</h3>,
+            }}
+            monthProps={{
+              classNameInput: 'form-control',
+              customLabel: <h3>Month</h3>,
+            }}
+            dayProps={{
+              classNameInput: 'form-control',
+              customLabel: <h3>Day</h3>,
+            }}
           />
         </div>
 
