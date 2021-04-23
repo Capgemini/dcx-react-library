@@ -101,44 +101,65 @@ describe('FormCheckbox', () => {
     );
   });
 
+  it('should render hint text below input by default', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label="my label"
+        onChange={handleChange}
+        labelProps={{
+          id: 'myId',
+        }}
+        hint={{
+          id: 'myId',
+          text: 'my hint',
+        }}
+      />
+    );
+
+    const firstItem = container.firstChild?.childNodes[0];
+    const secondItem = container.firstChild?.childNodes[1];
+    const thirdItem = container.firstChild?.childNodes[2];
+
+    expect(screen.getByText('my hint')).toBeInTheDocument();
+    expect(container.querySelector('input#myId')).toStrictEqual(firstItem);
+    expect(container.querySelector('label#myId')).toStrictEqual(secondItem);
+    expect(container.querySelector('div#myId')).toStrictEqual(thirdItem);
+  });
+
   it('should render hint text above input', () => {
     const handleChange = jest.fn();
 
-    render(
+    const { container } = render(
       <FormCheckbox
         id="myId"
         name="group1"
         value="choice 1"
         label="my label"
+        labelProps={{
+          id: 'myId',
+        }}
         onChange={handleChange}
         hint={{
-          id: 'my-hint',
+          id: 'myId',
           text: 'my hint',
+          position: 'above',
         }}
-        ariaDescribedBy="my-hint-item-hint"
       />
     );
 
-    expect(screen.getByText('my hint')).toBeInTheDocument();
-    expect(
-      screen.getByLabelText('my label').getAttribute('aria-describedby')
-    ).toBe('my-hint-item-hint');
-  });
-
-  it('should render hint text below input', () => {
-    const handleChange = jest.fn();
-    render(
-      <FormCheckbox
-        id="myId"
-        name="group1"
-        value="choice 1"
-        label="my label"
-        onChange={handleChange}
-        hint={{ text: 'my hint', position: 'below' }}
-      />
-    );
+    const firstItem = container.firstChild?.childNodes[0];
+    const secondItem = container.firstChild?.childNodes[1];
+    const thirdItem = container.firstChild?.childNodes[2];
 
     expect(screen.getByText('my hint')).toBeInTheDocument();
+    expect(container.querySelector('div#myId')).toStrictEqual(firstItem);
+    expect(container.querySelector('input#myId')).toStrictEqual(secondItem);
+    expect(container.querySelector('label#myId')).toStrictEqual(thirdItem);
   });
 
   it('should not render conditional input field by default', () => {
