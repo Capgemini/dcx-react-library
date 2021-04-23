@@ -154,7 +154,7 @@ describe('FormInput', () => {
   it('should render the optional properties for the labels', () => {
     const { container } = render(
       <FormDate
-        dateFormat="dd/mm/yyyy"
+        dateFormat="dd/mm/yy"
         handleValidity={jest.fn()}
         yearProps={{
           label: 'Year',
