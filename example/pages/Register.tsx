@@ -302,14 +302,17 @@ export const Register = () => {
             dateFormat="dd/mm/yyyy"
             inputContainerClass="date-of-birth-container"
             yearProps={{
+              classNameLabel: 'max-width',
               classNameInput: 'form-control',
               customLabel: <label>Year</label>,
             }}
             monthProps={{
+              classNameLabel: 'max-width',
               classNameInput: 'form-control',
               customLabel: <label>Month</label>,
             }}
             dayProps={{
+              classNameLabel: 'max-width',
               classNameInput: 'form-control',
               customLabel: <label>Day</label>,
             }}

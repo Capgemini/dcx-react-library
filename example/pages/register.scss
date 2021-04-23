@@ -66,7 +66,11 @@
   }
 
   .date-of-birth-container {
-    input {
+    div {
+      grid-template-columns: 4.5em 4.5em 4.5em !important;
+      grid-column-gap: 0.5em;
+    }
+    .max-width {
       max-width: 4.5em;
     }
   }
