@@ -340,14 +340,12 @@ export const Register = () => {
               'Spain',
               'Japan',
             ]}
-            defaultValue=""
             minCharsBeforeSearch={1}
             debounceMs={500}
             hintText="Please select which country you are from"
-            resultUlClass="resultUlClass"
-            resultlLiClass="resultlLiClass"
-            resultNoOptionClass="resultNoOptionClass"
-            resultActiveClass="resultActiveClass"
+            resultUlClass="auto-complete-container"
+            resultlLiClass="auto-complete-item"
+            resultNoOptionClass="auto-complete-container"
             notFoundText="No Country found"
             inputProps={{
               className: 'form-control',

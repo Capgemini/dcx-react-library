@@ -40,4 +40,28 @@
   .password-eye-btn {
     border-color: transparent;
   }
+
+  .auto-complete-container {
+    list-style: none;
+    padding-left: 0;
+    background-color: white;
+    max-height: 190px;
+    max-width: 18em;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    overflow-y: auto;
+
+    em,
+    .auto-complete-item {
+      padding: 6.5px 16px;
+      width: 100%;
+      display: block;
+    }
+
+    .auto-complete-item {
+      cursor: pointer;
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+  }
 }
