@@ -18,20 +18,23 @@ An example with all the available properties is:
 
 ```js
 <FormCheckbox
+  name="checkbox-name"
   label="checkbox-label"
   value={value}
+  onChange={handleChange}
+  id="checkbox-id"
   ariaLabel="aria-label"
-  disabled={true}
+  ariaDescribedBy="aria-described-by"
+  ariaLabelledBy="aria-labelledby"
+  ariaDataControls="aria-data-controls"
   hint={{
     text: 'hint text',
     classes: 'class names',
     id: 'hint-id',
+    position: 'above',
   }}
-  id="checkbox-id"
   inputProps={{
     className: 'class-name',
-    name: 'checkbox-name',
-    onChange: handleChange,
   }}
   itemProps={{
     className: 'class-name',
@@ -39,7 +42,19 @@ An example with all the available properties is:
   labelProps={{
     style: { display: 'flex' },
   }}
-  defaultChecked={true}
+  disabled={true}
+  defaultChecked={checked}
+  conditional={{
+    name: 'conditional-reveal',
+    label: 'label',
+    type: 'text',
+    className: 'classes',
+    groupClassName: 'group-classes',
+    id: 'conditional-id',
+    inputClassName: 'input-classes',
+    inputId: 'input-id',
+    labelClassName: 'label-classes',
+  }}
 />
 ```
 

@@ -155,6 +155,10 @@ export type HintProps = {
    * hint id
    **/
   id?: string;
+  /**
+   * hint id
+   **/
+  position?: string;
 };
 
 export type LegendProps = {
