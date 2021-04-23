@@ -25,10 +25,14 @@ export const ResultList = ({
 }: ResultListProps) => {
   if (userInput && list.length) {
     return (
-      <ul className={ulContainerClass}>
+      <ul className={ulContainerClass} aria-live="polite">
         {list.map((optionName: string, index: number) => (
           <li
-            className={index === activeOption ? activeClass : liContainerClass}
+            className={
+              index === activeOption
+                ? [activeClass, liContainerClass].join(' ')
+                : liContainerClass
+            }
             key={optionName}
             onClick={onClick}
           >

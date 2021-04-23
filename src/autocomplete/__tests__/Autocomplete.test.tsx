@@ -218,7 +218,7 @@ describe('FormInput', () => {
     fireEvent.keyDown(input, { code: 'ArrowUp' });
 
     const listItems: any = screen.getAllByRole('listitem');
-    expect(listItems[0].className).toBe('activeClass');
+    expect(listItems[0].className).toBe('activeClass ');
   });
 
   it('should highlight the last one as active if you try to keyDown', async () => {
@@ -239,7 +239,7 @@ describe('FormInput', () => {
     fireEvent.keyDown(input, { code: 'ArrowDown' });
 
     const listItems: any = screen.getAllByRole('listitem');
-    expect(listItems[2].className).toBe('activeClass');
+    expect(listItems[2].className).toBe('activeClass ');
   });
 
   it('should call the selected function after the selection', async () => {
