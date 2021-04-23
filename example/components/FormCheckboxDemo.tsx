@@ -3,10 +3,10 @@ import { FormCheckbox } from 'dcx-react-library';
 
 export const FormCheckboxDemo = () => {
   const [value, setValue] = React.useState('');
-  const [isChecked, setIsChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(true);
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = event => {
     setValue(event.currentTarget.value);
-    setIsChecked(!isChecked);
+    setChecked(!checked);
   };
 
   return (
@@ -27,7 +27,7 @@ export const FormCheckboxDemo = () => {
         value={value}
         label="Checkbox 2 label text"
         onChange={handleChange}
-        defaultChecked={isChecked}
+        defaultChecked={checked}
       />
       <h2>Disabled Checkbox</h2>
       <FormCheckbox

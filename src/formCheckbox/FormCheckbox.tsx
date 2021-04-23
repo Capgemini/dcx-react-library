@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
 import { ConditionalInputProps, Hint, HintProps } from '../common';
-import PropTypes from 'prop-types';
 
 type FormCheckboxProps = {
   /**
@@ -45,6 +44,10 @@ type FormCheckboxProps = {
    **/
   hint?: HintProps;
   /**
+   * checkbox hint position value 'above' or 'below'
+   **/
+  hintPosition?: string;
+  /**
    * allows for customisation of the checkbox input with all the properites needed
    **/
   inputProps?: any;
@@ -79,44 +82,54 @@ export const FormCheckbox = ({
   itemProps,
   labelProps,
   ariaLabel,
-  ariaDataControls,
-  ariaDescribedBy,
+  ariaDataControls = '',
+  ariaDescribedBy = '',
   ariaLabelledBy,
   onChange,
   conditional,
   disabled,
   defaultChecked,
   hint,
+  hintPosition = 'below',
 }: FormCheckboxProps) => {
   const conditionalReveal = (): boolean =>
     !_.isEmpty(conditional) && defaultChecked === true;
 
-  const conditionalEl = (conditional: ConditionalInputProps) => (
-    <div className={conditional.className} id={conditional.id}>
-      <div className={conditional.groupClassName}>
-        <label className={conditional.labelClassName} htmlFor={conditional.id}>
-          {conditional.label}
+  const conditionalEl = ({
+    className,
+    id,
+    groupClassName,
+    labelClassName,
+    inputId,
+    inputClassName,
+    name,
+    type,
+  }: ConditionalInputProps) => (
+    <div className={className} id={id}>
+      <div className={groupClassName}>
+        <label className={labelClassName} htmlFor={id}>
+          {label}
         </label>
         <input
-          className={conditional.inputClassName}
-          id={conditional.inputId}
-          name={conditional.name}
-          type={conditional.type}
+          className={inputClassName}
+          id={inputId}
+          name={name}
+          type={type}
         />
       </div>
     </div>
   );
   return (
     <div {...itemProps}>
-      {hint?.position === 'above' && <Hint {...hint} />}
+      {hint && hintPosition === 'above' && <Hint {...hint} />}
       <input
         id={id}
         type="checkbox"
         name={name}
         value={value}
         aria-label={ariaLabel || name}
-        data-aria-controls={ariaDataControls || ''}
-        aria-describedby={ariaDescribedBy || ''}
+        data-aria-controls={ariaDataControls}
+        aria-describedby={ariaDescribedBy}
         aria-labelledby={ariaLabelledBy || labelProps ? labelProps.id : ''}
         disabled={disabled}
         defaultChecked={defaultChecked}
@@ -126,32 +139,10 @@ export const FormCheckbox = ({
       <label {...labelProps} htmlFor={id}>
         {label}
       </label>
-      {hint && hint?.position !== 'above' && <Hint {...hint} />}
+      {hint && hintPosition === 'below' && <Hint {...hint} />}
       {conditional !== undefined &&
         conditionalReveal() &&
         conditionalEl(conditional)}
     </div>
   );
-};
-
-FormCheckbox.propTypes = {
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  ariaLabel: PropTypes.string,
-  ariaDescribedBy: PropTypes.string,
-  ariaLabelledBy: PropTypes.string,
-  disabled: PropTypes.bool,
-  hint: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    classes: PropTypes.string,
-    id: PropTypes.string,
-    position: PropTypes.string,
-  }),
-  id: PropTypes.string,
-  inputProps: PropTypes.any,
-  itemProps: PropTypes.any,
-  labelProps: PropTypes.any,
-  name: PropTypes.string.isRequired,
-  defaultChecked: PropTypes.bool,
-  onChange: PropTypes.func,
 };

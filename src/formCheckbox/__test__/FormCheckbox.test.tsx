@@ -101,6 +101,50 @@ describe('FormCheckbox', () => {
     );
   });
 
+  it('should render a checkbox with aria-data-controls and aria-labelledby as empty if unspecified', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <FormCheckbox
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group1"
+        onChange={handleChange}
+      />
+    );
+
+    expect(
+      screen.getByLabelText('my label').getAttribute('data-aria-controls')
+    ).toBe('');
+    expect(
+      screen.getByLabelText('my label').getAttribute('aria-describedby')
+    ).toBe('');
+  });
+
+  it('should render a checkbox with aria-data-controls and aria-describedby as specified', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <FormCheckbox
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group1"
+        onChange={handleChange}
+        ariaDataControls="myAriaDataControl"
+        ariaDescribedBy="myAriaDescribedBy"
+      />
+    );
+
+    expect(
+      screen.getByLabelText('my label').getAttribute('data-aria-controls')
+    ).toBe('myAriaDataControl');
+    expect(
+      screen.getByLabelText('my label').getAttribute('aria-describedby')
+    ).toBe('myAriaDescribedBy');
+  });
+
   it('should render hint text below input by default', () => {
     const handleChange = jest.fn();
 
@@ -147,8 +191,8 @@ describe('FormCheckbox', () => {
         hint={{
           id: 'myId',
           text: 'my hint',
-          position: 'above',
         }}
+        hintPosition="above"
       />
     );
 
