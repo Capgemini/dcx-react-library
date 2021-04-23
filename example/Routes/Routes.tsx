@@ -8,6 +8,7 @@ import {
   ToggleDemo,
   FormSelectDemo,
   SideNavBar,
+  MultiUploadDemo,
 } from '../components';
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
@@ -19,11 +20,7 @@ const Routes = () => (
   <BrowserRouter>
     <SideNavBar />
     <Switch>
-      <Route
-        path="/FormInputMaskedDemo"
-        exact
-        component={FormInputMaskedDemo}
-      />
+      <Route path="/FormInputMaskedDemo" component={FormInputMaskedDemo} />
       <Route path="/login" component={Login} />
       <Route path="/radio" component={FormRadioDemo} />
       <Route path="/checkbox" component={FormCheckboxDemo} />
@@ -32,6 +29,7 @@ const Routes = () => (
       <Route path="/progress" component={ProgressDemo} />
       <Route path="/toggle" component={ToggleDemo} />
       <Route path="/select" component={FormSelectDemo} />
+      <Route path="/MultiUpload" component={MultiUploadDemo} />
     </Switch>
   </BrowserRouter>
 );

@@ -6,10 +6,9 @@ export const SideNavBar = () => (
     <nav>
       <a href="/login">Login</a>
       <ul>
-        {' '}
         forms
         <li>
-          <a href="/">FormInputDemo</a>
+          <a href="/FormInputMaskedDemo">FormInputDemo</a>
         </li>
         <li>
           <a href="/login">Login Example</a>
@@ -37,6 +36,9 @@ export const SideNavBar = () => (
         </li>
         <li>
           <a href="/select">SelectDemo</a>
+        </li>
+        <li>
+          <a href="/MultiUpload">MultiUploadDemo</a>
         </li>
       </ul>
     </nav>
