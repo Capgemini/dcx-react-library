@@ -1,0 +1,43 @@
+[
+    {
+        "title": "Forms",
+        "items": [
+            {
+                "title": "Form input",
+                "link": "/FormInputMaskedDemo"
+            },
+            {
+                "title": "FormRadioDemo",
+                "link": "/radio"
+            },
+            {
+                "title": "FormCheckboxDemo",
+                "link": "/checkbox"
+            },
+            {
+                "title": "AutocompleteDemo",
+                "link": "/AutocompleteDemo"
+            },
+            {
+                "title": "ButtonDemo",
+                "link": "/ButtonDemo"
+            },
+            {
+                "title": "progress",
+                "link": "/progress"
+            },
+            {
+                "title": "ToggleDemo",
+                "link": "/toggle"
+            },
+            {
+                "title": "FormSelectDemo",
+                "link": "/select"
+            },
+            {
+                "title": "MultiUpload",
+                "link": "/MultiUpload"
+            }
+        ]
+    }
+]

@@ -7,7 +7,6 @@ import {
   ProgressDemo,
   ToggleDemo,
   FormSelectDemo,
-  SideNavBar,
   MultiUploadDemo,
 } from '../components';
 import 'react-app-polyfill/ie11';
@@ -18,7 +17,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const Routes = () => (
   <BrowserRouter>
-    <SideNavBar />
     <Switch>
       <Route path="/FormInputMaskedDemo" component={FormInputMaskedDemo} />
       <Route path="/login" component={Login} />

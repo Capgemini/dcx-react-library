@@ -1,46 +1,23 @@
-import * as React from 'react';
-import 'react-app-polyfill/ie11';
+import React from 'react';
+import data from '../data/navbar.json';
+import { Link } from '../generated-components';
 
-export const SideNavBar = () => (
-  <aside className="sidenav">
-    <nav>
-      <a href="/login">Login</a>
-      <ul>
-        forms
-        <li>
-          <a href="/FormInputMaskedDemo">FormInputDemo</a>
-        </li>
-        <li>
-          <a href="/login">Login Example</a>
-        </li>
-        <li>
-          <a href="/masked">masked</a>
-        </li>
-        <li>
-          <a href="/radio">radio</a>
-        </li>
-        <li>
-          <a href="/checkbox">Checkbox</a>
-        </li>
-        <li>
-          <a href="/AutocompleteDemo">AutocompleteDemo</a>
-        </li>
-        <li>
-          <a href="/ButtonDemo">ButtonDemo</a>
-        </li>
-        <li>
-          <a href="/progress">ProgressDemo</a>
-        </li>
-        <li>
-          <a href="/toggle">ToggleDemo</a>
-        </li>
-        <li>
-          <a href="/select">SelectDemo</a>
-        </li>
-        <li>
-          <a href="/MultiUpload">MultiUploadDemo</a>
-        </li>
-      </ul>
-    </nav>
-  </aside>
-);
+const SideNavItems = ({ items }) =>
+  items.map(item => {
+    const { link, title } = item;
+    return (
+      <li key={title}>
+        <Link href={link}>{title}</Link>
+      </li>
+    );
+  });
+
+export const SideNavBar = () => {
+  const navBarItems = data.map(section => (
+    <ul key={section.title}>
+      {section.title}
+      <SideNavItems items={section.items} />
+    </ul>
+  ));
+  return <div>{navBarItems}</div>;
+};
