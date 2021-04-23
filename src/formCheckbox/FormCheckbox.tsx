@@ -128,7 +128,6 @@ export const FormCheckbox = ({
       </label>
       {hint && hint?.position !== 'above' && <Hint {...hint} />}
       {conditional !== undefined &&
-        conditional?.id === ariaDataControls &&
         conditionalReveal() &&
         conditionalEl(conditional)}
     </div>
