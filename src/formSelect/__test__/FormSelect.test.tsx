@@ -2,11 +2,12 @@ import React, { ChangeEvent } from 'react';
 import { render, screen } from '@testing-library/react';
 import fireEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { FormSelect, SelectOption } from '../FormSelect';
+import { FormSelect, SelectOption, SelectGroup } from '../FormSelect';
 import { ErrorMessageProps, HintProps } from '../../common/components';
 
 type props = {
   options?: SelectOption[];
+  groups?: SelectGroup[];
   name?: string;
   id?: string;
   label?: string;
@@ -25,6 +26,7 @@ const DummySelect = ({
   hint,
   error,
   options = [{ label: 'option1', value: 'value1' }],
+  groups,
 }: props) => (
   <FormSelect
     id={id}
@@ -35,10 +37,18 @@ const DummySelect = ({
     labelProps={labelProps}
     hint={hint}
     error={error}
+    groups={groups}
   />
 );
 
 describe('FormSelect', () => {
+  it('should render an empty formSelect component', () => {
+    render(<FormSelect />);
+
+    const formSelect = screen.getByRole('combobox');
+    expect(formSelect).toBeInTheDocument();
+  });
+
   it('should display the formSelect component', () => {
     render(<DummySelect id="myId" name="the name" />);
     const formSelect = screen.getByRole('combobox');
@@ -210,5 +220,95 @@ describe('FormSelect', () => {
 
     expect(screen.getByTestId('custom-option-1')).toBeInTheDocument();
     expect(handleChange).not.toHaveBeenCalled();
+  });
+
+  it('should render a group of options', () => {
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        groups={[
+          {
+            label: 'group1',
+            options: [
+              { label: 'option1', value: 'value1' },
+              { label: 'option2', value: 'value2' },
+              { label: 'option3', value: 'value3' },
+            ],
+          },
+        ]}
+      />
+    );
+    const selectElement = screen.getByRole('group');
+    expect(selectElement).toBeInTheDocument();
+    expect(selectElement.getAttribute('label')).toBe('group1');
+
+    const formSelect = screen.getByRole('combobox');
+    expect(formSelect).toBeInTheDocument();
+  });
+
+  it('should render a preselected option from a group', () => {
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        groups={[
+          {
+            label: 'group1',
+            options: [
+              { label: 'option1', value: 'value1' },
+              { label: 'option2', value: 'value2' },
+              { label: 'option3', value: 'value3', selected: true },
+            ],
+          },
+        ]}
+      />
+    );
+    const selectElement = screen.getByRole('combobox');
+    expect(selectElement).toHaveDisplayValue('option3');
+  });
+
+  it('should render a preselected option not from a group', () => {
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        groups={[
+          {
+            label: 'group1',
+            options: [
+              { label: 'option1', value: 'value1' },
+              { label: 'option2', value: 'value2' },
+              { label: 'option3', value: 'value3', selected: true },
+            ],
+          },
+        ]}
+        options={[{ label: 'option4', value: 'value4', selected: true }]}
+      />
+    );
+    const selectElement = screen.getByRole('combobox');
+    expect(selectElement).toHaveDisplayValue('option4');
+  });
+
+  it('should render a number of options within a group', () => {
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        groups={[
+          {
+            label: 'group1',
+            options: [
+              { label: 'option1', value: 'value1' },
+              { label: 'option2', value: 'value2' },
+              { label: 'option3', value: 'value3', selected: true },
+            ],
+            displayCount: true,
+          },
+        ]}
+      />
+    );
+    const selectElement = screen.getByRole('group');
+    expect(selectElement.getAttribute('label')).toBe('group1 (3)');
   });
 });
