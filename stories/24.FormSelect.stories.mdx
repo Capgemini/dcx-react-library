@@ -19,6 +19,86 @@ import { FormSelect } from '../src/formSelect/FormSelect';
   </Story>
 </Canvas>
 
+### Examples of group Select
+<Canvas>
+  <Story name="group">
+    {() => {
+      return (
+        <FormSelect
+          groups={[
+            {
+              label: 'group 1',
+              displayCount: true,
+              options: [
+                { label: 'option 1', value: 'group 1 option 1', selected: true },
+                { label: 'option 2', value: 'group 1 option 2' },
+                { label: 'option 3', value: 'group 1 option 3' },
+                { label: 'option 4', value: 'group 1 option 4' },
+                { label: 'option 5', value: 'group 1 option 5' },
+                {
+                  label: 'option 6',
+                  value: 'group 1 option 6',
+                  disabled: true,
+                },
+              ],
+            },
+            {
+              label: 'group 2',
+              displayCount: true,
+              options: [
+                { label: 'option 1', value: 'group 2 option 1' },
+                { label: 'option 2', value: 'group 2 option 2' },
+                { label: 'option 3', value: 'group 2 option 3' },
+              ],
+            },
+            {
+              label: 'group 3',
+              displayCount: true,
+              options: [
+                { label: 'option 1', value: 'group 3 option 1' },
+                { label: 'option 2', value: 'group 3 option 2' },
+                { label: 'option 3', value: 'group 3 option 3' },
+                { label: 'option 4', value: 'group 3 option 4' },
+                { label: 'option 5', value: 'group 3 option 5' },
+                {
+                  label: 'option 6',
+                  value: 'group 3 option 6',
+                  disabled: true,
+                },
+              ],
+            },
+            {
+              label: 'group 4',
+              displayCount: true,
+              options: [
+                { label: 'option 1', value: 'group 4 option 1' },
+                { label: 'option 2', value: 'group 4 option 2' },
+                { label: 'option 3', value: 'group 4 option 3' },
+                {
+                  label: 'option 4',
+                  value: 'group 4 option 4',
+                  disabled: true,
+                },
+              ],
+            },
+            {
+              label: 'group 5',
+              displayCount: true,
+              options: [
+                { label: 'option 1', value: 'group 4 option 1' },
+                { label: 'option 2', value: 'group 4 option 2' },
+                { label: 'option 3', value: 'group 4 option 3' },
+                { label: 'option 4', value: 'group 4 option 4' },
+                { label: 'option 4', value: 'group 4 option 4' },
+              ],
+            },
+          ]}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ### Examples of color Select
 <Canvas>
   <Story name="color">

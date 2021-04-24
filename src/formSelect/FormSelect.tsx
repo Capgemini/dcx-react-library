@@ -7,6 +7,21 @@ import {
   Roles,
 } from '../common';
 
+export type SelectGroup = {
+  /**
+   * select group label
+   */
+  label: string;
+  /**
+   * select options
+   */
+  options: SelectOption[];
+  /**
+   * select show options count
+   */
+  displayCount?: boolean;
+};
+
 export type SelectOption = {
   /**
    * select option label
@@ -42,7 +57,11 @@ export type FormSelectProps = {
   /**
    * select options
    */
-  options: SelectOption[];
+  options?: SelectOption[];
+  /**
+   * select groups
+   */
+  groups?: SelectGroup[];
   /**
    * handle the change when the user select the option
    */
@@ -87,7 +106,8 @@ export type FormSelectProps = {
 
 export const FormSelect = ({
   name,
-  options,
+  groups,
+  options = [],
   onChange,
   id,
   selectProps,
@@ -98,24 +118,57 @@ export const FormSelect = ({
   hint,
   error,
 }: FormSelectProps) => {
-  const preselectedValue = options.find(option => option.selected);
+  const sharedOptions:
+    | SelectOption[]
+    | undefined = groups?.flatMap((group: SelectGroup) => [...group.options]);
+
+  const combined: SelectOption[] | undefined = sharedOptions
+    ? [...options, ...sharedOptions]
+    : options;
+
+  const preselectedValue: SelectOption | undefined = combined.find(
+    option => option.selected
+  );
+
   const initialValue: string =
-    preselectedValue !== undefined ? preselectedValue.value : options[0].value;
+    preselectedValue !== undefined
+      ? preselectedValue.value
+      : options.length
+      ? options[0].value
+      : '';
   const [value, setValue] = useState<string>(initialValue);
-  const selectOptions = options.map((item: SelectOption) => (
-    <option
-      value={item.value}
-      key={item.value}
-      aria-label={Roles.listItem}
-      id={item.id}
-      disabled={item.disabled}
-      className={item.className}
-      {...item.selectProperties}
-      {...optionProps}
-    >
-      {item.label}
-    </option>
-  ));
+
+  const getOptions = (options: SelectOption[]): JSX.Element[] =>
+    options.map((item: SelectOption, index: number) => (
+      <option
+        value={item.value}
+        key={index}
+        aria-label={Roles.listItem}
+        id={item.id}
+        disabled={item.disabled}
+        className={item.className}
+        {...item.selectProperties}
+        {...optionProps}
+      >
+        {item.label}
+      </option>
+    ));
+
+  const selectOptions: JSX.Element[] = getOptions(options);
+  const selectGroups: JSX.Element[] | undefined = groups?.map(
+    (group: SelectGroup, index: number) => (
+      <optgroup
+        label={
+          group.displayCount
+            ? `${group.label} (${group.options.length})`
+            : group.label
+        }
+        key={index}
+      >
+        {getOptions(group.options)}
+      </optgroup>
+    )
+  );
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setValue(event.target.value);
@@ -140,6 +193,7 @@ export const FormSelect = ({
         {...selectProps}
       >
         {selectOptions}
+        {selectGroups}
       </select>
     </>
   );
