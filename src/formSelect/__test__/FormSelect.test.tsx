@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import fireEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { FormSelect, SelectOption, SelectGroup } from '../FormSelect';
@@ -93,6 +93,21 @@ describe('FormSelect', () => {
     const selectElementDefault = screen.getByRole('combobox');
     expect(selectElementDefault).toHaveAttribute('id', 'formSelect');
     expect(selectElementDefault).toHaveAttribute('name', 'formSelect');
+  });
+
+  it('should render an option with specific label text', () => {
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        label="myLabel"
+        labelProps={{ className: 'myclassName' }}
+      />
+    );
+
+    const optionElement = screen.getByRole('option');
+    expect(optionElement).toBeInTheDocument();
+    expect(within(optionElement).getByText('option1')).toBeTruthy();
   });
 
   it('should display a label if provided', () => {
