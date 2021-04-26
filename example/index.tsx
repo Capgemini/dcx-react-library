@@ -17,12 +17,14 @@ import {
 import './global-styles.scss';
 import { Login } from './pages/Login';
 import { Home } from './pages/HomePage';
+import { Register } from './pages/Register';
 const App = () => (
   <div>
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="/masked" component={FormInputMaskedDemo} />
         <Route path="/radio" exact component={FormRadioDemo} />
         <Route path="/checkbox" exact component={FormCheckboxDemo} />
