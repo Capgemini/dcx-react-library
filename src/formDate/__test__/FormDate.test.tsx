@@ -207,7 +207,7 @@ describe('FormInput', () => {
         dayProps={{ label: 'Day' }}
       />
     );
-    const input = screen.getAllByRole('spinbutton');
+    const input = screen.getAllByRole('textbox');
     userEvent.type(input[0], '29');
     userEvent.type(input[0], '07');
     userEvent.type(input[0], '19');
@@ -217,7 +217,7 @@ describe('FormInput', () => {
 
   it('should be a valid date', () => {
     render(<DummyDateComponent />);
-    const input = screen.getAllByRole('spinbutton');
+    const input = screen.getAllByRole('textbox');
     userEvent.type(input[0], '29');
     userEvent.type(input[1], '07');
     userEvent.type(input[2], '1982');
@@ -257,7 +257,7 @@ describe('FormInput', () => {
 
   it('should allow a prepopulated values', () => {
     render(<DummyPredefinedDate />);
-    const input: any = screen.getAllByRole('spinbutton');
+    const input: any = screen.getAllByRole('textbox');
     expect(input[0].value).toBe('10');
     expect(input[1].value).toBe('07');
     expect(input[2].value).toBe('1982');
@@ -265,9 +265,20 @@ describe('FormInput', () => {
 
   it('should disable all the input', () => {
     render(<DummyPredefinedDate disabled={true} />);
-    const input: any = screen.getAllByRole('spinbutton');
+    const input: any = screen.getAllByRole('textbox');
     expect(input[0].disabled).toBeTruthy();
     expect(input[1].disabled).toBeTruthy();
     expect(input[2].disabled).toBeTruthy();
+  });
+
+  it('should allow only numbers', () => {
+    render(<DummyDateComponent />);
+    const input = screen.getAllByRole('textbox');
+    userEvent.type(input[0], 'h');
+    userEvent.type(input[1], 'b');
+    userEvent.type(input[2], 'c');
+    expect(input[0].innerHTML).toBe('');
+    expect(input[1].innerHTML).toBe('');
+    expect(input[2].innerHTML).toBe('');
   });
 });
