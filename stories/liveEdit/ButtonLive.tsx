@@ -1,21 +1,49 @@
+import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { Button } from '../../src/button/Button';
-import React from 'react';
 import './style.css';
-const MyDemoButton = ({ label, disabled }: any) => {
-  const handleClick = () => {
-    console.log('hello');
-  };
-  return <Button label={label} disabled={disabled} onClick={handleClick} />;
-};
-const ButtonLive = () => {
-  const buttonProps = {
-    label: 'test',
-  };
-  const scope = { MyDemoButton, buttonProps };
-  const code = `<MyDemoButton label="yooo" />`;
+
+const ButtonDemo = `
+function ButtonDemo() {
+  // feel free to use style or classNames  
+  const style = {
+    backgroundColor: '#0070ad',
+    color: 'white',
+    border: 0,
+    padding: '6px',
+    width: '80px',
+    height: '33px',
+    borderRadius: '3px',
+    cursor: 'pointer'
+  }
+  const [isLoading, setIsLoading] = React.useState(false)
+  const handleClick = (evt) => {
+    setTimeout(() => {setIsLoading(true)}, 1000)
+  }
   return (
-    <LiveProvider code={code} scope={scope}>
+    <Button 
+        label="submit"
+        disabled={false} 
+        onClick={handleClick}
+        ariaLabel='' 
+        disableClickForMs={0} 
+        customPostfixImg={<></>} 
+        customPrefixImg={<></>} 
+        isLoading={isLoading} 
+        loadingLabel="saving..." 
+        customLoadingPreImage={<></>} 
+        customLoadingPostImage={<></>}
+        className=""
+        style={style}
+    />
+  )
+}
+`.trim();
+
+const ButtonLive = () => {
+  const scope = { Button };
+  return (
+    <LiveProvider code={ButtonDemo} scope={scope}>
       <div className="container">
         <LiveEditor className="liveEditor" />
         <LivePreview className="livePreview" />

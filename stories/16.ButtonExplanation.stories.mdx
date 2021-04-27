@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
-import ButtonLive from './liveEdit/ButtonLive';
+import { Button } from '../src/button/Button';
 
-<Meta title="DCXLibrary/Form/Button/documentation" component={ButtonLive} />
+<Meta title="DCXLibrary/Form/Button/documentation" component={Button} />
 
 # Button
 
@@ -9,14 +9,6 @@ A Button component ready to use in your form with support for delayClick and add
 
 Button is UI/UX agnostic so you need to provide your style to have the look
 and feel you prefer.
-
-## Live Snippet
-
-<Canvas>
-  <Story name="live">
-    <ButtonLive />
-  </Story>
-</Canvas>
 
 An example with all the available properties is:
 
@@ -59,4 +51,4 @@ An example with all the available properties is:
 />
 ```
 
-<Props of={ButtonLive} />
+<Props of={Button} />
