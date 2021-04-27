@@ -104,6 +104,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-is": "^17.0.1",
+    "react-live": "^2.2.3",
     "remove": "^0.1.5",
     "resolve-url-loader": "^3.1.2",
     "rollup-plugin-postcss": "^4.0.0",

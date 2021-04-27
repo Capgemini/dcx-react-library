@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+.liveEditor {
+  display: flex;
+  background-color: #282c34;
+  width: 100%;
+  border-right: 2px solid white;
+  height: 250px;
+}
+
+.livePreview {
+  display: flex;
+  margin-left: 20px;
+  width: 100%;
+}
+
+.liveError {
+  color: red;
+  padding: 0 25px;
+}
