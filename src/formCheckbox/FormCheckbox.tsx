@@ -73,6 +73,27 @@ type FormCheckboxProps = {
   conditional?: ConditionalInputProps;
 };
 
+const conditionalEl = ({
+  label,
+  className,
+  id,
+  groupClassName,
+  labelClassName,
+  inputId,
+  inputClassName,
+  name,
+  type,
+}: ConditionalInputProps) => (
+  <div className={className} id={id}>
+    <div className={groupClassName}>
+      <label className={labelClassName} htmlFor={id}>
+        {label}
+      </label>
+      <input className={inputClassName} id={inputId} name={name} type={type} />
+    </div>
+  </div>
+);
+
 export const FormCheckbox = ({
   id,
   name,
@@ -95,30 +116,6 @@ export const FormCheckbox = ({
   const conditionalReveal = (): boolean =>
     !_.isEmpty(conditional) && defaultChecked === true;
 
-  const conditionalEl = ({
-    className,
-    id,
-    groupClassName,
-    labelClassName,
-    inputId,
-    inputClassName,
-    name,
-    type,
-  }: ConditionalInputProps) => (
-    <div className={className} id={id}>
-      <div className={groupClassName}>
-        <label className={labelClassName} htmlFor={id}>
-          {label}
-        </label>
-        <input
-          className={inputClassName}
-          id={inputId}
-          name={name}
-          type={type}
-        />
-      </div>
-    </div>
-  );
   return (
     <div {...itemProps}>
       {hint && hintPosition === 'above' && <Hint {...hint} />}
