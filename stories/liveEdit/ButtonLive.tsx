@@ -5,7 +5,7 @@ import './style.css';
 
 const ButtonDemo = `
 function ButtonDemo() {
-  // feel free to use style or classNames  
+   
   const style = {
     backgroundColor: '#0070ad',
     color: 'white',
@@ -16,16 +16,19 @@ function ButtonDemo() {
     borderRadius: '3px',
     cursor: 'pointer'
   }
-  const [isLoading, setIsLoading] = React.useState(false)
+
+  const [isLoading, setIsLoading] = React.useState(false);
+
   const handleClick = (evt) => {
     setTimeout(() => {setIsLoading(true)}, 1000)
   }
+
   return (
     <Button 
         label="submit"
         disabled={false} 
         onClick={handleClick}
-        ariaLabel='' 
+        ariaLabel='submitButton' 
         disableClickForMs={0} 
         customPostfixImg={<></>} 
         customPrefixImg={<></>} 
@@ -45,10 +48,10 @@ const ButtonLive = () => {
   return (
     <LiveProvider code={ButtonDemo} scope={scope}>
       <div className="container">
-        <LiveEditor className="liveEditor" />
-        <LivePreview className="livePreview" />
+        <LiveEditor className="liveEditor" aria-label="editor" />
+        <LivePreview className="livePreview" aria-label="preview" />
       </div>
-      <LiveError className="liveError" />
+      <LiveError className="liveError" aria-label="error" />
     </LiveProvider>
   );
 };
