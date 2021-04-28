@@ -1151,6 +1151,7 @@
   vertical-align: top;
   cursor: pointer;
 }
+
 .govuk-button:before {
   content: '';
   display: block;
@@ -1300,7 +1301,6 @@
   margin-bottom: 0px;
   width: 50px;
 }
-
 .govuk-date-span {
   font-family: nta, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1319,13 +1319,11 @@
   margin-bottom: 0px;
   width: 70px;
 }
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 .govuk-date-input {
   font-family: nta, Arial, sans-serif;
   font-weight: 400;

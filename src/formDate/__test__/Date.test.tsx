@@ -60,7 +60,7 @@ describe('Date component', () => {
         classNameLabel="classLabel"
       />
     );
-    const input: any = screen.getByRole('spinbutton');
+    const input: any = screen.getByRole('textbox');
     expect(input.value).toBe('10');
   });
 
@@ -78,7 +78,7 @@ describe('Date component', () => {
         disabled={true}
       />
     );
-    const input: any = screen.getByRole('spinbutton');
+    const input: any = screen.getByRole('textbox');
     expect(input.disabled).toBeTruthy();
   });
 });

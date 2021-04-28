@@ -175,6 +175,7 @@ export const FormDate = ({
 
   const handleChange = (evt: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = evt.currentTarget;
+    if (isNaN(Number(value))) return;
     //@ts-ignore
     dispatch({ type: `set${upperFirst(name)}`, value });
   };
@@ -208,6 +209,7 @@ export const FormDate = ({
             htmlFor="year"
             value={state.year || ''}
             name="year"
+            maxLength={value.length}
             handleChange={handleChange}
             classNameLabel={yearProps?.classNameLabel}
             customLabel={yearProps?.customLabel}
@@ -254,14 +256,13 @@ export const FormDate = ({
     }
   });
   return (
-    <div
-      style={{ display: 'flex', flexDirection: 'column' }}
-      className={inputContainerClass}
-    >
+    <div className={inputContainerClass}>
       {errorPosition === 'top' && showError && (
         <ErrorMessage text={errorMessage} classes={errorClass} />
       )}
-      <div style={{ display: 'flex', flexDirection: 'row' }}>{DateComp}</div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto' }}>
+        {DateComp}
+      </div>
       {errorPosition === 'bottom' && showError && (
         <ErrorMessage text={errorMessage} classes={errorClass} />
       )}
