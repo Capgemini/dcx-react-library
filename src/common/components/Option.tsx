@@ -3,27 +3,27 @@ import { Roles } from '../';
 
 export type OptionProps = {
   /**
-   * select option label
+   * option label
    */
   label: string;
   /**
-   * select option value
+   * option value
    */
   value: string;
   /**
-   * select className
+   * className
    */
   className?: string;
   /**
-   * select option disabled
+   * option disabled
    */
   disabled?: boolean;
   /**
-   * select id
+   * option id
    */
   id?: string;
   /**
-   * select selected
+   * option selected
    */
   selected?: boolean;
 };

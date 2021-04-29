@@ -3,15 +3,15 @@ import { Option, OptionProps } from './Option';
 
 export type OptionGroupProps = {
   /**
-   * select group label
+   * option group label
    */
   label: string;
   /**
-   * select options
+   * option group options
    */
   options: OptionProps[];
   /**
-   * select show options count
+   * show options count
    */
   displayCount?: boolean;
 };
