@@ -1,23 +1,12 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import fireEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { FormSelect, SelectOption, SelectGroup } from '../FormSelect';
-import { ErrorMessageProps, HintProps } from '../../common/components';
-
-type props = {
-  options?: SelectOption[];
-  groups?: SelectGroup[];
-  name?: string;
-  id?: string;
-  label?: string;
-  labelProps?: any;
-  hint?: HintProps;
-  error?: ErrorMessageProps;
-  onChange?: (evt: ChangeEvent<HTMLSelectElement>) => void;
-};
+import { FormSelect, FormSelectProps } from '../FormSelect';
+import { OptionProps } from '../../common/components';
 
 const DummySelect = ({
+  className,
   name,
   id,
   label,
@@ -26,9 +15,10 @@ const DummySelect = ({
   hint,
   error,
   options = [{ label: 'option1', value: 'value1' }],
-  groups,
-}: props) => (
+  optionGroups,
+}: FormSelectProps) => (
   <FormSelect
+    className={className}
     id={id}
     name={name}
     options={options}
@@ -37,7 +27,7 @@ const DummySelect = ({
     labelProps={labelProps}
     hint={hint}
     error={error}
-    groups={groups}
+    optionGroups={optionGroups}
   />
 );
 
@@ -93,6 +83,14 @@ describe('FormSelect', () => {
     const selectElementDefault = screen.getByRole('combobox');
     expect(selectElementDefault).toHaveAttribute('id', 'formSelect');
     expect(selectElementDefault).toHaveAttribute('name', 'formSelect');
+  });
+
+  it('should display an option element with a specific class name', () => {
+    render(<DummySelect id="myId" className="my-class-name" />);
+
+    expect(screen.getByRole('combobox').getAttribute('class')).toBe(
+      'my-class-name'
+    );
   });
 
   it('should render an option with specific label text', () => {
@@ -162,7 +160,7 @@ describe('FormSelect', () => {
   });
 
   it('should render a preselected option', () => {
-    const options: SelectOption[] = [
+    const options: OptionProps[] = [
       { label: 'option1', value: 'value1' },
       { label: 'option2', value: 'value2' },
       { label: 'option3', value: 'value3', selected: true },
@@ -174,7 +172,7 @@ describe('FormSelect', () => {
   });
 
   it('should render options with different classNames', () => {
-    const options: SelectOption[] = [
+    const options: OptionProps[] = [
       { label: 'option1', value: 'value1', className: 'className1' },
       { label: 'option2', value: 'value2', className: 'className2' },
       { label: 'option3', value: 'value3', className: 'className3' },
@@ -193,17 +191,17 @@ describe('FormSelect', () => {
   it('should call the onChange event if provided', () => {
     const handleChange = jest.fn();
 
-    const options: SelectOption[] = [
+    const options: OptionProps[] = [
       {
         label: 'option1',
         value: 'value1',
-        selectProperties: { 'data-testid': 'custom-option-1' },
+        id: 'custom-option-1',
       },
       { label: 'option2', value: 'value2' },
       { label: 'option3', value: 'value3' },
       { label: 'option4', value: 'value4' },
     ];
-    render(
+    const { container } = render(
       <DummySelect
         id="myId"
         name="the name"
@@ -213,27 +211,29 @@ describe('FormSelect', () => {
     );
     fireEvent.selectOptions(screen.getByRole('combobox'), 'value1');
 
-    expect(screen.getByTestId('custom-option-1')).toBeInTheDocument();
+    expect(container.querySelector('#custom-option-1')).toBeInTheDocument();
     expect(handleChange).toHaveBeenCalled();
   });
 
   it('should not call the onChange event if it is not provided', () => {
     const handleChange = jest.fn();
 
-    const options: SelectOption[] = [
+    const options: OptionProps[] = [
       {
         label: 'option1',
         value: 'value1',
-        selectProperties: { 'data-testid': 'custom-option-1' },
+        id: 'custom-option-1',
       },
       { label: 'option2', value: 'value2' },
       { label: 'option3', value: 'value3' },
       { label: 'option4', value: 'value4' },
     ];
-    render(<DummySelect id="myId" name="the name" options={options} />);
+    const { container } = render(
+      <DummySelect id="myId" name="the name" options={options} />
+    );
     fireEvent.selectOptions(screen.getByRole('combobox'), 'value1');
 
-    expect(screen.getByTestId('custom-option-1')).toBeInTheDocument();
+    expect(container.querySelector('#custom-option-1')).toBeInTheDocument();
     expect(handleChange).not.toHaveBeenCalled();
   });
 
@@ -242,7 +242,7 @@ describe('FormSelect', () => {
       <DummySelect
         id="myId"
         name="the name"
-        groups={[
+        optionGroups={[
           {
             label: 'group1',
             options: [
@@ -267,7 +267,7 @@ describe('FormSelect', () => {
       <DummySelect
         id="myId"
         name="the name"
-        groups={[
+        optionGroups={[
           {
             label: 'group1',
             options: [
@@ -288,7 +288,7 @@ describe('FormSelect', () => {
       <DummySelect
         id="myId"
         name="the name"
-        groups={[
+        optionGroups={[
           {
             label: 'group1',
             options: [
@@ -310,7 +310,7 @@ describe('FormSelect', () => {
       <DummySelect
         id="myId"
         name="the name"
-        groups={[
+        optionGroups={[
           {
             label: 'group1',
             options: [

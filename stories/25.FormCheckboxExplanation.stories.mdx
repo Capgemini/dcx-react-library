@@ -14,6 +14,7 @@ In this section we're using the formSelect component providing the GovUk style p
       return (
         <div className="govuk-form-group">
           <FormSelect
+            className='govuk-select'
             options={[
               { label: 'Recently published', value: 'published' },
               { label: 'Recently updated', value: 'updated', selected: true },
@@ -26,9 +27,6 @@ In this section we're using the formSelect component providing the GovUk style p
               className: 'govuk-label',
             }}
             name="sort"
-            selectProps={{
-              className: 'govuk-select',
-            }}
           />
         </div>
       );
@@ -42,6 +40,7 @@ In this section we're using the formSelect component providing the GovUk style p
       return (
         <div className="govuk-form-group">
           <FormSelect
+            className='govuk-select'
             options={[
               { label: 'Recently published', value: 'published' },
               { label: 'Recently updated', value: 'updated' },
@@ -54,9 +53,6 @@ In this section we're using the formSelect component providing the GovUk style p
               className: 'govuk-label',
             }}
             name="sort-2"
-            selectProps={{
-              className: 'govuk-select',
-            }}
             hint={{
               text:
                 'This is and example of hintText/description of what we need from you',
@@ -75,6 +71,7 @@ In this section we're using the formSelect component providing the GovUk style p
       return (
         <div className="govuk-form-group govuk-form-group--error">
           <FormSelect
+            className='govuk-select govuk-select--error'
             options={[
               { label: 'Recently published', value: 'published' },
               { label: 'Recently updated', value: 'updated' },
@@ -87,9 +84,6 @@ In this section we're using the formSelect component providing the GovUk style p
               className: 'govuk-label',
             }}
             name="sort-2"
-            selectProps={{
-              className: 'govuk-select govuk-select--error',
-            }}
             error={{
               text: 'Select an option',
               classes: 'govuk-error-message',

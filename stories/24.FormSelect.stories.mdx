@@ -4,6 +4,7 @@ import { FormSelect } from '../src/formSelect/FormSelect';
 <Meta title="DCXLibrary/Form/Select" component={FormSelect} />
 
 ### Examples of basic Select
+
 <Canvas>
   <Story name="basic">
     {() => {
@@ -11,12 +12,12 @@ import { FormSelect } from '../src/formSelect/FormSelect';
         <FormSelect
           label="Basic"
           labelProps={{
-            style: { 
-              display: "block", 
-              marginBottom: "5px",
-              fontSize: "20px",
-              fontWeight: "bold"
-            }
+            style: {
+              display: 'block',
+              marginBottom: '5px',
+              fontSize: '20px',
+              fontWeight: 'bold',
+            },
           }}
           options={[
             { label: 'option1', value: 'value1' },
@@ -29,6 +30,7 @@ import { FormSelect } from '../src/formSelect/FormSelect';
 </Canvas>
 
 ### Examples of group Select
+
 <Canvas>
   <Story name="group">
     {() => {
@@ -36,19 +38,23 @@ import { FormSelect } from '../src/formSelect/FormSelect';
         <FormSelect
           label="Group"
           labelProps={{
-            style: { 
-              display: "block", 
-              marginBottom: "5px",
-              fontSize: "20px",
-              fontWeight: "bold"
-            }
+            style: {
+              display: 'block',
+              marginBottom: '5px',
+              fontSize: '20px',
+              fontWeight: 'bold',
+            },
           }}
-          groups={[
+          optionGroups={[
             {
               label: 'group 1',
               displayCount: true,
               options: [
-                { label: 'option 1', value: 'group 1 option 1', selected: true },
+                {
+                  label: 'option 1',
+                  value: 'group 1 option 1',
+                  selected: true,
+                },
                 { label: 'option 2', value: 'group 1 option 2' },
                 { label: 'option 3', value: 'group 1 option 3' },
                 { label: 'option 4', value: 'group 1 option 4' },
@@ -118,6 +124,7 @@ import { FormSelect } from '../src/formSelect/FormSelect';
 </Canvas>
 
 ### Examples of color Select
+
 <Canvas>
   <Story name="color">
     {() => {
@@ -125,19 +132,21 @@ import { FormSelect } from '../src/formSelect/FormSelect';
         <FormSelect
           label="Color"
           labelProps={{
-            style: { 
-              display: "block", 
-              marginBottom: "5px",
-              fontSize: "20px",
-              fontWeight: "bold"
-            }
+            style: {
+              display: 'block',
+              marginBottom: '5px',
+              fontSize: '20px',
+              fontWeight: 'bold',
+            },
           }}
           options={[
             { label: 'option1', value: 'value1' },
             { label: 'option2', value: 'value2' },
           ]}
-          selectProps={{
-            style: { fontSize: '20px', color: 'blue', fontWeight: 'bold' },
+          style={{
+            fontSize: '20px',
+            color: 'blue',
+            fontWeight: 'bold',
           }}
         />
       );
@@ -146,6 +155,7 @@ import { FormSelect } from '../src/formSelect/FormSelect';
 </Canvas>
 
 ### Examples of preselected Select
+
 <Canvas>
   <Story name="preselected">
     {() => {
@@ -153,12 +163,12 @@ import { FormSelect } from '../src/formSelect/FormSelect';
         <FormSelect
           label="Preselect"
           labelProps={{
-            style: { 
-              display: "block", 
-              marginBottom: "5px",
-              fontSize: "20px",
-              fontWeight: "bold"
-            }
+            style: {
+              display: 'block',
+              marginBottom: '5px',
+              fontSize: '20px',
+              fontWeight: 'bold',
+            },
           }}
           options={[
             { label: 'option1', value: 'value1' },
@@ -173,6 +183,7 @@ import { FormSelect } from '../src/formSelect/FormSelect';
 </Canvas>
 
 ### Examples of disabled Select
+
 <Canvas>
   <Story name="disabled">
     {() => {
@@ -180,12 +191,12 @@ import { FormSelect } from '../src/formSelect/FormSelect';
         <FormSelect
           label="disabled"
           labelProps={{
-            style: { 
-              display: "block", 
-              marginBottom: "5px",
-              fontSize: "20px",
-              fontWeight: "bold"
-            }
+            style: {
+              display: 'block',
+              marginBottom: '5px',
+              fontSize: '20px',
+              fontWeight: 'bold',
+            },
           }}
           options={[
             { label: 'option1', value: 'value1' },

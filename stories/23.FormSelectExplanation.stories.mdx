@@ -18,11 +18,15 @@ An example with all the available properties is:
 
 ```js
   <FormSelect
+    className="select classes"
+    style={{
+      fontSize: '10px'
+    }}
     options={[
       { label: 'option1', value: 'value1' },
       { label: 'option2', value: 'value2' },
     ]}
-    groups={[
+    optionGroups={[
       {
         label: 'group 1',
         displayCount: true,
@@ -93,9 +97,6 @@ An example with all the available properties is:
     onChange={handleChange}
     name="select-name"
     id="select-id"
-    selectProps={{
-      className: "select classes"
-    }}
     optionProps={{
       className: "select options classes"
     }}

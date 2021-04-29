@@ -1,6 +1,8 @@
 export { ErrorMessage } from './ErrorMessage';
 export { Hint } from './Hint';
 export { Legend } from './Legend';
+export * from './OptionGroup';
+export * from './Option';
 
 type VisuallyHidden = {
   /**

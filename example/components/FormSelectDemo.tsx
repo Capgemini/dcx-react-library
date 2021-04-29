@@ -16,7 +16,7 @@ export const FormSelectDemo = () => {
       </label>
       <br />
       <FormSelect
-        groups={[
+        optionGroups={[
           {
             label: 'English Premier League',
             displayCount: true,
@@ -84,12 +84,10 @@ export const FormSelectDemo = () => {
             ],
           },
         ]}
-        selectProps={{
-          style: {
-            fontSize: '14px',
-            fontFamily: 'Verdana',
-            fontWeight: 'bold',
-          },
+        style={{
+          fontSize: '14px',
+          fontFamily: 'Verdana',
+          fontWeight: 'bold',
         }}
         onChange={handleSelectedValue}
       />
