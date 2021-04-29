@@ -2,47 +2,28 @@ import React, { useState, ChangeEvent } from 'react';
 import {
   ErrorMessage,
   ErrorMessageProps,
+  OptionGroup,
+  OptionGroupProps,
   Hint,
   HintProps,
+  Option,
+  OptionProps,
   Roles,
 } from '../common';
 
-export type SelectOption = {
+export type FormSelectProps = {
   /**
-   * select option label
-   */
-  label: string;
-  /**
-   * select option value
-   */
-  value: string;
-  /**
-   * select className
+   * select class name
    */
   className?: string;
   /**
-   * select option disabled
-   */
-  disabled?: boolean;
-  /**
-   * select id
-   */
-  id?: string;
-  /**
-   * select option preselected
-   */
-  selected?: boolean;
-  /**
-   * select properties
-   */
-  selectProperties?: any;
-};
-
-export type FormSelectProps = {
-  /**
    * select options
    */
-  options: SelectOption[];
+  options?: OptionProps[];
+  /**
+   * select groups
+   */
+  optionGroups?: OptionGroupProps[];
   /**
    * handle the change when the user select the option
    */
@@ -55,14 +36,6 @@ export type FormSelectProps = {
    * select id
    */
   id?: string;
-  /**
-   * allow to customise the select with all the properties needed
-   **/
-  selectProps?: any;
-  /**
-   * allow to customise the select options with all the properties needed
-   **/
-  optionProps?: any;
   /**
    * define the aria-label
    */
@@ -83,39 +56,56 @@ export type FormSelectProps = {
    * select error
    */
   error?: ErrorMessageProps;
+  /**
+   * select style
+   */
+  style?: any;
 };
 
 export const FormSelect = ({
+  className,
   name,
-  options,
+  optionGroups,
+  options = [],
   onChange,
   id,
-  selectProps,
-  optionProps,
   ariaLabel,
   label,
   labelProps,
   hint,
   error,
+  style,
 }: FormSelectProps) => {
-  const preselectedValue = options.find(option => option.selected);
+  const sharedOptions: OptionProps[] | undefined = optionGroups
+    ? optionGroups.flatMap((group: OptionGroupProps) => [...group.options])
+    : undefined;
+
+  const combinedOptions: OptionProps[] | undefined = sharedOptions
+    ? [...options, ...sharedOptions]
+    : options;
+
+  const preselectedValue: OptionProps | undefined = combinedOptions.find(
+    option => option.selected
+  );
+
   const initialValue: string =
-    preselectedValue !== undefined ? preselectedValue.value : options[0].value;
+    preselectedValue !== undefined
+      ? preselectedValue.value
+      : options.length
+      ? options[0].value
+      : '';
+
   const [value, setValue] = useState<string>(initialValue);
-  const selectOptions = options.map((item: SelectOption) => (
-    <option
-      value={item.value}
-      key={item.value}
-      aria-label={Roles.listItem}
-      id={item.id}
-      disabled={item.disabled}
-      className={item.className}
-      {...item.selectProperties}
-      {...optionProps}
-    >
-      {item.label}
-    </option>
-  ));
+
+  const getOptions = (options: OptionProps[]): JSX.Element[] =>
+    options.map((item: OptionProps, index: number) => (
+      <Option key={index} {...item} />
+    ));
+
+  const getOptionGroups = (optionGroups: OptionGroupProps[]): JSX.Element[] =>
+    optionGroups.map((groupOption: OptionGroupProps, index: number) => (
+      <OptionGroup key={index} {...groupOption} />
+    ));
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setValue(event.target.value);
@@ -133,13 +123,15 @@ export const FormSelect = ({
       {error && <ErrorMessage {...error} />}
       <select
         value={value}
-        onChange={handleChange}
         name={name || 'formSelect'}
         id={id || 'formSelect'}
+        className={className}
         aria-label={ariaLabel || Roles.list}
-        {...selectProps}
+        onChange={handleChange}
+        style={style}
       >
-        {selectOptions}
+        {getOptions(options)}
+        {optionGroups && getOptionGroups(optionGroups)}
       </select>
     </>
   );
