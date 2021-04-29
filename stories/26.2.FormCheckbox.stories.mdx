@@ -1,0 +1,213 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormCheckbox } from '../src/formCheckbox/FormCheckbox';
+import './style.css';
+
+<Meta title="DCXLibrary/Form/Checkbox" component={FormCheckbox} />
+
+### Example of basic checkbox
+
+<Canvas>
+  <Story name="basic">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <FormCheckbox
+          label="checkbox label"
+          value={value}
+          id="checkbox-1"
+          inputProps={{
+            name: 'checkbox-1',
+          }}
+          onChange={handleChange}
+          defaultChecked={checked}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Example of basic checkbox with hint
+
+By default, the hint will display underneath the checkbox
+
+<Canvas>
+  <Story name="with hint">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <FormCheckbox
+          label="checkbox label"
+          value={value}
+          id="checkbox-2"
+          inputProps={{
+            name: 'checkbox-2',
+          }}
+          onChange={handleChange}
+          defaultChecked={checked}
+          hint={{
+            text: 'Hint text',
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Example of basic checkbox with hint positioned above
+
+<Canvas>
+  <Story name="with hint above">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <FormCheckbox
+          label="checkbox label"
+          value={value}
+          id="checkbox-3"
+          inputProps={{
+            name: 'checkbox-3',
+          }}
+          onChange={handleChange}
+          defaultChecked={checked}
+          hint={{
+            text: 'Hint text',
+            position: 'above',
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Example of disabled checkbox
+
+<Canvas>
+  <Story name="disabled">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <FormCheckbox
+          label="checkbox label"
+          value={value}
+          id="checkbox-4"
+          inputProps={{
+            name: 'checkbox-4',
+          }}
+          onChange={handleChange}
+          disabled={true}
+          defaultChecked={checked}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Example of preselected checkbox
+
+<Canvas>
+  <Story name="preselected">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(true);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <FormCheckbox
+          label="checkbox label"
+          value={value}
+          id="checkbox-5"
+          inputProps={{
+            name: 'checkbox-5',
+          }}
+          onChange={handleChange}
+          defaultChecked={checked}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Example of checkbox with conditional input field
+
+<Canvas>
+  <Story name="conditional">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <>
+        <FormCheckbox
+          label="checkbox label"
+          value={value}
+          id="checkbox-6"
+          inputProps={{
+            name: 'checkbox-6',
+          }}
+          onChange={handleChange}
+          defaultChecked={checked}
+          conditional={{
+            name: 'conditional-6',
+            label: 'condition label',
+            type: 'text',
+            className: 'classes',
+            groupClassName: 'group-classes',
+            id: 'conditional-6',
+            inputClassName: 'input-classes',
+            inputId: 'input-6',
+          }}
+        />
+        <FormCheckbox
+          label="checkbox label"
+          value={value}
+          id="checkbox-7"
+          inputProps={{
+            name: 'checkbox-7',
+          }}
+          onChange={handleChange}
+          defaultChecked={checked}
+          conditional={{
+            name: 'conditional-7',
+            label: 'condition label',
+            type: 'text',
+            className: 'classes',
+            groupClassName: 'group-classes',
+            id: 'conditional-7',
+            inputClassName: 'input-classes',
+            inputId: 'input-7',
+          }}
+        />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### List of properties
+
+<Props of={FormCheckbox} />
