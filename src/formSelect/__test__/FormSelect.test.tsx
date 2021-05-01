@@ -3,7 +3,7 @@ import { render, screen, within } from '@testing-library/react';
 import fireEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { FormSelect, FormSelectProps } from '../FormSelect';
-import { OptionProps } from '../../common/components';
+import { OptionProps } from '../../common/components/Option';
 
 const DummySelect = ({
   className,
