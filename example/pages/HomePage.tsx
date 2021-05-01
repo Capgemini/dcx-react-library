@@ -9,7 +9,7 @@ export const Home = () => (
     <nav>
       <ul>
         <li>
-          <Link to="/">FormInputDemo</Link>
+          <Link to="/formInput">FormInputDemo</Link>
         </li>
         <li>
           <Link to="/login">Login Example</Link>

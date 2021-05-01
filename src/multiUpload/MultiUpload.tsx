@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  ErrorMessage,
-  ErrorMessageProps,
-  Hint,
-  HintProps,
-  Roles,
-} from '../common';
+import { ErrorMessage, Hint, Roles } from '../common';
+import { ErrorMessageProps, HintProps } from '../common/components/commonTypes';
 
 type MultiUploadProps = {
   /**

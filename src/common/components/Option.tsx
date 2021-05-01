@@ -1,5 +1,5 @@
 import React from 'react';
-import { Roles } from '../';
+import { Roles } from '../utils/rolesType';
 
 export type OptionProps = {
   /**

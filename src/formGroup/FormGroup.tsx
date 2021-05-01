@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
+import { ErrorMessage, Hint, Legend } from '../common/components';
 import {
-  ErrorMessage,
   ErrorMessageProps,
   FormRadioProps,
-  Hint,
   HintProps,
-  Legend,
   LegendProps,
-} from '../common/components';
+} from '../common/components/commonTypes';
 import { FormRadio } from '../formRadio/index';
 
 type DividerProps = {

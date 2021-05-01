@@ -2,11 +2,12 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Hint } from '../common/components';
+
 import {
   ConditionalInputProps,
   FormRadioProps,
-  Hint,
-} from '../common/components';
+} from '../common/components/commonTypes';
 
 export const FormRadio = ({
   label,

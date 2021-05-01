@@ -1,7 +1,7 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
-type DynamicComponent = {
+type DynamicComponentProps = {
   tag: keyof JSX.IntrinsicElements;
   dynamicStyle?: React.CSSProperties;
   children: JSX.Element;
@@ -22,7 +22,7 @@ export const DynamicComponent = ({
   tag,
   dynamicStyle,
   ...props
-}: DynamicComponent) => {
+}: DynamicComponentProps) => {
   const Component = tag;
   const styles: any = createUseStyles({
     style: {
