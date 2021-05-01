@@ -1,6 +1,10 @@
 import _ from 'lodash';
 import React from 'react';
-import { ConditionalInputProps, Hint, HintProps } from '../common';
+import {
+  ConditionalInputProps,
+  HintProps,
+} from '../common/components/commonTypes';
+import { Hint } from '../common';
 
 type FormCheckboxProps = {
   /**

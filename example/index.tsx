@@ -13,6 +13,7 @@ import {
   FormSelectDemo,
   MultiUploadDemo,
   FormDateDemo,
+  FormInputDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -23,6 +24,7 @@ const App = () => (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/formInput" component={FormInputDemo} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/masked" component={FormInputMaskedDemo} />

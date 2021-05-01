@@ -51,7 +51,7 @@ const useValidation = (value: string, validation: Validation) => {
       valid,
       message: floatRule.error,
     });
-  }, [value]);
+  }, [value, validation]);
 
   return {
     validity,

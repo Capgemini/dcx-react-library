@@ -198,7 +198,7 @@ export const FormDate = ({
     }
     if (state.day || state.month || state.year)
       handleValidity(isValid, isValid ? selectedDate.getTime() : null);
-  }, [state.day, state.month, state.year]);
+  }, [dateFormat.length, handleValidity, state]);
 
   const DateComp = dateSplit.map((value: string) => {
     switch (value.charAt(0)) {

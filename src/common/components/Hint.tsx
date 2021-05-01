@@ -1,5 +1,5 @@
 import React from 'react';
-import { HintProps } from '../components';
+import { HintProps } from '../components/commonTypes';
 
 export const Hint = ({ text, classes, id }: HintProps) => (
   <div id={id} className={classes}>

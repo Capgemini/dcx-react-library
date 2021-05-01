@@ -88,10 +88,11 @@ export const FormInput = ({
   React.useEffect(() => {
     if (isValid && validity)
       isValid(validity.valid, showError && !validity.valid);
+    // eslint-disable-next-line
   }, [validity?.valid, showError]);
 
   React.useEffect(() => {
-    displayError ? setShowError(true) : setShowError(false);
+    setShowError(displayError);
   }, [displayError]);
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {

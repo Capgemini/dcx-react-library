@@ -108,25 +108,33 @@ export const Autocomplete = ({
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<string>(defaultValue);
 
-  const delayedFilterResults = React.useCallback(
-    debounce(value => {
-      const filtered = options.filter(optionsName =>
-        optionsName.toLowerCase().includes(value.toLowerCase())
-      );
-      setActiveOption(0);
-      setFilterList(filtered);
-      setShowOptions(true);
-    }, debounceMs),
-    []
+  const delayResult = React.useMemo(
+    () =>
+      debounce(value => {
+        const filtered = options.filter(optionsName =>
+          optionsName.toLowerCase().includes(value.toLowerCase())
+        );
+        setActiveOption(0);
+        setFilterList(filtered);
+        setShowOptions(true);
+      }, debounceMs),
+    [debounceMs, options]
   );
 
-  const debounceSearch = React.useCallback(
-    debounce(value => {
-      //@ts-ignore
-      onChange(value);
-    }, debounceMs),
-    []
+  const delayedFilterResults = React.useCallback(delayResult, [delayResult]);
+
+  const searchMemo = React.useMemo(
+    () =>
+      debounce(
+        value =>
+          //@ts-ignore
+          onChange(value),
+        debounceMs
+      ),
+    [debounceMs, onChange]
   );
+
+  const debounceSearch = React.useCallback(searchMemo, [searchMemo]);
 
   const handleChange = (evt: React.FormEvent<HTMLInputElement>) => {
     const { value } = evt.currentTarget;

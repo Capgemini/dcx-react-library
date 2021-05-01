@@ -1,15 +1,8 @@
 import React, { useState, ChangeEvent } from 'react';
-import {
-  ErrorMessage,
-  ErrorMessageProps,
-  OptionGroup,
-  OptionGroupProps,
-  Hint,
-  HintProps,
-  Option,
-  OptionProps,
-  Roles,
-} from '../common';
+import { ErrorMessage, OptionGroup, Hint, Option, Roles } from '../common';
+import { ErrorMessageProps, HintProps } from '../common/components/commonTypes';
+import { OptionProps } from '../common/components/Option';
+import { OptionGroupProps } from '../common/components/OptionGroup';
 
 export type FormSelectProps = {
   /**
