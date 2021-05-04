@@ -3,7 +3,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { MultiSelect } from '../MultiSelect';
-import { OptionProps } from '../../common';
+import { OptionProps } from '../../common/components/Option';
 
 describe('MultiSelect', () => {
   it('should render a multi select', () => {

@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
-import { OptionProps, Roles } from '../common';
+import { OptionProps } from '../common/components/Option';
+import { Roles } from '../common/utils/rolesType';
 import { Selected } from './components/Selected';
 
 type MultiSelectState = {
