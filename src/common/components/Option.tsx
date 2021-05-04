@@ -1,5 +1,4 @@
 import React from 'react';
-import { Roles } from '../utils/rolesType';
 
 export type OptionProps = {
   /**
@@ -11,7 +10,11 @@ export type OptionProps = {
    */
   value: string;
   /**
-   * className
+   * option ariaLabel
+   */
+  ariaLabel?: string;
+  /**
+   * option className
    */
   className?: string;
   /**
@@ -22,6 +25,10 @@ export type OptionProps = {
    * option id
    */
   id?: string;
+  /**
+   * option label class name
+   */
+  labelClassName?: string;
   /**
    * option selected
    */
@@ -34,13 +41,14 @@ export const Option = ({
   className,
   disabled,
   id,
+  ariaLabel,
 }: OptionProps) => (
   <option
     value={value}
     id={id}
     className={className}
     disabled={disabled}
-    aria-label={Roles.listItem}
+    aria-label={ariaLabel || label}
   >
     {label}
   </option>

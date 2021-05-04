@@ -45,6 +45,9 @@ export const Home = () => (
           <Link to="/multiUpload">MultiUploadDemo</Link>
         </li>
         <li>
+          <Link to="/multiSelect">MultiSelectDemo</Link>
+        </li>
+        <li>
           <Link to="/formDate">FormDateDemo</Link>
         </li>
       </ul>

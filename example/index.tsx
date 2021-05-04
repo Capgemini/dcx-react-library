@@ -12,6 +12,7 @@ import {
   ToggleDemo,
   FormSelectDemo,
   MultiUploadDemo,
+  MultiSelectDemo,
   FormDateDemo,
   FormInputDemo,
 } from './components';
@@ -36,6 +37,7 @@ const App = () => (
         <Route path="/toggle" component={ToggleDemo} />
         <Route path="/select" component={FormSelectDemo} />
         <Route path="/multiUpload" component={MultiUploadDemo} />
+        <Route path="/multiSelect" component={MultiSelectDemo} />
         <Route path="/formDate" component={FormDateDemo} />
       </Switch>
     </BrowserRouter>

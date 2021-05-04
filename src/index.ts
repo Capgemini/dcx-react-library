@@ -8,6 +8,7 @@ export * from './progress';
 export * from './toggle';
 export * from './formSelect';
 export * from './multiUpload';
+export * from './multiSelect';
 export * from './formDate';
 export * from './generatePresentationalComponent/generateComponent';
 export * from './generatePresentationalComponent/generateStyle';
