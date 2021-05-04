@@ -2,29 +2,13 @@ import React, { useReducer } from 'react';
 import { OptionProps, Roles } from '../common';
 import { Selected } from './components/Selected';
 
-interface MultiSelectState {
+type MultiSelectState = {
   selected: SelectValue[];
-}
+};
 
 type MultiSelectAction =
   | { type: 'focus' }
   | { type: 'remove'; payload: SelectValue };
-
-function multiSelectReducer(
-  state: MultiSelectState,
-  action: MultiSelectAction
-) {
-  if (action.type === 'remove') {
-    return {
-      ...state,
-      selected: state.selected.filter(
-        (_: SelectValue) => _.value !== action.payload.value
-      ),
-    };
-  }
-
-  return state;
-}
 
 export type SelectValue = {
   id?: string;
@@ -66,6 +50,22 @@ export type MultiSelectProps = {
    */
   onRemove?: (select: SelectValue) => void;
 };
+
+function multiSelectReducer(
+  state: MultiSelectState,
+  action: MultiSelectAction
+) {
+  if (action.type === 'remove') {
+    return {
+      ...state,
+      selected: state.selected.filter(
+        (_: SelectValue) => _.value !== action.payload.value
+      ),
+    };
+  }
+
+  return state;
+}
 
 export const MultiSelect = ({
   className,
