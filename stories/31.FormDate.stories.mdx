@@ -1,30 +1,35 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { FormDate } from '../src/formDate/FormDate';
 import './style.css';
+import FormDateLive from './liveEdit/FormDateLive';
 
-<Meta title="DCXLibrary/Form/Date" component={FormDate} />
+<Meta title="DCXLibrary/Form/Date" component={FormDateLive} />
 
 ### Examples of basic Form Date
 
 <Canvas>
   <Story name="basic">
-    {() => {
-      const [isValid, setIsValid] = React.useState(false);
-      const [date, setDate] = React.useState(0);
-      const handleValidity = (valid, date) => {
-        setIsValid(valid);
-        setDate(date);
-      };
-      return (
-        <div>
-          <FormDate
-            dateFormat="dd/mm/yyyy"
-            handleValidity={(v, d) => handleValidity(v, d)}
-          />
-          <pre>isValid: {isValid.toString()}</pre>
-          <pre>date: {JSON.stringify(new Date(date))}</pre>
-        </div>
-      );
+    {(args, { viewMode }) => {
+      if (viewMode === 'docs') {
+        const [isValid, setIsValid] = React.useState(false);
+        const [date, setDate] = React.useState(0);
+        const handleValidity = (valid, date) => {
+          setIsValid(valid);
+          setDate(date);
+        };
+        return (
+          <div>
+            <FormDate
+              dateFormat="dd/mm/yyyy"
+              handleValidity={(v, d) => handleValidity(v, d)}
+            />
+            <pre>isValid: {isValid.toString()}</pre>
+            <pre>date: {JSON.stringify(new Date(date))}</pre>
+          </div>
+        );
+      } else {
+        return <FormDateLive />;
+      }
     }}
   </Story>
 </Canvas>
@@ -227,4 +232,5 @@ import './style.css';
     }}
   </Story>
 </Canvas>
+
 <Props of={FormDate} />
