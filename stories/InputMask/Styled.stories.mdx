@@ -1,9 +1,8 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
-import { FormInputMasked } from '../src/formInput/FormInputMasked';
-import './style.css';
-import FormInputMaskedLive from './liveEdit/FormInputMaskedLive';
+import { FormInputMasked } from '../../src/formInput/FormInputMasked';
+import '../style.css';
 
-<Meta title="DCXLibrary/Form/InputWithMask" component={FormInputMaskedLive} />
+<Meta title="DCXLibrary/Form/InputMasked/Styled" component={FormInputMasked} />
 
 # FormInputMasked
 
@@ -36,40 +35,6 @@ An example with all the available properties is:
   name="maskInput"
 />
 ```
-
-### An example of 'un-styled' InputMasked
-In the following example we define a currency input mask. For example you'll write 33 and the final outcome will be £33
-
-<Canvas>
-  <Story name="basic">
-    {(args, { viewMode }) => {
-      if(viewMode === 'docs') {
-        const [value, setValue] = React.useState('');
-        const handleChange = event => {console.log};
-        return (
-          <FormInputMasked
-          options={{
-            mask: '£num',
-            blocks: {
-              num: {
-                // nested masks are available!
-                mask: Number,
-                thousandsSeparator: ' ',
-              },
-            },
-          }}
-          value={value}
-          onChange={handleChange}
-          type="text"
-          name="maskInput"
-        />
-        );
-      } else {
-        return <FormInputMaskedLive/>
-      }
-    }}
-  </Story>
-</Canvas>
 
 ### An example of 'styled' InputMasked
 In this section we're using the formInputMask component providing the GovUk style passing the relative `className`.
