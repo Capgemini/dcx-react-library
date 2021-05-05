@@ -1,7 +1,12 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
-import { Button } from '../src/button/Button';
+import { Button } from '../../src/button/Button';
 
-<Meta title="DCXLibrary/Form/Button" component={Button} />
+<Meta title="DCXLibrary/Form/Button" component={Button} parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}/>
 
 # Button
 

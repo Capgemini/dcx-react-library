@@ -1,12 +1,20 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
-import { Button } from '../src/button/Button';
-import './style.css';
+import { Button } from '../../src/button/Button';
+import '../style.css';
 
-<Meta title="DCXLibrary/Form/Button/HMRC" component={Button} />
+<Meta 
+  title="DCXLibrary/Form/Button/Styled" 
+  component={Button} 
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}/>
 
-# GOVUK Style
+# Styled Button
 
-In this section we're using the formInput component providing the GovUk style passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
+In this section we're using the formInput component providing the **GovUk style** passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
 
 <Canvas>
   <Story name="basic">
