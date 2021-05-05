@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { FormInput } from '../../src/formInput/FormInput';
-import "../style.css";
+import '../style.css';
 
 <Meta title="DCXLibrary/Form/Input/HMRC" component={FormInput} />
 
@@ -13,7 +13,6 @@ In this section we're using the formInput component providing the GovUk style pa
     {() => {
       const [value, setValue] = React.useState('');
       const handleChange = event => setValue(event.currentTarget.value);
-
       return (
         <FormInput
           name="text"
@@ -35,7 +34,6 @@ In this section we're using the formInput component providing the GovUk style pa
     {() => {
       const [value, setValue] = React.useState('');
       const handleChange = event => setValue(event.currentTarget.value);
-
       return (
         <FormInput
           name="text0"
@@ -55,14 +53,13 @@ In this section we're using the formInput component providing the GovUk style pa
   </Story>
 </Canvas>
 
-# Prefix 
+# Prefix
 
 <Canvas>
   <Story name="prefix">
     {() => {
       const [value, setValue] = React.useState('');
       const handleChange = event => setValue(event.currentTarget.value);
-
       return (
         <FormInput
           name="text2"
@@ -89,7 +86,6 @@ In this section we're using the formInput component providing the GovUk style pa
     {() => {
       const [value, setValue] = React.useState('');
       const handleChange = event => setValue(event.currentTarget.value);
-
       return (
         <FormInput
           name="text2"
