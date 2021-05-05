@@ -1,29 +1,37 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { FormRadio } from '../src/formRadio/FormRadio';
-import "./style.css";
+import './style.css';
+import FormRadioLive from './liveEdit/FormRadioLive';
 
-<Meta title="DCXLibrary/Form/Radio" component={FormRadio} />
+<Meta title="DCXLibrary/Form/Radio" component={FormRadioLive} />
 
 ### An example of 'un-styled' Input
+
 <Canvas>
   <Story name="un-styled">
-      {() => {
-        const [value, setValue] = React.useState('')
+    {(args, { viewMode }) => {
+      if (viewMode === 'docs') {
+        const [value, setValue] = React.useState('');
         const handleChange = event => {
           setValue(event.currentTarget.value);
-        }
-      return (
-        <FormRadio
-          label="text example"
-          name="group1"
-          value="value"
-          id="radio-1"
-          onChange={handleChange}
-        />
-      );
+        };
+        return (
+          <FormRadio
+            label="text example"
+            name="group1"
+            value="value"
+            id="radio-1"
+            onChange={handleChange}
+          />
+        );
+      } else {
+        return <FormRadioLive />;
+      }
     }}
     />
   </Story>
 </Canvas>
+
+### Properties
 
 <Props of={FormRadio} />

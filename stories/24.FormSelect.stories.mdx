@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { FormSelect } from '../src/formSelect/FormSelect';
+import FormSelectLive from './liveEdit/FormSelectLive';
 
 <Meta title="DCXLibrary/Form/Select" component={FormSelect} />
 
@@ -7,24 +8,28 @@ import { FormSelect } from '../src/formSelect/FormSelect';
 
 <Canvas>
   <Story name="basic">
-    {() => {
-      return (
-        <FormSelect
-          label="Basic"
-          labelProps={{
-            style: {
-              display: 'block',
-              marginBottom: '5px',
-              fontSize: '20px',
-              fontWeight: 'bold',
-            },
-          }}
-          options={[
-            { label: 'option1', value: 'value1' },
-            { label: 'option2', value: 'value2' },
-          ]}
-        />
-      );
+    {(args, { viewMode }) => {
+      if (viewMode === 'docs') {
+        return (
+          <FormSelect
+            label="Basic"
+            labelProps={{
+              style: {
+                display: 'block',
+                marginBottom: '5px',
+                fontSize: '20px',
+                fontWeight: 'bold',
+              },
+            }}
+            options={[
+              { label: 'option1', value: 'value1' },
+              { label: 'option2', value: 'value2' },
+            ]}
+          />
+        );
+      } else {
+        return <FormSelectLive />;
+      }
     }}
   </Story>
 </Canvas>
@@ -209,3 +214,7 @@ import { FormSelect } from '../src/formSelect/FormSelect';
     }}
   </Story>
 </Canvas>
+
+### Properties
+
+<Props of={FormSelect} />

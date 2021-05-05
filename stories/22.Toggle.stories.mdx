@@ -1,24 +1,30 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { Toggle } from '../src/toggle/Toggle';
+import ToggleLive from './liveEdit/ToggleLive';
 
-<Meta title="DCXLibrary/Form/Toggle" component={Toggle} />
+<Meta title="DCXLibrary/Form/Toggle" component={ToggleLive} />
 
 ### Examples of basic Toggle
 
 <Canvas>
   <Story name="basic">
-    {() => {
-      const [checked, setChecked] = React.useState(false);
-      return (
-        <Toggle
-          checked={checked}
-          onChange={e => {
-            setChecked(e);
-          }}
-          onColor="green"
-          offColor="gray"
-        />
-      );
+    {(args, { viewMode }) => {
+      if (viewMode === 'docs') {
+        const [checked, setChecked] = React.useState(false);
+        return (
+          <Toggle
+            checked={checked}
+            onChange={e => {
+              setChecked(e);
+            }}
+            onColor="green"
+            offColor="gray"
+          />
+        );
+      } else {
+        return <ToggleLive/>
+      }
+      
     }}
   </Story>
 </Canvas>
@@ -126,5 +132,7 @@ import { Toggle } from '../src/toggle/Toggle';
     }}
   </Story>
 </Canvas>
+
+### Properties
 
 <Props of={Toggle} />

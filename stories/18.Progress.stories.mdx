@@ -1,34 +1,33 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { Progress } from '../src/progress/Progress';
+import ProgressLive from './liveEdit/ProgressLive';
 
-<Meta title="DCXLibrary/Progress" component={Progress} />
+<Meta title="DCXLibrary/Progress" component={ProgressLive} />
 
 ### Examples of 'un-styled' Progress
-<Canvas>
-    <Story name="indeterminate">
-        {() => {
-            return (
-                <Progress
-                    label="Progress"
-                    max={100}
-                />
-            )
-        }}
-    </Story>
-</Canvas>
 
 <Canvas>
-    <Story name="determinate">
-        {() => {
-            return (
-                <Progress
-                    label="Progress"
-                    max={100}
-                    value={80}
-                />
-            )
-        }}
-    </Story>
+  <Story name="indeterminate">
+    {(args, { viewMode }) => {
+      if (viewMode === 'docs') {
+        return <Progress label="Progress" max={100} />;
+      } else {
+        return <ProgressLive />;
+      }
+    }}
+  </Story>
 </Canvas>
+
+### determinate mode
+
+<Canvas>
+  <Story name="determinate">
+    {() => {
+      return <Progress label="Progress" max={100} value={80} />;
+    }}
+  </Story>
+</Canvas>
+
+### properties
 
 <Props of={Progress} />
