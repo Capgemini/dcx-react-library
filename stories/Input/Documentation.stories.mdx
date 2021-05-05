@@ -1,8 +1,17 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
-import { FormInput } from '../src/formInput/FormInput';
-import './style.css';
+import { FormInput } from '../../src/formInput/FormInput';
+import '../style.css';
 
-<Meta title="DCXLibrary/Form/Input/documentation" component={FormInput} />
+<Meta
+  title="DCXLibrary/Form/Input/documentation"
+  component={FormInput}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
 
 # FormInput
 

@@ -1,14 +1,13 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
-import { FormInput } from '../src/formInput/FormInput';
-import FormInputLive from './liveEdit/FormInputLive';
-import "./style.css";
+import { FormInput } from '../../src/formInput/FormInput';
+import "../style.css";
 
-<Meta title="DCXLibrary/Form/Input" component={FormInputLive} />
+<Meta title="DCXLibrary/Form/Input" component={FormInput} />
 
 ### An example of 'un-styled' Input
 <Canvas>
   <Story name="un-styled">
-      {(args, { viewMode }) => {
+      {() => {
         const [value, setValue] = React.useState('')
         const handleChange = event => {
             setValue(event.currentTarget.value)
@@ -16,7 +15,6 @@ import "./style.css";
         const handleValidity = valid => {
             console.log(valid)
         }
-        if(viewMode === 'docs') {
             return (
                 <FormInput
                     name="password"
@@ -64,10 +62,6 @@ import "./style.css";
                     }
                 />
             );
-        } else {
-            return <FormInputLive/>
-        }
-      
     }}
     />
   </Story>
