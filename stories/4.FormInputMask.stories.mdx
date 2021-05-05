@@ -1,8 +1,9 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { FormInputMasked } from '../src/formInput/FormInputMasked';
 import './style.css';
+import FormInputMaskedLive from './liveEdit/FormInputMaskedLive';
 
-<Meta title="DCXLibrary/Form/InputWithMask" component={FormInputMasked} />
+<Meta title="DCXLibrary/Form/InputWithMask" component={FormInputMaskedLive} />
 
 # FormInputMasked
 
@@ -41,27 +42,31 @@ In the following example we define a currency input mask. For example you'll wri
 
 <Canvas>
   <Story name="basic">
-    {() => {
-      const [value, setValue] = React.useState('');
-      const handleChange = event => {console.log};
-      return (
-        <FormInputMasked
-        options={{
-          mask: '£num',
-          blocks: {
-            num: {
-              // nested masks are available!
-              mask: Number,
-              thousandsSeparator: ' ',
+    {(args, { viewMode }) => {
+      if(viewMode === 'docs') {
+        const [value, setValue] = React.useState('');
+        const handleChange = event => {console.log};
+        return (
+          <FormInputMasked
+          options={{
+            mask: '£num',
+            blocks: {
+              num: {
+                // nested masks are available!
+                mask: Number,
+                thousandsSeparator: ' ',
+              },
             },
-          },
-        }}
-        value={value}
-        onChange={handleChange}
-        type="text"
-        name="maskInput"
-      />
-      );
+          }}
+          value={value}
+          onChange={handleChange}
+          type="text"
+          name="maskInput"
+        />
+        );
+      } else {
+        return <FormInputMaskedLive/>
+      }
     }}
   </Story>
 </Canvas>
@@ -116,5 +121,7 @@ Feel free to use your own css and style the formInput as you prefer
     }}
   </Story>
 </Canvas>
+
+### properties
 
 <Props of={FormInputMasked} />
