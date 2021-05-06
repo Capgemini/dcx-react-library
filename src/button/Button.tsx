@@ -75,12 +75,13 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const [disable, setDisable] = React.useState<boolean>(disabled);
-  const delayNextClick = React.useCallback(
-    debounce(() => {
-      setDisable(false);
-    }, disableClickForMs),
-    []
+
+  const debouncedClick = React.useMemo(
+    () => debounce(() => setDisable(false), disableClickForMs),
+    [setDisable, disableClickForMs]
   );
+
+  const delayNextClick = React.useCallback(debouncedClick, [debouncedClick]);
 
   React.useEffect(() => {
     if (isLoading === true) {

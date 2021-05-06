@@ -1,13 +1,23 @@
 import React from 'react';
-import { LegendProps } from '../components';
+import { LegendProps } from '../components/commonTypes';
 
-export const Legend = ({
-  text,
-  classes,
-  isHeading = false,
-  headingClasses,
-}: LegendProps) => (
-  <legend className={classes}>
-    {isHeading ? <h1 className={headingClasses}>{text}</h1> : text}
+const LOWEST_HEADING: number = 6;
+const HIGHEST_HEADING: number = 1;
+
+export const Legend = ({ text, className, heading }: LegendProps) => (
+  <legend className={className}>
+    {heading
+      ? React.createElement(
+          `h${
+            heading &&
+            heading.priority >= HIGHEST_HEADING &&
+            heading.priority <= LOWEST_HEADING
+              ? heading.priority
+              : 1
+          }`,
+          { className: heading.className },
+          text
+        )
+      : text}
   </legend>
 );

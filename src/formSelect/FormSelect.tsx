@@ -1,30 +1,26 @@
-import React from 'react';
-import { Roles } from '../common';
-
-export type SelectOption = {
-  /**
-   * select option label
-   */
-  label: string;
-  /**
-   * select option value
-   */
-  value: string;
-};
+import React, { useState, ChangeEvent } from 'react';
+import { ErrorMessage, OptionGroup, Hint, Option, Roles } from '../common';
+import { ErrorMessageProps, HintProps } from '../common/components/commonTypes';
+import { OptionProps } from '../common/components/Option';
+import { OptionGroupProps } from '../common/components/OptionGroup';
 
 export type FormSelectProps = {
   /**
+   * select class name
+   */
+  className?: string;
+  /**
    * select options
    */
-  options: SelectOption[];
+  options?: OptionProps[];
+  /**
+   * select groups
+   */
+  optionGroups?: OptionGroupProps[];
   /**
    * handle the change when the user select the option
    */
-  onChange: (evt: React.FormEvent<HTMLSelectElement>) => void;
-  /**
-   * set the value
-   */
-  value: string;
+  onChange?: (evt: ChangeEvent<HTMLSelectElement>) => void;
   /**
    * select name
    */
@@ -34,51 +30,102 @@ export type FormSelectProps = {
    */
   id?: string;
   /**
-   * allow to customise the select with all the properties needed
-   **/
-  selectProps?: any;
-  /**
-   * allow to customise the select options with all the properties needed
-   **/
-  optionProps?: any;
-  /**
    * define the aria-label
    */
   ariaLabel?: string;
+  /**
+   * select label
+   */
+  label?: string;
+  /**
+   * select label properties for optional label
+   */
+  labelProps?: any;
+  /**
+   * select label hint
+   */
+  hint?: HintProps;
+  /**
+   * select error
+   */
+  error?: ErrorMessageProps;
+  /**
+   * select style
+   */
+  style?: any;
 };
 
 export const FormSelect = ({
+  className,
   name,
-  options,
+  optionGroups,
+  options = [],
   onChange,
-  value,
   id,
-  selectProps,
-  optionProps,
   ariaLabel,
+  label,
+  labelProps,
+  hint,
+  error,
+  style,
 }: FormSelectProps) => {
-  const selectOptions = options.map((item: SelectOption) => (
-    <option
-      value={item.value}
-      key={item.value}
-      aria-label={Roles.listItem}
-      id={item.label}
-      {...optionProps}
-    >
-      {item.label}
-    </option>
-  ));
+  const sharedOptions: OptionProps[] | undefined = optionGroups
+    ? optionGroups.flatMap((group: OptionGroupProps) => [...group.options])
+    : undefined;
+
+  const combinedOptions: OptionProps[] | undefined = sharedOptions
+    ? [...options, ...sharedOptions]
+    : options;
+
+  const preselectedValue: OptionProps | undefined = combinedOptions.find(
+    option => option.selected
+  );
+
+  const initialValue: string =
+    preselectedValue !== undefined
+      ? preselectedValue.value
+      : options.length
+      ? options[0].value
+      : '';
+
+  const [value, setValue] = useState<string>(initialValue);
+
+  const getOptions = (options: OptionProps[]): JSX.Element[] =>
+    options.map((item: OptionProps, index: number) => (
+      <Option key={index} {...item} />
+    ));
+
+  const getOptionGroups = (optionGroups: OptionGroupProps[]): JSX.Element[] =>
+    optionGroups.map((groupOption: OptionGroupProps, index: number) => (
+      <OptionGroup key={index} {...groupOption} />
+    ));
+
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setValue(event.target.value);
+    if (onChange) onChange(event);
+  };
 
   return (
-    <select
-      value={value}
-      onChange={onChange}
-      name={name || 'formSelect'}
-      id={id || 'formSelect'}
-      aria-label={ariaLabel || Roles.list}
-      {...selectProps}
-    >
-      {selectOptions}
-    </select>
+    <>
+      {label && (
+        <label {...labelProps} htmlFor={id}>
+          {label}
+        </label>
+      )}
+      {hint && <Hint {...hint} />}
+      {error && <ErrorMessage {...error} />}
+      <select
+        value={value}
+        name={name || 'formSelect'}
+        id={id || 'formSelect'}
+        className={className}
+        aria-label={ariaLabel || Roles.list}
+        onChange={handleChange}
+        style={style}
+      >
+        {getOptions(options)}
+        {optionGroups && getOptionGroups(optionGroups)}
+      </select>
+    </>
   );
 };

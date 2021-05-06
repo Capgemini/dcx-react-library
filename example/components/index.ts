@@ -9,4 +9,6 @@ export { ToggleDemo } from './ToggleDemo';
 export { FormSelectDemo } from './FormSelectDemo';
 export { SideNavBar } from './SideNavBar';
 export { MultiUploadDemo } from './MultiUploadDemo';
+export { MultiSelectDemo } from './MultiSelectDemo';
+export { FormDateDemo } from './FormDateDemo';
 export * from './library-candidates';

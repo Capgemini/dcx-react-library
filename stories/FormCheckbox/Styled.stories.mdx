@@ -1,0 +1,496 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormCheckbox } from '../../src/formCheckbox/FormCheckbox';
+import '../style.css';
+
+<Meta title="DCXLibrary/Form/Checkbox/Styled" component={FormCheckbox} />
+
+# GOVUK Style
+
+In this section we're using the formCheckbox component providing the GovUk style passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
+
+### GDS styled checkboxes
+
+<Canvas>
+  <Story name="multiple checkboxes">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <div className="govuk-form-group">
+          <fieldset className="govuk-fieldset" aria-describedby="waste-hint">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 className="govuk-fieldset__heading">
+                Which types of waste do you transport?
+              </h1>
+            </legend>
+            <div id="waste-hint" className="govuk-hint">
+              Select all that apply.
+            </div>
+            <div className="govuk-checkboxes">
+              <FormCheckbox
+                name="waste"
+                label="Waste from animal carcasses"
+                value="carcasses"
+                id="waste"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+              />
+              <FormCheckbox
+                name="waste-2"
+                label="Waste from mines of quarries"
+                value="mines"
+                id="waste-2"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+              />
+              <FormCheckbox
+                name="waste-3"
+                label="Farm or agricultural waste"
+                value="farm"
+                id="waste-3"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+              />
+            </div>
+          </fieldset>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### GDS styled checkboxes with hint
+
+<Canvas>
+  <Story name="multiple checkboxes with hint">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <div className="govuk-form-group">
+          <fieldset
+            className="govuk-fieldset"
+            aria-describedby="nationality-hint"
+          >
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 className="govuk-fieldset__heading">
+                What is your nationality?
+              </h1>
+            </legend>
+            <div id="nationality-hint" className="govuk-hint">
+              If you have dual nationality, select all options that are relevant
+              to you.
+            </div>
+            <div className="govuk-checkboxes">
+              <FormCheckbox
+                name="nationality"
+                label="British"
+                value="british"
+                id="nationality"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+                hint={{
+                  text: 'including English, Scottish, Welsh and Northern Irish',
+                  classes: 'govuk-hint govuk-checkboxes__hint',
+                  id: 'nationality-item-hint',
+                }}
+              />
+              <FormCheckbox
+                name="nationality-2"
+                label="Irish"
+                value="irish"
+                id="nationality-2"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+              />
+              <FormCheckbox
+                name="nationality-3"
+                label="Citizen of another country"
+                value="other"
+                id="nationality-3"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+              />
+            </div>
+          </fieldset>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### GDS styled checkboxes with conditionally revealing content
+
+<Canvas>
+  <Story name="conditional input">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <div className="govuk-form-group">
+          <fieldset className="govuk-fieldset" aria-describedby="contact-hint">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 className="govuk-fieldset__heading">
+                How would you like to be contacted?
+              </h1>
+            </legend>
+            <div id="contact-hint" className="govuk-hint">
+              Select all options that are relevant to you.
+            </div>
+            <div className="govuk-checkboxes">
+              <FormCheckbox
+                name="contact"
+                label="Email"
+                value="contact-by-email"
+                id="contact"
+                ariaDataControls="conditional-contact"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+                conditional={{
+                  name: 'contact-by-email',
+                  label: 'Email address',
+                  type: 'text',
+                  className: 'govuk-form-group',
+                  groupClassName:
+                    'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+                  id: 'conditional-contact',
+                  inputClassName: 'govuk-input govuk-!-width-one-third',
+                  inputId: 'contact-by-email',
+                  labelClassName: 'govuk-label',
+                }}
+              />
+              <FormCheckbox
+                name="contact"
+                label="Phone"
+                value="contact-by-phone"
+                id="contact-2"
+                ariaDataControls="conditional-contact-2"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+                conditional={{
+                  name: 'contact-by-phone',
+                  label: 'Phone number',
+                  type: 'text',
+                  className: 'govuk-form-group',
+                  groupClassName:
+                    'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+                  id: 'conditional-contact-2',
+                  inputClassName: 'govuk-input govuk-!-width-one-third',
+                  inputId: 'contact-by-phone',
+                  labelClassName: 'govuk-label',
+                }}
+              />
+              <FormCheckbox
+                name="contact"
+                label="Text"
+                value="contact-by-text"
+                id="contact-3"
+                ariaDataControls="conditional-contact-3"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+                conditional={{
+                  name: 'contact-by-text',
+                  label: 'Mobile phone number',
+                  type: 'text',
+                  className: 'govuk-form-group',
+                  groupClassName:
+                    'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+                  id: 'conditional-contact-3',
+                  inputClassName: 'govuk-input govuk-!-width-one-third',
+                  inputId: 'contact-by-text',
+                  labelClassName: 'govuk-label',
+                }}
+              />
+            </div>
+          </fieldset>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### GDS styled small checkboxes
+
+<Canvas>
+  <Story name="small styled checkboxes">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <div className="govuk-form-group">
+          <fieldset className="govuk-fieldset" aria-describedby="contact-hint">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 className="govuk-fieldset__heading">Organisation</h1>
+            </legend>
+            <div className="govuk-checkboxes govuk-checkboxes--small">
+              <FormCheckbox
+                name="organisation"
+                label="HM Revenue and Customs (HMRC)"
+                value="hmrc"
+                id="organisation"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+              />
+              <FormCheckbox
+                name="organisation-2"
+                label="Employment Tribunal"
+                value="employment-tribunal"
+                id="organisation-2"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+              />
+              <FormCheckbox
+                name="organisation-3"
+                label="Ministry of Defence"
+                value="MOD"
+                id="organisation-3"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+              />
+              <FormCheckbox
+                name="organisation-4"
+                label="Department for Transport"
+                value="DfT"
+                id="organisation-4"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+              />
+            </div>
+          </fieldset>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### GDS styled checkboxes with error validation
+
+<Canvas>
+  <Story name="checkboxes with error">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <div className="govuk-form-group govuk-form-group--error">
+          <fieldset
+            className="govuk-fieldset"
+            aria-describedby="nationality-hint"
+          >
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 className="govuk-fieldset__heading">
+                What is your nationality?
+              </h1>
+            </legend>
+            <div id="nationality-hint" className="govuk-hint">
+              If you have dual nationality, select all options that are relevant
+              to you.
+            </div>
+            <span id="nationality-error" className="govuk-error-message">
+              <span className="govuk-visually-hidden">Error:</span> Select if
+              you are British, Irish or a citizen of a different country
+            </span>
+            <div className="govuk-checkboxes">
+              <FormCheckbox
+                name="nationality"
+                label="British"
+                value="british"
+                id="nationality"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+                hint={{
+                  text: 'including English, Scottish, Welsh and Northern Irish',
+                  classes: 'govuk-hint govuk-checkboxes__hint',
+                  id: 'nationality-item-hint',
+                }}
+              />
+              <FormCheckbox
+                name="nationality-2"
+                label="Irish"
+                value="irish"
+                id="nationality-2"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+              />
+              <FormCheckbox
+                name="nationality-3"
+                label="Citizen of another country"
+                value="other"
+                id="nationality-3"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+              />
+            </div>
+          </fieldset>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### List of properties
+
+<Props of={FormCheckbox} />

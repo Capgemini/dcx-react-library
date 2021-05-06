@@ -1,0 +1,17 @@
+export const Roles = {
+  button: 'button',
+  error: 'error',
+  formInput: 'form-input',
+  formRadio: 'radio',
+  formCheckbox: 'checkbox',
+  formGroup: 'form-group',
+  listbox: 'listbox',
+  listItem: 'listitem',
+  list: 'list',
+  prefix: 'prefix',
+  presentation: 'presentation',
+  progress: 'progress',
+  region: 'region',
+  suffix: 'suffix',
+  toggle: 'form-toggle',
+};

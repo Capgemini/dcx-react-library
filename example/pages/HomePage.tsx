@@ -9,10 +9,13 @@ export const Home = () => (
     <nav>
       <ul>
         <li>
-          <Link to="/">FormInputDemo</Link>
+          <Link to="/formInput">FormInputDemo</Link>
         </li>
         <li>
           <Link to="/login">Login Example</Link>
+        </li>
+        <li>
+          <Link to="/register">Registration form Example</Link>
         </li>
         <li>
           <Link to="/masked">masked</Link>
@@ -40,6 +43,12 @@ export const Home = () => (
         </li>
         <li>
           <Link to="/multiUpload">MultiUploadDemo</Link>
+        </li>
+        <li>
+          <Link to="/multiSelect">MultiSelectDemo</Link>
+        </li>
+        <li>
+          <Link to="/formDate">FormDateDemo</Link>
         </li>
       </ul>
     </nav>

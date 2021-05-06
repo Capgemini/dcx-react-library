@@ -47,7 +47,7 @@ export const Login = () => {
         ></LoginForm>
         <div className="link-container">
           <Link>Forgotten Password</Link>
-          <Link>Sign Up!</Link>
+          <Link href="/register">Sign Up!</Link>
         </div>
       </div>
     </div>
