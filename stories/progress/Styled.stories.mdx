@@ -1,0 +1,150 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Progress } from '../../src/progress/Progress';
+import './style.css';
+
+<Meta title="DCXLibrary/Progress/Styled" component={Progress} />
+
+# HTML5 Style
+
+In this section we are using the progress component providing styling passing the relative `className`. Feel free to use your own css and style the progress as you prefer
+
+### Customised
+
+<Canvas>
+  <Story name="customised">
+    {() => {
+      return (
+        <Progress label="Progress" max={100} value={80} className="progress1" />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Customised
+
+<Canvas>
+  <Story name="gradient-background">
+    {() => {
+      const animate = () => {
+        const p = document.querySelector('#progress-2');
+        if (p) {
+          p.setAttribute('value', 80);
+        }
+      };
+      const timerId = setInterval(() => {
+        animate();
+      }, 2000);
+      window.unload = function() {
+        clearInterval(timerId);
+      };
+      return (
+        <Progress
+          label="Progress"
+          max={100}
+          value={0}
+          className="progress2"
+          id="progress-2"
+          labelClassName="myLabel"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+The css we used to style the progress component is the following:
+
+```css
+@import url(https://fonts.googleapis.com/css?family=Expletus+Sans);
+
+progress[value].progress1,
+progress[value].progress2 {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Get rid of default border in Firefox. */
+  border: none;
+
+  /* Dimensions */
+  width: 250px;
+  height: 20px;
+
+  /* For IE10 */
+  color: blue;
+}
+
+.myLabel {
+  font-family: 'Expletus Sans', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+progress[value].progress1::-webkit-progress-bar,
+progress[value].progress2::-webkit-progress-bar {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 250px;
+  height: 20px;
+
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value].progress1::-moz-progress-bar,
+progress[value].progress2::-moz-progress-bar {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Get rid of default border in Firefox. */
+  border: none;
+
+  /* Dimensions */
+  width: 250px;
+  height: 20px;
+}
+
+progress[value].progress2::-webkit-progress-value {
+  transition: width 5s;
+  background-image: -webkit-linear-gradient(
+      -45deg,
+      transparent 33%,
+      rgba(0, 0, 0, 0.1) 33%,
+      rgba(0, 0, 0, 0.1) 66%,
+      transparent 66%
+    ),
+    -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+    -webkit-linear-gradient(left, #09c, #f44);
+
+  border-radius: 2px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+progress[value].progress2::-moz-progress-bar {
+  transition: padding-bottom 5s;
+  padding-left: 60px;
+  padding-bottom: var(--value);
+  height: 0;
+  transform-origin: 0 0;
+  transform: rotate(-90deg) translateX(-60px);
+
+  background-image: -moz-linear-gradient(
+      135deg,
+      transparent 33%,
+      rgba(0, 0, 0, 0.1) 33%,
+      rgba(0, 0, 0, 0.1) 66%,
+      transparent 66%
+    ), -moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+    -moz-linear-gradient(left, #09c, #f44);
+
+  border-radius: 2px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+```
+
+<Props of={Progress} />

@@ -1,0 +1,62 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormGroup } from '../../src/formGroup/FormGroup';
+import '../style.css';
+
+<Meta title="DCXLibrary/Form/Group" component={FormGroup} />
+
+### An example of 'un-styled' FormGroup of radio buttons
+
+<Canvas>
+  <Story name="un-styled">
+    {() => {
+      return (
+        <FormGroup
+          name="name-of-group"
+          legend={{
+            text:
+              'Heading text customisable by a given priority of type number between 1 to 6 (inclusive)',
+            heading: {
+              priority: 2,
+            },
+          }}
+          items={[
+            {
+              label: 'item-label',
+              value: 'yes',
+            },
+            {
+              label: 'item-label',
+              value: 'no',
+            },
+          ]}
+        />
+      );
+    }}
+    />
+  </Story>
+</Canvas>
+
+# Error
+
+<Canvas>
+  <Story name="error">
+    {() => {
+      return (
+        <FormGroup
+          name="name-of-group"
+          items={[
+            {
+              label: 'item-label',
+              value: 'yes',
+            },
+          ]}
+        />
+      );
+    }}
+    />
+  </Story>
+</Canvas>
+
+# Properties
+
+<Props of={FormGroup} />

@@ -1,0 +1,134 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { FormSelect } from '../../src/formSelect/FormSelect';
+
+<Meta
+  title="DCXLibrary/Form/Select/documentation"
+  component={FormSelect}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Select
+
+FormSelect component ready to use in your UI
+
+FormSelect is UI/UX agnostic so you need to provide your style to have the look
+and feel you prefer.
+
+## Usage
+
+Use the FormSelect component when users need to select a value form a list
+
+An example with all the available properties is:
+
+```js
+  <FormSelect
+    className="select classes"
+    style={{
+      fontSize: '10px'
+    }}
+    options={[
+      { label: 'option1', value: 'value1' },
+      { label: 'option2', value: 'value2' },
+    ]}
+    optionGroups={[
+      {
+        label: 'group 1',
+        displayCount: true,
+        options: [
+          { label: 'option 1', value: 'group 1 option 1', selected: true },
+          { label: 'option 2', value: 'group 1 option 2' },
+          { label: 'option 3', value: 'group 1 option 3' },
+          { label: 'option 4', value: 'group 1 option 4' },
+          { label: 'option 5', value: 'group 1 option 5' },
+          {
+            label: 'option 6',
+            value: 'group 1 option 6',
+            disabled: true,
+          },
+        ],
+      },
+      {
+        label: 'group 2',
+        displayCount: true,
+        options: [
+          { label: 'option 1', value: 'group 2 option 1' },
+          { label: 'option 2', value: 'group 2 option 2' },
+          { label: 'option 3', value: 'group 2 option 3' },
+        ],
+      },
+      {
+        label: 'group 3',
+        displayCount: true,
+        options: [
+          { label: 'option 1', value: 'group 3 option 1' },
+          { label: 'option 2', value: 'group 3 option 2' },
+          { label: 'option 3', value: 'group 3 option 3' },
+          { label: 'option 4', value: 'group 3 option 4' },
+          { label: 'option 5', value: 'group 3 option 5' },
+          {
+            label: 'option 6',
+            value: 'group 3 option 6',
+            disabled: true,
+          },
+        ],
+      },
+      {
+        label: 'group 4',
+        displayCount: true,
+        options: [
+          { label: 'option 1', value: 'group 4 option 1' },
+          { label: 'option 2', value: 'group 4 option 2' },
+          { label: 'option 3', value: 'group 4 option 3' },
+          {
+            label: 'option 4',
+            value: 'group 4 option 4',
+            disabled: true,
+          },
+        ],
+      },
+      {
+        label: 'group 5',
+        displayCount: true,
+        options: [
+          { label: 'option 1', value: 'group 4 option 1' },
+          { label: 'option 2', value: 'group 4 option 2' },
+          { label: 'option 3', value: 'group 4 option 3' },
+          { label: 'option 4', value: 'group 4 option 4' },
+          { label: 'option 4', value: 'group 4 option 4' },
+        ],
+      },
+    ]}
+    onChange={handleChange}
+    name="select-name"
+    id="select-id"
+    optionProps={{
+      className: "select options classes"
+    }}
+    ariaLabel="select aria label"
+    label="select label"
+    labelProps={{
+      className: "label classes"
+    }}
+    hint={{
+      text: "hint text",
+      classes: "hint classes",
+      id: "hint id"
+    }}
+    error={{
+      text: "error text",
+      classes: "error classes",
+      id: "error id"
+      visuallyHiddenText: {
+        text: "visually hidden text",
+        classes: "visually hidden classes"
+      }
+    }}
+  />
+```
+
+<Props of={FormSelect} />

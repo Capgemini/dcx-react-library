@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  padding: 20px;
+}
+.liveEditor {
+  background-color: #282c34;
+  width: 100%;
+  border-right: 2px solid white;
+  color: white;
+}
+
+.livePreview {
+  margin-left: 20px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.liveError {
+  color: red;
+  padding: 0 25px;
+}

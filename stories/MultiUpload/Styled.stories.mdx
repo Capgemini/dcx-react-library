@@ -1,0 +1,423 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { MultiUpload } from '../../src/multiUpload/MultiUpload';
+import '../style.css';
+
+<Meta title="DCXLibrary/Form/MultiUpload/Styled" component={MultiUpload} />
+
+# GOVUK Style
+
+In this section we are using the MultiUpload component providing the GOV.UK Design System styles by passing the relative `className`. Feel free to use your own css and style the MultiUpload as you prefer
+
+<Canvas>
+  <Story name="styled">
+    {() => {
+      return (
+        <MultiUpload
+          name="file-upload-1"
+          label="Upload a file"
+          id="file-upload-1"
+          className="govuk-form-group"
+          inputProperties={{
+            className: 'govuk-file-upload',
+          }}
+          labelProperties={{
+            className: 'govuk-label',
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Hint
+
+<Canvas>
+  <Story name="hint">
+    {() => {
+      return (
+        <MultiUpload
+          name="file-upload-2"
+          label="Upload a file"
+          id="file-upload-2"
+          className="govuk-form-group"
+          hint={{
+            text: 'This can be in either JPG or PNG format',
+            classes: 'govuk-hint',
+          }}
+          inputProperties={{
+            className: 'govuk-file-upload',
+          }}
+          labelProperties={{
+            className: 'govuk-label',
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Error
+
+<Canvas>
+  <Story name="error">
+    {() => {
+      return (
+        <MultiUpload
+          name="file-upload-3"
+          label="Upload a file"
+          id="file-upload-3"
+          className="govuk-form-group govuk-form-group--error"
+          acceptedFormats=".jpg, .png"
+          inputProperties={{
+            className: 'govuk-file-upload govuk-file-upload--error',
+            'aria-describedby': 'govuk-file-upload govuk-file-upload--error',
+          }}
+          label="Upload a file"
+          labelProperties={{
+            className: 'govuk-label',
+          }}
+          error={{
+            text: 'The CSV must be smaller than 2MB',
+            classes: 'govuk-error-message',
+            id: 'file-upload-1-error',
+            visuallyHiddenText: {
+              text: 'Error:',
+              classes: 'govuk-visually-hidden',
+            },
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+```css
+.govuk-form-group {
+  margin-bottom: 20px;
+}
+
+.govuk-form-group:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-form-group {
+    margin-bottom: 30px;
+  }
+}
+
+.govuk-form-group .govuk-form-group:last-of-type {
+  margin-bottom: 0;
+}
+
+.govuk-form-group--error {
+  padding-left: 15px;
+  border-left: 5px solid #d4351c;
+}
+
+.govuk-form-group--error .govuk-form-group {
+  padding: 0;
+  border: 0;
+}
+
+.govuk-form-group {
+  margin-bottom: 5px;
+}
+
+.govuk-file-upload {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #0b0c0c;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+@media print {
+  .govuk-file-upload {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-file-upload {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .govuk-file-upload {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+@media print {
+  .govuk-file-upload {
+    color: #000;
+  }
+}
+
+.govuk-file-upload:focus {
+  margin-right: -5px;
+  margin-left: -5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  outline: 3px solid #fd0;
+  -webkit-box-shadow: inset 0 0 0 4px #0b0c0c;
+  box-shadow: inset 0 0 0 4px #0b0c0c;
+}
+
+.govuk-file-upload:focus-within {
+  margin-right: -5px;
+  margin-left: -5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  outline: 3px solid #fd0;
+  -webkit-box-shadow: inset 0 0 0 4px #0b0c0c;
+  box-shadow: inset 0 0 0 4px #0b0c0c;
+}
+
+.govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl)
+  + .govuk-hint {
+  margin-bottom: 10px;
+}
+
+.govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl)
+  + .govuk-hint {
+  margin-bottom: 10px;
+}
+
+.govuk-fieldset__legend + .govuk-hint {
+  margin-top: -5px;
+}
+
+.govuk-label {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #0b0c0c;
+  display: block;
+  margin-bottom: 5px;
+}
+
+@media print {
+  .govuk-label {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-label {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .govuk-label {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+@media print {
+  .govuk-label {
+    color: #000;
+  }
+}
+
+.govuk-label--xl {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 1.09375;
+  margin-bottom: 15px;
+}
+
+@media print {
+  .govuk-label--xl {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-label--xl {
+    font-size: 48px;
+    font-size: 3rem;
+    line-height: 1.04167;
+  }
+}
+
+@media print {
+  .govuk-label--xl {
+    font-size: 32pt;
+    line-height: 1.15;
+  }
+}
+
+.govuk-label--l {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 1.04167;
+  margin-bottom: 15px;
+}
+
+@media print {
+  .govuk-label--l {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-label--l {
+    font-size: 36px;
+    font-size: 2.25rem;
+    line-height: 1.11111;
+  }
+}
+
+@media print {
+  .govuk-label--l {
+    font-size: 24pt;
+    line-height: 1.05;
+  }
+}
+
+.govuk-label--m {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.11111;
+  margin-bottom: 10px;
+}
+
+@media print {
+  .govuk-label--m {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-label--m {
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+}
+
+@media print {
+  .govuk-label--m {
+    font-size: 18pt;
+    line-height: 1.15;
+  }
+}
+
+.govuk-label--s {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+@media print {
+  .govuk-label--s {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-label--s {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .govuk-label--s {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+.govuk-label-wrapper {
+  margin: 0;
+}
+
+.govuk-hint {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  display: block;
+  margin-bottom: 15px;
+  color: #505a5f;
+}
+
+@media print {
+  .govuk-hint {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-hint {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .govuk-hint {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+.govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl)
+  + .govuk-hint {
+  margin-bottom: 10px;
+}
+
+.govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl)
+  + .govuk-hint {
+  margin-bottom: 10px;
+}
+
+.govuk-fieldset__legend + .govuk-hint {
+  margin-top: -5px;
+}
+```
+
+<Props of={MultiUpload} />
