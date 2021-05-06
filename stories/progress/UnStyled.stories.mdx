@@ -1,0 +1,24 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Progress } from '../../src/progress/Progress';
+
+<Meta title="DCXLibrary/Progress" component={Progress} />
+
+### Examples of 'un-styled' Progress
+
+<Canvas>
+  <Story name="indeterminate">
+    {() => <Progress label="Progress" max={100} />}
+  </Story>
+</Canvas>
+
+### determinate mode
+
+<Canvas>
+  <Story name="determinate">
+    {() => <Progress label="Progress" max={100} value={80} />}
+  </Story>
+</Canvas>
+
+### properties
+
+<Props of={Progress} />

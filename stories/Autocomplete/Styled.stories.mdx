@@ -1,0 +1,164 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Autocomplete } from '../../src/autocomplete/Autocomplete';
+import '../style.css';
+
+<Meta title="DCXLibrary/Form/Autocomplete/HMRC" component={Autocomplete} />
+
+# GOVUK Style
+
+In this section we're using the Autocomplete component providing the GovUk style passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
+The list of available options are:
+
+```json
+['Papaya','Persimmon','Paw Paw','Prickly Pear','Peach',Pomegranate',Pineapple']
+```
+
+<Canvas>
+  <Story name="hint-label">
+    {() => {
+      const handleSelected = value => {
+        console.log(value);
+      };
+      return (
+        <Autocomplete
+          options={[
+            'Papaya',
+            'Persimmon',
+            'Paw Paw',
+            'Prickly Pear',
+            'Peach',
+            'Pomegranate',
+            'Pineapple',
+          ]}
+          minCharsBeforeSearch={1}
+          debounceMs={100}
+          hintText="Select your fruit"
+          hintClass="autocomplete__label"
+          inputProps={{ className: 'govuk-input' }}
+          resultUlClass="autocomplete__menu"
+          resultlLiClass="autocomplete__option"
+          resultNoOptionClass="resultNoOptionClass"
+          resultActiveClass="autocomplete__option"
+          notFoundText="No fruit found"
+          onSelected={handleSelected}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+\*Before the autocomplete appear you need to type at least 2 character
+
+<Canvas>
+  <Story name="min-chars">
+    {() => {
+      const handleSelected = value => {
+        console.log(value);
+      };
+      return (
+        <Autocomplete
+          options={[
+            'Papaya',
+            'Persimmon',
+            'Paw Paw',
+            'Prickly Pear',
+            'Peach',
+            'Pomegranate',
+            'Pineapple',
+          ]}
+          minCharsBeforeSearch={2}
+          debounceMs={100}
+          hintText="Select your fruit"
+          hintClass="autocomplete__label"
+          inputProps={{ className: 'govuk-input' }}
+          resultUlClass="autocomplete__menu"
+          resultlLiClass="autocomplete__option"
+          resultNoOptionClass="resultNoOptionClass"
+          resultActiveClass="autocomplete__option"
+          notFoundText="No fruit found"
+          onSelected={handleSelected}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Default value
+
+<Canvas>
+  <Story name="default-value">
+    {() => {
+      const handleSelected = value => {
+        console.log(value);
+      };
+      return (
+        <Autocomplete
+          options={[
+            'Papaya',
+            'Persimmon',
+            'Paw Paw',
+            'Prickly Pear',
+            'Peach',
+            'Pomegranate',
+            'Pineapple',
+          ]}
+          minCharsBeforeSearch={1}
+          debounceMs={100}
+          hintText="Select your fruit"
+          hintClass="autocomplete__label"
+          defaultValue="Papaya"
+          inputProps={{ className: 'govuk-input' }}
+          resultUlClass="autocomplete__menu"
+          resultlLiClass="autocomplete__option"
+          resultNoOptionClass="resultNoOptionClass"
+          resultActiveClass="autocomplete__option"
+          notFoundText="No fruit found"
+          onSelected={handleSelected}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Placeholder
+
+<Canvas>
+  <Story name="placeholder">
+    {() => {
+      const handleSelected = value => {
+        console.log(value);
+      };
+      return (
+        <Autocomplete
+          options={[
+            'Papaya',
+            'Persimmon',
+            'Paw Paw',
+            'Prickly Pear',
+            'Peach',
+            'Pomegranate',
+            'Pineapple',
+          ]}
+          minCharsBeforeSearch={1}
+          debounceMs={100}
+          hintText="Select your fruit"
+          hintClass="autocomplete__label"
+          inputProps={{
+            className: 'govuk-input',
+            placeholder: 'Search for a fruit',
+          }}
+          resultUlClass="autocomplete__menu"
+          resultlLiClass="autocomplete__option"
+          resultNoOptionClass="resultNoOptionClass"
+          resultActiveClass="autocomplete__option"
+          notFoundText="No fruit found"
+          onSelected={handleSelected}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Properties
+
+<Props of={Autocomplete} />

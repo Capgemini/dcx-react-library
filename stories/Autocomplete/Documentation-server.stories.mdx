@@ -1,0 +1,61 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Autocomplete } from '../../src/autocomplete/Autocomplete';
+import '../style.css';
+
+<Meta
+  title="DCXLibrary/Form/Autocomplete/documentation-dynamic"
+  component={Autocomplete}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Autocomplete with Dynamic values (options)
+
+Autocomplete will work with dynamic values in case you need to provide the results from an exteral source like a server API.
+
+## Usage
+
+The usage is quite similar to the previous documentation but you'll use the method **onChange** to populate dyanically the **options** list
+
+```js
+export const AutocompleteDemo = () => {
+  const [selected, setSelected] = React.useState('');
+  const handleSelected = (value: string) => setSelected(value);
+
+  const [serverOptions, setServerOptions] = React.useState<String[]>([]);
+
+  const handleOnChange = (value: string) => {
+    switch (value) {
+      case 'p':
+        setServerOptions(firstSearch);
+        break;
+      case 'pe':
+        setServerOptions(secondSearch);
+        break;
+      case 'per':
+        setServerOptions(thirdSearch);
+        break;
+      default:
+        setServerOptions(['no results']);
+    }
+  };
+
+  return (
+      <Autocomplete
+        options={serverOptions}
+        minCharsBeforeSearch={1}
+        debounceMs={1000}
+        onSelected={handleSelected}
+        hintText="search the list of fruits dynamically"
+        onChange={handleOnChange}
+        notFoundText=" "
+      />
+  );
+};
+```
+
+<Props of={Autocomplete} />
