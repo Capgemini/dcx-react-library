@@ -4,7 +4,10 @@ type ResultListProps = {
   list: string[];
   userInput: string;
   activeOption: number;
+  ulContainerId?: string;
+  ulContainerStyle?: React.CSSProperties;
   ulContainerClass?: string;
+  liContainerStyle?: React.CSSProperties;
   liContainerClass?: string;
   noOptionClass?: string;
   activeClass?: string;
@@ -16,8 +19,11 @@ export const ResultList = ({
   list,
   userInput,
   activeOption,
+  ulContainerId,
+  ulContainerStyle,
   ulContainerClass,
   liContainerClass,
+  liContainerStyle,
   activeClass,
   noOptionClass,
   noElFoundText,
@@ -25,16 +31,22 @@ export const ResultList = ({
 }: ResultListProps) => {
   if (userInput && list.length) {
     return (
-      <ul className={ulContainerClass} aria-live="polite">
+      <ul
+        id={ulContainerId}
+        className={ulContainerClass}
+        style={ulContainerStyle}
+        aria-live="polite"
+      >
         {list.map((optionName: string, index: number) => (
           <li
             className={
-              index === activeOption
+              index === activeOption && activeClass
                 ? [activeClass, liContainerClass].join(' ')
                 : liContainerClass
             }
             key={optionName}
             onClick={onClick}
+            style={liContainerStyle}
           >
             {optionName}
           </li>

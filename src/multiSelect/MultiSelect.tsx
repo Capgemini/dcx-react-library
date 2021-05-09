@@ -1,35 +1,68 @@
-import React, { useReducer } from 'react';
-import { OptionProps } from '../common/components/Option';
+import React, { useReducer, useEffect } from 'react';
+import { Autocomplete } from '../autocomplete/Autocomplete';
 import { Roles } from '../common/utils/rolesType';
-import { Selected } from './components/Selected';
 
 type MultiSelectState = {
-  selected: SelectValue[];
+  selected: MultiSelectOption[];
+  searchTerm?: string;
 };
 
 type MultiSelectAction =
   | { type: 'focus' }
-  | { type: 'remove'; payload: SelectValue };
+  | { type: 'filter'; payload: string }
+  | { type: 'add'; payload: MultiSelectOption }
+  | { type: 'remove'; payload: MultiSelectOption }
+  | { type: 'removeAll' };
 
-export type SelectValue = {
-  id?: string;
+export type MultiSelectOption = {
   label: string;
   value: string;
+  id?: string;
+  selected?: boolean;
 };
 
 export type MultiSelectProps = {
   /**
    * Multi Select options
    */
-  options: OptionProps[];
+  selectOptions: MultiSelectOption[];
   /**
    * Multi Select class name
    */
   className?: string;
   /**
+   * you can style the look and feel of your hint text
+   */
+  hintClass?: string;
+  /**
+   * you can specify a description label to provide additional information
+   */
+  hintText?: string;
+
+  /**
    * Multi Select id
    */
   id?: string;
+  /**
+   * Multi Select input placeholder
+   */
+  inputPlaceholder?: string;
+  /**
+   * Multi Select result container id
+   */
+  resultUlId?: string;
+  /**
+   * Multi Select result container styling
+   */
+  resultUlStyle?: React.CSSProperties;
+  /**
+   * Multi Select result items styling
+   */
+  resultliStyle?: React.CSSProperties;
+  /**
+   * Multi Select remove all button
+   */
+  removeAllButtonClass?: string;
   /**
    * Multi Select Selected list styling
    */
@@ -39,9 +72,9 @@ export type MultiSelectProps = {
    */
   selectedListItemStyle?: React.CSSProperties;
   /**
-   * Multi Select onClick
+   * Multi Select filtering debounce in milliseconds
    */
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  searchDebounceMs?: number;
   /**
    * Multi Select onFocus
    */
@@ -49,63 +82,123 @@ export type MultiSelectProps = {
   /**
    * Multi Select onRemove
    */
-  onRemove?: (select: SelectValue) => void;
+  onRemove?: (value: string) => void;
+  /**
+   * Multi Select onRemoveAll
+   */
+  onRemoveAll?: () => void;
+  /**
+   * Multi Select onSelect
+   */
+  onSelect?: (value: string) => void;
+  /**
+   * Multi Select onUpdate
+   */
+  onUpdate?: (selected: MultiSelectOption[]) => void;
 };
 
 function multiSelectReducer(
   state: MultiSelectState,
   action: MultiSelectAction
-) {
-  if (action.type === 'remove') {
-    return {
-      ...state,
-      selected: state.selected.filter(
-        (_: SelectValue) => _.value !== action.payload.value
-      ),
-    };
+): MultiSelectState {
+  switch (action.type) {
+    case 'filter': {
+      return {
+        ...state,
+        searchTerm: action.payload.toLowerCase(),
+      };
+    }
+    case 'add': {
+      return {
+        ...state,
+        searchTerm: undefined,
+        selected: [
+          ...state.selected,
+          {
+            ...action.payload,
+            selected: true,
+          },
+        ],
+      };
+    }
+    case 'remove': {
+      return {
+        ...state,
+        selected: state.selected.filter(
+          (_: MultiSelectOption) => _.value !== action.payload.value
+        ),
+      };
+    }
+    case 'removeAll': {
+      return {
+        ...state,
+        selected: [],
+      };
+    }
+    default: {
+      return state;
+    }
   }
-
-  return state;
 }
 
 export const MultiSelect = ({
   className,
+  hintClass,
+  hintText,
   id,
-  options,
+  resultUlId,
+  resultUlStyle,
+  resultliStyle,
+  removeAllButtonClass,
+  selectOptions,
   selectedListStyle,
   selectedListItemStyle,
-  onClick,
+  searchDebounceMs = 0,
   onFocus,
   onRemove,
+  onRemoveAll,
+  onSelect,
+  onUpdate,
 }: MultiSelectProps) => {
   const [state, dispatch] = useReducer(multiSelectReducer, {
-    selected: options
-      .filter((option: OptionProps) => option.selected)
-      .map((option: OptionProps) => ({
+    selected: selectOptions
+      .filter((option: MultiSelectOption) => option.selected)
+      .map((option: MultiSelectOption) => ({
         id: option.id,
         label: option.label,
         value: option.value,
+        selected: option.selected,
       })),
   });
 
-  const { selected } = state;
+  const { searchTerm, selected } = state;
 
-  const onClickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (onClick) {
-      onClick(event);
+  useEffect(() => {
+    if (onUpdate) {
+      onUpdate(selected);
     }
-  };
+  });
 
-  const onRemoveHandler = (selected: SelectValue) => {
+  const onRemoveHandler = (option: MultiSelectOption) => {
     dispatch({
       type: 'remove',
       payload: {
-        ...selected,
+        ...option,
       },
     });
 
     if (onRemove) {
-      onRemove(selected);
+      onRemove(option.value);
+    }
+  };
+
+  const onRemoveAllHander = () => {
+    dispatch({
+      type: 'removeAll',
+    });
+
+    if (onRemoveAll) {
+      onRemoveAll();
     }
   };
 
@@ -119,31 +212,89 @@ export const MultiSelect = ({
     }
   };
 
+  const onSelectedHandler = (label: string) => {
+    const option: MultiSelectOption | undefined = selectOptions.find(
+      (option: MultiSelectOption) => option.label === label
+    );
+
+    if (option) {
+      dispatch({
+        type: 'add',
+        payload: {
+          ...option,
+        },
+      });
+
+      if (onSelect) {
+        onSelect(option.value);
+      }
+    }
+  };
+
+  const onChangeHandler = (searchTerm: string) => {
+    dispatch({
+      type: 'filter',
+      payload: searchTerm,
+    });
+  };
+
+  const populateOptions = (): string[] =>
+    selectOptions
+      .map((_: MultiSelectOption) => _.label)
+      .filter(
+        (_: string) => !searchTerm || _.toLowerCase().startsWith(searchTerm)
+      )
+      .filter(
+        (_: string) =>
+          !selected.some((select: MultiSelectOption) => select.label === _)
+      );
+
   return (
-    <div id={id} className={className} onClick={onClickHandler}>
+    <div id={id} className={className}>
       <div
         role={Roles.list}
         style={{
-          ...selectedListStyle,
           display: 'flex',
+          flexDirection: 'column',
           flexWrap: 'wrap',
+          ...selectedListStyle,
         }}
       >
-        {selected.map((select: SelectValue, index: number) => (
-          <Selected
-            key={index}
-            select={{ id: select.id, label: select.label, value: select.value }}
-            onRemove={onRemoveHandler}
-            onFocus={onFocusHandler}
-            style={{
-              ...selectedListItemStyle,
-              display: 'inline-flex',
-            }}
-          />
-        ))}
+        <Autocomplete
+          multiSelect={true}
+          removeAllButtonClass={removeAllButtonClass}
+          searchContainerStyle={{
+            display: 'inline-flex',
+            justifyContent: 'space-between',
+            border: '1px solid #A6A6A6',
+            padding: '4px 6px',
+            borderRadius: '3px',
+          }}
+          selectedListItemStyle={selectedListItemStyle}
+          selected={selected}
+          options={populateOptions()}
+          hintClass={hintClass}
+          hintText={hintText}
+          inputProps={{
+            role: Roles.combobox,
+            placeholder: 'Select...',
+            style: {
+              border: 'none',
+              padding: '3px 8px',
+              margin: '2px 6px 2px 0px',
+            },
+          }}
+          resultId={resultUlId}
+          resultUlStyle={resultUlStyle}
+          resultliStyle={resultliStyle}
+          debounceMs={searchDebounceMs}
+          onSelected={onSelectedHandler}
+          onChange={onChangeHandler}
+          onRemove={onRemoveHandler}
+          onRemoveAll={onRemoveAllHander}
+          onFocus={onFocusHandler}
+        />
       </div>
-      <div>Search Input Field</div>
-      <div>Options</div>
     </div>
   );
 };
