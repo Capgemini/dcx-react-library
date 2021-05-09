@@ -38,7 +38,6 @@ export type MultiSelectProps = {
    * you can specify a description label to provide additional information
    */
   hintText?: string;
-
   /**
    * Multi Select id
    */
@@ -46,7 +45,10 @@ export type MultiSelectProps = {
   /**
    * Multi Select input placeholder
    */
-  inputPlaceholder?: string;
+  inputProperties?: React.InputHTMLAttributes<{
+    placeholder?: string;
+    style?: React.CSSProperties;
+  }>;
   /**
    * Multi Select result container id
    */
@@ -71,6 +73,10 @@ export type MultiSelectProps = {
    * Multi Select Selected list item styling
    */
   selectedListItemStyle?: React.CSSProperties;
+  /**
+   * Multi Select search container
+   */
+  searchContainerStyle?: React.CSSProperties;
   /**
    * Multi Select filtering debounce in milliseconds
    */
@@ -146,6 +152,7 @@ export const MultiSelect = ({
   hintClass,
   hintText,
   id,
+  inputProperties,
   resultUlId,
   resultUlStyle,
   resultliStyle,
@@ -153,6 +160,7 @@ export const MultiSelect = ({
   selectOptions,
   selectedListStyle,
   selectedListItemStyle,
+  searchContainerStyle,
   searchDebounceMs = 0,
   onFocus,
   onRemove,
@@ -266,9 +274,7 @@ export const MultiSelect = ({
           searchContainerStyle={{
             display: 'inline-flex',
             justifyContent: 'space-between',
-            border: '1px solid #A6A6A6',
-            padding: '4px 6px',
-            borderRadius: '3px',
+            ...searchContainerStyle,
           }}
           selectedListItemStyle={selectedListItemStyle}
           selected={selected}
@@ -277,12 +283,7 @@ export const MultiSelect = ({
           hintText={hintText}
           inputProps={{
             role: Roles.combobox,
-            placeholder: 'Select...',
-            style: {
-              border: 'none',
-              padding: '3px 8px',
-              margin: '2px 6px 2px 0px',
-            },
+            ...inputProperties,
           }}
           resultId={resultUlId}
           resultUlStyle={resultUlStyle}
