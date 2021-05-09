@@ -28,46 +28,48 @@ An example with all the available properties is:
 
 ```js
 <MultiSelect
-    selectOptions={[{
-        label: 'option-label',
-        value: 'option-value',
-        id: 'option-id',
-        selected: true
-    }]}
-    className='multi-select-class-name'
-    hintClass='hint-class'
-    hintText='hint-text'
-    id='multi-select-id'
-    inputProperties={{
-      placeholder: 'input-place-holder',
-      style: {
-        border: 'none',
-        padding: '3px 8px',
-        margin: '2px 6px 2px 0px',
-      }
-    }}
-    resultUlId=''
-    resultUlStyle={{
-        color: 'blue'
-    }}
-    resultLiStyle={{
-        color: 'red'
-    }}
-    removeAllButtonClass='remove-all-button-class'
-    selectedListStyle={{
-        color: 'white'
-    }}
-    selectedListItemStyle={{
-        padding: '3px'
-    }}
-    searchContainerStyle={{
-        borderRadius: '3px'
-    }}
-    searchDebounceMs={0}
-    onFocus={onFocusHandler}
-    onRemove={onRemoveHandler}
-    onRemoveAll={onRemoveAllHandler}
-    onUpdate={onUpdateHandler}
+  selectOptions={[
+    {
+      label: 'option-label',
+      value: 'option-value',
+      id: 'option-id',
+      selected: true,
+    },
+  ]}
+  className="multi-select-class-name"
+  hintClass="hint-class"
+  hintText="hint-text"
+  id="multi-select-id"
+  inputProperties={{
+    placeholder: 'input-place-holder',
+    style: {
+      border: 'none',
+      padding: '3px 8px',
+      margin: '2px 6px 2px 0px',
+    },
+  }}
+  resultUlId=""
+  resultUlStyle={{
+    color: 'blue',
+  }}
+  resultLiStyle={{
+    color: 'red',
+  }}
+  removeAllButtonClass="remove-all-button-class"
+  selectedListStyle={{
+    color: 'white',
+  }}
+  selectedListItemStyle={{
+    padding: '3px',
+  }}
+  searchContainerStyle={{
+    borderRadius: '3px',
+  }}
+  searchDebounceMs={0}
+  onFocus={onFocusHandler}
+  onRemove={onRemoveHandler}
+  onRemoveAll={onRemoveAllHandler}
+  onUpdate={onUpdateHandler}
 />
 ```
 
