@@ -41,3 +41,20 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+
+.no-bullets {
+  list-style-type: none;
+}
+
+.caret {
+  border-top: 4px solid blue;
+}
+
+.caret.caret-up {
+  border-top-width: 0;
+  border-bottom: 4px solid blue;
+}
+
+.pointer {
+  cursor: pointer;
+}
