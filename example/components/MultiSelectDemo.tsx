@@ -1837,6 +1837,14 @@ export const MultiSelectDemo = () => {
       <h1>Basic Multi Select</h1>
       <MultiSelect
         id="demo-multi-select"
+        inputProperties={{
+          placeholder: 'Select...',
+          style: {
+            border: 'none',
+            padding: '3px 8px',
+            margin: '2px 6px 2px 0px',
+          },
+        }}
         resultUlStyle={{
           maxHeight: '400px',
           overflow: 'scroll',
@@ -1855,6 +1863,11 @@ export const MultiSelectDemo = () => {
           borderRadius: '3px',
           padding: '3px 8px',
           margin: '2px 6px 2px 0px',
+        }}
+        searchContainerStyle={{
+          border: '1px solid #A6A6A6',
+          padding: '4px 6px',
+          borderRadius: '3px',
         }}
         searchDebounceMs={0}
         hintText="Enter your search term to add a selection"
