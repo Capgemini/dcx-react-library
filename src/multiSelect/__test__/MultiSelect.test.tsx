@@ -17,6 +17,35 @@ describe('MultiSelect', () => {
       expect(container.querySelector('#my-id')).toBeInTheDocument();
     });
 
+    it('should render a input field for a combobox', () => {
+      const options: MultiSelectOption[] = [];
+
+      render(
+        <MultiSelect
+          selectOptions={options}
+          inputProperties={{
+            placeholder: 'my-placeholder',
+            style: {
+              border: 'solid 0px',
+              padding: '3px 8px',
+              margin: '2px 6px 2px 0px',
+            },
+          }}
+        />
+      );
+
+      const input: Element = screen.getByRole('combobox');
+
+      const style: CSSStyleDeclaration = window.getComputedStyle(
+        screen.getByRole('combobox')
+      );
+
+      expect(input.getAttribute('placeholder')).toBe('my-placeholder');
+      expect(style.border).toBe('0px solid');
+      expect(style.padding).toBe('3px 8px');
+      expect(style.margin).toBe('2px 6px 2px 0px');
+    });
+
     it('should render a multi select with optional props', () => {
       const options: MultiSelectOption[] = [];
 
@@ -281,12 +310,6 @@ describe('MultiSelect', () => {
         selected: true,
       },
     ];
-
-    it('should render a input field for a combobox', () => {
-      render(<MultiSelect selectOptions={options} />);
-
-      expect(screen.getByRole('combobox'));
-    });
 
     it('should not render any options', async () => {
       render(<MultiSelect selectOptions={options} />);
