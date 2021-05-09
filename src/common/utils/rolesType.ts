@@ -1,5 +1,6 @@
 export const Roles = {
   button: 'button',
+  combobox: 'combobox',
   error: 'error',
   formInput: 'form-input',
   formRadio: 'radio',
