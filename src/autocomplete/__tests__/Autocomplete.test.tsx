@@ -118,7 +118,7 @@ describe('FormInput', () => {
     expect(input.value).toBe('daniele');
   });
 
-  it(`should allow to select the first item even if it's uppercase`, async () => {
+  it("should allow to select the first item even if it's uppercase", async () => {
     render(<Autocomplete options={['daniele', 'destiny', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
@@ -133,7 +133,7 @@ describe('FormInput', () => {
     expect(input.value).toBe('daniele');
   });
 
-  it(`should allow to select the first item even if the list of choices is uppercase`, async () => {
+  it('should allow to select the first item even if the list of choices is uppercase', async () => {
     render(<Autocomplete options={['Daniele', 'destiny', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
@@ -326,5 +326,31 @@ describe('FormInput', () => {
     });
     const listItemsSecond: any = screen.getAllByRole('listitem');
     expect(listItemsSecond.length).toBe(2);
+  });
+
+  it('should display a remove all button if specified', () => {
+    const onRemoveAllHandler = jest.fn();
+
+    render(
+      <Autocomplete
+        removeAllButtonClass="my-remove-all-class"
+        options={['daniele', 'darren', 'isaac']}
+        resultActiveClass="activeClass"
+        hintText="search names"
+        hintClass="labelClass"
+        multiSelect={true}
+        onRemoveAll={onRemoveAllHandler}
+      />
+    );
+
+    const removeAllEl: HTMLElement = screen.getByRole('button');
+
+    expect(removeAllEl).toBeInTheDocument();
+    expect(removeAllEl.getAttribute('aria-label')).toBe('Remove all');
+    expect(removeAllEl.getAttribute('class')).toBe('my-remove-all-class');
+
+    fireEvent.click(removeAllEl);
+
+    expect(onRemoveAllHandler).toHaveBeenCalled();
   });
 });
