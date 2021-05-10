@@ -5,43 +5,66 @@ import './style.css';
 
 const FormRadioDemo = `
 function FormRadioDemo() {
-  const [value, setValue] = React.useState('')
+  const [value, setValue] = React.useState('');
   const handleChange = event => {
     setValue(event.currentTarget.value);
   }
   return (
-    <FormRadio
-      label="text example"
-      name="group1"
-      value="value"
-      id="radio-1"
-      onChange={handleChange}
-      ariaLabel=""
-      ariaDataControls=""
-      ariaDescribedBy=""
-      ariaLabelledBy=""
-      disabled={false}
-      conditional={{
-        name: "",
-        label: "",
-        type: 'text',
-        className: "",
-        groupClassName: "",
-        id: "conditional-id",
-        inputClassName: "",
-        inputId: "",
-        labelClassName: "",
-      }}
-      hint={{
-        text: "",
-        classes: "",
-        id: ""
-      }}
-      inputProps={{}}
-      itemProps={{}}
-      labelProps={{}}
-      selected={true}
-    />
+    <>
+      <FormRadio
+        label="text example"
+        name="group1"
+        value="value"
+        id="radio-1"
+        onChange={handleChange}
+        ariaLabel=""
+        ariaDataControls=""
+        ariaDescribedBy=""
+        ariaLabelledBy=""
+        disabled={false}
+        conditional={{
+          name: "",
+          label: "",
+          type: 'text',
+          className: "",
+          groupClassName: "",
+          id: "conditional-id",
+          inputClassName: "",
+          inputId: "",
+          labelClassName: "",
+        }}
+        hint={{
+          text: "",
+          classes: "",
+          id: ""
+        }}
+        inputProps={{}}
+        itemProps={{}}
+        labelProps={{}}
+        selected={value === 'value'}
+      />
+      <FormRadio
+        label="text example two"
+        name="group1"
+        value="value-two"
+        id="radio-2"
+        onChange={handleChange}
+        ariaLabel=""
+        ariaDataControls=""
+        ariaDescribedBy=""
+        ariaLabelledBy=""
+        disabled={false}
+        hint={{
+          text: "",
+          classes: "",
+          id: ""
+        }}
+        inputProps={{}}
+        itemProps={{}}
+        labelProps={{}}
+        selected={value === 'value-two'}
+      />
+    </>
   );
 }
 `.trim();

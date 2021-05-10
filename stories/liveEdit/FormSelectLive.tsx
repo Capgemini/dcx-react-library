@@ -22,8 +22,9 @@ function FormSelectDemo() {
       }}
       onChange={handleChange}
       options={[
-        { label: 'option1', value: 'value1' },
-        { label: 'option2', value: 'value2' },
+        { label: 'option1', value: 'value1', ariaLabel: 'option1', id: 'id1', selected: true },
+        { label: 'option2', value: 'value2', className: 'option2', labelClassName: 'label-class' },
+        { label: 'option3', value: 'value3', disabled: true },
       ]}
       optionGroups={[]}
       className=""
