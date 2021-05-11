@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import { FormInput } from '../formInput';
+import { Hint } from '../common';
+import { MultiSelectOption } from '../multiSelect/MultiSelect';
 import { ResultList } from './ResultList';
+import { Selected } from '../multiSelect/components/Selected';
+import { SelectedItem } from '../multiSelect/components/SelectedItem';
 import { debounce } from 'lodash';
+
 type autocompleteProps = {
   /**
    * you need to provide a list of values to filter
    */
   options: string[];
+  /**
+   * list of selected options for multi select
+   */
+  selected?: MultiSelectOption[];
   /**
    * specify the number of character to press before the option are displayed
    */
@@ -44,21 +53,49 @@ type autocompleteProps = {
    */
   prefix?: any;
   /**
+   * if you want to pass an id to the result UL list
+   */
+  resultId?: string;
+  /**
    * if you want to pass a style class to the result UL list
    */
   resultUlClass?: string;
+  /**
+   * if you want to pass a style class to the result UL container
+   */
+  resultUlStyle?: React.CSSProperties;
   /**
    * if you want to pass a style class to the result LI list
    */
   resultlLiClass?: string;
   /**
-   * if you want to pass a style class to no result  list
+   * if you want to pass a style class to the result UL container
+   */
+  resultLiStyle?: React.CSSProperties;
+  /**
+   * if you want to pass a style class to no result list
    */
   resultNoOptionClass?: string;
   /**
-   *  if you want to style the  element selected in the result list
+   * if you want to style the element selected in the result list
    */
   resultActiveClass?: string;
+  /**
+   * if you want to style the on remove all element
+   */
+  removeAllButtonClass?: string;
+  /**
+   * if you want to style the selected list item
+   */
+  selectedListItemStyle?: React.CSSProperties;
+  /**
+   * if you want to style the search element
+   */
+  searchContainerStyle?: React.CSSProperties;
+  /**
+   * optional multi select flag
+   */
+  multiSelect?: boolean;
   /**
    * optional text for not found element
    */
@@ -71,6 +108,18 @@ type autocompleteProps = {
    * this method is useful if you want to provide the options dynamically
    */
   onChange?: (value: string) => void;
+  /**
+   * onFocus the selected listItem
+   */
+  onFocus?: () => void;
+  /**
+   * onRemove of the selected listItem
+   */
+  onRemove?: (select: MultiSelectOption) => void;
+  /**
+   * onRemoveAll of the selected listItems
+   */
+  onRemoveAll?: () => void;
 };
 
 //remove the default style from a button
@@ -94,13 +143,24 @@ export const Autocomplete = ({
   hintClass,
   suffix,
   prefix,
+  multiSelect = false,
   notFoundText,
+  resultId,
   resultActiveClass,
   resultUlClass,
+  resultUlStyle,
   resultlLiClass,
+  resultLiStyle,
   resultNoOptionClass,
+  removeAllButtonClass,
+  searchContainerStyle,
+  selectedListItemStyle,
+  selected,
   onSelected,
   onChange,
+  onRemove,
+  onRemoveAll,
+  onFocus,
   props,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
@@ -159,7 +219,7 @@ export const Autocomplete = ({
     setActiveOption(0);
     setFilterList([]);
     setShowOptions(false);
-    setUserInput(evt.currentTarget.innerHTML);
+    setUserInput(multiSelect ? '' : evt.currentTarget.innerHTML);
     if (onSelected) onSelected(evt.currentTarget.innerHTML);
   };
 
@@ -185,10 +245,33 @@ export const Autocomplete = ({
   const displayResultList = (): boolean =>
     showOptions && userInput.length >= minCharsBeforeSearch;
 
-  return (
-    <>
-      <div className="search">
-        {hintText && <label className={hintClass}>{hintText}</label>}
+  const searchEl: JSX.Element = multiSelect ? (
+    <div className="search" style={{ ...searchContainerStyle }}>
+      <div
+        style={{
+          display: 'inline-flex',
+          flexDirection: 'row',
+        }}
+      >
+        {selected &&
+          selected.map(
+            ({ id, label, value }: MultiSelectOption, index: number) => (
+              <Selected
+                key={index}
+                select={{
+                  id,
+                  label,
+                  value,
+                }}
+                onRemove={onRemove}
+                onFocus={onFocus}
+                style={{
+                  ...selectedListItemStyle,
+                  display: 'inline-flex',
+                }}
+              />
+            )
+          )}
         <FormInput
           name="autocompleteSearch"
           type="text"
@@ -197,25 +280,68 @@ export const Autocomplete = ({
           inputProps={{
             onKeyDown: onKeyDown,
             autoComplete: 'off',
+            'aria-expanded': showOptions,
             ...inputProps,
           }}
-          suffix={
-            suffix && (
-              <button type="submit" style={unstyleBtn}>
-                {suffix}
-              </button>
-            )
-          }
-          prefix={
-            prefix && (
-              <button type="submit" style={unstyleBtn}>
-                {prefix}
-              </button>
-            )
-          }
           {...props}
         />
       </div>
+      <div>
+        <SelectedItem
+          className={removeAllButtonClass}
+          label="x"
+          role="button"
+          ariaLabel="Remove all"
+          onClick={onRemoveAll}
+          style={{
+            marginLeft: '5px',
+            fontWeight: 'bold',
+            verticalAlign: '-webkit-baseline-middle',
+          }}
+          tabIndex={0}
+        />
+      </div>
+    </div>
+  ) : (
+    <div className="search">
+      {hintText && (
+        <Hint text={hintText} className={hintClass} useLabel={true} />
+      )}
+      <FormInput
+        name="autocompleteSearch"
+        type="text"
+        value={userInput}
+        onChange={handleChange}
+        inputProps={{
+          onKeyDown: onKeyDown,
+          autoComplete: 'off',
+          ...inputProps,
+        }}
+        suffix={
+          suffix && (
+            <button type="submit" style={unstyleBtn}>
+              {suffix}
+            </button>
+          )
+        }
+        prefix={
+          prefix && (
+            <button type="submit" style={unstyleBtn}>
+              {prefix}
+            </button>
+          )
+        }
+        {...props}
+      />
+    </div>
+  );
+
+  return (
+    <>
+      {multiSelect && hintText && (
+        <Hint text={hintText} className={hintClass} useLabel={true} />
+      )}
+      {searchEl}
       {displayResultList() && (
         <ResultList
           list={filterList}
@@ -224,8 +350,11 @@ export const Autocomplete = ({
           noElFoundText={notFoundText}
           onClick={handleClick}
           activeClass={resultActiveClass}
+          ulContainerId={resultId}
           ulContainerClass={resultUlClass}
+          ulContainerStyle={resultUlStyle}
           liContainerClass={resultlLiClass}
+          liContainerStyle={resultLiStyle}
           noOptionClass={resultNoOptionClass}
         />
       )}

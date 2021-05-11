@@ -10,6 +10,14 @@ describe('ErrorMessage', () => {
     expect(screen.getByText('We have a problem')).toBeInTheDocument();
   });
 
+  it('will render an error message with a className', () => {
+    render(<ErrorMessage text="We have a problem" className="my-class-name" />);
+
+    expect(screen.getByText('We have a problem').getAttribute('class')).toBe(
+      'my-class-name'
+    );
+  });
+
   it('will render visually hidden text for screen readers', () => {
     render(
       <ErrorMessage

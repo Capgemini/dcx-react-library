@@ -42,15 +42,18 @@ describe('ResultList', () => {
         userInput="d"
         activeOption={1}
         onClick={handleClick}
+        ulContainerId="ulContainerId"
         ulContainerClass="ulContainerClass"
         liContainerClass="liContainerClass"
         noOptionClass="noOptionClass"
       />
     );
-    const ulEl: any = container.querySelector('ul');
-    const liEl: any = container.querySelector('li');
-    expect(ulEl.className).toBe('ulContainerClass');
-    expect(liEl.className).toBe('liContainerClass');
+    const ulEl: HTMLUListElement | null = container.querySelector('ul');
+    const liEl: HTMLLIElement | null = container.querySelector('li');
+    const el: Element | null = container.querySelector('#ulContainerId');
+    expect(ulEl?.className).toBe('ulContainerClass');
+    expect(liEl?.className).toBe('liContainerClass');
+    expect(el?.getAttribute('id')).toBe('ulContainerId');
   });
 
   it('should display optional properties when empty', () => {
