@@ -95,7 +95,7 @@ FormRadio.propTypes = {
   disabled: PropTypes.bool,
   hint: PropTypes.shape({
     text: PropTypes.string.isRequired,
-    classes: PropTypes.string,
+    className: PropTypes.string,
     id: PropTypes.string,
   }),
   id: PropTypes.string,

@@ -9,7 +9,7 @@ describe('Hint', () => {
       <Hint id="hint-id" text="This is a hint text" />
     );
 
-    expect(container.querySelector('#hint-id')).toBeTruthy();
+    expect(container.querySelector('div#hint-id')).toBeTruthy();
   });
 
   it('will render the hint text', () => {
@@ -24,8 +24,16 @@ describe('Hint', () => {
 
   it('will render a hint with a customised heading', () => {
     const { container } = render(
-      <Hint text="This is a hint text" classes="my-classes" />
+      <Hint text="This is a hint text" className="my-classes" />
     );
     expect(container.querySelector('.my-classes')).toBeInTheDocument();
+  });
+
+  it('will render a hint using a label tag', () => {
+    const { container } = render(
+      <Hint id="my-id" text="This is a hint text" useLabel={true} />
+    );
+
+    expect(container.querySelector('label#my-id')).toBeTruthy();
   });
 });

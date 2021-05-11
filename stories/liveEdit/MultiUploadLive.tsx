@@ -14,11 +14,11 @@ function MultiUploadDemo() {
       className=""
       error={{
         text: "",
-        classes: "",
+        className: "",
         id: "",
         visuallyHiddenText: {
           text: "",
-          classes: "",
+          className: "",
         }
       }}
       id="multi"
@@ -27,7 +27,7 @@ function MultiUploadDemo() {
       label="Upload File"
       hint={{
         text: 'This can be in either JPG or PNG format',
-        classes: 'classes for hint',
+        className: 'classes for hint',
         id: 'hint-id',
       }}
     />
