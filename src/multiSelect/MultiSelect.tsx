@@ -232,17 +232,9 @@ export const MultiSelect = ({
   const populateOptions = (): string[] =>
     selectOptions
       .map((_: MultiSelectOption) => _.label)
-      .filter((_: string) => {
-        if (!searchTerm) {
-          return true;
-        }
-
-        if (_ !== undefined && _.toLowerCase().startsWith(searchTerm)) {
-          return true;
-        }
-
-        return false;
-      })
+      .filter(
+        (_: string) => !searchTerm || _.toLowerCase().startsWith(searchTerm)
+      )
       .filter(
         (_: string) =>
           !selected.some((select: MultiSelectOption) => select.label === _)
