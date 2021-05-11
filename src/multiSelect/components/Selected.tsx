@@ -1,7 +1,7 @@
 import React from 'react';
 import { Roles } from '../../common';
 import { SelectedItem } from './SelectedItem';
-import { MultiSelectOption } from '../MultiSelect';
+import { MultiSelectOption } from '../../common/components/commonTypes';
 
 const ENTER_KEY: number = 13;
 
