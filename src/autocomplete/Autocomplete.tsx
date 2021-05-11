@@ -143,7 +143,7 @@ export const Autocomplete = ({
   hintClass,
   suffix,
   prefix,
-  multiSelect,
+  multiSelect = false,
   notFoundText,
   resultId,
   resultActiveClass,
@@ -245,83 +245,98 @@ export const Autocomplete = ({
   const displayResultList = (): boolean =>
     showOptions && userInput.length >= minCharsBeforeSearch;
 
+  const searchEl: JSX.Element = multiSelect ? (
+    <div className="search" style={{ ...searchContainerStyle }}>
+      <div
+        style={{
+          display: 'inline-flex',
+          flexDirection: 'row',
+        }}
+      >
+        {selected &&
+          selected.map((select: MultiSelectOption, index: number) => (
+            <Selected
+              key={index}
+              select={{
+                id: select.id,
+                label: select.label,
+                value: select.value,
+              }}
+              onRemove={onRemove}
+              onFocus={onFocus}
+              style={{
+                ...selectedListItemStyle,
+                display: 'inline-flex',
+              }}
+            />
+          ))}
+        <FormInput
+          name="autocompleteSearch"
+          type="text"
+          value={userInput}
+          onChange={handleChange}
+          inputProps={{
+            onKeyDown: onKeyDown,
+            autoComplete: 'off',
+            ...inputProps,
+          }}
+          {...props}
+        />
+      </div>
+      <div>
+        <SelectedItem
+          className={removeAllButtonClass}
+          label="x"
+          role="button"
+          ariaLabel="Remove all"
+          onClick={onRemoveAll}
+          style={{
+            marginLeft: '5px',
+            fontWeight: 'bold',
+            verticalAlign: '-webkit-baseline-middle',
+          }}
+          tabIndex={0}
+        />
+      </div>
+    </div>
+  ) : (
+    <div className="search">
+      {hintText && <label className={hintClass}>{hintText}</label>}
+      <FormInput
+        name="autocompleteSearch"
+        type="text"
+        value={userInput}
+        onChange={handleChange}
+        inputProps={{
+          onKeyDown: onKeyDown,
+          autoComplete: 'off',
+          ...inputProps,
+        }}
+        suffix={
+          suffix && (
+            <button type="submit" style={unstyleBtn}>
+              {suffix}
+            </button>
+          )
+        }
+        prefix={
+          prefix && (
+            <button type="submit" style={unstyleBtn}>
+              {prefix}
+            </button>
+          )
+        }
+        {...props}
+      />
+    </div>
+  );
+
   return (
     <>
-      {hintText && multiSelect && (
+      {multiSelect && hintText && (
         <Hint text={hintText} className={hintClass} useLabel={true} />
       )}
-      <div className="search" style={{ ...searchContainerStyle }}>
-        <div
-          style={{
-            display: 'inline-flex',
-            flexDirection: 'row',
-          }}
-        >
-          {selected &&
-            selected.map((select: MultiSelectOption, index: number) => (
-              <Selected
-                key={index}
-                select={{
-                  id: select.id,
-                  label: select.label,
-                  value: select.value,
-                }}
-                onRemove={onRemove}
-                onFocus={onFocus}
-                style={{
-                  ...selectedListItemStyle,
-                  display: 'inline-flex',
-                }}
-              />
-            ))}
-          {hintText && !multiSelect && (
-            <Hint text={hintText} className={hintClass} useLabel={true} />
-          )}
-          <FormInput
-            name="autocompleteSearch"
-            type="text"
-            value={userInput}
-            onChange={handleChange}
-            inputProps={{
-              onKeyDown: onKeyDown,
-              autoComplete: 'off',
-              ...inputProps,
-            }}
-            suffix={
-              suffix && (
-                <button type="submit" style={unstyleBtn}>
-                  {suffix}
-                </button>
-              )
-            }
-            prefix={
-              prefix && (
-                <button type="submit" style={unstyleBtn}>
-                  {prefix}
-                </button>
-              )
-            }
-            {...props}
-          />
-        </div>
-        {multiSelect && (
-          <div>
-            <SelectedItem
-              className={removeAllButtonClass}
-              label="x"
-              role="button"
-              ariaLabel="Remove all"
-              onClick={onRemoveAll}
-              style={{
-                marginLeft: '5px',
-                fontWeight: 'bold',
-                verticalAlign: '-webkit-baseline-middle',
-              }}
-              tabIndex={0}
-            />
-          </div>
-        )}
-      </div>
+      {searchEl}
       {displayResultList() && (
         <ResultList
           list={filterList}
