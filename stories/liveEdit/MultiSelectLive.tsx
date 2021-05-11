@@ -78,7 +78,7 @@ function MultiSelectDemo() {
             border: 'solid 1px #aaa',
             margin: 0
           }}
-          resultliStyle={{
+          resultLiStyle={{
             padding: '0 15px',
           }}
           selectOptions={multiSelectOptions}
@@ -107,16 +107,16 @@ function MultiSelectDemo() {
 }`.trim();
 
 const MultiSelectLive = () => {
-    const scope = { MultiSelect };
-    return (
-        <LiveProvider code={MultiSelectDemo} scope={scope}>
-          <div className="container">
-            <LiveEditor className="liveEditor" aria-label="editor" />
-            <LivePreview className="livePreview" aria-label="preview" />
-          </div>
-          <LiveError className="liveError" aria-label="error" />
-        </LiveProvider>
-      );
-}
+  const scope = { MultiSelect };
+  return (
+    <LiveProvider code={MultiSelectDemo} scope={scope}>
+      <div className="container">
+        <LiveEditor className="liveEditor" aria-label="editor" />
+        <LivePreview className="livePreview" aria-label="preview" />
+      </div>
+      <LiveError className="liveError" aria-label="error" />
+    </LiveProvider>
+  );
+};
 
 export default MultiSelectLive;

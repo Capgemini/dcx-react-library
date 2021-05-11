@@ -34,7 +34,7 @@ function FormRadioDemo() {
       }}
       hint={{
         text: "",
-        classes: "",
+        className: "",
         id: ""
       }}
       inputProps={{}}

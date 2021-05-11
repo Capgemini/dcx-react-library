@@ -1853,7 +1853,7 @@ export const MultiSelectDemo = () => {
           padding: '5px 0',
           border: 'solid 1px #aaa',
         }}
-        resultliStyle={{
+        resultLiStyle={{
           padding: '0 15px',
         }}
         selectOptions={multiSelectOptions}
