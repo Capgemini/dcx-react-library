@@ -251,6 +251,8 @@ export const Autocomplete = ({
         style={{
           display: 'inline-flex',
           flexDirection: 'row',
+          width: '100%',
+          flexWrap: 'wrap',
         }}
       >
         {selected &&

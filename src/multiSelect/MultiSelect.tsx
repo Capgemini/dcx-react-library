@@ -257,6 +257,7 @@ export const MultiSelect = ({
           searchContainerStyle={{
             display: 'inline-flex',
             justifyContent: 'space-between',
+            width: '100%',
             ...searchContainerStyle,
           }}
           selectedListItemStyle={selectedListItemStyle}
