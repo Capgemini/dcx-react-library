@@ -430,56 +430,5 @@ describe('MultiSelect', () => {
         within(screen.getAllByRole('list')[0]).getAllByRole('listitem').length
       ).toBe(2);
     });
-
-    it('should call on updated', async () => {
-      const onUpdateHandler = jest.fn();
-
-      render(
-        <MultiSelect selectOptions={options} onUpdate={onUpdateHandler} />
-      );
-
-      const input = screen.getByRole('combobox');
-
-      jest.useFakeTimers('modern');
-      await act(() => userEvent.type(input, 'o'));
-      act(() => {
-        jest.runAllTimers();
-      });
-
-      const liElements: HTMLElement[] = screen
-        .getAllByRole('listitem')
-        .filter(
-          (listitem: HTMLElement) => listitem.textContent === 'option 1 label'
-        );
-
-      fireEvent.click(liElements[0]);
-
-      const expected: MultiSelectOption[] = [
-        {
-          id: 'myId-4',
-          label: 'option 4 label',
-          value: 'option 4 value',
-          selected: true,
-        },
-        {
-          id: 'myId-5',
-          label: 'option 5 label',
-          value: 'option 5 value',
-          selected: true,
-        },
-        {
-          id: 'myId-1',
-          label: 'option 1 label',
-          value: 'option 1 value',
-          selected: true,
-        },
-      ];
-
-      expect(onUpdateHandler).toHaveBeenCalled();
-      expect(onUpdateHandler).toHaveBeenCalledWith(expected);
-      expect(
-        within(screen.getAllByRole('list')[0]).getAllByRole('listitem').length
-      ).toBe(3);
-    });
   });
 });

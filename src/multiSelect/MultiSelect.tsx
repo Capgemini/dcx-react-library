@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import { Autocomplete } from '../autocomplete/Autocomplete';
 import { Roles } from '../common/utils/rolesType';
 
@@ -97,10 +97,6 @@ export type MultiSelectProps = {
    * Multi Select onSelect
    */
   onSelect?: (value: string) => void;
-  /**
-   * Multi Select onUpdate
-   */
-  onUpdate?: (selected: MultiSelectOption[]) => void;
 };
 
 function multiSelectReducer(
@@ -166,7 +162,6 @@ export const MultiSelect = ({
   onRemove,
   onRemoveAll,
   onSelect,
-  onUpdate,
 }: MultiSelectProps) => {
   const [state, dispatch] = useReducer(multiSelectReducer, {
     selected: selectOptions
@@ -180,12 +175,6 @@ export const MultiSelect = ({
   });
 
   const { searchTerm, selected } = state;
-
-  useEffect(() => {
-    if (onUpdate) {
-      onUpdate(selected);
-    }
-  });
 
   const onRemoveHandler = (option: MultiSelectOption) => {
     dispatch({
