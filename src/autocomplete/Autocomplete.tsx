@@ -304,7 +304,9 @@ export const Autocomplete = ({
     </div>
   ) : (
     <div className="search">
-      {hintText && <label className={hintClass}>{hintText}</label>}
+      {hintText && (
+        <Hint text={hintText} className={hintClass} useLabel={true} />
+      )}
       <FormInput
         name="autocompleteSearch"
         type="text"
