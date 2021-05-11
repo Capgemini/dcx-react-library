@@ -1858,7 +1858,7 @@ export const MultiSelectDemo = () => {
         }}
         selectOptions={multiSelectOptions}
         selectedListItemStyle={{
-          backgroudColor: '#F5F7F8',
+          backgroundColorColor: '#F5F7F8',
           border: '1px solid #C1C7CF',
           borderRadius: '3px',
           padding: '3px 8px',
@@ -1871,7 +1871,6 @@ export const MultiSelectDemo = () => {
         }}
         searchDebounceMs={0}
         hintText="Enter your search term to add a selection"
-        inputPlaceholder="Select..."
         onRemove={handleRemove}
         onSelect={handleSelect}
         onRemoveAll={handleRemoveAll}
