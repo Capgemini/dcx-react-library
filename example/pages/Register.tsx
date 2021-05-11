@@ -513,12 +513,12 @@ export const Register = () => {
               id: 'heard-about-hint',
               text:
                 'Please select the one closest to where you first heard about us',
-              classes: 'hint-class',
+              className: 'hint-class',
             }}
             itemsClasses="item-classes"
             legend={{
               text: 'How did you hear about us?',
-              classes: 'legend-class',
+              className: 'legend-class',
               isHeading: true,
               headingClasses: 'heading-class',
             }}

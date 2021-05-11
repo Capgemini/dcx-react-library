@@ -33,16 +33,16 @@ function FormSelectDemo() {
       labelProps={{}}
       hint={{
         text: "",
-        classes: "",
+        className: "",
         id: ""
       }}
       error={{
         text: "",
-        classes: "",
+        className: "",
         id: "",
         visuallyHiddenText: {
           text: "",
-          classes: "",
+          className: "",
         }
       }}
       style={{}}

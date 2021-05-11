@@ -21,7 +21,7 @@ function FormGroupDemo() {
     ariaDescribedBy=""
     error={{
       text: "",
-      classes: "",
+      className: "",
       id: "",
       visuallyHiddenText: ""
     }}
@@ -30,7 +30,7 @@ function FormGroupDemo() {
     hint={{
       id: "",
       text: "",
-      classes: ""
+      className: ""
     }}
     id=""
     inputProps={{}}

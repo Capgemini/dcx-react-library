@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FormInput } from '../formInput';
+import { Hint } from '../common';
+import { MultiSelectOption } from '../multiSelect/MultiSelect';
 import { ResultList } from './ResultList';
 import { Selected } from '../multiSelect/components/Selected';
-import { MultiSelectOption } from '../multiSelect/MultiSelect';
 import { SelectedItem } from '../multiSelect/components/SelectedItem';
 import { debounce } from 'lodash';
 
@@ -70,7 +71,7 @@ type autocompleteProps = {
   /**
    * if you want to pass a style class to the result UL container
    */
-  resultliStyle?: React.CSSProperties;
+  resultLiStyle?: React.CSSProperties;
   /**
    * if you want to pass a style class to no result list
    */
@@ -149,7 +150,7 @@ export const Autocomplete = ({
   resultUlClass,
   resultUlStyle,
   resultlLiClass,
-  resultliStyle,
+  resultLiStyle,
   resultNoOptionClass,
   removeAllButtonClass,
   searchContainerStyle,
@@ -247,7 +248,7 @@ export const Autocomplete = ({
   return (
     <>
       {hintText && multiSelect && (
-        <label className={hintClass}>{hintText}</label>
+        <Hint text={hintText} className={hintClass} useLabel={true} />
       )}
       <div className="search" style={{ ...searchContainerStyle }}>
         <div
@@ -274,7 +275,7 @@ export const Autocomplete = ({
               />
             ))}
           {hintText && !multiSelect && (
-            <label className={hintClass}>{hintText}</label>
+            <Hint text={hintText} className={hintClass} useLabel={true} />
           )}
           <FormInput
             name="autocompleteSearch"
@@ -333,7 +334,7 @@ export const Autocomplete = ({
           ulContainerClass={resultUlClass}
           ulContainerStyle={resultUlStyle}
           liContainerClass={resultlLiClass}
-          liContainerStyle={resultliStyle}
+          liContainerStyle={resultLiStyle}
           noOptionClass={resultNoOptionClass}
         />
       )}

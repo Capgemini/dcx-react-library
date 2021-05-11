@@ -60,7 +60,7 @@ export type MultiSelectProps = {
   /**
    * Multi Select result items styling
    */
-  resultliStyle?: React.CSSProperties;
+  resultLiStyle?: React.CSSProperties;
   /**
    * Multi Select remove all button
    */
@@ -155,7 +155,7 @@ export const MultiSelect = ({
   inputProperties,
   resultUlId,
   resultUlStyle,
-  resultliStyle,
+  resultLiStyle,
   removeAllButtonClass,
   selectOptions,
   selectedListStyle,
@@ -287,7 +287,7 @@ export const MultiSelect = ({
           }}
           resultId={resultUlId}
           resultUlStyle={resultUlStyle}
-          resultliStyle={resultliStyle}
+          resultLiStyle={resultLiStyle}
           debounceMs={searchDebounceMs}
           onSelected={onSelectedHandler}
           onChange={onChangeHandler}
