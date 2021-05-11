@@ -2,7 +2,8 @@ import React from 'react';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { MultiSelect, MultiSelectOption } from '../MultiSelect';
+import { MultiSelect } from '../MultiSelect';
+import { MultiSelectOption } from '../Types';
 import { act } from '@testing-library/react-hooks';
 
 describe('MultiSelect', () => {

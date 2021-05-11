@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormInput } from '../formInput';
 import { Hint } from '../common';
-import { MultiSelectOption } from '../multiSelect/MultiSelect';
+import { MultiSelectOption } from '../multiSelect/Types';
 import { ResultList } from './ResultList';
 import { Selected } from '../multiSelect/components/Selected';
 import { SelectedItem } from '../multiSelect/components/SelectedItem';
@@ -251,6 +251,8 @@ export const Autocomplete = ({
         style={{
           display: 'inline-flex',
           flexDirection: 'row',
+          width: '100%',
+          flexWrap: 'wrap',
         }}
       >
         {selected &&

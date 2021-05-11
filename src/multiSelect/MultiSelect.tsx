@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import { Autocomplete } from '../autocomplete/Autocomplete';
+import { MultiSelectOption } from './Types';
 import { Roles } from '../common/utils/rolesType';
 
 type MultiSelectState = {
@@ -13,13 +14,6 @@ type MultiSelectAction =
   | { type: 'add'; payload: MultiSelectOption }
   | { type: 'remove'; payload: MultiSelectOption }
   | { type: 'removeAll' };
-
-export type MultiSelectOption = {
-  label: string;
-  value: string;
-  id?: string;
-  selected?: boolean;
-};
 
 export type MultiSelectProps = {
   /**
@@ -263,6 +257,7 @@ export const MultiSelect = ({
           searchContainerStyle={{
             display: 'inline-flex',
             justifyContent: 'space-between',
+            width: '100%',
             ...searchContainerStyle,
           }}
           selectedListItemStyle={selectedListItemStyle}
