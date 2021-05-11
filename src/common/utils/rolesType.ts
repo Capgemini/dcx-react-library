@@ -14,5 +14,6 @@ export const Roles = {
   progress: 'progress',
   region: 'region',
   suffix: 'suffix',
+  textbox: 'textbox',
   toggle: 'form-toggle',
 };

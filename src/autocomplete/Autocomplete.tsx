@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FormInput } from '../formInput';
-import { Hint } from '../common';
+import { Hint, Roles } from '../common';
 import { MultiSelectOption } from '../multiSelect/Types';
 import { ResultList } from './ResultList';
 import { Selected } from '../multiSelect/components/Selected';
@@ -248,6 +248,7 @@ export const Autocomplete = ({
   const searchEl: JSX.Element = multiSelect ? (
     <div className="search" style={{ ...searchContainerStyle }}>
       <div
+        role={Roles.presentation}
         style={{
           display: 'inline-flex',
           flexDirection: 'row',
@@ -282,7 +283,6 @@ export const Autocomplete = ({
           inputProps={{
             onKeyDown: onKeyDown,
             autoComplete: 'off',
-            'aria-expanded': showOptions,
             ...inputProps,
           }}
           {...props}
