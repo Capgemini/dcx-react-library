@@ -280,6 +280,7 @@ export const Autocomplete = ({
           inputProps={{
             onKeyDown: onKeyDown,
             autoComplete: 'off',
+            'aria-expanded': showOptions,
             ...inputProps,
           }}
           {...props}
