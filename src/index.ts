@@ -14,4 +14,3 @@ export * from './generatePresentationalComponent/generateComponent';
 export * from './generatePresentationalComponent/generateStyle';
 export { DynamicComponent } from './common/components/DynamicComponent';
 export { generatePresentationalComponent } from './generatePresentationalComponent/generateComponent';
-export { MultiSelectOption } from './common/components/commonTypes';

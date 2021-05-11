@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import { Autocomplete } from '../autocomplete/Autocomplete';
-import { MultiSelectOption } from '../common/components/commonTypes';
+import { MultiSelectOption } from './Types';
 import { Roles } from '../common/utils/rolesType';
 
 type MultiSelectState = {
