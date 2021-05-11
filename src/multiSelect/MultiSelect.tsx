@@ -171,11 +171,11 @@ export const MultiSelect = ({
   const [state, dispatch] = useReducer(multiSelectReducer, {
     selected: selectOptions
       .filter((option: MultiSelectOption) => option.selected)
-      .map((option: MultiSelectOption) => ({
-        id: option.id,
-        label: option.label,
-        value: option.value,
-        selected: option.selected,
+      .map(({ id, label, selected, value }: MultiSelectOption) => ({
+        id,
+        label,
+        value,
+        selected,
       })),
   });
 

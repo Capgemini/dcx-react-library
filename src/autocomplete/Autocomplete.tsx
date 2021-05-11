@@ -254,22 +254,24 @@ export const Autocomplete = ({
         }}
       >
         {selected &&
-          selected.map((select: MultiSelectOption, index: number) => (
-            <Selected
-              key={index}
-              select={{
-                id: select.id,
-                label: select.label,
-                value: select.value,
-              }}
-              onRemove={onRemove}
-              onFocus={onFocus}
-              style={{
-                ...selectedListItemStyle,
-                display: 'inline-flex',
-              }}
-            />
-          ))}
+          selected.map(
+            ({ id, label, value }: MultiSelectOption, index: number) => (
+              <Selected
+                key={index}
+                select={{
+                  id,
+                  label,
+                  value,
+                }}
+                onRemove={onRemove}
+                onFocus={onFocus}
+                style={{
+                  ...selectedListItemStyle,
+                  display: 'inline-flex',
+                }}
+              />
+            )
+          )}
         <FormInput
           name="autocompleteSearch"
           type="text"
