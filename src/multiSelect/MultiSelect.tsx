@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import { Autocomplete } from '../autocomplete/Autocomplete';
+import { MultiSelectOption } from '../common/components/commonTypes';
 import { Roles } from '../common/utils/rolesType';
 
 type MultiSelectState = {
@@ -13,13 +14,6 @@ type MultiSelectAction =
   | { type: 'add'; payload: MultiSelectOption }
   | { type: 'remove'; payload: MultiSelectOption }
   | { type: 'removeAll' };
-
-export type MultiSelectOption = {
-  label: string;
-  value: string;
-  id?: string;
-  selected?: boolean;
-};
 
 export type MultiSelectProps = {
   /**

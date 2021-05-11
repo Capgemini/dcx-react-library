@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormInput } from '../formInput';
 import { Hint } from '../common';
-import { MultiSelectOption } from '../multiSelect/MultiSelect';
+import { MultiSelectOption } from '../common/components/commonTypes';
 import { ResultList } from './ResultList';
 import { Selected } from '../multiSelect/components/Selected';
 import { SelectedItem } from '../multiSelect/components/SelectedItem';
