@@ -430,5 +430,32 @@ describe('MultiSelect', () => {
         within(screen.getAllByRole('list')[0]).getAllByRole('listitem').length
       ).toBe(2);
     });
+
+    it('should not call on selected', async () => {
+      const onSelectedHandler = jest.fn();
+
+      render(<MultiSelect selectOptions={options} />);
+
+      const input = screen.getByRole('combobox');
+
+      jest.useFakeTimers('modern');
+      await act(() => userEvent.type(input, 'o'));
+      act(() => {
+        jest.runAllTimers();
+      });
+
+      const liElements: HTMLElement[] = screen
+        .getAllByRole('listitem')
+        .filter(
+          (listitem: HTMLElement) => listitem.textContent === 'option 1 label'
+        );
+
+      fireEvent.click(liElements[0]);
+
+      expect(onSelectedHandler).not.toHaveBeenCalled();
+      expect(
+        within(screen.getAllByRole('list')[0]).getAllByRole('listitem').length
+      ).toBe(3);
+    });
   });
 });
