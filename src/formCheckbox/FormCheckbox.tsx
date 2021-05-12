@@ -1,31 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
-import {
-  ConditionalInputProps,
-  FormCheckboxProps,
-} from '../common/components/commonTypes';
-import { Hint } from '../common';
-
-const conditionalEl = ({
-  label,
-  className,
-  id,
-  groupClassName,
-  labelClassName,
-  inputId,
-  inputClassName,
-  name,
-  type,
-}: ConditionalInputProps) => (
-  <div className={className} id={id}>
-    <div className={groupClassName}>
-      <label className={labelClassName} htmlFor={id}>
-        {label}
-      </label>
-      <input className={inputClassName} id={inputId} name={name} type={type} />
-    </div>
-  </div>
-);
+import { FormCheckboxProps } from '../common/components/commonTypes';
+import { Hint, Conditional } from '../common';
 
 export const FormCheckbox = ({
   id,
@@ -72,7 +48,7 @@ export const FormCheckbox = ({
       {hint && hintPosition === 'below' && <Hint {...hint} />}
       {conditional !== undefined &&
         conditionalReveal() &&
-        conditionalEl(conditional)}
+        Conditional(conditional)}
     </div>
   );
 };

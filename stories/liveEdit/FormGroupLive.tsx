@@ -5,6 +5,11 @@ import './style.css';
 
 const FormGroupDemo = `
 function FormGroupDemo() {
+  const [value, setValue] = React.useState('');
+  const handleChange = event => {
+    setValue(event.currentTarget.value);
+  }
+  
   return (
     <FormGroup
     name="name-of-group"
@@ -13,10 +18,44 @@ function FormGroupDemo() {
       {
         label: 'item-label',
         value: 'yes',
+        id: 'radio-1',
+        conditional: {
+          name: "",
+          label: "",
+          type: 'text',
+          className: "",
+          groupClassName: "",
+          id: "conditional-1",
+          inputClassName: "",
+          inputId: "",
+          labelClassName: "",
+        },
+        hint:{
+          text: "",
+          className: "",
+          id: ""
+        }
       },
       {
         label: 'item-label',
         value: 'no',
+        id: 'radio-2',
+        conditional: {
+          name: "",
+          label: "",
+          type: 'text',
+          className: "",
+          groupClassName: "",
+          id: "conditional-2",
+          inputClassName: "",
+          inputId: "",
+          labelClassName: "",
+        },
+        hint:{
+          text: "",
+          className: "",
+          id: ""
+        }
       },
     ]}
     ariaDescribedBy=""
@@ -46,6 +85,7 @@ function FormGroupDemo() {
         className: ""
       }
     }}
+    onChange={handleChange}
   />
   );
 }

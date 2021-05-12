@@ -14,9 +14,10 @@ function FormCheckboxDemo() {
   };
   return (
     <FormCheckbox
+      name="checkbox-1"
       label="checkbox label"
       value={value}
-      name="checkbox-1"
+      onChange={handleChange}
       id="checkbox-1"
       inputProps={{
         name: 'checkbox-1',
@@ -28,21 +29,25 @@ function FormCheckboxDemo() {
       ariaDescribedBy=""
       ariaLabelledBy=""
       disabled={false}
-      hint=""
+      hint={{
+        text: "",
+        className: "",
+        id: ""
+      }}
       hintPosition="below"
       conditional={{
-        name: 'conditional-1',
-        label: 'condition label',
+        name: "",
+        label: "",
         type: 'text',
-        className: 'classes',
-        groupClassName: 'group-classes',
-        id: 'checkbox-1',
-        inputClassName: 'input-classes',
-        inputId: 'input-1',
+        className: "",
+        groupClassName: "",
+        id: "conditional-1",
+        inputClassName: "",
+        inputId: "",
         labelClassName: "",
       }}
-      onChange={handleChange}
-      selected={checked}    />
+      selected={checked}
+    />
   );
 }
 `.trim();
