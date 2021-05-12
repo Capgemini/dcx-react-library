@@ -8,6 +8,7 @@ function FormGroupDemo() {
   return (
     <FormGroup
     name="name-of-group"
+    type="radio"
     items={[
       {
         label: 'item-label',

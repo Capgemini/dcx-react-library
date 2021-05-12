@@ -31,7 +31,7 @@ type FormGroupProps = {
    */
   name: string;
   /**
-   * form item type
+   * form item type can be "radio" or "checkbox"
    */
   type: string;
   /**
