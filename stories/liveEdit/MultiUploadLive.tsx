@@ -10,7 +10,6 @@ function MultiUploadDemo() {
       name="file-upload-hint"
       acceptedFormats=".jpg, .png"
       allowDirectories=""
-      ariaLabel=""
       className=""
       error={{
         text: "",

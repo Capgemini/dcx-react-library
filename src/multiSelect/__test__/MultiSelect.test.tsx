@@ -35,10 +35,10 @@ describe('MultiSelect', () => {
         />
       );
 
-      const input: Element = screen.getByRole('combobox');
+      const input: Element = screen.getByRole('textbox');
 
       const style: CSSStyleDeclaration = window.getComputedStyle(
-        screen.getByRole('combobox')
+        screen.getByRole('textbox')
       );
 
       expect(input.getAttribute('placeholder')).toBe('my-placeholder');
@@ -100,7 +100,7 @@ describe('MultiSelect', () => {
       );
 
       const style: CSSStyleDeclaration = window.getComputedStyle(
-        screen.getByRole('list')
+        screen.getAllByRole('presentation')[0]
       );
 
       expect(style.backgroundColor).toBe('red');
@@ -231,13 +231,17 @@ describe('MultiSelect', () => {
       expect(removeAllEl.getAttribute('class')).toBe('my-remove-all-class');
 
       expect(
-        screen.getByRole('list').querySelectorAll('[role=listitem]').length
+        screen
+          .getAllByRole('presentation')[0]
+          .querySelectorAll('[role=listitem]').length
       ).toBe(3);
 
       fireEvent.click(removeAllEl);
 
       expect(
-        screen.getByRole('list').querySelectorAll('[role=listitem]').length
+        screen
+          .getAllByRole('presentation')[0]
+          .querySelectorAll('[role=listitem]').length
       ).toBe(0);
 
       expect(handlerRemoveAll).toHaveBeenCalled();
@@ -268,13 +272,17 @@ describe('MultiSelect', () => {
       expect(removeAllEl.getAttribute('class')).toBe('my-remove-all-class');
 
       expect(
-        screen.getByRole('list').querySelectorAll('[role=listitem]').length
+        screen
+          .getAllByRole('presentation')[0]
+          .querySelectorAll('[role=listitem]').length
       ).toBe(3);
 
       fireEvent.click(removeAllEl);
 
       expect(
-        screen.getByRole('list').querySelectorAll('[role=listitem]').length
+        screen
+          .getAllByRole('presentation')[0]
+          .querySelectorAll('[role=listitem]').length
       ).toBe(0);
 
       expect(handlerRemoveAll).not.toHaveBeenCalled();
@@ -312,25 +320,11 @@ describe('MultiSelect', () => {
       },
     ];
 
-    it('should not render any options', async () => {
-      render(<MultiSelect selectOptions={options} />);
-
-      jest.useFakeTimers('modern');
-      const input = screen.getByRole('combobox');
-
-      await act(() => userEvent.type(input, ''));
-      act(() => {
-        jest.runOnlyPendingTimers();
-      });
-
-      expect(screen.getAllByRole('list').length).toBe(1);
-    });
-
     it('should render a combobox with 3 options', async () => {
       render(<MultiSelect selectOptions={options} />);
 
       jest.useFakeTimers('modern');
-      const input = screen.getByRole('combobox');
+      const input = screen.getByRole('textbox');
 
       await act(() => userEvent.type(input, 'o'));
       act(() => {
@@ -338,10 +332,10 @@ describe('MultiSelect', () => {
       });
 
       expect(
-        within(screen.getAllByRole('list')[1]).getAllByRole('listitem')
+        within(screen.getByRole('list')).getAllByRole('listitem')
       ).toBeDefined();
       expect(
-        within(screen.getAllByRole('list')[1]).getAllByRole('listitem').length
+        within(screen.getByRole('list')).getAllByRole('listitem').length
       ).toBe(3);
     });
 
@@ -361,7 +355,7 @@ describe('MultiSelect', () => {
       );
 
       jest.useFakeTimers('modern');
-      const input = screen.getByRole('combobox');
+      const input = screen.getByRole('textbox');
 
       await act(() => userEvent.type(input, 'u'));
       act(() => {
@@ -369,10 +363,10 @@ describe('MultiSelect', () => {
       });
 
       expect(
-        within(screen.getAllByRole('list')[1]).getAllByRole('listitem')
+        within(screen.getByRole('list')).getAllByRole('listitem')
       ).toBeDefined();
       expect(
-        within(screen.getAllByRole('list')[1]).getAllByRole('listitem').length
+        within(screen.getByRole('list')).getAllByRole('listitem').length
       ).toBe(1);
     });
 
@@ -383,7 +377,7 @@ describe('MultiSelect', () => {
         <MultiSelect selectOptions={options} onSelect={onSelectedHandler} />
       );
 
-      const input = screen.getByRole('combobox');
+      const input = screen.getByRole('textbox');
 
       jest.useFakeTimers('modern');
       await act(() => userEvent.type(input, 'o'));
@@ -402,14 +396,15 @@ describe('MultiSelect', () => {
       expect(onSelectedHandler).toHaveBeenCalled();
       expect(onSelectedHandler).toHaveBeenCalledWith('option 1 value');
       expect(
-        within(screen.getAllByRole('list')[0]).getAllByRole('listitem').length
+        within(screen.getAllByRole('presentation')[1]).getAllByRole('listitem')
+          .length
       ).toBe(3);
     });
 
     it('should not add a selected option to the selected list', async () => {
       render(<MultiSelect selectOptions={options} />);
 
-      const input = screen.getByRole('combobox');
+      const input = screen.getByRole('textbox');
 
       jest.useFakeTimers('modern');
       await act(() => userEvent.type(input, 'o'));
@@ -428,7 +423,8 @@ describe('MultiSelect', () => {
       fireEvent.click(liElements[0]);
 
       expect(
-        within(screen.getAllByRole('list')[0]).getAllByRole('listitem').length
+        within(screen.getAllByRole('presentation')[1]).getAllByRole('listitem')
+          .length
       ).toBe(2);
     });
 
@@ -437,7 +433,7 @@ describe('MultiSelect', () => {
 
       render(<MultiSelect selectOptions={options} />);
 
-      const input = screen.getByRole('combobox');
+      const input = screen.getByRole('textbox');
 
       jest.useFakeTimers('modern');
       await act(() => userEvent.type(input, 'o'));
@@ -455,7 +451,8 @@ describe('MultiSelect', () => {
 
       expect(onSelectedHandler).not.toHaveBeenCalled();
       expect(
-        within(screen.getAllByRole('list')[0]).getAllByRole('listitem').length
+        within(screen.getAllByRole('presentation')[1]).getAllByRole('listitem')
+          .length
       ).toBe(3);
     });
   });

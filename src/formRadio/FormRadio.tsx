@@ -35,13 +35,13 @@ export const FormRadio = ({
       <div className={conditional.groupClassName}>
         <label className={conditional.labelClassName} htmlFor={conditional.id}>
           {conditional.label}
+          <input
+            className={conditional.inputClassName}
+            id={conditional.inputId}
+            name={conditional.name}
+            type={conditional.type}
+          />
         </label>
-        <input
-          className={conditional.inputClassName}
-          id={conditional.inputId}
-          name={conditional.name}
-          type={conditional.type}
-        />
       </div>
     </div>
   );

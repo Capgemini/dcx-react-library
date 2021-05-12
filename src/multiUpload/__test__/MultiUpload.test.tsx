@@ -5,9 +5,11 @@ import { MultiUpload } from '../MultiUpload';
 
 describe('MultiUpload', () => {
   it('should render a multi upload', () => {
-    render(<MultiUpload id="file-input" name="file-upload" />);
+    const { container } = render(
+      <MultiUpload id="file-input" name="file-upload" />
+    );
 
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(container.querySelector('#file-input')).toBeInTheDocument();
   });
 
   it('should render a multi upload label', () => {

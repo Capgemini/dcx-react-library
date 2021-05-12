@@ -243,7 +243,7 @@ export const MultiSelect = ({
   return (
     <div id={id} className={className}>
       <div
-        role={Roles.list}
+        role={Roles.presentation}
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -266,7 +266,7 @@ export const MultiSelect = ({
           hintClass={hintClass}
           hintText={hintText}
           inputProps={{
-            role: Roles.combobox,
+            role: Roles.textbox,
             ...inputProperties,
           }}
           resultId={resultUlId}
