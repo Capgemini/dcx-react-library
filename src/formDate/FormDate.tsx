@@ -258,13 +258,13 @@ export const FormDate = ({
   return (
     <div className={inputContainerClass}>
       {errorPosition === 'top' && showError && (
-        <ErrorMessage text={errorMessage} classes={errorClass} />
+        <ErrorMessage text={errorMessage} className={errorClass} />
       )}
       <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto' }}>
         {DateComp}
       </div>
       {errorPosition === 'bottom' && showError && (
-        <ErrorMessage text={errorMessage} classes={errorClass} />
+        <ErrorMessage text={errorMessage} className={errorClass} />
       )}
     </div>
   );

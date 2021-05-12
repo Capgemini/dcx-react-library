@@ -1,7 +1,7 @@
 import React from 'react';
 import { Roles } from '../../common';
 import { SelectedItem } from './SelectedItem';
-import { SelectValue } from '../MultiSelect';
+import { MultiSelectOption } from '../Types';
 
 const ENTER_KEY: number = 13;
 
@@ -9,11 +9,7 @@ export type SelectedProps = {
   /**
    * Selected select value
    */
-  select: SelectValue;
-  /**
-   * Selected select remove handler
-   */
-  onRemove: (value: SelectValue) => void;
+  select: MultiSelectOption;
   /**
    * Selected select ariaLabel
    */
@@ -35,6 +31,10 @@ export type SelectedProps = {
    */
   style?: React.CSSProperties;
   /**
+   * Selected select remove handler
+   */
+  onRemove?: (select: MultiSelectOption) => void;
+  /**
    * Selected select focus handler
    */
   onFocus?: () => void;
@@ -50,11 +50,11 @@ export const Selected = ({
   onFocus,
   onRemove,
 }: SelectedProps) => {
-  const handleClick = () => onRemove(select);
+  const handleClick = () => onRemove && onRemove(select);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>): void => {
     if (parseInt(event.code) === ENTER_KEY) {
-      onRemove(select);
+      onRemove && onRemove(select);
     }
   };
 

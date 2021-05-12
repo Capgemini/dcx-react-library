@@ -1,0 +1,75 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { MultiSelect } from '../../src/multiSelect/MultiSelect';
+
+<Meta
+  title="DCXLibrary/Form/MultiSelect/documentation"
+  component={MultiSelect}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# MultiSelect
+
+A multi select component ready to use in your form.
+
+MultiSelect is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
+
+## Usage
+
+Use the multi select component when users need to make multiple selections.
+
+It provides a conventional way to make multiple selections.
+
+An example with all the available properties is:
+
+```js
+<MultiSelect
+  selectOptions={[
+    {
+      label: 'option-label',
+      value: 'option-value',
+      id: 'option-id',
+      selected: true,
+    },
+  ]}
+  className="multi-select-class-name"
+  hintClass="hint-class"
+  hintText="hint-text"
+  id="multi-select-id"
+  inputProperties={{
+    placeholder: 'input-place-holder',
+    style: {
+      border: 'none',
+      padding: '3px 8px',
+      margin: '2px 6px 2px 0px',
+    },
+  }}
+  resultUlId=""
+  resultUlStyle={{
+    color: 'blue',
+  }}
+  resultLiStyle={{
+    color: 'red',
+  }}
+  removeAllButtonClass="remove-all-button-class"
+  selectedListStyle={{
+    color: 'white',
+  }}
+  selectedListItemStyle={{
+    padding: '3px',
+  }}
+  searchContainerStyle={{
+    borderRadius: '3px',
+  }}
+  searchDebounceMs={0}
+  onFocus={onFocusHandler}
+  onRemove={onRemoveHandler}
+  onRemoveAll={onRemoveAllHandler}
+/>
+```
+
+<Props of={MultiSelect} />

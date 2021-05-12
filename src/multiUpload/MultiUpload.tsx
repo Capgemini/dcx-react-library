@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorMessage, Hint, Roles } from '../common';
+import { ErrorMessage, Hint } from '../common';
 import { ErrorMessageProps, HintProps } from '../common/components/commonTypes';
 
 type MultiUploadProps = {
@@ -15,10 +15,6 @@ type MultiUploadProps = {
    * multi upload whether or not to allow directories and files both to be selected in the file list
    */
   allowDirectories?: string;
-  /**
-   * multi upload aria label
-   */
-  ariaLabel?: string;
   /**
    * multi upload class name
    */
@@ -53,7 +49,6 @@ export const MultiUpload = ({
   name,
   acceptedFormats,
   allowDirectories,
-  ariaLabel,
   className,
   error,
   hint,
@@ -63,12 +58,8 @@ export const MultiUpload = ({
   labelProperties,
 }: MultiUploadProps) => (
   <div className={className}>
-    <span role={Roles.button} aria-controls={id}>
-      {label && (
-        <label {...labelProperties} htmlFor={id}>
-          {label}
-        </label>
-      )}
+    <label {...labelProperties} aria-controls={id} htmlFor={id}>
+      {label && <span>{label}</span>}
       {hint && <Hint {...hint} />}
       {error && <ErrorMessage {...error} />}
       <input
@@ -76,10 +67,9 @@ export const MultiUpload = ({
         id={id}
         type="file"
         name={name}
-        aria-label={ariaLabel || name}
         accept={acceptedFormats}
         allowdirs={allowDirectories}
       />
-    </span>
+    </label>
   </div>
 );

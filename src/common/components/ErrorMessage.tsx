@@ -3,13 +3,13 @@ import { ErrorMessageProps } from '../components/commonTypes';
 
 export const ErrorMessage = ({
   text,
-  classes,
+  className,
   id,
   visuallyHiddenText,
 }: ErrorMessageProps) => (
-  <span id={id} className={classes}>
+  <span id={id} className={className}>
     {visuallyHiddenText && (
-      <span className={visuallyHiddenText.classes}>
+      <span className={visuallyHiddenText.className}>
         {visuallyHiddenText.text}
       </span>
     )}

@@ -6,7 +6,7 @@ type VisuallyHidden = {
   /**
    * classes of visually hidden text
    */
-  classes?: string;
+  className?: string;
 };
 
 type HeadingProps = {
@@ -69,9 +69,9 @@ export type ErrorMessageProps = {
    */
   text: string;
   /**
-   * error classes
+   * error className
    */
-  classes?: string;
+  className?: string;
   /**
    * error id
    **/
@@ -228,11 +228,15 @@ export type HintProps = {
   /**
    * class names to customise hint
    **/
-  classes?: string;
+  className?: string;
   /**
    * hint id
    **/
   id?: string;
+  /**
+   * hint as label
+   */
+  useLabel?: boolean;
 };
 
 export type LegendProps = {
