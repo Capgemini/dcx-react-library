@@ -462,6 +462,7 @@ export const Register = () => {
         <div className="form-group">
           <FormGroup
             name="heard-about"
+            type="radio"
             inputProps={{
               className: 'class-name',
             }}

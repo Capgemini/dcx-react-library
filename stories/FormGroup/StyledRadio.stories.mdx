@@ -2,18 +2,19 @@ import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { FormGroup } from '../../src/formGroup/FormGroup';
 import '../style.css';
 
-<Meta title="DCXLibrary/Form/Group/Styled" component={FormGroup} />
+<Meta title="DCXLibrary/Form/Group/StyledRadios" component={FormGroup} />
 
 # GOVUK Style
 
 In this section we are using the FormGroup component providing the GOV.UK Design System styles by passing the relative `className`. Feel free to use your own css and style the FormGroup as you prefer
 
 <Canvas>
-  <Story name="inline">
+  <Story name="inline radio buttons">
     {() => {
       return (
         <FormGroup
           name="change-name"
+          type="radio"
           inputProps={{
             className: 'govuk-radios__input',
           }}
@@ -62,11 +63,12 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 # Titled
 
 <Canvas>
-  <Story name="titled">
+  <Story name="titled radio buttons">
     {() => {
       return (
         <FormGroup
           name="change-name-2"
+          type="radio"
           inputProps={{
             className: 'govuk-radios__input',
           }}
@@ -115,11 +117,12 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 # Stacked
 
 <Canvas>
-  <Story name="stacked">
+  <Story name="stacked radio buttons">
     {() => {
       return (
         <FormGroup
           name="where-do-you-live"
+          type="radio"
           inputProps={{
             className: 'govuk-radios__input',
           }}
@@ -167,11 +170,12 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 # With hints
 
 <Canvas>
-  <Story name="items with hints">
+  <Story name="radio buttons with hints">
     {() => {
       return (
         <FormGroup
           name="sign-in"
+          type="radio"
           inputProps={{
             className: 'govuk-radios__input',
           }}
@@ -234,11 +238,12 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 # Filter
 
 <Canvas>
-  <Story name="filter">
+  <Story name="filter radio buttons">
     {() => {
       return (
         <FormGroup
           name="filter-change"
+          type="radio"
           inputProps={{
             className: 'govuk-radios__input',
           }}
@@ -280,11 +285,12 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 # Error message
 
 <Canvas>
-  <Story name="error message">
+  <Story name="error message radio buttons">
     {() => {
       return (
         <FormGroup
           name="change-name-error"
+          type="radio"
           inputProps={{
             className: 'govuk-radios__input',
           }}
@@ -342,11 +348,12 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 # Text divider
 
 <Canvas>
-  <Story name="with a text divider">
+  <Story name="radio buttons with a text divider">
     {() => {
       return (
         <FormGroup
           name="where-do-you-live-divider"
+          type="radio"
           inputProps={{
             className: 'govuk-radios__input',
           }}
@@ -403,11 +410,12 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 # conditionally revealing content
 
 <Canvas>
-  <Story name="conditionally revealing content">
+  <Story name="radio buttons conditionally revealing content">
     {() => {
       return (
         <FormGroup
           name="contact"
+          type="radio"
           inputProps={{
             className: 'govuk-radios__input',
           }}

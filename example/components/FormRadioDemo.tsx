@@ -31,6 +31,7 @@ export const FormRadioDemo = () => {
       <br />
       <FormGroup
         name="group2"
+        type="radio"
         items={[
           {
             id: 'radio-1',
