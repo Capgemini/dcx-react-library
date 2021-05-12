@@ -24,7 +24,7 @@ import '../style.css';
             name: 'checkbox-1',
           }}
           onChange={handleChange}
-          defaultChecked={checked}
+          selected={checked}
         />
       );
     }}
@@ -53,7 +53,7 @@ By default, the hint will display underneath the checkbox
             name: 'checkbox-2',
           }}
           onChange={handleChange}
-          defaultChecked={checked}
+          selected={checked}
           hint={{
             text: 'Hint text',
           }}
@@ -83,11 +83,11 @@ By default, the hint will display underneath the checkbox
             name: 'checkbox-3',
           }}
           onChange={handleChange}
-          defaultChecked={checked}
+          selected={checked}
           hint={{
-            text: 'Hint text',
-            position: 'above',
+            text: 'Hint text'
           }}
+          hintPosition='above'
         />
       );
     }}
@@ -115,7 +115,7 @@ By default, the hint will display underneath the checkbox
           }}
           onChange={handleChange}
           disabled={true}
-          defaultChecked={checked}
+          selected={checked}
         />
       );
     }}
@@ -142,7 +142,7 @@ By default, the hint will display underneath the checkbox
             name: 'checkbox-5',
           }}
           onChange={handleChange}
-          defaultChecked={checked}
+          selected={checked}
         />
       );
     }}
@@ -155,7 +155,7 @@ By default, the hint will display underneath the checkbox
   <Story name="conditional">
     {() => {
       const [value, setValue] = React.useState('');
-      const [checked, setChecked] = React.useState(false);
+      const [checked, setChecked] = React.useState(true);
       const handleChange = event => {
         setValue(event.currentTarget.value);
         setChecked(!checked);
@@ -170,36 +170,16 @@ By default, the hint will display underneath the checkbox
             name: 'checkbox-6',
           }}
           onChange={handleChange}
-          defaultChecked={checked}
+          selected={checked}
           conditional={{
             name: 'conditional-6',
             label: 'condition label',
             type: 'text',
             className: 'classes',
             groupClassName: 'group-classes',
-            id: 'conditional-6',
+            id: 'checkbox-6',
             inputClassName: 'input-classes',
             inputId: 'input-6',
-          }}
-        />
-        <FormCheckbox
-          label="checkbox label"
-          value={value}
-          id="checkbox-7"
-          inputProps={{
-            name: 'checkbox-7',
-          }}
-          onChange={handleChange}
-          defaultChecked={checked}
-          conditional={{
-            name: 'conditional-7',
-            label: 'condition label',
-            type: 'text',
-            className: 'classes',
-            groupClassName: 'group-classes',
-            id: 'conditional-7',
-            inputClassName: 'input-classes',
-            inputId: 'input-7',
           }}
         />
         </>

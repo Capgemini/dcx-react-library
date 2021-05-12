@@ -2,51 +2,51 @@ import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { FormGroup } from '../../src/formGroup/FormGroup';
 import '../style.css';
 
-<Meta title="DCXLibrary/Form/Group/Styled" component={FormGroup} />
+<Meta title="DCXLibrary/Form/Group/StyledCheckbox" component={FormGroup} />
 
 # GOVUK Style
 
 In this section we are using the FormGroup component providing the GOV.UK Design System styles by passing the relative `className`. Feel free to use your own css and style the FormGroup as you prefer
 
 <Canvas>
-  <Story name="inline">
+  <Story name="multiple checkboxes">
     {() => {
       return (
         <FormGroup
-          name="change-name"
+          name="waste"
+          type="checkbox"
           inputProps={{
-            className: 'govuk-radios__input',
+            className: 'govuk-checkboxes__input',
           }}
           itemProps={{
-            className: 'govuk-radios__item',
+            className: 'govuk-checkboxes__item',
           }}
           labelProps={{
-            className: 'govuk-label govuk-radios__label',
+            className: 'govuk-label govuk-checkboxes__label',
           }}
           items={[
             {
-              label: 'Yes',
-              value: 'yes',
-              id: 'change-name',
+              label: 'Waste from animal carcasses',
+              value: 'carcasses',
+              id: 'waste',
             },
             {
-              label: 'No',
-              value: 'no',
-              id: 'change-name-2',
+              label: 'Waste from mines of quarries',
+              value: 'mines',
+              id: 'waste-2',
+            },
+            {
+              label: 'Farm or agricultural waste',
+              value: 'farm',
+              id: 'waste-2',
             },
           ]}
           ariaDescribedBy="changed-name-hint"
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
-          hint={{
-            id: 'changed-name-hint',
-            text:
-              'This includes changing your last name or spelling your name differently.',
-            className: 'govuk-hint',
-          }}
-          itemsClasses="govuk-radios govuk-radios--inline"
+          itemsClasses="govuk-checkboxes"
           legend={{
-            text: 'Have you changed your name?',
+            text: 'Which types of waste do you transport?',
             className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
             heading: {
               priority: 1,
@@ -66,97 +66,44 @@ In this section we are using the FormGroup component providing the GOV.UK Design
     {() => {
       return (
         <FormGroup
-          name="change-name-2"
+          name="waste-2"
+          type="checkbox"
           inputProps={{
-            className: 'govuk-radios__input',
+            className: 'govuk-checkboxes__input',
           }}
           itemProps={{
-            className: 'govuk-radios__item',
+            className: 'govuk-checkboxes__item',
           }}
           labelProps={{
-            className: 'govuk-label govuk-radios__label',
+            className: 'govuk-label govuk-checkboxes__label',
           }}
           items={[
             {
-              label: 'Yes',
-              value: 'yes',
-              id: 'change-name-2-1',
+              label: 'Waste from animal carcasses',
+              value: 'carcasses',
+              id: 'waste',
             },
             {
-              label: 'No',
-              value: 'no',
-              id: 'change-name-2-2',
+              label: 'Waste from mines of quarries',
+              value: 'mines',
+              id: 'waste-2',
+            },
+            {
+              label: 'Farm or agricultural waste',
+              value: 'farm',
+              id: 'waste-2',
             },
           ]}
-          ariaDescribedBy="changed-name-hint"
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
-          hint={{
-            id: 'changed-name-hint',
-            text:
-              'This includes changing your last name or spelling your name differently.',
-            className: 'govuk-hint',
-          }}
-          itemsClasses="govuk-radios govuk-radios--inline"
+          itemsClasses="govuk-checkboxes"
           legend={{
-            text: 'Have you changed your name?',
+            text: 'Which types of waste do you transport?',
             className: 'govuk-fieldset__legend govuk-fieldset__legend',
             heading: {
               priority: 1,
               className: 'govuk-fieldset__heading',
             },
-          }}
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-# Stacked
-
-<Canvas>
-  <Story name="stacked">
-    {() => {
-      return (
-        <FormGroup
-          name="where-do-you-live"
-          inputProps={{
-            className: 'govuk-radios__input',
-          }}
-          itemProps={{
-            className: 'govuk-radios__item',
-          }}
-          labelProps={{
-            className: 'govuk-label govuk-radios__label',
-          }}
-          items={[
-            {
-              label: 'England',
-              value: 'england',
-              id: 'where-do-you-live',
-            },
-            {
-              label: 'Scotland',
-              value: 'scotland',
-              id: 'where-do-you-live-2',
-            },
-            {
-              label: 'Wales',
-              value: 'wales',
-              id: 'where-do-you-live-3',
-            },
-            {
-              label: 'Northern Ireland',
-              value: 'northen-ireland',
-              id: 'where-do-you-live-4',
-            },
-          ]}
-          groupClasses="govuk-form-group"
-          fieldsetClasses="govuk-fieldset"
-          itemsClasses="govuk-radios"
-          legend={{
-            text: 'Where do you live?',
-            className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
           }}
         />
       );
@@ -171,54 +118,52 @@ In this section we are using the FormGroup component providing the GOV.UK Design
     {() => {
       return (
         <FormGroup
-          name="sign-in"
+          name="nationality"
+          type="checkbox"
           inputProps={{
-            className: 'govuk-radios__input',
+            className: 'govuk-checkboxes__input',
           }}
           itemProps={{
-            className: 'govuk-radios__item',
+            className: 'govuk-checkboxes__item',
           }}
           labelProps={{
-            className: 'govuk-label govuk-radios__label',
+            className: 'govuk-label govuk-checkboxes__label',
           }}
           items={[
             {
-              label: 'Sign in with Government Gateway',
-              value: 'government-gateway',
-              id: 'sign-in',
+              label: 'British',
+              value: 'british',
+              id: 'nationality',
               hint: {
-                text:
-                  'You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.',
-                className: 'govuk-hint govuk-radios__hint',
-                id: 'sign-in-item-hint',
+                text: 'including English, Scottish, Welsh and Northern Irish.',
+                classes: 'govuk-hint govuk-checkboxes__hint',
+                id: 'nationality-hint',
               },
-              ariaDescribedBy: 'sign-in-item-hint',
+              ariaDescribedBy: 'nationality-hint',
             },
             {
-              label: 'Sign in with GOV.UK Verify',
-              value: 'govuk-verify',
-              id: 'sign-in-2',
-              hint: {
-                text:
-                  'You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.',
-                className: 'govuk-hint govuk-radios__hint',
-                id: 'sign-in-2-item-hint',
-              },
-              ariaDescribedBy: 'sign-in-item-hint',
+              label: 'Irish',
+              value: 'irish',
+              id: 'nationality-2',
+            },
+            {
+              label: 'Citizen of another country',
+              value: 'other',
+              id: 'nationality-3',
             },
           ]}
-          ariaDescribedBy="sign-in-hint"
+          ariaDescribedBy="nationality-hint"
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
           hint={{
-            id: 'sign-in-hint',
+            id: 'nationality-hint',
             text:
-              'You’ll need an account to prove your identity and complete your Self Assessment',
-            className: 'govuk-hint',
+              'If you have dual nationality, select all options that are relevant to you.',
+            classes: 'govuk-hint',
           }}
-          itemsClasses="govuk-radios"
+          itemsClasses="govuk-checkboxes"
           legend={{
-            text: 'How do you want to sign in?',
+            text: 'What is your nationality?',
             className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
             heading: {
               priority: 1,
@@ -231,22 +176,23 @@ In this section we are using the FormGroup component providing the GOV.UK Design
   </Story>
 </Canvas>
 
-# Filter
+# Small checkboxes
 
 <Canvas>
-  <Story name="filter">
+  <Story name="small checkboxes">
     {() => {
       return (
         <FormGroup
           name="filter-change"
+          type="checkbox"
           inputProps={{
-            className: 'govuk-radios__input',
+            className: 'govuk-checkboxes__input',
           }}
           itemProps={{
-            className: 'govuk-radios__item',
+            className: 'govuk-checkboxes__item',
           }}
           labelProps={{
-            className: 'govuk-label govuk-radios__label',
+            className: 'govuk-label govuk-checkboxes__label',
           }}
           items={[
             {
@@ -260,9 +206,9 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'changed-name-year',
             },
           ]}
-          groupClasses="govuk-radios govuk-radios--small"
+          groupClasses="govuk-checkboxes govuk-checkboxes--small"
           fieldsetClasses="govuk-fieldset"
-          itemsClasses="govuk-radios govuk-radios--small"
+          itemsClasses="govuk-checkboxes govuk-checkboxes--small"
           legend={{
             text: 'Filter',
             className: 'govuk-fieldset__legend govuk-fieldset__legend--m',
@@ -284,49 +230,54 @@ In this section we are using the FormGroup component providing the GOV.UK Design
     {() => {
       return (
         <FormGroup
-          name="change-name-error"
+          name="live-error"
+          type="checkbox"
           inputProps={{
-            className: 'govuk-radios__input',
+            className: 'govuk-checkboxes__input',
           }}
           itemProps={{
-            className: 'govuk-radios__item',
+            className: 'govuk-checkboxes__item',
           }}
           labelProps={{
-            className: 'govuk-label govuk-radios__label',
+            className: 'govuk-label govuk-checkboxes__label',
           }}
           items={[
             {
-              label: 'Yes',
-              value: 'yes',
-              id: 'change-name-yes-error',
+              label: 'England',
+              value: 'england',
+              id: 'live-england-error',
             },
             {
-              label: 'No',
-              value: 'no',
-              id: 'change-name-no-error',
+              label: 'Ireland',
+              value: 'ireland',
+              id: 'live-ireland-error',
+            },
+            {
+              label: 'Scotland',
+              value: 'scotland',
+              id: 'live-scotland-error',
+            },
+            {
+              label: 'Wales',
+              value: 'wales',
+              id: 'live-wales-error',
             },
           ]}
           ariaDescribedBy="changed-name-hint changed-name-error"
           groupClasses="govuk-form-group govuk-form-group--error"
           fieldsetClasses="govuk-fieldset"
           error={{
-            text: 'Select yes if you have changed your name',
-            className: 'govuk-error-message',
+            text: 'Please confirm where you live',
+            classes: 'govuk-error-message',
             id: 'changed-name-error',
             visuallyHiddenText: {
               text: 'Error:',
-              className: 'govuk-visually-hidden',
+              classes: 'govuk-visually-hidden',
             },
           }}
-          hint={{
-            id: 'changed-name-hint',
-            text:
-              'This includes changing your last name or spelling your name differently.',
-            className: 'govuk-hint',
-          }}
-          itemsClasses="govuk-radios govuk-radios--inline"
+          itemsClasses="govuk-checkboxes"
           legend={{
-            text: 'Have you changed your name?',
+            text: 'Where do you live?',
             className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
             heading: {
               priority: 1,
@@ -347,14 +298,15 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       return (
         <FormGroup
           name="where-do-you-live-divider"
+          type="checkbox"
           inputProps={{
-            className: 'govuk-radios__input',
+            className: 'govuk-checkboxes__input',
           }}
           itemProps={{
-            className: 'govuk-radios__item',
+            className: 'govuk-checkboxes__item',
           }}
           labelProps={{
-            className: 'govuk-label govuk-radios__label',
+            className: 'govuk-label govuk-checkboxes__label',
           }}
           items={[
             {
@@ -378,7 +330,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'where-do-you-live-divider-4',
             },
             {
-              className: 'govuk-radios__divider',
+              className: 'govuk-checkboxes__divider',
               text: 'or',
             },
             {
@@ -389,7 +341,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
           ]}
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
-          itemsClasses="govuk-radios"
+          itemsClasses="govuk-checkboxes"
           legend={{
             text: 'Where do you live?',
             className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
@@ -400,7 +352,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
   </Story>
 </Canvas>
 
-# conditionally revealing content
+# Conditionally revealing content
 
 <Canvas>
   <Story name="conditionally revealing content">
@@ -408,27 +360,29 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       return (
         <FormGroup
           name="contact"
+          type="checkbox"
           inputProps={{
-            className: 'govuk-radios__input',
+            className: 'govuk-checkboxes__input',
           }}
           itemProps={{
-            className: 'govuk-radios__item',
+            className: 'govuk-checkboxes__item',
           }}
           labelProps={{
-            className: 'govuk-label govuk-radios__label',
+            className: 'govuk-label govuk-checkboxes__label',
           }}
           items={[
             {
               label: 'Email',
               value: 'email',
               id: 'contact',
+              selected: true,
               ariaDataControls: 'conditional-contact',
               conditional: {
                 name: 'contact-by-email',
                 label: 'Email address',
                 type: 'email',
                 className:
-                  'govuk-radios__conditional govuk-radios__conditional--hidden',
+                  'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
                 groupClassName: 'govuk-form-group',
                 id: 'conditional-contact',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
@@ -439,13 +393,14 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               label: 'Phone',
               value: 'phone',
               id: 'contact-2',
+              selected: false,
               ariaDataControls: 'conditional-contact-2',
               conditional: {
                 name: 'contact-by-phone',
                 label: 'Phone number',
                 type: 'tel',
                 className:
-                  'govuk-radios__conditional govuk-radios__conditional--hidden',
+                  'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
                 groupClassName: 'govuk-form-group',
                 id: 'conditional-contact-2',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
@@ -456,13 +411,14 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               label: 'Text message',
               value: 'text',
               id: 'contact-3',
+              selected: false,
               ariaDataControls: 'conditional-contact-3',
               conditional: {
                 name: 'contact-by-text',
                 label: 'Mobile phone number',
                 type: 'tel',
                 className:
-                  'govuk-radios__conditional govuk-radios__conditional--hidden',
+                  'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
                 groupClassName: 'govuk-form-group',
                 id: 'conditional-contact-3',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
@@ -475,10 +431,10 @@ In this section we are using the FormGroup component providing the GOV.UK Design
           fieldsetClasses="govuk-fieldset"
           hint={{
             id: 'contact-hint',
-            text: 'Select one option.',
-            className: 'govuk-hint',
+            text: 'Select all options that are relevant to you.',
+            classes: 'govuk-hint',
           }}
-          itemsClasses="govuk-radios govuk-radios--conditional"
+          itemsClasses="govuk-checkboxes govuk-checkboxes--conditional"
           legend={{
             text: 'How would you prefer to be contacted?',
             className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
@@ -496,19 +452,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 The css we used to styled the formGroup component is the following:
 
 ```css
-.govuk-radios__input {
-  cursor: pointer;
-  position: absolute;
-  z-index: 1;
-  top: -2px;
-  left: -2px;
-  width: 44px;
-  height: 44px;
-  margin: 0;
-  opacity: 0;
-}
-
-.govuk-radios__item {
+.govuk-checkboxes__item {
   font-family: 'GDS Transport', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -524,127 +468,220 @@ The css we used to styled the formGroup component is the following:
   clear: left;
 }
 
-.govuk-label {
-  font-family: 'GDS Transport', arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.25;
-  color: #0b0c0c;
-  display: block;
-  margin-bottom: 5px;
+@media print {
+  .govuk-checkboxes__item {
+    font-family: sans-serif;
+  }
 }
 
-.govuk-hint {
-  font-family: 'GDS Transport', arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.25;
-  display: block;
-  margin-bottom: 15px;
-  color: #505a5f;
+@media (min-width: 40.0625em) {
+  .govuk-checkboxes__item {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
 }
 
-.govuk-fieldset {
-  min-width: 0;
+@media print {
+  .govuk-checkboxes__item {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+.govuk-checkboxes__item:last-child,
+.govuk-checkboxes__item:last-of-type {
+  margin-bottom: 0;
+}
+
+.govuk-checkboxes__input {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  top: -2px;
+  left: -2px;
+  width: 44px;
+  height: 44px;
   margin: 0;
-  padding: 0;
-  border: 0;
+  opacity: 0;
 }
 
-.govuk-fieldset__legend {
-  font-family: 'GDS Transport', arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.25;
-  color: #0b0c0c;
+.govuk-checkboxes__label {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 8px 15px 5px;
+  cursor: pointer;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+.govuk-checkboxes__label:before {
+  content: '';
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  display: table;
-  max-width: 100%;
-  margin-bottom: 10px;
-  padding: 0;
-  white-space: normal;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 2px solid currentColor;
+  background: transparent;
 }
 
-.govuk-fieldset:after {
+.govuk-checkboxes__label:after {
+  content: '';
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  top: 11px;
+  left: 9px;
+  width: 23px;
+  height: 12px;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  border: solid;
+  border-width: 0 0 5px 5px;
+  border-top-color: transparent;
+  opacity: 0;
+  background: transparent;
+}
+
+.govuk-checkboxes__hint {
+  display: block;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.govuk-checkboxes__input:focus + .govuk-checkboxes__label:before {
+  border-width: 4px;
+  -webkit-box-shadow: 0 0 0 3px #fd0;
+  box-shadow: 0 0 0 3px #fd0;
+}
+
+.govuk-checkboxes__input:selected + .govuk-checkboxes__label:after {
+  opacity: 1;
+}
+
+.govuk-checkboxes__input:disabled,
+.govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
+  cursor: default;
+}
+
+.govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
+  opacity: 0.5;
+}
+
+.govuk-checkboxes__conditional {
+  margin-bottom: 15px;
+  margin-left: 18px;
+  padding-left: 33px;
+  border-left: 4px solid #b1b4b6;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-checkboxes__conditional {
+    margin-bottom: 20px;
+  }
+}
+
+.js-enabled .govuk-checkboxes__conditional--hidden {
+  display: none;
+}
+
+.govuk-checkboxes__conditional > :last-child {
+  margin-bottom: 0;
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__item {
+  min-height: 0;
+  margin-bottom: 0;
+  padding-left: 34px;
+  float: left;
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__item:after {
   content: '';
   display: block;
   clear: both;
 }
 
-.govuk-radios__item:last-child,
-.govuk-radios__item:last-of-type {
-  margin-bottom: 0;
+.govuk-checkboxes--small .govuk-checkboxes__input {
+  left: -10px;
 }
 
-.govuk-radios__input:focus + .govuk-radios__label:before {
-  border-width: 4px;
-  -webkit-box-shadow: 0 0 0 4px #fd0;
-  box-shadow: 0 0 0 4px #fd0;
+.govuk-checkboxes--small .govuk-checkboxes__label {
+  margin-top: -2px;
+  padding: 13px 15px 13px 1px;
+  float: left;
 }
 
-.govuk-radios__input:checked + .govuk-radios__label:after {
-  opacity: 1;
+@media (min-width: 40.0625em) {
+  .govuk-checkboxes--small .govuk-checkboxes__label {
+    padding: 11px 15px 10px 1px;
+  }
 }
 
-.govuk-radios__input:disabled,
-.govuk-radios__input:disabled + .govuk-radios__label {
-  cursor: default;
+.govuk-checkboxes--small .govuk-checkboxes__label:before {
+  top: 8px;
+  width: 24px;
+  height: 24px;
 }
 
-.govuk-radios__input:disabled + .govuk-radios__label {
-  opacity: 0.5;
+.govuk-checkboxes--small .govuk-checkboxes__label:after {
+  top: 15px;
+  left: 6px;
+  width: 12px;
+  height: 6.5px;
+  border-width: 0 0 3px 3px;
 }
 
-.govuk-visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  clip: rect(0 0 0 0) !important;
-  -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important;
-  border: 0 !important;
-  white-space: nowrap !important;
+.govuk-checkboxes--small .govuk-checkboxes__hint {
+  padding: 0;
+  clear: both;
 }
 
-.govuk-visually-hidden-focusable {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  margin: 0 !important;
-  overflow: hidden !important;
-  clip: rect(0 0 0 0) !important;
-  -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important;
-  white-space: nowrap !important;
+.govuk-checkboxes--small .govuk-checkboxes__conditional {
+  margin-left: 10px;
+  padding-left: 20px;
+  clear: both;
 }
 
-.govuk-visually-hidden-focusable:active,
-.govuk-visually-hidden-focusable:focus {
-  position: static !important;
-  width: auto !important;
-  height: auto !important;
-  margin: inherit !important;
-  overflow: visible !important;
-  clip: auto !important;
-  -webkit-clip-path: none !important;
-  clip-path: none !important;
-  white-space: inherit !important;
+.govuk-checkboxes--small
+  .govuk-checkboxes__item:hover
+  .govuk-checkboxes__input:not(:disabled)
+  + .govuk-checkboxes__label:before {
+  -webkit-box-shadow: 0 0 0 10px #b1b4b6;
+  box-shadow: 0 0 0 10px #b1b4b6;
 }
 
-.govuk-radios__divider {
+.govuk-checkboxes--small
+  .govuk-checkboxes__item:hover
+  .govuk-checkboxes__input:focus
+  + .govuk-checkboxes__label:before {
+  -webkit-box-shadow: 0 0 0 3px #fd0, 0 0 0 10px #b1b4b6;
+  box-shadow: 0 0 0 3px #fd0, 0 0 0 10px #b1b4b6;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .govuk-checkboxes--small
+    .govuk-checkboxes__item:hover
+    .govuk-checkboxes__input:not(:disabled)
+    + .govuk-checkboxes__label:before {
+    -webkit-box-shadow: initial;
+    box-shadow: initial;
+  }
+
+  .govuk-checkboxes--small
+    .govuk-checkboxes__item:hover
+    .govuk-checkboxes__input:focus
+    + .govuk-checkboxes__label:before {
+    -webkit-box-shadow: 0 0 0 3px #fd0;
+    box-shadow: 0 0 0 3px #fd0;
+  }
+}
+
+.govuk-checkboxes__divider {
   font-family: 'GDS Transport', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -659,13 +696,13 @@ The css we used to styled the formGroup component is the following:
 }
 
 @media print {
-  .govuk-radios__divider {
+  .govuk-checkboxes__divider {
     font-family: sans-serif;
   }
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-radios__divider {
+  .govuk-checkboxes__divider {
     font-size: 19px;
     font-size: 1.1875rem;
     line-height: 1.31579;
@@ -673,19 +710,19 @@ The css we used to styled the formGroup component is the following:
 }
 
 @media print {
-  .govuk-radios__divider {
+  .govuk-checkboxes__divider {
     font-size: 14pt;
     line-height: 1.15;
   }
 }
 
 @media print {
-  .govuk-radios__divider {
+  .govuk-checkboxes__divider {
     color: #000;
   }
 }
 
-.govuk-radios--small .govuk-radios__divider {
+.govuk-checkboxes--small .govuk-checkboxes__divider {
   width: 24px;
   margin-bottom: 5px;
 }

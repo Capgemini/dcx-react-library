@@ -41,7 +41,7 @@ describe('FormCheckbox', () => {
     expect(handleChange).toHaveBeenCalled();
   });
 
-  it('should set checkbox as checked if defaultChecked is added as a prop', () => {
+  it('should set checkbox as checked if selected is added as a prop', () => {
     const handleChange = jest.fn();
 
     render(
@@ -50,7 +50,7 @@ describe('FormCheckbox', () => {
         name="group1"
         value="choice 1"
         label="my label"
-        defaultChecked={true}
+        selected={true}
         onChange={handleChange}
         itemProps={{ 'data-testid': 'checkbox-container' }}
       />
@@ -216,7 +216,7 @@ describe('FormCheckbox', () => {
         value="choice 1"
         label="my label"
         onChange={handleChange}
-        defaultChecked={false}
+        selected={false}
         conditional={{
           name: 'conditional-reveal',
           label: 'conditional label',
@@ -244,7 +244,7 @@ describe('FormCheckbox', () => {
         value="choice 1"
         label="my label"
         onChange={handleChange}
-        defaultChecked={true}
+        selected={true}
         conditional={{
           name: 'conditional-reveal',
           label: 'conditional label',

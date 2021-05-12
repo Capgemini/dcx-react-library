@@ -7,11 +7,45 @@ import '../style.css';
 ### An example of 'un-styled' FormGroup of radio buttons
 
 <Canvas>
-  <Story name="un-styled">
+  <Story name="un-styled-radios">
     {() => {
       return (
         <FormGroup
           name="name-of-group"
+          type="radio"
+          legend={{
+            text:
+              'Heading text customisable by a given priority of type number between 1 to 6 (inclusive)',
+            heading: {
+              priority: 2,
+            },
+          }}
+          items={[
+            {
+              label: 'item-label',
+              value: 'yes',
+            },
+            {
+              label: 'item-label',
+              value: 'no',
+            },
+          ]}
+        />
+      );
+    }}
+    />
+  </Story>
+</Canvas>
+
+### An example of 'un-styled' FormGroup of checkboxes
+
+<Canvas>
+  <Story name="un-styled-checkboxes">
+    {() => {
+      return (
+        <FormGroup
+          name="name-of-group"
+          type="checkbox"
           legend={{
             text:
               'Heading text customisable by a given priority of type number between 1 to 6 (inclusive)',
