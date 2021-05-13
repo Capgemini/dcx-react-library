@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, queryByAttribute } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import fireEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { FormRadio } from '../FormRadio';
@@ -21,20 +21,48 @@ describe('FormRadio', () => {
     expect(screen.getByRole('radio')).toBeInTheDocument();
   });
 
-  it('should render a radio with a label', () => {
+  it('should render a radio with a sibling label', () => {
     const handleChange = jest.fn();
 
-    render(
+    const { container } = render(
       <FormRadio
         id="myId"
         value="choice 1"
         label="my label"
+        labelProps={{
+          id: 'my-label',
+        }}
         name="group1"
         onChange={handleChange}
       />
     );
 
+    const label: HTMLElement | null = container.querySelector('#my-label');
+
     expect(screen.getByLabelText('my label')).toBeInTheDocument();
+    expect(container.querySelector('input[type=radio]')).not.toBeNull();
+    expect(label?.querySelector('input[type=radio]')).toBeNull();
+  });
+
+  it('should render a nested radio within  label', () => {
+    const { container } = render(
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        labelProps={{
+          id: 'my-label',
+        }}
+        name="group1"
+        nested={true}
+      />
+    );
+
+    const label: HTMLElement | null = container.querySelector('#my-label');
+
+    expect(screen.getByLabelText('my label')).toBeInTheDocument();
+    expect(container.querySelector('input[type=radio]')).not.toBeNull();
+    expect(label?.querySelector('input[type=radio]')).not.toBeNull();
   });
 
   it('should render a radio with a value', () => {
@@ -110,7 +138,7 @@ describe('FormRadio', () => {
   it('should set radio as checked if specified', () => {
     const handleChange = jest.fn();
 
-    render(
+    const { container } = render(
       <FormRadio
         id="myId"
         value="choice 1"
@@ -118,20 +146,20 @@ describe('FormRadio', () => {
         selected={true}
         name="group1"
         onChange={handleChange}
-        itemProps={{ 'data-testid': 'radio-container' }}
+        itemProps={{ id: 'radio-container' }}
       />
     );
-    const container: HTMLElement = screen.getByTestId('radio-container');
-    const getById = queryByAttribute.bind(null, 'id');
 
-    expect(getById(container, 'myId')).toBeChecked();
-    expect(getById(container, 'myId')).not.toBeDisabled();
+    const radio: HTMLElement | null = container.querySelector('#myId');
+
+    expect(radio).toBeChecked();
+    expect(radio).not.toBeDisabled();
   });
 
   it('should set radio as disabled if specified', () => {
     const handleChange = jest.fn();
 
-    render(
+    const { container } = render(
       <FormRadio
         id="myId"
         value="choice 1"
@@ -139,14 +167,14 @@ describe('FormRadio', () => {
         name="group1"
         disabled={true}
         onChange={handleChange}
-        itemProps={{ 'data-testid': 'radio-container' }}
+        itemProps={{ id: 'radio-container' }}
       />
     );
-    const container: HTMLElement = screen.getByTestId('radio-container');
-    const getById = queryByAttribute.bind(null, 'id');
 
-    expect(getById(container, 'myId')).not.toBeChecked();
-    expect(getById(container, 'myId')).toBeDisabled();
+    const radio: HTMLElement | null = container.querySelector('#myId');
+
+    expect(radio).not.toBeChecked();
+    expect(radio).toBeDisabled();
   });
 
   it('should render hint text', () => {

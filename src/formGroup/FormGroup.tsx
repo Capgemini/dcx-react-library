@@ -65,11 +65,11 @@ type FormGroupProps = {
   /**
    * form group input properties for all items
    */
-  inputProps?: any;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   /**
    * form group item properties for all items
    */
-  itemProps?: any;
+  itemProps?: React.HTMLAttributes<HTMLDivElement>;
   /**
    * form group items class names
    */
@@ -77,7 +77,7 @@ type FormGroupProps = {
   /**
    * form group label properties for all items
    */
-  labelProps?: any;
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
   /**
    * form group legend properties
    */

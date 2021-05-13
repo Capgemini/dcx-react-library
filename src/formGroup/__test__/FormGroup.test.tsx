@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import fireEvent from '@testing-library/user-event';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { FormGroup } from '../FormGroup';
 
@@ -342,7 +341,7 @@ describe('FormGroup', () => {
         items={[
           {
             inputProps: {
-              'data-testid': 'custom-item',
+              id: 'custom-item',
             },
             value: 'yes',
             label: 'Yes',
@@ -358,7 +357,7 @@ describe('FormGroup', () => {
       />
     );
 
-    fireEvent.click(screen.getByTestId('custom-item'));
+    fireEvent.click(screen.getAllByRole('radio')[0]);
     expect(handleItemChange).toHaveBeenCalled();
   });
 
@@ -381,7 +380,7 @@ describe('FormGroup', () => {
         items={[
           {
             inputProps: {
-              'data-testid': 'custom-item',
+              id: 'custom-item',
             },
             value: 'one',
             label: 'One',
@@ -399,7 +398,7 @@ describe('FormGroup', () => {
       />
     );
 
-    fireEvent.click(screen.getByTestId('custom-item'));
+    fireEvent.click(screen.getAllByRole('checkbox')[0]);
     expect(handleItemChange).toHaveBeenCalled();
   });
 
@@ -422,7 +421,7 @@ describe('FormGroup', () => {
         items={[
           {
             inputProps: {
-              'data-testid': 'custom-item',
+              id: 'custom-item',
             },
             value: 'yes',
             label: 'Yes',
@@ -436,7 +435,7 @@ describe('FormGroup', () => {
       />
     );
 
-    fireEvent.click(screen.getByTestId('custom-item'));
+    fireEvent.click(screen.getAllByRole('radio')[0]);
     expect(handleItemChange).not.toHaveBeenCalled();
   });
 
@@ -459,7 +458,7 @@ describe('FormGroup', () => {
         items={[
           {
             inputProps: {
-              'data-testid': 'custom-item',
+              id: 'custom-item',
             },
             value: 'yes',
             label: 'Yes',
@@ -473,7 +472,7 @@ describe('FormGroup', () => {
       />
     );
 
-    fireEvent.click(screen.getByTestId('custom-item'));
+    fireEvent.click(screen.getAllByRole('checkbox')[0]);
     expect(handleItemChange).not.toHaveBeenCalled();
   });
 
@@ -496,7 +495,7 @@ describe('FormGroup', () => {
         items={[
           {
             inputProps: {
-              'data-testid': 'custom-item',
+              id: 'custom-item',
             },
             value: 'yes',
             label: 'Yes',
@@ -511,7 +510,7 @@ describe('FormGroup', () => {
       />
     );
 
-    fireEvent.click(screen.getByTestId('custom-item'));
+    fireEvent.click(screen.getAllByRole('radio')[0]);
     expect(handleChange).not.toHaveBeenCalled();
   });
 
@@ -534,7 +533,7 @@ describe('FormGroup', () => {
         items={[
           {
             inputProps: {
-              'data-testid': 'custom-item',
+              id: 'custom-item',
             },
             value: 'yes',
             label: 'Yes',
@@ -549,7 +548,7 @@ describe('FormGroup', () => {
       />
     );
 
-    fireEvent.click(screen.getByTestId('custom-item'));
+    fireEvent.click(screen.getAllByRole('checkbox')[0]);
     expect(handleChange).not.toHaveBeenCalled();
   });
 
@@ -571,7 +570,7 @@ describe('FormGroup', () => {
         items={[
           {
             inputProps: {
-              'data-testid': 'custom-item',
+              id: 'custom-item',
             },
             value: 'yes',
             label: 'Yes',
@@ -588,7 +587,7 @@ describe('FormGroup', () => {
       />
     );
 
-    expect(screen.getByTestId('custom-item')).toBeChecked();
+    expect(screen.getAllByRole('radio')[0]).toBeChecked();
   });
 
   it('should render the first item of checkboxes as checked', () => {
@@ -609,7 +608,7 @@ describe('FormGroup', () => {
         items={[
           {
             inputProps: {
-              'data-testid': 'custom-item',
+              id: 'custom-item',
             },
             value: 'yes',
             label: 'Yes',
@@ -626,7 +625,7 @@ describe('FormGroup', () => {
       />
     );
 
-    expect(screen.getByTestId('custom-item')).toBeChecked();
+    expect(screen.getAllByRole('checkbox')[0]).toBeChecked();
   });
 
   it('should render the first item of radio buttons as disabled', () => {
@@ -647,7 +646,7 @@ describe('FormGroup', () => {
         items={[
           {
             inputProps: {
-              'data-testid': 'custom-item',
+              id: 'custom-item',
             },
             value: 'yes',
             label: 'Yes',
@@ -656,7 +655,7 @@ describe('FormGroup', () => {
           },
           {
             inputProps: {
-              'data-testid': 'custom-item-2',
+              id: 'custom-item-2',
             },
             value: 'no',
             label: 'No',
@@ -668,7 +667,7 @@ describe('FormGroup', () => {
       />
     );
 
-    expect(screen.getByTestId('custom-item-2')).toBeDisabled();
+    expect(screen.getAllByRole('radio')[1]).toBeDisabled();
   });
 
   it('should render the first item of checkboxes as disabled', () => {
@@ -689,7 +688,7 @@ describe('FormGroup', () => {
         items={[
           {
             inputProps: {
-              'data-testid': 'custom-item',
+              id: 'custom-item',
             },
             value: 'yes',
             label: 'Yes',
@@ -698,7 +697,7 @@ describe('FormGroup', () => {
           },
           {
             inputProps: {
-              'data-testid': 'custom-item-2',
+              id: 'custom-item-2',
             },
             value: 'no',
             label: 'No',
@@ -710,7 +709,7 @@ describe('FormGroup', () => {
       />
     );
 
-    expect(screen.getByTestId('custom-item-2')).toBeDisabled();
+    expect(screen.getAllByRole('checkbox')[1]).toBeDisabled();
   });
 
   it('should render a form group with shared values', () => {
@@ -740,7 +739,7 @@ describe('FormGroup', () => {
         items={[
           {
             inputProps: {
-              'data-testid': 'custom-item',
+              id: 'custom-item',
             },
             labelProps: {
               id: 'yesId',
@@ -751,7 +750,7 @@ describe('FormGroup', () => {
           },
           {
             inputProps: {
-              'data-testid': 'custom-item-2',
+              id: 'custom-item-2',
             },
             labelProps: {
               id: 'NoId',
@@ -765,17 +764,17 @@ describe('FormGroup', () => {
       />
     );
 
-    expect(screen.getByTestId('custom-item').getAttribute('name')).toBe(
+    expect(screen.getAllByRole('radio')[0].getAttribute('name')).toBe(
       'shared-name'
     );
-    expect(screen.getByTestId('custom-item-2').getAttribute('name')).toBe(
+    expect(screen.getAllByRole('radio')[1].getAttribute('name')).toBe(
       'shared-name'
     );
 
-    expect(screen.getByTestId('custom-item').getAttribute('class')).toBe(
+    expect(screen.getAllByRole('radio')[0].getAttribute('class')).toBe(
       'shared-input-class'
     );
-    expect(screen.getByTestId('custom-item-2').getAttribute('class')).toBe(
+    expect(screen.getAllByRole('radio')[1].getAttribute('class')).toBe(
       'shared-input-class'
     );
 

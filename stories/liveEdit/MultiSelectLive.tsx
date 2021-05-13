@@ -96,8 +96,6 @@ function MultiSelectDemo() {
           }}
           searchDebounceMs={0}
           hintText="Enter your search term to add a selection"
-          placeholder="Select..."
-          placeholder="Select..."
           onRemove={handleRemove}
           onSelect={handleSelect}
           onRemoveAll={handleRemoveAll}

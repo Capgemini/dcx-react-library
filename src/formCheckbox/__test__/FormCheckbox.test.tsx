@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, queryByAttribute } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import fireEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { FormCheckbox } from '../FormCheckbox';
@@ -23,6 +23,53 @@ describe('FormCheckbox', () => {
     );
   });
 
+  it('should render a checkbox with a sibling label', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        value="choice 1"
+        label="my label"
+        labelProps={{
+          id: 'my-label',
+        }}
+        name="group1"
+        onChange={handleChange}
+      />
+    );
+
+    const label: HTMLElement | null = container.querySelector('#my-label');
+
+    expect(screen.getByLabelText('my label')).toBeInTheDocument();
+    expect(container.querySelector('input[type=checkbox]')).not.toBeNull();
+    expect(label?.querySelector('input[type=checkbox]')).toBeNull();
+  });
+
+  it('should render a nested checkbox within a label', () => {
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        value="choice 1"
+        label="my label"
+        labelProps={{
+          id: 'my-label',
+        }}
+        name="group1"
+        nested={true}
+        inputProps={{
+          id: 'my-checkbox',
+        }}
+      />
+    );
+
+    const label: HTMLElement | null = container.querySelector('#my-label');
+
+    expect(screen.getByLabelText('my label')).toBeInTheDocument();
+    expect(container.querySelector('input[type=checkbox]')).not.toBeNull();
+    expect(label?.querySelector('input[type=checkbox]')).not.toBeNull();
+  });
+
   it('should call on change', () => {
     const handleChange = jest.fn();
 
@@ -44,7 +91,7 @@ describe('FormCheckbox', () => {
   it('should set checkbox as checked if selected is added as a prop', () => {
     const handleChange = jest.fn();
 
-    render(
+    const { container } = render(
       <FormCheckbox
         id="myId"
         name="group1"
@@ -52,20 +99,19 @@ describe('FormCheckbox', () => {
         label="my label"
         selected={true}
         onChange={handleChange}
-        itemProps={{ 'data-testid': 'checkbox-container' }}
+        itemProps={{ id: 'checkbox-container' }}
       />
     );
-    const container: HTMLElement = screen.getByTestId('checkbox-container');
-    const getById = queryByAttribute.bind(null, 'id');
+    const checkbox: HTMLElement | null = container.querySelector('#myId');
 
-    expect(getById(container, 'myId')).toBeChecked();
-    expect(getById(container, 'myId')).not.toBeDisabled();
+    expect(checkbox).toBeChecked();
+    expect(checkbox).not.toBeDisabled();
   });
 
   it('should set checkbox as disabled if specified', () => {
     const handleChange = jest.fn();
 
-    render(
+    const { container } = render(
       <FormCheckbox
         id="myId"
         name="group1"
@@ -73,14 +119,14 @@ describe('FormCheckbox', () => {
         label="my label"
         disabled={true}
         onChange={handleChange}
-        itemProps={{ 'data-testid': 'checkbox-container' }}
+        itemProps={{ id: 'checkbox-container' }}
       />
     );
-    const container: HTMLElement = screen.getByTestId('checkbox-container');
-    const getById = queryByAttribute.bind(null, 'id');
 
-    expect(getById(container, 'myId')).not.toBeChecked();
-    expect(getById(container, 'myId')).toBeDisabled();
+    const checkbox: HTMLElement | null = container.querySelector('#myId');
+
+    expect(checkbox).not.toBeChecked();
+    expect(checkbox).toBeDisabled();
   });
 
   it('should render a checkbox with aria label match name if unspecified', () => {
