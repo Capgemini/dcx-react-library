@@ -46,7 +46,7 @@ type MultiUploadProps = {
   /**
    * multi upload onChangeEvent
    */
-  onChange?: (files: File | null) => void;
+  onChange?: (file: File | null) => void;
 };
 
 export const MultiUpload = ({
