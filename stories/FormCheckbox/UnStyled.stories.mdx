@@ -188,6 +188,34 @@ By default, the hint will display underneath the checkbox
   </Story>
 </Canvas>
 
+### Example of nested checkbox
+
+<Canvas>
+  <Story name="nested">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <FormCheckbox
+          label="checkbox label"
+          value={value}
+          id="checkbox-7"
+          inputProps={{
+            name: 'checkbox-7',
+          }}
+          onChange={handleChange}
+          selected={checked}
+          nested={true}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ### List of properties
 
 <Props of={FormCheckbox} />

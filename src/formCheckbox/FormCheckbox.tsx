@@ -21,30 +21,46 @@ export const FormCheckbox = ({
   selected,
   hint,
   hintPosition = 'below',
+  nested,
 }: FormCheckboxProps) => {
   const conditionalReveal = (): boolean =>
     !_.isEmpty(conditional) && selected === true;
 
-  return (
-    <div {...itemProps}>
-      {hint && hintPosition === 'above' && <Hint {...hint} />}
-      <input
-        id={id}
-        type="checkbox"
-        name={name}
-        value={value}
-        aria-label={ariaLabel || name}
-        data-aria-controls={ariaDataControls}
-        aria-describedby={ariaDescribedBy}
-        aria-labelledby={ariaLabelledBy || labelProps ? labelProps.id : ''}
-        disabled={disabled}
-        defaultChecked={selected}
-        onChange={onChange}
-        {...inputProps}
-      />
+  const input: JSX.Element = (
+    <input
+      id={id}
+      type="checkbox"
+      name={name}
+      value={value}
+      aria-label={ariaLabel || name}
+      data-aria-controls={ariaDataControls}
+      aria-describedby={ariaDescribedBy}
+      aria-labelledby={ariaLabelledBy || labelProps?.id}
+      disabled={disabled}
+      defaultChecked={selected}
+      onChange={onChange}
+      {...inputProps}
+    />
+  );
+
+  const checkbox: JSX.Element = nested ? (
+    <label {...labelProps}>
+      {input}
+      {label}
+    </label>
+  ) : (
+    <>
+      {input}
       <label {...labelProps} htmlFor={id}>
         {label}
       </label>
+    </>
+  );
+
+  return (
+    <div {...itemProps}>
+      {hint && hintPosition === 'above' && <Hint {...hint} />}
+      {checkbox}
       {hint && hintPosition === 'below' && <Hint {...hint} />}
       {conditional !== undefined &&
         conditionalReveal() &&

@@ -42,6 +42,7 @@ function FormRadioDemo() {
         itemProps={{}}
         labelProps={{}}
         selected={value === 'value'}
+        nested={false}
       />
       <FormRadio
         label="text example two"
@@ -63,6 +64,7 @@ function FormRadioDemo() {
         itemProps={{}}
         labelProps={{}}
         selected={value === 'value-two'}
+        nested={false}
       />
     </>
   );

@@ -47,6 +47,7 @@ function FormCheckboxDemo() {
         labelClassName: "",
       }}
       selected={checked}
+      nested={false}
     />
   );
 }

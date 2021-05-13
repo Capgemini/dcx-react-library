@@ -1,3 +1,5 @@
+import React from 'react';
+
 type VisuallyHidden = {
   /**
    * visually hidden text
@@ -126,19 +128,23 @@ export type FormRadioProps = {
   /**
    * allows for customisation of the radio input with all the properites needed
    */
-  inputProps?: any;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   /**
    * allows for customisation of the radio input with all the properites needed
    */
-  itemProps?: any;
+  itemProps?: React.HTMLAttributes<HTMLDivElement>;
   /**
    * allows for customisation of the radio label with all the properites needed
    */
-  labelProps?: any;
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
   /**
    * radio name
    */
   name?: string;
+  /**
+   * renders a nested radio within a label tag
+   */
+  nested?: boolean;
   /**
    * specifies whether the radio should be selected
    */
@@ -197,15 +203,15 @@ export type FormCheckboxProps = {
   /**
    * allows for customisation of the checkbox input with all the properites needed
    **/
-  inputProps?: any;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   /**
    * allows for customisation of the checkbox input with all the properites needed
    **/
-  itemProps?: any;
+  itemProps?: React.HTMLAttributes<HTMLDivElement>;
   /**
    * allows for customisation of the checkbox label with all the properites needed
    **/
-  labelProps?: any;
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
   /**
    * specifies whether the checkbox should be disabled
    */
@@ -218,6 +224,11 @@ export type FormCheckboxProps = {
    * checkbox conditionally input field
    */
   conditional?: ConditionalInputProps;
+  /**
+   * renders a nested checkbox within a label tag
+   */
+
+  nested?: boolean;
 };
 
 export type HintProps = {

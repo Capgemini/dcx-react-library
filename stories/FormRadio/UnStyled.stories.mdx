@@ -27,6 +27,30 @@ import '../style.css';
   </Story>
 </Canvas>
 
+### An example of 'nested' Input
+
+<Canvas>
+  <Story name="nested">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const handleChange = event => {
+        setValue(event.currentTarget.value);
+      };
+      return (
+        <FormRadio
+          label="text example 2"
+          name="group2"
+          value="value2"
+          id="radio-2"
+          onChange={handleChange}
+          nested={true}
+        />
+      );
+    }}
+    />
+  </Story>
+</Canvas>
+
 ### Properties
 
 <Props of={FormRadio} />

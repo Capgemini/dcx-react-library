@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
+import { Roles } from '../common';
 
 import { Hint, Conditional } from '../common/components';
 
@@ -20,31 +21,48 @@ export const FormRadio = ({
   itemProps,
   labelProps,
   name,
+  nested,
   selected,
   onChange,
 }: FormRadioProps) => {
   const conditionalReveal = (): boolean =>
     !_.isEmpty(conditional) && selected === true;
 
-  return (
-    <div {...itemProps}>
-      <input
-        id={id}
-        type="radio"
-        value={value}
-        name={name}
-        aria-label={ariaLabel || name}
-        data-aria-controls={ariaDataControls || ''}
-        aria-describedby={ariaDescribedBy || ''}
-        aria-labelledby={ariaLabelledBy || labelProps ? labelProps.id : ''}
-        disabled={disabled}
-        checked={selected}
-        {...inputProps}
-        onChange={onChange}
-      />
+  const input: JSX.Element = (
+    <input
+      id={id}
+      type="radio"
+      role={Roles.formRadio}
+      value={value}
+      name={name}
+      aria-label={ariaLabel || name}
+      data-aria-controls={ariaDataControls || ''}
+      aria-describedby={ariaDescribedBy || ''}
+      aria-labelledby={ariaLabelledBy || labelProps?.id}
+      disabled={disabled}
+      checked={selected}
+      {...inputProps}
+      onChange={onChange}
+    />
+  );
+
+  const radio: JSX.Element = nested ? (
+    <label {...labelProps}>
+      {input}
+      {label}
+    </label>
+  ) : (
+    <>
+      {input}
       <label {...labelProps} htmlFor={id}>
         {label}
       </label>
+    </>
+  );
+
+  return (
+    <div {...itemProps}>
+      {radio}
       {hint && <Hint {...hint} />}
       {conditional !== undefined &&
         conditionalReveal() &&
