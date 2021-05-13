@@ -11,6 +11,7 @@ In this section we are using the MultiUpload component providing the GOV.UK Desi
 <Canvas>
   <Story name="styled">
     {() => {
+      const handleChange = file => alert(`${file.name} was uploaded, it was last modified at ${new Date(file.lastModified).toLocaleDateString("en-us")}`);
       return (
         <MultiUpload
           name="file-upload-1"
@@ -23,6 +24,7 @@ In this section we are using the MultiUpload component providing the GOV.UK Desi
           labelProperties={{
             className: 'govuk-label',
           }}
+          onChange={handleChange}
         />
       );
     }}
@@ -34,6 +36,7 @@ In this section we are using the MultiUpload component providing the GOV.UK Desi
 <Canvas>
   <Story name="hint">
     {() => {
+      const handleChange = file => alert(`${file.name} was uploaded, it was last modified at ${new Date(file.lastModified).toLocaleDateString("en-us")}`);
       return (
         <MultiUpload
           name="file-upload-2"
@@ -50,6 +53,7 @@ In this section we are using the MultiUpload component providing the GOV.UK Desi
           labelProperties={{
             className: 'govuk-label',
           }}
+          onChange={handleChange}
         />
       );
     }}
@@ -61,6 +65,7 @@ In this section we are using the MultiUpload component providing the GOV.UK Desi
 <Canvas>
   <Story name="error">
     {() => {
+      const handleChange = file => alert(`${file.name} was uploaded, it was last modified at ${new Date(file.lastModified).toLocaleDateString("en-us")}`);
       return (
         <MultiUpload
           name="file-upload-3"
@@ -85,6 +90,7 @@ In this section we are using the MultiUpload component providing the GOV.UK Desi
               className: 'govuk-visually-hidden',
             },
           }}
+          onChange={handleChange}
         />
       );
     }}

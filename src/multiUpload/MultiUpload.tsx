@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ErrorMessage, Hint } from '../common';
 import { ErrorMessageProps, HintProps } from '../common/components/commonTypes';
 
@@ -11,10 +11,6 @@ type MultiUploadProps = {
    * multi upload comma-separated list of file types accepted by the component
    */
   acceptedFormats?: string;
-  /**
-   * multi upload whether or not to allow directories and files both to be selected in the file list
-   */
-  allowDirectories?: string;
   /**
    * multi upload class name
    */
@@ -34,7 +30,7 @@ type MultiUploadProps = {
   /**
    * multi upload input properties
    */
-  inputProperties?: any;
+  inputProperties?: React.InputHTMLAttributes<HTMLInputElement>;
   /**
    * multi upload label
    */
@@ -42,13 +38,20 @@ type MultiUploadProps = {
   /**
    * multi upload label properties for customisation
    */
-  labelProperties?: any;
+  labelProperties?: React.LabelHTMLAttributes<HTMLLabelElement>;
+  /**
+   * multi upload multiple
+   */
+  multiple?: boolean;
+  /**
+   * multi upload onChangeEvent
+   */
+  onChange?: (files: File | null) => void;
 };
 
 export const MultiUpload = ({
   name,
   acceptedFormats,
-  allowDirectories,
   className,
   error,
   hint,
@@ -56,20 +59,42 @@ export const MultiUpload = ({
   inputProperties,
   label,
   labelProperties,
-}: MultiUploadProps) => (
-  <div className={className}>
-    <label {...labelProperties} aria-controls={id} htmlFor={id}>
-      {label && <span>{label}</span>}
-      {hint && <Hint {...hint} />}
-      {error && <ErrorMessage {...error} />}
-      <input
-        {...inputProperties}
-        id={id}
-        type="file"
-        name={name}
-        accept={acceptedFormats}
-        allowdirs={allowDirectories}
-      />
-    </label>
-  </div>
-);
+  multiple,
+  onChange,
+}: MultiUploadProps) => {
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  useEffect(() => {
+    if (selectedFile) {
+      onChange && onChange(selectedFile);
+    }
+  }, [selectedFile]);
+
+  const onChangeHandler: (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => void = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = event.target;
+    if (files) {
+      setSelectedFile(files[0]);
+    }
+  };
+
+  return (
+    <div className={className}>
+      <label {...labelProperties} aria-controls={id} htmlFor={id}>
+        {label && <span>{label}</span>}
+        {hint && <Hint {...hint} />}
+        {error && <ErrorMessage {...error} />}
+        <input
+          id={id}
+          type="file"
+          name={name}
+          accept={acceptedFormats}
+          multiple={multiple}
+          onChange={onChangeHandler}
+          {...inputProperties}
+        />
+      </label>
+    </div>
+  );
+};

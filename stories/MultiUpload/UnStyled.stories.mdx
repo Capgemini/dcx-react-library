@@ -9,7 +9,8 @@ import '../style.css';
 <Canvas>
   <Story name="un-styled">
     {() => {
-      return <MultiUpload name="file-upload" label="Upload File" />;
+      const handleChange = file => alert(`${file.name} was uploaded, it was last modified at ${new Date(file.lastModified).toLocaleDateString("en-us")}`);
+      return (<MultiUpload name="file-upload" label="Upload File" onChange={handleChange}/>);
     }}
   </Story>
 </Canvas>
@@ -19,6 +20,7 @@ import '../style.css';
 <Canvas>
   <Story name="hint">
     {() => {
+      const handleChange = file => alert(`${file.name} was uploaded, it was last modified at ${new Date(file.lastModified).toLocaleDateString("en-us")}`);
       return (
         <MultiUpload
           name="file-upload-hint"
@@ -29,6 +31,7 @@ import '../style.css';
             className: 'classes for hint',
             id: 'hint-id',
           }}
+          onChange={handleChange}
         />
       );
     }}
@@ -40,6 +43,7 @@ import '../style.css';
 <Canvas>
   <Story name="error">
     {() => {
+      const handleChange = file => alert(`${file.name} was uploaded, it was last modified at ${new Date(file.lastModified).toLocaleDateString("en-us")}`);
       return (
         <MultiUpload
           name="file-upload-error"
@@ -48,6 +52,7 @@ import '../style.css';
           error={{
             text: 'The CSV must be smaller than 2MB',
           }}
+          onChange={handleChange}
         />
       );
     }}
