@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MultiUpload } from '../MultiUpload';
 
@@ -10,6 +10,9 @@ describe('MultiUpload', () => {
     );
 
     expect(container.querySelector('#file-input')).toBeInTheDocument();
+    expect(
+      container.querySelector('#file-input')?.hasAttribute('multiple')
+    ).toBeFalsy();
   });
 
   it('should render a multi upload label', () => {
@@ -19,36 +22,27 @@ describe('MultiUpload', () => {
   });
 
   it('should render a multi upload that accepts .json only', () => {
-    render(
+    const { container } = render(
       <MultiUpload
+        id="my-file-upload"
         name="file-json"
         acceptedFormats=".json"
-        inputProperties={{
-          'data-testid': 'my-file-upload',
-        }}
       />
     );
-    expect(screen.getByTestId('my-file-upload')).toHaveAttribute(
+    expect(container.querySelector('#my-file-upload')).toHaveAttribute(
       'accept',
       '.json'
     );
   });
 
-  it('should render a multi upload that allow directories', () => {
-    render(
-      <MultiUpload
-        name="file-upload"
-        allowDirectories={'allow'}
-        inputProperties={{
-          'data-testid': 'my-file-upload',
-        }}
-      />
+  it('should render a multi upload that allow multiples', () => {
+    const { container } = render(
+      <MultiUpload id="my-file-upload" name="file-upload" multiple={true} />
     );
 
-    expect(screen.getByTestId('my-file-upload')).toHaveAttribute(
-      'allowdirs',
-      'allow'
-    );
+    expect(
+      container.querySelector('#my-file-upload')?.hasAttribute('multiple')
+    ).toBeTruthy();
   });
 
   it('should render a multi upload with hint text', () => {
@@ -65,7 +59,7 @@ describe('MultiUpload', () => {
     expect(screen.getByText('file-text')).toBeInTheDocument();
   });
 
-  it('should render a multi uplload with an error message', () => {
+  it('should render a multi upload with an error message', () => {
     render(
       <MultiUpload
         name="file-upload"
@@ -76,5 +70,51 @@ describe('MultiUpload', () => {
     );
 
     expect(screen.getByText('oops!! we have an error')).toBeInTheDocument();
+  });
+
+  it('should render a multi upload with an onChange handler', async () => {
+    const file: File = new File(['some file'], 'isaac.png', {
+      type: 'image/png',
+    });
+    const onChangeHandler = jest.fn();
+
+    render(
+      <MultiUpload
+        name="file-upload"
+        label="file-upload"
+        id="my-file-uploader"
+        onChange={onChangeHandler}
+      />
+    );
+
+    const uploader: HTMLElement = screen.getByLabelText('file-upload');
+
+    await waitFor(() =>
+      fireEvent.change(uploader, { target: { files: [file] } })
+    );
+
+    expect(onChangeHandler).toHaveBeenCalled();
+    expect(onChangeHandler).toHaveBeenCalledWith(file);
+  });
+
+  it('should render a multi upload with an onChange handler but not call it', async () => {
+    const onChangeHandler = jest.fn();
+
+    render(
+      <MultiUpload
+        name="file-upload"
+        label="file-upload"
+        id="my-file-uploader"
+        onChange={onChangeHandler}
+      />
+    );
+
+    const uploader: HTMLElement = screen.getByLabelText('file-upload');
+
+    await waitFor(() =>
+      fireEvent.change(uploader, { target: { files: null } })
+    );
+
+    expect(onChangeHandler).not.toHaveBeenCalled();
   });
 });

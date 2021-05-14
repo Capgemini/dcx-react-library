@@ -5,11 +5,16 @@ import './style.css';
 
 const MultiUploadDemo = `
 function MultiUploadDemo() {
+  const onChangeHandler = (file) => {
+    if (file) {
+      const date = new Date(file.lastModified).toLocaleDateString("en-us");
+      alert(file.name + 'was uploaded, it was last modified at' + date);
+    }
+  };
   return (
     <MultiUpload
       name="file-upload-hint"
       acceptedFormats=".jpg, .png"
-      allowDirectories=""
       className=""
       error={{
         text: "",
@@ -29,6 +34,7 @@ function MultiUploadDemo() {
         className: 'classes for hint',
         id: 'hint-id',
       }}
+      onChange={onChangeHandler}
     />
   );
 }

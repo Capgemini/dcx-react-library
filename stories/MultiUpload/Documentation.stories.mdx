@@ -31,7 +31,6 @@ An example with all the available properties is:
 <MultiUpload
   name="file-upload"
   acceptedFormats=".json"
-  allowDirectories="allow"
   className="some-class-name"
   error={{
     text: 'error message',
@@ -55,6 +54,7 @@ An example with all the available properties is:
   labelProperties={{
     className: 'class name for label',
   }}
+  onChange={onChangeHandler}
 />
 ```
 
