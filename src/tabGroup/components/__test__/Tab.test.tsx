@@ -10,9 +10,9 @@ describe('Tab', () => {
     render(
       <Tab
         activeTab="tab 1"
-        activeTabClassName="tabActive"
         label="tab 2"
         onClick={onClickHandler}
+        activeTabClassName="tabActive"
       />
     );
 

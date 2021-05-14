@@ -15,6 +15,7 @@ import {
   MultiSelectDemo,
   FormDateDemo,
   FormInputDemo,
+  TabGroupDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -39,6 +40,7 @@ const App = () => (
         <Route path="/multiUpload" component={MultiUploadDemo} />
         <Route path="/multiSelect" component={MultiSelectDemo} />
         <Route path="/formDate" component={FormDateDemo} />
+        <Route path="/tabGroup" component={TabGroupDemo} />
       </Switch>
     </BrowserRouter>
   </div>

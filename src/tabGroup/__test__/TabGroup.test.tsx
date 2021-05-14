@@ -1,20 +1,14 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { TabGroup, TabContentProps } from '../TabGroup';
-import { TabProps } from '../components/Tab';
+import { TabGroup, TabProps, TabContentProps } from '../TabGroup';
 import { Roles } from '../../common';
 
 describe('TabGroup', () => {
   it('should render a tab group', () => {
-    const tabClickHandler = jest.fn();
-
     const tabs: TabProps[] = [
       {
-        activeTab: 'tab 1',
-        activeTabClassName: 'active tab',
         label: 'tab 1 label',
-        onClick: tabClickHandler,
       },
     ];
 
@@ -31,14 +25,9 @@ describe('TabGroup', () => {
   });
 
   it('should render a tab group with a container class name', () => {
-    const tabClickHandler = jest.fn();
-
     const tabs: TabProps[] = [
       {
-        activeTab: 'tab 1',
-        activeTabClassName: 'active tab',
         label: 'tab 1 label',
-        onClick: tabClickHandler,
       },
     ];
 
@@ -61,14 +50,9 @@ describe('TabGroup', () => {
   });
 
   it('should render a tab group with a content class name', () => {
-    const tabClickHandler = jest.fn();
-
     const tabs: TabProps[] = [
       {
-        activeTab: 'tab 1',
-        activeTabClassName: 'active tab',
         label: 'tab 1 label',
-        onClick: tabClickHandler,
       },
     ];
 
@@ -90,19 +74,10 @@ describe('TabGroup', () => {
     expect(container.getElementsByClassName('content-class')).toBeDefined();
   });
 
-  it('should render a tab group with first tab being active', () => {
-    const tabClickHandler = jest.fn();
-
+  it('should render a tab group with a group class name', () => {
     const tabs: TabProps[] = [
       {
-        activeTabClassName: 'active tab',
         label: 'tab 1 label',
-        onClick: tabClickHandler,
-      },
-      {
-        activeTabClassName: 'active tab',
-        label: 'tab 2 label',
-        onClick: tabClickHandler,
       },
     ];
 
@@ -113,7 +88,44 @@ describe('TabGroup', () => {
       },
     ];
 
-    render(<TabGroup tabContents={contents} tabs={tabs} />);
+    render(
+      <TabGroup
+        tabs={tabs}
+        tabContents={contents}
+        tabClassName="tab-class-name"
+        activeTabClassName="tab-class-active"
+      />
+    );
+
+    expect(screen.getAllByRole('tab')[0].getAttribute('class')).toBe(
+      'tab-class-name tab-class-active'
+    );
+  });
+
+  it('should render a tab group with first tab being active', () => {
+    const tabs: TabProps[] = [
+      {
+        label: 'tab 1 label',
+      },
+      {
+        label: 'tab 2 label',
+      },
+    ];
+
+    const contents: TabContentProps[] = [
+      {
+        label: 'tab 1 label',
+        children: <div></div>,
+      },
+    ];
+
+    render(
+      <TabGroup
+        tabContents={contents}
+        tabs={tabs}
+        activeTabClassName="active tab"
+      />
+    );
 
     expect(screen.getAllByRole('tab')[0]).toBeInTheDocument();
     expect(screen.getAllByRole('tab')[0].getAttribute('class')).toBe(
@@ -122,19 +134,12 @@ describe('TabGroup', () => {
   });
 
   it('should render a tab group with first tab being active with current class names', () => {
-    const tabClickHandler = jest.fn();
-
     const tabs: TabProps[] = [
       {
-        activeTabClassName: 'active tab',
-        className: 'tab-1-class-name',
         label: 'tab 1 label',
-        onClick: tabClickHandler,
       },
       {
-        activeTabClassName: 'active tab',
         label: 'tab 2 label',
-        onClick: tabClickHandler,
       },
     ];
 
@@ -149,7 +154,14 @@ describe('TabGroup', () => {
       },
     ];
 
-    render(<TabGroup tabs={tabs} tabContents={contents} />);
+    render(
+      <TabGroup
+        tabs={tabs}
+        tabContents={contents}
+        activeTabClassName="active tab"
+        tabClassName="tab-1-class-name"
+      />
+    );
 
     expect(screen.getAllByRole('tab')[0]).toBeInTheDocument();
     expect(screen.getAllByRole('tab')[0].getAttribute('class')).toBe(
@@ -161,19 +173,13 @@ describe('TabGroup', () => {
   });
 
   it('should render a tab group with a default selected tab', () => {
-    const tabClickHandler = jest.fn();
-
     const tabs: TabProps[] = [
       {
-        activeTabClassName: 'active tab',
-        className: 'tab-1-class-name',
         label: 'tab 1 label',
-        onClick: tabClickHandler,
+        className: 'tab-1-class-name',
       },
       {
-        activeTabClassName: 'active tab',
         label: 'tab 2 label',
-        onClick: tabClickHandler,
       },
     ];
 
@@ -193,6 +199,7 @@ describe('TabGroup', () => {
         tabs={tabs}
         tabContents={contents}
         defaultActiveTab="tab 2 label"
+        activeTabClassName="active tab"
       />
     );
 
@@ -212,19 +219,14 @@ describe('TabGroup', () => {
 
   it('should call the onClick for a tab group', () => {
     const tabGroupClickHandler = jest.fn();
-    const tabClickHandler = jest.fn();
 
     const tabs: TabProps[] = [
       {
-        activeTabClassName: 'active tab',
         className: 'tab-1-class-name',
         label: 'tab 1 label',
-        onClick: tabClickHandler,
       },
       {
-        activeTabClassName: 'active tab',
         label: 'tab 2 label',
-        onClick: tabClickHandler,
       },
     ];
 
@@ -240,6 +242,7 @@ describe('TabGroup', () => {
         tabs={tabs}
         tabContents={contents}
         onClick={tabGroupClickHandler}
+        activeTabClassName="active tab"
       />
     );
 
@@ -260,19 +263,14 @@ describe('TabGroup', () => {
 
   it('should not call the onClick for a tab group if not provided', () => {
     const tabGroupClickHandler = jest.fn();
-    const tabClickHandler = jest.fn();
 
     const tabs: TabProps[] = [
       {
-        activeTabClassName: 'active tab',
         className: 'tab-1-class-name',
         label: 'tab 1 label',
-        onClick: tabClickHandler,
       },
       {
-        activeTabClassName: 'active tab',
         label: 'tab 2 label',
-        onClick: tabClickHandler,
       },
     ];
 
@@ -283,7 +281,13 @@ describe('TabGroup', () => {
       },
     ];
 
-    render(<TabGroup tabs={tabs} tabContents={contents} />);
+    render(
+      <TabGroup
+        tabs={tabs}
+        tabContents={contents}
+        activeTabClassName="active tab"
+      />
+    );
 
     fireEvent.click(screen.getAllByRole('tab')[1]);
 

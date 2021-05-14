@@ -3,13 +3,13 @@ import { Roles } from '../../common';
 
 export type TabProps = {
   /**
-   * Tab active class name
-   */
-  activeTabClassName: string;
-  /**
    * Tab label
    */
   label: string;
+  /**
+   * Tab active class name
+   */
+  activeTabClassName?: string;
   /**
    * The currently active Tab
    */
