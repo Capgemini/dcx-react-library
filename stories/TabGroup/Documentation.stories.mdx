@@ -1,0 +1,52 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { TabGroup } from '../../src/tabGroup/TabGroup';
+
+<Meta
+  title="DCXLibrary/Form/TabGroup/documentation"
+  component={TabGroup}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# TabGroup
+
+TabGroup component ready to use in your UI
+
+TabGroup is UI/UX agnostic so you need to provide your style to have the look
+and feel you prefer.
+
+## Usage
+
+Use the tabgroup component when users need to host multiple content panes in one section
+
+An example with all the available properties is:
+
+```js
+<TabGroup
+    tabs={[{
+        label: "tab label",
+        disabled: false,
+        className: "tab-class-name",
+        id: "tab id"
+    }]}
+    tabConent={[{
+        label: "tab label",
+        children: <div>This the content for tab</div>
+    }]}
+    activeTabClassName="tab-active-class"
+    id="tab-label-id"
+    defaultActiveTab="tab label"
+    disabledClassTab="disabled-class-name"
+    className="class-name"
+    containerClassName="container-class-name"
+    contentClassName="content-class-name"
+    tabClassName="tab-class-name"
+    onClick={onChangeHandler}
+/>
+```
+
+<Props of={TabGroup} />

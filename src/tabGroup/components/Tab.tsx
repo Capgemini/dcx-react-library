@@ -52,26 +52,29 @@ export const Tab = ({
   onClick,
 }: TabProps) => {
   const selected = activeTab === label;
+  const classes: string[] = [];
 
-  if (selected) {
-    className = className
-      ? className.concat(` ${activeTabClassName}`)
-      : activeTabClassName;
+  if (className !== undefined) {
+    classes.push(className);
   }
 
-  if (disabled) {
-    className += ` ${disabledClassName}`;
+  if (selected && activeTabClassName !== undefined) {
+    classes.push(activeTabClassName);
+  }
+
+  if (disabled && disabledClassName !== undefined) {
+    classes.push(disabledClassName);
   }
 
   const onClickHandler: (event: React.FormEvent<HTMLLIElement>) => void = (
     event: React.FormEvent<HTMLLIElement>
-  ) => onClick && onClick(event.currentTarget.innerHTML);
+  ) => onClick && !disabled && onClick(event.currentTarget.innerHTML);
 
   return (
     <li
       role={Roles.tab}
       id={id}
-      className={className}
+      className={classes.join(' ')}
       aria-controls={ariaControls}
       aria-selected={selected}
       onClick={onClickHandler}

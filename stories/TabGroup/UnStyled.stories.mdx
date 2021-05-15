@@ -1,0 +1,157 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { TabGroup } from '../../src/tabGroup/TabGroup';
+
+<Meta title="DCXLibrary/Form/TabGroup" component={TabGroup} />
+
+### An example of 'un-styled' TabGroup of Tabs
+
+<Canvas>
+    <Story name="un-styled-tabs">
+        {() => {
+            return (
+                <TabGroup 
+                    tabs={[
+                        {
+                            label: "tab 1",
+                        },
+                        {
+                            label: "tab 2",
+                        }
+                    ]}
+                    tabContents={[
+                        {
+                            label: "tab 1",
+                            children: <div>This the content for <em>tab 1</em></div>
+                        },
+                        {
+                            label: "tab 2",
+                            children: <div>This the content for <em>tab 2</em></div>
+                        }
+                    ]}
+                />
+            );
+        }}
+    </Story>
+</Canvas>
+
+### An example of 'disabled' TabGroup of Tabs
+
+<Canvas>
+    <Story name="un-styled-disabled-tab">
+        {() => {
+            return (
+                <TabGroup 
+                    tabs={[
+                        {
+                            label: "tab 1",
+                        },
+                        {
+                            label: "tab 2",
+                        },
+                        {
+                            label: "tab 3",
+                            disabled: true
+                        }
+                    ]}
+                    tabContents={[
+                        {
+                            label: "tab 1",
+                            children: <div>This the content for <em>tab 1</em></div>
+                        },
+                        {
+                            label: "tab 2",
+                            children: <div>This the content for <em>tab 2</em></div>
+                        },
+                        {
+                            label: "tab 3",
+                            children: <div>This the content for <em>tab 3</em></div>
+                        }
+                    ]}
+                />
+            );
+        }}
+    </Story>
+</Canvas>
+
+### An example of 'preselected' TabGroup of Tabs
+
+<Canvas>
+    <Story name="un-styled-preselected-tab">
+        {() => {
+            return (
+                <TabGroup 
+                    tabs={[
+                        {
+                            label: "tab 1",
+                        },
+                        {
+                            label: "tab 2",
+                        },
+                        {
+                            label: "tab 3",
+                        }
+                    ]}
+                    tabContents={[
+                        {
+                            label: "tab 1",
+                            children: <div>This the content for <em>tab 1</em></div>
+                        },
+                        {
+                            label: "tab 2",
+                            children: <div>This the content for <em>tab 2</em></div>
+                        },
+                        {
+                            label: "tab 3",
+                            children: <div>This the content for <em>tab 3</em></div>
+                        }
+                    ]}
+                    defaultActiveTab="tab 2"
+                />
+            );
+        }}
+    </Story>
+</Canvas>
+
+### An example of 'onClick' TabGroup of Tabs
+
+<Canvas>
+    <Story name="un-styled-select-tab">
+        {() => {
+            const handleChange = label => alert(`${label} selected`);
+            return (
+                <TabGroup 
+                    tabs={[
+                        {
+                            label: "tab 1",
+                        },
+                        {
+                            label: "tab 2",
+                        },
+                        {
+                            label: "tab 3",
+                        }
+                    ]}
+                    tabContents={[
+                        {
+                            label: "tab 1",
+                            children: <div>This the content for <em>tab 1</em></div>
+                        },
+                        {
+                            label: "tab 2",
+                            children: <div>This the content for <em>tab 2</em></div>
+                        },
+                        {
+                            label: "tab 3",
+                            children: <div>This the content for <em>tab 3</em></div>
+                        }
+                    ]}
+                    onClick={handleChange}
+                />
+            );
+        }}
+    </Story>
+</Canvas>
+
+# Properties
+
+<Props of={TabGroup} />
