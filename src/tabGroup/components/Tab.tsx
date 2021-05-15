@@ -74,7 +74,7 @@ export const Tab = ({
     <li
       role={Roles.tab}
       id={id}
-      className={classes.join(' ')}
+      className={classes.join(' ').trim()}
       aria-controls={ariaControls}
       aria-selected={selected}
       onClick={onClickHandler}
