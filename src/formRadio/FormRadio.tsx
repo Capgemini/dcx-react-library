@@ -1,10 +1,9 @@
-import _ from 'lodash';
 import React from 'react';
 import { Roles } from '../common';
 
-import { Hint, Conditional } from '../common/components';
+import { CheckboxRadioBase } from '../common/components';
 
-import { FormRadioProps } from '../common/components/commonTypes';
+import { FormRadioCheckboxProps } from '../common/components/commonTypes';
 
 export const FormRadio = ({
   label,
@@ -24,49 +23,27 @@ export const FormRadio = ({
   nested,
   selected,
   onChange,
-}: FormRadioProps) => {
-  const conditionalReveal = (): boolean =>
-    !_.isEmpty(conditional) && selected === true;
-
-  const input: JSX.Element = (
-    <input
-      id={id}
-      type="radio"
-      role={Roles.formRadio}
-      value={value}
-      name={name}
-      aria-label={ariaLabel || name}
-      data-aria-controls={ariaDataControls || ''}
-      aria-describedby={ariaDescribedBy || ''}
-      aria-labelledby={ariaLabelledBy || labelProps?.id}
-      disabled={disabled}
-      checked={selected}
-      {...inputProps}
-      onChange={onChange}
-    />
-  );
-
-  const radio: JSX.Element = nested ? (
-    <label {...labelProps}>
-      {input}
-      {label}
-    </label>
-  ) : (
-    <>
-      {input}
-      <label {...labelProps} htmlFor={id}>
-        {label}
-      </label>
-    </>
-  );
-
-  return (
-    <div {...itemProps}>
-      {radio}
-      {hint && <Hint {...hint} />}
-      {conditional !== undefined &&
-        conditionalReveal() &&
-        Conditional(conditional)}
-    </div>
-  );
-};
+}: FormRadioCheckboxProps) => (
+  <CheckboxRadioBase
+    type="radio"
+    id={id}
+    role={Roles.formRadio}
+    name={name}
+    value={value}
+    label={label}
+    inputProps={inputProps}
+    itemProps={itemProps}
+    labelProps={labelProps}
+    ariaLabel={ariaLabel || name}
+    ariaDataControls={ariaDataControls}
+    ariaDescribedBy={ariaDescribedBy}
+    ariaLabelledBy={ariaLabelledBy || labelProps?.id}
+    onChange={onChange}
+    conditional={conditional}
+    disabled={disabled}
+    selected={selected}
+    hint={hint}
+    hintPosition="above"
+    nested={nested}
+  />
+);

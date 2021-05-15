@@ -84,33 +84,46 @@ export type ErrorMessageProps = {
   visuallyHiddenText?: VisuallyHidden;
 };
 
-export type FormRadioProps = {
+export type FormRadioCheckboxProps = {
   /**
-   * radio label
+   * label
    */
   label: string;
   /**
-   * radio value
+   * value
    */
   value: string;
   /**
-   * radio ariaLabel
+   * specify if the type is radio or checkbox
+   */
+  type?: 'checkbox' | 'radio';
+  /**
+   * id
+   */
+  id: string;
+  /**
+   * define the role as radio or checkbox
+   */
+  role?: string;
+  /**
+   * ariaLabel
    */
   ariaLabel?: string;
+
   /**
-   * radio ariaDataControls
+   * ariaDataControls
    */
   ariaDataControls?: string;
   /**
-   * radio ariaDescribedBy
+   * ariaDescribedBy
    */
   ariaDescribedBy?: string;
   /**
-   * radio ariaLabelledBy
+   * ariaLabelledBy
    */
   ariaLabelledBy?: string;
   /**
-   * radio conditionally input field
+   * conditionally input field
    */
   conditional?: ConditionalInputProps;
   /**
@@ -118,27 +131,27 @@ export type FormRadioProps = {
    */
   disabled?: boolean;
   /**
-   * radio hint text
+   * hint text
    */
   hint?: HintProps;
   /**
-   * radio id
+   * Position the hint
    */
-  id?: string;
+  hintPosition?: 'below' | 'above';
   /**
-   * allows for customisation of the radio input with all the properites needed
+   * allows for customisation of the input with all the properites needed
    */
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   /**
-   * allows for customisation of the radio input with all the properites needed
+   * allows for customisation of the input with all the properites needed
    */
   itemProps?: React.HTMLAttributes<HTMLDivElement>;
   /**
-   * allows for customisation of the radio label with all the properites needed
+   * allows for customisation of the label with all the properites needed
    */
   labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
   /**
-   * radio name
+   * name
    */
   name?: string;
   /**
@@ -153,82 +166,6 @@ export type FormRadioProps = {
    * function that will trigger all the time there's a change in the radio
    */
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
-};
-
-export type FormCheckboxProps = {
-  /**
-   * checkbox name
-   **/
-  name: string;
-  /**
-   * checkbox label
-   **/
-  label: string;
-  /**
-   * checkbox value
-   **/
-  value: string;
-  /**
-   * function that will trigger all the time there's a change on the checkbox
-   **/
-  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
-  /**
-   * checkbox id
-   **/
-  id?: string;
-  /**
-   * checkbox ariaLabel
-   **/
-  ariaLabel?: string;
-  /**
-   * checkbox ariaLabel
-   **/
-  ariaDescribedBy?: string;
-  /**
-   * checkbox ariaLabel
-   **/
-  ariaLabelledBy?: string;
-  /**
-   * checkbox ariaLabel
-   **/
-  ariaDataControls?: string;
-  /**
-   * checkbox hint properties
-   **/
-  hint?: HintProps;
-  /**
-   * checkbox hint position value 'above' or 'below'
-   **/
-  hintPosition?: string;
-  /**
-   * allows for customisation of the checkbox input with all the properites needed
-   **/
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
-  /**
-   * allows for customisation of the checkbox input with all the properites needed
-   **/
-  itemProps?: React.HTMLAttributes<HTMLDivElement>;
-  /**
-   * allows for customisation of the checkbox label with all the properites needed
-   **/
-  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
-  /**
-   * specifies whether the checkbox should be disabled
-   */
-  disabled?: boolean;
-  /**
-   * specifies whether the checkbox should be pre-checked
-   */
-  selected?: boolean;
-  /**
-   * checkbox conditionally input field
-   */
-  conditional?: ConditionalInputProps;
-  /**
-   * renders a nested checkbox within a label tag
-   */
-
-  nested?: boolean;
 };
 
 export type HintProps = {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormCheckbox } from 'dcx-react-library';
+import { FormCheckbox, FormGroup } from 'dcx-react-library';
 
 export const FormCheckboxDemo = () => {
   const [value, setValue] = React.useState('');
@@ -7,6 +7,11 @@ export const FormCheckboxDemo = () => {
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = event => {
     setValue(event.currentTarget.value);
     setChecked(!checked);
+  };
+
+  const [formValue, setFormValue] = React.useState('');
+  const handleFormChange = event => {
+    setFormValue(event.currentTarget.value);
   };
 
   return (
@@ -38,6 +43,87 @@ export const FormCheckboxDemo = () => {
         onChange={handleChange}
         disabled={true}
       />
+
+      <h2>Group</h2>
+
+      <FormGroup
+        name="name-of-group"
+        type="checkbox"
+        onChange={handleFormChange}
+        items={[
+          {
+            label: 'item-label',
+            value: 'yes',
+            id: 'radio-1',
+            selected: true,
+            conditional: {
+              name: '',
+              label: '',
+              type: 'text',
+              className: '',
+              groupClassName: '',
+              id: 'conditional-1',
+              inputClassName: '',
+              inputId: '',
+              labelClassName: '',
+            },
+            hint: {
+              text: '',
+              className: '',
+              id: '',
+            },
+          },
+          {
+            label: 'item-label',
+            value: 'no',
+            id: 'radio-2',
+            conditional: {
+              name: '',
+              label: '',
+              type: 'text',
+              className: '',
+              groupClassName: '',
+              id: 'conditional-2',
+              inputClassName: '',
+              inputId: '',
+              labelClassName: '',
+            },
+            hint: {
+              text: '',
+              className: '',
+              id: '',
+            },
+          },
+        ]}
+        ariaDescribedBy=""
+        error={{
+          text: '',
+          className: '',
+          id: '',
+          visuallyHiddenText: '',
+        }}
+        fieldsetClasses=""
+        groupClasses=""
+        hint={{
+          id: '',
+          text: '',
+          className: '',
+        }}
+        id=""
+        inputProps={{}}
+        itemProps={{}}
+        itemsClasses=""
+        labelProps={{}}
+        legend={{
+          text: 'Heading text',
+          className: '',
+          heading: {
+            priority: '2',
+            className: '',
+          },
+        }}
+      />
+      <pre>{formValue}</pre>
     </>
   );
 };

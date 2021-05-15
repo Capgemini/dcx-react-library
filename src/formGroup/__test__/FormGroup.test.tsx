@@ -23,11 +23,13 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -57,11 +59,13 @@ describe('FormGroup', () => {
           {
             value: 'one',
             label: 'One',
+            id: 'first',
             onChange: handleChange,
           },
           {
             value: 'two',
             label: 'Two',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -78,6 +82,7 @@ describe('FormGroup', () => {
 
     const { container } = render(
       <FormGroup
+        //@ts-ignore
         type={type}
         groupClasses=""
         id=""
@@ -92,11 +97,13 @@ describe('FormGroup', () => {
           {
             value: 'one',
             label: 'One',
+            id: 'first',
             onChange: handleChange,
           },
           {
             value: 'two',
             label: 'Two',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -117,6 +124,7 @@ describe('FormGroup', () => {
 
     const { container } = render(
       <FormGroup
+        //@ts-ignore
         type={type}
         groupClasses=""
         id=""
@@ -131,11 +139,13 @@ describe('FormGroup', () => {
           {
             value: 'one',
             label: 'One',
+            id: 'first',
             onChange: handleChange,
           },
           {
             value: 'two',
             label: 'Two',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -166,11 +176,13 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -201,11 +213,13 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -234,11 +248,13 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -276,11 +292,13 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -309,11 +327,13 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -345,11 +365,13 @@ describe('FormGroup', () => {
             },
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleItemChange,
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleItemChange,
           },
         ]}
@@ -384,12 +406,14 @@ describe('FormGroup', () => {
             },
             value: 'one',
             label: 'One',
+            id: 'first',
             selected: true,
             onChange: handleItemChange,
           },
           {
             value: 'two',
             label: 'Two',
+            id: 'second',
             selected: false,
             onChange: handleItemChange,
           },
@@ -424,10 +448,12 @@ describe('FormGroup', () => {
               id: 'custom-item',
             },
             value: 'yes',
+            id: 'first',
             label: 'Yes',
           },
           {
             value: 'no',
+            id: 'second',
             label: 'No',
           },
         ]}
@@ -462,10 +488,12 @@ describe('FormGroup', () => {
             },
             value: 'yes',
             label: 'Yes',
+            id: 'first',
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
           },
         ]}
         onChange={handleChange}
@@ -499,11 +527,13 @@ describe('FormGroup', () => {
             },
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleItemChange,
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleItemChange,
           },
         ]}
@@ -537,11 +567,13 @@ describe('FormGroup', () => {
             },
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleItemChange,
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleItemChange,
           },
         ]}
@@ -575,11 +607,13 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             selected: true,
+            id: 'first',
             onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -613,11 +647,13 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             selected: true,
+            id: 'first',
             onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -651,6 +687,7 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             selected: true,
+            id: 'first',
             onChange: handleChange,
           },
           {
@@ -660,6 +697,7 @@ describe('FormGroup', () => {
             value: 'no',
             label: 'No',
             disabled: true,
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -693,6 +731,7 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             selected: true,
+            id: 'first',
             onChange: handleChange,
           },
           {
@@ -702,6 +741,7 @@ describe('FormGroup', () => {
             value: 'no',
             label: 'No',
             disabled: true,
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -738,25 +778,21 @@ describe('FormGroup', () => {
         }}
         items={[
           {
-            inputProps: {
-              id: 'custom-item',
-            },
             labelProps: {
               id: 'yesId',
             },
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleChange,
           },
           {
-            inputProps: {
-              id: 'custom-item-2',
-            },
             labelProps: {
               id: 'NoId',
             },
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -805,6 +841,7 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleChange,
           },
           {
@@ -815,6 +852,7 @@ describe('FormGroup', () => {
           {
             value: 'no',
             label: 'No',
+            id: 'second',
             onChange: handleChange,
           },
         ]}
@@ -843,6 +881,7 @@ describe('FormGroup', () => {
           {
             value: 'yes',
             label: 'Yes',
+            id: 'first',
             onChange: handleChange,
           },
         ]}
@@ -853,5 +892,42 @@ describe('FormGroup', () => {
     expect(
       screen.getByText('Can not render a Form Group with less than 2 items')
     ).toBeInTheDocument();
+  });
+
+  it('should call on change of an item if an input has changed', () => {
+    const handleChange = jest.fn();
+    const handleItemChange = jest.fn();
+    render(
+      <FormGroup
+        type="radio"
+        groupClasses=""
+        id=""
+        name="group1"
+        legend={{
+          text: 'Have you changed your name?',
+          heading: {
+            priority: 1,
+          },
+        }}
+        items={[
+          {
+            value: 'yes',
+            label: 'Yes',
+            id: 'first',
+            onChange: handleItemChange,
+          },
+          {
+            value: 'no',
+            label: 'No',
+            id: 'second',
+            onChange: handleItemChange,
+          },
+        ]}
+        onChange={handleChange}
+      />
+    );
+    fireEvent.click(screen.getAllByRole('radio')[0]);
+    expect(screen.getAllByRole('radio')[0]).toBeChecked();
+    expect(screen.getAllByRole('radio')[1]).not.toBeChecked();
   });
 });
