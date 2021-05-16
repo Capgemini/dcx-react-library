@@ -104,9 +104,8 @@ export const TabGroup = ({
           );
         })}
       </ol>
-      {children.map((tab: JSX.Element, index: number) => {
-        if (tab.props.label !== activeTab) return undefined;
-        return (
+      {children.map((tab: JSX.Element, index: number) =>
+        tab.props.label === activeTab ? (
           <div
             id={tab.props.tabPaneId}
             key={index}
@@ -117,8 +116,10 @@ export const TabGroup = ({
           >
             {tab.props.children}
           </div>
-        );
-      })}
+        ) : (
+          undefined
+        )
+      )}
     </div>
   );
 };

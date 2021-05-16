@@ -60,15 +60,11 @@ export const Tab = ({
   onClick,
 }: TabProps) => {
   const selected = activeTab === label;
-  const classes: string[] = [];
-
-  if (className !== undefined) classes.push(className);
-
-  if (selected && activeTabClassName !== undefined)
-    classes.push(activeTabClassName);
-
-  if (disabled && disabledClassName !== undefined)
-    classes.push(disabledClassName);
+  const classes: (string | undefined)[] = [
+    className,
+    selected ? activeTabClassName : undefined,
+    disabled ? disabledClassName : undefined,
+  ].filter((_: string | undefined) => _ !== undefined);
 
   const onClickHandler: (event: React.FormEvent<HTMLLIElement>) => void = (
     event: React.FormEvent<HTMLLIElement>
