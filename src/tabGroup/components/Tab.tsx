@@ -60,11 +60,14 @@ export const Tab = ({
   onClick,
 }: TabProps) => {
   const selected = activeTab === label;
-  const classes: (string | undefined)[] = [
+  const classes: string = [
     className,
     selected ? activeTabClassName : undefined,
     disabled ? disabledClassName : undefined,
-  ].filter((_: string | undefined) => _ !== undefined);
+  ]
+    .filter((cls: string | undefined) => cls !== undefined)
+    .join(' ')
+    .trim();
 
   const onClickHandler: (event: React.FormEvent<HTMLLIElement>) => void = (
     event: React.FormEvent<HTMLLIElement>
@@ -74,7 +77,7 @@ export const Tab = ({
     <li
       role={Roles.tab}
       id={id}
-      className={classes.join(' ').trim()}
+      className={classes}
       aria-controls={ariaControls}
       aria-selected={selected}
       tabIndex={!selected ? -1 : undefined}
