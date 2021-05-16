@@ -113,7 +113,7 @@ export const FormGroup = ({
   onChange,
 }: FormGroupProps) => {
   const findSelection = (items: (FormRadioCheckboxProps | DividerProps)[]) => {
-    let newSelection = {};
+    let newSelection: { [key: string]: boolean } = {};
     items.forEach((item: FormRadioCheckboxProps | DividerProps) => {
       if ((item as FormRadioCheckboxProps).selected) {
         newSelection = {
@@ -130,9 +130,15 @@ export const FormGroup = ({
     return newSelection;
   };
 
-  const [selection, setSelection] = useState<any>(findSelection(items));
+  const [selection, setSelection] = useState<{ [key: string]: boolean }>(
+    findSelection(items)
+  );
 
-  const handleChange = (item: FormRadioCheckboxProps, type: string, e: any) => {
+  const handleChange = (
+    item: FormRadioCheckboxProps,
+    type: string,
+    e: React.FormEvent<HTMLInputElement>
+  ) => {
     if (type === 'checkbox') {
       setSelection({ ...selection, [item.id]: e.currentTarget.checked });
     } else {
