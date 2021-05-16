@@ -1,46 +1,16 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { Roles } from '../common';
 import { Tab } from './components/Tab';
 
-export type TabProps = {
-  /**
-   * Tab conent label
-   */
-  label: string;
-  /**
-   * Tab enabled or disabled
-   */
-  disabled?: boolean;
-  /**
-   * Tab class name
-   */
-  className?: string;
-  /**
-   * Tab id
-   */
-  id?: string;
-};
-
-export type TabContentProps = {
-  /**
-   * Tab conent label
-   */
-  label: string;
-  /**
-   * Tab content children
-   */
-  children: JSX.Element;
-};
-
 export type TabGroupProps = {
   /**
-   * Tab Group tabs
+   * Tab Group children
    */
-  tabs: TabProps[];
+  children: JSX.Element[];
   /**
-   * Tab Group Content
+   * Tab Group tab list araia label
    */
-  tabContents: TabContentProps[];
+  ariaLabelTabList?: string;
   /**
    * Tab Group active tab class
    */
@@ -49,10 +19,6 @@ export type TabGroupProps = {
    * Tab Group id
    */
   id?: string;
-  /**
-   * Tab Group active tab label
-   */
-  defaultActiveTab?: string;
   /**
    * Tab Group disabled class name
    */
@@ -80,19 +46,23 @@ export type TabGroupProps = {
 };
 
 export const TabGroup = ({
+  children,
   id,
-  tabs,
-  tabContents,
+  ariaLabelTabList,
   activeTabClassName,
   disabledClassName,
-  defaultActiveTab,
   className,
   containerClassName,
+  contentClassName,
   tabClassName,
   onClick,
 }: TabGroupProps) => {
+  const defaultActiveTab: string = children.find(
+    (child: JSX.Element) => child.props.activeTab === child.props.label
+  )?.props.label;
+
   const [activeTab, setActiveTab] = useState<string>(
-    defaultActiveTab || tabs[0].label
+    defaultActiveTab || children[0].props.label
   );
 
   const onClickHandler: (tab: string) => void = (label: string) => {
@@ -105,20 +75,26 @@ export const TabGroup = ({
 
   return (
     <div className={containerClassName}>
-      <ol role={Roles.tabpanel} id={id} className={className}>
-        {tabs.map((tab: TabProps, index: number) => {
+      <ol
+        role={Roles.tablist}
+        id={id}
+        className={className}
+        aria-label={ariaLabelTabList}
+      >
+        {children.map((tab: JSX.Element, index: number) => {
           const classes: string[] = [];
 
           if (tabClassName !== undefined) classes.push(tabClassName);
-          if (tab.className !== undefined) classes.push(tab.className);
+          if (tab.props.className !== undefined)
+            classes.push(tab.props.className);
 
           return (
             <Tab
               key={index}
-              {...tab}
+              {...tab.props}
               activeTab={activeTab}
               activeTabClassName={activeTabClassName}
-              ariaControls={id}
+              ariaControls={tab.props.tabPaneId}
               disabledClassName={disabledClassName}
               className={classes.join(' ')}
               onClick={(label: string) => {
@@ -128,12 +104,21 @@ export const TabGroup = ({
           );
         })}
       </ol>
-      <div className={containerClassName}>
-        {tabContents.map((tabContent: TabContentProps, index: number) => {
-          if (tabContent.label !== activeTab) return undefined;
-          return <Fragment key={index}>{tabContent.children}</Fragment>;
-        })}
-      </div>
+      {children.map((tab: JSX.Element, index: number) => {
+        if (tab.props.label !== activeTab) return undefined;
+        return (
+          <div
+            id={tab.props.tabPaneId}
+            key={index}
+            role={Roles.tabpanel}
+            className={contentClassName}
+            tabIndex={0}
+            aria-labelledby={tab.props.id}
+          >
+            {tab.props.children}
+          </div>
+        );
+      })}
     </div>
   );
 };

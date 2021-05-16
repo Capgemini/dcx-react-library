@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { TabGroup } from '../../src/tabGroup/TabGroup';
+import { Tab } from '../../src/tabGroup/components/Tab';
 
 <Meta title="DCXLibrary/Form/TabGroup" component={TabGroup} />
 
@@ -9,26 +10,10 @@ import { TabGroup } from '../../src/tabGroup/TabGroup';
     <Story name="un-styled-tabs">
         {() => {
             return (
-                <TabGroup 
-                    tabs={[
-                        {
-                            label: "tab 1",
-                        },
-                        {
-                            label: "tab 2",
-                        }
-                    ]}
-                    tabContents={[
-                        {
-                            label: "tab 1",
-                            children: <div>This the content for <em>tab 1</em></div>
-                        },
-                        {
-                            label: "tab 2",
-                            children: <div>This the content for <em>tab 2</em></div>
-                        }
-                    ]}
-                />
+                <TabGroup>
+                    <Tab label="tab 1">This the content for <em>tab 1</em></Tab>
+                    <Tab label="tab 2">This the content for <em>tab 2</em></Tab>
+                </TabGroup>
             );
         }}
     </Story>
@@ -40,34 +25,11 @@ import { TabGroup } from '../../src/tabGroup/TabGroup';
     <Story name="un-styled-disabled-tab">
         {() => {
             return (
-                <TabGroup 
-                    tabs={[
-                        {
-                            label: "tab 1",
-                        },
-                        {
-                            label: "tab 2",
-                        },
-                        {
-                            label: "tab 3",
-                            disabled: true
-                        }
-                    ]}
-                    tabContents={[
-                        {
-                            label: "tab 1",
-                            children: <div>This the content for <em>tab 1</em></div>
-                        },
-                        {
-                            label: "tab 2",
-                            children: <div>This the content for <em>tab 2</em></div>
-                        },
-                        {
-                            label: "tab 3",
-                            children: <div>This the content for <em>tab 3</em></div>
-                        }
-                    ]}
-                />
+                <TabGroup>
+                    <Tab label="tab 1">This the content for <em>tab 1</em></Tab>
+                    <Tab label="tab 2">This the content for <em>tab 2</em></Tab>
+                    <Tab label="tab 3" disabled={true}>This the content for <em>tab 3</em></Tab>
+                </TabGroup>
             );
         }}
     </Story>
@@ -79,34 +41,11 @@ import { TabGroup } from '../../src/tabGroup/TabGroup';
     <Story name="un-styled-preselected-tab">
         {() => {
             return (
-                <TabGroup 
-                    tabs={[
-                        {
-                            label: "tab 1",
-                        },
-                        {
-                            label: "tab 2",
-                        },
-                        {
-                            label: "tab 3",
-                        }
-                    ]}
-                    tabContents={[
-                        {
-                            label: "tab 1",
-                            children: <div>This the content for <em>tab 1</em></div>
-                        },
-                        {
-                            label: "tab 2",
-                            children: <div>This the content for <em>tab 2</em></div>
-                        },
-                        {
-                            label: "tab 3",
-                            children: <div>This the content for <em>tab 3</em></div>
-                        }
-                    ]}
-                    defaultActiveTab="tab 2"
-                />
+                <TabGroup>
+                    <Tab label="tab 1">This the content for <em>tab 1</em></Tab>
+                    <Tab label="tab 2" activeTab="tab 2">This the content for <em>tab 2</em></Tab>
+                    <Tab label="tab 3">This the content for <em>tab 3</em></Tab>
+                </TabGroup>
             );
         }}
     </Story>
@@ -119,39 +58,28 @@ import { TabGroup } from '../../src/tabGroup/TabGroup';
         {() => {
             const handleChange = label => alert(`${label} selected`);
             return (
-                <TabGroup 
-                    tabs={[
-                        {
-                            label: "tab 1",
-                        },
-                        {
-                            label: "tab 2",
-                        },
-                        {
-                            label: "tab 3",
-                        }
-                    ]}
-                    tabContents={[
-                        {
-                            label: "tab 1",
-                            children: <div>This the content for <em>tab 1</em></div>
-                        },
-                        {
-                            label: "tab 2",
-                            children: <div>This the content for <em>tab 2</em></div>
-                        },
-                        {
-                            label: "tab 3",
-                            children: <div>This the content for <em>tab 3</em></div>
-                        }
-                    ]}
-                    onClick={handleChange}
-                />
+                <TabGroup onClick={handleChange}>
+                    <Tab label="tab 1">This the content for <em>tab 1</em></Tab>
+                    <Tab label="tab 2">This the content for <em>tab 2</em></Tab>
+                    <Tab label="tab 3">This the content for <em>tab 3</em></Tab>
+                </TabGroup>
             );
         }}
     </Story>
 </Canvas>
 
-# Properties
+# TabGroup
+
+## Properties
+
+below are described the list of all available properties. the one marked with (\*) are mandatory the other instead are optional.
 
 <Props of={TabGroup} />
+
+# Tab
+
+## Properties
+
+below are described the list of all available properties. the one marked with (\*) are mandatory the other instead are optional.
+
+<Props of={Tab} />

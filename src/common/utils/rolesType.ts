@@ -15,6 +15,7 @@ export const Roles = {
   region: 'region',
   suffix: 'suffix',
   tab: 'tab',
+  tablist: 'tablist',
   tabpanel: 'tabpanel',
   textbox: 'textbox',
   toggle: 'form-toggle',

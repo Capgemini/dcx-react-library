@@ -19,6 +19,10 @@ export type TabProps = {
    */
   ariaControls?: string;
   /**
+   * Tab content children
+   */
+  children?: JSX.Element | string;
+  /**
    * Tab class name
    */
   className?: string;
@@ -34,6 +38,10 @@ export type TabProps = {
    * Tab id
    */
   id?: string;
+  /**
+   * Tab pane id
+   */
+  tabPaneId?: string;
   /**
    * Tab onClick handler
    */
@@ -54,17 +62,13 @@ export const Tab = ({
   const selected = activeTab === label;
   const classes: string[] = [];
 
-  if (className !== undefined) {
-    classes.push(className);
-  }
+  if (className !== undefined) classes.push(className);
 
-  if (selected && activeTabClassName !== undefined) {
+  if (selected && activeTabClassName !== undefined)
     classes.push(activeTabClassName);
-  }
 
-  if (disabled && disabledClassName !== undefined) {
+  if (disabled && disabledClassName !== undefined)
     classes.push(disabledClassName);
-  }
 
   const onClickHandler: (event: React.FormEvent<HTMLLIElement>) => void = (
     event: React.FormEvent<HTMLLIElement>
@@ -77,6 +81,7 @@ export const Tab = ({
       className={classes.join(' ').trim()}
       aria-controls={ariaControls}
       aria-selected={selected}
+      tabIndex={!selected ? -1 : undefined}
       onClick={onClickHandler}
     >
       {label}

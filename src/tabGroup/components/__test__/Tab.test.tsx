@@ -39,6 +39,7 @@ describe('Tab', () => {
     expect(screen.getByRole('tab').getAttribute('aria-controls')).toBe(
       'tabParent'
     );
+    expect(screen.getByRole('tab').getAttribute('tabIndex')).toBe('-1');
   });
 
   it('should render a selected tab', () => {
@@ -60,6 +61,7 @@ describe('Tab', () => {
     expect(screen.getByRole('tab').getAttribute('class')).toBe(
       'myClassName tabActive'
     );
+    expect(screen.getByRole('tab').getAttribute('tabIndex')).toBeNull();
   });
 
   it('should render a tab with a label', () => {
