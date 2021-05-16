@@ -41,9 +41,9 @@ import { Tab } from '../../src/tabGroup/components/Tab';
     <Story name="un-styled-preselected-tab">
         {() => {
             return (
-                <TabGroup>
+                <TabGroup defaultSelectedTab="tab 2">
                     <Tab label="tab 1">This the content for <em>tab 1</em></Tab>
-                    <Tab label="tab 2" activeTab="tab 2">This the content for <em>tab 2</em></Tab>
+                    <Tab label="tab 2">This the content for <em>tab 2</em></Tab>
                     <Tab label="tab 3">This the content for <em>tab 3</em></Tab>
                 </TabGroup>
             );

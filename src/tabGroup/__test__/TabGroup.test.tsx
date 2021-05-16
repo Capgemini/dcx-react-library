@@ -373,11 +373,14 @@ describe('TabGroup', () => {
 
   it('should render a tab panel with a default selected tab', () => {
     render(
-      <TabGroup activeTabClassName="tab-class-active">
+      <TabGroup
+        defaultSelectedTab="tab 2 label"
+        activeTabClassName="tab-class-active"
+      >
         <Tab label="tab 1 label" className="tab-1-class-name">
           <div>This is the content for tab 1</div>
         </Tab>
-        <Tab label="tab 2 label" activeTab="tab 2 label">
+        <Tab label="tab 2 label">
           <div>This is the content for tab 2</div>
         </Tab>
       </TabGroup>

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { Roles } from '../common';
-import { Tab } from './components/Tab';
 
 export type TabGroupProps = {
   /**
@@ -24,6 +23,10 @@ export type TabGroupProps = {
    */
   disabledClassName?: string;
   /**
+   * Tab Group default selected tab
+   */
+  defaultSelectedTab?: string;
+  /**
    * Tab Group list class name
    */
   className?: string;
@@ -45,12 +48,26 @@ export type TabGroupProps = {
   onClick?: (label: string) => void;
 };
 
+type TabContextProps = {
+  /**
+   * Tab Context select tab
+   */
+  activeTab: string;
+  /**
+   * Tab Context update selected tab
+   */
+  changeActiveTab: (label: string) => void;
+};
+
+export const TabContext = createContext<TabContextProps | undefined>(undefined);
+
 export const TabGroup = ({
   children,
   id,
   ariaLabelTabList,
   activeTabClassName,
   disabledClassName,
+  defaultSelectedTab,
   className,
   containerClassName,
   contentClassName,
@@ -58,7 +75,7 @@ export const TabGroup = ({
   onClick,
 }: TabGroupProps) => {
   const defaultActiveTab: string = children.find(
-    (child: JSX.Element) => child.props.activeTab === child.props.label
+    (child: JSX.Element) => defaultSelectedTab === child.props.label
   )?.props.label;
 
   const [activeTab, setActiveTab] = useState<string>(
@@ -81,28 +98,26 @@ export const TabGroup = ({
         className={className}
         aria-label={ariaLabelTabList}
       >
-        {children.map((tab: JSX.Element, index: number) => {
-          const classes: string[] = [];
+        <TabContext.Provider
+          value={{ activeTab, changeActiveTab: onClickHandler }}
+        >
+          {children.map((child: JSX.Element, index: number) => {
+            const classes: string = [tabClassName, child.props.className]
+              .filter((cls: string) => cls !== undefined)
+              .join(' ');
 
-          if (tabClassName !== undefined) classes.push(tabClassName);
-          if (tab.props.className !== undefined)
-            classes.push(tab.props.className);
-
-          return (
-            <Tab
-              key={index}
-              {...tab.props}
-              activeTab={activeTab}
-              activeTabClassName={activeTabClassName}
-              ariaControls={tab.props.tabPaneId}
-              disabledClassName={disabledClassName}
-              className={classes.join(' ')}
-              onClick={(label: string) => {
-                onClickHandler(label);
-              }}
-            />
-          );
-        })}
+            return (
+              <child.type
+                key={index}
+                {...child.props}
+                activeTabClassName={activeTabClassName}
+                ariaControls={child.props.tabPaneId}
+                disabledClassName={disabledClassName}
+                className={classes}
+              />
+            );
+          })}
+        </TabContext.Provider>
       </ol>
       {children.map((tab: JSX.Element, index: number) =>
         tab.props.label === activeTab ? (
@@ -122,4 +137,12 @@ export const TabGroup = ({
       )}
     </div>
   );
+};
+
+export const useTabGroup = () => {
+  const context = useContext(TabContext);
+  if (context === undefined) {
+    throw new Error('Tab must be used within a TabGroup');
+  }
+  return context;
 };

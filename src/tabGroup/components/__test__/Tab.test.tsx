@@ -2,18 +2,27 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Tab } from '../Tab';
+import { TabContext } from '../../TabGroup';
 
 describe('Tab', () => {
+  it('should not render a tab with out a context', () => {
+    expect(() =>
+      render(<Tab label="tab 2" activeTabClassName="tabActive" />)
+    ).toThrow('Tab must be used within a TabGroup');
+  });
+
   it('should render a tab', () => {
     const onClickHandler = jest.fn();
 
     render(
-      <Tab
-        activeTab="tab 1"
-        label="tab 2"
-        onClick={onClickHandler}
-        activeTabClassName="tabActive"
-      />
+      <TabContext.Provider
+        value={{
+          activeTab: 'tab 1',
+          changeActiveTab: onClickHandler,
+        }}
+      >
+        <Tab label="tab 2" activeTabClassName="tabActive" />
+      </TabContext.Provider>
     );
 
     expect(screen.getByRole('tab')).toBeInTheDocument();
@@ -23,15 +32,20 @@ describe('Tab', () => {
     const onClickHandler = jest.fn();
 
     render(
-      <Tab
-        activeTab="tab 1"
-        activeTabClassName="tabActive"
-        label="tab 2"
-        onClick={onClickHandler}
-        id="myId"
-        className="myClassName"
-        ariaControls="tabParent"
-      />
+      <TabContext.Provider
+        value={{
+          activeTab: 'tab 1',
+          changeActiveTab: onClickHandler,
+        }}
+      >
+        <Tab
+          activeTabClassName="tabActive"
+          label="tab 2"
+          id="myId"
+          className="myClassName"
+          ariaControls="tabParent"
+        />
+      </TabContext.Provider>
     );
 
     expect(screen.getByRole('tab').getAttribute('id')).toBe('myId');
@@ -46,15 +60,20 @@ describe('Tab', () => {
     const onClickHandler = jest.fn();
 
     render(
-      <Tab
-        activeTab="tab 1"
-        activeTabClassName="tabActive"
-        label="tab 1"
-        onClick={onClickHandler}
-        id="myId"
-        className="myClassName"
-        ariaControls="tabParent"
-      />
+      <TabContext.Provider
+        value={{
+          activeTab: 'tab 1',
+          changeActiveTab: onClickHandler,
+        }}
+      >
+        <Tab
+          activeTabClassName="tabActive"
+          label="tab 1"
+          id="myId"
+          className="myClassName"
+          ariaControls="tabParent"
+        />
+      </TabContext.Provider>
     );
 
     expect(screen.getByRole('tab').getAttribute('aria-selected')).toBeTruthy();
@@ -68,35 +87,66 @@ describe('Tab', () => {
     const onClickHandler = jest.fn();
 
     render(
-      <Tab
-        activeTab="tab 1"
-        activeTabClassName="tabActive"
-        label="tab 1"
-        onClick={onClickHandler}
-        id="myId"
-        className="myClassName"
-        ariaControls="tabParent"
-      />
+      <TabContext.Provider
+        value={{
+          activeTab: 'tab 1',
+          changeActiveTab: onClickHandler,
+        }}
+      >
+        <Tab
+          activeTabClassName="tabActive"
+          label="tab 1"
+          id="myId"
+          className="myClassName"
+          ariaControls="tabParent"
+        />
+      </TabContext.Provider>
     );
 
     expect(screen.getByText('tab 1')).toBeInTheDocument();
+  });
+
+  it('should render a preselected tab ', () => {
+    const onClickHandler = jest.fn();
+
+    render(
+      <TabContext.Provider
+        value={{
+          activeTab: 'tab 2',
+          changeActiveTab: onClickHandler,
+        }}
+      >
+        <Tab activeTabClassName="tabActive" label="tab 1" />
+        <Tab activeTabClassName="tabActive" label="tab 2" />
+      </TabContext.Provider>
+    );
+
+    const tabs: Element[] = screen.getAllByRole('tab');
+
+    expect(tabs[0].getAttribute('class')).toBe('');
+    expect(tabs[1].getAttribute('class')).toBe('tabActive');
   });
 
   it('should render a disabled tab ', () => {
     const onClickHandler = jest.fn();
 
     render(
-      <Tab
-        activeTab="tab 1"
-        activeTabClassName="tabActive"
-        label="tab 2"
-        onClick={onClickHandler}
-        id="myId"
-        className="myClassName"
-        ariaControls="tabParent"
-        disabled={true}
-        disabledClassName="tabDisabled"
-      />
+      <TabContext.Provider
+        value={{
+          activeTab: 'tab 1',
+          changeActiveTab: onClickHandler,
+        }}
+      >
+        <Tab
+          activeTabClassName="tabActive"
+          label="tab 2"
+          id="myId"
+          className="myClassName"
+          ariaControls="tabParent"
+          disabled={true}
+          disabledClassName="tabDisabled"
+        />
+      </TabContext.Provider>
     );
 
     expect(screen.getByRole('tab').getAttribute('class')).toBe(
@@ -108,15 +158,20 @@ describe('Tab', () => {
     const onClickHandler = jest.fn();
 
     render(
-      <Tab
-        activeTab="tab 1"
-        activeTabClassName="tabActive"
-        label="tab 1"
-        onClick={onClickHandler}
-        id="myId"
-        className="myClassName"
-        ariaControls="tabParent"
-      />
+      <TabContext.Provider
+        value={{
+          activeTab: 'tab 1',
+          changeActiveTab: onClickHandler,
+        }}
+      >
+        <Tab
+          activeTabClassName="tabActive"
+          label="tab 1"
+          id="myId"
+          className="myClassName"
+          ariaControls="tabParent"
+        />
+      </TabContext.Provider>
     );
 
     fireEvent.click(screen.getByRole('tab'));

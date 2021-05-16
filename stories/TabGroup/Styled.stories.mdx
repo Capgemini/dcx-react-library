@@ -53,12 +53,13 @@ import './style.css';
             return (
                 <TabGroup 
                     activeTabClassName="tab-list-active"
+                    defaultSelectedTab="tab 2"
                     disabledClassName="tab-list-disabled"
                     tabClassName="tab-list-item"
                     className="tab-list"
                 >
                     <Tab label="tab 1">This the content for <em>tab 1</em></Tab>
-                    <Tab label="tab 2" activeTab="tab 2">This the content for <em>tab 2</em></Tab>
+                    <Tab label="tab 2">This the content for <em>tab 2</em></Tab>
                     <Tab label="tab 3">This the content for <em>tab 3</em></Tab>
                 </TabGroup>
             );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Roles } from '../../common';
+import { useTabGroup } from '../TabGroup';
 
 export type TabProps = {
   /**
@@ -10,10 +11,6 @@ export type TabProps = {
    * Tab active class name
    */
   activeTabClassName?: string;
-  /**
-   * The currently active Tab
-   */
-  activeTab?: string;
   /**
    * Tab aria-controls, which is the element with the tabpanel role
    */
@@ -42,14 +39,9 @@ export type TabProps = {
    * Tab pane id
    */
   tabPaneId?: string;
-  /**
-   * Tab onClick handler
-   */
-  onClick?: (label: string) => void;
 };
 
 export const Tab = ({
-  activeTab,
   activeTabClassName,
   ariaControls,
   disabled,
@@ -57,8 +49,9 @@ export const Tab = ({
   label,
   className,
   id,
-  onClick,
 }: TabProps) => {
+  const { activeTab, changeActiveTab } = useTabGroup();
+
   const selected = activeTab === label;
   const classes: string = [
     className,
@@ -71,7 +64,7 @@ export const Tab = ({
 
   const onClickHandler: (event: React.FormEvent<HTMLLIElement>) => void = (
     event: React.FormEvent<HTMLLIElement>
-  ) => onClick && !disabled && onClick(event.currentTarget.innerHTML);
+  ) => !disabled && changeActiveTab(event.currentTarget.innerHTML);
 
   return (
     <li
