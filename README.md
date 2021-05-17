@@ -2,11 +2,15 @@
 
 # DCX React library
 
+## Motivation
+
 `dcx-react-library` is a react library with a set of components ready to use in your project.
 
 There're plenty of libraries available in react that will help you to increase your productivity however most of them contain a lot of css and are really hard to style based on your project's requirements.
 
 dcx-react-library is **UI/UX agnostic** so you need to provide styling for the look and feel of your preference.
+
+## Components
 
 To see the full list of components built in dcx-react-library, and how to use it, have a look on our [storybook-showcase](https://www.chromatic.com/library?appId=6069a6f47f4b9f002171f8e1) (Click on View Storybook to see the list of components)
 Each component, described in storybook, will provide you 3 main sections:
@@ -14,7 +18,7 @@ Each component, described in storybook, will provide you 3 main sections:
 - documentation: it will describe the list of properties available, optional and mandatory;
 - live: you can play directly with all the properties and see how the component will behave;
 - unstyled: the bare component without any style available;
-- styled: an exaple (mainly based on GDS) of how to style the component and the final result.
+- styled: an example (mainly based on GDS) of how to style the component and the final result.
 
 ![Image of dcx-react-library showcase](https://github.com/Capgemini/dcx-react-library/blob/main/stories/img/storybook-doc.png)
 
@@ -39,7 +43,7 @@ If you'd like to contribute, please follow our CONTRIBUTING.md[https://github.co
 
 ## Raise a bug or enhancement
 
-If you find a bug or you would like an improvement please raise an _issue_ and use the appropriate template we will be more than happy to improve the library smashing all the bugs found and improving the functionality. d
+If you find a bug or you would like an improvement please raise an _issue_ and use the appropriate template we will be more than happy to improve the library smashing all the bugs found and improving the functionality.
 
 ## Contributors ✨
 
