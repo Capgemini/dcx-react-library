@@ -213,7 +213,7 @@ describe('FormRadio', () => {
           name: 'input-field-name',
           label: 'label',
           type: 'text',
-          value: {},
+          value: '',
           id: 'my-input',
         }}
         name="group1"
@@ -236,7 +236,7 @@ describe('FormRadio', () => {
           name: 'input-field-name',
           label: 'label',
           type: 'text',
-          value: {},
+          value: '',
           id: 'my-input',
         }}
         name="group1"

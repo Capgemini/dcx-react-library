@@ -310,7 +310,11 @@ In this section we're using the formRadio component providing the GovUk style pa
   <Story name="conditional reveal">
     {() => {
       const [value, setValue] = React.useState('');
+      const [inputValue, setInputValue] = React.useState('');
       const handleChange = event => setValue(event.target.value);
+      const handleInputChange = event => {
+        setInputValue(event.target.value);
+      }
       return (
         <div className="govuk-radios govuk-radios--inline">
           <FormRadio
@@ -336,6 +340,8 @@ In this section we're using the formRadio component providing the GovUk style pa
               id: 'conditional-contact',
               inputClassName: 'govuk-input govuk-!-width-one-third',
               inputId: 'contact-by-email',
+              value: inputValue,
+              onChange: e => handleInputChange(e)
             }}
             name="contact"
             selected={true}

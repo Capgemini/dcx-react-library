@@ -380,7 +380,8 @@ describe('FormGroup', () => {
     );
 
     fireEvent.click(screen.getAllByRole('radio')[0]);
-    expect(handleItemChange).toHaveBeenCalled();
+    expect(handleItemChange).not.toHaveBeenCalled();
+    expect(handleChange).toHaveBeenCalled();
   });
 
   it('should call on change of an item if an input has changed', () => {
@@ -423,7 +424,8 @@ describe('FormGroup', () => {
     );
 
     fireEvent.click(screen.getAllByRole('checkbox')[0]);
-    expect(handleItemChange).toHaveBeenCalled();
+    expect(handleItemChange).not.toHaveBeenCalled();
+    expect(handleChange).toHaveBeenCalled();
   });
 
   it('should not call on change of a radio button item if the on change is not defined', () => {

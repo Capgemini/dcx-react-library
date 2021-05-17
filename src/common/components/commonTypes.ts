@@ -60,9 +60,13 @@ export type ConditionalInputProps = {
    */
   labelClassName?: string;
   /**
-   * conditional input value
+   * conditional value
    */
-  value?: any;
+  value?: string;
+  /**
+   * conditional input onChange event
+   */
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export type ErrorMessageProps = {

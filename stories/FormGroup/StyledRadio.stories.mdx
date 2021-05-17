@@ -412,6 +412,18 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="radio buttons conditionally revealing content">
     {() => {
+      const [emailValue, setEmailValue] = React.useState('');
+      const [phoneValue, setPhoneValue] = React.useState('');
+      const [textMessageValue, setTextMessageValue] = React.useState('');
+      const handleEmailChange = event => {
+        setEmailValue(event.target.value);
+      }
+      const handlePhoneChange = event => {
+        setPhoneValue(event.target.value);
+      }
+      const handleTextMessageChange = event => {
+        setTextMessageValue(event.target.value);
+      }
       return (
         <FormGroup
           name="contact"
@@ -441,6 +453,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                 id: 'conditional-contact',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-email',
+                value: emailValue,
+                onChange: e => handleEmailChange(e)
               },
             },
             {
@@ -458,6 +472,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                 id: 'conditional-contact-2',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-phone',
+                value: phoneValue,
+                onChange: e => handlePhoneChange(e)
               },
             },
             {
@@ -475,6 +491,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                 id: 'conditional-contact-3',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-text',
+                value: textMessageValue,
+                onChange: e => handleTextMessageChange(e)
               },
             },
           ]}

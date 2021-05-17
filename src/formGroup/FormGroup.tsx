@@ -159,7 +159,6 @@ export const FormGroup = ({
       setSelection(newSelection);
     }
 
-    if (item.onChange) item.onChange(e);
     if (onChange) onChange(e);
   };
 
