@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { ErrorMessage, Hint, Legend } from '../common/components';
+import {
+  CheckboxRadioBase,
+  ErrorMessage,
+  Hint,
+  Legend,
+} from '../common/components';
 import {
   ErrorMessageProps,
-  FormRadioProps,
-  FormCheckboxProps,
+  FormRadioCheckboxProps,
   HintProps,
   LegendProps,
 } from '../common/components/commonTypes';
-import { FormRadio } from '../formRadio/index';
-import { FormCheckbox } from '../formCheckbox/index';
 
 type DividerProps = {
   /**
@@ -33,11 +35,11 @@ type FormGroupProps = {
   /**
    * form item type can be "radio" or "checkbox"
    */
-  type: string;
+  type: 'radio' | 'checkbox';
   /**
    * form group items
    */
-  items: (FormCheckboxProps | FormRadioProps | DividerProps)[];
+  items: (FormRadioCheckboxProps | DividerProps)[];
   /**
    * form group aria-describedby
    */
@@ -88,6 +90,11 @@ type FormGroupProps = {
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
 };
 
+type SelectionItem = FormRadioCheckboxProps | DividerProps;
+
+const isDivider = (item: SelectionItem): item is DividerProps =>
+  (item as FormRadioCheckboxProps).label === undefined;
+
 export const FormGroup = ({
   name,
   type,
@@ -105,69 +112,84 @@ export const FormGroup = ({
   legend,
   onChange,
 }: FormGroupProps) => {
-  const findSelection = (
-    items: (FormCheckboxProps | FormRadioProps | DividerProps)[]
-  ) =>
-    items.find(
-      (item: FormCheckboxProps | FormRadioProps | DividerProps) =>
-        (item as FormRadioProps | FormCheckboxProps).selected
-    );
+  const findSelection = (items: (FormRadioCheckboxProps | DividerProps)[]) => {
+    let newSelection: { [key: string]: boolean } = {};
+    items.forEach((item: FormRadioCheckboxProps | DividerProps) => {
+      if ((item as FormRadioCheckboxProps).selected) {
+        newSelection = {
+          ...newSelection,
+          [(item as FormRadioCheckboxProps).id]: true,
+        };
+      } else {
+        newSelection = {
+          ...newSelection,
+          [(item as FormRadioCheckboxProps).id]: false,
+        };
+      }
+    });
+    return newSelection;
+  };
 
-  const [selection, setSelection] = useState(
-    type === 'radio'
-      ? (findSelection(items) as FormRadioProps)?.value
-      : type === 'checkbox'
-      ? (findSelection(items) as FormCheckboxProps)?.selected
-      : null
+  const [selection, setSelection] = useState<{ [key: string]: boolean }>(
+    findSelection(items)
   );
 
-  const isDivider = (
-    item: DividerProps | FormCheckboxProps | FormRadioProps
-  ): item is DividerProps =>
-    (item as FormRadioProps | FormCheckboxProps).label === undefined;
+  const handleChange = (
+    item: FormRadioCheckboxProps,
+    type: string,
+    e: React.FormEvent<HTMLInputElement>
+  ) => {
+    if (type === 'checkbox') {
+      setSelection({ ...selection, [item.id]: e.currentTarget.checked });
+    } else {
+      let newSelection = {};
+      items.forEach((item: FormRadioCheckboxProps | DividerProps) => {
+        if (item.id === e.currentTarget.id) {
+          newSelection = {
+            ...newSelection,
+            [(item as FormRadioCheckboxProps).id]: e.currentTarget.checked,
+          };
+        } else {
+          newSelection = {
+            ...newSelection,
+            [(item as FormRadioCheckboxProps).id]: false,
+          };
+        }
+      });
+      setSelection(newSelection);
+    }
 
-  const formGroupItems = items.map(
-    (item: DividerProps | FormCheckboxProps | FormRadioProps, index: number) =>
-      isDivider(item) ? (
-        <div
-          key={`${id}_${index.toString()}`}
-          id={item.id}
-          className={item.className}
-        >
-          {item.text}
-        </div>
-      ) : type === 'radio' ? (
-        <FormRadio
-          key={`${id}_${index.toString()}`}
-          {...item}
-          name={name}
-          inputProps={{ ...inputProps, ...item.inputProps }}
-          itemProps={{ ...itemProps, ...item.itemProps }}
-          labelProps={{ ...labelProps, ...item.labelProps }}
-          selected={selection === item.value}
-          onChange={e => {
-            setSelection(e.currentTarget.value);
-            if (item.onChange) item.onChange(e);
-            if (onChange) onChange(e);
-          }}
-        />
-      ) : type === 'checkbox' ? (
-        <FormCheckbox
-          key={`${id}_${index.toString()}`}
-          {...item}
-          name={name}
-          inputProps={{ ...inputProps, ...item.inputProps }}
-          itemProps={{ ...itemProps, ...item.itemProps }}
-          labelProps={{ ...labelProps, ...item.labelProps }}
-          selected={item.selected}
-          value={item.value}
-          onChange={e => {
-            setSelection(e.currentTarget.defaultChecked);
-            if (item.onChange) item.onChange(e);
-            if (onChange) onChange(e);
-          }}
-        />
-      ) : null
+    if (item.onChange) item.onChange(e);
+    if (onChange) onChange(e);
+  };
+
+  const isSelected = (item: SelectionItem) =>
+    Object.keys(selection).some(
+      key => key === item.id && selection[key] === true
+    );
+
+  const formGroupItems = items.map((item: SelectionItem, index: number) =>
+    isDivider(item) ? (
+      <div
+        key={`${id}_${index.toString()}`}
+        id={item.id}
+        className={item.className}
+      >
+        {item.text}
+      </div>
+    ) : type === 'radio' || type === 'checkbox' ? (
+      <CheckboxRadioBase
+        type={type}
+        key={`${id}_${index.toString()}`}
+        {...item}
+        name={name}
+        inputProps={{ ...inputProps, ...item.inputProps }}
+        itemProps={{ ...itemProps, ...item.itemProps }}
+        labelProps={{ ...labelProps, ...item.labelProps }}
+        selected={isSelected(item)}
+        onChange={e => handleChange(item, type, e)}
+      />
+    ) : null
   );
 
   return items && items.length > 1 ? (

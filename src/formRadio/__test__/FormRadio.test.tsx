@@ -208,6 +208,7 @@ describe('FormRadio', () => {
       <FormRadio
         value="choice 1"
         label="my label"
+        id="radioId"
         conditional={{
           name: 'input-field-name',
           label: 'label',
@@ -243,7 +244,6 @@ describe('FormRadio', () => {
         onChange={handleChange}
       />
     );
-
     fireEvent['click'](screen.getByLabelText('my label'));
 
     expect(container.querySelector('#my-input')).toBeInTheDocument();

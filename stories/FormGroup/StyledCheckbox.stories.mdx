@@ -38,7 +38,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
             {
               label: 'Farm or agricultural waste',
               value: 'farm',
-              id: 'waste-2',
+              id: 'waste-3',
             },
           ]}
           ariaDescribedBy="changed-name-hint"
@@ -91,7 +91,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
             {
               label: 'Farm or agricultural waste',
               value: 'farm',
-              id: 'waste-2',
+              id: 'waste-3',
             },
           ]}
           groupClasses="govuk-form-group"
@@ -136,7 +136,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'nationality',
               hint: {
                 text: 'including English, Scottish, Welsh and Northern Irish.',
-                classes: 'govuk-hint govuk-checkboxes__hint',
+                className: 'govuk-hint govuk-checkboxes__hint',
                 id: 'nationality-hint',
               },
               ariaDescribedBy: 'nationality-hint',
@@ -159,7 +159,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
             id: 'nationality-hint',
             text:
               'If you have dual nationality, select all options that are relevant to you.',
-            classes: 'govuk-hint',
+            className: 'govuk-hint',
           }}
           itemsClasses="govuk-checkboxes"
           legend={{
@@ -268,11 +268,11 @@ In this section we are using the FormGroup component providing the GOV.UK Design
           fieldsetClasses="govuk-fieldset"
           error={{
             text: 'Please confirm where you live',
-            classes: 'govuk-error-message',
+            className: 'govuk-error-message',
             id: 'changed-name-error',
             visuallyHiddenText: {
               text: 'Error:',
-              classes: 'govuk-visually-hidden',
+              className: 'govuk-visually-hidden',
             },
           }}
           itemsClasses="govuk-checkboxes"
@@ -432,7 +432,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
           hint={{
             id: 'contact-hint',
             text: 'Select all options that are relevant to you.',
-            classes: 'govuk-hint',
+            className: 'govuk-hint',
           }}
           itemsClasses="govuk-checkboxes govuk-checkboxes--conditional"
           legend={{

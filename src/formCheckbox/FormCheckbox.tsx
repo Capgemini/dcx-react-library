@@ -1,7 +1,6 @@
-import _ from 'lodash';
 import React from 'react';
-import { FormCheckboxProps } from '../common/components/commonTypes';
-import { Hint, Conditional } from '../common';
+import { FormRadioCheckboxProps } from '../common/components/commonTypes';
+import { CheckboxRadioBase, Roles } from '../common';
 
 export const FormCheckbox = ({
   id,
@@ -22,49 +21,27 @@ export const FormCheckbox = ({
   hint,
   hintPosition = 'below',
   nested,
-}: FormCheckboxProps) => {
-  const conditionalReveal = (): boolean =>
-    !_.isEmpty(conditional) && selected === true;
-
-  const input: JSX.Element = (
-    <input
-      id={id}
-      type="checkbox"
-      name={name}
-      value={value}
-      aria-label={ariaLabel || name}
-      data-aria-controls={ariaDataControls}
-      aria-describedby={ariaDescribedBy}
-      aria-labelledby={ariaLabelledBy || labelProps?.id}
-      disabled={disabled}
-      defaultChecked={selected}
-      onChange={onChange}
-      {...inputProps}
-    />
-  );
-
-  const checkbox: JSX.Element = nested ? (
-    <label {...labelProps}>
-      {input}
-      {label}
-    </label>
-  ) : (
-    <>
-      {input}
-      <label {...labelProps} htmlFor={id}>
-        {label}
-      </label>
-    </>
-  );
-
-  return (
-    <div {...itemProps}>
-      {hint && hintPosition === 'above' && <Hint {...hint} />}
-      {checkbox}
-      {hint && hintPosition === 'below' && <Hint {...hint} />}
-      {conditional !== undefined &&
-        conditionalReveal() &&
-        Conditional(conditional)}
-    </div>
-  );
-};
+}: FormRadioCheckboxProps) => (
+  <CheckboxRadioBase
+    type="checkbox"
+    id={id}
+    role={Roles.formCheckbox}
+    name={name}
+    value={value}
+    label={label}
+    inputProps={inputProps}
+    itemProps={itemProps}
+    labelProps={labelProps}
+    ariaLabel={ariaLabel || name}
+    ariaDataControls={ariaDataControls}
+    ariaDescribedBy={ariaDescribedBy}
+    ariaLabelledBy={ariaLabelledBy || labelProps?.id}
+    onChange={onChange}
+    conditional={conditional}
+    disabled={disabled}
+    selected={selected}
+    hint={hint}
+    hintPosition={hintPosition}
+    nested={nested}
+  />
+);
