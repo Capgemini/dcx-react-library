@@ -25,6 +25,7 @@ Each component, described in storybook, will provide you 3 main sections:
 ## How to use it
 
 Using dcx-react-library should not require any particular setup. You only need to import the component and use it :smiley:
+
 Steps:
 
 - `yarn add dcx-react-library`
