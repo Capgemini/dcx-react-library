@@ -41,7 +41,7 @@ const App = () => {
 
 ## Contributing
 
-If you'd like to contribute, please follow our CONTRIBUTING.md[https://github.com/Capgemini/dcx-react-library/blob/main/CONTRIBUTING.md] section.
+If you'd like to contribute, please follow our [CONTRIBUTING Section][https://github.com/capgemini/dcx-react-library/blob/main/contributing.md] section.
 
 ## Raise a bug or enhancement
 
