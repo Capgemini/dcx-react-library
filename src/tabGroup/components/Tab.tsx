@@ -4,9 +4,13 @@ import { useTabGroup } from '../TabGroup';
 
 export type TabProps = {
   /**
+   * Tab key / id
+   */
+  eventKey: string;
+  /**
    * Tab label
    */
-  label: string;
+  label?: string;
   /**
    * Tab active class name
    */
@@ -31,28 +35,20 @@ export type TabProps = {
    * Tab disabled class name
    */
   disabledClassName?: string;
-  /**
-   * Tab id
-   */
-  id?: string;
-  /**
-   * Tab pane id
-   */
-  tabPaneId?: string;
 };
 
 export const Tab = ({
+  eventKey,
   activeTabClassName,
   ariaControls,
   disabled,
   disabledClassName,
   label,
   className,
-  id,
 }: TabProps) => {
   const { activeTab, changeActiveTab } = useTabGroup();
 
-  const selected = activeTab === label;
+  const selected = activeTab === eventKey;
   const classes: string = [
     className,
     selected ? activeTabClassName : undefined,
@@ -62,19 +58,21 @@ export const Tab = ({
     .join(' ')
     .trim();
 
-  const onClickHandler: (event: React.FormEvent<HTMLLIElement>) => void = (
-    event: React.FormEvent<HTMLLIElement>
-  ) => !disabled && changeActiveTab(event.currentTarget.innerHTML);
+  const onClickHandler: (
+    event: React.MouseEvent<HTMLLIElement> | React.TouchEvent<HTMLLIElement>
+  ) => void = (
+    event: React.MouseEvent<HTMLLIElement> | React.TouchEvent<HTMLLIElement>
+  ) => changeActiveTab(event.currentTarget.id);
 
   return (
     <li
       role={Roles.tab}
-      id={id}
+      id={eventKey}
       className={classes}
       aria-controls={ariaControls}
       aria-selected={selected}
       tabIndex={!selected ? -1 : undefined}
-      onClick={onClickHandler}
+      onClick={!disabled ? onClickHandler : undefined}
     >
       {label}
     </li>

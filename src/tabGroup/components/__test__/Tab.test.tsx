@@ -7,7 +7,9 @@ import { TabContext } from '../../TabGroup';
 describe('Tab', () => {
   it('should not render a tab with out a context', () => {
     expect(() =>
-      render(<Tab label="tab 2" activeTabClassName="tabActive" />)
+      render(
+        <Tab eventKey="tab 2" label="tab 2" activeTabClassName="tabActive" />
+      )
     ).toThrow('Tab must be used within a TabGroup');
   });
 
@@ -21,7 +23,7 @@ describe('Tab', () => {
           changeActiveTab: onClickHandler,
         }}
       >
-        <Tab label="tab 2" activeTabClassName="tabActive" />
+        <Tab eventKey="tab 2" label="tab 2" activeTabClassName="tabActive" />
       </TabContext.Provider>
     );
 
@@ -39,16 +41,16 @@ describe('Tab', () => {
         }}
       >
         <Tab
+          eventKey="tab 2"
           activeTabClassName="tabActive"
           label="tab 2"
-          id="myId"
           className="myClassName"
           ariaControls="tabParent"
         />
       </TabContext.Provider>
     );
 
-    expect(screen.getByRole('tab').getAttribute('id')).toBe('myId');
+    expect(screen.getByRole('tab').getAttribute('id')).toBe('tab 2');
     expect(screen.getByRole('tab').getAttribute('class')).toBe('myClassName');
     expect(screen.getByRole('tab').getAttribute('aria-controls')).toBe(
       'tabParent'
@@ -67,9 +69,9 @@ describe('Tab', () => {
         }}
       >
         <Tab
+          eventKey="tab 1"
           activeTabClassName="tabActive"
           label="tab 1"
-          id="myId"
           className="myClassName"
           ariaControls="tabParent"
         />
@@ -94,9 +96,9 @@ describe('Tab', () => {
         }}
       >
         <Tab
+          eventKey="tab 1"
           activeTabClassName="tabActive"
           label="tab 1"
-          id="myId"
           className="myClassName"
           ariaControls="tabParent"
         />
@@ -116,8 +118,8 @@ describe('Tab', () => {
           changeActiveTab: onClickHandler,
         }}
       >
-        <Tab activeTabClassName="tabActive" label="tab 1" />
-        <Tab activeTabClassName="tabActive" label="tab 2" />
+        <Tab eventKey="tab 1" activeTabClassName="tabActive" label="tab 1" />
+        <Tab eventKey="tab 2" activeTabClassName="tabActive" label="tab 2" />
       </TabContext.Provider>
     );
 
@@ -138,9 +140,9 @@ describe('Tab', () => {
         }}
       >
         <Tab
+          eventKey="tab 2"
           activeTabClassName="tabActive"
           label="tab 2"
-          id="myId"
           className="myClassName"
           ariaControls="tabParent"
           disabled={true}
@@ -165,9 +167,9 @@ describe('Tab', () => {
         }}
       >
         <Tab
+          eventKey="tab 1"
           activeTabClassName="tabActive"
           label="tab 1"
-          id="myId"
           className="myClassName"
           ariaControls="tabParent"
         />
