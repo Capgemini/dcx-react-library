@@ -59,9 +59,13 @@ yarn start #to run the examples
 
 The default example imports and live reloads whatever is in the `/dist` folder, so if you are seeing an out of date component, make sure DCX Component Library is running in watch mode as recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
 
-To do a one-off build, use `yarn build`.
+- To do a one-off build, use `yarn build`.
 
-To run tests, use `yarn test`.
+- To run tests, use `yarn test`.
+
+- To check the code coverage use `yarn test: coverage`
+
+- To fix all the linting errors use `yarn lint: fix`
 
 ## Submit your PR
 
