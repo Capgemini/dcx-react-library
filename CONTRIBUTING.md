@@ -22,7 +22,7 @@ root project and run `yarn start` within the `./example` folder
 
 ## Commands
 
-DCX Component Library scaffolds your new library inside `/src`, and also sets up a [Parcel-based](https://parceljs.org) playground for it inside `/example`.
+DCX Component Library scaffolds your new library inside the `/src` folder and also sets up a [Parcel-based](https://parceljs.org) playground for it inside the `/example` folder.
 
 The recommended workflow is to run DCX Component Library in one terminal:
 
@@ -37,7 +37,7 @@ Then run either Storybook or the example playground:
 
 ### Storybook
 
-Run inside another terminal:
+Run storybook inside another terminal:
 
 ```bash
 yarn storybook
@@ -49,7 +49,7 @@ This loads the stories from `./stories`.
 
 ### Example
 
-Then run the example inside another:
+Run the example inside another terminal:
 
 ```bash
 cd example
@@ -57,7 +57,7 @@ yarn install #to install dependencies
 yarn start #to run the examples
 ```
 
-The default example imports and live reloads whatever is in `/dist`, so if you are seeing an out of date component, make sure DCX Component Library is running in watch mode like we recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
+The default example imports and live reloads whatever is in the `/dist` folder, so if you are seeing an out of date component, make sure DCX Component Library is running in watch mode as recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
 
 To do a one-off build, use `yarn build`.
 
@@ -121,7 +121,7 @@ git commit -m "test: {{ name of test }}"
 
 ## Continuous Integration
 
-we use circleCi for continous integration. CircleCi configuration is stored under `.circleci` folder and it will check:
+We use circleCi for continuous integration. CircleCi configuration is stored under `.circleci` folder and it will check:
 
 - test
 - code coverage

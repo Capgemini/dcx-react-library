@@ -4,20 +4,20 @@
 
 ## Motivation
 
-`dcx-react-library` is a react library with a set of components ready to use in your project.
+`dcx-react-library` is a React library with a set of components ready to use in your project.
 
-There're plenty of libraries available in react that will help you to increase your productivity however most of them contain a lot of css and are really hard to style based on your project's requirements.
+There are plenty of libraries available in React that can help to increase your productivity however most of them contain lots of css and are hard to style based on your project's requirements.
 
-dcx-react-library is **UI/UX agnostic** so you need to provide styling for the look and feel of your preference.
+dcx-react-library is **UI/UX agnostic** so you need to provide styling to match the look and feel of your application. This allows the dcx-react-library to be easily integrated into any project.
 
 ## Components
 
 To see the full list of components built in dcx-react-library, and how to use it, have a look on our [storybook-showcase](https://www.chromatic.com/library?appId=6069a6f47f4b9f002171f8e1) (Click on View Storybook to see the list of components)
-Each component, described in storybook, will provide you 3 main sections:
+In Storybook, each component is presented with 4 main sections:
 
-- **documentation**: it will describe the list of properties available, optional and mandatory;
-- **live**: you can play directly with all the properties and see how the component will behave;
-- **unstyled**: the bare component without any style available;
+- **documentation**: describes the list of properties available, optional and mandatory;
+- **live**: you can play directly with all the properties and see the component's behaviour;
+- **unstyled**: the bare component without any styling applied;
 - **styled**: an example (mainly based on GDS) of how to style the component and the final result.
 
 ![Image of dcx-react-library showcase](https://github.com/Capgemini/dcx-react-library/blob/main/stories/img/storybook-doc.png)
@@ -45,7 +45,7 @@ If you'd like to contribute, please follow our [CONTRIBUTING Section](https://gi
 
 ## Raise a bug or enhancement
 
-If you find a bug or you would like an improvement please raise an _issue_ and use the appropriate template we will be more than happy to improve the library smashing all the bugs found and improving the functionality.
+If you find a bug or you would like to recommend an improvement, please raise an _issue_ and use the appropriate template. We will be more than happy to improve the library, smashing all the bugs found and improve the functionality.
 
 ## Contributors ✨
 
