@@ -57,7 +57,7 @@ yarn install #to install dependencies
 yarn start #to run the examples
 ```
 
-The default example imports and live reloads whatever is in the `/dist` folder, so if you are seeing an out of date component, make sure DCX Component Library is running in watch mode as recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
+The default example imports and live reloads whatever is in the `/dist` folder, so if you are seeing an out of date component, make sure DCX Component Library is running in watch mode as recommended above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
 
 - To do a one-off build, use `yarn build`;
 
