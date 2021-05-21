@@ -186,11 +186,16 @@ In this section we're using the formCheckbox component providing the GovUk style
 <Canvas>
   <Story name="conditional input">
     {() => {
-      const [value, setValue] = React.useState('');
-      const [checked, setChecked] = React.useState(false);
+      const [value, setValue] = React.useState({
+        'contact-1': false,
+        'contact-2': false,
+        'contact-3': false,
+      });
       const handleChange = event => {
-        setValue(event.currentTarget.value);
-        setChecked(!checked);
+        setValue({
+          ...value,
+          [event.target.id]: event.target.checked,
+        });
       };
       return (
         <div className="govuk-form-group">
@@ -220,8 +225,10 @@ In this section we're using the formCheckbox component providing the GovUk style
                 labelProps={{
                   className: 'govuk-label govuk-checkboxes__label',
                 }}
-                defaultChecked={checked}
+                selected={value['contact']}
                 conditional={{
+                  value: '',
+                  onChange: value => {},
                   name: 'contact-by-email',
                   label: 'Email address',
                   type: 'text',
@@ -250,8 +257,10 @@ In this section we're using the formCheckbox component providing the GovUk style
                 labelProps={{
                   className: 'govuk-label govuk-checkboxes__label',
                 }}
-                defaultChecked={checked}
+                selected={value['contact-2']}
                 conditional={{
+                  value: '',
+                  onChange: value => {},
                   name: 'contact-by-phone',
                   label: 'Phone number',
                   type: 'text',
@@ -280,8 +289,10 @@ In this section we're using the formCheckbox component providing the GovUk style
                 labelProps={{
                   className: 'govuk-label govuk-checkboxes__label',
                 }}
-                defaultChecked={checked}
+                selected={value['contact-3']}
                 conditional={{
+                  value: '',
+                  onChange: value => {},
                   name: 'contact-by-text',
                   label: 'Mobile phone number',
                   type: 'text',

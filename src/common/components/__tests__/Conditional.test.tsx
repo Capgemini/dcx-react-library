@@ -6,12 +6,15 @@ import { Conditional } from '../Conditional';
 
 describe('Conditional', () => {
   it('should render a conditional input', () => {
+    const onChangeHandler = jest.fn();
     render(
       <Conditional
+        value=""
         inputId="conditional-email"
         name="email"
         label="Email"
         type="text"
+        onChange={onChangeHandler}
       />
     );
     expect(screen.getByRole('textbox')).toBeInTheDocument();
@@ -71,22 +74,5 @@ describe('Conditional', () => {
     userEvent.type(input, 'my@aol.com');
 
     expect(onChangeHandler).toHaveBeenCalled();
-  });
-
-  it('should render a conditional input without an onChange', () => {
-    const onChangeHandler = jest.fn();
-    render(
-      <Conditional
-        inputId="conditional-email"
-        name="email"
-        label="Email"
-        type="text"
-        value="conditional-value"
-      />
-    );
-    const input = screen.getByRole('textbox');
-    userEvent.type(input, 'my@aol.com');
-
-    expect(onChangeHandler).not.toHaveBeenCalled();
   });
 });

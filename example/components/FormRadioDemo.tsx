@@ -15,16 +15,14 @@ export const FormRadioDemo = () => {
   ) => setConditionalSelected(event.currentTarget.value);
 
   const [inputFieldValues, setInputFieldValues] = React.useState({
-    'single-input-1': '',
-    'single-input-2': '',
-    'single-input-3': '',
+    'single-1': '',
+    'single-2': '',
+    'single-3': '',
   });
-  const handleInputFieldChange: React.ChangeEventHandler<HTMLInputElement> = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleInputFieldChange = (id: string, value: string) => {
     setInputFieldValues({
       ...inputFieldValues,
-      [event.currentTarget.name]: event.currentTarget.value,
+      [id]: value,
     });
   };
 
@@ -77,8 +75,8 @@ export const FormRadioDemo = () => {
           name: 'single-input-1',
           label: 'single input 1',
           type: 'text',
-          value: inputFieldValues['single-input-1'],
-          onChange: handleInputFieldChange,
+          value: inputFieldValues['single-1'],
+          onChange: value => handleInputFieldChange('single-1', value),
         }}
       />
       <FormRadio
@@ -92,8 +90,8 @@ export const FormRadioDemo = () => {
           name: 'single-input-2',
           label: 'single input 2',
           type: 'text',
-          value: inputFieldValues['single-input-2'],
-          onChange: handleInputFieldChange,
+          value: inputFieldValues['single-2'],
+          onChange: value => handleInputFieldChange('single-2', value),
         }}
       />
       <FormRadio
@@ -107,8 +105,8 @@ export const FormRadioDemo = () => {
           name: 'single-input-3',
           label: 'single input 3',
           type: 'text',
-          value: inputFieldValues['single-input-3'],
-          onChange: handleInputFieldChange,
+          value: inputFieldValues['single-3'],
+          onChange: value => handleInputFieldChange('single-3', value),
         }}
       />
       <FormGroup

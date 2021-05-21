@@ -57,6 +57,7 @@ export const FormCheckboxDemo = () => {
             id: 'radio-1',
             selected: true,
             conditional: {
+              value: '',
               name: '',
               label: '',
               type: 'text',
@@ -66,6 +67,7 @@ export const FormCheckboxDemo = () => {
               inputClassName: '',
               inputId: '',
               labelClassName: '',
+              onChange: value => {},
             },
             hint: {
               text: '',
@@ -78,6 +80,7 @@ export const FormCheckboxDemo = () => {
             value: 'no',
             id: 'radio-2',
             conditional: {
+              value: '',
               name: '',
               label: '',
               type: 'text',
@@ -87,6 +90,7 @@ export const FormCheckboxDemo = () => {
               inputClassName: '',
               inputId: '',
               labelClassName: '',
+              onChange: value => {},
             },
             hint: {
               text: '',

@@ -415,14 +415,14 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [emailValue, setEmailValue] = React.useState('');
       const [phoneValue, setPhoneValue] = React.useState('');
       const [textMessageValue, setTextMessageValue] = React.useState('');
-      const handleEmailChange = event => {
-        setEmailValue(event.target.value);
+      const handleEmailChange = value => {
+        setEmailValue(value);
       }
-      const handlePhoneChange = event => {
-        setPhoneValue(event.target.value);
+      const handlePhoneChange = value => {
+        setPhoneValue(value);
       }
-      const handleTextMessageChange = event => {
-        setTextMessageValue(event.target.value);
+      const handleTextMessageChange = value => {
+        setTextMessageValue(value);
       }
       return (
         <FormGroup

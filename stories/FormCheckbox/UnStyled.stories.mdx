@@ -172,6 +172,8 @@ By default, the hint will display underneath the checkbox
           onChange={handleChange}
           selected={checked}
           conditional={{
+            value: '',
+            onChange: value => {},
             name: 'conditional-6',
             label: 'condition label',
             type: 'text',

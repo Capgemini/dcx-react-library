@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ConditionalInputProps } from '../components/commonTypes';
 
 export const Conditional = ({
@@ -14,18 +14,16 @@ export const Conditional = ({
   value,
   onChange,
 }: ConditionalInputProps) => {
-  const [conditionalValue, setConditionalValue] = useState<string | undefined>(
-    value
-  );
+  const [conditionalValue, setConditionalValue] = useState<string>(value);
+
+  useEffect(() => {
+    onChange(conditionalValue);
+  }, [conditionalValue]);
 
   const onChangeHandler: (
     event: React.ChangeEvent<HTMLInputElement>
   ) => void = (event: React.ChangeEvent<HTMLInputElement>) => {
     setConditionalValue(event.target.value);
-
-    if (onChange) {
-      onChange(event);
-    }
   };
 
   return (

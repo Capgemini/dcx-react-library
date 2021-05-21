@@ -20,6 +20,8 @@ function FormGroupDemo() {
         value: 'yes',
         id: 'radio-1',
         conditional: {
+          value: ""
+          onChange: value => {},
           name: "",
           label: "",
           type: 'text',
@@ -41,6 +43,8 @@ function FormGroupDemo() {
         value: 'no',
         id: 'radio-2',
         conditional: {
+          value: ""
+          onChange: value => {},
           name: "",
           label: "",
           type: 'text',
