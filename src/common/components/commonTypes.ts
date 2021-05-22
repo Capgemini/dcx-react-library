@@ -63,10 +63,6 @@ export type ConditionalInputProps = {
    * conditional label input class name
    */
   labelClassName?: string;
-  /**
-   * conditional input onChange event
-   */
-  onChange: (value: string) => void;
 };
 
 export type ErrorMessageProps = {
@@ -113,7 +109,6 @@ export type FormRadioCheckboxProps = {
    * ariaLabel
    */
   ariaLabel?: string;
-
   /**
    * ariaDataControls
    */
@@ -139,10 +134,6 @@ export type FormRadioCheckboxProps = {
    */
   hint?: HintProps;
   /**
-   * Position the hint
-   */
-  hintPosition?: 'below' | 'above';
-  /**
    * allows for customisation of the input with all the properites needed
    */
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
@@ -166,10 +157,6 @@ export type FormRadioCheckboxProps = {
    * specifies whether the radio should be selected
    */
   selected?: boolean;
-  /**
-   * function that will trigger all the time there's a change in the radio
-   */
-  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
 };
 
 export type HintProps = {
@@ -177,6 +164,10 @@ export type HintProps = {
    * hint text
    **/
   text: string;
+  /**
+   * hint position
+   */
+  position?: 'below' | 'above';
   /**
    * class names to customise hint
    **/

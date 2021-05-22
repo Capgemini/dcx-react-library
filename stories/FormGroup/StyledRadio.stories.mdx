@@ -11,6 +11,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="inline radio buttons">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="change-name"
@@ -36,6 +38,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'change-name-2',
             },
           ]}
+          onChange={handleChange}
           ariaDescribedBy="changed-name-hint"
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
@@ -65,6 +68,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="titled radio buttons">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="change-name-2"
@@ -90,6 +95,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'change-name-2-2',
             },
           ]}
+          onChange={handleChange}
           ariaDescribedBy="changed-name-hint"
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
@@ -119,6 +125,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="stacked radio buttons">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="where-do-you-live"
@@ -154,6 +162,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'where-do-you-live-4',
             },
           ]}
+          onChange={handleChange}
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
           itemsClasses="govuk-radios"
@@ -172,6 +181,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="radio buttons with hints">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="sign-in"
@@ -195,6 +206,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                   'You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.',
                 className: 'govuk-hint govuk-radios__hint',
                 id: 'sign-in-item-hint',
+                position: 'below'
               },
               ariaDescribedBy: 'sign-in-item-hint',
             },
@@ -207,10 +219,12 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                   'You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.',
                 className: 'govuk-hint govuk-radios__hint',
                 id: 'sign-in-2-item-hint',
+                position: 'below'
               },
               ariaDescribedBy: 'sign-in-item-hint',
             },
           ]}
+          onChange={handleChange}
           ariaDescribedBy="sign-in-hint"
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
@@ -240,6 +254,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="filter radio buttons">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="filter-change"
@@ -265,6 +281,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'changed-name-year',
             },
           ]}
+          onChange={handleChange}
           groupClasses="govuk-radios govuk-radios--small"
           fieldsetClasses="govuk-fieldset"
           itemsClasses="govuk-radios govuk-radios--small"
@@ -287,6 +304,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="error message radio buttons">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="change-name-error"
@@ -312,6 +331,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'change-name-no-error',
             },
           ]}
+          onChange={handleChange}
           ariaDescribedBy="changed-name-hint changed-name-error"
           groupClasses="govuk-form-group govuk-form-group--error"
           fieldsetClasses="govuk-fieldset"
@@ -350,6 +370,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="radio buttons with a text divider">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="where-do-you-live-divider"
@@ -394,6 +416,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'where-do-you-live-divider-5',
             },
           ]}
+          onChange={handleChange}
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
           itemsClasses="govuk-radios"
@@ -412,18 +435,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="radio buttons conditionally revealing content">
     {() => {
-      const [emailValue, setEmailValue] = React.useState('');
-      const [phoneValue, setPhoneValue] = React.useState('');
-      const [textMessageValue, setTextMessageValue] = React.useState('');
-      const handleEmailChange = value => {
-        setEmailValue(value);
-      }
-      const handlePhoneChange = value => {
-        setPhoneValue(value);
-      }
-      const handleTextMessageChange = value => {
-        setTextMessageValue(value);
-      }
+      const [selected, setSelected] = React.useState('');
+      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
       return (
         <FormGroup
           name="contact"
@@ -453,8 +466,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                 id: 'conditional-contact',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-email',
-                value: emailValue,
-                onChange: e => handleEmailChange(e)
+                value: ''
               },
             },
             {
@@ -472,8 +484,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                 id: 'conditional-contact-2',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-phone',
-                value: phoneValue,
-                onChange: e => handlePhoneChange(e)
+                value: ''
               },
             },
             {
@@ -491,11 +502,11 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                 id: 'conditional-contact-3',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-text',
-                value: textMessageValue,
-                onChange: e => handleTextMessageChange(e)
+                value: ''
               },
             },
           ]}
+          onChange={handleChange}
           ariaDescribedBy="contact-hint"
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"

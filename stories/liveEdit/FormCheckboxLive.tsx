@@ -8,9 +8,13 @@ function FormCheckboxDemo() {
    
   const [value, setValue] = React.useState('');
   const [checked, setChecked] = React.useState(false);
-  const handleChange = event => {
+  const handleChange = (event, conditional) => {
+    if (conditional) {
+      console.log(conditional);
+      return;
+    }
     setValue(event.currentTarget.value);
-    setChecked(!checked);
+    setChecked(event.currentTarget.checked);
   };
   return (
     <FormCheckbox
@@ -32,10 +36,11 @@ function FormCheckboxDemo() {
       hint={{
         text: "",
         className: "",
-        id: ""
+        id: "",
+        position: "below"
       }}
-      hintPosition="below"
       conditional={{
+        value: "",
         name: "",
         label: "",
         type: 'text',

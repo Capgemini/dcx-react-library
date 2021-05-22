@@ -6,7 +6,7 @@ import './style.css';
 const FormGroupDemo = `
 function FormGroupDemo() {
   const [value, setValue] = React.useState('');
-  const handleChange = event => {
+  const handleChange = (event, conditional) => {
     setValue(event.currentTarget.value);
   }
   
@@ -20,8 +20,7 @@ function FormGroupDemo() {
         value: 'yes',
         id: 'radio-1',
         conditional: {
-          value: ""
-          onChange: value => {},
+          value: "",
           name: "",
           label: "",
           type: 'text',
@@ -35,7 +34,8 @@ function FormGroupDemo() {
         hint:{
           text: "",
           className: "",
-          id: ""
+          id: "",
+          position: "above"
         }
       },
       {
@@ -43,8 +43,7 @@ function FormGroupDemo() {
         value: 'no',
         id: 'radio-2',
         conditional: {
-          value: ""
-          onChange: value => {},
+          value: "",
           name: "",
           label: "",
           type: 'text',
@@ -58,7 +57,8 @@ function FormGroupDemo() {
         hint:{
           text: "",
           className: "",
-          id: ""
+          id: "",
+          position: "above"
         }
       },
     ]}

@@ -67,7 +67,6 @@ export const FormCheckboxDemo = () => {
               inputClassName: '',
               inputId: '',
               labelClassName: '',
-              onChange: value => {},
             },
             hint: {
               text: '',
@@ -90,12 +89,12 @@ export const FormCheckboxDemo = () => {
               inputClassName: '',
               inputId: '',
               labelClassName: '',
-              onChange: value => {},
             },
             hint: {
-              text: '',
+              text: 'hint text',
               className: '',
               id: '',
+              position: 'above',
             },
           },
         ]}

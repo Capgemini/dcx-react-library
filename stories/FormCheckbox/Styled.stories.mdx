@@ -187,15 +187,16 @@ In this section we're using the formCheckbox component providing the GovUk style
   <Story name="conditional input">
     {() => {
       const [value, setValue] = React.useState({
-        'contact-1': false,
+        'contact': false,
         'contact-2': false,
         'contact-3': false,
       });
-      const handleChange = event => {
+      const handleChange = (event, conditional) => {
         setValue({
           ...value,
           [event.target.id]: event.target.checked,
         });
+        console.log(conditional);
       };
       return (
         <div className="govuk-form-group">
@@ -228,7 +229,6 @@ In this section we're using the formCheckbox component providing the GovUk style
                 selected={value['contact']}
                 conditional={{
                   value: '',
-                  onChange: value => {},
                   name: 'contact-by-email',
                   label: 'Email address',
                   type: 'text',

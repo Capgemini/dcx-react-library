@@ -3,28 +3,64 @@ import { FormRadio, FormGroup } from 'dcx-react-library';
 
 export const FormRadioDemo = () => {
   const [selected, setSelected] = React.useState('single-2');
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+  const handleChange: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    conditionalInput?: string
+  ) => void = event => {
     setSelected(event.currentTarget.value);
   };
 
-  const [conditionalSelected, setConditionalSelected] = React.useState(
+  const [conditionalSelected, setConditionalSelected] = React.useState<string>(
     'single-1'
   );
-  const handleConditionalChange: React.ChangeEventHandler<HTMLInputElement> = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => setConditionalSelected(event.currentTarget.value);
+  const [groupSelected, setGroupSelected] = React.useState<string>('radio-1');
+  const handleConditionalChange: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    conditionalInput?: string
+  ) => void = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    conditionalInput: string
+  ) => {
+    if (conditionalInput) {
+      setInputFieldValues({
+        ...inputFieldValues,
+        [event.currentTarget.id]: conditionalInput,
+      });
+      return;
+    }
+
+    setConditionalSelected(event.currentTarget.value);
+  };
+
+  const handleGroupConditionalChange: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    conditionalInput?: string
+  ) => void = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    conditionalInput: string
+  ) => {
+    if (conditionalInput) {
+      setInputFieldGroupValues({
+        ...inputFieldGroupValues,
+        [event.currentTarget.id]: conditionalInput,
+      });
+      return;
+    }
+
+    setGroupSelected(event.currentTarget.value);
+  };
 
   const [inputFieldValues, setInputFieldValues] = React.useState({
-    'single-1': '',
-    'single-2': '',
-    'single-3': '',
+    'single-input-1': '',
+    'single-input-2': '',
+    'single-input-3': '',
   });
-  const handleInputFieldChange = (id: string, value: string) => {
-    setInputFieldValues({
-      ...inputFieldValues,
-      [id]: value,
-    });
-  };
+
+  const [inputFieldGroupValues, setInputFieldGroupValues] = React.useState({
+    'group-input-1': '',
+    'group-input-2': '',
+    'group-input-3': '',
+  });
 
   React.useEffect(() => {
     const output = document.getElementById('conditional-inputs');
@@ -72,11 +108,11 @@ export const FormRadioDemo = () => {
         name="group2"
         onChange={handleConditionalChange}
         conditional={{
+          inputId: 'single-input-1',
           name: 'single-input-1',
           label: 'single input 1',
           type: 'text',
-          value: inputFieldValues['single-1'],
-          onChange: value => handleInputFieldChange('single-1', value),
+          value: inputFieldValues['single-input-1'],
         }}
       />
       <FormRadio
@@ -87,26 +123,26 @@ export const FormRadioDemo = () => {
         name="group2"
         onChange={handleConditionalChange}
         conditional={{
+          inputId: 'single-input-2',
           name: 'single-input-2',
           label: 'single input 2',
           type: 'text',
-          value: inputFieldValues['single-2'],
-          onChange: value => handleInputFieldChange('single-2', value),
+          value: inputFieldValues['single-input-2'],
         }}
       />
       <FormRadio
         id="single-3"
         value="single-3"
         selected={conditionalSelected === 'single-3'}
-        label="Single Radio 2 label text"
+        label="Single Radio 3 label text"
         name="group2"
         onChange={handleConditionalChange}
         conditional={{
+          inputId: 'single-input-3',
           name: 'single-input-3',
           label: 'single input 3',
           type: 'text',
-          value: inputFieldValues['single-3'],
-          onChange: value => handleInputFieldChange('single-3', value),
+          value: inputFieldValues['single-input-3'],
         }}
       />
       <FormGroup
@@ -117,11 +153,27 @@ export const FormRadioDemo = () => {
             id: 'radio-1',
             label: 'Option 1',
             value: 'value-1',
+            selected: groupSelected === 'radio-1',
+            conditional: {
+              inputId: 'group-input-1',
+              name: 'group-input-1',
+              label: 'group input 1',
+              type: 'text',
+              value: inputFieldGroupValues['group-input-1'],
+            },
           },
           {
             id: 'radio-2',
             label: 'Option 2',
             value: 'value-2',
+            selected: groupSelected === 'radio-2',
+            conditional: {
+              inputId: 'group-input-2',
+              name: 'group-input-2',
+              label: 'group input 2',
+              type: 'text',
+              value: inputFieldGroupValues['group-input-2'],
+            },
           },
           {
             id: 'radio-3',
@@ -129,8 +181,17 @@ export const FormRadioDemo = () => {
             disabled: true,
             hint: {
               text: 'Hint text for this item',
+              position: 'above',
             },
             value: 'value-3',
+            selected: groupSelected === 'radio-3',
+            conditional: {
+              inputId: 'group-input-3',
+              name: 'group-input-3',
+              label: 'group input 3',
+              type: 'text',
+              value: inputFieldGroupValues['group-input-3'],
+            },
           },
         ]}
         hint={{
@@ -142,7 +203,7 @@ export const FormRadioDemo = () => {
             priority: 4,
           },
         }}
-        onChange={handleChange}
+        onChange={handleGroupConditionalChange}
       />
       <br />
     </>
