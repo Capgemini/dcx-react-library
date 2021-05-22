@@ -256,7 +256,6 @@ describe('FormCheckbox', () => {
   });
 
   it('should not render conditional input field by default', () => {
-    const handlerConditional = jest.fn();
     const handleChange = jest.fn();
 
     const { container } = render(
@@ -278,7 +277,6 @@ describe('FormCheckbox', () => {
           inputClassName: 'input-classes',
           inputId: 'input-id',
           labelClassName: 'label-classes',
-          onChange: handlerConditional,
         }}
       />
     );
@@ -287,7 +285,6 @@ describe('FormCheckbox', () => {
   });
 
   it('should render conditional input field when checkbox is checked', () => {
-    const handlerConditional = jest.fn();
     const handleChange = jest.fn();
 
     const { container } = render(
@@ -309,7 +306,6 @@ describe('FormCheckbox', () => {
           inputClassName: 'input-classes',
           inputId: 'input-id',
           labelClassName: 'label-classes',
-          onChange: handlerConditional,
         }}
       />
     );

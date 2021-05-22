@@ -206,7 +206,6 @@ describe('FormRadio', () => {
 
   it('should not render an input field', () => {
     const handleChange = jest.fn();
-    const handlerConditional = jest.fn();
 
     const { container } = render(
       <FormRadio
@@ -219,7 +218,6 @@ describe('FormRadio', () => {
           type: 'text',
           value: '',
           id: 'my-input',
-          onChange: handlerConditional,
         }}
         name="group1"
         onChange={handleChange}
@@ -231,7 +229,6 @@ describe('FormRadio', () => {
 
   it('should render an input field when selected', () => {
     const handleChange = jest.fn();
-    const handlerConditional = jest.fn();
 
     const { container } = render(
       <FormRadio
@@ -244,7 +241,6 @@ describe('FormRadio', () => {
           type: 'text',
           value: '',
           id: 'my-input',
-          onChange: handlerConditional,
         }}
         name="group1"
         selected={true}

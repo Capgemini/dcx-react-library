@@ -25,13 +25,11 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -62,13 +60,11 @@ describe('FormGroup', () => {
             value: 'one',
             label: 'One',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'two',
             label: 'Two',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -101,15 +97,14 @@ describe('FormGroup', () => {
             value: 'one',
             label: 'One',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'two',
             label: 'Two',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
+        onChange={handleChange}
       />
     );
 
@@ -122,7 +117,6 @@ describe('FormGroup', () => {
   });
 
   it('should not render any inputs if incorrect type is set', () => {
-    const handleChange = jest.fn();
     const type = 'something';
 
     const { container } = render(
@@ -143,13 +137,11 @@ describe('FormGroup', () => {
             value: 'one',
             label: 'One',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'two',
             label: 'Two',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
       />
@@ -180,13 +172,11 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -218,13 +208,11 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -254,13 +242,11 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         hint={{
@@ -300,13 +286,11 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -336,13 +320,11 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -353,7 +335,6 @@ describe('FormGroup', () => {
 
   it('should call on change of an item if an input has changed', () => {
     const handleChange = jest.fn();
-    const handleItemChange = jest.fn();
 
     render(
       <FormGroup
@@ -375,13 +356,11 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleItemChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleItemChange,
           },
         ]}
         onChange={handleChange}
@@ -389,13 +368,11 @@ describe('FormGroup', () => {
     );
 
     fireEvent.click(screen.getAllByRole('radio')[0]);
-    expect(handleItemChange).not.toHaveBeenCalled();
     expect(handleChange).toHaveBeenCalled();
   });
 
   it('should call on change of an item if an input has changed', () => {
     const handleChange = jest.fn();
-    const handleItemChange = jest.fn();
 
     render(
       <FormGroup
@@ -418,14 +395,12 @@ describe('FormGroup', () => {
             label: 'One',
             id: 'first',
             selected: true,
-            onChange: handleItemChange,
           },
           {
             value: 'two',
             label: 'Two',
             id: 'second',
             selected: false,
-            onChange: handleItemChange,
           },
         ]}
         onChange={handleChange}
@@ -433,7 +408,6 @@ describe('FormGroup', () => {
     );
 
     fireEvent.click(screen.getAllByRole('checkbox')[0]);
-    expect(handleItemChange).not.toHaveBeenCalled();
     expect(handleChange).toHaveBeenCalled();
   });
 
@@ -461,13 +435,11 @@ describe('FormGroup', () => {
             label: 'Yes',
             selected: true,
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -501,13 +473,11 @@ describe('FormGroup', () => {
             label: 'Yes',
             selected: true,
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -541,7 +511,6 @@ describe('FormGroup', () => {
             label: 'Yes',
             selected: true,
             id: 'first',
-            onChange: handleChange,
           },
           {
             inputProps: {
@@ -551,7 +520,6 @@ describe('FormGroup', () => {
             label: 'No',
             disabled: true,
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -585,7 +553,6 @@ describe('FormGroup', () => {
             label: 'Yes',
             selected: true,
             id: 'first',
-            onChange: handleChange,
           },
           {
             inputProps: {
@@ -595,7 +562,6 @@ describe('FormGroup', () => {
             label: 'No',
             disabled: true,
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -637,7 +603,6 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             labelProps: {
@@ -646,7 +611,6 @@ describe('FormGroup', () => {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -695,7 +659,6 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             id: 'my-divider-id',
@@ -706,7 +669,6 @@ describe('FormGroup', () => {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -736,7 +698,6 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -751,7 +712,7 @@ describe('FormGroup', () => {
 
   it('should call on change of an item if an input has changed', () => {
     const handleChange = jest.fn();
-    const handleItemChange = jest.fn();
+
     render(
       <FormGroup
         type="radio"
@@ -769,13 +730,11 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleItemChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleItemChange,
           },
         ]}
         onChange={handleChange}
@@ -788,8 +747,7 @@ describe('FormGroup', () => {
 
   it('should call on change of an item if a conditional input has changed', async () => {
     const handleChange = jest.fn();
-    const handleItemChange = jest.fn();
-    const handleConditionalChange = jest.fn();
+
     render(
       <FormGroup
         type="radio"
@@ -819,9 +777,7 @@ describe('FormGroup', () => {
               inputClassName: '',
               inputId: '',
               labelClassName: '',
-              onChange: handleConditionalChange,
             },
-            onChange: handleItemChange,
           },
           {
             value: 'no',
@@ -838,9 +794,7 @@ describe('FormGroup', () => {
               inputClassName: '',
               inputId: '',
               labelClassName: '',
-              onChange: handleConditionalChange,
             },
-            onChange: handleItemChange,
           },
         ]}
         onChange={handleChange}
