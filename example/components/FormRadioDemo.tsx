@@ -11,7 +11,7 @@ export const FormRadioDemo = () => {
   };
 
   const [conditionalSelected, setConditionalSelected] = React.useState<string>(
-    'single-1'
+    'single-conditional-3'
   );
   const [groupSelected, setGroupSelected] = React.useState<string>('radio-1');
   const handleConditionalChange: (
@@ -101,9 +101,9 @@ export const FormRadioDemo = () => {
       <h2>Basic Single Radio Buttons with conditional input</h2>
       <div id="conditional-inputs" style={{ fontWeight: 'bold' }}></div>
       <FormRadio
-        id="single-1"
-        value="single-1"
-        selected={conditionalSelected === 'single-1'}
+        id="single-conditional-1"
+        value="single-conditional-1"
+        selected={conditionalSelected === 'single-conditional-1'}
         label="Single Radio 1 label text"
         name="group2"
         onChange={handleConditionalChange}
@@ -116,9 +116,9 @@ export const FormRadioDemo = () => {
         }}
       />
       <FormRadio
-        id="single-2"
-        value="single-2"
-        selected={conditionalSelected === 'single-2'}
+        id="single-conditional-2"
+        value="single-conditional-2"
+        selected={conditionalSelected === 'single-conditional-2'}
         label="Single Radio 2 label text"
         name="group2"
         onChange={handleConditionalChange}
@@ -131,9 +131,9 @@ export const FormRadioDemo = () => {
         }}
       />
       <FormRadio
-        id="single-3"
-        value="single-3"
-        selected={conditionalSelected === 'single-3'}
+        id="single-conditional-3"
+        value="single-conditional-3"
+        selected={conditionalSelected === 'single-conditional-3'}
         label="Single Radio 3 label text"
         name="group2"
         onChange={handleConditionalChange}
