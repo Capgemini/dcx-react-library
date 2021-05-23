@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { FormGroup } from '../FormGroup';
 
@@ -24,15 +25,14 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
+        onChange={handleChange}
       />
     );
 
@@ -60,15 +60,14 @@ describe('FormGroup', () => {
             value: 'one',
             label: 'One',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'two',
             label: 'Two',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
+        onChange={handleChange}
       />
     );
 
@@ -98,15 +97,14 @@ describe('FormGroup', () => {
             value: 'one',
             label: 'One',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'two',
             label: 'Two',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
+        onChange={handleChange}
       />
     );
 
@@ -119,7 +117,6 @@ describe('FormGroup', () => {
   });
 
   it('should not render any inputs if incorrect type is set', () => {
-    const handleChange = jest.fn();
     const type = 'something';
 
     const { container } = render(
@@ -140,13 +137,11 @@ describe('FormGroup', () => {
             value: 'one',
             label: 'One',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'two',
             label: 'Two',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
       />
@@ -177,15 +172,14 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
+        onChange={handleChange}
       />
     );
 
@@ -214,15 +208,14 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
+        onChange={handleChange}
       />
     );
 
@@ -249,18 +242,18 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         hint={{
           text: 'this is a hint for text',
+          position: 'above',
         }}
+        onChange={handleChange}
       />
     );
 
@@ -293,15 +286,14 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
+        onChange={handleChange}
       />
     );
     expect(screen.getByText('Error:')).toBeInTheDocument();
@@ -328,15 +320,14 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
+        onChange={handleChange}
       />
     );
     expect(container.querySelectorAll('input').length).toBe(2);
@@ -344,7 +335,6 @@ describe('FormGroup', () => {
 
   it('should call on change of an item if an input has changed', () => {
     const handleChange = jest.fn();
-    const handleItemChange = jest.fn();
 
     render(
       <FormGroup
@@ -366,13 +356,11 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleItemChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleItemChange,
           },
         ]}
         onChange={handleChange}
@@ -380,12 +368,11 @@ describe('FormGroup', () => {
     );
 
     fireEvent.click(screen.getAllByRole('radio')[0]);
-    expect(handleItemChange).toHaveBeenCalled();
+    expect(handleChange).toHaveBeenCalled();
   });
 
   it('should call on change of an item if an input has changed', () => {
     const handleChange = jest.fn();
-    const handleItemChange = jest.fn();
 
     render(
       <FormGroup
@@ -408,14 +395,12 @@ describe('FormGroup', () => {
             label: 'One',
             id: 'first',
             selected: true,
-            onChange: handleItemChange,
           },
           {
             value: 'two',
             label: 'Two',
             id: 'second',
             selected: false,
-            onChange: handleItemChange,
           },
         ]}
         onChange={handleChange}
@@ -423,165 +408,7 @@ describe('FormGroup', () => {
     );
 
     fireEvent.click(screen.getAllByRole('checkbox')[0]);
-    expect(handleItemChange).toHaveBeenCalled();
-  });
-
-  it('should not call on change of a radio button item if the on change is not defined', () => {
-    const handleChange = jest.fn();
-    const handleItemChange = jest.fn();
-
-    render(
-      <FormGroup
-        type="radio"
-        groupClasses=""
-        id=""
-        name="group1"
-        legend={{
-          text: 'Have you changed your name?',
-          heading: {
-            priority: 1,
-          },
-        }}
-        items={[
-          {
-            inputProps: {
-              id: 'custom-item',
-            },
-            value: 'yes',
-            id: 'first',
-            label: 'Yes',
-          },
-          {
-            value: 'no',
-            id: 'second',
-            label: 'No',
-          },
-        ]}
-        onChange={handleChange}
-      />
-    );
-
-    fireEvent.click(screen.getAllByRole('radio')[0]);
-    expect(handleItemChange).not.toHaveBeenCalled();
-  });
-
-  it('should not call on change of a checkbox item if the on change is not defined', () => {
-    const handleChange = jest.fn();
-    const handleItemChange = jest.fn();
-
-    render(
-      <FormGroup
-        type="checkbox"
-        groupClasses=""
-        id=""
-        name="group1"
-        legend={{
-          text: 'Have you changed your name?',
-          heading: {
-            priority: 1,
-          },
-        }}
-        items={[
-          {
-            inputProps: {
-              id: 'custom-item',
-            },
-            value: 'yes',
-            label: 'Yes',
-            id: 'first',
-          },
-          {
-            value: 'no',
-            label: 'No',
-            id: 'second',
-          },
-        ]}
-        onChange={handleChange}
-      />
-    );
-
-    fireEvent.click(screen.getAllByRole('checkbox')[0]);
-    expect(handleItemChange).not.toHaveBeenCalled();
-  });
-
-  it('should not call on change if undefined for radio button', () => {
-    const handleChange = jest.fn();
-    const handleItemChange = jest.fn();
-
-    render(
-      <FormGroup
-        type="radio"
-        groupClasses=""
-        id=""
-        name=""
-        legend={{
-          text: 'Have you changed your name?',
-          heading: {
-            priority: 1,
-          },
-        }}
-        items={[
-          {
-            inputProps: {
-              id: 'custom-item',
-            },
-            value: 'yes',
-            label: 'Yes',
-            id: 'first',
-            onChange: handleItemChange,
-          },
-          {
-            value: 'no',
-            label: 'No',
-            id: 'second',
-            onChange: handleItemChange,
-          },
-        ]}
-      />
-    );
-
-    fireEvent.click(screen.getAllByRole('radio')[0]);
-    expect(handleChange).not.toHaveBeenCalled();
-  });
-
-  it('should not call on change if undefined for checkbox', () => {
-    const handleChange = jest.fn();
-    const handleItemChange = jest.fn();
-
-    render(
-      <FormGroup
-        type="checkbox"
-        groupClasses=""
-        id=""
-        name=""
-        legend={{
-          text: 'Have you changed your name?',
-          heading: {
-            priority: 1,
-          },
-        }}
-        items={[
-          {
-            inputProps: {
-              id: 'custom-item',
-            },
-            value: 'yes',
-            label: 'Yes',
-            id: 'first',
-            onChange: handleItemChange,
-          },
-          {
-            value: 'no',
-            label: 'No',
-            id: 'second',
-            onChange: handleItemChange,
-          },
-        ]}
-      />
-    );
-
-    fireEvent.click(screen.getAllByRole('checkbox')[0]);
-    expect(handleChange).not.toHaveBeenCalled();
+    expect(handleChange).toHaveBeenCalled();
   });
 
   it('should render the first item of radio buttons as checked', () => {
@@ -608,13 +435,11 @@ describe('FormGroup', () => {
             label: 'Yes',
             selected: true,
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -648,13 +473,11 @@ describe('FormGroup', () => {
             label: 'Yes',
             selected: true,
             id: 'first',
-            onChange: handleChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -688,7 +511,6 @@ describe('FormGroup', () => {
             label: 'Yes',
             selected: true,
             id: 'first',
-            onChange: handleChange,
           },
           {
             inputProps: {
@@ -698,7 +520,6 @@ describe('FormGroup', () => {
             label: 'No',
             disabled: true,
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -732,7 +553,6 @@ describe('FormGroup', () => {
             label: 'Yes',
             selected: true,
             id: 'first',
-            onChange: handleChange,
           },
           {
             inputProps: {
@@ -742,7 +562,6 @@ describe('FormGroup', () => {
             label: 'No',
             disabled: true,
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -784,7 +603,6 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             labelProps: {
@@ -793,7 +611,6 @@ describe('FormGroup', () => {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
         onChange={handleChange}
@@ -842,7 +659,6 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
           {
             id: 'my-divider-id',
@@ -853,9 +669,9 @@ describe('FormGroup', () => {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleChange,
           },
         ]}
+        onChange={handleChange}
       />
     );
 
@@ -882,9 +698,9 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleChange,
           },
         ]}
+        onChange={handleChange}
       />
     );
 
@@ -896,7 +712,7 @@ describe('FormGroup', () => {
 
   it('should call on change of an item if an input has changed', () => {
     const handleChange = jest.fn();
-    const handleItemChange = jest.fn();
+
     render(
       <FormGroup
         type="radio"
@@ -914,13 +730,11 @@ describe('FormGroup', () => {
             value: 'yes',
             label: 'Yes',
             id: 'first',
-            onChange: handleItemChange,
           },
           {
             value: 'no',
             label: 'No',
             id: 'second',
-            onChange: handleItemChange,
           },
         ]}
         onChange={handleChange}
@@ -929,5 +743,66 @@ describe('FormGroup', () => {
     fireEvent.click(screen.getAllByRole('radio')[0]);
     expect(screen.getAllByRole('radio')[0]).toBeChecked();
     expect(screen.getAllByRole('radio')[1]).not.toBeChecked();
+  });
+
+  it('should call on change of an item if a conditional input has changed', async () => {
+    const handleChange = jest.fn();
+
+    render(
+      <FormGroup
+        type="radio"
+        groupClasses=""
+        id=""
+        name="group1"
+        legend={{
+          text: 'Have you changed your name?',
+          heading: {
+            priority: 1,
+          },
+        }}
+        items={[
+          {
+            value: 'yes',
+            label: 'Yes',
+            id: 'first',
+            selected: true,
+            conditional: {
+              value: '',
+              name: '',
+              label: '',
+              type: 'text',
+              className: '',
+              groupClassName: '',
+              id: 'conditional-1',
+              inputClassName: '',
+              inputId: '',
+              labelClassName: '',
+            },
+          },
+          {
+            value: 'no',
+            label: 'No',
+            id: 'second',
+            conditional: {
+              value: '',
+              name: '',
+              label: '',
+              type: 'text',
+              className: '',
+              groupClassName: '',
+              id: 'conditional-2',
+              inputClassName: '',
+              inputId: '',
+              labelClassName: '',
+            },
+          },
+        ]}
+        onChange={handleChange}
+      />
+    );
+    const input: Element = screen.getByRole('textbox');
+    userEvent.type(input, 'mo');
+
+    expect(handleChange).toHaveBeenCalledTimes(2);
   });
 });

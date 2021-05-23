@@ -87,7 +87,10 @@ type FormGroupProps = {
   /**
    * function that will trigger all the time there's a change of choice
    */
-  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
+  onChange: (
+    event: React.FormEvent<HTMLInputElement>,
+    conditionalInput?: string
+  ) => void;
 };
 
 type SelectionItem = FormRadioCheckboxProps | DividerProps;
@@ -159,8 +162,7 @@ export const FormGroup = ({
       setSelection(newSelection);
     }
 
-    if (item.onChange) item.onChange(e);
-    if (onChange) onChange(e);
+    onChange(e);
   };
 
   const isSelected = (item: SelectionItem) =>
@@ -187,7 +189,17 @@ export const FormGroup = ({
         itemProps={{ ...itemProps, ...item.itemProps }}
         labelProps={{ ...labelProps, ...item.labelProps }}
         selected={isSelected(item)}
-        onChange={e => handleChange(item, type, e)}
+        onChange={(
+          event: React.ChangeEvent<HTMLInputElement>,
+          conditionalInput?: string
+        ) => {
+          if (conditionalInput) {
+            onChange(event, conditionalInput);
+            return;
+          }
+
+          handleChange(item, type, event);
+        }}
       />
     ) : null
   );

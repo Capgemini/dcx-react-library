@@ -19,9 +19,10 @@ export const FormCheckbox = ({
   disabled,
   selected,
   hint,
-  hintPosition = 'below',
   nested,
-}: FormRadioCheckboxProps) => (
+}: FormRadioCheckboxProps & {
+  onChange: (event: React.ChangeEvent, conditional?: string) => void;
+}) => (
   <CheckboxRadioBase
     type="checkbox"
     id={id}
@@ -41,7 +42,6 @@ export const FormCheckbox = ({
     disabled={disabled}
     selected={selected}
     hint={hint}
-    hintPosition={hintPosition}
     nested={nested}
   />
 );

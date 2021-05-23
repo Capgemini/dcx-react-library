@@ -9,6 +9,8 @@ import '../style.css';
 <Canvas>
   <Story name="un-styled-radios">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="name-of-group"
@@ -32,6 +34,7 @@ import '../style.css';
               id: 'second',
             },
           ]}
+          onChange={handleChange}
         />
       );
     }}
@@ -44,6 +47,8 @@ import '../style.css';
 <Canvas>
   <Story name="un-styled-checkboxes">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="name-of-group"
@@ -67,6 +72,7 @@ import '../style.css';
               id: 'second',
             },
           ]}
+          onChange={handleChange}
         />
       );
     }}
@@ -79,6 +85,8 @@ import '../style.css';
 <Canvas>
   <Story name="error">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="name-of-group"
@@ -89,6 +97,7 @@ import '../style.css';
               id: 'first',
             },
           ]}
+          onChange={handleChange}
         />
       );
     }}

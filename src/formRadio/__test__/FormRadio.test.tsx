@@ -45,6 +45,7 @@ describe('FormRadio', () => {
   });
 
   it('should render a nested radio within  label', () => {
+    const handleChange = jest.fn();
     const { container } = render(
       <FormRadio
         id="myId"
@@ -54,6 +55,7 @@ describe('FormRadio', () => {
           id: 'my-label',
         }}
         name="group1"
+        onChange={handleChange}
         nested={true}
       />
     );
@@ -188,6 +190,7 @@ describe('FormRadio', () => {
         hint={{
           id: 'my-hint',
           text: 'my hint',
+          position: 'above',
         }}
         name="group1"
         ariaDescribedBy="my-hint-item-hint"
@@ -213,7 +216,7 @@ describe('FormRadio', () => {
           name: 'input-field-name',
           label: 'label',
           type: 'text',
-          value: {},
+          value: '',
           id: 'my-input',
         }}
         name="group1"
@@ -236,7 +239,7 @@ describe('FormRadio', () => {
           name: 'input-field-name',
           label: 'label',
           type: 'text',
-          value: {},
+          value: '',
           id: 'my-input',
         }}
         name="group1"

@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import { isEmpty } from 'lodash';
-import React from 'react';
 import { Hint } from './Hint';
 import { Conditional } from './Conditional';
 import { FormRadioCheckboxProps } from './commonTypes';
@@ -17,7 +17,6 @@ export const CheckboxRadioBase = ({
   disabled,
   conditional,
   hint,
-  hintPosition,
   inputProps,
   itemProps,
   labelProps,
@@ -25,9 +24,24 @@ export const CheckboxRadioBase = ({
   nested,
   selected,
   onChange,
-}: FormRadioCheckboxProps) => {
+}: FormRadioCheckboxProps & {
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    conditionalInput?: string
+  ) => void;
+}) => {
   const conditionalReveal = (): boolean =>
     !isEmpty(conditional) && selected === true;
+
+  const [conditionalValue, setConditionalValue] = useState<string>(
+    conditional ? conditional.value : ''
+  );
+
+  const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    onChange(event);
+  };
 
   const input: JSX.Element = (
     <input
@@ -43,7 +57,7 @@ export const CheckboxRadioBase = ({
       disabled={disabled}
       checked={selected}
       {...inputProps}
-      onChange={onChange}
+      onChange={onChangeHandler}
     />
   );
   const el: JSX.Element = nested ? (
@@ -62,12 +76,19 @@ export const CheckboxRadioBase = ({
 
   return (
     <div {...itemProps}>
-      {hint && hintPosition === 'above' && <Hint {...hint} />}
+      {hint && hint.position === 'above' && <Hint {...hint} />}
       {el}
-      {hint && hintPosition === 'below' && <Hint {...hint} />}
+      {hint && hint.position === 'below' && <Hint {...hint} />}
       {conditional !== undefined &&
         conditionalReveal() &&
-        Conditional(conditional)}
+        Conditional({
+          ...conditional,
+          value: conditionalValue,
+          onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+            setConditionalValue(event.currentTarget.value);
+            onChange(event, event.currentTarget.value);
+          },
+        })}
     </div>
   );
 };
