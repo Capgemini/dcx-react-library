@@ -49,7 +49,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "dcx-react-library",
+  "name": "@capgeminiuk/dcx-react-library",
   "author": "Daniele Zurico",
   "module": "dist/dcx-react-library.esm.js",
   "size-limit": [
