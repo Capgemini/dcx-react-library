@@ -28,7 +28,7 @@ Using dcx-react-library should not require any particular setup. You only need t
 
 Steps:
 
-- `yarn add dcx-react-library`
+- `yarn add @capgeminiuk/dcx-react-library`
 - Import the component you need and use it. For example:
 
 ```js
