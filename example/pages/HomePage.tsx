@@ -50,6 +50,9 @@ export const Home = () => (
         <li>
           <Link to="/formDate">FormDateDemo</Link>
         </li>
+        <li>
+          <Link to="/copyToClipboard">CopyToClipboardDemo</Link>
+        </li>
       </ul>
     </nav>
     <h1>Home</h1>

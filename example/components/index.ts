@@ -10,4 +10,5 @@ export { FormSelectDemo } from './FormSelectDemo';
 export { MultiUploadDemo } from './MultiUploadDemo';
 export { MultiSelectDemo } from './MultiSelectDemo';
 export { FormDateDemo } from './FormDateDemo';
+export { CopyToClipboardDemo } from './CopyToClipboardDemo';
 export * from './library-candidates';
