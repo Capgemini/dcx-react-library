@@ -1858,7 +1858,7 @@ export const MultiSelectDemo = () => {
         }}
         selectOptions={multiSelectOptions}
         selectedListItemStyle={{
-          backgroundColorColor: '#F5F7F8',
+          backgroundColor: '#F5F7F8',
           border: '1px solid #C1C7CF',
           borderRadius: '3px',
           padding: '3px 8px',
