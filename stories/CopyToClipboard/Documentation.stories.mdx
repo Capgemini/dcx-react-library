@@ -1,0 +1,57 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { CopyToClipboard } from '../../src/copyToClipboard/CopyToClipboard';
+
+<Meta
+  title="DCXLibrary/CopyToClipboard/documentation"
+  component={CopyToClipboard}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# CopyToClipboard
+
+A CopyToClipboard component in case you want to copy the content of a specific elemene.
+It supports:
+
+- input
+- textArea
+
+and allow you to specifiy a custom content (whatever tag you prefer) or an image
+
+CopyToClipboard is UI/UX agnostic so you need to provide your style to have the look
+and feel you prefer.
+
+An example with all the available properties is:
+
+## Usage
+
+```js
+export const CopyToClipboardDemo = () => {
+  const [value, setValue] = React.useState('');
+  const inputRef = React.useRef(null);
+  return (
+    <>
+      <input
+        value={value}
+        ref={inputRef}
+        onChange={evt => setValue(evt.currentTarget.value)}
+      />
+      <CopyToClipboard
+        ref={inputRef}
+        onCopy={value => {
+          alert(value);
+        }}
+        icon={<FontAwesomeIcon icon={faCopy} />}
+      >
+        <p>Copy</p>
+      </CopyToClipboard>
+    </>
+  );
+};
+```
+
+<Props of={CopyToClipboard} />
