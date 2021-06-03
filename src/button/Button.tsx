@@ -7,11 +7,7 @@ export enum BUTTON_TYPE {
   RESET = 'reset',
 }
 
-type ButtonProps = {
-  /**
-   * display the label
-   */
-  label: string;
+type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   /**
    * handler for the click event
    */
@@ -20,6 +16,10 @@ type ButtonProps = {
    * define the button type: button/submit/reset - by default button
    */
   type?: BUTTON_TYPE;
+  /**
+   * display the label
+   */
+  label?: string;
   /**
    * allow to enable disable the button
    */

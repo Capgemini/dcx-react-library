@@ -2,20 +2,13 @@ import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { AutocompleteDemo } from '../components';
-
 export const Home = () => (
   <>
+    <h1>List of release 0.1 DCX library components</h1>
     <nav>
       <ul>
         <li>
           <Link to="/formInput">FormInputDemo</Link>
-        </li>
-        <li>
-          <Link to="/login">Login Example</Link>
-        </li>
-        <li>
-          <Link to="/register">Registration form Example</Link>
         </li>
         <li>
           <Link to="/masked">masked</Link>
@@ -55,7 +48,16 @@ export const Home = () => (
         </li>
       </ul>
     </nav>
-    <h1>Home</h1>
-    <AutocompleteDemo />
+    <h1>Example pages using 0.1 DCX library components</h1>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/login">Login Example</Link>
+        </li>
+        <li>
+          <Link to="/register">Registration form Example</Link>
+        </li>
+      </ul>
+    </nav>
   </>
 );
