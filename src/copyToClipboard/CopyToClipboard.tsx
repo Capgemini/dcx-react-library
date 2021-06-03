@@ -1,19 +1,24 @@
 import React, { MutableRefObject } from 'react';
-type CopyToClipboardProps = {
+type CopyToClipboardProps = Omit<
+  React.HTMLAttributes<HTMLButtonElement>,
+  'onCopy'
+> & {
   icon?: JSX.Element;
   onCopy: (value: string) => void;
   children?: JSX.Element;
+  text?: string;
 };
 
 export const CopyToClipboard = React.forwardRef<
-  HTMLInputElement,
+  HTMLElement,
   CopyToClipboardProps
->(({ icon, onCopy, children, ...props }, ref) => {
+>(({ icon, onCopy, text, children, ...props }, ref) => {
   const onClickHandler = () => {
-    const inputRef = ref as MutableRefObject<HTMLInputElement>;
-    inputRef.current.select();
+    const inputRef = ref as MutableRefObject<any>;
     document.execCommand('copy');
-    onCopy(inputRef.current.value);
+    text
+      ? onCopy(text)
+      : onCopy(inputRef.current.value || inputRef.current.innerHTML);
   };
   return (
     <button onClick={onClickHandler} {...props}>
