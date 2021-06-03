@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { CopyToClipboard } from '../../src/copyToClipboard/CopyToClipboard';
+import './style.css';
+
+<Meta title="DCXLibrary/CopyToClipboard/Styled" component={CopyToClipboard} />
+
+# CopyToClipboard
+
+A CopyToClipboard styled component.
+
+### An example of 'styled' CopyToClipboard
+
+<Canvas>
+  <Story name="basic">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [pasted, onPaste] = React.useState('');
+      const inputRef = React.useRef(null);
+      return (
+        <div className="copyToClipboard--container">
+          <textarea
+            value={value}
+            ref={inputRef}
+            onChange={evt => setValue(evt.currentTarget.value)}
+            className="copyToClipboard--textArea"
+          />
+          <CopyToClipboard
+            ref={inputRef}
+            className="copyToClipboard"
+            onCopy={onPaste}
+            icon={<img src="/copy.png" alt="" width="15px" height="15px" />}
+          />
+          <div>
+            <strong>copied:</strong>
+            {pasted}
+          </div>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+Css provided:
+
+```css
+.copyToClipboard--container {
+  width: '360px';
+  position: 'relative';
+}
+.copyToClipboard--textArea {
+  width: '350px';
+  height: '200px';
+}
+.copyToClipboard {
+  position: 'absolute';
+  right: '10px';
+  top: '4px';
+  border: 'none';
+  display: 'flex';
+  cursor: 'pointer';
+}
+```
+
+<Props of={CopyToClipboard} />

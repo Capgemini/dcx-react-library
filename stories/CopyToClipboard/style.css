@@ -1,0 +1,16 @@
+.copyToClipboard--container {
+  width: 360px;
+  position: relative;
+}
+.copyToClipboard--textArea {
+  width: 350px;
+  height: 200px;
+}
+.copyToClipboard {
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  border: none;
+  display: flex;
+  cursor: pointer;
+}

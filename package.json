@@ -20,7 +20,7 @@
     "prepare": "tsdx build && husky install",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "storybook": "start-storybook -p 6006 --no-manager-cache",
+    "storybook": "start-storybook -p 6006 --no-manager-cache -s ./static",
     "build-storybook": "build-storybook",
     "publish-storybook": "npx chromatic --project-token c6317a751fef",
     "build": "tsdx build"
