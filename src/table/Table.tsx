@@ -17,6 +17,10 @@ type TableProps = {
    */
   onSelect?: (value: any) => void;
   /**
+   * handle the click on a specific cell of a row
+   */
+  handleCellClick?: (evt: React.MouseEvent<HTMLElement>, value: any) => void;
+  /**
    * style the selected row
    */
   selectedRowClassName?: string;
@@ -65,6 +69,7 @@ export const Table = ({
   dataSource,
   columnsToOmit,
   onSelect,
+  handleCellClick,
   selectedRowClassName,
   tableClassName,
   theadClassName,
@@ -111,6 +116,7 @@ export const Table = ({
       <Body
         values={items}
         onSelect={onSelect}
+        handleCellClick={handleCellClick}
         selectedRowClassName={selectedRowClassName}
         columnsToOmit={columnsToOmit}
         tbodyClassName={tbodyClassName}

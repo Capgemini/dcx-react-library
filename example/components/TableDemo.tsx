@@ -12,9 +12,6 @@ interface PeriodicElement {
   symbol: string;
   actions: JSX.Element;
 }
-const onDeleteRow = (data: any) => {
-  alert(data);
-};
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {
@@ -24,9 +21,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     weight: 1.0079,
     symbol: 'H',
     actions: (
-      <button className="btn btn-danger" onClick={onDeleteRow}>
-        Delete
-      </button>
+      <>
+        <button
+          className="btn btn-primary"
+          name="add"
+          style={{ marginRight: '5px' }}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" name="delete">
+          Delete
+        </button>
+      </>
     ),
   },
   {
@@ -36,9 +42,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     weight: 4.0026,
     symbol: 'He',
     actions: (
-      <button className="btn btn-danger" onClick={onDeleteRow}>
-        Delete
-      </button>
+      <>
+        <button
+          className="btn btn-primary"
+          name="add"
+          style={{ marginRight: '5px' }}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" name="delete">
+          Delete
+        </button>
+      </>
     ),
   },
   {
@@ -48,9 +63,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     weight: 6.941,
     symbol: 'Li',
     actions: (
-      <button className="btn btn-danger" onClick={onDeleteRow}>
-        Delete
-      </button>
+      <>
+        <button
+          className="btn btn-primary"
+          name="add"
+          style={{ marginRight: '5px' }}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" name="delete">
+          Delete
+        </button>
+      </>
     ),
   },
   {
@@ -60,9 +84,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     weight: 9.0122,
     symbol: 'Be',
     actions: (
-      <button className="btn btn-danger" onClick={onDeleteRow}>
-        Delete
-      </button>
+      <>
+        <button
+          className="btn btn-primary"
+          name="add"
+          style={{ marginRight: '5px' }}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" name="delete">
+          Delete
+        </button>
+      </>
     ),
   },
   {
@@ -72,9 +105,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     weight: 10.811,
     symbol: 'B',
     actions: (
-      <button className="btn btn-danger" onClick={onDeleteRow}>
-        Delete
-      </button>
+      <>
+        <button
+          className="btn btn-primary"
+          name="add"
+          style={{ marginRight: '5px' }}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" name="delete">
+          Delete
+        </button>
+      </>
     ),
   },
   {
@@ -84,9 +126,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     weight: 12.0107,
     symbol: 'C',
     actions: (
-      <button className="btn btn-danger" onClick={onDeleteRow}>
-        Delete
-      </button>
+      <>
+        <button
+          className="btn btn-primary"
+          name="add"
+          style={{ marginRight: '5px' }}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" name="delete">
+          Delete
+        </button>
+      </>
     ),
   },
   {
@@ -96,9 +147,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     weight: 14.0067,
     symbol: 'N',
     actions: (
-      <button className="btn btn-danger" onClick={onDeleteRow}>
-        Delete
-      </button>
+      <>
+        <button
+          className="btn btn-primary"
+          name="add"
+          style={{ marginRight: '5px' }}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" name="delete">
+          Delete
+        </button>
+      </>
     ),
   },
   {
@@ -108,9 +168,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     weight: 15.9994,
     symbol: 'O',
     actions: (
-      <button className="btn btn-danger" onClick={onDeleteRow}>
-        Delete
-      </button>
+      <>
+        <button
+          className="btn btn-primary"
+          name="add"
+          style={{ marginRight: '5px' }}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" name="delete">
+          Delete
+        </button>
+      </>
     ),
   },
   {
@@ -120,9 +189,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     weight: 18.9984,
     symbol: 'F',
     actions: (
-      <button className="btn btn-danger" onClick={onDeleteRow}>
-        Delete
-      </button>
+      <>
+        <button
+          className="btn btn-primary"
+          name="add"
+          style={{ marginRight: '5px' }}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" name="delete">
+          Delete
+        </button>
+      </>
     ),
   },
   {
@@ -132,33 +210,58 @@ const ELEMENT_DATA: PeriodicElement[] = [
     weight: 20.1797,
     symbol: 'Ne',
     actions: (
-      <button className="btn btn-danger" onClick={onDeleteRow}>
-        Delete
-      </button>
+      <>
+        <button
+          className="btn btn-primary"
+          name="add"
+          style={{ marginRight: '5px' }}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" name="delete">
+          Delete
+        </button>
+      </>
     ),
   },
 ];
 
-export const TableDemo = () => (
-  <div className="App">
-    <Table
-      dataSource={ELEMENT_DATA}
-      columnsToOmit={['id']}
-      onSelect={row => alert(row)}
-      tableClassName="table"
-      theadClassName="thead"
-      trClassName="header-row"
-      thClassName="th"
-      tbodyClassName="tbody"
-      tdClassName="td"
-      selectedRowClassName="trSelected"
-      sortAscIcon={
-        <FontAwesomeIcon icon={faArrowUp} style={{ marginLeft: '4px' }} />
-      }
-      sortDescIcon={
-        <FontAwesomeIcon icon={faArrowDown} style={{ marginLeft: '4px' }} />
-      }
-      columnsWidth={['100px']}
-    />
-  </div>
-);
+export const TableDemo = () => {
+  const [data, setData] = React.useState(ELEMENT_DATA);
+
+  const handleSelect = row => {
+    alert(row);
+  };
+  const handleCellClick = (target: any, value: any) => {
+    if (target.name === 'delete') {
+      setData(data.filter(v => v.id !== value.id));
+    } else if (target.name === 'edit') {
+      alert(`Values: ${value}`);
+    }
+  };
+
+  return (
+    <div className="App">
+      <Table
+        dataSource={data}
+        columnsToOmit={['symbol']}
+        onSelect={handleSelect}
+        handleCellClick={handleCellClick}
+        tableClassName="table"
+        theadClassName="thead"
+        trClassName="header-row"
+        thClassName="th"
+        tbodyClassName="tbody"
+        tdClassName="td"
+        selectedRowClassName="trSelected"
+        sortAscIcon={
+          <FontAwesomeIcon icon={faArrowUp} style={{ marginLeft: '4px' }} />
+        }
+        sortDescIcon={
+          <FontAwesomeIcon icon={faArrowDown} style={{ marginLeft: '4px' }} />
+        }
+        columnsWidth={['100px']}
+      />
+    </div>
+  );
+};

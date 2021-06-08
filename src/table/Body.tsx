@@ -9,6 +9,7 @@ type BodyProps = {
   values: any[];
   columnsToOmit?: string[];
   onSelect?: (value: any) => void;
+  handleCellClick?: (evt: React.MouseEvent<HTMLElement>, value: any) => void;
   selectedRowClassName?: string;
   tbodyClassName?: string;
   trClassName?: string;
@@ -18,6 +19,7 @@ export const Body = ({
   values,
   columnsToOmit,
   onSelect,
+  handleCellClick,
   selectedRowClassName,
   tbodyClassName,
   trClassName,
@@ -35,6 +37,7 @@ export const Body = ({
       {values.map((v: any, key: number) => (
         <Row
           onSelect={v => handleSelected(v, key)}
+          handleCellClick={handleCellClick}
           trClassName={[
             trClassName,
             selected === key ? selectedRowClassName : undefined,
@@ -42,6 +45,7 @@ export const Body = ({
           tdClassName={tdClassName}
           key={key}
           values={rowValues(v, columnsToOmit)}
+          rawData={v}
         />
       ))}
     </tbody>
