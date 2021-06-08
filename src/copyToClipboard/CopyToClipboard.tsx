@@ -14,11 +14,14 @@ export const CopyToClipboard = React.forwardRef<
   CopyToClipboardProps
 >(({ icon, onCopy, text, children, ...props }, ref) => {
   const onClickHandler = () => {
-    const inputRef = ref as MutableRefObject<any>;
+    const inputRef = ref as MutableRefObject<HTMLElement>;
     document.execCommand('copy');
     text
       ? onCopy(text)
-      : onCopy(inputRef.current.value || inputRef.current.innerHTML);
+      : onCopy(
+          (inputRef.current as HTMLInputElement).value ||
+            inputRef.current.innerHTML
+        );
   };
   return (
     <button onClick={onClickHandler} {...props}>
