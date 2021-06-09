@@ -194,4 +194,11 @@ describe('Button', () => {
     act(() => userEvent.click(button));
     expect(button.disable).toBeFalsy();
   });
+
+  it('should accept className as attribute', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} className="test" />);
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('class')).toBe('test');
+  });
 });

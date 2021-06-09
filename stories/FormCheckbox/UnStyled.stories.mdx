@@ -55,7 +55,8 @@ By default, the hint will display underneath the checkbox
           onChange={handleChange}
           selected={checked}
           hint={{
-            text: 'Hint text',
+            text: 'Hint text below',
+            position: 'below'
           }}
         />
       );
@@ -85,9 +86,9 @@ By default, the hint will display underneath the checkbox
           onChange={handleChange}
           selected={checked}
           hint={{
-            text: 'Hint text'
+            text: 'Hint text above',
+            position: 'above'
           }}
-          hintPosition='above'
         />
       );
     }}
@@ -156,9 +157,13 @@ By default, the hint will display underneath the checkbox
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(true);
-      const handleChange = event => {
+      const handleChange = (event, conditional) => {
+        if (conditional) {
+          console.log(conditional);
+          return;
+        }
         setValue(event.currentTarget.value);
-        setChecked(!checked);
+        setChecked(event.currentTarget.checked);
       };
       return (
         <>
@@ -172,6 +177,7 @@ By default, the hint will display underneath the checkbox
           onChange={handleChange}
           selected={checked}
           conditional={{
+            value: '',
             name: 'conditional-6',
             label: 'condition label',
             type: 'text',

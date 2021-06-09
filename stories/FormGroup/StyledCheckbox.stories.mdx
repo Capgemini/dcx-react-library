@@ -11,6 +11,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="multiple checkboxes">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="waste"
@@ -38,9 +40,10 @@ In this section we are using the FormGroup component providing the GOV.UK Design
             {
               label: 'Farm or agricultural waste',
               value: 'farm',
-              id: 'waste-2',
+              id: 'waste-3',
             },
           ]}
+          onChange={handleChange}
           ariaDescribedBy="changed-name-hint"
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
@@ -64,6 +67,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="titled">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <FormGroup
           name="waste-2"
@@ -91,9 +96,10 @@ In this section we are using the FormGroup component providing the GOV.UK Design
             {
               label: 'Farm or agricultural waste',
               value: 'farm',
-              id: 'waste-2',
+              id: 'waste-3',
             },
           ]}
+          onChange={handleChange}
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
           itemsClasses="govuk-checkboxes"
@@ -116,6 +122,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="items with hints">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
       return (
         <FormGroup
           name="nationality"
@@ -136,8 +144,9 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'nationality',
               hint: {
                 text: 'including English, Scottish, Welsh and Northern Irish.',
-                classes: 'govuk-hint govuk-checkboxes__hint',
+                className: 'govuk-hint govuk-checkboxes__hint',
                 id: 'nationality-hint',
+                position: 'below',
               },
               ariaDescribedBy: 'nationality-hint',
             },
@@ -152,6 +161,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'nationality-3',
             },
           ]}
+          onChange={handleChange}
           ariaDescribedBy="nationality-hint"
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
@@ -159,7 +169,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
             id: 'nationality-hint',
             text:
               'If you have dual nationality, select all options that are relevant to you.',
-            classes: 'govuk-hint',
+            className: 'govuk-hint',
           }}
           itemsClasses="govuk-checkboxes"
           legend={{
@@ -176,11 +186,14 @@ In this section we are using the FormGroup component providing the GOV.UK Design
   </Story>
 </Canvas>
 
+
 # Small checkboxes
 
 <Canvas>
   <Story name="small checkboxes">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
       return (
         <FormGroup
           name="filter-change"
@@ -206,6 +219,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'changed-name-year',
             },
           ]}
+          onChange={handleChange}
           groupClasses="govuk-checkboxes govuk-checkboxes--small"
           fieldsetClasses="govuk-fieldset"
           itemsClasses="govuk-checkboxes govuk-checkboxes--small"
@@ -228,6 +242,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="error message">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value)
       return (
         <FormGroup
           name="live-error"
@@ -263,16 +279,17 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'live-wales-error',
             },
           ]}
+          onChange={handleChange}
           ariaDescribedBy="changed-name-hint changed-name-error"
           groupClasses="govuk-form-group govuk-form-group--error"
           fieldsetClasses="govuk-fieldset"
           error={{
             text: 'Please confirm where you live',
-            classes: 'govuk-error-message',
+            className: 'govuk-error-message',
             id: 'changed-name-error',
             visuallyHiddenText: {
               text: 'Error:',
-              classes: 'govuk-visually-hidden',
+              className: 'govuk-visually-hidden',
             },
           }}
           itemsClasses="govuk-checkboxes"
@@ -295,6 +312,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="with a text divider">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
       return (
         <FormGroup
           name="where-do-you-live-divider"
@@ -339,6 +358,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
               id: 'where-do-you-live-divider-5',
             },
           ]}
+          onChange={handleChange}
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
           itemsClasses="govuk-checkboxes"
@@ -357,6 +377,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
 <Canvas>
   <Story name="conditionally revealing content">
     {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
       return (
         <FormGroup
           name="contact"
@@ -387,6 +409,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                 id: 'conditional-contact',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-email',
+                value: ''
               },
             },
             {
@@ -405,6 +428,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                 id: 'conditional-contact-2',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-phone',
+                value: ''
               },
             },
             {
@@ -423,16 +447,18 @@ In this section we are using the FormGroup component providing the GOV.UK Design
                 id: 'conditional-contact-3',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-text',
+                value: ''
               },
             },
           ]}
+          onChange={handleChange}
           ariaDescribedBy="contact-hint"
           groupClasses="govuk-form-group"
           fieldsetClasses="govuk-fieldset"
           hint={{
             id: 'contact-hint',
             text: 'Select all options that are relevant to you.',
-            classes: 'govuk-hint',
+            className: 'govuk-hint',
           }}
           itemsClasses="govuk-checkboxes govuk-checkboxes--conditional"
           legend={{

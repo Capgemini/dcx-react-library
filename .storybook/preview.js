@@ -4,11 +4,14 @@ export const parameters = {
   actions: { argTypesRegex: '^on.*' },
   options: {
     storySort: (a, b) => {
+      let order = 2000;
       if (a[0].includes('dcxlibrary-form')) {
-        return 2000;
+        return order;
       } else if (a[0].includes('progress')) {
-        return 1000;
-      } else {
+        return order--;
+      } else if (a[0].includes('copy')) {
+        return order--;
+      }else {
         return 0;
       }
     }

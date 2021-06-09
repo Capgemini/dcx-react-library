@@ -1,106 +1,53 @@
 [![CircleCI](https://circleci.com/gh/Capgemini/dcx-react-library.svg?style=svg&circle-token=c05d3eb49441c9985f5424f28f788f1a31556503)](LINK)
 
-# DCX Component library
+# DCX React library
 
-To see the full list of components built in dcx-react-library have a look on our [storybook-showcase](https://www.chromatic.com/library?appId=6069a6f47f4b9f002171f8e1) (Click on View Storybook to see the list of components)
+## Motivation
+
+`dcx-react-library` is a React library with a set of components ready to use in your project.
+
+There are plenty of libraries available in React that can help to increase your productivity however most of them contain lots of css and are hard to style based on your project's requirements.
+
+dcx-react-library is **UI/UX agnostic** so you need to provide styling to match the look and feel of your application. This allows the dcx-react-library to be easily integrated into any project.
+
+## Components
+
+To see the full list of components built in dcx-react-library, and how to use it, have a look on our [storybook-showcase](https://www.chromatic.com/library?appId=6069a6f47f4b9f002171f8e1) (Click on View Storybook to see the list of components)
+In Storybook, each component is presented with 4 main sections:
+
+- **documentation**: describes the list of properties available, optional and mandatory;
+- **live**: you can play directly with all the properties and see the component's behaviour;
+- **unstyled**: the bare component without any styling applied;
+- **styled**: an example (mainly based on GDS) of how to style the component and the final result.
 
 ![Image of dcx-react-library showcase](https://github.com/Capgemini/dcx-react-library/blob/main/stories/img/storybook-doc.png)
 
-## Commands
+## How to use it
 
-DCX Component Library scaffolds your new library inside `/src`, and also sets up a [Parcel-based](https://parceljs.org) playground for it inside `/example`.
+Using dcx-react-library should not require any particular setup. You only need to import the component and use it :smiley:
 
-The recommended workflow is to run DCX Component Library in one terminal:
+Steps:
 
-```bash
-yarn install #to install dependencies
-yarn start #to run the library
+- `yarn add @capgeminiuk/dcx-react-library`
+- Import the component you need and use it. For example:
+
+```js
+import { Button } from 'dcx-react-library';
+
+const App = () => {
+  return <Button label="start" onClick={() => {}} />;
+};
 ```
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+## Contributing
 
-Then run either Storybook or the example playground:
+If you'd like to contribute, please follow our [CONTRIBUTING section](https://github.com/Capgemini/dcx-react-library/blob/main/CONTRIBUTING.md).
 
-### Storybook
+## Raise a bug or enhancement
 
-Run inside another terminal:
-
-```bash
-yarn storybook
-```
-
-This loads the stories from `./stories`.
-
-> NOTE: Stories should reference the components as if using the library, similar to the example playground. This means importing from the root project directory. This has been aliased in the tsconfig and the storybook webpack config as a helper.
-
-### Example
-
-Then run the example inside another:
-
-```bash
-cd example
-yarn install #to install dependencies
-yarn start #to run the examples
-```
-
-The default example imports and live reloads whatever is in `/dist`, so if you are seeing an out of date component, make sure DCX Component Library is running in watch mode like we recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
-
-To do a one-off build, use `yarn build`.
-
-To run tests, use `yarn test`.
-
-## Configuration
-
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`.
-
-### Jest
-
-Jest tests are set up to run with `yarn test`.
-
-### Bundle analysis
-
-Calculates the real cost of your library using [size-limit](https://github.com/ai/size-limit) with `yarn run size` and visulize it with `yarn run analyze`.
-
-### Rollup
-
-DCX Component Library uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
-
-### TypeScript
-
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
-
-## Continuous Integration
-
-we use circleCi for continous integration. CircleCi configuration is stored under `.circleci` folder and it will check:
-
-- test
-- code coverage
-- lint
-- build the library
-- deploy the latest storybook
-
-### Commit Messages
-
-Commit message MUST be prefixed with one of the following depending on the content of the commit. See [what-is-commitlint](https://github.com/conventional-changelog/commitlint/#) for details.
-
-```
-[build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test] [type-enum]
-
-git commit -m "build: {{ name of build config change }}"
-git commit -m "feat: {{ name of feature }}"
-git commit -m "fix: {{ name of bug }}"
-git commit -m "test: {{ name of test }}"
-```
-
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
+If you find a bug or you would like to recommend an improvement, please raise an _issue_ and use the appropriate template. We will be more than happy to improve the library, smashing all the bugs found and improve the functionality.
 
 ## Contributors ✨
-
-If you want to contribute please refer to the CONTRIBUTING.md[https://github.com/Capgemini/dcx-react-library/blob/main/CONTRIBUTING.md] section.
 
 Thanks goes to these wonderful people
 

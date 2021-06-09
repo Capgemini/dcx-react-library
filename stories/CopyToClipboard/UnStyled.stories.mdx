@@ -1,0 +1,115 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { CopyToClipboard } from '../../src/copyToClipboard/CopyToClipboard';
+
+<Meta title="DCXLibrary/CopyToClipboard" component={CopyToClipboard}/>
+
+# CopyToClipboard
+
+A CopyToClipboard component in case you want to copy the content of a specific elemene.
+It supports:
+
+- input
+- textArea
+
+and allow you to specifiy a custom content (whatever tag you prefer) or an image
+
+CopyToClipboard is UI/UX agnostic so you need to provide your style to have the look
+and feel you prefer.
+
+
+### An example of 'un-styled' CopyToClipboard
+
+<Canvas>
+  <Story name="basic">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const inputRef = React.useRef(null);
+      return (
+        <>
+         <input
+            value={value}
+            ref={inputRef}
+            onChange={evt => setValue(evt.currentTarget.value)}
+          />
+          <CopyToClipboard
+              ref={inputRef}
+              onCopy={value => {
+                alert(value);
+              }}
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="custom-content">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const inputRef = React.useRef(null);
+      return (
+        <>
+         <input
+            value={value}
+            ref={inputRef}
+            onChange={evt => setValue(evt.currentTarget.value)}
+          />
+          <CopyToClipboard
+              ref={inputRef}
+              onCopy={value => {
+                alert(value);
+              }}
+          >
+            <span>Copy</span>
+          </CopyToClipboard>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="image">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const inputRef = React.useRef(null);
+      return (
+        <>
+         <input
+            value={value}
+            ref={inputRef}
+            onChange={evt => setValue(evt.currentTarget.value)}
+          />
+          <CopyToClipboard
+              ref={inputRef}
+              onCopy={value => {
+                alert(value);
+              }}
+              icon={<img src="/copy.png" alt="" width="12px" height="12px"/>}
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="text">
+    <>
+      <div>Copy me</div>
+      <CopyToClipboard
+          text="Copy me"
+          onCopy={value => {
+            alert(value);
+          }}
+          icon={<img src="/copy.png" alt="" width="12px" height="12px"/>}
+      />
+    </>
+  </Story>
+</Canvas>
+
+```js
+```
+
+<Props of={CopyToClipboard} />

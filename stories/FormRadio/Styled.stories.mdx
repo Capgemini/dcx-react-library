@@ -310,9 +310,21 @@ In this section we're using the formRadio component providing the GovUk style pa
   <Story name="conditional reveal">
     {() => {
       const [value, setValue] = React.useState('');
+      const [emailValue, setEmailValue] = React.useState('');
+      const [phoneValue, setPhoneValue] = React.useState('');
+      const [textMessageValue, setTextMessageValue] = React.useState('');
       const handleChange = event => setValue(event.target.value);
+      const handleEmailChange = value => {
+        setEmailValue(value);
+      }
+      const handlePhoneChange = value => {
+        setPhoneValue(value);
+      }
+      const handleTextMessageChange = value => {
+        setTextMessageValue(value);
+      }
       return (
-        <div className="govuk-radios govuk-radios--inline">
+        <div className="govuk-radios">
           <FormRadio
             id="contact"
             value="email"
@@ -336,9 +348,71 @@ In this section we're using the formRadio component providing the GovUk style pa
               id: 'conditional-contact',
               inputClassName: 'govuk-input govuk-!-width-one-third',
               inputId: 'contact-by-email',
+              value: emailValue,
+              onChange: e => handleEmailChange(e)
             }}
             name="contact"
-            selected={true}
+            selected={value === "email"}
+            onChange={e => handleChange(e)}
+          />
+          <FormRadio
+            id="contact"
+            value="phone"
+            label="Phone"
+            labelProps={{
+              className: 'govuk-label govuk-radios__label',
+            }}
+            inputProps={{
+              className: 'govuk-radios__input',
+            }}
+            itemProps={{
+              className: 'govuk-radios__item',
+            }}
+            conditional={{
+              name: 'contact-by-phone',
+              label: 'Phone Number',
+              type: 'text',
+              className:
+                'govuk-radios__conditional govuk-radios__conditional--hidden',
+              groupClassName: 'govuk-form-group',
+              id: 'conditional-contact',
+              inputClassName: 'govuk-input govuk-!-width-one-third',
+              inputId: 'contact-by-phone',
+              value: phoneValue,
+              onChange: e => handlePhoneChange(e)
+            }}
+            name="contact"
+            selected={value === "phone"}
+            onChange={e => handleChange(e)}
+          />
+          <FormRadio
+            id="contact"
+            value="text"
+            label="Text message"
+            labelProps={{
+              className: 'govuk-label govuk-radios__label',
+            }}
+            inputProps={{
+              className: 'govuk-radios__input',
+            }}
+            itemProps={{
+              className: 'govuk-radios__item',
+            }}
+            conditional={{
+              name: 'contact-by-text',
+              label: 'Mobile phone number',
+              type: 'tel',
+              className:
+                'govuk-radios__conditional govuk-radios__conditional--hidden',
+              groupClassName: 'govuk-form-group',
+              id: 'conditional-contact',
+              inputClassName: 'govuk-input govuk-!-width-one-third',
+              inputId: 'contact-by-text',
+              value: textMessageValue,
+              onChange: e => handleTextMessageChange(e)
+            }}
+            name="contact"
+            selected={value === "text"}
             onChange={e => handleChange(e)}
           />
         </div>

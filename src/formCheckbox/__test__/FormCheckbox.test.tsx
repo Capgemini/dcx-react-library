@@ -47,6 +47,7 @@ describe('FormCheckbox', () => {
   });
 
   it('should render a nested checkbox within a label', () => {
+    const handleChange = jest.fn();
     const { container } = render(
       <FormCheckbox
         id="myId"
@@ -60,6 +61,7 @@ describe('FormCheckbox', () => {
         inputProps={{
           id: 'my-checkbox',
         }}
+        onChange={handleChange}
       />
     );
 
@@ -207,6 +209,7 @@ describe('FormCheckbox', () => {
         hint={{
           id: 'myId',
           text: 'my hint',
+          position: 'below',
         }}
       />
     );
@@ -237,8 +240,8 @@ describe('FormCheckbox', () => {
         hint={{
           id: 'myId',
           text: 'my hint',
+          position: 'above',
         }}
-        hintPosition="above"
       />
     );
 
@@ -264,6 +267,7 @@ describe('FormCheckbox', () => {
         onChange={handleChange}
         selected={false}
         conditional={{
+          value: 'conditional-value',
           name: 'conditional-reveal',
           label: 'conditional label',
           type: 'text',
@@ -292,6 +296,7 @@ describe('FormCheckbox', () => {
         onChange={handleChange}
         selected={true}
         conditional={{
+          value: 'conditional-value',
           name: 'conditional-reveal',
           label: 'conditional label',
           type: 'text',

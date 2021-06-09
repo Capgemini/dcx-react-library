@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -20,7 +20,7 @@
     "prepare": "tsdx build && husky install",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "storybook": "start-storybook -p 6006 --no-manager-cache",
+    "storybook": "start-storybook -p 6006 --no-manager-cache -s ./static",
     "build-storybook": "build-storybook",
     "publish-storybook": "npx chromatic --project-token c6317a751fef",
     "build": "tsdx build"
@@ -49,7 +49,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "dcx-react-library",
+  "name": "@capgeminiuk/dcx-react-library",
   "author": "Daniele Zurico",
   "module": "dist/dcx-react-library.esm.js",
   "size-limit": [
