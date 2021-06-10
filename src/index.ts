@@ -12,6 +12,7 @@ export * from './multiSelect';
 export * from './formDate';
 export * from './tabGroup';
 export * from './copyToClipboard';
+export * from './table';
 export * from './generatePresentationalComponent/generateComponent';
 export * from './generatePresentationalComponent/generateStyle';
 export { DynamicComponent } from './common/components/DynamicComponent';

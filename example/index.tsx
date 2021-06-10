@@ -17,6 +17,7 @@ import {
   FormInputDemo,
   TabGroupDemo,
   CopyToClipboardDemo,
+  TableDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -43,6 +44,7 @@ const App = () => (
         <Route path="/formDate" component={FormDateDemo} />
         <Route path="/tabGroup" component={TabGroupDemo} />
         <Route path="/copyToClipboard" component={CopyToClipboardDemo} />
+        <Route path="/table" component={TableDemo} />
       </Switch>
     </BrowserRouter>
   </div>

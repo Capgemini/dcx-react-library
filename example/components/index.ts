@@ -12,4 +12,5 @@ export { MultiSelectDemo } from './MultiSelectDemo';
 export { FormDateDemo } from './FormDateDemo';
 export { TabGroupDemo } from './TabGroupDemo';
 export { CopyToClipboardDemo } from './CopyToClipboardDemo';
+export { TableDemo } from './TableDemo';
 export * from './library-candidates';
