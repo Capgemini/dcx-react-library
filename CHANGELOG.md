@@ -2,7 +2,6 @@
 
 - [tabGroup](https://github.com/Capgemini/dcx-react-library/issues/167)
 - [copyToClipboard](https://github.com/Capgemini/dcx-react-library/issues/184)
-- [table](https://github.com/Capgemini/dcx-react-library/issues/189)
 
 ## 0.2.0 (date tbd)
 
