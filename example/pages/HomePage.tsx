@@ -46,6 +46,9 @@ export const Home = () => (
         <li>
           <Link to="/copyToClipboard">CopyToClipboardDemo</Link>
         </li>
+        <li>
+          <Link to="/table">TableDemo</Link>
+        </li>
       </ul>
     </nav>
     <h1>Example pages using 0.1 DCX library components</h1>
