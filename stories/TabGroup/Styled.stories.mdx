@@ -154,6 +154,35 @@ import './style.css';
   </Story>
 </Canvas>
 
+### An example of 'styled' TabGroup of Tabs with a customLabel
+
+<Canvas>
+  <Story name="styled-tabs-with-custom-label">
+    {() => {
+      return (
+        <TabGroup
+          activeTabClassName="tab-list-active"
+          tabClassName="tab-list-item"
+          className="tab-list"
+        >
+          <Tab eventKey="tab-1" label="tab 1">
+            This the content for <em>tab 1</em>
+          </Tab>
+          <Tab eventKey="tab-2" label="tab 2">
+            This the content for <em>tab 2</em>
+          </Tab>
+          <Tab
+            label={<img src="https://freesvg.org/img/afaulconbridge-Lightbulb-OnOff-1.png" width="20px"/>}
+            eventKey="tab-3"
+          >
+            This is content for <em>tab 3</em>
+          </Tab>
+        </TabGroup>
+      );
+    }}
+  </Story>
+</Canvas>
+
 # TabGroup
 
 ## Properties

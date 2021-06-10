@@ -10,7 +10,7 @@ export type TabProps = {
   /**
    * Tab label
    */
-  label?: string;
+  label?: JSX.Element | string;
   /**
    * Tab active class name
    */

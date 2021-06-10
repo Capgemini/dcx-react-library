@@ -108,6 +108,35 @@ describe('Tab', () => {
     expect(screen.getByText('tab 1')).toBeInTheDocument();
   });
 
+  it('should render a tab with a custom label', () => {
+    const onClickHandler = jest.fn();
+
+    const el: JSX.Element = (
+      <div>
+        <span>I AM CUSTOM LABEL</span>
+      </div>
+    );
+
+    render(
+      <TabContext.Provider
+        value={{
+          activeTab: 'tab 1',
+          changeActiveTab: onClickHandler,
+        }}
+      >
+        <Tab
+          eventKey="tab 1"
+          activeTabClassName="tabActive"
+          label={el}
+          className="myClassName"
+          ariaControls="tabParent"
+        />
+      </TabContext.Provider>
+    );
+
+    expect(screen.getByText('I AM CUSTOM LABEL')).toBeInTheDocument();
+  });
+
   it('should render a preselected tab ', () => {
     const onClickHandler = jest.fn();
 

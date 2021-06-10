@@ -1,4 +1,6 @@
 import React, { useRef } from 'react';
+import { faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, TabGroup, Tab } from 'dcx-react-library';
 import './tabGroup.scss';
 
@@ -8,9 +10,7 @@ export const TabGroupDemo = () => {
   const handleSelectedTab = id => {
     document.getElementsByTagName(
       'label'
-    )[0].innerText = `The selected tab is: ${
-      document.getElementById(id)?.innerText
-    }`;
+    )[0].innerText = `The selected tab is: ${id}`;
   };
 
   return (
@@ -39,7 +39,10 @@ export const TabGroupDemo = () => {
         <Tab label="Tab 4" eventKey="tab-pane-4-id" disabled={true}>
           This is content for <em>tab 4</em>
         </Tab>
-        <Tab label="Tab 5" eventKey="tab-pane-5-id">
+        <Tab
+          label={<FontAwesomeIcon icon={faMoneyBillWave} />}
+          eventKey="tab-pane-5-id"
+        >
           This is content for <em>tab 5</em>
         </Tab>
       </TabGroup>
