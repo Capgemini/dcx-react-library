@@ -10,6 +10,7 @@ export * from './formSelect';
 export * from './multiUpload';
 export * from './multiSelect';
 export * from './formDate';
+export * from './tabGroup';
 export * from './copyToClipboard';
 export * from './table';
 export * from './generatePresentationalComponent/generateComponent';

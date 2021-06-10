@@ -44,6 +44,9 @@ export const Home = () => (
           <Link to="/formDate">FormDateDemo</Link>
         </li>
         <li>
+          <Link to="/tabgroup">TabGroupDemo</Link>
+        </li>
+        <li>
           <Link to="/copyToClipboard">CopyToClipboardDemo</Link>
         </li>
         <li>
