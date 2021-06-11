@@ -11,7 +11,11 @@ export const parameters = {
         return order--;
       } else if (a[0].includes('copy')) {
         return order--;
-      }else {
+      } else if (a[0].includes('tabs')) {
+        return order--;
+      } else if (a[0].includes('table')) {
+        return order--;
+      } else {
         return 0;
       }
     }

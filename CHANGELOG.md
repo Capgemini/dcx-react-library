@@ -1,9 +1,10 @@
+## 0.2.0 (date tbd)
+
 <a name="0.2.0"></a>
 
+- [table](https://github.com/Capgemini/dcx-react-library/issues/189)
 - [tabGroup](https://github.com/Capgemini/dcx-react-library/issues/167)
 - [copyToClipboard](https://github.com/Capgemini/dcx-react-library/issues/184)
-
-## 0.2.0 (date tbd)
 
 <a name="0.1.1"></a>
 

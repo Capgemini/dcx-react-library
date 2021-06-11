@@ -1,0 +1,212 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Table } from '../../src/table/Table';
+
+<Meta title="DCXLibrary/Table" component={Table} />
+
+# Button
+
+A Table component that allow you to define columns with custom elements like Buttons, Link, etc and order asc/desc
+
+Table is UI/UX agnostic so you need to provide your style to have the look
+and feel you prefer.
+
+### An example of 'basic' Table
+
+<Canvas>
+  <Story name="basic">
+    {() => {
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+        },
+      ];
+      return <Table dataSource={data} />;
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'filter-columns' Table
+
+in the following example we passed an extra property - _columnsToOmit_ - that allow to hide the column we don't want to display
+
+<Canvas>
+  <Story name="hide-columns">
+    {() => {
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+        },
+      ];
+      return <Table dataSource={data} columnsToOmit={['symbol']} />;
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'custom width' Table
+
+in the following example we passed an extra property - _columnsWidth_ - that will define the width for each column
+
+<Canvas>
+  <Story name="width-columns">
+    {() => {
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+        },
+      ];
+      return (
+        <Table
+          dataSource={data}
+          columnsWidth={['100px', '20%', '30%', '40%']}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'icon sort' Table
+
+in the following example we passed 2 extra properties - _sortAscIcon_ and _sortDescIcon_ - that will display an icon all the time you click on the header to sort the columns
+
+<Canvas>
+  <Story name="icon-sort">
+    {() => {
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+        },
+      ];
+      return (
+        <Table
+          dataSource={data}
+          sortAscIcon={
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd"><path d="M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z"/></svg>
+        }
+        sortDescIcon={
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg>
+        }
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'button' Table
+
+in the following example we passed in the data a new column that contains a button and an handler - _handleCellClick_ - to handle the click on the button
+
+<Canvas>
+  <Story name="button">
+    {() => {
+      const handleCellClick = (evt, value) => {
+        if (evt.target.name === 'delete') {
+         console.log(value);
+        }
+      };
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+      ];
+      return <Table dataSource={data} handleCellClick={handleCellClick}/>;
+    }}
+  </Story>
+</Canvas>
+
+```js
+```
+
+<Props of={Table} />
