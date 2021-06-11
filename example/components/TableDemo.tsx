@@ -232,10 +232,10 @@ export const TableDemo = () => {
   const handleSelect = row => {
     alert(row);
   };
-  const handleCellClick = (target: any, value: any) => {
-    if (target.name === 'delete') {
+  const handleCellClick = (evt: any, value: any) => {
+    if (evt.target.name === 'delete') {
       setData(data.filter(v => v.id !== value.id));
-    } else if (target.name === 'edit') {
+    } else if (evt.target.name === 'edit') {
       alert(`Values: ${value}`);
     }
   };

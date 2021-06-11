@@ -1,0 +1,287 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Table } from '../../src/table/Table';
+import './tableStyle.css';
+
+<Meta title="DCXLibrary/Table/Styled" component={Table} />
+
+# Table
+
+In this section we're using the Table component providing the **material style** passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
+
+### An example of 'basic' Table
+
+<Canvas>
+  <Story name="basic">
+    {() => {
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+        },
+      ];
+      return (
+        <Table
+          dataSource={data}
+          tableClassName="table"
+          theadClassName="thead"
+          trClassName="header-row"
+          thClassName="th"
+          tbodyClassName="tbody"
+          tdClassName="td"
+          selectedRowClassName="trSelected"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'custom width' Table
+
+<Canvas>
+  <Story name="width-columns">
+    {() => {
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+        },
+      ];
+      return (
+        <Table
+          dataSource={data}
+          tableClassName="table"
+          theadClassName="thead"
+          trClassName="header-row"
+          thClassName="th"
+          tbodyClassName="tbody"
+          tdClassName="td"
+          selectedRowClassName="trSelected"
+          columnsWidth={['100px', '20%', '30%', '40%']}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'icon sort' Table
+
+<Canvas>
+  <Story name="icon-sort">
+    {() => {
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+        },
+      ];
+      return (
+        <Table
+          dataSource={data}
+          tableClassName="table"
+          theadClassName="thead"
+          trClassName="header-row"
+          thClassName="th"
+          tbodyClassName="tbody"
+          tdClassName="td"
+          selectedRowClassName="trSelected"
+          columnsWidth={['90px']}
+          sortAscIcon={
+            <img src="https://freesvg.org/img/1544644548.png" width="12px" />
+          }
+          sortDescIcon={
+            <img src="https://freesvg.org/img/1544644532.png" width="12px" />
+          }
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'button' Table
+
+in the following example we passed in the data a new column that contains a button and an handler - _handleCellClick_ - to handle the click on the button
+
+<Canvas>
+  <Story name="button">
+    {() => {
+      const handleCellClick = (evt, value) => {
+        if (evt.target.name === 'delete') {
+          console.log(value);
+        }
+      };
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+          actions: (
+            <button className="btn-danger" name="delete">
+              Delete
+            </button>
+          ),
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+          actions: (
+            <button className="btn-danger" name="delete">
+              Delete
+            </button>
+          ),
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+          actions: (
+            <button className="btn-danger" name="delete">
+              Delete
+            </button>
+          ),
+        },
+      ];
+      return (
+        <Table
+          dataSource={data}
+          handleCellClick={handleCellClick}
+          tableClassName="table"
+          theadClassName="thead"
+          trClassName="header-row"
+          thClassName="th"
+          tbodyClassName="tbody"
+          tdClassName="td"
+          selectedRowClassName="trSelected"
+          columnsWidth={['90px']}
+          sortAscIcon={
+            <img src="https://freesvg.org/img/1544644548.png" width="12px" />
+          }
+          sortDescIcon={
+            <img src="https://freesvg.org/img/1544644532.png" width="12px" />
+          }
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+The css we used to styled the table component is the following:
+
+```css
+.table {
+  border-spacing: 0;
+  width: 100%;
+  background: #fff;
+  font-family: Roboto, Helvetica Neue, sans-serif;
+}
+.thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.header-row {
+  height: 56px;
+}
+.th {
+  padding: 0;
+  padding-left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.tr {
+  height: 48px;
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.td {
+  padding-left: 24px;
+  padding: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  padding-left: 24px;
+  cursor: pointer;
+}
+
+.trSelected .td {
+  font-weight: bold;
+}
+```
+
+<Props of={Table} />
