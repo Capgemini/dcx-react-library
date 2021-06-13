@@ -3,6 +3,7 @@ import { omit } from 'lodash';
 import { Body } from './Body';
 import { Header } from './Header';
 import { useSortableData } from './useSortable';
+import { useTableSearch } from './useTableSearch';
 type TableProps = {
   /**
    * the data source used to populate the table
@@ -60,6 +61,14 @@ type TableProps = {
    * you can specify the with of each column
    */
   columnsWidth?: string[];
+  /**
+   * allow to enable the filter search on the table (false by default)
+   */
+  withSearch?: boolean;
+  /**
+   * allow to specify extra props for the search input
+   */
+  searchProps?: any;
 };
 
 const keys = (dataSource: any[], columnsToOmit?: string[]): string[] =>
@@ -80,9 +89,19 @@ export const Table = ({
   sortAscIcon,
   sortDescIcon,
   columnsWidth,
+  withSearch = false,
+  searchProps,
 }: TableProps) => {
   const { items, requestSort, sortConfig } = useSortableData(dataSource);
   const [selectedHeader, setSelectedHeader] = React.useState('');
+
+  const [searchVal, setSearchVal] = React.useState('');
+
+  const { filteredData } = useTableSearch({
+    searchVal,
+    data: items,
+  });
+
   const handleClick = (value: string) => {
     requestSort(value);
     setSelectedHeader(value);
@@ -101,28 +120,36 @@ export const Table = ({
   };
 
   return (
-    <table className={tableClassName}>
-      <Header
-        onClick={handleClick}
-        theadClassName={theadClassName}
-        trClassName={trClassName}
-        thClassName={thClassName}
-        values={keys(items, columnsToOmit)}
-        keySorted={getClassNamesFor(selectedHeader)}
-        sortAscIcon={sortAscIcon}
-        sortDescIcon={sortDescIcon}
-        columnsWidth={columnsWidth}
-      />
-      <Body
-        values={items}
-        onSelect={onSelect}
-        handleCellClick={handleCellClick}
-        selectedRowClassName={selectedRowClassName}
-        columnsToOmit={columnsToOmit}
-        tbodyClassName={tbodyClassName}
-        trClassName={trClassName}
-        tdClassName={tdClassName}
-      />
-    </table>
+    <>
+      {withSearch && (
+        <input
+          onChange={(e: any) => setSearchVal(e.target.value)}
+          {...searchProps}
+        />
+      )}
+      <table className={tableClassName}>
+        <Header
+          onClick={handleClick}
+          theadClassName={theadClassName}
+          trClassName={trClassName}
+          thClassName={thClassName}
+          values={keys(items, columnsToOmit)}
+          keySorted={getClassNamesFor(selectedHeader)}
+          sortAscIcon={sortAscIcon}
+          sortDescIcon={sortDescIcon}
+          columnsWidth={columnsWidth}
+        />
+        <Body
+          values={filteredData}
+          onSelect={onSelect}
+          handleCellClick={handleCellClick}
+          selectedRowClassName={selectedRowClassName}
+          columnsToOmit={columnsToOmit}
+          tbodyClassName={tbodyClassName}
+          trClassName={trClassName}
+          tdClassName={tdClassName}
+        />
+      </table>
+    </>
   );
 };

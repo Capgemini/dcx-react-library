@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { Table } from '../Table';
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 
 const values = [
   {
@@ -45,5 +46,56 @@ describe('Table', () => {
     const idHeader = rows[0].children[0];
     fireEvent.click(idHeader);
     expect(row.innerHTML).toContain(1);
+  });
+
+  it('should allow to search and return 0 elements', () => {
+    render(
+      <Table
+        dataSource={values}
+        selectedRowClassName="selectedRowClassName"
+        withSearch={true}
+      />
+    );
+    const search = screen.getByRole('textbox');
+    userEvent.type(search, '33');
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('id');
+    expect(row[2].innerHTML).toContain('position');
+    expect(row[3].innerHTML).toContain('actions');
+    const tbody = screen.getAllByRole('rowgroup');
+    expect(tbody[1].children).toHaveLength(0);
+  });
+
+  it('should allow to search and return 1 elements', () => {
+    render(
+      <Table
+        dataSource={values}
+        selectedRowClassName="selectedRowClassName"
+        withSearch={true}
+      />
+    );
+    const search = screen.getByRole('textbox');
+    userEvent.type(search, '3');
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('id');
+    expect(row[2].innerHTML).toContain('position');
+    expect(row[3].innerHTML).toContain('actions');
+    const tbody = screen.getAllByRole('rowgroup');
+    expect(tbody[1].children).toHaveLength(1);
+  });
+
+  it('should allow to specify extra properties for the search input', () => {
+    render(
+      <Table
+        dataSource={values}
+        selectedRowClassName="selectedRowClassName"
+        withSearch={true}
+        searchProps={{
+          className: 'searchClass',
+        }}
+      />
+    );
+    const search = screen.getByRole('textbox');
+    expect(search.getAttribute('class')).toBe('searchClass');
   });
 });

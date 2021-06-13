@@ -210,18 +210,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
     weight: 20.1797,
     symbol: 'Ne',
     actions: (
-      <>
-        <button
-          className="btn btn-primary"
-          name="add"
-          style={{ marginRight: '5px' }}
-        >
-          Add
-        </button>
-        <button className="btn btn-danger" name="delete">
-          Delete
-        </button>
-      </>
+      <button
+        className="btn btn-primary"
+        name="add"
+        style={{ marginRight: '5px' }}
+      >
+        Add
+      </button>
     ),
   },
 ];
@@ -242,6 +237,7 @@ export const TableDemo = () => {
 
   return (
     <div className="App">
+      <h1>Without search</h1>
       <Table
         dataSource={data}
         columnsToOmit={['symbol']}
@@ -254,6 +250,32 @@ export const TableDemo = () => {
         tbodyClassName="tbody"
         tdClassName="td"
         selectedRowClassName="trSelected"
+        sortAscIcon={
+          <FontAwesomeIcon icon={faArrowUp} style={{ marginLeft: '4px' }} />
+        }
+        sortDescIcon={
+          <FontAwesomeIcon icon={faArrowDown} style={{ marginLeft: '4px' }} />
+        }
+        columnsWidth={['100px']}
+      />
+      <h1>With search</h1>
+      <Table
+        dataSource={data}
+        columnsToOmit={['symbol']}
+        onSelect={handleSelect}
+        handleCellClick={handleCellClick}
+        tableClassName="table"
+        theadClassName="thead"
+        trClassName="header-row"
+        thClassName="th"
+        tbodyClassName="tbody"
+        tdClassName="td"
+        selectedRowClassName="trSelected"
+        withSearch={true}
+        searchProps={{
+          placeholder: 'Filter values...',
+          className: 'searchInput',
+        }}
         sortAscIcon={
           <FontAwesomeIcon icon={faArrowUp} style={{ marginLeft: '4px' }} />
         }

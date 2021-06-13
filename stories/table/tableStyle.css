@@ -73,3 +73,11 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.searchClass {
+  right: 0;
+  position: absolute;
+  margin-right: 19px;
+  margin-bottom: 5px;
+  padding: 2px;
+}

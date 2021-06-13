@@ -236,6 +236,10 @@ function TableDemo() {
         columnsToOmit={['symbol']}
         onSelect={handleSelect}
         handleCellClick={handleCellClick}
+        withSearch={true}
+        searchProps={{
+          placeholder: 'Search...'
+        }}
         sortAscIcon={
           <img src="https://freesvg.org/img/1544644548.png" width="12px" />
         }
