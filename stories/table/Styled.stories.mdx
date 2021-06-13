@@ -8,6 +8,43 @@ import './tableStyle.css';
 
 In this section we're using the Table component providing the **material style** passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
 
+### A basic table with GovUk style
+
+<Canvas>
+  <Story name="GovUk">
+    {() => {
+      let data = [
+        {
+          'Month you apply': <b>January</b>,
+          'Rate for bicycles': '£85',
+          'Rate for vehicles': '£95',
+        },
+        {
+          'Month you apply': <b>February</b>,
+          'Rate for bicycles': '£75',
+          'Rate for vehicles': '£55',
+        },
+        {
+          'Month you apply': <b>March</b>,
+          'Rate for bicycles': '£165',
+          'Rate for vehicles': '£125',
+        },
+      ];
+      return (
+        <Table
+          dataSource={data}
+          tableClassName="govuk-table "
+          theadClassName="govuk-table__head"
+          trClassName="govuk-table__row"
+          thClassName="govuk-table__header"
+          tbodyClassName="govuk-table__body"
+          tdClassName="govuk-table__cell"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ### An example of 'basic' Table
 
 <Canvas>
@@ -300,6 +337,54 @@ in the following example we enable the search functionlity passing - _withSearch
     }}
   </Story>
 </Canvas>
+
+The css used for the _GovUk_ style
+
+```css
+.govuk-table {
+  margin-bottom: 30px;
+  font-size: 19px;
+  line-height: 1.31579;
+  font-family: 'GDS Transport', arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #0b0c0c;
+  width: 100%;
+  margin-bottom: 20px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.govuk-table__head {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+  font-size: 19px;
+}
+.govuk-table__row {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.govuk-table__header {
+  padding: 10px 20px 10px 0;
+  border-bottom: 1px solid #b1b4b6;
+  text-align: left;
+  vertical-align: top;
+  font-weight: 700;
+}
+.govuk-table__header--numeric {
+  text-align: right;
+}
+.govuk-table__cell {
+  padding: 10px 20px 10px 0;
+  border-bottom: 1px solid #b1b4b6;
+  text-align: left;
+  vertical-align: top;
+}
+```
 
 The css we used to styled the table component is the following:
 
