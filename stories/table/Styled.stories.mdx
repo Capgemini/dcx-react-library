@@ -259,6 +259,81 @@ in the following example we passed in the data a new column that contains a butt
   </Story>
 </Canvas>
 
+### An example with OrderBy functionality
+
+in the following example we enable the orderBy functionlity passing - _withOrderBy_ -
+
+<Canvas>
+  <Story name="orderBy">
+    {() => {
+      const handleCellClick = (evt, value) => {
+        if (evt.target.name === 'delete') {
+          console.log(value);
+        }
+      };
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+          actions: (
+            <button className="btn-danger" name="delete">
+              Delete
+            </button>
+          ),
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+          actions: (
+            <button className="btn-danger" name="delete">
+              Delete
+            </button>
+          ),
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+          actions: (
+            <button className="btn-danger" name="delete">
+              Delete
+            </button>
+          ),
+        },
+      ];
+      return (
+        <Table
+          dataSource={data}
+          handleCellClick={handleCellClick}
+          tableClassName="table"
+          theadClassName="thead"
+          trClassName="header-row"
+          thClassName="th"
+          tbodyClassName="tbody"
+          tdClassName="td"
+          selectedRowClassName="trSelected"
+          columnsWidth={['90px']}
+          withOrderBy={true}
+          sortAscIcon={
+            <img src="https://freesvg.org/img/1544644548.png" width="12px" />
+          }
+          sortDescIcon={
+            <img src="https://freesvg.org/img/1544644532.png" width="12px" />
+          }
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ### An example with Search functionality
 
 in the following example we enable the search functionlity passing - _withSearch_ -
@@ -326,12 +401,6 @@ in the following example we enable the search functionlity passing - _withSearch
             placeholder: 'Search...',
             className: 'searchClass',
           }}
-          sortAscIcon={
-            <img src="https://freesvg.org/img/1544644548.png" width="12px" />
-          }
-          sortDescIcon={
-            <img src="https://freesvg.org/img/1544644532.png" width="12px" />
-          }
         />
       );
     }}

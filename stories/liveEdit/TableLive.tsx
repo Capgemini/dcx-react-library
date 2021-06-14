@@ -236,6 +236,7 @@ function TableDemo() {
         columnsToOmit={['symbol']}
         onSelect={handleSelect}
         handleCellClick={handleCellClick}
+        withOrderBy={true}
         withSearch={true}
         searchProps={{
           placeholder: 'Search...'
