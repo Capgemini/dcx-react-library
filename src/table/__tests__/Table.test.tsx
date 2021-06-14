@@ -33,9 +33,13 @@ describe('Table', () => {
     });
   });
 
-  it('should call the select function', () => {
+  it('should perform the order', () => {
     render(
-      <Table dataSource={values} selectedRowClassName="selectedRowClassName" />
+      <Table
+        dataSource={values}
+        selectedRowClassName="selectedRowClassName"
+        withOrderBy={true}
+      />
     );
     //body
     const { id } = values[0];

@@ -237,7 +237,7 @@ export const TableDemo = () => {
 
   return (
     <div className="App">
-      <h1>Without search</h1>
+      <h1>Basic</h1>
       <Table
         dataSource={data}
         columnsToOmit={['symbol']}
@@ -250,6 +250,22 @@ export const TableDemo = () => {
         tbodyClassName="tbody"
         tdClassName="td"
         selectedRowClassName="trSelected"
+        columnsWidth={['100px']}
+      />
+      <h1>With order</h1>
+      <Table
+        dataSource={data}
+        columnsToOmit={['symbol']}
+        onSelect={handleSelect}
+        handleCellClick={handleCellClick}
+        tableClassName="table"
+        theadClassName="thead"
+        trClassName="header-row"
+        thClassName="th"
+        tbodyClassName="tbody"
+        tdClassName="td"
+        selectedRowClassName="trSelected"
+        withOrderBy={true}
         sortAscIcon={
           <FontAwesomeIcon icon={faArrowUp} style={{ marginLeft: '4px' }} />
         }
@@ -258,7 +274,7 @@ export const TableDemo = () => {
         }
         columnsWidth={['100px']}
       />
-      <h1>With search</h1>
+      <h1>With search and order</h1>
       <Table
         dataSource={data}
         columnsToOmit={['symbol']}
@@ -276,6 +292,7 @@ export const TableDemo = () => {
           placeholder: 'Filter values...',
           className: 'searchInput',
         }}
+        withOrderBy={true}
         sortAscIcon={
           <FontAwesomeIcon icon={faArrowUp} style={{ marginLeft: '4px' }} />
         }

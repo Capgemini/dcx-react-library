@@ -62,6 +62,10 @@ type TableProps = {
    */
   columnsWidth?: string[];
   /**
+   * allow to enable sorting on the table (false by default)
+   */
+  withOrderBy?: boolean;
+  /**
    * allow to enable the filter search on the table (false by default)
    */
   withSearch?: boolean;
@@ -89,6 +93,7 @@ export const Table = ({
   sortAscIcon,
   sortDescIcon,
   columnsWidth,
+  withOrderBy = false,
   withSearch = false,
   searchProps,
 }: TableProps) => {
@@ -99,7 +104,7 @@ export const Table = ({
 
   const { filteredData } = useTableSearch({
     searchVal,
-    data: items,
+    data: withOrderBy ? items : dataSource,
   });
 
   const handleClick = (value: string) => {
