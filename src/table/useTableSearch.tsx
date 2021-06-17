@@ -17,12 +17,7 @@ export const useTableSearch = ({ searchVal, data }: TableSearch) => {
           return data[index];
         return null;
       });
-      setFilteredData(
-        reqData.filter((_data: any[]) => {
-          if (_data) return true;
-          return false;
-        })
-      );
+      setFilteredData(reqData.filter((_data: any[]) => _data !== null));
     } else setFilteredData(data);
   }, [searchVal, data]);
 
