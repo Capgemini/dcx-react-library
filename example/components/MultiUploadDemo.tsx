@@ -18,6 +18,7 @@ export const MultiUploadDemo = () => {
       }}
       label="CV"
       onChange={onChangeHandler}
+      fileData={true}
     />
   );
 };

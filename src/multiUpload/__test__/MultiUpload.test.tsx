@@ -117,4 +117,32 @@ describe('MultiUpload', () => {
 
     expect(onChangeHandler).not.toHaveBeenCalled();
   });
+
+  it('should render a multi upload file data when file selected', async () => {
+    const file: File = new File(['some file'], 'isaac.png', {
+      type: 'image/png',
+      lastModified: 1485903600000,
+    });
+    const onChangeHandler = jest.fn();
+
+    render(
+      <MultiUpload
+        name="file-upload"
+        label="file-upload"
+        id="my-file-uploader"
+        onChange={onChangeHandler}
+        fileData={true}
+      />
+    );
+
+    const uploader: HTMLElement = screen.getByLabelText('file-upload');
+
+    await waitFor(() =>
+      fireEvent.change(uploader, { target: { files: [file] } })
+    );
+
+    expect(screen.getByText('File Name: isaac.png')).toBeInTheDocument();
+    expect(screen.getByText('File Type: image/png')).toBeInTheDocument();
+    expect(screen.getByText('Last Modified: 1/31/2017')).toBeInTheDocument();
+  });
 });
