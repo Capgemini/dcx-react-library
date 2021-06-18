@@ -14,7 +14,7 @@ import { Table } from '../../src/table/Table';
 
 # Table
 
-A component which allows you to render a table, each row can have custom elements defined to be used for actions. The table can also be sorted in asc / desc order.
+A component which allows you to render a table, each row can have custom elements defined to be used for actions. The table can also be sorted in asc / desc order and filter results with as search input
 Table is UI/UX agnostic so you need to provide your style to have the look
 and feel you prefer.
 
@@ -70,6 +70,12 @@ const handleCellClick = (target: any, value: any) => {
   tbodyClassName="tbody"
   tdClassName="td"
   selectedRowClassName="trSelected"
+  withOrderBy={true}
+  withSearch={true}
+  searchProps={{
+    placeholder: 'Search...'
+    className: 'searchClass'
+  }}
   sortAscIcon={
     <FontAwesomeIcon icon={faArrowUp} style={{ marginLeft: '4px' }} />
   }

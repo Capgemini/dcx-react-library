@@ -5,7 +5,7 @@ import { Table } from '../../src/table/Table';
 
 # Button
 
-A component which allows you to render a table, each row can have custom elements defined to be used for actions. The table can also be sorted in asc / desc order.
+A component which allows you to render a table, each row can have custom elements defined to be used for actions. The table can also be sorted in asc / desc order and filter results with as search input
 
 Table is UI/UX agnostic so you need to provide your style to have the look
 and feel you prefer.
@@ -202,6 +202,92 @@ in the following example we passed in the data a new column that contains a butt
         },
       ];
       return <Table dataSource={data} handleCellClick={handleCellClick}/>;
+    }}
+  </Story>
+</Canvas>
+
+### An example with 'orderBy'
+
+in the following example we enable the search functionlity passing - _withOrderBy_ -
+
+<Canvas>
+  <Story name="orderBy">
+    {() => {
+      const handleCellClick = (evt, value) => {
+        if (evt.target.name === 'delete') {
+         console.log(value);
+        }
+      };
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+      ];
+      return <Table dataSource={data} handleCellClick={handleCellClick} withOrderBy={true}/>;
+    }}
+  </Story>
+</Canvas>
+
+### An example with 'search'
+
+in the following example we enable the search functionlity passing - _withSearch_ -
+
+<Canvas>
+  <Story name="search">
+    {() => {
+      const handleCellClick = (evt, value) => {
+        if (evt.target.name === 'delete') {
+         console.log(value);
+        }
+      };
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+      ];
+      return <Table dataSource={data} handleCellClick={handleCellClick} withSearch={true}/>;
     }}
   </Story>
 </Canvas>

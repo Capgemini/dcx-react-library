@@ -55,3 +55,8 @@
 .trSelected .td {
   font-weight: bold;
 }
+.searchInput {
+  right: 0;
+  position: absolute;
+  margin-right: 4px;
+}
