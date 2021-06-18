@@ -144,7 +144,7 @@
     ]
   },
   "dependencies": {
-    "@cesium133/forgjs": "^1.1.11",
+    "@cesium133/forgjs": "1.1.10",
     "imask": "^6.0.7",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
