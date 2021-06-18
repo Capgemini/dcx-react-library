@@ -44,7 +44,7 @@ type MultiUploadProps = {
    */
   multiple?: boolean;
   /**
-   * multi update multi
+   * multi upload display file data once file is selected
    */
   fileData?: boolean;
   /**
