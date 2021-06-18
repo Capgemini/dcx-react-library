@@ -1,0 +1,83 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Table } from '../../src/table/Table';
+
+<Meta
+  title="DCXLibrary/Table/documentation"
+  component={Table}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Table
+
+A component which allows you to render a table, each row can have custom elements defined to be used for actions. The table can also be sorted in asc / desc order.
+Table is UI/UX agnostic so you need to provide your style to have the look
+and feel you prefer.
+
+## Usage
+
+An example with all the available properties is:
+
+```js
+const ELEMENT_DATA: PeriodicElement[] = [
+  {
+    id: 1,
+    position: 3,
+    name: 'Hydrogen',
+    weight: 1.0079,
+    symbol: 'H',
+    actions: (
+      <>
+        <button
+          className="btn btn-primary"
+          name="add"
+          style={{ marginRight: '5px' }}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" name="delete">
+          Delete
+        </button>
+      </>
+    ),
+  },
+];
+
+const handleSelect = row => {
+  alert(row);
+};
+const handleCellClick = (target: any, value: any) => {
+  if (target.name === 'delete') {
+    alert(value);
+  } else if (target.name === 'edit') {
+    alert(value);
+  }
+};
+
+<Table
+  dataSource={ELEMENT_DATA}
+  columnsToOmit={['symbol']}
+  onSelect={handleSelect}
+  handleCellClick={handleCellClick}
+  tableClassName="table"
+  theadClassName="thead"
+  trClassName="header-row"
+  thClassName="th"
+  tbodyClassName="tbody"
+  tdClassName="td"
+  selectedRowClassName="trSelected"
+  sortAscIcon={
+    <FontAwesomeIcon icon={faArrowUp} style={{ marginLeft: '4px' }} />
+  }
+  sortDescIcon={
+    <FontAwesomeIcon icon={faArrowDown} style={{ marginLeft: '4px' }} />
+  }
+  columnsWidth={['100px']}
+/>;
+```
+
+<Props of={Table} />

@@ -15,7 +15,9 @@ import {
   MultiSelectDemo,
   FormDateDemo,
   FormInputDemo,
+  TabGroupDemo,
   CopyToClipboardDemo,
+  TableDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -40,7 +42,9 @@ const App = () => (
         <Route path="/multiUpload" component={MultiUploadDemo} />
         <Route path="/multiSelect" component={MultiSelectDemo} />
         <Route path="/formDate" component={FormDateDemo} />
+        <Route path="/tabGroup" component={TabGroupDemo} />
         <Route path="/copyToClipboard" component={CopyToClipboardDemo} />
+        <Route path="/table" component={TableDemo} />
       </Switch>
     </BrowserRouter>
   </div>
