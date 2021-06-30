@@ -5,6 +5,7 @@ export * from './formCheckbox';
 export * from './autocomplete/Autocomplete';
 export * from './button';
 export * from './progress';
+export * from './range';
 export * from './toggle';
 export * from './tooltip';
 export * from './formSelect';
