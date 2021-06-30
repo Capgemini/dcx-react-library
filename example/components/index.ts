@@ -5,6 +5,7 @@ export { FormRadioDemo } from './FormRadioDemo';
 export { FormCheckboxDemo } from './FormCheckboxDemo';
 export { ButtonDemo } from './ButtonDemo';
 export { ProgressDemo } from './ProgressDemo';
+export { RangeDemo } from './RangeDemo';
 export { ToggleDemo } from './ToggleDemo';
 export { FormSelectDemo } from './FormSelectDemo';
 export { MultiUploadDemo } from './MultiUploadDemo';

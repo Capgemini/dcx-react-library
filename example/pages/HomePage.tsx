@@ -29,6 +29,9 @@ export const Home = () => (
           <Link to="/progress">ProgressDemo</Link>
         </li>
         <li>
+          <Link to="/range">RangeDemo</Link>
+        </li>
+        <li>
           <Link to="/toggle">ToggleDemo</Link>
         </li>
         <li>
