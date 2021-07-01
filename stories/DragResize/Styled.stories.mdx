@@ -1,0 +1,96 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { DragResize } from '../../src/dragResize/DragResize';
+import './style.css';
+
+<Meta 
+  title="DCXLibrary/DragResize/Styled" 
+  component={DragResize} 
+  />
+
+# Styled Vertical DragResize
+
+In this section we're using the vertical DragResize component with custom classes for the container, the two panels and the divider.
+
+<Canvas>
+  <Story name="styled-vertical-divider">
+    {() => {
+      
+      return (
+        <DragResize
+          firstPane={<div>first panel content</div>}
+          secondPane={<div>second panel content</div>}
+          dividerClassName="custom-vertical-divider"
+          firstPaneClassName="first-pane"
+          secondPaneClassName="second-pane"
+          containerClassName="custom-vertical-container"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Styled Horizontal DragResize
+
+In this section we're using the horizontal DragResize component with custom classes for the container, the two panels and the divider.
+
+<Canvas>
+  <Story name="styled-horizontal-divider">
+    {() => {
+      
+      return (
+        <DragResize
+          orientation="horizontal"
+          firstPane={<div>top panel content</div>}
+          secondPane={<div>bottom panel content</div>}
+          dividerClassName="custom-horizontal-divider"
+          firstPaneClassName="first-pane"
+          secondPaneClassName="second-pane"
+          containerClassName="custom-container"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+The css we used to styled the DragResize component is the following:
+
+```css
+.custom-vertical-container {
+  border: 1px solid purple;
+  font-size: 21px;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 400px;
+}
+
+.custom-container {
+  border: 1px solid purple;
+  font-size: 21px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom-vertical-divider {
+  border-color: teal;
+  border-width: 5px;
+}
+
+.custom-horizontal-divider {
+  border-color: darkgreen;
+  border-width: 5px;
+}
+
+.first-pane {
+  padding: 1em;
+  background-color: khaki;
+  color: brown;
+}
+
+.second-pane {
+  padding: 1em;
+  background-color: lightblue;
+  color: darkblue;
+}
+
+
+```
+
+<Props of={DragResize} />

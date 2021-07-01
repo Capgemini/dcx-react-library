@@ -65,5 +65,16 @@ export const Home = () => (
         </li>
       </ul>
     </nav>
+    <h1>List of release 0.3 DCX library components</h1>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/dragResizeVertical">DragResizeVertical</Link>
+        </li>
+        <li>
+          <Link to="/dragResizeHorizontal">DragResizeHorizontal</Link>
+        </li>
+      </ul>
+    </nav>
   </>
 );

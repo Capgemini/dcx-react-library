@@ -13,4 +13,6 @@ export { FormDateDemo } from './FormDateDemo';
 export { TabGroupDemo } from './TabGroupDemo';
 export { CopyToClipboardDemo } from './CopyToClipboardDemo';
 export { TableDemo } from './TableDemo';
+export { DragResizeHorizontalDemo } from './DragResizeHorizontalDemo';
+export { DragResizeVerticalDemo } from './DragResizeVerticalDemo';
 export * from './library-candidates';

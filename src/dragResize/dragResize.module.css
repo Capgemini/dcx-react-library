@@ -1,0 +1,27 @@
+.dragResizeContainerV {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.dragResizeContainerH {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.dividerV {
+  border: 3px solid black;
+}
+
+.dividerH {
+  border: 3px solid black;
+}
+
+.dividerV:hover {
+  cursor: col-resize;
+}
+
+.dividerH:hover {
+  cursor: row-resize;
+}

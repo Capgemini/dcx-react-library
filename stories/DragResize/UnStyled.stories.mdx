@@ -1,0 +1,105 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { DragResize } from '../../src/dragResize/DragResize';
+import { FormGroup } from '../../src/formGroup/FormGroup';
+import { Button } from '../../src/button/Button';
+
+<Meta title="DCXLibrary/DragResize" component={DragResize}/>
+
+# DragResize
+
+A DragResize component to split the view pane with draggable divider.
+
+It can be either horizontal or vertical
+
+
+### An example of 'un-styled' vertical DragResize
+
+<Canvas>
+  <Story name="basic-vertical">
+    {() => {
+      return (
+        <DragResize
+          firstPane={<div>left panel content</div>}
+          secondPane={<div>right panel content</div>}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'un-styled' horizontal DragResize
+
+<Canvas>
+  <Story name="basic-horizontal">
+    {() => {
+      return (
+        <DragResize
+          orientation="horizontal"
+          firstPane={<div>top panel content</div>}
+          secondPane={<div>bottom panel content</div>}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'un-styled' vertical DragResize containing other elements
+
+<Canvas>
+  <Story name="vertical-with-components">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
+      const buttonHandler = evt => {
+        console.log(evt)
+      }
+      return (
+        <DragResize
+          firstPaneMinSize={300}
+          firstPane={
+            <FormGroup
+              name="name-of-group"
+              type="checkbox"
+              legend={{
+                text:
+                  'Heading',
+                heading: {
+                  priority: 3,
+                },
+              }}
+              items={[
+                {
+                  label: 'item-label',
+                  value: 'yes',
+                  id: 'first',
+                },
+                {
+                  label: 'item-label',
+                  value: 'no',
+                  id: 'second',
+                },
+              ]}
+              onChange={handleChange}
+            />
+          }
+          secondPane={
+            <Button
+              label="Button"
+              disabled={false}
+              onClick={buttonHandler}
+              ariaLabel="label"
+              disableClickForMs={0}
+            />
+          }
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+
+```js
+```
+
+<Props of={DragResize} />

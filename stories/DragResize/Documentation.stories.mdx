@@ -1,0 +1,40 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { DragResize } from '../../src/dragResize/DragResize';
+
+<Meta
+  title="DCXLibrary/DragResize/documentation"
+  component={DragResize}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# DragResize
+
+An example with all the available properties is:
+
+## Usage
+
+```js
+export const DragResizeDemo = () => {
+  return (
+    <>
+      <DragResize
+        orientation="horizontal"
+        firstPane={<div>Left</div>}
+        secondPane={<div>Right</div>}
+        firstPaneMinSize={150}
+        containerClassName="container-class"
+        dividerClassName="divider-class"
+        firstPaneClassName="first-pane-class"
+        secondPaneClassName="second-pane-class"
+      />
+    </>
+  );
+};
+```
+
+<Props of={DragResize} />
