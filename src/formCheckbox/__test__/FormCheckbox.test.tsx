@@ -209,7 +209,6 @@ describe('FormCheckbox', () => {
         hint={{
           id: 'myId',
           text: 'my hint',
-          position: 'below',
         }}
       />
     );

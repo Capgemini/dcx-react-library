@@ -78,7 +78,7 @@ export const CheckboxRadioBase = ({
     <div {...itemProps}>
       {hint && hint.position === 'above' && <Hint {...hint} />}
       {el}
-      {hint && hint.position === 'below' && <Hint {...hint} />}
+      {hint && hint.position !== 'above' && <Hint {...hint} />}
       {conditional !== undefined &&
         conditionalReveal() &&
         Conditional({

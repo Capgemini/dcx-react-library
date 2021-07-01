@@ -167,7 +167,7 @@ export type HintProps = {
   /**
    * hint position
    */
-  position?: 'below' | 'above';
+  position?: 'above';
   /**
    * class names to customise hint
    **/
