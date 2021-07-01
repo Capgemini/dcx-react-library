@@ -7,6 +7,7 @@
 - [tabGroup](https://github.com/Capgemini/dcx-react-library/issues/167)
 - [copyToClipboard](https://github.com/Capgemini/dcx-react-library/issues/184)
 - [multiUpload - fileData on file selection](https://github.com/Capgemini/dcx-react-library/issues/104)
+- [radio with hint - hint position fix](https://github.com/Capgemini/dcx-react-library/issues/203)
 
 <a name="0.1.1"></a>
 
