@@ -1,3 +1,9 @@
+## 0.3.0 (date tbd)
+
+<a name="0.3.0"></a>
+
+- [range](https://github.com/Capgemini/dcx-react-library/issues/198)
+
 ## 0.2.0 (date tbd)
 
 <a name="0.2.0"></a>
