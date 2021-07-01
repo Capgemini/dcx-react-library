@@ -2,10 +2,11 @@
 
 <a name="0.3.0"></a>
 
+
 - [Accessibility issues fixed against all current components](https://github.com/Capgemini/dcx-react-library/issues/200)
 - [toolTip](https://github.com/Capgemini/dcx-react-library/issues/199)
 - [table with custom rows](https://github.com/Capgemini/dcx-react-library/issues/221)
-
+- [range](https://github.com/Capgemini/dcx-react-library/issues/198)
 ## 0.2.3 (08/07/2021)
 
 <a name="0.2.3"></a>
@@ -25,6 +26,7 @@
 - [select with nullOption](https://github.com/Capgemini/dcx-react-library/issues/210)
 
 ## 0.2.0 (02/07/2021)
+
 
 <a name="0.2.0"></a>
 

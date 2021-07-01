@@ -27,7 +27,7 @@ type RangeProps = {
     /**
      * function that will trigger all the time there's a change in the input
      **/
-    getAriaValueText: any;
+    getAriaValueText?: any;
 
 
 
