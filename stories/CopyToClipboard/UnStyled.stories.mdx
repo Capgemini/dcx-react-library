@@ -94,6 +94,21 @@ and feel you prefer.
   </Story>
 </Canvas>
 
+<Canvas>
+  <Story name="text">
+    <>
+      <div>Copy me</div>
+      <CopyToClipboard
+          text="Copy me"
+          onCopy={value => {
+            alert(value);
+          }}
+          icon={<img src="/copy.png" alt="" width="12px" height="12px"/>}
+      />
+    </>
+  </Story>
+</Canvas>
+
 ```js
 ```
 

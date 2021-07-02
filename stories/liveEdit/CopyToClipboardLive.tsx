@@ -19,6 +19,17 @@ const CopyToClipboardDemo = `function() {
       >
         <p>Copy</p>
       </CopyToClipboard>
+
+
+      <div>copy me usage without ref</div>
+      <CopyToClipboard
+        text="copy me usage without ref"
+        onCopy={alert}
+        icon={<img src="" alt="" />}
+      >
+        <p>Copy</p>
+      </CopyToClipboard>
+
     </>
   );
 }`;

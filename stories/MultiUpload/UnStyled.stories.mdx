@@ -58,3 +58,23 @@ import '../style.css';
     }}
   </Story>
 </Canvas>
+
+### Multi upload with file data
+
+<Canvas>
+  <Story name="file-data">
+    {() => {
+      return (
+        <MultiUpload
+          name="file-upload-error"
+          acceptedFormats=".jpg, .png"
+          label="Upload File"
+          error={{
+            text: 'The CSV must be smaller than 2MB',
+          }}
+          fileData={true}
+        />
+      );
+    }}
+  </Story>
+</Canvas>

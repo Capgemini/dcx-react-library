@@ -44,6 +44,10 @@ type MultiUploadProps = {
    */
   multiple?: boolean;
   /**
+   * multi upload display file data once file is selected
+   */
+  fileData?: boolean;
+  /**
    * multi upload onChangeEvent
    */
   onChange?: (file: File | null) => void;
@@ -60,6 +64,7 @@ export const MultiUpload = ({
   label,
   labelProperties,
   multiple,
+  fileData,
   onChange,
 }: MultiUploadProps) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -79,6 +84,17 @@ export const MultiUpload = ({
     }
   };
 
+  const renderFileData = () =>
+    selectedFile && (
+      <div>
+        <p>{`File Name: ${selectedFile.name}`}</p>
+        <p>{`File Type: ${selectedFile.type}`}</p>
+        <p>{`Last Modified: ${new Date(
+          selectedFile.lastModified
+        ).toLocaleDateString('en-us')}`}</p>
+      </div>
+    );
+
   return (
     <div className={className}>
       <label {...labelProperties} aria-controls={id} htmlFor={id}>
@@ -95,6 +111,7 @@ export const MultiUpload = ({
           {...inputProperties}
         />
       </label>
+      {fileData && renderFileData()}
     </div>
   );
 };

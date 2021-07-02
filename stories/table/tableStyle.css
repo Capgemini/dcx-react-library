@@ -1,0 +1,127 @@
+.govuk-table {
+  margin-bottom: 30px;
+  font-size: 19px;
+  line-height: 1.31579;
+  font-family: 'GDS Transport', arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #0b0c0c;
+  width: 100%;
+  margin-bottom: 20px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.govuk-table__head {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+  font-size: 19px;
+}
+.govuk-table__row {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.govuk-table__header {
+  padding: 10px 20px 10px 0;
+  border-bottom: 1px solid #b1b4b6;
+  text-align: left;
+  vertical-align: top;
+  font-weight: 700;
+}
+.govuk-table__header--numeric {
+  text-align: right;
+}
+.govuk-table__cell {
+  padding: 10px 20px 10px 0;
+  border-bottom: 1px solid #b1b4b6;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table {
+  border-spacing: 0;
+  width: 100%;
+  background: #fff;
+  font-family: Roboto, Helvetica Neue, sans-serif;
+}
+.thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.header-row {
+  height: 56px;
+}
+.th {
+  padding: 0;
+  padding-left: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.tr {
+  height: 48px;
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.td {
+  padding-left: 24px;
+  padding: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  padding-left: 24px;
+  cursor: pointer;
+}
+
+.trSelected .td {
+  font-weight: bold;
+}
+
+.btn-danger {
+  background: #d4351c;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #1c81d4;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.searchClass {
+  right: 0;
+  position: absolute;
+  margin-right: 19px;
+  margin-bottom: 5px;
+  padding: 2px;
+}

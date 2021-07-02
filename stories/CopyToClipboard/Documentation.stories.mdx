@@ -15,19 +15,17 @@ import { CopyToClipboard } from '../../src/copyToClipboard/CopyToClipboard';
 # CopyToClipboard
 
 A component which lets you copy the contents of a text field to your clipboard.
-It supports:
 
-- input
-- textArea
+The component can render text and/or a custom element to show the end users where to click.
 
-The component can render text and/or a custom element to show the end users where to click
+You can use passing the text to copy (text) or the reference to element (ref)
 
 CopyToClipboard is UI/UX agnostic so you need to provide your style to have the look
 and feel you prefer.
 
 An example with all the available properties is:
 
-## Usage
+## Usage with ref
 
 ```js
 export const CopyToClipboardDemo = () => {
@@ -52,6 +50,25 @@ export const CopyToClipboardDemo = () => {
     </>
   );
 };
+```
+
+## Usage with text
+
+```js
+export const CopyToClipboardDemo = () => (
+  <>
+    <div>copy me</div>
+    <CopyToClipboard
+      text="copy me"
+      onCopy={value => {
+        alert(value);
+      }}
+      icon={<FontAwesomeIcon icon={faCopy} />}
+    >
+      <p>Copy</p>
+    </CopyToClipboard>
+  </>
+);
 ```
 
 <Props of={CopyToClipboard} />
