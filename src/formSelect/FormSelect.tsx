@@ -131,9 +131,7 @@ export const FormSelect = ({
         onChange={handleChange}
         style={style}
       >
-        {nullOption !== undefined && (
-          <Option value="" label={nullOption} selected={true} />
-        )}
+        {nullOption && <Option value="" label={nullOption} selected={true} />}
         {getOptions(options)}
         {optionGroups && getOptionGroups(optionGroups)}
       </select>
