@@ -54,7 +54,8 @@ export type FormSelectProps = {
    */
   style?: any;
   /**
-   * you can add an option that will have an empty value
+   * you can add an option that will have the specified label but an empty value
+   * nullOption will be selected by default
    */
   nullOption?: string;
 };
