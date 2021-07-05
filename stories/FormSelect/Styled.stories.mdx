@@ -67,6 +67,40 @@ In this section we're using the formSelect component providing the GovUk style p
   </Story>
 </Canvas>
 
+# Select with nullOption
+
+<Canvas>
+  <Story name="select with nullOption">
+    {() => {
+      return (
+        <div className="govuk-form-group">
+          <FormSelect
+            nullOption="Select..."
+            className="govuk-select"
+            options={[
+              { label: 'Recently published', value: 'published' },
+              { label: 'Recently updated', value: 'updated' },
+              { label: 'Most views', value: 'views' },
+              { label: 'Most comments', value: 'comments' },
+            ]}
+            id="sort-2"
+            label="Sort by"
+            labelProps={{
+              className: 'govuk-label',
+            }}
+            name="sort-2"
+            hint={{
+              text:
+                'This is and example of hintText/description and a predefined Option of what we need from you',
+              className: 'govuk-hint',
+            }}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
 # Select with error
 
 <Canvas>

@@ -11,6 +11,7 @@ function FormSelectDemo() {
   }
   return (
     <FormSelect
+      nullOption="Select..."
       label="Basic"
       labelProps={{
         style: {
