@@ -53,6 +53,11 @@ export type FormSelectProps = {
    * select style
    */
   style?: any;
+  /**
+   * you can add an option that will have the specified label but an empty value
+   * nullOption will be selected by default
+   */
+  nullOption?: string;
 };
 
 export const FormSelect = ({
@@ -68,6 +73,7 @@ export const FormSelect = ({
   hint,
   error,
   style,
+  nullOption,
 }: FormSelectProps) => {
   const sharedOptions: OptionProps[] | undefined = optionGroups
     ? optionGroups.flatMap((group: OptionGroupProps) => [...group.options])
@@ -82,7 +88,9 @@ export const FormSelect = ({
   );
 
   const initialValue: string =
-    preselectedValue !== undefined
+    nullOption !== undefined
+      ? nullOption
+      : preselectedValue !== undefined
       ? preselectedValue.value
       : options.length
       ? options[0].value
@@ -123,6 +131,7 @@ export const FormSelect = ({
         onChange={handleChange}
         style={style}
       >
+        {nullOption && <Option value="" label={nullOption} selected={true} />}
         {getOptions(options)}
         {optionGroups && getOptionGroups(optionGroups)}
       </select>

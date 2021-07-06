@@ -16,6 +16,7 @@ const DummySelect = ({
   error,
   options = [{ label: 'option1', value: 'value1' }],
   optionGroups,
+  nullOption = undefined,
 }: FormSelectProps) => (
   <FormSelect
     className={className}
@@ -28,6 +29,7 @@ const DummySelect = ({
     hint={hint}
     error={error}
     optionGroups={optionGroups}
+    nullOption={nullOption}
   />
 );
 
@@ -325,5 +327,24 @@ describe('FormSelect', () => {
     );
     const selectElement = screen.getByRole('group');
     expect(selectElement.getAttribute('label')).toBe('group1 (3)');
+  });
+
+  it('should allow to pass a null option be selected by default', () => {
+    const options: OptionProps[] = [
+      { label: 'option1', value: 'value1' },
+      { label: 'option2', value: 'value2' },
+      { label: 'option3', value: 'value3' },
+      { label: 'option4', value: 'value4' },
+    ];
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        options={options}
+        nullOption="Select..."
+      />
+    );
+    const formSelect = screen.getByRole('combobox');
+    expect(formSelect).toHaveDisplayValue('Select...');
   });
 });
