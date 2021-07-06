@@ -1,3 +1,9 @@
+## 0.2.1 (07/07/2021)
+
+<a name="0.2.1"></a>
+
+- [formInput with nullOption](https://github.com/Capgemini/dcx-react-library/issues/210)
+
 ## 0.2.0 (02/07/2021)
 
 <a name="0.2.0"></a>
