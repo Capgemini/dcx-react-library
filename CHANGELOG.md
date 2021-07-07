@@ -1,8 +1,14 @@
-## 0.2.1 (07/07/2021)
+## 0.2.2 (07/07/2021)
+
+<a name="0.2.2"></a>
+
+- [select with value](https://github.com/Capgemini/dcx-react-library/issues/213)
+
+## 0.2.1 (06/07/2021)
 
 <a name="0.2.1"></a>
 
-- [formInput with nullOption](https://github.com/Capgemini/dcx-react-library/issues/210)
+- [select with nullOption](https://github.com/Capgemini/dcx-react-library/issues/210)
 
 ## 0.2.0 (02/07/2021)
 

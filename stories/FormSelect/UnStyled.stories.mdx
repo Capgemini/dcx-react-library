@@ -239,6 +239,35 @@ import { FormSelect } from '../../src/formSelect/FormSelect';
   </Story>
 </Canvas>
 
+### Examples of value Select
+
+<Canvas>
+  <Story name="value">
+    {() => {
+      return (
+        <FormSelect
+          value="value4"
+          label="value"
+          labelProps={{
+            style: {
+              display: 'block',
+              marginBottom: '5px',
+              fontSize: '20px',
+              fontWeight: 'bold',
+            },
+          }}
+          options={[
+            { label: 'option1', value: 'value1' },
+            { label: 'option2', value: 'value2' },
+            { label: 'option3', value: 'value3' },
+            { label: 'option4', value: 'value4' },
+          ]}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ### Properties
 
 <Props of={FormSelect} />
