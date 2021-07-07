@@ -149,5 +149,8 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "react-jss": "^10.6.0"
-  }
+  },
+  "contributors": [
+    "Isaac Babalola <info@isaacbabalola.co.uk> (https://www.isaacbabalola.co.uk)"
+  ]
 }
