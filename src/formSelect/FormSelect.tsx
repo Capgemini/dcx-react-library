@@ -58,6 +58,10 @@ export type FormSelectProps = {
    * nullOption will be selected by default
    */
   nullOption?: string;
+  /**
+   * select value which is programatically added by user
+   */
+  value?: number | string;
 };
 
 export const FormSelect = ({
@@ -66,6 +70,7 @@ export const FormSelect = ({
   optionGroups,
   options = [],
   onChange,
+  value,
   id,
   ariaLabel,
   label,
@@ -87,16 +92,17 @@ export const FormSelect = ({
     option => option.selected
   );
 
-  const initialValue: string =
-    nullOption !== undefined
-      ? nullOption
-      : preselectedValue !== undefined
-      ? preselectedValue.value
-      : options.length
-      ? options[0].value
-      : '';
+  const initialValue: string | number = value
+    ? value
+    : nullOption !== undefined
+    ? nullOption
+    : preselectedValue !== undefined
+    ? preselectedValue.value
+    : options.length
+    ? options[0].value
+    : '';
 
-  const [value, setValue] = useState<string>(initialValue);
+  const [selectValue, setSelectValue] = useState<string | number>(initialValue);
 
   const getOptions = (options: OptionProps[]): JSX.Element[] =>
     options.map((item: OptionProps, index: number) => (
@@ -109,7 +115,7 @@ export const FormSelect = ({
     ));
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setValue(event.target.value);
+    setSelectValue(event.currentTarget.value);
     if (onChange) onChange(event);
   };
 
@@ -123,7 +129,7 @@ export const FormSelect = ({
       {hint && <Hint {...hint} />}
       {error && <ErrorMessage {...error} />}
       <select
-        value={value}
+        value={selectValue}
         name={name || 'formSelect'}
         id={id || 'formSelect'}
         className={className}

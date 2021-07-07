@@ -30,6 +30,7 @@ function FormSelectDemo() {
       optionGroups={[]}
       className=""
       id="select"
+      value=""
       ariaLabel=""
       labelProps={{}}
       hint={{

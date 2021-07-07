@@ -83,17 +83,41 @@ In this section we're using the formSelect component providing the GovUk style p
               { label: 'Most views', value: 'views' },
               { label: 'Most comments', value: 'comments' },
             ]}
-            id="sort-2"
+            id="sort-3"
             label="Sort by"
             labelProps={{
               className: 'govuk-label',
             }}
-            name="sort-2"
-            hint={{
-              text:
-                'This is and example of hintText/description and a predefined Option of what we need from you',
-              className: 'govuk-hint',
+            name="sort-3"
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Select with value
+
+<Canvas>
+  <Story name="select with value">
+    {() => {
+      return (
+        <div className="govuk-form-group">
+          <FormSelect
+            value='comments'
+            className="govuk-select"
+            options={[
+              { label: 'Recently published', value: 'published' },
+              { label: 'Recently updated', value: 'updated' },
+              { label: 'Most views', value: 'views' },
+              { label: 'Most comments', value: 'comments' },
+            ]}
+            id="sort-4"
+            label="Sort by"
+            labelProps={{
+              className: 'govuk-label',
             }}
+            name="sort-4"
           />
         </div>
       );
@@ -116,12 +140,12 @@ In this section we're using the formSelect component providing the GovUk style p
               { label: 'Most views', value: 'views' },
               { label: 'Most comments', value: 'comments' },
             ]}
-            id="sort-2"
+            id="sort-5"
             label="Sort by"
             labelProps={{
               className: 'govuk-label',
             }}
-            name="sort-2"
+            name="sort-5"
             error={{
               text: 'Select an option',
               className: 'govuk-error-message',

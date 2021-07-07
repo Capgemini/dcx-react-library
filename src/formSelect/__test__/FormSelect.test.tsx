@@ -17,6 +17,7 @@ const DummySelect = ({
   options = [{ label: 'option1', value: 'value1' }],
   optionGroups,
   nullOption = undefined,
+  value,
 }: FormSelectProps) => (
   <FormSelect
     className={className}
@@ -30,6 +31,7 @@ const DummySelect = ({
     error={error}
     optionGroups={optionGroups}
     nullOption={nullOption}
+    value={value}
   />
 );
 
@@ -318,7 +320,7 @@ describe('FormSelect', () => {
             options: [
               { label: 'option1', value: 'value1' },
               { label: 'option2', value: 'value2' },
-              { label: 'option3', value: 'value3', selected: true },
+              { label: 'option3', value: 'value3' },
             ],
             displayCount: true,
           },
@@ -344,6 +346,72 @@ describe('FormSelect', () => {
         nullOption="Select..."
       />
     );
+    const formSelect = screen.getByRole('combobox');
+    expect(formSelect).toHaveDisplayValue('Select...');
+  });
+
+  it('should allow a value prop in order for a programmatic change', () => {
+    const options: OptionProps[] = [
+      { label: 'option1', value: 'value1' },
+      { label: 'option2', value: 'value2' },
+      { label: 'option3', value: 'value3' },
+      { label: 'option4', value: 'value4' },
+    ];
+
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        options={options}
+        nullOption="Select..."
+        value="value4"
+      />
+    );
+
+    const formSelect = screen.getByRole('combobox');
+    expect(formSelect).toHaveDisplayValue('option4');
+  });
+
+  it('should allow a value prop default value', () => {
+    const options: OptionProps[] = [
+      { label: 'option1', value: 'value1' },
+      { label: 'option2', value: 'value2' },
+      { label: 'option3', value: 'value3' },
+      { label: 'option4', value: 'value4' },
+    ];
+
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        options={options}
+        nullOption="Select..."
+        value=""
+      />
+    );
+
+    const formSelect = screen.getByRole('combobox');
+    expect(formSelect).toHaveDisplayValue('Select...');
+  });
+
+  it('should not allow a value prop for a non-existent option', () => {
+    const options: OptionProps[] = [
+      { label: 'option1', value: 'value1' },
+      { label: 'option2', value: 'value2' },
+      { label: 'option3', value: 'value3' },
+      { label: 'option4', value: 'value4' },
+    ];
+
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        options={options}
+        nullOption="Select..."
+        value="value5"
+      />
+    );
+
     const formSelect = screen.getByRole('combobox');
     expect(formSelect).toHaveDisplayValue('Select...');
   });
