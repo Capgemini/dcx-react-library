@@ -4,7 +4,6 @@
 
 - [Accessibility issues fixed against all current components](https://github.com/Capgemini/dcx-react-library/issues/200)
 - [toolTip](https://github.com/Capgemini/dcx-react-library/issues/199)
-- [table with custom rows](https://github.com/Capgemini/dcx-react-library/issues/221)
 
 ## 0.2.3 (08/07/2021)
 
