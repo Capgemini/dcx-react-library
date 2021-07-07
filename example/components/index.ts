@@ -13,4 +13,5 @@ export { FormDateDemo } from './FormDateDemo';
 export { TabGroupDemo } from './TabGroupDemo';
 export { CopyToClipboardDemo } from './CopyToClipboardDemo';
 export { TableDemo } from './TableDemo';
+export { AccordionDemo } from './AccordionDemo';
 export * from './library-candidates';
