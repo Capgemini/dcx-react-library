@@ -1,3 +1,9 @@
+## 0.2.3 (08/07/2021)
+
+<a name="0.2.3"></a>
+
+- [table with custom header](https://github.com/Capgemini/dcx-react-library/issues/218)
+
 ## 0.2.2 (07/07/2021)
 
 <a name="0.2.2"></a>
