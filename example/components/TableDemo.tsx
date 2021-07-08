@@ -224,6 +224,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export const TableDemo = () => {
   const [data, setData] = React.useState(ELEMENT_DATA);
 
+  const [populateData, setPopulatedData] = React.useState<any[]>([]);
+
   const handleSelect = row => {
     alert(row);
   };
@@ -233,6 +235,10 @@ export const TableDemo = () => {
     } else if (evt.target.name === 'edit') {
       alert(`Values: ${value}`);
     }
+  };
+
+  const handlePopulateData = () => {
+    setPopulatedData(ELEMENT_DATA);
   };
 
   return (
@@ -301,6 +307,42 @@ export const TableDemo = () => {
         }
         columnsWidth={['100px']}
       />
+
+      <h1>Empty table</h1>
+      <Table
+        dataSource={populateData}
+        customHeaderLabels={[
+          { label: 'Test', data: 'id' },
+          { label: 'position', data: 'position' },
+          { label: 'name', data: 'name' },
+          { label: 'weight', data: 'weight' },
+          { label: 'symbol', data: 'symbol' },
+          { label: 'actions', data: 'actions' },
+        ]}
+        onSelect={handleSelect}
+        handleCellClick={handleCellClick}
+        tableClassName="table"
+        theadClassName="thead"
+        trClassName="header-row"
+        thClassName="th"
+        tbodyClassName="tbody"
+        tdClassName="td"
+        selectedRowClassName="trSelected"
+        withSearch={true}
+        searchProps={{
+          placeholder: 'Filter values...',
+          className: 'searchInput',
+        }}
+        withOrderBy={true}
+        sortAscIcon={
+          <FontAwesomeIcon icon={faArrowUp} style={{ marginLeft: '4px' }} />
+        }
+        sortDescIcon={
+          <FontAwesomeIcon icon={faArrowDown} style={{ marginLeft: '4px' }} />
+        }
+        columnsWidth={['100px']}
+      />
+      <button onClick={handlePopulateData}>Populate</button>
     </div>
   );
 };

@@ -73,6 +73,10 @@ type TableProps = {
    * allow to specify extra props for the search input
    */
   searchProps?: any;
+  /**
+   * allow to specify a custom header labels
+   */
+  customHeaderLabels?: { label: string; data: string }[];
 };
 
 const keys = (dataSource: any[], columnsToOmit?: string[]): string[] =>
@@ -96,6 +100,7 @@ export const Table = ({
   withOrderBy = false,
   withSearch = false,
   searchProps,
+  customHeaderLabels,
 }: TableProps) => {
   const { items, requestSort, sortConfig } = useSortableData(dataSource);
   const [selectedHeader, setSelectedHeader] = React.useState('');
@@ -108,8 +113,16 @@ export const Table = ({
   });
 
   const handleClick = (value: string) => {
-    requestSort(value);
-    setSelectedHeader(value);
+    if (customHeaderLabels) {
+      const customHeaderEl = customHeaderLabels.find(c => c.label === value);
+      //@ts-ignore
+      requestSort(customHeaderEl.data);
+      //@ts-ignore
+      setSelectedHeader(customHeaderEl.data);
+    } else {
+      requestSort(value);
+      setSelectedHeader(value);
+    }
   };
 
   const getClassNamesFor = (name: string) => {
@@ -138,7 +151,11 @@ export const Table = ({
           theadClassName={theadClassName}
           trClassName={trClassName}
           thClassName={thClassName}
-          values={keys(items, columnsToOmit)}
+          values={
+            customHeaderLabels
+              ? Array.from(customHeaderLabels, c => c.label)
+              : keys(items, columnsToOmit)
+          }
           keySorted={getClassNamesFor(selectedHeader)}
           sortAscIcon={sortAscIcon}
           sortDescIcon={sortDescIcon}

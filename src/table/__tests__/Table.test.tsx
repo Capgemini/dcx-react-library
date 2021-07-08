@@ -102,4 +102,73 @@ describe('Table', () => {
     const search = screen.getByRole('textbox');
     expect(search.getAttribute('class')).toBe('searchClass');
   });
+
+  it('should display only the table header if data are not available', () => {
+    render(
+      <Table
+        dataSource={[]}
+        customHeaderLabels={[
+          { label: 'Test', data: 'id' },
+          { label: 'position', data: 'position' },
+          { label: 'actions', data: 'actions' },
+        ]}
+        selectedRowClassName="selectedRowClassName"
+        withSearch={true}
+      />
+    );
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('Test');
+    expect(row[2].innerHTML).toContain('position');
+    expect(row[3].innerHTML).toContain('actions');
+    const tbody = screen.getAllByRole('rowgroup');
+    expect(tbody[1].children).toHaveLength(0);
+  });
+
+  it('should allow to reorder the data if the customHeader is specified', () => {
+    render(
+      <Table
+        dataSource={values}
+        customHeaderLabels={[
+          { label: 'Test', data: 'id' },
+          { label: 'position', data: 'position' },
+          { label: 'actions', data: 'actions' },
+        ]}
+        selectedRowClassName="selectedRowClassName"
+        withOrderBy={true}
+      />
+    );
+    //body
+    const { id } = values[0];
+    const row: any = screen.getByText(id).closest('tr');
+    expect(row.innerHTML).toContain(2);
+    //header
+    const rows: any = screen.getAllByRole('row');
+    const idHeader = rows[0].children[0];
+    fireEvent.click(idHeader);
+    expect(row.innerHTML).toContain(1);
+  });
+
+  it(`should not reorder the data if the customHeader specified doesn't have a match data`, () => {
+    render(
+      <Table
+        dataSource={values}
+        customHeaderLabels={[
+          { label: 'Test', data: 'test' },
+          { label: 'position', data: 'position' },
+          { label: 'actions', data: 'actions' },
+        ]}
+        selectedRowClassName="selectedRowClassName"
+        withOrderBy={true}
+      />
+    );
+    //body
+    const { id } = values[0];
+    const row: any = screen.getByText(id).closest('tr');
+    expect(row.innerHTML).toContain(2);
+    //header
+    const rows: any = screen.getAllByRole('row');
+    const idHeader = rows[0].children[0];
+    fireEvent.click(idHeader);
+    expect(row.innerHTML).not.toContain(1);
+  });
 });
