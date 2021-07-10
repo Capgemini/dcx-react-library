@@ -52,6 +52,9 @@ export const Home = () => (
         <li>
           <Link to="/table">TableDemo</Link>
         </li>
+        <li>
+          <Link to="/tooltipDemo">TooltipDemo</Link>
+        </li>
       </ul>
     </nav>
     <h1>Example pages using 0.1 DCX library components</h1>

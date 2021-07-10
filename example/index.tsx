@@ -18,6 +18,7 @@ import {
   TabGroupDemo,
   CopyToClipboardDemo,
   TableDemo,
+  TooltipDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -45,6 +46,7 @@ const App = () => (
         <Route path="/tabGroup" component={TabGroupDemo} />
         <Route path="/copyToClipboard" component={CopyToClipboardDemo} />
         <Route path="/table" component={TableDemo} />
+        <Route path="/tooltipDemo" component={TooltipDemo} />
       </Switch>
     </BrowserRouter>
   </div>
