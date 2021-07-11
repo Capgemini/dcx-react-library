@@ -4,7 +4,7 @@ import { Tooltip } from './toolTip';
 export const TooltipDemo = () => {
   const style = {
     color: 'white',
-    background: 'black',
+    background: 'red',
     width: '250px',
   };
 
