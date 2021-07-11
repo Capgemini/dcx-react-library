@@ -26,7 +26,12 @@ export const Tooltip = (props: any) => {
       {active && (
         <div
           className={`Tooltip-Tip ${props.direction || 'top'}`}
-          style={props.style}
+          style={{
+            color: props.style.color,
+            background: props.style.background,
+            width: props.style.width,
+            '--tooltip-background-color': props.style.background,
+          }}
         >
           {props.content}
         </div>
