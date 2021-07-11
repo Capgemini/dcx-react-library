@@ -38,7 +38,7 @@
 
 /* Absolute positioning */
 .Tooltip-Tip.top {
-  top: -30px;
+  bottom: 25px;
 }
 /* CSS border triangles */
 .Tooltip-Tip.top::before {
@@ -62,7 +62,8 @@
 
 /* Absolute positioning */
 .Tooltip-Tip.bottom {
-  bottom: -30px;
+  // bottom: calc(var(--tooltip-margin) * -1);
+  margin-top: 5px;
 }
 /* CSS border triangles */
 .Tooltip-Tip.bottom::before {

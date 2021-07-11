@@ -18,7 +18,7 @@ export const TooltipDemo = () => {
           <b> Testing Bottom </b>
         </Tooltip>
       </div>
-
+    
       <div>
         <Tooltip content={content} direction="top" style={style}>
           <b> Testing Top </b>
