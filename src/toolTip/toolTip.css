@@ -62,7 +62,6 @@
 
 /* Absolute positioning */
 .Tooltip-Tip.bottom {
-  // bottom: calc(var(--tooltip-margin) * -1);
   margin-top: 5px;
 }
 /* CSS border triangles */

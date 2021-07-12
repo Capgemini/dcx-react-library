@@ -1,5 +1,5 @@
 import React from 'react';
-import './toolTip.scss';
+import './toolTip.css';
 
 type Props = {
   /**
@@ -35,7 +35,7 @@ export const ToolTip = ({
   width,
   content,
   direction,
-  delay,
+  delay = 400,
   ...props
 }: Props) => {
   let timeout: any;

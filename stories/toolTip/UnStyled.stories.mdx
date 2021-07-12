@@ -1,0 +1,96 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { ToolTip } from '../../src/toolTip/ToolTip';
+
+<Meta title="DCXLibrary/Form/ToolTip" component={ToolTip} />
+
+### Examples of basic Toggle in bottom position
+
+<Canvas>
+  <Story name="bottom">
+    {() => {
+      return (
+        <div style={{padding: '250px'}}>
+          <ToolTip
+            content="Here is tooltip for bottom."
+            width="250px"
+            background="black"
+            color="white"
+            direction="bottom"
+          >
+            <b> Testing tooltip for bottom position </b>
+          </ToolTip>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples of basic Toggle in top position
+
+<Canvas>
+  <Story name="top">
+    {() => {
+      return (
+         <div style={{padding: '250px'}}>
+          <ToolTip
+            content="Here is tooltip for top."
+            width="250px"
+            background="black"
+            color="white"
+            direction="top"
+          >
+            <b> Testing tooltip for top position </b>
+          </ToolTip>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples of basic Toggle in right position
+
+<Canvas>
+  <Story name="right">
+    {() => {
+      return (
+        <div style={{padding: '250px'}}>
+          <ToolTip
+            content="Here is tooltip for right."
+            width="250px"
+            background="black"
+            color="white"
+            direction="right"
+          >
+            <b> Testing tooltip for right position </b>
+          </ToolTip>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples of basic Toggle in left position
+
+<Canvas>
+  <Story name="left">
+    {() => {
+      return (
+         <div style={{padding: '250px'}}>
+          <ToolTip
+            content="Here is tooltip for left."
+            width="250px"
+            background="black"
+            color="white"
+            direction="left"
+          >
+            <b> Testing tooltip for left position </b>
+          </ToolTip>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Properties
+
+<Props of={Toggle} />
