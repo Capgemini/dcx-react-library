@@ -1,6 +1,5 @@
 import React from 'react';
-//import { ToolTip } from 'dcx-react-library';
-import { ToolTip } from './toolTip';
+import { ToolTip } from 'dcx-react-library';
 
 export const TooltipDemo = () => {
   const content =
