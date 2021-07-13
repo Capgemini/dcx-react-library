@@ -77,6 +77,10 @@ type TableProps = {
    * allow to specify a custom header labels
    */
   customHeaderLabels?: { label: string; data: string }[];
+  /**
+   * allow to pass extra properties to each row
+   */
+  trProps?: any;
 };
 
 const keys = (dataSource: any[], columnsToOmit?: string[]): string[] =>
@@ -101,6 +105,7 @@ export const Table = ({
   withSearch = false,
   searchProps,
   customHeaderLabels,
+  trProps,
 }: TableProps) => {
   const { items, requestSort, sortConfig } = useSortableData(dataSource);
   const [selectedHeader, setSelectedHeader] = React.useState('');
@@ -170,6 +175,7 @@ export const Table = ({
           tbodyClassName={tbodyClassName}
           trClassName={trClassName}
           tdClassName={tdClassName}
+          trProps={trProps}
         />
       </table>
     </>
