@@ -6,7 +6,7 @@ export * from './autocomplete/Autocomplete';
 export * from './button';
 export * from './progress';
 export * from './toggle';
-export * from './toolTip';
+export * from './tooltip';
 export * from './formSelect';
 export * from './multiUpload';
 export * from './multiSelect';

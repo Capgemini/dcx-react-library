@@ -1,7 +1,8 @@
 import React from 'react';
-import './toolTip.css';
+import styles from './tooltip.module.css';
 
-type Props = {
+type Direction = 'top' | 'bottom' | 'left' | 'right';
+type ToolTipProps = {
   /**
    * color for text
    */
@@ -21,7 +22,7 @@ type Props = {
   /**
    * direction for the tooltips - top, bottom, left and right
    */
-  direction: string;
+  direction: Direction;
   /**
    * Delay for the tooltips
    */
@@ -34,10 +35,10 @@ export const ToolTip = ({
   background,
   width,
   content,
-  direction,
+  direction = 'top',
   delay = 400,
   ...props
-}: Props) => {
+}: ToolTipProps) => {
   let timeout: any;
   const [active, setActive] = React.useState(false);
 
@@ -54,14 +55,14 @@ export const ToolTip = ({
 
   return (
     <div
-      className="Tooltip-Wrapper"
+      className={styles.tooltipContainer}
       onMouseEnter={showTip}
       onMouseLeave={hideTip}
     >
       {props.children}
       {active && (
         <div
-          className={`Tooltip-Tip ${direction || 'top'}`}
+          className={[styles.tooltip, direction].join(' ')}
           style={{
             color: color,
             background: background,
