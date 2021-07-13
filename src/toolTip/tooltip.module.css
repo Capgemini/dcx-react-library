@@ -37,23 +37,23 @@
 }
 
 /* Absolute positioning */
-.tooltip.top {
+.top {
   bottom: 25px;
 }
 /* CSS border triangles */
-.tooltip.top::before {
+.top::before {
   top: 100%;
   border-top-color: var(--tooltip-background-color);
 }
 
 /* Absolute positioning */
-.tooltip.right {
+.right {
   left: calc(100% + var(--tooltip-margin));
   top: 50%;
   transform: translateX(0) translateY(-50%);
 }
 /* CSS border triangles */
-.tooltip.right::before {
+.right::before {
   left: calc(var(--tooltip-arrow-size) * -1);
   top: 50%;
   transform: translateX(0) translateY(-50%);
@@ -61,24 +61,24 @@
 }
 
 /* Absolute positioning */
-.tooltip.bottom {
+.bottom {
   margin-top: 5px;
 }
 /* CSS border triangles */
-.tooltip.bottom::before {
+.bottom::before {
   bottom: 100%;
   border-bottom-color: var(--tooltip-background-color);
 }
 
 /* Absolute positioning */
-.tooltip.left {
+.left {
   left: auto;
   right: calc(100% + var(--tooltip-margin));
   top: 50%;
   transform: translateX(0) translateY(-50%);
 }
 /* CSS border triangles */
-.tooltip.left::before {
+.left::before {
   left: auto;
   right: calc(var(--tooltip-arrow-size) * -2);
   top: 50%;
