@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './tooltip.module.css';
+import style from './tooltip.module.css';
 
 type Direction = 'top' | 'bottom' | 'left' | 'right';
 type ToolTipProps = {
@@ -40,6 +40,7 @@ export const ToolTip = ({
   ...props
 }: ToolTipProps) => {
   let timeout: any;
+  //@ts-ignore
   const [active, setActive] = React.useState(false);
 
   const showTip = () => {
@@ -53,16 +54,29 @@ export const ToolTip = ({
     setActive(false);
   };
 
+  const containerClassDirection = () => {
+    switch (direction) {
+      case 'bottom':
+        return style.bottom;
+      case 'right':
+        return style.right;
+      case 'left':
+        return style.left;
+      default:
+        return style.top;
+    }
+  };
+
   return (
     <div
-      className={styles.tooltipContainer}
+      className={style.tooltipContainer}
       onMouseEnter={showTip}
       onMouseLeave={hideTip}
     >
       {props.children}
       {active && (
         <div
-          className={[styles.tooltip, direction].join(' ')}
+          className={[style.tooltip, containerClassDirection()].join(' ')}
           style={{
             color: color,
             background: background,
