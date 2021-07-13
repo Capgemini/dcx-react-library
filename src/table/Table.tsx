@@ -80,7 +80,7 @@ type TableProps = {
   /**
    * allow to pass extra properties to each row
    */
-  trProps?: any;
+  trProps?: any[];
 };
 
 const keys = (dataSource: any[], columnsToOmit?: string[]): string[] =>

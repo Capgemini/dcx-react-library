@@ -14,7 +14,7 @@ type BodyProps = {
   tbodyClassName?: string;
   trClassName?: string;
   tdClassName?: string;
-  trProps?: any;
+  trProps?: any[];
 };
 export const Body = ({
   values,
