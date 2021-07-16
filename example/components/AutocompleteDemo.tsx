@@ -49,8 +49,8 @@ export const AutocompleteDemo = () => {
           'Pomegranate',
           'Pineapple',
         ]}
-        suffix={<FontAwesomeIcon icon={faAt} />}
-        prefix={<FontAwesomeIcon icon={faAt} />}
+        suffix={<FontAwesomeIcon icon={faAt} title="at-button" />}
+        prefix={<FontAwesomeIcon icon={faAt} title="at-button" />}
         defaultValue="Papaya"
         minCharsBeforeSearch={1}
         debounceMs={2000}

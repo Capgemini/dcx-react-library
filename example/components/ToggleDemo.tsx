@@ -15,32 +15,44 @@ export const ToggleDemo = () => {
         onColor="orange"
         offColor="gray"
         customOnLabel={
-          <FontAwesomeIcon
-            icon={faCheck}
-            style={{
-              fontSize: '12px',
-              display: 'flex',
-              justifyContent: 'flex-start',
-              marginLeft: '4px',
-              alignItems: 'center',
-              height: '100%',
-              color: 'white',
-            }}
-          />
+          <>
+            <label htmlFor="toggleOn" style={{ display: 'none' }}>
+              on
+            </label>
+            <FontAwesomeIcon
+              id="toggleOn"
+              style={{
+                fontSize: '12px',
+                display: 'flex',
+                justifyContent: 'flex-start',
+                marginLeft: '4px',
+                alignItems: 'center',
+                height: '100%',
+                color: 'white',
+              }}
+              icon={faCheck}
+            />
+          </>
         }
         customOffLabel={
-          <FontAwesomeIcon
-            style={{
-              fontSize: '12px',
-              display: 'flex',
-              justifyContent: 'flex-end',
-              marginRight: '4px',
-              alignItems: 'center',
-              height: '100%',
-              color: 'white',
-            }}
-            icon={faPowerOff}
-          />
+          <>
+            <label htmlFor="toggleOff" style={{ display: 'none' }}>
+              off
+            </label>
+            <FontAwesomeIcon
+              id="toggleOff"
+              style={{
+                fontSize: '12px',
+                display: 'flex',
+                justifyContent: 'flex-end',
+                marginRight: '4px',
+                alignItems: 'center',
+                height: '100%',
+                color: 'white',
+              }}
+              icon={faPowerOff}
+            />
+          </>
         }
       />
     </div>

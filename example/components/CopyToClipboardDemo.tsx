@@ -13,14 +13,16 @@ export const CopyToClipboardDemo = () => {
     <>
       <h1 style={{ color: 'red' }}>With Ref</h1>
       <div>
-        <h2>Input</h2>
+        <label htmlFor="input-tag">Input</label>
         <input
+          id="input-tag"
           value={value}
           ref={inputRef}
           onChange={evt => setValue(evt.currentTarget.value)}
         />
         <div>
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             ref={inputRef}
             onCopy={value => {
               alert(value);
@@ -34,8 +36,8 @@ export const CopyToClipboardDemo = () => {
           >
             Copy
           </CopyToClipboard>
-
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             ref={inputRef}
             onCopy={value => {
               alert(value);
@@ -43,14 +45,16 @@ export const CopyToClipboardDemo = () => {
             icon={<FontAwesomeIcon icon={faCopy} />}
           />
         </div>
-        <h2>FormInput</h2>
+        <label htmlFor="forminput-tag">FormInput</label>
         <textarea
+          id="forminput-tag"
           value={valueArea}
           ref={textAreaRef}
           onChange={evt => setValueArea(evt.currentTarget.value)}
         />
         <div>
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             ref={textAreaRef}
             onCopy={value => {
               alert(value);
@@ -64,8 +68,8 @@ export const CopyToClipboardDemo = () => {
           >
             Copy
           </CopyToClipboard>
-
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             ref={textAreaRef}
             onCopy={value => {
               alert(value);
@@ -73,13 +77,13 @@ export const CopyToClipboardDemo = () => {
             icon={<FontAwesomeIcon icon={faCopy} />}
           />
         </div>
-
         <h2>Link</h2>
         <a href="http://www.google.com" ref={linkRef}>
           http://www.google.com
         </a>
         <div>
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             ref={linkRef}
             onCopy={value => {
               alert(value);
@@ -93,8 +97,8 @@ export const CopyToClipboardDemo = () => {
           >
             Copy
           </CopyToClipboard>
-
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             ref={linkRef}
             onCopy={value => {
               alert(value);
@@ -106,6 +110,7 @@ export const CopyToClipboardDemo = () => {
         <div ref={divRef}>this is the text</div>
         <div>
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             ref={divRef}
             onCopy={value => {
               alert(value);
@@ -119,8 +124,8 @@ export const CopyToClipboardDemo = () => {
           >
             Copy
           </CopyToClipboard>
-
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             ref={divRef}
             onCopy={value => {
               alert(value);
@@ -136,6 +141,7 @@ export const CopyToClipboardDemo = () => {
         <a href="http://www.google.com">http://www.google.com</a>
         <div>
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             text="http://www.google.com"
             onCopy={value => {
               alert(value);
@@ -151,6 +157,7 @@ export const CopyToClipboardDemo = () => {
           </CopyToClipboard>
 
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             text="http://www.google.com"
             onCopy={value => {
               alert(value);
@@ -162,6 +169,7 @@ export const CopyToClipboardDemo = () => {
         <div>this is the text</div>
         <div>
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             text="this is the text"
             onCopy={value => {
               alert(value);
@@ -177,6 +185,7 @@ export const CopyToClipboardDemo = () => {
           </CopyToClipboard>
 
           <CopyToClipboard
+            aria-label="Copy to Clipboard"
             text="this is the text"
             onCopy={value => {
               alert(value);
