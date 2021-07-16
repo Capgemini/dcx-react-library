@@ -14,20 +14,32 @@ export const FormDateDemo = () => {
   return (
     <>
       <h1>Basic</h1>
+      {/* <label htmlFor="basicNoLabelDate" style={{ display: 'none' }}>
+        Basic no label date
+      </label> */}
       <FormDate
+        // id="basicNoLabelDate"
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
       />
-      <h1>pre set date</h1>
+      <h1>Pre set date</h1>
+      <label htmlFor="preSetNoLabelDate" style={{ display: 'none' }}>
+        Pre set no label date
+      </label>
       <FormDate
+        id="preSetNoLabelDate"
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
         day="29"
         month="07"
         year="1982"
       />
-      <h1>disabled</h1>
+      <h1>Disabled</h1>
+      <label htmlFor="disabledNoLabelDate" style={{ display: 'none' }}>
+        Disabled no label date
+      </label>
       <FormDate
+        id="disabledNoLabelDate"
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
         day="29"
