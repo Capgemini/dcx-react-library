@@ -27,7 +27,6 @@
 
 ## 0.2.0 (02/07/2021)
 
-
 <a name="0.2.0"></a>
 
 - [table with searchBar](https://github.com/Capgemini/dcx-react-library/issues/193)
