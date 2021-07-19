@@ -1,3 +1,10 @@
+## 0.3.0 (date tbd)
+
+<a name="0.3.0"></a>
+
+- [Accessibility issues fixed against all current components](https://github.com/Capgemini/dcx-react-library/issues/200)
+- [toolTip](https://github.com/Capgemini/dcx-react-library/issues/199)
+
 ## 0.2.3 (08/07/2021)
 
 <a name="0.2.3"></a>
@@ -30,12 +37,6 @@
 <a name="0.1.2"></a>
 
 ## 0.1.2 (02/06/21)
-
-- [ForgJs vulnerability](https://github.com/Capgemini/dcx-react-library/issues/201)
-
-<a name="0.1.2"></a>
-
-## 0.1.2
 
 - [ForgJs vulnerability](https://github.com/Capgemini/dcx-react-library/issues/201)
 
