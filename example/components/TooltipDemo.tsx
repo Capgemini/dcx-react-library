@@ -1,5 +1,6 @@
 import React from 'react';
 import { ToolTip } from 'dcx-react-library';
+import './tooltip.css';
 
 export const TooltipDemo = () => {
   const content =
@@ -10,46 +11,12 @@ export const TooltipDemo = () => {
       <div>
         <ToolTip
           content={content}
-          width="250px"
-          background="red"
-          color="white"
           direction="bottom"
-        >
-          <b> Testing Bottom </b>
-        </ToolTip>
-      </div>
-
-      <div>
-        <ToolTip
-          content={content}
-          direction="top"
-          width="250px"
+          className="tooltipClass"
           background="red"
           color="white"
         >
-          <b> Testing Top </b>
-        </ToolTip>
-      </div>
-      <div>
-        <ToolTip
-          content={content}
-          direction="left"
-          width="250px"
-          background="red"
-          color="white"
-        >
-          <b> Test Left </b>
-        </ToolTip>
-      </div>
-      <div>
-        <ToolTip
-          content={content}
-          direction="right"
-          width="250px"
-          background="red"
-          color="white"
-        >
-          <b> Test Right</b>
+          <b> Testing Bottom</b>
         </ToolTip>
       </div>
     </div>

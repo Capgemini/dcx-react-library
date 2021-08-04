@@ -8,10 +8,10 @@ function ToolTipDemo() {
   return (
    <ToolTip
           content="Here is tooltip for bottom."
-          width="250px"
+          direction="bottom"
+          className="tooltipClass"
           background="red"
           color="white"
-          direction="bottom"
         >
           <b> Testing tooltip for bottom position </b>
         </ToolTip>

@@ -11,10 +11,11 @@ type ToolTipProps = {
    * background - color for background
    */
   background: string;
+
   /**
-   * width for the tip, default value - 250px;
+   * className for style - width
    */
-  width: string;
+  className: string;
   /**
    * content for the tooltip
    */
@@ -33,10 +34,10 @@ type ToolTipProps = {
 export const ToolTip = ({
   color,
   background,
-  width,
+  className,
   content,
-  direction = 'top',
-  delay = 400,
+  direction,
+  delay,
   ...props
 }: ToolTipProps) => {
   let timeout: any;
@@ -46,7 +47,7 @@ export const ToolTip = ({
   const showTip = () => {
     timeout = setTimeout(() => {
       setActive(true);
-    }, delay || 400);
+    }, delay);
   };
 
   const hideTip = () => {
@@ -76,12 +77,14 @@ export const ToolTip = ({
       {props.children}
       {active && (
         <div
-          className={[style.tooltip, containerClassDirection()].join(' ')}
+          className={[style.tooltip, className, containerClassDirection()].join(
+            ' '
+          )}
           style={{
             color: color,
             background: background,
-            width: width,
             ['--tooltip-background-color' as any]: background,
+            ['--tooltip-text-color' as any]: color,
           }}
         >
           {content}
