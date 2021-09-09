@@ -1,3 +1,9 @@
+## 0.3.0 (date tbd)
+
+<a name="0.3.0"></a>
+
+- [Accessibility issues fixed against all current components](https://github.com/Capgemini/dcx-react-library/issues/200)
+
 ## 0.2.0 (date tbd)
 
 <a name="0.2.0"></a>
