@@ -14,11 +14,11 @@ export const FormDateDemo = () => {
   return (
     <>
       <h1>Basic</h1>
-      {/* <label htmlFor="basicNoLabelDate" style={{ display: 'none' }}>
+      <label htmlFor="basicNoLabelDate" style={{ display: 'none' }}>
         Basic no label date
-      </label> */}
+      </label>
       <FormDate
-        // id="basicNoLabelDate"
+        id="basicNoLabelDate"
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
       />
