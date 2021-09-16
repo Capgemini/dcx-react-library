@@ -17,16 +17,18 @@ export const FormCheckboxDemo = () => {
   return (
     <>
       <h1>Single Checkboxes</h1>
-      <h2>Standard Checkbox</h2>
+      <h2 id="standard-checkbox-tag">Standard Checkbox</h2>
       <FormCheckbox
+        ariaDescribedBy="standard-checkbox-tag"
         id="checkbox-1"
         name="group1"
         value={value}
         label="Checkbox 1 label text"
         onChange={handleChange}
       />
-      <h2>Pre-checked checkbox</h2>
+      <h2 id="prechecked-checkbox-tag">Pre-checked checkbox</h2>
       <FormCheckbox
+        ariaDescribedBy="prechecked-checkbox-tag"
         id="checkbox-2"
         name="group2"
         value={value}
@@ -34,8 +36,9 @@ export const FormCheckboxDemo = () => {
         onChange={handleChange}
         defaultChecked={checked}
       />
-      <h2>Disabled Checkbox</h2>
+      <h2 id="disabled-checkbox-tag">Disabled Checkbox</h2>
       <FormCheckbox
+        ariaDescribedBy="disabled-checkbox-tag"
         id="checkbox-3"
         name="group3"
         value={value}
@@ -43,9 +46,7 @@ export const FormCheckboxDemo = () => {
         onChange={handleChange}
         disabled={true}
       />
-
       <h2>Group</h2>
-
       <FormGroup
         name="name-of-group"
         type="checkbox"
@@ -59,14 +60,15 @@ export const FormCheckboxDemo = () => {
             conditional: {
               value: '',
               name: '',
-              label: '',
+              label: 'hint text',
               type: 'text',
               className: '',
               groupClassName: '',
               id: 'conditional-1',
               inputClassName: '',
-              inputId: '',
+              inputId: 'empty-text-input',
               labelClassName: '',
+              labelFor: 'empty-text-input',
             },
             hint: {
               text: '',
@@ -98,7 +100,7 @@ export const FormCheckboxDemo = () => {
             },
           },
         ]}
-        ariaDescribedBy=""
+        ariaDescribedBy="heading-text"
         error={{
           text: '',
           className: '',
@@ -121,6 +123,7 @@ export const FormCheckboxDemo = () => {
           text: 'Heading text',
           className: '',
           heading: {
+            id: 'heading-text',
             priority: '2',
             className: '',
           },

@@ -145,7 +145,9 @@ export const FormRadioDemo = () => {
           value: inputFieldValues['single-input-3'],
         }}
       />
+      <h4 id="basic-radio-group-tag">Basic Group Radios</h4>
       <FormGroup
+        ariaDescribedBy="basic-radio-group-tag"
         name="group3"
         type="radio"
         items={[
@@ -196,12 +198,6 @@ export const FormRadioDemo = () => {
         ]}
         hint={{
           text: 'This is some hint text',
-        }}
-        legend={{
-          text: 'Basic Group Radios',
-          heading: {
-            priority: 4,
-          },
         }}
         onChange={handleGroupConditionalChange}
       />
