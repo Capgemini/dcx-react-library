@@ -40,8 +40,7 @@ export const ToolTip = ({
   delay,
   ...props
 }: ToolTipProps) => {
-  let timeout: any;
-  //@ts-ignore
+  let timeout: NodeJS.Timeout;
   const [active, setActive] = React.useState(false);
 
   const showTip = () => {
