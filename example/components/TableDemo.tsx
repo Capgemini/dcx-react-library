@@ -13,6 +13,37 @@ interface PeriodicElement {
   actions: JSX.Element;
 }
 
+const trProps = [
+  {
+    'data-testId': 'Hydrogen',
+    className: 'errorRow',
+  },
+  {
+    'data-testId': 'Helium',
+  },
+  {
+    'data-testId': 'Lithium',
+  },
+  {
+    'data-testId': 'Beryllium',
+  },
+  {
+    'data-testId': 'Boron',
+  },
+  {
+    'data-testId': 'Carbon',
+  },
+  {
+    'data-testId': 'Nitrogen',
+  },
+  {
+    'data-testId': 'Oxygen',
+  },
+  {
+    'data-testId': 'Fluorine',
+  },
+];
+
 const ELEMENT_DATA: PeriodicElement[] = [
   {
     id: 1,
@@ -343,6 +374,23 @@ export const TableDemo = () => {
         columnsWidth={['100px']}
       />
       <button onClick={handlePopulateData}>Populate</button>
+
+      <h1>With custom Id for each row</h1>
+      <Table
+        dataSource={data}
+        columnsToOmit={['symbol']}
+        onSelect={handleSelect}
+        handleCellClick={handleCellClick}
+        tableClassName="table"
+        theadClassName="thead"
+        trClassName="header-row"
+        thClassName="th"
+        tbodyClassName="tbody"
+        tdClassName="td"
+        selectedRowClassName="trSelected"
+        columnsWidth={['100px']}
+        trProps={trProps}
+      />
     </div>
   );
 };

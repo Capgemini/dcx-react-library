@@ -342,6 +342,49 @@ in the following example we display a custom header - _customHeaderLabelsh_ -
   </Story>
 </Canvas>
 
+### An example with Custom Row
+
+in the following example we display a custom row (it could be whatever attribute needed like className, id, etc) - _trProps_ -
+
+<Canvas>
+  <Story name="custom-row">
+    {() => {
+      const handleCellClick = (evt, value) => {
+        if (evt.target.name === 'delete') {
+         console.log(value);
+        }
+      };
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+          actions:  <button className="btn btn-danger" name="delete">Delete</button>
+        },
+      ];
+      return <Table dataSource={data} handleCellClick={handleCellClick} withSearch={true} trProps={[{className: 'errorRow'}]}/>;
+    }}
+  </Story>
+</Canvas>
+
 ```js
 ```
 
