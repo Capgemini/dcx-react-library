@@ -37,6 +37,8 @@ type RangeProps = {
    * optional className to style the slider
    */
   inputClass?: string;
+  showTooltip?: boolean;
+  bubble?: string;
 };
 
 export const Range = ({
@@ -49,9 +51,21 @@ export const Range = ({
   ariaLabel,
   onChange,
   inputClass,
+  showTooltip,
+  bubble,
   ...props
 }: RangeProps) => {
   const [defaultValue, setDefaultValue] = React.useState<any>(value);
+
+  const handleClickMin = () => {
+    setDefaultValue(min || 0);
+  }
+
+  const handleClickMax = () => {
+    setDefaultValue(max || 100);
+  }
+
+
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -61,7 +75,7 @@ export const Range = ({
 
   return (
     <div style={{ display: 'flex' }}>
-      {prefix && <div>{prefix}</div>}
+      {prefix && <div onClick={handleClickMin}>{prefix}</div>}
       <input
         type="range"
         min={min}
@@ -73,7 +87,7 @@ export const Range = ({
         aria-label={ariaLabel || 'input-slider'}
         {...props}
       />
-      {suffix && <div>{suffix}</div>}
+      {suffix && <div onClick={handleClickMax}>{suffix}</div>}
     </div>
   );
 };
