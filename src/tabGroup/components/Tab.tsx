@@ -28,6 +28,10 @@ export type TabProps = {
    */
   className?: string;
   /**
+   * Tab Link class name
+   */
+  linkClassName?: string;
+  /**
    * Tab enabled or disabled
    */
   disabled?: boolean;
@@ -45,6 +49,7 @@ export const Tab = ({
   disabledClassName,
   label,
   className,
+  linkClassName,
 }: TabProps) => {
   const { activeTab, changeActiveTab } = useTabGroup();
 
@@ -59,22 +64,29 @@ export const Tab = ({
     .trim();
 
   const onClickHandler: (
-    event: React.MouseEvent<HTMLLIElement> | React.TouchEvent<HTMLLIElement>
+    event:
+      | React.MouseEvent<HTMLAnchorElement>
+      | React.TouchEvent<HTMLAnchorElement>
   ) => void = (
-    event: React.MouseEvent<HTMLLIElement> | React.TouchEvent<HTMLLIElement>
+    event:
+      | React.MouseEvent<HTMLAnchorElement>
+      | React.TouchEvent<HTMLAnchorElement>
   ) => changeActiveTab(event.currentTarget.id);
 
   return (
-    <li
-      role={Roles.tab}
-      id={eventKey}
-      className={classes}
-      aria-controls={ariaControls}
-      aria-selected={selected}
-      tabIndex={!selected ? -1 : undefined}
-      onClick={!disabled ? onClickHandler : undefined}
-    >
-      {label}
+    <li role={Roles.presentation} className={classes}>
+      <a
+        role={Roles.tab}
+        id={eventKey}
+        className={linkClassName}
+        aria-controls={ariaControls}
+        aria-selected={selected}
+        tabIndex={!selected ? -1 : undefined}
+        onClick={!disabled ? onClickHandler : undefined}
+        href={`#${eventKey}`}
+      >
+        {label}
+      </a>
     </li>
   );
 };

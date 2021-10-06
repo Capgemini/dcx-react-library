@@ -1,4 +1,20 @@
-## 0.2.0 (date tbd)
+## 0.2.4 (06/10/21)
+
+<a name="0.2.4"></a>
+
+- [Add anchor to each tab](https://github.com/Capgemini/dcx-react-library/issues/229)
+## 0.2.3 (07/07/21)
+
+<a name="0.2.3"></a>
+
+- [Table should display also if there's no data](https://github.com/Capgemini/dcx-react-library/issues/218)
+## 0.2.2 (07/07/21)
+
+<a name="0.2.2"></a>
+
+- [select with value](https://github.com/Capgemini/dcx-react-library/issues/213)
+- [select with nullOption](https://github.com/Capgemini/dcx-react-library/issues/210)
+## 0.2.0 (02/07/21)
 
 <a name="0.2.0"></a>
 

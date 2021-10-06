@@ -51,6 +51,10 @@ export type TabGroupProps = {
    */
   tabClassName?: string;
   /**
+   * Tab Group tab link class name
+   */
+  tabLinkClassName?: string;
+  /**
    * Tab Group onSelect handler
    */
   onSelect?: (eventKey: string) => void;
@@ -82,6 +86,7 @@ export const TabGroup = forwardRef(
       containerClassName,
       contentClassName,
       tabClassName,
+      tabLinkClassName,
       onSelect,
     }: TabGroupProps,
     ref: any
@@ -151,6 +156,7 @@ export const TabGroup = forwardRef(
                   ariaControls={child.props.eventKey}
                   disabledClassName={disabledClassName}
                   className={classes}
+                  linkClassName={tabLinkClassName}
                 />
               );
             })}
