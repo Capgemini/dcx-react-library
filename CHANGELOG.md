@@ -1,10 +1,17 @@
+## 0.2.5 (06/10/21)
+
+<a name="0.2.5"></a>
+
+- [Add anchor to each tab](https://github.com/Capgemini/dcx-react-library/issues/229)
+
 ## 0.2.3 (08/07/2021)
 
 <a name="0.2.3"></a>
 
 - [table with custom header](https://github.com/Capgemini/dcx-react-library/issues/218)
+- [Table should display also if there's no data](https://github.com/Capgemini/dcx-react-library/issues/218)
 
-## 0.2.2 (07/07/2021)
+## 0.2.2 (07/07/21)
 
 <a name="0.2.2"></a>
 
@@ -16,7 +23,7 @@
 
 - [select with nullOption](https://github.com/Capgemini/dcx-react-library/issues/210)
 
-## 0.2.0 (02/07/2021)
+## 0.2.0 (02/07/21)
 
 <a name="0.2.0"></a>
 
@@ -26,6 +33,7 @@
 - [copyToClipboard](https://github.com/Capgemini/dcx-react-library/issues/184)
 - [multiUpload - fileData on file selection](https://github.com/Capgemini/dcx-react-library/issues/104)
 - [radio with hint - hint position fix](https://github.com/Capgemini/dcx-react-library/issues/203)
+- [select with nullOption](https://github.com/Capgemini/dcx-react-library/issues/210)
 
 <a name="0.1.2"></a>
 
