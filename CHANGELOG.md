@@ -1,6 +1,6 @@
-## 0.2.5 (06/10/2021)
+## 0.2.4 (07/10/2021)
 
-<a name="0.2.5"></a>
+<a name="0.2.4"></a>
 
 - [Add anchor to each tab](https://github.com/Capgemini/dcx-react-library/issues/229)
 
