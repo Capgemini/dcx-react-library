@@ -60,3 +60,7 @@
   position: absolute;
   margin-right: 4px;
 }
+
+.errorRow {
+  background-color: red;
+}

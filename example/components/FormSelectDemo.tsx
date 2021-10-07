@@ -16,6 +16,7 @@ export const FormSelectDemo = () => {
       </label>
       <br />
       <FormSelect
+        nullOption="Select..."
         optionGroups={[
           {
             label: 'English Premier League',

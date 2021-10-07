@@ -29,7 +29,8 @@
 
 /** Tab Group **/
 
-.tab-list {  border-bottom: 1px solid #ccc;
+.tab-list {
+  border-bottom: 1px solid #ccc;
   padding-left: 0;
 }
 
@@ -49,6 +50,19 @@
 }
 
 .tab-list-disabled {
-  pointer-events: none; 
-  opacity:0.6;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/**tooltips style*/
+.tooltipClass {
+  width: 250px;
+  background: rgb(223, 10, 10);
+  color: white;
+  word-break: break-all;
+}
+
+.errorRow {
+  background-color: red;
+  color: white;
 }

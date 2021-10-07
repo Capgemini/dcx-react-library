@@ -3,7 +3,7 @@ import { omit } from 'lodash';
 import { Row } from './Row';
 
 const rowValues = (dataSource: any, columnsToOmit?: string[]): any[] =>
-  Object.values(omit(dataSource, columnsToOmit || []));
+  Object.values(omit(omit(dataSource, ['trProps']), columnsToOmit || []));
 
 type BodyProps = {
   values: any[];
@@ -14,6 +14,7 @@ type BodyProps = {
   tbodyClassName?: string;
   trClassName?: string;
   tdClassName?: string;
+  trProps?: any[];
 };
 export const Body = ({
   values,
@@ -24,6 +25,7 @@ export const Body = ({
   tbodyClassName,
   trClassName,
   tdClassName,
+  trProps,
 }: BodyProps) => {
   const [selected, isSelected] = React.useState(-1);
   const handleSelected = (v: any, key: number) => {
@@ -32,9 +34,17 @@ export const Body = ({
       isSelected(key);
     }
   };
+  const combineValueWithTrProps = values.map((v: any, k: number) => {
+    let newValue = { ...v };
+    if (trProps && trProps[k]) {
+      return (newValue = { ...newValue, trProps: trProps[k] });
+    }
+    return newValue;
+  });
+
   return (
     <tbody className={tbodyClassName}>
-      {values.map((v: any, key: number) => (
+      {combineValueWithTrProps.map((v: any, key: number) => (
         <Row
           onSelect={v => handleSelected(v, key)}
           handleCellClick={handleCellClick}
@@ -46,6 +56,7 @@ export const Body = ({
           key={key}
           values={rowValues(v, columnsToOmit)}
           rawData={v}
+          trProps={v.trProps}
         />
       ))}
     </tbody>

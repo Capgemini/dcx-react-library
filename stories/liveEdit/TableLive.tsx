@@ -233,6 +233,14 @@ function TableDemo() {
     <div className="App">
       <Table
         dataSource={data}
+        customHeaderLabels={[
+          { label: 'Test', data: 'id' },
+          { label: 'position', data: 'position' },
+          { label: 'name', data: 'name' },
+          { label: 'weight', data: 'weight' },
+          { label: 'symbol', data: 'symbol' },
+          { label: 'actions', data: 'actions' },
+        ]}
         columnsToOmit={['symbol']}
         onSelect={handleSelect}
         handleCellClick={handleCellClick}
@@ -248,6 +256,11 @@ function TableDemo() {
           <img src="https://freesvg.org/img/1544644532.png" width="12px" />
         }
         columnsWidth={['100px']}
+        trProps={[
+          {
+            'data-testId': 'Hydrogen',
+             className: 'errorRow',
+          }]}
       />
     </div>
   );
