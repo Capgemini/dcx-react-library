@@ -1,4 +1,4 @@
-## 0.2.5 (06/10/21)
+## 0.2.5 (06/10/2021)
 
 <a name="0.2.5"></a>
 
@@ -11,7 +11,7 @@
 - [table with custom header](https://github.com/Capgemini/dcx-react-library/issues/218)
 - [Table should display also if there's no data](https://github.com/Capgemini/dcx-react-library/issues/218)
 
-## 0.2.2 (07/07/21)
+## 0.2.2 (07/07/2021)
 
 <a name="0.2.2"></a>
 
@@ -23,7 +23,7 @@
 
 - [select with nullOption](https://github.com/Capgemini/dcx-react-library/issues/210)
 
-## 0.2.0 (02/07/21)
+## 0.2.0 (02/07/2021)
 
 <a name="0.2.0"></a>
 
@@ -37,12 +37,12 @@
 
 <a name="0.1.2"></a>
 
-## 0.1.2 (02/06/21)
+## 0.1.2 (02/06/2021)
 
 - [ForgJs vulnerability](https://github.com/Capgemini/dcx-react-library/issues/201)
 
 <a name="0.1.1"></a>
 
-## 0.1.1 (02/05/21)
+## 0.1.1 (02/05/2021)
 
 - [Button ClassName and optional Label](https://github.com/Capgemini/dcx-react-library/issues/186)
