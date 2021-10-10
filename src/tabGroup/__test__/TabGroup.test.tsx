@@ -63,7 +63,7 @@ describe('TabGroup', () => {
     expect(screen.getByRole('tablist')).toBeInTheDocument();
     expect(screen.getByRole('tablist').children.length).toBe(2);
 
-    const tabs: Element[] = screen.getAllByRole('tab');
+    const tabs: Element[] = screen.getAllByRole('presentation');
 
     expect(tabs[0].textContent).toBe('tab 1 label');
     expect(tabs[1].textContent).toBe('tab 2 label');
@@ -175,9 +175,27 @@ describe('TabGroup', () => {
     expect(tabs[1].getAttribute('tabIndex')).toBe('-1');
   });
 
-  it('should render tabs with a shared tab class name', () => {
+  it('should render tabs with shared tab class name', () => {
     render(
       <TabGroup tabClassName="tab-class-name">
+        <Tab eventKey="tab-1-id" label="tab 1 label">
+          This is the content for tab 1
+        </Tab>
+        <Tab eventKey="tab-2-id" label="tab 2 label">
+          <div></div>
+        </Tab>
+      </TabGroup>
+    );
+
+    const tabs: HTMLElement[] = screen.getAllByRole('presentation');
+
+    expect(tabs[0].getAttribute('class')).toBe('tab-class-name');
+    expect(tabs[1].getAttribute('class')).toBe('tab-class-name');
+  });
+
+  it('should render tabs with shared anchor tab class name', () => {
+    render(
+      <TabGroup tabLinkClassName="tab-class-name">
         <Tab eventKey="tab-1-id" label="tab 1 label">
           This is the content for tab 1
         </Tab>
@@ -213,7 +231,7 @@ describe('TabGroup', () => {
       </TabGroup>
     );
 
-    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabs: HTMLElement[] = screen.getAllByRole('presentation');
 
     expect(tabs[0].getAttribute('class')).toBe(
       'tab-class-name tab-1-class-name'
@@ -238,7 +256,7 @@ describe('TabGroup', () => {
       </TabGroup>
     );
 
-    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabs: HTMLElement[] = screen.getAllByRole('presentation');
 
     expect(tabs[0].getAttribute('class')).toBe(
       'tab-class-name tab-class-active'
@@ -268,7 +286,7 @@ describe('TabGroup', () => {
       </TabGroup>
     );
 
-    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabs: HTMLElement[] = screen.getAllByRole('presentation');
 
     expect(tabs[2]).toBeInTheDocument();
     expect(tabs[2].getAttribute('class')).toBe('tab-class-disabled');
@@ -296,6 +314,7 @@ describe('TabGroup', () => {
     );
 
     const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabItems: HTMLElement[] = screen.getAllByRole('presentation');
 
     fireEvent.click(tabs[1]);
 
@@ -303,10 +322,12 @@ describe('TabGroup', () => {
     expect(tabGroupSelectHandler).toHaveBeenCalledWith('tab-2-id');
 
     expect(tabs[0]).toBeInTheDocument();
-    expect(tabs[0].getAttribute('class')).toBe('tab-1-class-name');
+    expect(tabItems[0]).toBeInTheDocument();
+    expect(tabItems[0].getAttribute('class')).toBe('tab-1-class-name');
 
     expect(tabs[1]).toBeInTheDocument();
-    expect(tabs[1].getAttribute('class')).toBe('tab-class-active');
+    expect(tabItems[1]).toBeInTheDocument();
+    expect(tabItems[1].getAttribute('class')).toBe('tab-class-active');
   });
 
   it('should not call the onSelect for a tab group if not provided', () => {
@@ -328,14 +349,15 @@ describe('TabGroup', () => {
     );
 
     const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabItems: HTMLElement[] = screen.getAllByRole('presentation');
 
     expect(tabs[0].getAttribute('tabIndex')).toBeNull();
     expect(tabs[1].getAttribute('tabIndex')).toBe('-1');
 
-    expect(tabs[0].getAttribute('class')).toBe(
+    expect(tabItems[0].getAttribute('class')).toBe(
       'tab-1-class-name tab-class-active'
     );
-    expect(tabs[1].getAttribute('class')).toBe('');
+    expect(tabItems[1].getAttribute('class')).toBe('');
 
     fireEvent.click(tabs[1]);
 
@@ -344,8 +366,8 @@ describe('TabGroup', () => {
 
     expect(tabGroupClickHandler).not.toHaveBeenCalled();
 
-    expect(tabs[0].getAttribute('class')).toBe('tab-1-class-name');
-    expect(tabs[1].getAttribute('class')).toBe('tab-class-active');
+    expect(tabItems[0].getAttribute('class')).toBe('tab-1-class-name');
+    expect(tabItems[1].getAttribute('class')).toBe('tab-class-active');
   });
 
   it('should not call the onSelect for a tab group if tab is disabled', () => {
@@ -373,7 +395,7 @@ describe('TabGroup', () => {
       </TabGroup>
     );
 
-    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabs: HTMLElement[] = screen.getAllByRole('presentation');
 
     fireEvent.click(tabs[2]);
 
@@ -442,7 +464,7 @@ describe('TabGroup', () => {
       </TabGroup>
     );
 
-    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabs: HTMLElement[] = screen.getAllByRole('presentation');
 
     expect(tabs[0]).toBeInTheDocument();
     expect(tabs[0].getAttribute('class')).toBe('tab-1-class-name');
@@ -564,7 +586,7 @@ describe('TabGroup', () => {
       </>
     );
 
-    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabs: HTMLElement[] = screen.getAllByRole('presentation');
 
     expect(tabs[0].getAttribute('class')).toBe('tab-class-active');
     expect(tabs[1].getAttribute('class')).toBe('');
@@ -620,7 +642,7 @@ describe('TabGroup', () => {
       </>
     );
 
-    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabs: HTMLElement[] = screen.getAllByRole('presentation');
 
     expect(tabs[0].getAttribute('class')).toBe('tab-class-active');
     expect(tabs[1].getAttribute('class')).toBe('');
@@ -673,7 +695,7 @@ describe('TabGroup', () => {
       </>
     );
 
-    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabs: HTMLElement[] = screen.getAllByRole('presentation');
 
     expect(tabs[0].getAttribute('class')).toBe('tab-class-active');
     expect(tabs[1].getAttribute('class')).toBe('');
