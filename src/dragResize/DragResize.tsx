@@ -1,11 +1,7 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import style from './dragResize.module.css';
 
 export type DragResizeProps = {
-  /**
-   * orientation horizontal or vertical
-   */
-  orientation?: 'horizontal' | 'vertical';
   /**
    * first pane content
    */
@@ -27,23 +23,30 @@ export type DragResizeProps = {
    */
   firstPaneClassName?: string;
   /**
-   * second pane className
-   */
-  secondPaneClassName?: string;
-  /**
    * initial width/height of first pane
    */
   firstPaneMinSize?: number;
+  /**
+   * orientation horizontal or vertical
+   */
+  orientation?: 'horizontal' | 'vertical';
+  /**
+   * second pane className
+   */
+  secondPaneClassName?: string;
 };
 
-const FirstPane: React.FunctionComponent<{
+export type FirstPaneProps = {
+  children: JSX.Element;
   width: number | undefined;
   height: number | undefined;
   setWidth: (value: number) => void;
   setHeight: (value: number) => void;
   orientation: string;
   className: string | undefined;
-}> = ({
+};
+
+export const FirstPane = ({
   children,
   width,
   height,
@@ -51,24 +54,24 @@ const FirstPane: React.FunctionComponent<{
   setHeight,
   orientation,
   className,
-}) => {
-  const firstRef = createRef<HTMLDivElement>();
+}: FirstPaneProps) => {
+  const firstRef = useRef<HTMLDivElement>(null);
   const isVertical = orientation === 'vertical';
 
   useEffect(() => {
-    if (firstRef.current) {
-      if (isVertical) {
-        if (!width) {
-          setWidth(firstRef.current.clientWidth);
-          return;
-        }
-      } else {
-        if (!height) {
-          setHeight(firstRef.current.clientHeight);
-          return;
-        }
-      }
+    if (firstRef.current !== null && isVertical && width === undefined) {
+      setWidth(firstRef.current.clientWidth);
+      return;
+    } else if (
+      firstRef.current !== null &&
+      !isVertical &&
+      height === undefined
+    ) {
+      setHeight(firstRef.current.clientHeight);
+      return;
+    }
 
+    if (firstRef.current) {
       isVertical
         ? (firstRef.current.style.width = `${width}px`)
         : (firstRef.current.style.height = `${height}px`);
@@ -81,15 +84,16 @@ const FirstPane: React.FunctionComponent<{
     </div>
   );
 };
+
 export const DragResize = ({
-  orientation = 'vertical',
   firstPane,
-  firstPaneClassName,
   secondPane,
-  secondPaneClassName,
-  dividerClassName,
   containerClassName,
+  dividerClassName,
+  firstPaneClassName,
   firstPaneMinSize = 50,
+  orientation = 'vertical',
+  secondPaneClassName,
 }: DragResizeProps) => {
   const [width, setWidth] = useState<undefined | number>(firstPaneMinSize);
   const [height, setHeight] = useState<undefined | number>(firstPaneMinSize);
@@ -97,7 +101,7 @@ export const DragResize = ({
   const [dividerYPos, setDividerYPos] = useState<undefined | number>(undefined);
   const [dragging, setDragging] = useState(false);
   const isVertical = orientation === 'vertical';
-  const splitPaneRef = createRef<HTMLDivElement>();
+  const splitPaneRef = useRef<HTMLDivElement>(null);
 
   const onMouseDown = (e: React.MouseEvent) => {
     isVertical ? setDividerXPos(e.clientX) : setDividerYPos(e.clientY);
