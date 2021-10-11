@@ -9,9 +9,11 @@ function RangeDemo() {
   return (
     <Range
       ariaLabel="Progress"
+      min={0}
       max={100}
       value={80}
       inputClass=""
+      showTooltip={true}
       prefix={
                    <div
                        style={{

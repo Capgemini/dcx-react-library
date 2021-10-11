@@ -25,7 +25,17 @@ In this section we are using the range component providing styling passing the r
     <Story name="disabled">
         {() => {
             return (
-                <Range disabled={true}/>
+                <Range min={0} max={100} disabled={true}/>
+            );
+        }}
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="tooltip">
+        {() => {
+            return (
+                <Range min={0} max={100} showTooltip={true} />
             );
         }}
     </Story>
@@ -36,6 +46,7 @@ In this section we are using the range component providing styling passing the r
         {() => {
             return (
                 <Range
+                    min={0} max={100}
                     prefix={
                         <div>
                             <h6>Low</h6>
@@ -60,7 +71,7 @@ In this section we are using the range component providing styling passing the r
     <Story name="custom">
         {() => {
             return (
-                <Range inputClass="customRange"/>
+                <Range min={0} max={100} inputClass="customRange"/>
             );
         }}
     </Story>

@@ -10,18 +10,21 @@ export const RangeDemo = () => {
   return (
     <>
       <h1>Simple Range</h1>
-      <Range />
+      <Range min={0} max={100}/>
       <h1>Range with custom values</h1>
-      <Range min={0} max={100} value={75} />
+      <Range min={20} max={90} value={75} />
       <h1>Range with custom styling</h1>
-      <Range inputClass="customRange" />
+      <Range min={0} max={100} inputClass="customRange" />
       <h1>Disabled Range</h1>
-      <Range disabled={true} />
+      <Range min={0} max={100} disabled={true} />
+      <h1>Range with tooltip</h1>
+      <Range min={0} max={100} showTooltip={true} />
       <h1>Range with displayed value</h1>
-      <Range onChange={setDisplayValue} />
+      <Range min={0} max={100} onChange={setDisplayValue} />
       <h2>{displayValue}</h2>
       <h1>Range with prefix & suffix</h1>
       <Range
+          min={0} max={100}
         prefix={
           <div
             style={{
