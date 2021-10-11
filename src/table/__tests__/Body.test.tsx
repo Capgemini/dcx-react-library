@@ -18,11 +18,11 @@ const values = [
 
 const trProps = [
   {
-    'data-testId': 'Hydrogen',
+    'data-testid': 'Hydrogen',
     className: 'errorRow',
   },
   {
-    'data-testId': 'Helium',
+    'data-testid': 'Helium',
   },
 ];
 
