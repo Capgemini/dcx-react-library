@@ -3,9 +3,49 @@ import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { Button } from '../../src/button/Button';
 import { TabGroup } from '../../src/tabGroup/TabGroup';
 import { Tab } from '../../src/tabGroup/components/Tab';
-import './style.css';
+import '../style.css';
 
 <Meta title="DCXLibrary/Tabs/Styled" component={TabGroup} />
+
+# Tabs
+
+In this section we're using the Tabs component providing the **material style** passing the relative `className`. Feel free to use your own css and style the Tab as you prefer
+
+### A basic table with GovUK style
+
+<Canvas>
+  <Story name="styled-tabs-GovUK">
+    {() => {
+      return (
+        <TabGroup
+          containerClassName="govuk-tabs"
+          className="govuk-tabs__list"
+          tabClassName="govuk-tabs__list-item"
+          tabLinkClassName="govuk-tabs__tab"
+          activeTabClassName="govuk-tabs__list-item--selected"
+          contentClassName="govuk-tabs__panel"
+        >
+          <Tab eventKey="tab-1" label="Past day">
+            <h2>Past day</h2>
+            This the content for <em>Past day</em>
+          </Tab>
+          <Tab eventKey="tab-2" label="Past week">
+            <h2>Past week</h2>
+            This the content for <em>Past week</em>
+          </Tab>
+          <Tab eventKey="tab-3" label="Past month">
+            <h2>Past month</h2>
+            This the content for <em>Past month</em>
+          </Tab>
+          <Tab eventKey="tab-4" label="Past year">
+            <h2>Past year</h2>
+            This the content for <em>Past year</em>
+          </Tab>
+        </TabGroup>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ### An example of 'styled' TabGroup of Tabs
 
