@@ -26,7 +26,24 @@ Use the range component when users need to input based on a range of values
 An example with all the available properties is:
 
 ```js
-<Range min={0} max={100} value={75}/>
+<Range  min={0}
+        max={100}
+        value={75}
+        inputClass="customRange"
+        disabled={false}
+        showTooltip={true}
+        onChange={setDisplayValue}
+        ariaLabel="rangeComponent"
+        prefix={
+                    <div>
+                        <p1>Low</p1>
+                    </div>
+                }
+        suffix={
+                    <div>
+                        <p1>High</p1>
+                    </div>
+                }/>
 ```
 
 <Props of={Range} />

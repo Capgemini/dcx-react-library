@@ -6,11 +6,11 @@ type RangeProps = {
   /**
    * max value of the range component
    */
-  max: number;
+  max?: number;
   /**
    * min value of the range component
    */
-  min: number;
+  min?: number;
   /**
    * current value of the range component
    */
@@ -47,13 +47,16 @@ type RangeProps = {
    * optional className to style the slider
    */
   inputClass?: string;
+  /**
+   * allow to enable displaying a tooltip on the range slider
+   */
   showTooltip?: boolean;
 };
 
 export const Range = ({
-  min,
-  max,
-  value,
+  min = 0,
+  max = 100,
+  value = ((min + max) / 2),
   prefix,
   suffix,
   disabled = false,
@@ -65,20 +68,17 @@ export const Range = ({
   showTooltip = false,
   ...props
 }: RangeProps) => {
-  const [defaultValue, setDefaultValue] = React.useState<any>(value);
-  const [scrubberPosition, setScrubberPosition] = React.useState<any>();
-  const [styling, setStyling] = React.useState<any>();
+  const [defaultValue, setDefaultValue] = React.useState<number>(value);
+  const [scrubberPosition, setScrubberPosition] = React.useState<number>();
+  const [styling, setStyling] = React.useState<object>();
 
   useEffect(() => {
-    if (isNaN(defaultValue)) {
-      setDefaultValue((min + max) / 2);
-    }
     setScrubberPosition(((defaultValue - min) * 100) / (max - min));
     setStyling({ '--left': scrubberPosition + '%' });
   }, [defaultValue, scrubberPosition]);
 
   const handleClickMin = () => {
-    setDefaultValue(min || 0);
+    setDefaultValue(min);
 
     if (onChangeMin) {
       onChangeMin(min);
@@ -86,7 +86,7 @@ export const Range = ({
   };
 
   const handleClickMax = () => {
-    setDefaultValue(max || 100);
+    setDefaultValue(max);
 
     if (onChangeMax) {
       onChangeMax(max);
@@ -95,8 +95,8 @@ export const Range = ({
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setScrubberPosition(((parseInt(defaultValue) - min) * 100) / (max - min));
-    setDefaultValue(value);
+    setScrubberPosition(((defaultValue - min) * 100) / (max - min));
+    setDefaultValue(parseInt(value));
     if (onChange) {
       onChange(parseInt(value));
     }
@@ -110,14 +110,14 @@ export const Range = ({
         role={Roles.slider}
         min={min}
         max={max}
-        value={defaultValue || 0}
+        value={defaultValue}
         onChange={handleChange}
         disabled={disabled}
         className={[showTooltip ? style.tooltip : '', inputClass]
           .join(' ')
           .trim()}
         aria-label={ariaLabel || 'input-slider'}
-        value-tooltip={defaultValue || value}
+        value-tooltip={defaultValue}
         style={styling}
         {...props}
       />
