@@ -6,9 +6,9 @@ import './tableStyle.css';
 
 # Table
 
-In this section we're using the Table component providing the **material style** passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
+In this section we're using the Table component providing the **material style** passing the relative `className`. Feel free to use your own css and style the Table as you prefer
 
-### A basic table with GovUk style
+### A basic table with GovUK style
 
 <Canvas>
   <Story name="GovUk">
@@ -387,6 +387,87 @@ in the following example we enable the search functionlity passing - _withSearch
       return (
         <Table
           dataSource={data}
+          handleCellClick={handleCellClick}
+          tableClassName="table"
+          theadClassName="thead"
+          trClassName="header-row"
+          thClassName="th"
+          tbodyClassName="tbody"
+          tdClassName="td"
+          selectedRowClassName="trSelected"
+          columnsWidth={['90px']}
+          withSearch={true}
+          searchProps={{
+            placeholder: 'Search...',
+            className: 'searchClass',
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### An example with Custom header
+
+in the following example we display a custom header - _customHeaderLabelsh_ -
+
+<Canvas>
+  <Story name="custom-header">
+    {() => {
+      const handleCellClick = (evt, value) => {
+        if (evt.target.name === 'delete') {
+          console.log(value);
+        }
+      };
+      let data = [
+        {
+          id: 1,
+          position: 1,
+          name: 'Hydrogen',
+          weight: 1.0079,
+          symbol: 'H',
+          actions: (
+            <button className="btn-danger" name="delete">
+              Delete
+            </button>
+          ),
+        },
+        {
+          id: 2,
+          position: 2,
+          name: 'Helium',
+          weight: 4.0026,
+          symbol: 'He',
+          actions: (
+            <button className="btn-danger" name="delete">
+              Delete
+            </button>
+          ),
+        },
+        {
+          id: 3,
+          position: 3,
+          name: 'Lithium',
+          weight: 6.941,
+          symbol: 'Li',
+          actions: (
+            <button className="btn-danger" name="delete">
+              Delete
+            </button>
+          ),
+        },
+      ];
+      return (
+        <Table
+          dataSource={data}
+          customHeaderLabels={[
+            { label: 'Test', data: 'id' },
+            { label: 'position', data: 'position' },
+            { label: 'name', data: 'name' },
+            { label: 'weight', data: 'weight' },
+            { label: 'symbol', data: 'symbol' },
+            { label: 'actions', data: 'actions' },
+          ]}
           handleCellClick={handleCellClick}
           tableClassName="table"
           theadClassName="thead"

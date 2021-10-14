@@ -11,6 +11,7 @@ function FormSelectDemo() {
   }
   return (
     <FormSelect
+      nullOption="Select..."
       label="Basic"
       labelProps={{
         style: {
@@ -29,6 +30,7 @@ function FormSelectDemo() {
       optionGroups={[]}
       className=""
       id="select"
+      value=""
       ariaLabel=""
       labelProps={{}}
       hint={{

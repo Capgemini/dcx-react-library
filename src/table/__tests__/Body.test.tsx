@@ -16,7 +16,17 @@ const values = [
   },
 ];
 
-const DummyComponent = ({ values, onSelect }: any) => (
+const trProps = [
+  {
+    'data-testid': 'Hydrogen',
+    className: 'errorRow',
+  },
+  {
+    'data-testid': 'Helium',
+  },
+];
+
+const DummyComponent = ({ values, onSelect, trProps }: any) => (
   <table>
     <Body
       values={values}
@@ -24,6 +34,7 @@ const DummyComponent = ({ values, onSelect }: any) => (
       tbodyClassName="tbodyClassName"
       trClassName="trClassName"
       tdClassName="tdClassName"
+      trProps={trProps}
     />
   </table>
 );
@@ -64,5 +75,10 @@ describe('Table body', () => {
     expect(container.getElementsByClassName('tbodyClassName')).toBeDefined();
     expect(container.getElementsByClassName('trClassName')).toBeDefined();
     expect(container.getElementsByClassName('tdClassName')).toBeDefined();
+  });
+
+  it('should allow to pass extra properties on each row', () => {
+    render(<DummyComponent values={values} trProps={trProps} />);
+    expect(screen.getByTestId('Hydrogen')).toBeDefined();
   });
 });

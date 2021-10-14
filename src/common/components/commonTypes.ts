@@ -13,6 +13,10 @@ type VisuallyHidden = {
 
 type HeadingProps = {
   /**
+   * id
+   */
+  id?: string;
+  /**
    * heading priority
    */
   priority: number;
@@ -63,6 +67,10 @@ export type ConditionalInputProps = {
    * conditional label input class name
    */
   labelClassName?: string;
+  /**
+   * conditional for
+   */
+  labelFor?: string;
 };
 
 export type ErrorMessageProps = {
@@ -167,7 +175,7 @@ export type HintProps = {
   /**
    * hint position
    */
-  position?: 'below' | 'above';
+  position?: 'above';
   /**
    * class names to customise hint
    **/
