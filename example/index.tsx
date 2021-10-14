@@ -19,6 +19,7 @@ import {
   CopyToClipboardDemo,
   TableDemo,
   TooltipDemo,
+  RangeDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -38,6 +39,7 @@ const App = () => (
         <Route path="/AutocompleteDemo" component={AutocompleteDemo} />
         <Route path="/ButtonDemo" component={ButtonDemo} />
         <Route path="/progress" component={ProgressDemo} />
+        <Route path="/range" component={RangeDemo} />
         <Route path="/toggle" component={ToggleDemo} />
         <Route path="/select" component={FormSelectDemo} />
         <Route path="/multiUpload" component={MultiUploadDemo} />
