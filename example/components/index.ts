@@ -15,4 +15,5 @@ export { TabGroupDemo } from './TabGroupDemo';
 export { CopyToClipboardDemo } from './CopyToClipboardDemo';
 export { TableDemo } from './TableDemo';
 export { TooltipDemo } from './TooltipDemo';
+export { DetailsDemo } from './DetailsDemo';
 export * from './library-candidates';

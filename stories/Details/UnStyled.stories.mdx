@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Details } from '../../src/details/Details';
+
+<Meta title="DCXLibrary/Details" component={Details} />
+
+### Examples of basic Details
+
+<Canvas>
+  <Story name="basic">
+    {() => {
+      return (
+        <Details
+          summary="some headline summary"
+          details="some detail information"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Properties
+
+<Props of={Details} />

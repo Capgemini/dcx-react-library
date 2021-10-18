@@ -29,34 +29,16 @@ export const Home = () => (
           <Link to="/progress">ProgressDemo</Link>
         </li>
         <li>
-          <Link to="/range">RangeDemo</Link>
-        </li>
-        <li>
           <Link to="/toggle">ToggleDemo</Link>
         </li>
         <li>
           <Link to="/select">SelectDemo</Link>
         </li>
         <li>
-          <Link to="/multiUpload">MultiUploadDemo</Link>
-        </li>
-        <li>
           <Link to="/multiSelect">MultiSelectDemo</Link>
         </li>
         <li>
           <Link to="/formDate">FormDateDemo</Link>
-        </li>
-        <li>
-          <Link to="/tabgroup">TabGroupDemo</Link>
-        </li>
-        <li>
-          <Link to="/copyToClipboard">CopyToClipboardDemo</Link>
-        </li>
-        <li>
-          <Link to="/table">TableDemo</Link>
-        </li>
-        <li>
-          <Link to="/tooltipDemo">TooltipDemo</Link>
         </li>
       </ul>
     </nav>
@@ -68,6 +50,37 @@ export const Home = () => (
         </li>
         <li>
           <Link to="/register">Registration form Example</Link>
+        </li>
+      </ul>
+    </nav>
+    <h1>List of release 0.2 DCX library components</h1>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/table">TableDemo</Link>
+        </li>
+        <li>
+          <Link to="/tabgroup">TabGroupDemo</Link>
+        </li>
+        <li>
+          <Link to="/copyToClipboard">CopyToClipboardDemo</Link>
+        </li>
+        <li>
+          <Link to="/multiUpload">MultiUploadDemo</Link>
+        </li>
+      </ul>
+    </nav>
+    <h1>List of release 0.3 DCX library components</h1>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/tooltipDemo">TooltipDemo</Link>
+        </li>
+        <li>
+          <Link to="/range">RangeDemo</Link>
+        </li>
+        <li>
+          <Link to="/details">DetailsDemo</Link>
         </li>
       </ul>
     </nav>
