@@ -81,9 +81,6 @@ Thanks goes to these wonderful people
         <sub><b>Nikki Algar</b></sub>
       </a>
     </td>
-  </tr>
-
-  <tr>
     <td align="center">
       <a href="https://github.com/nikusharmadcx">
         <img src="https://avatars.githubusercontent.com/u/85119492?v=4" width="100px;" alt="nikki-algar"/>
