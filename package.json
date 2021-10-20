@@ -1,12 +1,17 @@
 {
-  "name": "dcx-react-library",
+  "name": "@capgeminiuk/dcx-react-library",
+  "author": "Daniele Zurico",
   "license": "MIT",
-  "version": "0.4.0",
+  "version": "0.3.0",
   "source": "src/index.ts",
   "main": "dist/dcx-react-library.js",
   "module": "dist/dcx-react-library.module.js",
   "unpkg": "dist/dcx-react-library.umd.js",
   "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "bin"
+  ],
   "scripts": {
     "build": "microbundle --jsx React.createElement",
     "dev": "microbundle watch --jsx React.createElement",
@@ -19,6 +24,12 @@
     "storybook": "start-storybook -p 6006 --no-manager-cache -s ./static",
     "build-storybook": "build-storybook",
     "publish-storybook": "npx chromatic --project-token c6317a751fef"
+  },
+  "bin": {
+    "dcx-gpc": "./bin/dcx-gen-pc.js"
+  },
+  "peerDependencies": {
+    "react": ">=16"
   },
   "commitlint": {
     "extends": [
@@ -81,9 +92,6 @@
     "storybook-css-modules-preset": "^1.1.1",
     "ts-jest": "^27.0.7",
     "typescript": "4.4.4"
-  },
-  "peerDependencies": {
-    "react": ">=16"
   },
   "dependencies": {
     "@cesium133/forgjs": "1.1.10",
