@@ -23,7 +23,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "eslint src",
-      "pre-push": "jest --coverage",
+      "pre-push": "jest ./src --coverage",
       "commit-msg": "yarn commitlint --edit"
     }
   },
