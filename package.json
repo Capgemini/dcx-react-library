@@ -22,8 +22,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint",
-      "pre-push": "yarn test:coverage",
+      "pre-commit": "eslint src",
+      "pre-push": "jest --coverage",
       "commit-msg": "yarn commitlint --edit"
     }
   },
