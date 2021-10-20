@@ -6,15 +6,18 @@ import { faAt } from '@fortawesome/free-solid-svg-icons';
 export const FormInputDemo = () => {
   //Im using the same one for the 3 demos
   const [value, setValue] = React.useState('');
-  const handleChange = event => {
+  //@ts-ignore
+  const handleChange = (event) => {
     setValue(event.currentTarget.value);
   };
 
   //Im using this set only for the valid one
   const [valueValid, setValueValid] = React.useState('');
   const [showValid, setShowValid] = React.useState(true);
-  const handleChangeValid = event => setValueValid(event.currentTarget.value);
-  const handleValidity = valid => setShowValid(valid);
+  //@ts-ignore
+  const handleChangeValid = (event) => setValueValid(event.currentTarget.value);
+  //@ts-ignore
+  const handleValidity = (valid) => setShowValid(valid);
 
   return (
     <>

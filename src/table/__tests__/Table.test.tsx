@@ -44,12 +44,12 @@ describe('Table', () => {
     //body
     const { id } = values[0];
     const row: any = screen.getByText(id).closest('tr');
-    expect(row.innerHTML).toContain(2);
+    expect(row.innerHTML).toContain('<span>2</span>');
     //header
     const rows: any = screen.getAllByRole('row');
     const idHeader = rows[0].children[0];
     fireEvent.click(idHeader);
-    expect(row.innerHTML).toContain(1);
+    expect(row.innerHTML).toContain('<span>1</span>');
   });
 
   it('should allow to search and return 0 elements', () => {
@@ -140,15 +140,15 @@ describe('Table', () => {
     //body
     const { id } = values[0];
     const row: any = screen.getByText(id).closest('tr');
-    expect(row.innerHTML).toContain(2);
+    expect(row.innerHTML).toContain('<span>2</span>');
     //header
     const rows: any = screen.getAllByRole('row');
     const idHeader = rows[0].children[0];
     fireEvent.click(idHeader);
-    expect(row.innerHTML).toContain(1);
+    expect(row.innerHTML).toContain('<span>1</span>');
   });
 
-  it(`should not reorder the data if the customHeader specified doesn't have a match data`, () => {
+  it('should not reorder the data if the customHeader specified doesn\'t have a match data', () => {
     render(
       <Table
         dataSource={values}
@@ -164,11 +164,11 @@ describe('Table', () => {
     //body
     const { id } = values[0];
     const row: any = screen.getByText(id).closest('tr');
-    expect(row.innerHTML).toContain(2);
+    expect(row.innerHTML).toContain('<span>2</span>');
     //header
     const rows: any = screen.getAllByRole('row');
     const idHeader = rows[0].children[0];
     fireEvent.click(idHeader);
-    expect(row.innerHTML).not.toContain(1);
+    expect(row.innerHTML).not.toContain('<span>1</span>');
   });
 });

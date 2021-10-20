@@ -257,12 +257,13 @@ export const TableDemo = () => {
 
   const [populateData, setPopulatedData] = React.useState<any[]>([]);
 
-  const handleSelect = row => {
+  //@ts-ignore
+  const handleSelect = (row) => {
     alert(row);
   };
   const handleCellClick = (evt: any, value: any) => {
     if (evt.target.name === 'delete') {
-      setData(data.filter(v => v.id !== value.id));
+      setData(data.filter((v) => v.id !== value.id));
     } else if (evt.target.name === 'edit') {
       alert(`Values: ${value}`);
     }

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { MultiUpload } from 'dcx-react-library';
 
 export const MultiUploadDemo = () => {
+  //@ts-ignore
   const onChangeHandler: (file: File | null) => void = (file: File) => {
     if (file) {
       const date = new Date(file.lastModified).toLocaleDateString('en-us');

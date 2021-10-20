@@ -18,28 +18,20 @@ export const CopyToClipboardDemo = () => {
           id="input-tag"
           value={value}
           ref={inputRef}
-          onChange={evt => setValue(evt.currentTarget.value)}
+          onChange={(evt) => setValue(evt.currentTarget.value)}
         />
         <div>
           <CopyToClipboard
             aria-label="Copy to Clipboard"
             ref={inputRef}
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
           />
           <CopyToClipboard
-            ref={inputRef}
-            onCopy={value => {
-              alert(value);
-            }}
-          >
-            Copy
-          </CopyToClipboard>
-          <CopyToClipboard
             aria-label="Copy to Clipboard"
             ref={inputRef}
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
             icon={<FontAwesomeIcon icon={faCopy} />}
@@ -50,28 +42,20 @@ export const CopyToClipboardDemo = () => {
           id="forminput-tag"
           value={valueArea}
           ref={textAreaRef}
-          onChange={evt => setValueArea(evt.currentTarget.value)}
+          onChange={(evt) => setValueArea(evt.currentTarget.value)}
         />
         <div>
           <CopyToClipboard
             aria-label="Copy to Clipboard"
             ref={textAreaRef}
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
           />
           <CopyToClipboard
-            ref={textAreaRef}
-            onCopy={value => {
-              alert(value);
-            }}
-          >
-            Copy
-          </CopyToClipboard>
-          <CopyToClipboard
             aria-label="Copy to Clipboard"
             ref={textAreaRef}
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
             icon={<FontAwesomeIcon icon={faCopy} />}
@@ -85,22 +69,14 @@ export const CopyToClipboardDemo = () => {
           <CopyToClipboard
             aria-label="Copy to Clipboard"
             ref={linkRef}
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
           />
           <CopyToClipboard
-            ref={linkRef}
-            onCopy={value => {
-              alert(value);
-            }}
-          >
-            Copy
-          </CopyToClipboard>
-          <CopyToClipboard
             aria-label="Copy to Clipboard"
             ref={linkRef}
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
             icon={<FontAwesomeIcon icon={faCopy} />}
@@ -112,22 +88,14 @@ export const CopyToClipboardDemo = () => {
           <CopyToClipboard
             aria-label="Copy to Clipboard"
             ref={divRef}
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
           />
           <CopyToClipboard
-            ref={divRef}
-            onCopy={value => {
-              alert(value);
-            }}
-          >
-            Copy
-          </CopyToClipboard>
-          <CopyToClipboard
             aria-label="Copy to Clipboard"
             ref={divRef}
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
             icon={<FontAwesomeIcon icon={faCopy} />}
@@ -143,23 +111,14 @@ export const CopyToClipboardDemo = () => {
           <CopyToClipboard
             aria-label="Copy to Clipboard"
             text="http://www.google.com"
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
           />
           <CopyToClipboard
-            text="http://www.google.com"
-            onCopy={value => {
-              alert(value);
-            }}
-          >
-            Copy
-          </CopyToClipboard>
-
-          <CopyToClipboard
             aria-label="Copy to Clipboard"
             text="http://www.google.com"
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
             icon={<FontAwesomeIcon icon={faCopy} />}
@@ -171,23 +130,14 @@ export const CopyToClipboardDemo = () => {
           <CopyToClipboard
             aria-label="Copy to Clipboard"
             text="this is the text"
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
           />
           <CopyToClipboard
-            text="this is the text"
-            onCopy={value => {
-              alert(value);
-            }}
-          >
-            Copy
-          </CopyToClipboard>
-
-          <CopyToClipboard
             aria-label="Copy to Clipboard"
             text="this is the text"
-            onCopy={value => {
+            onCopy={(value) => {
               alert(value);
             }}
             icon={<FontAwesomeIcon icon={faCopy} />}

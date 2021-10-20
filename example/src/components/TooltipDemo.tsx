@@ -15,6 +15,7 @@ export const TooltipDemo = () => {
           className="tooltipClass"
           background="red"
           color="white"
+          delay={0}
         >
           <b> Testing Bottom</b>
         </ToolTip>

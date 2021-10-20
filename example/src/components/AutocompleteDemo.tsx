@@ -60,6 +60,7 @@ export const AutocompleteDemo = () => {
       selected: {selected}
       <h1>Server fetch</h1>
       <Autocomplete
+        //@ts-ignore
         options={serverOptions}
         minCharsBeforeSearch={1}
         debounceMs={1000}

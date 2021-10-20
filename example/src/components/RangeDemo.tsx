@@ -5,7 +5,7 @@ import { faVolumeDown, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import './range.scss';
 
 export const RangeDemo = () => {
-  const [displayValue, setDisplayValue] = React.useState('');
+  const [displayValue, setDisplayValue] = React.useState<any>('');
 
   return (
     <>

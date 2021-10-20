@@ -6,7 +6,7 @@ export const FormRadioDemo = () => {
   const handleChange: (
     event: React.ChangeEvent<HTMLInputElement>,
     conditionalInput?: string
-  ) => void = event => {
+  ) => void = (event) => {
     setSelected(event.currentTarget.value);
   };
 
@@ -14,6 +14,7 @@ export const FormRadioDemo = () => {
     'single-conditional-3'
   );
   const [groupSelected, setGroupSelected] = React.useState<string>('radio-1');
+  //@ts-ignore
   const handleConditionalChange: (
     event: React.ChangeEvent<HTMLInputElement>,
     conditionalInput?: string
@@ -31,7 +32,7 @@ export const FormRadioDemo = () => {
 
     setConditionalSelected(event.currentTarget.value);
   };
-
+  //@ts-ignore
   const handleGroupConditionalChange: (
     event: React.ChangeEvent<HTMLInputElement>,
     conditionalInput?: string
@@ -79,6 +80,7 @@ export const FormRadioDemo = () => {
         selected={selected === 'single-1'}
         label="Single Radio 1 label text"
         name="group1"
+        //@ts-ignore
         onChange={handleChange}
       />
       <FormRadio
@@ -87,6 +89,7 @@ export const FormRadioDemo = () => {
         selected={selected === 'single-2'}
         label="Single Radio 2 label text"
         name="group1"
+        //@ts-ignore
         onChange={handleChange}
       />
       <FormRadio
@@ -95,6 +98,7 @@ export const FormRadioDemo = () => {
         selected={selected === 'single-3'}
         label="Single Radio 2 label text"
         name="group1"
+        //@ts-ignore
         onChange={handleChange}
       />
       <br />
@@ -106,6 +110,7 @@ export const FormRadioDemo = () => {
         selected={conditionalSelected === 'single-conditional-1'}
         label="Single Radio 1 label text"
         name="group2"
+        //@ts-ignore
         onChange={handleConditionalChange}
         conditional={{
           inputId: 'single-input-1',
@@ -121,6 +126,7 @@ export const FormRadioDemo = () => {
         selected={conditionalSelected === 'single-conditional-2'}
         label="Single Radio 2 label text"
         name="group2"
+        //@ts-ignore
         onChange={handleConditionalChange}
         conditional={{
           inputId: 'single-input-2',
@@ -136,6 +142,7 @@ export const FormRadioDemo = () => {
         selected={conditionalSelected === 'single-conditional-3'}
         label="Single Radio 3 label text"
         name="group2"
+        //@ts-ignore
         onChange={handleConditionalChange}
         conditional={{
           inputId: 'single-input-3',
@@ -199,6 +206,7 @@ export const FormRadioDemo = () => {
         hint={{
           text: 'This is some hint text',
         }}
+        //@ts-ignore
         onChange={handleGroupConditionalChange}
       />
       <br />

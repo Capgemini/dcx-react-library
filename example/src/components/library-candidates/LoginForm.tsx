@@ -25,7 +25,7 @@ enum LOGIN_ACTIONS {
   SET_DISPLAY_USERNAME_ERROR = 'setDisplayUsernameError',
   SET_DISPLAY_PASSWORD_ERROR = 'setDisplayPasswordError',
 }
-
+//@ts-ignore
 function reducer(state, action) {
   switch (action.type) {
     case LOGIN_ACTIONS.UPDATE_USERNAME:
@@ -156,12 +156,14 @@ export const LoginForm = ({
   } = buttonProps;
 
   const [state, dispatch] = React.useReducer(reducer, initialState);
-
-  const handleInputChange = event => {
+  //@ts-ignore
+  const handleInputChange = (event) => {
     const { name, value } = event.currentTarget;
+    //@ts-ignore
     dispatch({ type: LOGIN_ACTIONS[`UPDATE_${name.toUpperCase()}`], value });
   };
 
+  //@ts-ignore
   const handleUserNameValidity = (valid, isErrorMessageVisible) => {
     dispatch({ type: LOGIN_ACTIONS.SET_ISUSERNAME_VALID, value: valid });
     setUsernameErrorState(isErrorMessageVisible);
@@ -170,7 +172,7 @@ export const LoginForm = ({
       password: state.validation.passwordValid,
     });
   };
-
+  //@ts-ignore
   const handlePasswordValidity = (valid, isErrorMessageVisible) => {
     dispatch({ type: LOGIN_ACTIONS.SET_ISPASSWORD_VALID, value: valid });
     setPasswordErrorState(isErrorMessageVisible);
@@ -183,10 +185,11 @@ export const LoginForm = ({
   const onSubmit = () => {
     if (submitEnabledByDefault) {
       let errorCount = 0;
-      ['username', 'password'].forEach(field => {
+      ['username', 'password'].forEach((field) => {
         if (!state.validation[`${field}valid`]) {
           errorCount++;
           dispatch({
+            //@ts-ignore
             type: LOGIN_ACTIONS[`SET_DISPLAY_${field.toUpperCase()}_ERROR`],
             value: true,
           });
@@ -202,8 +205,8 @@ export const LoginForm = ({
       password: state.password,
     });
   };
-
-  const checkFormValidity = formValidObj => {
+  //@ts-ignore
+  const checkFormValidity = (formValidObj) => {
     const { username, password } = formValidObj;
     dispatch({
       type: LOGIN_ACTIONS.SET_ISFORM_VALID,
@@ -240,6 +243,7 @@ export const LoginForm = ({
             className: 'help-block',
           }}
           validation={usernameValidation}
+          //@ts-ignore
           errorPosition="bottom"
         />
       </div>
@@ -268,6 +272,7 @@ export const LoginForm = ({
             className: 'help-block',
           }}
           validation={passwordValidation}
+          //@ts-ignore
           errorPosition="bottom"
         />
       </div>
@@ -287,6 +292,7 @@ export const LoginForm = ({
         className={['btn btn-primary', isLoading ? 'btn-loading' : ''].join(
           ' '
         )}
+        //@ts-ignore
         type="submit"
       />
     </form>

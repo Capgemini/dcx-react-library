@@ -6,8 +6,8 @@ import './tabGroup.scss';
 
 export const TabGroupDemo = () => {
   const tabRef = useRef();
-
-  const handleSelectedTab = id => {
+  //@ts-ignore
+  const handleSelectedTab = (id) => {
     document.getElementsByTagName(
       'label'
     )[0].innerText = `The selected tab is: ${id}`;
@@ -28,22 +28,32 @@ export const TabGroupDemo = () => {
         ref={tabRef}
       >
         <Tab label="Tab 1" eventKey="tab-pane-1-id">
-          This is content for <em>tab 1</em>
+          <>
+            This is content for <em>tab 1</em>
+          </>
         </Tab>
         <Tab label="Tab 2" eventKey="tab-pane-2-id">
-          This is content for <em>tab 2</em>
+          <>
+            This is content for <em>tab 2</em>
+          </>
         </Tab>
         <Tab label="Tab 3" eventKey="tab-pane-3-id">
-          This is content for <em>tab 3</em>
+          <>
+            This is content for <em>tab 3</em>
+          </>
         </Tab>
         <Tab label="Tab 4" eventKey="tab-pane-4-id" disabled={true}>
-          This is content for <em>tab 4</em>
+          <>
+            This is content for <em>tab 4</em>
+          </>
         </Tab>
         <Tab
           label={<FontAwesomeIcon icon={faMoneyBillWave} />}
           eventKey="tab-pane-5-id"
         >
-          This is content for <em>tab 5</em>
+          <>
+            This is content for <em>tab 5</em>
+          </>
         </Tab>
       </TabGroup>
       <br />

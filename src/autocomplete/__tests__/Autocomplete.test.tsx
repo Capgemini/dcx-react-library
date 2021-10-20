@@ -118,7 +118,7 @@ describe('FormInput', () => {
     expect(input.value).toBe('daniele');
   });
 
-  it(`should allow to select the first item even if it's uppercase`, async () => {
+  it('should allow to select the first item even if it\'s uppercase', async () => {
     render(<Autocomplete options={['daniele', 'destiny', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');

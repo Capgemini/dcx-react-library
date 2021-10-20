@@ -2,7 +2,8 @@ import React from 'react';
 import { FormSelect } from 'dcx-react-library';
 
 export const FormSelectDemo = () => {
-  const handleSelectedValue = evt => {
+  //@ts-ignore
+  const handleSelectedValue = (evt) => {
     document.getElementsByTagName(
       'label'
     )[0].innerText = `The selected option is: ${evt.target.value}`;

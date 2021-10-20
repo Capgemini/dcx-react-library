@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+//@ts-ignore
 import { MultiSelect, MultiSelectOption } from 'dcx-react-library';
 
 const multiSelectOptions: MultiSelectOption[] = [

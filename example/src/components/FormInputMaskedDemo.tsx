@@ -3,7 +3,8 @@ import { FormInputMasked } from 'dcx-react-library';
 export const FormInputMaskedDemo = () => {
   const [value, setValue] = React.useState('');
   const [typedValue, setTypedValue] = React.useState('');
-  const handleChange = evt => {
+  //@ts-ignore
+  const handleChange = (evt) => {
     setTypedValue(evt.unmaskedValue);
     setValue(evt.value);
   };

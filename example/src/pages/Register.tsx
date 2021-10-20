@@ -12,6 +12,8 @@ import {
   FormGroup,
   Autocomplete,
   FormDate,
+  ErrorPosition,
+  BUTTON_TYPE,
 } from 'dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -55,7 +57,7 @@ enum LOGIN_ACTIONS {
   SET_ISPASSWORD_VALID = 'setPasswordValid',
   SET_DISPLAY_PASSWORD_ERROR = 'setDisplayPasswordError',
 }
-
+//@ts-ignore
 function reducer(state, action) {
   switch (action.type) {
     case LOGIN_ACTIONS.UPDATE_USERNAME:
@@ -165,12 +167,12 @@ export const Register = () => {
     state.terms,
     state.language,
   ]);
-
+  //@ts-ignore
   const handleUserNameValidity = (valid, isErrorMessageVisible) => {
     dispatch({ type: LOGIN_ACTIONS.SET_ISUSERNAME_VALID, value: valid });
     setUsernameErrorState(isErrorMessageVisible);
   };
-
+  //@ts-ignore
   const handlePasswordValidity = (valid, isErrorMessageVisible) => {
     dispatch({ type: LOGIN_ACTIONS.SET_ISPASSWORD_VALID, value: valid });
     setPasswordErrorState(isErrorMessageVisible);
@@ -190,7 +192,7 @@ export const Register = () => {
       'heardAbout',
       'terms',
       'language',
-    ].filter(name => state[name] === '' || !state[name]);
+    ].filter((name) => state[name] === '' || !state[name]);
     dispatch({
       type: LOGIN_ACTIONS.SET_ISFORM_VALID,
       value: fieldNames.length === 0,
@@ -216,7 +218,7 @@ export const Register = () => {
             name="username"
             type="text"
             value={state.username}
-            onChange={evt =>
+            onChange={(evt) =>
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_USERNAME,
                 value: evt.currentTarget.value,
@@ -233,7 +235,7 @@ export const Register = () => {
               className: 'help-block',
             }}
             validation={usernameValidation}
-            errorPosition="bottom"
+            errorPosition={ErrorPosition.BOTTOM}
           />
         </div>
 
@@ -249,7 +251,7 @@ export const Register = () => {
             name="password"
             type={!passwordInputType ? 'password' : 'text'}
             value={state.password}
-            onChange={evt =>
+            onChange={(evt) =>
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_PASSWORD,
                 value: evt.currentTarget.value,
@@ -266,7 +268,7 @@ export const Register = () => {
               className: 'help-block',
             }}
             validation={passwordValidation}
-            errorPosition="bottom"
+            errorPosition={ErrorPosition.BOTTOM}
             suffix={
               <div
                 onClick={updatePasswordInput}
@@ -335,9 +337,10 @@ export const Register = () => {
             }}
             name="radio-name"
             selected={state.gender === 'male'}
-            onChange={evt => {
+            onChange={(evt) => {
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_GENDER,
+                //@ts-ignore
                 value: evt.currentTarget.value,
               });
             }}
@@ -356,9 +359,10 @@ export const Register = () => {
             }}
             name="radio-name"
             selected={state.gender === 'female'}
-            onChange={evt => {
+            onChange={(evt) => {
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_GENDER,
+                //@ts-ignore
                 value: evt.currentTarget.value,
               });
             }}
@@ -377,9 +381,10 @@ export const Register = () => {
             }}
             name="radio-name"
             selected={state.gender === 'other'}
-            onChange={evt => {
+            onChange={(evt) => {
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_GENDER,
+                //@ts-ignore
                 value: evt.currentTarget.value,
               });
             }}
@@ -408,7 +413,7 @@ export const Register = () => {
               className: 'form-control',
               placeholder: 'Enter your country',
             }}
-            onSelected={value => {
+            onSelected={(value) => {
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_COUNTRY,
                 value,
@@ -422,16 +427,13 @@ export const Register = () => {
           <FormSelect
             name="country-select"
             value={state.language}
-            selectProps={{
-              className: 'form-control',
-            }}
             options={[
               { label: 'Please select', value: '' },
               { label: 'English', value: 'en_gb' },
               { label: 'German', value: 'de_de' },
               { label: 'French', value: 'fr_fr' },
             ]}
-            onChange={evt => {
+            onChange={(evt) => {
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_LANGUAGE,
                 value: evt.currentTarget.value,
@@ -445,9 +447,8 @@ export const Register = () => {
             Would you want to use the light or dark theme
           </Label>
           <Toggle
-            name="theme"
             checked={state.theme}
-            onChange={value => {
+            onChange={(value) => {
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_THEME,
                 value,
@@ -455,7 +456,7 @@ export const Register = () => {
             }}
             onColor="#369af1"
             offColor="gray"
-            borderRadius={20}
+            borderRadius="20"
           />
         </div>
 
@@ -477,7 +478,8 @@ export const Register = () => {
                 label: 'Online',
                 value: 'online',
                 id: 'heard-about',
-                onChange: evt => {
+                //@ts-ignore
+                onChange: (evt) => {
                   dispatch({
                     type: LOGIN_ACTIONS.UPDATE_HEARD_ABOUT,
                     value: evt.currentTarget.value,
@@ -488,7 +490,8 @@ export const Register = () => {
                 label: 'Magazine',
                 value: 'magazine',
                 id: 'heard-about-2',
-                onChange: evt => {
+                //@ts-ignore
+                onChange: (evt) => {
                   dispatch({
                     type: LOGIN_ACTIONS.UPDATE_HEARD_ABOUT,
                     value: evt.currentTarget.value,
@@ -499,7 +502,8 @@ export const Register = () => {
                 label: 'Radio',
                 value: 'radio',
                 id: 'heard-about-3',
-                onChange: evt => {
+                //@ts-ignore
+                onChange: (evt) => {
                   dispatch({
                     type: LOGIN_ACTIONS.UPDATE_HEARD_ABOUT,
                     value: evt.currentTarget.value,
@@ -520,8 +524,6 @@ export const Register = () => {
             legend={{
               text: 'How did you hear about us?',
               className: 'legend-class',
-              isHeading: true,
-              headingClasses: 'heading-class',
             }}
           />
         </div>
@@ -530,8 +532,9 @@ export const Register = () => {
           <FormCheckbox
             label="By clicking this you agree to our terms and conditions"
             ariaLabel="aria-labelterms and conditions"
-            value={false}
+            value="false"
             id="checkbox-id"
+            onChange={() => {}}
             inputProps={{
               type: 'checkbox',
               name: 'checkbox-name',
@@ -566,7 +569,7 @@ export const Register = () => {
           className={['btn btn-primary', isLoading ? 'btn-loading' : ''].join(
             ' '
           )}
-          type="submit"
+          type={BUTTON_TYPE.SUBMIT}
         />
       </form>
     </div>

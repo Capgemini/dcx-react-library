@@ -17,6 +17,28 @@ const DummyCopyToClipboardRef = () => {
   );
 };
 
+const DummyCopyToClipboardRefHidden = () => {
+  const [copy, setCopy] = React.useState<string>('');
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  return (
+    <>
+      <div
+        aria-hidden="true"
+        className="table"
+        ref={inputRef}
+        style={{ display: 'none' }}
+      >
+        helloWorld
+      </div>
+      <CopyToClipboard
+        ref={inputRef}
+        onCopy={(value: string) => setCopy(value)}
+      />
+      <div data-testid="copied">{copy}</div>
+    </>
+  );
+};
+
 const DummyCopyToClipboardText = () => {
   const [copy, setCopy] = React.useState('');
   return (
@@ -122,5 +144,13 @@ describe('CopyToClipboard', () => {
     fireEvent.click(button);
     const copiedValue = screen.getByTestId('copied');
     expect(copiedValue.innerHTML).toBe('this is a test ref text');
+  });
+
+  it('should copy the content of div with ref and hidden value', () => {
+    render(<DummyCopyToClipboardRefHidden />);
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+    const copiedValue = screen.getByTestId('copied');
+    expect(copiedValue.innerHTML).toBe('helloWorld');
   });
 });

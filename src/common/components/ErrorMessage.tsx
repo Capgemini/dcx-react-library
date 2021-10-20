@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorMessageProps } from '../components/commonTypes';
+import { ErrorMessageProps } from './commonTypes';
 
 export const ErrorMessage = ({
   text,

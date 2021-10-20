@@ -10,7 +10,7 @@ developers managing and developing this project.
 
 1. Clone the repo
    `git clone git@github.com:Capgemini/dcx-react-library.git`
-2. Run `yarn` in the root `dcx-react-library` folder
+2. Run `./setup.sh` in the root `dcx-react-library` folder
 3. Run `yarn` within `./example` folder
 
 Once this is done, you can modify any file locally and run `yarn start`,

@@ -3,14 +3,14 @@ import { FormCheckbox, FormGroup } from 'dcx-react-library';
 
 export const FormCheckboxDemo = () => {
   const [value, setValue] = React.useState('');
-  const [checked, setChecked] = React.useState(true);
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+  const [checked, setChecked] = React.useState<boolean>(true);
+  const handleChange = (event: any) => {
     setValue(event.currentTarget.value);
     setChecked(!checked);
   };
 
   const [formValue, setFormValue] = React.useState('');
-  const handleFormChange = event => {
+  const handleFormChange = (event: any) => {
     setFormValue(event.currentTarget.value);
   };
 
@@ -34,6 +34,7 @@ export const FormCheckboxDemo = () => {
         value={value}
         label="Checkbox 2 label text"
         onChange={handleChange}
+        //@ts-ignore
         defaultChecked={checked}
       />
       <h2 id="disabled-checkbox-tag">Disabled Checkbox</h2>
@@ -105,6 +106,7 @@ export const FormCheckboxDemo = () => {
           text: '',
           className: '',
           id: '',
+          //@ts-ignore
           visuallyHiddenText: '',
         }}
         fieldsetClasses=""
@@ -124,6 +126,7 @@ export const FormCheckboxDemo = () => {
           className: '',
           heading: {
             id: 'heading-text',
+            //@ts-ignore
             priority: '2',
             className: '',
           },
