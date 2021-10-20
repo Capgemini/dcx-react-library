@@ -20,13 +20,6 @@
     "build-storybook": "build-storybook",
     "publish-storybook": "npx chromatic --project-token c6317a751fef"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "eslint src",
-      "pre-push": "jest ./src --coverage",
-      "commit-msg": "yarn commitlint --edit"
-    }
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
