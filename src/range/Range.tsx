@@ -56,7 +56,7 @@ type RangeProps = {
 export const Range = ({
   min = 0,
   max = 100,
-  value = ((min + max) / 2),
+  value = (min + max) / 2,
   prefix,
   suffix,
   disabled = false,
