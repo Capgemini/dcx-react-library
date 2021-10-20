@@ -58,6 +58,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "chromatic": "^6.0.4",
+    "codecov": "^3.8.3",
     "commitlint": "^13.2.1",
     "eslint": "^7.13.0",
     "eslint-config-react-app": "^6.0.0",
