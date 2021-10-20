@@ -13,7 +13,7 @@
     "clean": "if exist \"./dist\" rd /s /q \"./dist\"",
     "test": "jest",
     "test:cache": "jest --no-cache",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "jest ./src --coverage",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "storybook": "start-storybook -p 6006 --no-manager-cache -s ./static",
