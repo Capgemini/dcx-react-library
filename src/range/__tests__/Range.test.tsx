@@ -17,6 +17,14 @@ describe('Range', () => {
     expect(screen.getByLabelText('input-slider')).toBeInTheDocument();
   });
 
+  it('should render a range default min and max values ', () => {
+    render(<Range />);
+    expect(screen.getByLabelText('input-slider').getAttribute('min')).toBe('0');
+    expect(screen.getByLabelText('input-slider').getAttribute('max')).toBe(
+      '100'
+    );
+  });
+
   it('should render with tooltip', () => {
     render(<Range min={0} max={100} showTooltip={true} />);
     expect(screen.getByLabelText('input-slider').className).toContain(
