@@ -18,7 +18,7 @@ type DividerProps = {
    **/
   text: string;
   /**
-   * class names to customise divider
+   * class name to customise divider
    **/
   className?: string;
   /**
