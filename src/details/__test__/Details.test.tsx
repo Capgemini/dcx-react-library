@@ -6,10 +6,31 @@ import { Table } from '../../table/Table';
 
 describe('Details', () => {
   it('should render a details component', () => {
-    render(<Details summary="my summary">my details</Details>);
+    const { container } = render(
+      <Details summary="my summary">my details</Details>
+    );
 
     expect(screen.getByText('my summary')).toBeInTheDocument();
     expect(screen.getByText('my details')).toBeInTheDocument();
+    expect(
+      container.getElementsByTagName('details').item(0)?.getAttribute('open')
+    ).toBeNull();
+  });
+
+  it('should render an opened details component', () => {
+    const { container } = render(
+      <Details summary="my summary" open>
+        my details
+      </Details>
+    );
+
+    expect(screen.getByText('my details').getAttribute('class')).toBe('open');
+    expect(
+      container.getElementsByTagName('details').item(0)?.getAttribute('open')
+    ).toBeDefined();
+    expect(
+      container.getElementsByTagName('details').item(0)?.getAttribute('open')
+    ).not.toBeNull();
   });
 
   it('should render a details component with a table', () => {

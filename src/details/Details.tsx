@@ -18,6 +18,10 @@ type DetailsProps = {
    */
   detailsTextClassName?: string;
   /**
+   * details open boolean
+   */
+  open?: boolean;
+  /**
    * detail open class
    */
   openClassName?: string;
@@ -38,25 +42,26 @@ export const Details = ({
   summary,
   detailsClassName,
   detailsTextClassName,
+  open = false,
   openClassName,
   summaryClassName,
   summaryTextClassName,
 }: DetailsProps) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(open);
 
   const handleOnChange: MouseEventHandler = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <details className={detailsClassName}>
+    <details className={detailsClassName} open={open}>
       <summary className={summaryClassName} onClick={handleOnChange}>
         <span className={summaryTextClassName}>{summary}</span>
       </summary>
       <div
         className={`${
           detailsTextClassName !== undefined ? detailsTextClassName : ''
-        } ${isOpen ? openClassName || OPEN : ''}`.trim()}
+        } ${isOpen === true ? openClassName || OPEN : ''}`.trim()}
       >
         {children}
       </div>

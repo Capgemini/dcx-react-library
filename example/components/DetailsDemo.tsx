@@ -222,6 +222,10 @@ export const DetailsDemo = () => (
   <>
     <h1>Simple Details Component</h1>
     <Details summary="summary headline">detail information to shown</Details>
+    <h1>Opened Details Component</h1>
+    <Details summary="summary headline" open>
+      Opened detail information to shown
+    </Details>
     <h1>Deails Component with a table</h1>
     <Details summary="open to view table">
       <Table

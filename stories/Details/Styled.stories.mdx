@@ -30,6 +30,29 @@ In this section the Details component is used with styling from GOV.UK. Feel fre
   </Story>
 </Canvas>
 
+### An opened basic table with GOVUK style
+
+<Canvas>
+  <Story name="styled-open-details-GovUK">
+    {() => {
+      return (
+        <Details
+          summary="Help with nationality"
+          detailsClassName="govuk-details"
+          summaryClassName="govuk-details__summary"
+          summaryTextClassName="govuk-details__summary-text"
+          detailsTextClassName="govuk-details__text"
+          open
+        >
+          We need to know your nationality so we can work out which elections
+          you’re entitled to vote in. If you cannot provide your nationality,
+          you’ll have to send copies of identity documents through the post.
+        </Details>
+      );
+    }}
+  </Story>
+</Canvas>
+
 The css styles used to style the Details Component are the following:
 
 ```css
