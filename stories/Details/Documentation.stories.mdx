@@ -1,10 +1,10 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { Details } from '../../src/details/Details';
 
-<Meta 
+<Meta
   title="DCXLibrary/Details/documentation"
   component={Details}
-    parameters={{
+  parameters={{
     viewMode: 'docs',
     previewTabs: {
       canvas: { hidden: true },
@@ -25,15 +25,16 @@ Use the Details component to make a page easier to scan when it contains informa
 An example with all the available properties is:
 
 ```jsx
- <Details
-  details="my-detail"
+<Details
   summary="my-summary"
   detailsClassName="details-class-name"
   detailsTextClassName="details-text-class-name"
   openClassName="custom-class-name"
   summaryClassName="summary-class-name"
   summaryTextClassName="summar-text-class-name"
- />
+>
+  my-detail
+</Details>
 ```
 
 # Details

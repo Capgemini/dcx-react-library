@@ -2,39 +2,56 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Details } from '../Details';
+import { Table } from '../../table/Table';
 
 describe('Details', () => {
   it('should render a details component', () => {
-    render(<Details summary="my summary" details="my details" />);
+    render(<Details summary="my summary">my details</Details>);
 
     expect(screen.getByText('my summary')).toBeInTheDocument();
     expect(screen.getByText('my details')).toBeInTheDocument();
   });
 
+  it('should render a details component with a table', () => {
+    const values = [
+      {
+        id: 1,
+        position: 1,
+        actions: <button className="btn btn-danger">Action</button>,
+      },
+    ];
+
+    render(
+      <Details summary="my summary">
+        <Table dataSource={values} />
+      </Details>
+    );
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('id');
+    expect(row[2].innerHTML).toContain('position');
+    expect(row[3].innerHTML).toContain('actions');
+  });
+
   it('should render a closed details component', () => {
-    render(<Details summary="my summary" details="my details" />);
+    render(<Details summary="my summary">my details</Details>);
 
     expect(screen.getByText('my details').getAttribute('class')).toBe('');
   });
 
   it('should render a detail component with a details class name', () => {
     const { container } = render(
-      <Details
-        summary="my summary"
-        details="my details"
-        detailsClassName="details-class-name"
-      />
+      <Details summary="my summary" detailsClassName="details-class-name">
+        my details
+      </Details>
     );
     expect(container.querySelector('.details-class-name')).not.toBeNull();
   });
 
   it('should render a details component with a summary class name', () => {
     const { container } = render(
-      <Details
-        summary="my summary"
-        details="my details"
-        summaryClassName="summary-class-name"
-      />
+      <Details summary="my summary" summaryClassName="summary-class-name">
+        my details
+      </Details>
     );
     expect(container.querySelector('.summary-class-name')).not.toBeNull();
   });
@@ -43,9 +60,10 @@ describe('Details', () => {
     const { container } = render(
       <Details
         summary="my summary"
-        details="my details"
         detailsTextClassName="details-text-class-name"
-      />
+      >
+        my details
+      </Details>
     );
     expect(container.querySelector('.details-text-class-name')).not.toBeNull();
     expect(screen.getByText('my details').getAttribute('class')).toBe(
@@ -57,9 +75,10 @@ describe('Details', () => {
     const { container } = render(
       <Details
         summary="my summary"
-        details="my details"
         detailsTextClassName="details-text-class-name"
-      />
+      >
+        my details
+      </Details>
     );
     fireEvent(
       screen.getByText('my summary'),
@@ -80,10 +99,11 @@ describe('Details', () => {
     const { container } = render(
       <Details
         summary="my summary"
-        details="my details"
         detailsTextClassName="details-text-class-name"
         openClassName="my-open-class-name"
-      />
+      >
+        my details
+      </Details>
     );
     fireEvent(
       screen.getByText('my summary'),
@@ -104,9 +124,10 @@ describe('Details', () => {
     const { container } = render(
       <Details
         summary="my summary"
-        details="my details"
         detailsTextClassName="details-text-class-name"
-      />
+      >
+        my details
+      </Details>
     );
     fireEvent(
       screen.getByText('my details'),

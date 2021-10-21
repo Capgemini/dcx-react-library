@@ -2,9 +2,9 @@ import React, { MouseEventHandler, useState } from 'react';
 
 type DetailsProps = {
   /**
-   * details text
+   * details
    */
-  details: string;
+  children: JSX.Element | string;
   /**
    * summary text
    */
@@ -34,7 +34,7 @@ type DetailsProps = {
 const OPEN: string = 'open';
 
 export const Details = ({
-  details,
+  children,
   summary,
   detailsClassName,
   detailsTextClassName,
@@ -58,7 +58,7 @@ export const Details = ({
           detailsTextClassName !== undefined ? detailsTextClassName : ''
         } ${isOpen ? openClassName || OPEN : ''}`.trim()}
       >
-        {details}
+        {children}
       </div>
     </details>
   );

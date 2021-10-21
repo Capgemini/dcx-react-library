@@ -5,10 +5,7 @@ import { Details } from '../../src/details/Details';
 const DetailsDemo = `
   function DetailsDemo() {
     return (
-      <Details
-        details="some details"
-        summary="headline summary"
-      />
+      <Details summary="headline summary">some details</Details>
     )
   }
 `.trim();
