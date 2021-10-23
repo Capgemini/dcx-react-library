@@ -21,6 +21,7 @@ import {
   TableDemo,
   TooltipDemo,
   RangeDemo,
+  DetailsDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -50,6 +51,7 @@ const App = () => (
         <Route path="/copyToClipboard" component={CopyToClipboardDemo} />
         <Route path="/table" component={TableDemo} />
         <Route path="/tooltipDemo" component={TooltipDemo} />
+        <Route path="/details" component={DetailsDemo} />
       </Switch>
     </BrowserRouter>
   </div>

@@ -7,6 +7,7 @@
 - [table with custom rows](https://github.com/Capgemini/dcx-react-library/issues/221)
 - [range](https://github.com/Capgemini/dcx-react-library/issues/198)
 - [microbuild engine](https://github.com/Capgemini/dcx-react-library/issues/240)
+- [details](https://github.com/Capgemini/dcx-react-library/issues/235)
 
 ## 0.2.4 (06/10/21)
 
