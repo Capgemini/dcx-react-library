@@ -81,5 +81,29 @@ Thanks goes to these wonderful people
         <sub><b>Nikki Algar</b></sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/nikusharmadcx">
+        <img src="https://avatars.githubusercontent.com/u/85119492?v=4" width="100px;" alt="niku-sharma"/>
+        <br />
+        <sub><b>Niku Sharma</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/CanerShefik">
+        <img src="https://avatars.githubusercontent.com/u/24546769?v=4" width="100px;" alt="caner-shefik"/>
+        <br />
+        <sub><b>Caner Shefik</b></sub>
+      </a>
+    </td>
   </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/ClaudioRicciCG">
+        <img src="https://avatars.githubusercontent.com/u/77390776?v=4" width="100px;" alt="claudio-ricci"/>
+        <br />
+        <sub><b>Claudio Ricci</b></sub>
+      </a>
+    </td>
+  </tr>
+
 </table>
