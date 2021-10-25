@@ -320,13 +320,13 @@ describe('MultiSelect', () => {
       },
     ];
 
-    it('should render a combobox with 3 options', async () => {
+    it('should render a combobox with 3 options', () => {
       render(<MultiSelect selectOptions={options} />);
 
       jest.useFakeTimers('modern');
       const input = screen.getByRole('textbox');
 
-      await act(() => userEvent.type(input, 'o'));
+      act(() => userEvent.type(input, 'o'));
       act(() => {
         jest.runOnlyPendingTimers();
       });
@@ -339,7 +339,7 @@ describe('MultiSelect', () => {
       ).toBe(3);
     });
 
-    it('should render a combobox with 1 options', async () => {
+    it('should render a combobox with 1 options', () => {
       render(
         <MultiSelect
           selectOptions={[
@@ -357,7 +357,7 @@ describe('MultiSelect', () => {
       jest.useFakeTimers('modern');
       const input = screen.getByRole('textbox');
 
-      await act(() => userEvent.type(input, 'u'));
+      act(() => userEvent.type(input, 'u'));
       act(() => {
         jest.runAllTimers();
       });
@@ -370,7 +370,7 @@ describe('MultiSelect', () => {
       ).toBe(1);
     });
 
-    it('should add a selected option to the selected list', async () => {
+    it('should add a selected option to the selected list', () => {
       const onSelectedHandler = jest.fn();
 
       render(
@@ -380,7 +380,7 @@ describe('MultiSelect', () => {
       const input = screen.getByRole('textbox');
 
       jest.useFakeTimers('modern');
-      await act(() => userEvent.type(input, 'o'));
+      act(() => userEvent.type(input, 'o'));
       act(() => {
         jest.runAllTimers();
       });
@@ -401,13 +401,13 @@ describe('MultiSelect', () => {
       ).toBe(3);
     });
 
-    it('should not add a selected option to the selected list', async () => {
+    it('should not add a selected option to the selected list', () => {
       render(<MultiSelect selectOptions={options} />);
 
       const input = screen.getByRole('textbox');
 
       jest.useFakeTimers('modern');
-      await act(() => userEvent.type(input, 'o'));
+      act(() => userEvent.type(input, 'o'));
       act(() => {
         jest.runAllTimers();
       });
@@ -428,7 +428,7 @@ describe('MultiSelect', () => {
       ).toBe(2);
     });
 
-    it('should not call on selected', async () => {
+    it('should not call on selected', () => {
       const onSelectedHandler = jest.fn();
 
       render(<MultiSelect selectOptions={options} />);
@@ -436,7 +436,7 @@ describe('MultiSelect', () => {
       const input = screen.getByRole('textbox');
 
       jest.useFakeTimers('modern');
-      await act(() => userEvent.type(input, 'o'));
+      act(() => userEvent.type(input, 'o'));
       act(() => {
         jest.runAllTimers();
       });

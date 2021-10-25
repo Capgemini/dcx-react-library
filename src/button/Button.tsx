@@ -6,7 +6,6 @@ export enum BUTTON_TYPE {
   SUBMIT = 'submit',
   RESET = 'reset',
 }
-
 type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   /**
    * handler for the click event

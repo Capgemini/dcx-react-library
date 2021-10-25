@@ -18,7 +18,7 @@ type DividerProps = {
    **/
   text: string;
   /**
-   * class names to customise divider
+   * class name to customise divider
    **/
   className?: string;
   /**
@@ -167,7 +167,7 @@ export const FormGroup = ({
 
   const isSelected = (item: SelectionItem) =>
     Object.keys(selection).some(
-      key => key === item.id && selection[key] === true
+      (key) => key === item.id && selection[key] === true
     );
 
   const formGroupItems = items.map((item: SelectionItem, index: number) =>

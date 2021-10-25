@@ -170,8 +170,8 @@ export const Autocomplete = ({
 
   const delayResult = React.useMemo(
     () =>
-      debounce(value => {
-        const filtered = options.filter(optionsName =>
+      debounce((value) => {
+        const filtered = options.filter((optionsName) =>
           optionsName.toLowerCase().includes(value.toLowerCase())
         );
         setActiveOption(0);
@@ -186,7 +186,7 @@ export const Autocomplete = ({
   const searchMemo = React.useMemo(
     () =>
       debounce(
-        value =>
+        (value) =>
           //@ts-ignore
           onChange(value),
         debounceMs
