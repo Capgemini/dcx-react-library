@@ -1,0 +1,23 @@
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  --left: 50%;
+}
+
+.tooltip::after {
+  content: attr(value-tooltip);
+  position: absolute;
+  top: -25px;
+  left: var(--left);
+  transform: translateX(-50%);
+  color: #fff;
+  background-color: grey;
+  padding: 3px 5px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}

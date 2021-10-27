@@ -6,6 +6,7 @@ type RowProps = {
   trClassName?: string;
   tdClassName?: string;
   rawData: any[];
+  trProps?: any;
 };
 export const Row = ({
   values,
@@ -14,6 +15,7 @@ export const Row = ({
   trClassName,
   tdClassName,
   rawData,
+  trProps,
 }: RowProps) => {
   const handleRowClick = () => {
     if (onSelect) {
@@ -42,7 +44,7 @@ export const Row = ({
     }
   };
   return (
-    <tr className={trClassName} onClick={handleRowClick}>
+    <tr className={trClassName} onClick={handleRowClick} {...trProps}>
       {values.map((v: any, key: number) => (
         <td className={tdClassName} key={key} role="row">
           <span>{checkInstance(v)}</span>

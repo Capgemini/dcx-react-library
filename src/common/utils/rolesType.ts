@@ -13,6 +13,7 @@ export const Roles = {
   presentation: 'presentation',
   progress: 'progress',
   region: 'region',
+  slider: 'slider',
   suffix: 'suffix',
   tab: 'tab',
   tablist: 'tablist',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HintProps } from '../components/commonTypes';
+import { HintProps } from './commonTypes';
 
 export const Hint = ({ text, className, id, useLabel }: HintProps) =>
   useLabel ? (

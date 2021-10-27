@@ -1,42 +1,35 @@
 {
-  "version": "0.2.4",
+  "name": "@capgeminiuk/dcx-react-library",
+  "author": "Daniele Zurico",
   "license": "MIT",
-  "main": "dist/index.js",
+  "version": "0.3.0",
+  "source": "src/index.ts",
+  "main": "dist/dcx-react-library.js",
+  "module": "dist/dcx-react-library.module.js",
+  "unpkg": "dist/dcx-react-library.umd.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "bin"
   ],
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
-    "start": "tsdx watch",
-    "test": "tsdx test --passWithNoTests",
-    "test:cache": "tsdx test --no-cache",
-    "test:coverage": "tsdx test --coverage",
-    "lint": "tsdx lint src ./example/**/*.{tsx,ts} ./example/**/*.{tsx,ts}",
-    "lint:fix": "tsdx lint src ./example/*.tsx ./example/**/*.{tsx,ts} --fix",
-    "prepare": "tsdx build && husky install",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
+    "build": "microbundle --jsx React.createElement",
+    "dev": "microbundle watch --jsx React.createElement",
+    "clean": "if exist \"./dist\" rd /s /q \"./dist\"",
+    "test": "jest",
+    "test:cache": "jest --no-cache",
+    "test:coverage": "jest ./src --coverage",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "storybook": "start-storybook -p 6006 --no-manager-cache -s ./static",
     "build-storybook": "build-storybook",
-    "publish-storybook": "npx chromatic --project-token c6317a751fef",
-    "build": "tsdx build"
+    "publish-storybook": "npx chromatic --project-token c6317a751fef"
   },
   "bin": {
     "dcx-gpc": "./bin/dcx-gen-pc.js"
   },
   "peerDependencies": {
     "react": ">=16"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint src ./example/*.{tsx,ts} ./example/**/*.{tsx,ts}",
-      "pre-push": "tsdx test --coverage",
-      "commit-msg": "yarn commitlint --edit"
-    }
   },
   "commitlint": {
     "extends": [
@@ -49,99 +42,56 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@capgeminiuk/dcx-react-library",
-  "author": "Daniele Zurico",
-  "module": "dist/dcx-react-library.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/dcx-react-libraryy.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/dcx-react-library.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "devDependencies": {
-    "@babel/core": "^7.13.1",
-    "@commitlint/cli": "^12.0.1",
-    "@commitlint/config-conventional": "^12.0.1",
-    "@rollup/plugin-json": "^4.1.0",
-    "@size-limit/preset-small-lib": "^4.9.2",
-    "@storybook/addon-a11y": "^6.2.9",
-    "@storybook/addon-controls": "^6.2.9",
-    "@storybook/addon-docs": "^6.2.9",
-    "@storybook/addon-essentials": "^6.2.9",
-    "@storybook/addon-knobs": "^6.2.9",
-    "@storybook/addon-links": "^6.2.9",
-    "@storybook/addons": "^6.2.9",
+    "@babel/core": "^7.15.8",
+    "@commitlint/config-conventional": "^13.2.0",
+    "@storybook/addon-a11y": "^6.3.12",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-controls": "^6.3.12",
+    "@storybook/addon-docs": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-knobs": "^6.3.1",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/addons": "^6.3.12",
     "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^6.2.9",
-    "@storybook/theming": "^6.2.9",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/react-hooks": "^5.0.3",
-    "@testing-library/user-event": "^12.8.1",
-    "@types/jest": "^26.0.20",
-    "@types/lodash": "^4.14.168",
-    "@types/mock-fs": "^4.13.0",
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.1",
-    "@types/styled-components": "^5.1.7",
+    "@storybook/react": "^6.3.12",
+    "@storybook/theming": "^6.3.12",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/lodash": "^4.14.175",
+    "@types/mock-fs": "^4.13.1",
+    "@types/react": "17.0.30",
+    "@types/react-dom": "17.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "camelcase": "^6.2.0",
-    "chromatic": "^5.7.1",
-    "codecov": "^3.8.1",
-    "husky": "^5.1.3",
+    "chromatic": "^6.0.4",
+    "codecov": "^3.8.3",
+    "commitlint": "^13.2.1",
+    "eslint": "^7.13.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^6.1.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.2",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.6.3",
-    "jest-css-modules": "^2.1.0",
-    "jest-environment-jsdom-sixteen": "^1.0.3",
-    "jest-util": "^26.6.2",
-    "mock-fs": "^4.13.0",
-    "postcss": "^8.2.6",
-    "postcss-loader": "^5.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-is": "^17.0.1",
-    "react-live": "^2.2.3",
-    "remove": "^0.1.5",
-    "resolve-url-loader": "^3.1.2",
-    "rollup-plugin-postcss": "^4.0.0",
-    "sass": "^1.32.8",
-    "sass-loader": "^11.0.1",
-    "size-limit": "^4.9.2",
-    "storybook-css-modules-preset": "^1.0.8",
-    "ts-jest": "^26.5.2",
-    "ts-node": "^9.1.1",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.1.0",
-    "typescript": "4.2.2"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "^.+\\.(css|less|scss)$": "identity-obj-proxy"
-    },
-    "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}",
-      "!src/**/index.{ts,tsx}",
-      "!src/typings.d.ts",
-      "!<rootDir>/node_modules/",
-      "!<rootDir>/path/to/dir/",
-      "!src/generatePresentationalComponent/createPresentationalComponent.ts"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    },
-    "coverageReporters": [
-      "text",
-      "html"
-    ]
+    "jest": "^27.3.1",
+    "lint": "^0.7.0",
+    "microbundle": "^0.12.4",
+    "mock-fs": "^5.1.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-is": "^17.0.2",
+    "react-live": "^2.3.0",
+    "resolve-url-loader": "^4.0.0",
+    "storybook-css-modules-preset": "^1.1.1",
+    "ts-jest": "^27.0.7",
+    "typescript": "4.4.4"
   },
   "dependencies": {
     "@cesium133/forgjs": "1.1.10",
@@ -149,8 +99,5 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "react-jss": "^10.6.0"
-  },
-  "contributors": [
-    "Isaac Babalola <info@isaacbabalola.co.uk> (https://www.isaacbabalola.co.uk)"
-  ]
+  }
 }

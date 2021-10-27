@@ -1,5 +1,5 @@
 import React from 'react';
-import { ConditionalInputProps } from '../components/commonTypes';
+import { ConditionalInputProps } from './commonTypes';
 
 export const Conditional = ({
   name,

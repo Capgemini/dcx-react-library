@@ -1,5 +1,5 @@
 import React from 'react';
-import { LegendProps } from '../components/commonTypes';
+import { LegendProps } from './commonTypes';
 
 const LOWEST_HEADING: number = 6;
 const HIGHEST_HEADING: number = 1;

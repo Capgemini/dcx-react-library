@@ -256,6 +256,11 @@ function TableDemo() {
           <img src="https://freesvg.org/img/1544644532.png" width="12px" />
         }
         columnsWidth={['100px']}
+        trProps={[
+          {
+            'data-testId': 'Hydrogen',
+             className: 'errorRow',
+          }]}
       />
     </div>
   );

@@ -79,11 +79,11 @@ describe('FormInput', () => {
     expect(screen.getByTestId('prefix')).toBeInTheDocument();
   });
 
-  it('should display available options', async () => {
+  it('should display available options', () => {
     render(<Autocomplete options={['daniele', 'isaac']} />);
     const input = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
-    await act(() => userEvent.type(input, 'da'));
+    act(() => userEvent.type(input, 'da'));
     act(() => {
       jest.runAllTimers();
     });
@@ -91,11 +91,11 @@ describe('FormInput', () => {
     expect(listItems[0].innerHTML).toBe('daniele');
   });
 
-  it('should not display available options', async () => {
+  it('should not display available options', () => {
     render(<Autocomplete options={['first', 'isaac']} />);
     const input = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
-    await act(() => userEvent.type(input, 'test value'));
+    act(() => userEvent.type(input, 'test value'));
     act(() => {
       jest.runAllTimers();
     });
@@ -103,11 +103,11 @@ describe('FormInput', () => {
     expect(noOptionTag.innerHTML).toBe('No Option!');
   });
 
-  it('should allow to select the first item', async () => {
+  it('should allow to select the first item', () => {
     render(<Autocomplete options={['daniele', 'destiny', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
-    await act(() => userEvent.type(input, 'd'));
+    act(() => userEvent.type(input, 'd'));
     act(() => {
       jest.runAllTimers();
     });
@@ -118,11 +118,11 @@ describe('FormInput', () => {
     expect(input.value).toBe('daniele');
   });
 
-  it(`should allow to select the first item even if it's uppercase`, async () => {
+  it("should allow to select the first item even if it's uppercase", () => {
     render(<Autocomplete options={['daniele', 'destiny', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
-    await act(() => userEvent.type(input, 'D'));
+    act(() => userEvent.type(input, 'D'));
     act(() => {
       jest.runAllTimers();
     });
@@ -133,11 +133,11 @@ describe('FormInput', () => {
     expect(input.value).toBe('daniele');
   });
 
-  it('should allow to select the first item even if the list of choices is uppercase', async () => {
+  it('should allow to select the first item even if the list of choices is uppercase', () => {
     render(<Autocomplete options={['Daniele', 'destiny', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
-    await act(() => userEvent.type(input, 'd'));
+    act(() => userEvent.type(input, 'd'));
     act(() => {
       jest.runAllTimers();
     });
@@ -148,7 +148,7 @@ describe('FormInput', () => {
     expect(input.value).toBe('Daniele');
   });
 
-  it('should call the onSelected function if the function is provided', async () => {
+  it('should call the onSelected function if the function is provided', () => {
     const handleOnSelected = jest.fn();
     render(
       <Autocomplete
@@ -158,7 +158,7 @@ describe('FormInput', () => {
     );
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
-    await act(() => userEvent.type(input, 'd'));
+    act(() => userEvent.type(input, 'd'));
     act(() => {
       jest.runAllTimers();
     });
@@ -169,7 +169,7 @@ describe('FormInput', () => {
     expect(handleOnSelected).toBeCalled();
   });
 
-  it('should highlight the selected option(s) on keyDown', async () => {
+  it('should highlight the selected option(s) on keyDown', () => {
     render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
@@ -179,7 +179,7 @@ describe('FormInput', () => {
     );
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
-    await act(() => userEvent.type(input, 'da'));
+    act(() => userEvent.type(input, 'da'));
     act(() => {
       jest.runAllTimers();
     });
@@ -188,11 +188,11 @@ describe('FormInput', () => {
     expect(input.value).toBe('darren');
   });
 
-  it('should highlight the selected option(s) on keyUp', async () => {
+  it('should highlight the selected option(s) on keyUp', () => {
     render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
-    await act(() => userEvent.type(input, 'da'));
+    act(() => userEvent.type(input, 'da'));
     act(() => {
       jest.runAllTimers();
     });
@@ -202,7 +202,7 @@ describe('FormInput', () => {
     expect(input.value).toBe('daniele');
   });
 
-  it('should higlight the first one as active if you try to keyUp', async () => {
+  it('should higlight the first one as active if you try to keyUp', () => {
     render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
@@ -211,7 +211,7 @@ describe('FormInput', () => {
     );
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
-    await act(() => userEvent.type(input, 'da'));
+    act(() => userEvent.type(input, 'da'));
     act(() => {
       jest.runAllTimers();
     });
@@ -221,7 +221,7 @@ describe('FormInput', () => {
     expect(listItems[0].className).toBe('activeClass ');
   });
 
-  it('should highlight the last one as active if you try to keyDown', async () => {
+  it('should highlight the last one as active if you try to keyDown', () => {
     render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
@@ -230,7 +230,7 @@ describe('FormInput', () => {
     );
     const input: any = screen.getByRole('textbox');
     jest.useFakeTimers('modern');
-    await act(() => userEvent.type(input, 'da'));
+    act(() => userEvent.type(input, 'da'));
     act(() => {
       jest.runAllTimers();
     });
@@ -242,7 +242,7 @@ describe('FormInput', () => {
     expect(listItems[2].className).toBe('activeClass ');
   });
 
-  it('should call the selected function after the selection', async () => {
+  it('should call the selected function after the selection', () => {
     const handleSelected = jest.fn();
     render(
       <Autocomplete
@@ -251,7 +251,7 @@ describe('FormInput', () => {
       />
     );
     const input: any = screen.getByRole('textbox');
-    await act(() => userEvent.type(input, 'da'));
+    act(() => userEvent.type(input, 'da'));
     act(() => {
       jest.runAllTimers();
     });
@@ -285,7 +285,7 @@ describe('FormInput', () => {
     expect(hintTag.className).toBe('labelClass');
   });
 
-  it('should display the results after typing 2 character', async () => {
+  it('should display the results after typing 2 character', () => {
     const { container } = render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
@@ -295,13 +295,13 @@ describe('FormInput', () => {
       />
     );
     const input: any = screen.getByRole('textbox');
-    await act(() => userEvent.type(input, 'd'));
+    act(() => userEvent.type(input, 'd'));
     act(() => {
       jest.runAllTimers();
     });
     const ulEl: any = container.querySelector('ul');
     expect(ulEl).toBeNull();
-    await act(() => userEvent.type(input, 'a'));
+    act(() => userEvent.type(input, 'a'));
     act(() => {
       jest.runAllTimers();
     });
@@ -309,18 +309,18 @@ describe('FormInput', () => {
     expect(listItems.length).toBe(2);
   });
 
-  it('should populate the list dynamically - i.e. fetch from the server', async () => {
+  it('should populate the list dynamically - i.e. fetch from the server', () => {
     render(<DummyAutoComplete />);
     jest.useFakeTimers('modern');
     const input: any = screen.getByRole('textbox');
-    await act(() => userEvent.type(input, 'p'));
+    act(() => userEvent.type(input, 'p'));
     act(() => {
       jest.runAllTimers();
     });
     const listItemsFirst: any = screen.getAllByRole('listitem');
 
     expect(listItemsFirst.length).toBe(7);
-    await act(() => userEvent.type(input, 'e'));
+    act(() => userEvent.type(input, 'e'));
     act(() => {
       jest.runAllTimers();
     });

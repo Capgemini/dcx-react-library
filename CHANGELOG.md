@@ -1,5 +1,16 @@
-## 0.2.4 (07/10/2021)
+## 0.3.0 (25/10/2021)
 
+<a name="0.3.0"></a>
+
+- [Accessibility issues fixed against all current components](https://github.com/Capgemini/dcx-react-library/issues/200)
+- [toolTip](https://github.com/Capgemini/dcx-react-library/issues/199)
+- [table with custom rows](https://github.com/Capgemini/dcx-react-library/issues/221)
+- [range](https://github.com/Capgemini/dcx-react-library/issues/198)
+- [microbuild engine](https://github.com/Capgemini/dcx-react-library/issues/240)
+- [details](https://github.com/Capgemini/dcx-react-library/issues/235)
+
+
+## 0.2.4 (07/10/2021)
 <a name="0.2.4"></a>
 
 - [Add anchor to each tab](https://github.com/Capgemini/dcx-react-library/issues/229)
@@ -16,6 +27,7 @@
 <a name="0.2.2"></a>
 
 - [select with value](https://github.com/Capgemini/dcx-react-library/issues/213)
+- [select with nullOption](https://github.com/Capgemini/dcx-react-library/issues/210)
 
 ## 0.2.1 (06/07/2021)
 
