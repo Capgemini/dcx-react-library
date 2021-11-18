@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormInput, ErrorPosition } from 'dcx-react-library';
+import { FormInput, ErrorPosition } from '@capgeminiuk/dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
 

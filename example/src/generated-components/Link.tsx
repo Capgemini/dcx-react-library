@@ -1,5 +1,8 @@
 import React from 'react';
-import { DynamicComponent, brandedComponentStyle } from 'dcx-react-library';
+import {
+  DynamicComponent,
+  brandedComponentStyle,
+} from '@capgeminiuk/dcx-react-library';
 import jsonStyle from '../component-template/link.json';
 export const Link = ({ href, text, classes, ...props }: any) => {
   const branded: any = brandedComponentStyle(jsonStyle.link);

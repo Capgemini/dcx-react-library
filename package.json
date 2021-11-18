@@ -1,16 +1,10 @@
 {
   "name": "@capgeminiuk/dcx-react-library",
-  "type": "module",
   "author": "Daniele Zurico",
   "license": "MIT",
-  "version": "0.3.1-alpha-2",
+  "version": "0.3.1",
   "source": "src/index.ts",
-  "exports": {
-    "require": "./dist/dcx-react-library.cjs",
-    "default": "./dist/dcx-react-library.modern.js"
-  },
-  "main": "dist/dcx-react-library.cjs",
-  "umd:main": "dist/dcx-react-library.umd.js",
+  "main": "dist/dcx-react-library.js",
   "module": "dist/dcx-react-library.module.js",
   "unpkg": "dist/dcx-react-library.umd.js",
   "typings": "dist/index.d.ts",
@@ -88,7 +82,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.3.1",
     "lint": "^0.7.0",
-    "microbundle": "^0.12.4",
+    "microbundle": "^0.14.2",
     "mock-fs": "^5.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",

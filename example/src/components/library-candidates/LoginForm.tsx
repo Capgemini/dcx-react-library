@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { FormInput, Button } from 'dcx-react-library';
+import { FormInput, Button } from '@capgeminiuk/dcx-react-library';
 import { Label } from '../../generated-components';
 
 const initialState = {

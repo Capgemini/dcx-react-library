@@ -1,5 +1,5 @@
 import React from 'react';
-import { Range } from 'dcx-react-library';
+import { Range } from '@capgeminiuk/dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVolumeDown, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import './range.scss';

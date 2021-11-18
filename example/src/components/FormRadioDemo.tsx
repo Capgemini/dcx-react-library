@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormRadio, FormGroup } from 'dcx-react-library';
+import { FormRadio, FormGroup } from '@capgeminiuk/dcx-react-library';
 
 export const FormRadioDemo = () => {
   const [selected, setSelected] = React.useState('single-2');

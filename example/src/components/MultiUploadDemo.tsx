@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MultiUpload } from 'dcx-react-library';
+import { MultiUpload } from '@capgeminiuk/dcx-react-library';
 
 export const MultiUploadDemo = () => {
   //@ts-ignore

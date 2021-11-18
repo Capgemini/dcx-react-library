@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormInputMasked } from 'dcx-react-library';
+import { FormInputMasked } from '@capgeminiuk/dcx-react-library';
 export const FormInputMaskedDemo = () => {
   const [value, setValue] = React.useState('');
   const [typedValue, setTypedValue] = React.useState('');

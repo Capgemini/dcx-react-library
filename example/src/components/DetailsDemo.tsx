@@ -1,5 +1,5 @@
 import React from 'react';
-import { Details, Table } from 'dcx-react-library';
+import { Details, Table } from '@capgeminiuk/dcx-react-library';
 
 interface PeriodicElement {
   id: number;

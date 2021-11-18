@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'dcx-react-library';
+import { Button } from '@capgeminiuk/dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 

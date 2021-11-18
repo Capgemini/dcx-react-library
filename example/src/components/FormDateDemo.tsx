@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormDate } from 'dcx-react-library';
+import { FormDate } from '@capgeminiuk/dcx-react-library';
 import { Label } from '../generated-components';
 import './formDate.scss';
 export const FormDateDemo = () => {

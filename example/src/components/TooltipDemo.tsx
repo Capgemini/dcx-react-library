@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToolTip } from 'dcx-react-library';
+import { ToolTip } from '@capgeminiuk/dcx-react-library';
 import './tooltip.css';
 
 export const TooltipDemo = () => {

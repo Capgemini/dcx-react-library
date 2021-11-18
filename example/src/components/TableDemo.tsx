@@ -2,7 +2,7 @@ import React from 'react';
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './table.css';
-import { Table } from 'dcx-react-library';
+import { Table } from '@capgeminiuk/dcx-react-library';
 
 interface PeriodicElement {
   id: number;

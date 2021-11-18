@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormCheckbox, FormGroup } from 'dcx-react-library';
+import { FormCheckbox, FormGroup } from '@capgeminiuk/dcx-react-library';
 
 export const FormCheckboxDemo = () => {
   const [value, setValue] = React.useState('');

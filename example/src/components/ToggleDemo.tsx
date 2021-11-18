@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toggle } from 'dcx-react-library';
+import { Toggle } from '@capgeminiuk/dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 export const ToggleDemo = () => {
@@ -9,7 +9,7 @@ export const ToggleDemo = () => {
     <div>
       <Toggle
         checked={checked}
-        onChange={e => {
+        onChange={(e) => {
           setChecked(e);
         }}
         onColor="orange"
