@@ -1,3 +1,9 @@
+## 0.3.1 (18/11/2021)
+
+<a name="0.3.1"></a>
+
+- [support for webapck 5](https://github.com/Capgemini/dcx-react-library/issues/246)
+
 ## 0.3.0 (25/10/2021)
 
 <a name="0.3.0"></a>
@@ -9,8 +15,8 @@
 - [microbuild engine](https://github.com/Capgemini/dcx-react-library/issues/240)
 - [details](https://github.com/Capgemini/dcx-react-library/issues/235)
 
-
 ## 0.2.4 (07/10/2021)
+
 <a name="0.2.4"></a>
 
 - [Add anchor to each tab](https://github.com/Capgemini/dcx-react-library/issues/229)
