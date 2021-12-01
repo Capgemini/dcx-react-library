@@ -1,6 +1,6 @@
-## 0.3.1 (18/11/2021)
+## 0.3.2 (18/11/2021)
 
-<a name="0.3.1"></a>
+<a name="0.3.2"></a>
 
 - [support for webapck 5](https://github.com/Capgemini/dcx-react-library/issues/246)
 
