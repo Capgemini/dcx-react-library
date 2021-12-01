@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Autocomplete } from 'dcx-react-library';
+import { Autocomplete } from '@capgeminiuk/dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormSelect } from 'dcx-react-library';
+import { FormSelect } from '@capgeminiuk/dcx-react-library';
 
 export const FormSelectDemo = () => {
   //@ts-ignore

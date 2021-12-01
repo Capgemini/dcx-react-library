@@ -28,7 +28,7 @@ rm -rf node_modules/
 echo "installing dependencies..."
 yarn install
 echo "linking library dependencies..."
-yarn link dcx-react-library
-yarn link react
-yarn link react-dom
+yarn link "@capgeminiuk/dcx-react-library"
+yarn link "react"
+yarn link "react-dom"
 yarn start

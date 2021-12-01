@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, TabGroup, Tab } from 'dcx-react-library';
+import { Button, TabGroup, Tab } from '@capgeminiuk/dcx-react-library';
 import './tabGroup.scss';
 
 export const TabGroupDemo = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CopyToClipboard } from 'dcx-react-library';
+import { CopyToClipboard } from '@capgeminiuk/dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 export const CopyToClipboardDemo = () => {

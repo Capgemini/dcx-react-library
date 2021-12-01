@@ -14,7 +14,7 @@ import {
   FormDate,
   ErrorPosition,
   BUTTON_TYPE,
-} from 'dcx-react-library';
+} from '@capgeminiuk/dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSpinner,
