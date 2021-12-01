@@ -2,7 +2,7 @@
   "name": "@capgeminiuk/dcx-react-library",
   "author": "Daniele Zurico",
   "license": "MIT",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "source": "src/index.ts",
   "main": "dist/dcx-react-library.js",
   "module": "dist/dcx-react-library.module.js",
