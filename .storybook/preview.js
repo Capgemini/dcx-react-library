@@ -15,7 +15,10 @@ export const parameters = {
         return order--;
       } else if (a[0].includes('table')) {
         return order--;
-      } else {
+      } else if (a[0].includes('details')) {
+        return order--;
+      }
+       else {
         return 0;
       }
     }

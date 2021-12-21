@@ -2,15 +2,14 @@
   "name": "@capgeminiuk/dcx-react-library",
   "author": "Daniele Zurico",
   "license": "MIT",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "source": "src/index.ts",
   "main": "dist/dcx-react-library.js",
   "module": "dist/dcx-react-library.module.js",
   "unpkg": "dist/dcx-react-library.umd.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "dist",
-    "bin"
+    "dist"
   ],
   "scripts": {
     "build": "microbundle --jsx React.createElement",
