@@ -25,9 +25,6 @@
     "publish-storybook": "npx chromatic --project-token c6317a751fef",
     "build": "tsdx build"
   },
-  "bin": {
-    "dcx-gpc": "./bin/dcx-gen-pc.js"
-  },
   "peerDependencies": {
     "react": ">=16"
   },
