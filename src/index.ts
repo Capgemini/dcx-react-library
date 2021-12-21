@@ -16,7 +16,4 @@ export * from './tabGroup';
 export * from './copyToClipboard';
 export * from './table';
 export * from './details';
-export * from './generatePresentationalComponent/generateComponent';
-export * from './generatePresentationalComponent/generateStyle';
 export { DynamicComponent } from './common/components/DynamicComponent';
-export { generatePresentationalComponent } from './generatePresentationalComponent/generateComponent';
