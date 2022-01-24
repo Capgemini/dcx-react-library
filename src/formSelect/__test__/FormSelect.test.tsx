@@ -6,7 +6,9 @@ import { FormSelect, FormSelectProps } from '../FormSelect';
 import { OptionProps } from '../../common/components/Option';
 
 const DummySelect = ({
-  className,
+  selectClassName,
+  labelClassName,
+  containerClassName,
   name,
   id,
   label,
@@ -14,13 +16,19 @@ const DummySelect = ({
   onChange,
   hint,
   error,
+  errorMessage,
+  errorMessageClassName,
+  errorMessageId,
+  errorMessageVisuallyHidden,
   options = [{ label: 'option1', value: 'value1' }],
   optionGroups,
   nullOption = undefined,
   value,
 }: FormSelectProps) => (
   <FormSelect
-    className={className}
+    selectClassName={selectClassName}
+    labelClassName={labelClassName}
+    containerClassName={containerClassName}
     id={id}
     name={name}
     options={options}
@@ -29,6 +37,10 @@ const DummySelect = ({
     labelProps={labelProps}
     hint={hint}
     error={error}
+    errorMessage={errorMessage}
+    errorMessageClassName={errorMessageClassName}
+    errorMessageId={errorMessageId}
+    errorMessageVisuallyHidden={errorMessageVisuallyHidden}
     optionGroups={optionGroups}
     nullOption={nullOption}
     value={value}
@@ -90,7 +102,7 @@ describe('FormSelect', () => {
   });
 
   it('should display an option element with a specific class name', () => {
-    render(<DummySelect id="myId" className="my-class-name" />);
+    render(<DummySelect id="myId" selectClassName="my-class-name" />);
 
     expect(screen.getByRole('combobox').getAttribute('class')).toBe(
       'my-class-name'
@@ -414,5 +426,77 @@ describe('FormSelect', () => {
 
     const formSelect = screen.getByRole('combobox');
     expect(formSelect).toHaveDisplayValue('Select...');
+  });
+
+  it('should allow to pass optionProps as just an array of string and set the same value for the label and value', () => {
+    const options: string[] = ['option1', 'option2', 'option3'];
+    render(<DummySelect id="myId" name="the name" options={options} />);
+    const formSelect: any = screen.getAllByRole('option');
+
+    expect(formSelect[0].value).toBe('option1');
+    expect(formSelect[0].text).toBe('option1');
+    expect(screen.getByLabelText('option1')).toBeInTheDocument();
+
+    expect(formSelect[1].value).toBe('option2');
+    expect(formSelect[1].text).toBe('option2');
+    expect(screen.getByLabelText('option2')).toBeInTheDocument();
+
+    expect(formSelect[2].value).toBe('option3');
+    expect(formSelect[2].text).toBe('option3');
+    expect(screen.getByLabelText('option3')).toBeInTheDocument();
+  });
+
+  it('should have a label with a specific classname', () => {
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        label="myLabel"
+        labelClassName="labelClass"
+        labelProps={{ 'data-testid': 'label' }}
+      />
+    );
+    const label = screen.getByTestId('label');
+    expect(label).toHaveClass('labelClass');
+  });
+
+  it('should have the label and the select in the same div container', () => {
+    const { container } = render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        containerClassName="containerClass"
+        labelProps={{ 'data-testid': 'label' }}
+      />
+    );
+    const containerClass = container.querySelector('.containerClass');
+    expect(containerClass).toBeInTheDocument();
+  });
+
+  it('should display an error', () => {
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        containerClassName="containerClass"
+        errorMessage="errorMessage"
+      />
+    );
+    const errorMessage = screen.getByText('errorMessage');
+    expect(errorMessage).toBeInTheDocument();
+  });
+
+  it('should have a container error classname if the errorMessage is passed', () => {
+    render(
+      <DummySelect
+        id="myId"
+        name="the name"
+        containerClassName="containerClass"
+        errorMessage="errorMessage"
+        errorMessageClassName="errorMessageClass"
+      />
+    );
+    const errorMessage = screen.getByText('errorMessage');
+    expect(errorMessage.className).toBe('errorMessageClass');
   });
 });
