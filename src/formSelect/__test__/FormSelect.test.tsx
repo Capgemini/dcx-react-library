@@ -175,18 +175,6 @@ describe('FormSelect', () => {
     expect(selectElement).toBeDisabled();
   });
 
-  it('should render a preselected option', () => {
-    const options: OptionProps[] = [
-      { label: 'option1', value: 'value1' },
-      { label: 'option2', value: 'value2' },
-      { label: 'option3', value: 'value3', selected: true },
-      { label: 'option4', value: 'value4' },
-    ];
-    render(<DummySelect id="myId" name="the name" options={options} />);
-    const formSelect = screen.getByRole('combobox');
-    expect(formSelect).toHaveDisplayValue('option3');
-  });
-
   it('should render options with different classNames', () => {
     const options: OptionProps[] = [
       { label: 'option1', value: 'value1', className: 'className1' },
@@ -276,49 +264,6 @@ describe('FormSelect', () => {
 
     const formSelect = screen.getByRole('combobox');
     expect(formSelect).toBeInTheDocument();
-  });
-
-  it('should render a preselected option from a group', () => {
-    render(
-      <DummySelect
-        id="myId"
-        name="the name"
-        optionGroups={[
-          {
-            label: 'group1',
-            options: [
-              { label: 'option1', value: 'value1' },
-              { label: 'option2', value: 'value2' },
-              { label: 'option3', value: 'value3', selected: true },
-            ],
-          },
-        ]}
-      />
-    );
-    const selectElement = screen.getByRole('combobox');
-    expect(selectElement).toHaveDisplayValue('option3');
-  });
-
-  it('should render a preselected option not from a group', () => {
-    render(
-      <DummySelect
-        id="myId"
-        name="the name"
-        optionGroups={[
-          {
-            label: 'group1',
-            options: [
-              { label: 'option1', value: 'value1' },
-              { label: 'option2', value: 'value2' },
-              { label: 'option3', value: 'value3', selected: true },
-            ],
-          },
-        ]}
-        options={[{ label: 'option4', value: 'value4', selected: true }]}
-      />
-    );
-    const selectElement = screen.getByRole('combobox');
-    expect(selectElement).toHaveDisplayValue('option4');
   });
 
   it('should render a number of options within a group', () => {

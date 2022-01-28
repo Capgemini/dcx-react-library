@@ -117,29 +117,17 @@ export const FormSelect = ({
   style,
   nullOption,
 }: FormSelectProps) => {
-  const sharedOptions: OptionProps[] | undefined = optionGroups
-    ? optionGroups.flatMap((group: OptionGroupProps) => [...group.options])
-    : undefined;
+  let initialValue: string | number = '';
 
-  //@ts-ignore
-  const combinedOptions: OptionProps[] | undefined = sharedOptions
-    ? [...options, ...sharedOptions]
-    : options;
-
-  //@ts-ignore
-  const preselectedValue: OptionProps | undefined = combinedOptions.find(
-    (option) => option.selected
-  );
-
-  const initialValue: string | number = value
-    ? value
-    : nullOption !== undefined
-    ? nullOption
-    : preselectedValue !== undefined
-    ? preselectedValue.value
-    : options.length && (options[0] as OptionProps).value
-    ? (options[0] as OptionProps).value
-    : '';
+  if (value !== undefined) {
+    initialValue = value;
+  } else if (nullOption !== undefined) {
+    initialValue = nullOption;
+  } else if (options.length > 0 && typeof options[0] === 'string') {
+    initialValue = options[0];
+  } else if (options.length > 0) {
+    initialValue = (options[0] as OptionProps).value;
+  }
 
   const [selectValue, setSelectValue] = useState<string | number>(initialValue);
 
@@ -195,7 +183,7 @@ export const FormSelect = ({
         onChange={handleChange}
         style={style}
       >
-        {nullOption && <Option value="" label={nullOption} selected={true} />}
+        {nullOption && <Option value="" label={nullOption} />}
         {getOptions(options)}
         {optionGroups && getOptionGroups(optionGroups)}
       </select>
