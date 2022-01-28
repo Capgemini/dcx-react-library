@@ -161,6 +161,7 @@ import { FormSelect } from '../../src/formSelect/FormSelect';
     {() => {
       return (
         <FormSelect
+          value='value3'
           label="Preselect"
           labelProps={{
             style: {
@@ -173,7 +174,7 @@ import { FormSelect } from '../../src/formSelect/FormSelect';
           options={[
             { label: 'option1', value: 'value1' },
             { label: 'option2', value: 'value2' },
-            { label: 'option3', value: 'value3', selected: true },
+            { label: 'option3', value: 'value3' },
             { label: 'option4', value: 'value4' },
           ]}
         />

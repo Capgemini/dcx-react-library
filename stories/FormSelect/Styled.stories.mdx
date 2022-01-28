@@ -14,10 +14,11 @@ In this section we're using the formSelect component providing the GovUk style p
       return (
         <div className="govuk-form-group">
           <FormSelect
+            value='updated'
             className="govuk-select"
             options={[
               { label: 'Recently published', value: 'published' },
-              { label: 'Recently updated', value: 'updated', selected: true },
+              { label: 'Recently updated', value: 'updated' },
               { label: 'Most views', value: 'views' },
               { label: 'Most comments', value: 'comments' },
             ]}

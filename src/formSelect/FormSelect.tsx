@@ -24,7 +24,7 @@ export type FormSelectProps = {
   /**
    * select options. The options can be:
    * an array of strings,
-   * an array of objects with: `label` (mandatory), `value` (mandatory), `ariaLabel`, `className`, `disabled`, `id`, `labelClassName`, `selected`
+   * an array of objects with: `label` (mandatory), `value` (mandatory), `ariaLabel`, `className`, `disabled`, `id`, `labelClassName`
    */
   options?: OptionProps[] | string[];
   /**
