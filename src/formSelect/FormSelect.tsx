@@ -73,7 +73,7 @@ export type FormSelectProps = {
   errorMessageClassName?: string;
   /**
    * for accessibility, specify the role of the select element.
-   * it provide text (mandatory) anc className (optional)
+   * it provide text (mandatory) and className (optional)
    */
   errorMessageVisuallyHidden?: VisuallyHidden;
   /**

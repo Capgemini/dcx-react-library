@@ -19,6 +19,29 @@ import { FormSelect } from '../../src/formSelect/FormSelect';
               fontWeight: 'bold',
             },
           }}
+          options={['value1', 'value2']}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Examples of Select with advanced options
+
+<Canvas>
+  <Story name="complex options">
+    {() => {
+      return (
+        <FormSelect
+          label="Basic"
+          labelProps={{
+            style: {
+              display: 'block',
+              marginBottom: '5px',
+              fontSize: '20px',
+              fontWeight: 'bold',
+            },
+          }}
           options={[
             { label: 'option1', value: 'value1' },
             { label: 'option2', value: 'value2' },
@@ -161,7 +184,7 @@ import { FormSelect } from '../../src/formSelect/FormSelect';
     {() => {
       return (
         <FormSelect
-          value='value3'
+          value="value3"
           label="Preselect"
           labelProps={{
             style: {
