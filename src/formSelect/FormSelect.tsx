@@ -131,7 +131,6 @@ export const FormSelect = ({
 
   const [selectValue, setSelectValue] = useState<string | number>(initialValue);
 
-  // this metod has been taken care of
   const getOptions = (options: OptionProps[] | string[]): JSX.Element[] =>
     options.map((item: OptionProps | string, index: number) => {
       let convertedItem: OptionProps;
