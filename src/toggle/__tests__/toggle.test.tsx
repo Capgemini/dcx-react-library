@@ -8,12 +8,35 @@ const DummyToggle = () => {
   return (
     <Toggle
       checked={checked}
-      onChange={e => {
+      onChange={(e) => {
         setChecked(e);
       }}
       onColor="orange"
       offColor="gray"
     />
+  );
+};
+
+const DummyToggleWithContainer = ({ name }: any) => {
+  const [checked, setChecked] = React.useState(false);
+  const [myLabel, setMyLabel] = React.useState('');
+  const handleChange = (checked: boolean, evt: any) => {
+    setChecked(checked);
+    setMyLabel(evt.target.name);
+  };
+  return (
+    <>
+      <Toggle
+        checked={checked}
+        onChange={handleChange}
+        onColor="orange"
+        offColor="gray"
+        inputProps={{
+          name,
+        }}
+      />
+      <label data-testid="mockLabel">{myLabel}</label>
+    </>
   );
 };
 
@@ -135,5 +158,32 @@ describe('Toggle', () => {
     );
     const labelOn: any = screen.getByTitle('off-label');
     expect(labelOn.innerHTML).toContain('off');
+  });
+
+  it('should allow to pass extra properties', () => {
+    const onChangeHandle = jest.fn();
+    render(
+      <Toggle
+        checked={false}
+        onChange={onChangeHandle}
+        onColor="orange"
+        offColor="red"
+        borderRadius="100px"
+        customOffLabel={<div>off</div>}
+        inputProps={{
+          id: 'test',
+        }}
+      />
+    );
+    const switcher: any = screen.getByRole('switch');
+    expect(switcher).toHaveAttribute('id', 'test');
+  });
+
+  it('should also passed the evt if specified', () => {
+    render(<DummyToggleWithContainer name="myToggle" />);
+    const toggle = screen.getByRole('switch');
+    fireEvent.click(toggle);
+    const label: any = screen.getByTestId('mockLabel');
+    expect(label.innerHTML).toBe('myToggle');
   });
 });
