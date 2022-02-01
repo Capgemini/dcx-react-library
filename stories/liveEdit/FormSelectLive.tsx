@@ -11,7 +11,9 @@ function FormSelectDemo() {
   }
   return (
     <FormSelect
+      id="select"
       nullOption="Select..."
+      value=""
       label="Basic"
       labelProps={{
         style: {
@@ -22,15 +24,22 @@ function FormSelectDemo() {
         },
       }}
       onChange={handleChange}
-      options={[
-        { label: 'option1', value: 'value1', ariaLabel: 'option1', id: 'id1', selected: true },
-        { label: 'option2', value: 'value2', className: 'option2', labelClassName: 'label-class' },
-        { label: 'option3', value: 'value3', disabled: true },
-      ]}
+      //If you need a more advanced control of options use the following:
+      //options={[
+      //  { 
+      //    label: 'option1', 
+      //    value: 'value1', 
+      //    ariaLabel: 'option1', 
+      //    id: 'id1' 
+      //  },
+      //]},
+      options={['option1','option2', 'option3']}
       optionGroups={[]}
-      className=""
-      id="select"
-      value=""
+      selectClassName=""
+      labelClassName=""
+      containerClassName=""
+      style={{}}
+      
       ariaLabel=""
       labelProps={{}}
       hint={{
@@ -38,16 +47,14 @@ function FormSelectDemo() {
         className: "",
         id: ""
       }}
-      error={{
+      // you can also use the compact version of "error"
+      errorMessage=""
+      errorMessageClassName=""
+      errorMessageVisuallyHidden={{
         text: "",
         className: "",
-        id: "",
-        visuallyHiddenText: {
-          text: "",
-          className: "",
-        }
       }}
-      style={{}}
+      errorMessageId=""
     />
   );
 }

@@ -1,18 +1,32 @@
 import React, { useState, ChangeEvent } from 'react';
 import { ErrorMessage, OptionGroup, Hint, Option, Roles } from '../common';
-import { ErrorMessageProps, HintProps } from '../common/components/commonTypes';
+import {
+  ErrorMessageProps,
+  HintProps,
+  VisuallyHidden,
+} from '../common/components/commonTypes';
 import { OptionProps } from '../common/components/Option';
 import { OptionGroupProps } from '../common/components/OptionGroup';
 
 export type FormSelectProps = {
   /**
-   * select class name
+   * specify a custom class name to be applied to the form-select
    */
-  className?: string;
+  selectClassName?: string;
   /**
-   * select options
+   * specify a custom class name to be applied to the label
    */
-  options?: OptionProps[];
+  labelClassName?: string;
+  /**
+   * specify a custom class name to be applied to the full container
+   */
+  containerClassName?: string;
+  /**
+   * select options. The options can be:
+   * an array of strings,
+   * an array of objects with: `label` (mandatory), `value` (mandatory), `ariaLabel`, `className`, `disabled`, `id`, `labelClassName`
+   */
+  options?: OptionProps[] | string[];
   /**
    * select groups
    */
@@ -50,6 +64,23 @@ export type FormSelectProps = {
    */
   error?: ErrorMessageProps;
   /**
+   * display an error message
+   */
+  errorMessage?: string;
+  /**
+   * specify a custom class name to be applied to the error message
+   */
+  errorMessageClassName?: string;
+  /**
+   * for accessibility, specify the role of the select element.
+   * it provide text (mandatory) and className (optional)
+   */
+  errorMessageVisuallyHidden?: VisuallyHidden;
+  /**
+   * provide an id to the error message
+   */
+  errorMessageId?: string;
+  /**
    * select style
    */
   style?: any;
@@ -65,7 +96,9 @@ export type FormSelectProps = {
 };
 
 export const FormSelect = ({
-  className,
+  selectClassName,
+  labelClassName,
+  containerClassName,
   name,
   optionGroups,
   options = [],
@@ -77,37 +110,41 @@ export const FormSelect = ({
   labelProps,
   hint,
   error,
+  errorMessage,
+  errorMessageClassName,
+  errorMessageVisuallyHidden,
+  errorMessageId,
   style,
   nullOption,
 }: FormSelectProps) => {
-  const sharedOptions: OptionProps[] | undefined = optionGroups
-    ? optionGroups.flatMap((group: OptionGroupProps) => [...group.options])
-    : undefined;
+  let initialValue: string | number = '';
 
-  const combinedOptions: OptionProps[] | undefined = sharedOptions
-    ? [...options, ...sharedOptions]
-    : options;
-
-  const preselectedValue: OptionProps | undefined = combinedOptions.find(
-    option => option.selected
-  );
-
-  const initialValue: string | number = value
-    ? value
-    : nullOption !== undefined
-    ? nullOption
-    : preselectedValue !== undefined
-    ? preselectedValue.value
-    : options.length
-    ? options[0].value
-    : '';
+  if (value !== undefined) {
+    initialValue = value;
+  } else if (nullOption !== undefined) {
+    initialValue = nullOption;
+  } else if (options.length > 0 && typeof options[0] === 'string') {
+    initialValue = options[0];
+  } else if (options.length > 0) {
+    initialValue = (options[0] as OptionProps).value;
+  }
 
   const [selectValue, setSelectValue] = useState<string | number>(initialValue);
 
-  const getOptions = (options: OptionProps[]): JSX.Element[] =>
-    options.map((item: OptionProps, index: number) => (
-      <Option key={index} {...item} />
-    ));
+  const getOptions = (options: OptionProps[] | string[]): JSX.Element[] =>
+    options.map((item: OptionProps | string, index: number) => {
+      let convertedItem: OptionProps;
+      // in case item is a string we need to convert it to an option
+      if (typeof item === 'string') {
+        convertedItem = {
+          label: item,
+          value: item,
+        };
+      } else {
+        convertedItem = { ...item };
+      }
+      return <Option key={index} {...convertedItem} />;
+    });
 
   const getOptionGroups = (optionGroups: OptionGroupProps[]): JSX.Element[] =>
     optionGroups.map((groupOption: OptionGroupProps, index: number) => (
@@ -120,27 +157,35 @@ export const FormSelect = ({
   };
 
   return (
-    <>
+    <div className={containerClassName}>
       {label && (
-        <label {...labelProps} htmlFor={id}>
+        <label {...labelProps} htmlFor={id} className={labelClassName}>
           {label}
         </label>
       )}
       {hint && <Hint {...hint} />}
       {error && <ErrorMessage {...error} />}
+      {errorMessage && (
+        <ErrorMessage
+          text={errorMessage}
+          className={errorMessageClassName}
+          visuallyHiddenText={errorMessageVisuallyHidden}
+          id={errorMessageId}
+        />
+      )}
       <select
         value={selectValue}
         name={name || 'formSelect'}
         id={id || 'formSelect'}
-        className={className}
+        className={selectClassName}
         aria-label={ariaLabel || Roles.list}
         onChange={handleChange}
         style={style}
       >
-        {nullOption && <Option value="" label={nullOption} selected={true} />}
+        {nullOption && <Option value="" label={nullOption} />}
         {getOptions(options)}
         {optionGroups && getOptionGroups(optionGroups)}
       </select>
-    </>
+    </div>
   );
 };

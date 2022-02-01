@@ -1,6 +1,6 @@
 import React from 'react';
 
-type VisuallyHidden = {
+export type VisuallyHidden = {
   /**
    * visually hidden text
    */
