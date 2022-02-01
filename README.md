@@ -12,15 +12,13 @@ dcx-react-library is **UI/UX agnostic** so you need to provide styling to match 
 
 ## Components
 
-To see the full list of components built in dcx-react-library, and how to use it, have a look on our [storybook-showcase](https://www.chromatic.com/library?appId=6069a6f47f4b9f002171f8e1) (Click on View Storybook to see the list of components)
+To see the full list of components built in dcx-react-library, and how to use it, have a look on our [storybook-showcase](https://main--6069a6f47f4b9f002171f8e1.chromatic.com)
 In Storybook, each component is presented with 4 main sections:
 
 - **documentation**: describes the list of properties available, optional and mandatory;
 - **live**: you can play directly with all the properties and see the component's behaviour;
 - **unstyled**: the bare component without any styling applied;
 - **styled**: an example (mainly based on GDS) of how to style the component and the final result.
-
-![Image of dcx-react-library showcase](https://github.com/Capgemini/dcx-react-library/blob/main/stories/img/storybook-doc.png)
 
 ## How to use it
 
@@ -32,11 +30,20 @@ Steps:
 - Import the component you need and use it. For example:
 
 ```js
-import { Button } from 'dcx-react-library';
+import { Button } from '@capgeminiuk/dcx-react-library';
 
 const App = () => {
   return <Button label="start" onClick={() => {}} />;
 };
+```
+
+## Styling
+
+We don't ship `dcx-react-library` with any included CSS. However, some stylesheet is required to use some components (for example, `toggle` and `tooltip`).
+
+```js
+/* The following line can be included in your src/index.js or App.js file */
+import '@capgeminiuk/dcx-react-library/dist/dcx-react-library.css';
 ```
 
 ## Contributing

@@ -1,8 +1,8 @@
 {
   "name": "@capgeminiuk/dcx-react-library",
-  "author": "Daniele Zurico",
+  "author": "Capgemini UK",
   "license": "MIT",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "source": "src/index.ts",
   "main": "dist/dcx-react-library.js",
   "module": "dist/dcx-react-library.module.js",
@@ -11,6 +11,21 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Capgemini/dcx-react-library.git"
+  },
+  "keywords": [
+    "react",
+    "library",
+    "agnostic",
+    "dcx",
+    "capgemini"
+  ],
+  "bugs": {
+    "url": "https://github.com/Capgemini/dcx-react-library/issues"
+  },
+  "homepage": "https://github.com/Capgemini/dcx-react-library#readme",
   "scripts": {
     "build": "microbundle --jsx React.createElement --css-modules true",
     "dev": "microbundle watch --jsx React.createElement",
