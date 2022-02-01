@@ -38,7 +38,7 @@ In this section we're using the formInput component providing the GovUk style pa
         <FormInput
           name="text0"
           type="text"
-          inputProps={{ className: 'govuk-input' }}
+          inputClassName="govuk-input"
           value={value}
           onChange={handleChange}
           suffix={
@@ -64,7 +64,7 @@ In this section we're using the formInput component providing the GovUk style pa
         <FormInput
           name="text2"
           type="text"
-          inputProps={{ className: 'govuk-input' }}
+          inputClassName="govuk-input"
           value={value}
           onChange={handleChange}
           prefix={
@@ -90,7 +90,7 @@ In this section we're using the formInput component providing the GovUk style pa
         <FormInput
           name="text2"
           type="text"
-          inputProps={{ className: 'govuk-input' }}
+          inputClassName="govuk-input"
           value={value}
           onChange={handleChange}
           suffix={
@@ -125,9 +125,7 @@ Note: to display the error message type a letter and remove it
           value={value}
           onChange={handleChange}
           isValid={handleValidity}
-          inputProps={{
-            className: 'govuk-input',
-          }}
+          inputClassName="govuk-input"
           errorProps={{
             className: 'govuk-error-message',
           }}

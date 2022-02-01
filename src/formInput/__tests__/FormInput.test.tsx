@@ -111,6 +111,22 @@ describe('FormInput', () => {
     expect(input).toBeInTheDocument();
   });
 
+  it('should display the formInput with className', () => {
+    const handleChange = jest.fn();
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="@_-bddcd6A"
+        inputClassName="myClassName"
+        onChange={handleChange}
+        prefix={<div data-testid="prefix">prefix</div>}
+      />
+    );
+    const input: any = screen.getByRole('textbox');
+    expect(input.className).toBe('myClassName');
+  });
+
   it('should display the formInput suffix content', () => {
     const handleChange = jest.fn();
     render(

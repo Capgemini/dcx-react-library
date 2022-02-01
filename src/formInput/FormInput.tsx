@@ -19,13 +19,17 @@ type FormInputProps = {
    **/
   validation?: { rule: any; message: string } | any;
   /**
-   * allow to customise the input with all the properites needed
-   **/
-  inputProps?: any;
+   * input class name
+   */
+  inputClassName?: string;
   /**
    * allow to customise the error message with all the properites needed
    **/
   errorProps?: any;
+  /**
+   * allow to customise the input with all the properites needed
+   **/
+  inputProps?: any;
   /**
    * generic parameter to pass whatever element before the input
    **/
@@ -80,6 +84,7 @@ export const FormInput = ({
   errorPosition,
   ariaLabel,
   displayError = false,
+  inputClassName,
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
 
@@ -122,6 +127,7 @@ export const FormInput = ({
           type={type}
           value={value}
           onChange={handleChange}
+          className={inputClassName}
           {...inputProps}
           aria-label={ariaLabel || name}
         />

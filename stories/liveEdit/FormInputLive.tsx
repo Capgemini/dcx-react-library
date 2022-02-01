@@ -28,6 +28,7 @@ function FormInputDemo() {
         isValid={handleValidation}
         displayError={false}
         inputProps={{}}
+        inputClassName=""
         errorProps={{}}
         validation={{
             rule: {
