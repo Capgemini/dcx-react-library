@@ -6,18 +6,23 @@ import './style.css';
 const ToggleDemo = `
 function ToggleDemo() {
   const [checked, setChecked] = React.useState(false);
+  const handleChange = (checked, evt) => {
+    setChecked(checked);
+    console.log(evt);
+  }
   return (
     <Toggle
       checked={checked}
-      onChange={e => {
-        setChecked(e);
-      }}
+      onChange={handleChange}
       onColor="green"
       offColor="gray"
       borderRadius="34px"
       disabled={false}
       customOnLabel={<></>}
       customOffLabel={<></>}
+      inputProps={{
+        id: 'test'
+      }}
     />
   );
 }
