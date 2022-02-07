@@ -48,7 +48,7 @@ type FormInputProps = {
   /**
    * function that will trigger all the time there's a change in the input
    **/
-  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
   /**
    * function that will check if is vald or not based on the validation rules
    **/
@@ -110,7 +110,7 @@ export const FormInput = ({
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setShowError(true);
     if (onValueChange) onValueChange(event);
-    onChange(event);
+    if (onChange) onChange(event);
   };
 
   const ErrorMessage = () => (
