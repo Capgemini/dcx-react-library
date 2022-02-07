@@ -174,7 +174,7 @@ describe('FormInput', () => {
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
         prefix={<div>prefix</div>}
-        suffix={<div>prefix</div>}
+        suffix={<div>suffix</div>}
       />
     );
     const input: any = screen.getByRole('textbox');

@@ -269,16 +269,17 @@ export const Register = () => {
             }}
             validation={passwordValidation}
             errorPosition={ErrorPosition.BOTTOM}
-            suffix={
-              <div
-                onClick={updatePasswordInput}
-                className="btn btn-default password-eye-btn"
-              >
+            suffix={{
+              content: (
                 <FontAwesomeIcon
                   icon={!passwordInputType ? faEye : faEyeSlash}
                 />
-              </div>
-            }
+              ),
+              properties: {
+                className: 'btn btn-default password-eye-btn',
+                onClick: updatePasswordInput,
+              },
+            }}
           />
         </div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { isEmpty } from 'lodash';
 import { useValidationOnChange, Roles } from '../common';
 
 type FormInputProps = {
@@ -19,25 +20,35 @@ type FormInputProps = {
    **/
   validation?: { rule: any; message: string } | any;
   /**
-   * allow to customise the input with all the properites needed
-   **/
-  inputProps?: any;
+   * input class name
+   */
+  inputClassName?: string;
   /**
    * allow to customise the error message with all the properites needed
    **/
   errorProps?: any;
   /**
+   * allow to customise the input with all the properites needed
+   **/
+  inputProps?: React.AllHTMLAttributes<HTMLInputElement>;
+  /**
    * generic parameter to pass whatever element before the input
    **/
-  prefix?: any;
+  prefix?: {
+    content?: JSX.Element | string;
+    properties: React.HTMLAttributes<HTMLDivElement>;
+  };
   /**
    * generic parameter to pass whatever element after the input
    **/
-  suffix?: any;
+  suffix?: {
+    content?: JSX.Element | string;
+    properties: React.HTMLAttributes<HTMLDivElement>;
+  };
   /**
    * function that will trigger all the time there's a change in the input
    **/
-  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
   /**
    * function that will check if is vald or not based on the validation rules
    **/
@@ -80,6 +91,7 @@ export const FormInput = ({
   errorPosition,
   ariaLabel,
   displayError = false,
+  inputClassName,
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
 
@@ -98,7 +110,7 @@ export const FormInput = ({
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setShowError(true);
     if (onValueChange) onValueChange(event);
-    onChange(event);
+    if (onChange) onChange(event);
   };
 
   const ErrorMessage = () => (
@@ -115,17 +127,22 @@ export const FormInput = ({
     <div>
       {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
       <div style={{ display: 'flex' }}>
-        {prefix && <div>{prefix}</div>}
+        {prefix && !isEmpty(prefix) && (
+          <div {...prefix.properties}>{prefix.content}</div>
+        )}
         <input
           style={{ width: '100%' }}
           name={name}
           type={type}
           value={value}
           onChange={handleChange}
+          className={inputClassName}
           {...inputProps}
           aria-label={ariaLabel || name}
         />
-        {suffix && <div>{suffix}</div>}
+        {suffix && !isEmpty(suffix) && (
+          <div {...suffix.properties}>{suffix.content}</div>
+        )}
       </div>
       {errorPosition && errorPosition === ErrorPosition.BOTTOM && (
         <ErrorMessage />

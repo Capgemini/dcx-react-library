@@ -40,16 +40,15 @@ export const FormInputDemo = () => {
         inputProps={{
           placeholder: 'enter your email',
         }}
-        prefix={
-          <div
-            style={{
+        prefix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
       />
       <h1>Suffix</h1>
       <FormInput
@@ -60,16 +59,15 @@ export const FormInputDemo = () => {
         inputProps={{
           placeholder: 'enter your email',
         }}
-        suffix={
-          <div
-            style={{
+        suffix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
       />
       <h1>Prefix and suffix</h1>
       <FormInput
@@ -80,26 +78,24 @@ export const FormInputDemo = () => {
         inputProps={{
           placeholder: 'enter your email',
         }}
-        prefix={
-          <div
-            style={{
+        prefix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
-        suffix={
-          <div
-            style={{
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
+        suffix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
       />
       <h1>Validation</h1>
       <FormInput
@@ -126,26 +122,24 @@ export const FormInputDemo = () => {
             'your password need to be min 8 chars 1 Uppercase, 1 Number and one special character',
         }}
         errorPosition={ErrorPosition.BOTTOM}
-        prefix={
-          <div
-            style={{
+        prefix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
-        suffix={
-          <div
-            style={{
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
+        suffix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
       />
       <div>isValid:{showValid.toString()}</div>
     </>

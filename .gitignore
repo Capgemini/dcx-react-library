@@ -7,4 +7,5 @@ dist
 coverage
 .parcel-cache
 example/.parcel-cache/*
+example/build
 storybook-static

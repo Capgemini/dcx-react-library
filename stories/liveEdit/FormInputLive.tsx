@@ -28,6 +28,7 @@ function FormInputDemo() {
         isValid={handleValidation}
         displayError={false}
         inputProps={{}}
+        inputClassName=""
         errorProps={{}}
         validation={{
             rule: {
@@ -42,8 +43,12 @@ function FormInputDemo() {
         }}
         errorMessage={{}}
         errorPosition="bottom"
-        prefix={<></>}
-        suffix={<></>}
+        prefix={{
+          content: <></>
+        }}
+        suffix={{
+          content: <></>
+        }}
     />
   )
 }

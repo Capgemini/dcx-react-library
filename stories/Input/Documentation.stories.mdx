@@ -33,6 +33,7 @@ An example with all the available properties is:
   value={value}
   onChange={handleChange}
   isValid={handleValidity}
+  inputClassName="someClassName"
   inputProps={{
     placeholder: 'enter your password',
   }}
@@ -51,26 +52,24 @@ An example with all the available properties is:
       'your password need to be min 8 chars 1 Uppercase, 1 Number and one special character',
   }}
   errorPosition="bottom"
-  prefix={
-    <div
-      style={{
+  prefix={{
+    properties: {
+      style: {
         border: '1px solid #d2d2d2',
         padding: '5px',
-      }}
-    >
-      <FontAwesomeIcon icon={faAt} />
-    </div>
-  }
-  suffix={
-    <div
-      style={{
+      },
+    },
+    content: <FontAwesomeIcon icon={faAt} />
+  }}
+  suffix={{
+    properties: {
+      style: {
         border: '1px solid #d2d2d2',
         padding: '5px',
-      }}
-    >
-      <FontAwesomeIcon icon={faAt} />
-    </div>
-  }
+      },
+    },
+    content: <FontAwesomeIcon icon={faAt} />
+  }}
 />
 ```
 

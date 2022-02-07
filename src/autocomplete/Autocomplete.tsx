@@ -319,20 +319,20 @@ export const Autocomplete = ({
           autoComplete: 'off',
           ...inputProps,
         }}
-        suffix={
-          suffix && (
+        suffix={{
+          content: (
             <button type="submit" style={unstyleBtn}>
               {suffix}
             </button>
-          )
-        }
-        prefix={
-          prefix && (
+          ),
+        }}
+        prefix={{
+          content: (
             <button type="submit" style={unstyleBtn}>
               {prefix}
             </button>
-          )
-        }
+          ),
+        }}
         {...props}
       />
     </div>

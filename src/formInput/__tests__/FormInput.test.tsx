@@ -101,7 +101,12 @@ describe('FormInput', () => {
         type="text"
         value="@_-bddcd6A"
         onChange={handleChange}
-        prefix={<div data-testid="prefix">prefix</div>}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
       />
     );
     const input: any = screen.getByRole('textbox');
@@ -111,18 +116,63 @@ describe('FormInput', () => {
     expect(input).toBeInTheDocument();
   });
 
-  it('should display the formInput suffix content', () => {
+  it('should display the formInput with className', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
         name="password"
         type="text"
-        value="test"
+        value="@_-bddcd6A"
+        inputClassName="myClassName"
         onChange={handleChange}
-        suffix={<div data-testid="suffix">suffix</div>}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
       />
     );
-    expect(screen.getByTestId('suffix')).toBeInTheDocument();
+    const input: any = screen.getByRole('textbox');
+    expect(input.className).toBe('myClassName');
+  });
+
+  it('should display the formInput prefix content', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormInput
+        name="password"
+        type="text"
+        value="test"
+        onChange={handleChange}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+      />
+    );
+    expect(container.querySelector('#prefix')).toBeInTheDocument();
+  });
+
+  it('should display the formInput suffix content', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormInput
+        name="password"
+        type="text"
+        value="test"
+        onChange={handleChange}
+        suffix={{
+          properties: {
+            id: 'suffix',
+          },
+          content: 'suffix',
+        }}
+      />
+    );
+    expect(container.querySelector('#suffix')).toBeInTheDocument();
   });
 
   it('should display the formInput error', () => {
