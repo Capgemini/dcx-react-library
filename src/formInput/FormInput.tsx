@@ -1,4 +1,5 @@
 import React from 'react';
+import { isEmpty } from 'lodash';
 import { useValidationOnChange, Roles } from '../common';
 
 type FormInputProps = {
@@ -29,15 +30,21 @@ type FormInputProps = {
   /**
    * allow to customise the input with all the properites needed
    **/
-  inputProps?: any;
+  inputProps?: React.AllHTMLAttributes<HTMLInputElement>;
   /**
    * generic parameter to pass whatever element before the input
    **/
-  prefix?: any;
+  prefix?: {
+    content?: JSX.Element | string;
+    properties: React.HTMLAttributes<HTMLDivElement>;
+  };
   /**
    * generic parameter to pass whatever element after the input
    **/
-  suffix?: any;
+  suffix?: {
+    content?: JSX.Element | string;
+    properties: React.HTMLAttributes<HTMLDivElement>;
+  };
   /**
    * function that will trigger all the time there's a change in the input
    **/
@@ -120,7 +127,9 @@ export const FormInput = ({
     <div>
       {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
       <div style={{ display: 'flex' }}>
-        {prefix && <div>{prefix}</div>}
+        {prefix && !isEmpty(prefix) && (
+          <div {...prefix.properties}>{prefix.content}</div>
+        )}
         <input
           style={{ width: '100%' }}
           name={name}
@@ -131,7 +140,9 @@ export const FormInput = ({
           {...inputProps}
           aria-label={ariaLabel || name}
         />
-        {suffix && <div>{suffix}</div>}
+        {suffix && !isEmpty(suffix) && (
+          <div {...suffix.properties}>{suffix.content}</div>
+        )}
       </div>
       {errorPosition && errorPosition === ErrorPosition.BOTTOM && (
         <ErrorMessage />

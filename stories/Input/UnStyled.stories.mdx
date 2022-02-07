@@ -40,26 +40,24 @@ import "../style.css";
                         'your password need to be min 8 chars 1 Uppercase, 1 Number and one special character',
                     }}
                     errorPosition="bottom"
-                    prefix={
-                        <div
-                        style={{
+                    prefix={{
+                        properties: {
+                          style: {
                             border: '1px solid #d2d2d2',
                             padding: '5px',
-                        }}
-                        >
-                        Pre
-                        </div>
-                    }
-                    suffix={
-                        <div
-                        style={{
+                          },
+                        },
+                        content: 'Pre'
+                    }}
+                    suffix={{
+                        properties: {
+                          style: {
                             border: '1px solid #d2d2d2',
                             padding: '5px',
-                        }}
-                        >
-                        Post
-                        </div>
-                    }
+                          },
+                        },
+                        content: 'Post'
+                    }}
                 />
             );
     }}
@@ -121,26 +119,24 @@ const handleClick = () => {
                 'your password need to be min 8 chars 1 Uppercase, 1 Number and one special character',
             }}
             errorPosition="bottom"
-            prefix={
-                <div
-                style={{
+            prefix={{
+                properties: {
+                  style: {
                     border: '1px solid #d2d2d2',
                     padding: '5px',
-                }}
-                >
-                Pre
-                </div>
-            }
-            suffix={
-                <div
-                style={{
+                  },
+                },
+                content: 'Pre'
+            }}
+            suffix={{
+                properties: {
+                  style: {
                     border: '1px solid #d2d2d2',
                     padding: '5px',
-                }}
-                >
-                Post
-                </div>
-            }
+                  },
+                },
+                content: 'Post'
+            }}
         />
         <button onClick={handleClick}>submit</button>
         </>

@@ -43,8 +43,12 @@ function FormInputDemo() {
         }}
         errorMessage={{}}
         errorPosition="bottom"
-        prefix={<></>}
-        suffix={<></>}
+        prefix={{
+          content: <></>
+        }}
+        suffix={{
+          content: <></>
+        }}
     />
   )
 }
