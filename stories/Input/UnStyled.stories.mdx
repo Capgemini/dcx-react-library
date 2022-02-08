@@ -65,6 +65,72 @@ import "../style.css";
   </Story>
 </Canvas>
 
+### An example of 'un-styled-with-label' Input
+<Canvas>
+  <Story name="un-styled-with-label">
+      {() => {
+        const [value, setValue] = React.useState('')
+        const handleChange = event => {
+            setValue(event.currentTarget.value)
+        }
+        const handleValidity = valid => {
+            console.log(valid)
+        }
+            return (
+                <FormInput
+                    name="password"
+                    type="text"
+                    value={value}
+                    label="Password"
+                    onChange={handleChange}
+                    isValid={handleValidity}
+                    inputProps={{
+                        id: 'password',
+                        placeholder: 'enter your password',
+                    }}
+                    labelProps={{
+                        htmlFor: 'password'
+                    }}
+                    errorProps={{
+                        style: {fontSize: '10px', color: 'red', fontWeight: 'bold'},
+                    }}
+                    validation={{
+                        rule: {
+                        type: 'password',
+                        minLength: 8,
+                        uppercase: 1,
+                        numbers: 1,
+                        matchesOneOf: ['@', '_', '-', '.', '!'],
+                        },
+                        message:
+                        'your password need to be min 8 chars 1 Uppercase, 1 Number and one special character',
+                    }}
+                    errorPosition="bottom"
+                    prefix={{
+                        properties: {
+                          style: {
+                            border: '1px solid #d2d2d2',
+                            padding: '5px',
+                          },
+                        },
+                        content: 'Pre'
+                    }}
+                    suffix={{
+                        properties: {
+                          style: {
+                            border: '1px solid #d2d2d2',
+                            padding: '5px',
+                          },
+                        },
+                        content: 'Post'
+                    }}
+                />
+            );
+    }}
+    />
+  </Story>
+</Canvas>
+
 ### An example of 'un-styled' Input with error triggered by a button
 You can trigger the error message without interact with the input. In the following example the button will decide to display or not the error message
 ```js

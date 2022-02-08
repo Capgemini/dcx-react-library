@@ -8,6 +8,8 @@ import '../style.css';
 
 In this section we're using the formInput component providing the GovUk style passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
 
+# Basic
+
 <Canvas>
   <Story name="basic">
     {() => {
@@ -21,6 +23,30 @@ In this section we're using the formInput component providing the GovUk style pa
           value={value}
           onChange={handleChange}
           ariaLabel="standard-input"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Label
+
+<Canvas>
+  <Story name="label">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const handleChange = event => setValue(event.currentTarget.value);
+      return (
+        <FormInput
+          name="text"
+          type="text"
+          label="User Reference (Optional)"
+          inputProps={{ id: 'user-reference', className: 'govuk-input' }}
+          labelProps={{ htmlFor: 'user-reference', className: 'govuk-label' }}
+          value={value}
+          onChange={handleChange}
+          ariaLabel="standard-input"
+          inputDivProps={{}}
         />
       );
     }}

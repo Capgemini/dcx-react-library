@@ -31,11 +31,17 @@ An example with all the available properties is:
   name="password"
   type="text"
   value={value}
+  label="password"
   onChange={handleChange}
   isValid={handleValidity}
   inputClassName="someClassName"
   inputProps={{
+    id: 'password'
     placeholder: 'enter your password',
+  }}
+  labelProps={{
+    className: 'someLabelClassName',
+    htmlFor: 'password',
   }}
   errorProps={{
     style: { fontSize: '10px', color: 'red', fontWeight: 'bold' },
@@ -70,6 +76,7 @@ An example with all the available properties is:
     },
     content: <FontAwesomeIcon icon={faAt} />
   }}
+  inputDivProps={{ style: { color: 'red'} }}
 />
 ```
 

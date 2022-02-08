@@ -175,6 +175,28 @@ describe('FormInput', () => {
     expect(container.querySelector('#suffix')).toBeInTheDocument();
   });
 
+  it('should display the formInput with a label', () => {
+    const handleChange = jest.fn();
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="test"
+        onChange={handleChange}
+        inputProps={{
+          id: 'input-id',
+          placeholder: 'enter your email',
+        }}
+        label="this is a label"
+        labelProps={{
+          className: 'label-class-name',
+          htmlFor: 'input-id',
+        }}
+      />
+    );
+    expect(screen.getByLabelText('this is a label')).toBeInTheDocument();
+  });
+
   it('should display the formInput error', () => {
     render(<DummyComponent pos={ErrorPosition.BOTTOM} />);
     const input = screen.getByRole('textbox');

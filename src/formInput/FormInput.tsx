@@ -16,6 +16,10 @@ type FormInputProps = {
    **/
   value: any;
   /**
+   * input label
+   */
+  label?: string;
+  /**
    * pass the validation rules(please refer to forgJS) and the message you want to display
    **/
   validation?: { rule: any; message: string } | any;
@@ -30,7 +34,16 @@ type FormInputProps = {
   /**
    * allow to customise the input with all the properites needed
    **/
+  inputDivProps?: React.AllHTMLAttributes<HTMLDivElement>;
+  /**
+  /**
+   * allow to customise the input with all the properites needed
+   **/
   inputProps?: React.AllHTMLAttributes<HTMLInputElement>;
+  /**
+   * allow to customise the label with all the properites needed
+   */
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
   /**
    * generic parameter to pass whatever element before the input
    **/
@@ -80,8 +93,10 @@ export const FormInput = ({
   name,
   type,
   value,
+  label,
   validation = null,
   inputProps,
+  labelProps,
   errorProps,
   prefix,
   suffix,
@@ -92,6 +107,7 @@ export const FormInput = ({
   ariaLabel,
   displayError = false,
   inputClassName,
+  inputDivProps = { style: { display: 'flex' } },
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
 
@@ -126,19 +142,19 @@ export const FormInput = ({
   return (
     <div>
       {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
-      <div style={{ display: 'flex' }}>
+      <div {...inputDivProps}>
+        {labelProps && <label {...labelProps}>{label}</label>}
         {prefix && !isEmpty(prefix) && (
           <div {...prefix.properties}>{prefix.content}</div>
         )}
         <input
-          style={{ width: '100%' }}
           name={name}
           type={type}
           value={value}
           onChange={handleChange}
           className={inputClassName}
-          {...inputProps}
           aria-label={ariaLabel || name}
+          {...inputProps}
         />
         {suffix && !isEmpty(suffix) && (
           <div {...suffix.properties}>{suffix.content}</div>

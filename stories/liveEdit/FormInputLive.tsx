@@ -24,10 +24,12 @@ function FormInputDemo() {
         name="password"
         type="text"
         value={value}
+        label="password"
         onChange={handleChange}
         isValid={handleValidation}
         displayError={false}
-        inputProps={{}}
+        inputProps={{id: "password"}}
+        labelProps={{htmlFor: 'password'}}
         inputClassName=""
         errorProps={{}}
         validation={{
