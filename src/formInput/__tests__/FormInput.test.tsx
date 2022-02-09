@@ -137,6 +137,56 @@ describe('FormInput', () => {
     expect(input.className).toBe('myClassName');
   });
 
+  it('should display the formInput with a container className', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormInput
+        name="password"
+        type="text"
+        value="@_-bddcd6A"
+        containerClassName="myClassName"
+        onChange={handleChange}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+      />
+    );
+    const inputContainer: Element | null =
+      container.querySelector('.myClassName');
+    expect(inputContainer).not.toBeNull();
+  });
+
+  it('should display the formInput with a label className', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormInput
+        name="password"
+        type="text"
+        value="@_-bddcd6A"
+        labelClassName="myClassName"
+        onChange={handleChange}
+        label="password label"
+        labelProps={{
+          htmlFor: 'password',
+        }}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+        inputProps={{
+          id: 'password',
+        }}
+      />
+    );
+
+    expect(container.querySelector('.myClassName')).not.toBeNull();
+  });
+
   it('should display the formInput prefix content', () => {
     const handleChange = jest.fn();
     const { container } = render(
@@ -173,6 +223,28 @@ describe('FormInput', () => {
       />
     );
     expect(container.querySelector('#suffix')).toBeInTheDocument();
+  });
+
+  it('should display the formInput with a label', () => {
+    const handleChange = jest.fn();
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="test"
+        onChange={handleChange}
+        inputProps={{
+          id: 'input-id',
+          placeholder: 'enter your email',
+        }}
+        label="this is a label"
+        labelProps={{
+          className: 'label-class-name',
+          htmlFor: 'input-id',
+        }}
+      />
+    );
+    expect(screen.getByLabelText('this is a label')).toBeInTheDocument();
   });
 
   it('should display the formInput error', () => {

@@ -31,6 +31,21 @@ export const FormInputDemo = () => {
           placeholder: 'enter your email',
         }}
       />
+      <h1>Label</h1>
+      <FormInput
+        name="password"
+        type="text"
+        value={value}
+        onChange={handleChange}
+        inputProps={{
+          placeholder: 'enter your email',
+          htmlFor: 'input-id',
+        }}
+        label="this is a label"
+        labelProps={{
+          htmlFor: 'input-id',
+        }}
+      />
       <h1>Prefix</h1>
       <FormInput
         name="password"
@@ -39,6 +54,30 @@ export const FormInputDemo = () => {
         onChange={handleChange}
         inputProps={{
           placeholder: 'enter your email',
+        }}
+        prefix={{
+          properties: {
+            style: {
+              border: '1px solid #d2d2d2',
+              padding: '5px',
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
+      />
+      <h1>Prefix Label</h1>
+      <FormInput
+        name="password"
+        type="text"
+        value={value}
+        onChange={handleChange}
+        inputProps={{
+          placeholder: 'enter your email',
+          id: 'input-id',
+        }}
+        label="this is a label"
+        labelProps={{
+          htmlFor: 'input-id',
         }}
         prefix={{
           properties: {
@@ -95,6 +134,38 @@ export const FormInputDemo = () => {
             },
           },
           content: <FontAwesomeIcon icon={faAt} />,
+        }}
+      />
+      <h1>Prefix and suffix with label</h1>
+      <FormInput
+        name="password"
+        type="text"
+        value={value}
+        onChange={handleChange}
+        inputProps={{
+          placeholder: 'enter your email',
+        }}
+        prefix={{
+          properties: {
+            style: {
+              border: '1px solid #d2d2d2',
+              padding: '5px',
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
+        suffix={{
+          properties: {
+            style: {
+              border: '1px solid #d2d2d2',
+              padding: '5px',
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
+        label="this is a label"
+        labelProps={{
+          htmlFor: 'input-id',
         }}
       />
       <h1>Validation</h1>

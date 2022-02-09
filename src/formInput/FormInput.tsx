@@ -1,6 +1,6 @@
 import React from 'react';
 import { isEmpty } from 'lodash';
-import { useValidationOnChange, Roles } from '../common';
+import { useValidationOnChange, Roles, Label } from '../common';
 
 type FormInputProps = {
   /**
@@ -16,6 +16,10 @@ type FormInputProps = {
    **/
   value: any;
   /**
+   * input label
+   */
+  label?: string;
+  /**
    * pass the validation rules(please refer to forgJS) and the message you want to display
    **/
   validation?: { rule: any; message: string } | any;
@@ -24,13 +28,30 @@ type FormInputProps = {
    */
   inputClassName?: string;
   /**
+   * input container class name
+   */
+  containerClassName?: string;
+  /**
+   * input label class name
+   */
+  labelClassName?: string;
+  /**
    * allow to customise the error message with all the properites needed
    **/
   errorProps?: any;
   /**
    * allow to customise the input with all the properites needed
    **/
+  inputDivProps?: React.AllHTMLAttributes<HTMLDivElement>;
+  /**
+  /**
+   * allow to customise the input with all the properites needed
+   **/
   inputProps?: React.AllHTMLAttributes<HTMLInputElement>;
+  /**
+   * allow to customise the label with all the properites needed
+   */
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
   /**
    * generic parameter to pass whatever element before the input
    **/
@@ -80,8 +101,10 @@ export const FormInput = ({
   name,
   type,
   value,
+  label,
   validation = null,
   inputProps,
+  labelProps,
   errorProps,
   prefix,
   suffix,
@@ -92,6 +115,9 @@ export const FormInput = ({
   ariaLabel,
   displayError = false,
   inputClassName,
+  containerClassName,
+  labelClassName,
+  inputDivProps = { style: { display: 'flex' } },
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
 
@@ -124,21 +150,26 @@ export const FormInput = ({
   );
 
   return (
-    <div>
+    <div className={containerClassName}>
       {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
-      <div style={{ display: 'flex' }}>
+      <div {...inputDivProps}>
+        <Label
+          label={label}
+          labelProperties={labelProps}
+          htmlFor={inputProps?.id}
+          className={labelClassName}
+        />
         {prefix && !isEmpty(prefix) && (
           <div {...prefix.properties}>{prefix.content}</div>
         )}
         <input
-          style={{ width: '100%' }}
           name={name}
           type={type}
           value={value}
           onChange={handleChange}
           className={inputClassName}
-          {...inputProps}
           aria-label={ariaLabel || name}
+          {...inputProps}
         />
         {suffix && !isEmpty(suffix) && (
           <div {...suffix.properties}>{suffix.content}</div>

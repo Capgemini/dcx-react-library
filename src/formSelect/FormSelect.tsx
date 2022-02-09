@@ -1,5 +1,12 @@
 import React, { useState, ChangeEvent } from 'react';
-import { ErrorMessage, OptionGroup, Hint, Option, Roles } from '../common';
+import {
+  ErrorMessage,
+  OptionGroup,
+  Hint,
+  Option,
+  Roles,
+  Label,
+} from '../common';
 import {
   ErrorMessageProps,
   HintProps,
@@ -54,7 +61,7 @@ export type FormSelectProps = {
   /**
    * select label properties for optional label
    */
-  labelProps?: any;
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
   /**
    * select label hint
    */
@@ -158,11 +165,12 @@ export const FormSelect = ({
 
   return (
     <div className={containerClassName}>
-      {label && (
-        <label {...labelProps} htmlFor={id} className={labelClassName}>
-          {label}
-        </label>
-      )}
+      <Label
+        label={label}
+        labelProperties={labelProps}
+        htmlFor={id}
+        className={labelClassName}
+      />
       {hint && <Hint {...hint} />}
       {error && <ErrorMessage {...error} />}
       {errorMessage && (
