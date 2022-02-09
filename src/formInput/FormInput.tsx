@@ -28,6 +28,10 @@ type FormInputProps = {
    */
   inputClassName?: string;
   /**
+   * input container class name
+   */
+  containerClassName?: string;
+  /**
    * allow to customise the error message with all the properites needed
    **/
   errorProps?: any;
@@ -107,6 +111,7 @@ export const FormInput = ({
   ariaLabel,
   displayError = false,
   inputClassName,
+  containerClassName,
   inputDivProps = { style: { display: 'flex' } },
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
@@ -140,7 +145,7 @@ export const FormInput = ({
   );
 
   return (
-    <div>
+    <div className={containerClassName}>
       {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
       <div {...inputDivProps}>
         {labelProps && <label {...labelProps}>{label}</label>}

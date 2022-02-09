@@ -137,6 +137,28 @@ describe('FormInput', () => {
     expect(input.className).toBe('myClassName');
   });
 
+  it('should display the formInput with a container className', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormInput
+        name="password"
+        type="text"
+        value="@_-bddcd6A"
+        containerClassName="myClassName"
+        onChange={handleChange}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+      />
+    );
+    const inputContainer: Element | null =
+      container.querySelector('.myClassName');
+    expect(inputContainer).not.toBeNull();
+  });
+
   it('should display the formInput prefix content', () => {
     const handleChange = jest.fn();
     const { container } = render(
