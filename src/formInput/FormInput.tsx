@@ -32,6 +32,10 @@ type FormInputProps = {
    */
   containerClassName?: string;
   /**
+   * input label class name
+   */
+  labelClassName?: string;
+  /**
    * allow to customise the error message with all the properites needed
    **/
   errorProps?: any;
@@ -112,6 +116,7 @@ export const FormInput = ({
   displayError = false,
   inputClassName,
   containerClassName,
+  labelClassName,
   inputDivProps = { style: { display: 'flex' } },
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
@@ -152,7 +157,7 @@ export const FormInput = ({
           label={label}
           labelProperties={labelProps}
           htmlFor={inputProps?.id}
-          className={labelProps?.className}
+          className={labelClassName}
         />
         {prefix && !isEmpty(prefix) && (
           <div {...prefix.properties}>{prefix.content}</div>

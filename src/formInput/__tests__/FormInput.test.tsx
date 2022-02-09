@@ -159,6 +159,34 @@ describe('FormInput', () => {
     expect(inputContainer).not.toBeNull();
   });
 
+  it('should display the formInput with a label className', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormInput
+        name="password"
+        type="text"
+        value="@_-bddcd6A"
+        labelClassName="myClassName"
+        onChange={handleChange}
+        label="password label"
+        labelProps={{
+          htmlFor: 'password',
+        }}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+        inputProps={{
+          id: 'password',
+        }}
+      />
+    );
+
+    expect(container.querySelector('.myClassName')).not.toBeNull();
+  });
+
   it('should display the formInput prefix content', () => {
     const handleChange = jest.fn();
     const { container } = render(
