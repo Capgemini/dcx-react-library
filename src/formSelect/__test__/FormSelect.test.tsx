@@ -392,16 +392,16 @@ describe('FormSelect', () => {
   });
 
   it('should have a label with a specific classname', () => {
-    render(
+    const { container } = render(
       <DummySelect
         id="myId"
         name="the name"
         label="myLabel"
         labelClassName="labelClass"
-        labelProps={{ 'data-testid': 'label' }}
+        labelProps={{ id: 'label' }}
       />
     );
-    const label = screen.getByTestId('label');
+    const label = container.querySelector('#label');
     expect(label).toHaveClass('labelClass');
   });
 
@@ -411,7 +411,7 @@ describe('FormSelect', () => {
         id="myId"
         name="the name"
         containerClassName="containerClass"
-        labelProps={{ 'data-testid': 'label' }}
+        labelProps={{ id: 'label' }}
       />
     );
     const containerClass = container.querySelector('.containerClass');

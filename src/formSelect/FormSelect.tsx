@@ -54,7 +54,7 @@ export type FormSelectProps = {
   /**
    * select label properties for optional label
    */
-  labelProps?: any;
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
   /**
    * select label hint
    */

@@ -148,7 +148,15 @@ export const FormInput = ({
     <div className={containerClassName}>
       {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
       <div {...inputDivProps}>
-        {labelProps && <label {...labelProps}>{label}</label>}
+        {label && (
+          <label
+            {...labelProps}
+            htmlFor={inputProps?.id}
+            className={labelProps?.className}
+          >
+            {label}
+          </label>
+        )}
         {prefix && !isEmpty(prefix) && (
           <div {...prefix.properties}>{prefix.content}</div>
         )}
