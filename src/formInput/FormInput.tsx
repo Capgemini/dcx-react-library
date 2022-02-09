@@ -1,6 +1,6 @@
 import React from 'react';
 import { isEmpty } from 'lodash';
-import { useValidationOnChange, Roles } from '../common';
+import { useValidationOnChange, Roles, Label } from '../common';
 
 type FormInputProps = {
   /**
@@ -148,15 +148,12 @@ export const FormInput = ({
     <div className={containerClassName}>
       {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
       <div {...inputDivProps}>
-        {label && (
-          <label
-            {...labelProps}
-            htmlFor={inputProps?.id}
-            className={labelProps?.className}
-          >
-            {label}
-          </label>
-        )}
+        <Label
+          label={label}
+          labelProperties={labelProps}
+          htmlFor={inputProps?.id}
+          className={labelProps?.className}
+        />
         {prefix && !isEmpty(prefix) && (
           <div {...prefix.properties}>{prefix.content}</div>
         )}

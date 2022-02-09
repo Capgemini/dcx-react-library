@@ -204,3 +204,22 @@ export type LegendProps = {
    */
   heading?: HeadingProps;
 };
+
+export type LabelProps = {
+  /**
+   * label text
+   **/
+  label?: string;
+  /**
+   * label class name
+   */
+  className?: string;
+  /**
+   * label html for
+   */
+  htmlFor?: string;
+  /**
+   * label properties
+   */
+  labelProperties?: React.LabelHTMLAttributes<HTMLLabelElement>;
+}
