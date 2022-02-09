@@ -31,6 +31,7 @@ function FormInputDemo() {
         inputProps={{id: "password"}}
         labelProps={{htmlFor: 'password'}}
         inputClassName=""
+        containerClassName=""
         errorProps={{}}
         validation={{
             rule: {
