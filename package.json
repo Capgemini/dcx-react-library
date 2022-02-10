@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/Capgemini/dcx-react-library/issues"
   },
-  "homepage": "https://github.com/Capgemini/dcx-react-library#readme",
+  "homepage": "https://main--6069a6f47f4b9f002171f8e1.chromatic.com",
   "scripts": {
     "build": "microbundle --jsx React.createElement --css-modules true",
     "dev": "microbundle watch --jsx React.createElement",

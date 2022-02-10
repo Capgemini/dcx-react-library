@@ -152,16 +152,31 @@ export const FormInput = ({
   return (
     <div className={containerClassName}>
       {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
-      <div {...inputDivProps}>
-        <Label
-          label={label}
-          labelProperties={labelProps}
-          htmlFor={inputProps?.id}
-          className={labelClassName}
-        />
-        {prefix && !isEmpty(prefix) && (
-          <div {...prefix.properties}>{prefix.content}</div>
-        )}
+      <Label
+        label={label}
+        labelProperties={labelProps}
+        htmlFor={inputProps?.id}
+        className={labelClassName}
+      />
+      {prefix || suffix ? (
+        <div {...inputDivProps}>
+          {prefix && !isEmpty(prefix) && (
+            <div {...prefix.properties}>{prefix.content}</div>
+          )}
+          <input
+            name={name}
+            type={type}
+            value={value}
+            onChange={handleChange}
+            className={inputClassName}
+            aria-label={ariaLabel || name}
+            {...inputProps}
+          />
+          {suffix && !isEmpty(suffix) && (
+            <div {...suffix.properties}>{suffix.content}</div>
+          )}
+        </div>
+      ) : (
         <input
           name={name}
           type={type}
@@ -171,10 +186,7 @@ export const FormInput = ({
           aria-label={ariaLabel || name}
           {...inputProps}
         />
-        {suffix && !isEmpty(suffix) && (
-          <div {...suffix.properties}>{suffix.content}</div>
-        )}
-      </div>
+      )}
       {errorPosition && errorPosition === ErrorPosition.BOTTOM && (
         <ErrorMessage />
       )}
