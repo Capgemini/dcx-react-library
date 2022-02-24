@@ -132,6 +132,13 @@ export const FormCheckboxDemo = () => {
           },
         }}
       />
+      <h2>Group using string values</h2>
+      <FormGroup
+        name="name-of-group-string"
+        type="checkbox"
+        onChange={handleFormChange}
+        items={['yes', 'no']}
+      />
       <pre>{formValue}</pre>
     </>
   );

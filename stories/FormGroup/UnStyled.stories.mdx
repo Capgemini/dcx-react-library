@@ -42,6 +42,26 @@ import '../style.css';
   </Story>
 </Canvas>
 
+### An example of 'un-styled' FormGroup of radio buttons
+
+<Canvas>
+  <Story name="un-styled-radios-with-strings">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
+      return (
+        <FormGroup
+          name="name-of-group"
+          type="radio"
+          items={['yes','no']}
+          onChange={handleChange}
+        />
+      );
+    }}
+    />
+  </Story>
+</Canvas>
+
 ### An example of 'un-styled' FormGroup of checkboxes
 
 <Canvas>
