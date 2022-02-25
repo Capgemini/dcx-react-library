@@ -40,6 +40,31 @@ describe('FormGroup', () => {
     expect(container.querySelector('input[type=radio]')).toBeInTheDocument();
   });
 
+  it('should render a form group of radio buttons from string items', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormGroup
+        type="radio"
+        groupClasses=""
+        id=""
+        name=""
+        legend={{
+          text: 'Have you changed your name?',
+          heading: {
+            priority: 1,
+          },
+        }}
+        items={['Yes', 'No']}
+        onChange={handleChange}
+      />
+    );
+
+    expect(screen.getByRole('group')).toBeInTheDocument();
+    expect(container.querySelector('input[id=Yes]')).toBeInTheDocument();
+    expect(container.querySelector('input[id=No]')).toBeInTheDocument();
+  });
+
   it('should render a form group of checkboxes', () => {
     const handleChange = jest.fn();
 
@@ -363,6 +388,30 @@ describe('FormGroup', () => {
             id: 'second',
           },
         ]}
+        onChange={handleChange}
+      />
+    );
+
+    fireEvent.click(screen.getAllByRole('radio')[0]);
+    expect(handleChange).toHaveBeenCalled();
+  });
+
+  it('should call on change of a string item if an input has changed', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <FormGroup
+        type="radio"
+        groupClasses=""
+        id=""
+        name="group1"
+        legend={{
+          text: 'Have you changed your name?',
+          heading: {
+            priority: 1,
+          },
+        }}
+        items={['yes', 'no']}
         onChange={handleChange}
       />
     );

@@ -209,6 +209,17 @@ export const FormRadioDemo = () => {
         //@ts-ignore
         onChange={handleGroupConditionalChange}
       />
+      <h4 id="basic-radio-group-with-string-tag">
+        Basic Group Radios using string
+      </h4>
+      <FormGroup
+        ariaDescribedBy="basic-radio-group-tag"
+        name="group4"
+        type="radio"
+        items={['Option 1', 'Option 2', 'Option 3']}
+        //@ts-ignore
+        onChange={handleGroupConditionalChange}
+      />
       <br />
     </>
   );
