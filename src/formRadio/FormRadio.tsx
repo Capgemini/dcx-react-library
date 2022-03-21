@@ -24,7 +24,7 @@ export const FormRadio = ({
   selected,
   onChange,
 }: FormRadioCheckboxProps & {
-  onChange: (event: React.ChangeEvent, conditional?: string) => void;
+  onChange?: (event: React.ChangeEvent, conditional?: string) => void;
 }) => (
   <CheckboxRadioBase
     type="radio"
