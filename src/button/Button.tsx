@@ -10,7 +10,7 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   /**
    * handler for the click event
    */
-  onClick: (evt: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (evt: React.MouseEvent<HTMLButtonElement>) => void;
   /**
    * define the button type: button/submit/reset - by default button
    */
@@ -99,7 +99,7 @@ export const Button = ({
       setDisable(true);
       delayNextClick();
     }
-    onClick(evt);
+    if (onClick) onClick(evt);
   };
 
   let prefix: JSX.Element = <></>;
