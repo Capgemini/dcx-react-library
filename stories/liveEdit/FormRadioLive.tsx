@@ -41,6 +41,9 @@ function FormRadioDemo() {
         inputProps={{}}
         itemProps={{}}
         labelProps={{}}
+        inputClassName=""
+        labelClassName=""
+        itemClassName=""
         selected={value === 'value'}
         nested={false}
       />
@@ -63,6 +66,9 @@ function FormRadioDemo() {
         inputProps={{}}
         itemProps={{}}
         labelProps={{}}
+        inputClassName=""
+        labelClassName=""
+        itemClassName=""
         selected={value === 'value-two'}
         nested={false}
       />

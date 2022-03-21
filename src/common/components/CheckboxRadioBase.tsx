@@ -24,6 +24,9 @@ export const CheckboxRadioBase = ({
   nested,
   selected,
   onChange,
+  inputClassName,
+  labelClassName,
+  itemClassName,
 }: FormRadioCheckboxProps & {
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -57,11 +60,12 @@ export const CheckboxRadioBase = ({
       disabled={disabled}
       checked={selected}
       {...inputProps}
+      className={inputClassName}
       onChange={onChangeHandler}
     />
   );
   const el: JSX.Element = nested ? (
-    <label {...labelProps}>
+    <label {...labelProps} className={labelClassName}>
       {input}
       {label}
     </label>
@@ -75,7 +79,7 @@ export const CheckboxRadioBase = ({
   );
 
   return (
-    <div {...itemProps}>
+    <div {...itemProps} className={itemClassName}>
       {hint && hint.position === 'above' && <Hint {...hint} />}
       {el}
       {hint && hint.position !== 'above' && <Hint {...hint} />}
