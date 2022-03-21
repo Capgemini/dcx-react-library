@@ -251,4 +251,68 @@ describe('FormRadio', () => {
 
     expect(container.querySelector('#my-input')).toBeInTheDocument();
   });
+
+  it('should style the radio label', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        labelProps={{
+          id: 'my-label',
+        }}
+        labelClassName="my-label-class"
+        name="group1"
+        onChange={handleChange}
+        nested={true}
+      />
+    );
+
+    const label: any = container.querySelector('#my-label');
+
+    expect(label.className).toBe('my-label-class');
+  });
+
+  it('should style the item', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group1"
+        disabled={true}
+        onChange={handleChange}
+        itemProps={{ id: 'radio-item' }}
+        itemClassName="my-radio-class"
+      />
+    );
+
+    const radio: any = container.querySelector('#radio-item');
+
+    expect(radio.className).toBe('my-radio-class');
+  });
+
+  it('should style the input', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group1"
+        disabled={true}
+        onChange={handleChange}
+        inputProps={{ id: 'input-item' }}
+        inputClassName="my-input-class"
+      />
+    );
+
+    const input: any = container.querySelector('#input-item');
+
+    expect(input.className).toBe('my-input-class');
+  });
 });

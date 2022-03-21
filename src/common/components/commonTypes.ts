@@ -165,6 +165,18 @@ export type FormRadioCheckboxProps = {
    * specifies whether the radio should be selected
    */
   selected?: boolean;
+  /**
+   * specifies an optional className for the input
+   */
+  inputClassName?: string;
+  /**
+   * specifies an optional className for the label
+   */
+  labelClassName?: string;
+  /**
+    * specifies an optional className for the item
+   */
+  itemClassName?: string;
 };
 
 export type HintProps = {
