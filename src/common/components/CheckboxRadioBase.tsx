@@ -25,7 +25,7 @@ export const CheckboxRadioBase = ({
   selected,
   onChange,
 }: FormRadioCheckboxProps & {
-  onChange: (
+  onChange?: (
     event: React.ChangeEvent<HTMLInputElement>,
     conditionalInput?: string
   ) => void;
@@ -40,7 +40,7 @@ export const CheckboxRadioBase = ({
   const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    onChange(event);
+    if (onChange) onChange(event);
   };
 
   const input: JSX.Element = (
@@ -86,7 +86,7 @@ export const CheckboxRadioBase = ({
           value: conditionalValue,
           onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
             setConditionalValue(event.currentTarget.value);
-            onChange(event, event.currentTarget.value);
+            if (onChange) onChange(event, event.currentTarget.value);
           },
         })}
     </div>
