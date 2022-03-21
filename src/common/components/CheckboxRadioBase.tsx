@@ -72,7 +72,7 @@ export const CheckboxRadioBase = ({
   ) : (
     <>
       {input}
-      <label {...labelProps} htmlFor={id}>
+      <label {...labelProps} htmlFor={id} className={labelClassName}>
         {label}
       </label>
     </>
