@@ -65,7 +65,7 @@ export const CheckboxRadioBase = ({
     />
   );
   const el: JSX.Element = nested ? (
-    <label {...labelProps} className={labelClassName}>
+    <label {...labelProps}>
       {input}
       {label}
     </label>

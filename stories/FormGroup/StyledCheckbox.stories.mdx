@@ -62,6 +62,54 @@ In this section we are using the FormGroup component providing the GOV.UK Design
   </Story>
 </Canvas>
 
+<Canvas>
+  <Story name="multiple checkboxes with shared styles">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
+      return (
+        <FormGroup
+          name="waste"
+          type="checkbox"
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
+          items={[
+            {
+              label: 'Waste from animal carcasses',
+              value: 'carcasses',
+              id: 'waste',
+            },
+            {
+              label: 'Waste from mines of quarries',
+              value: 'mines',
+              id: 'waste-2',
+            },
+            {
+              label: 'Farm or agricultural waste',
+              value: 'farm',
+              id: 'waste-3',
+            },
+          ]}
+          onChange={handleChange}
+          ariaDescribedBy="changed-name-hint"
+          groupClasses="govuk-form-group"
+          fieldsetClasses="govuk-fieldset"
+          itemsClasses="govuk-checkboxes"
+          legend={{
+            text: 'Which types of waste do you transport?',
+            className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
+            heading: {
+              priority: 1,
+              className: 'govuk-fieldset__heading',
+            },
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 # Titled
 
 <Canvas>
@@ -73,15 +121,9 @@ In this section we are using the FormGroup component providing the GOV.UK Design
         <FormGroup
           name="waste-2"
           type="checkbox"
-          inputProps={{
-            className: 'govuk-checkboxes__input',
-          }}
-          itemProps={{
-            className: 'govuk-checkboxes__item',
-          }}
-          labelProps={{
-            className: 'govuk-label govuk-checkboxes__label',
-          }}
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
           items={[
             {
               label: 'Waste from animal carcasses',
@@ -128,15 +170,9 @@ In this section we are using the FormGroup component providing the GOV.UK Design
         <FormGroup
           name="nationality"
           type="checkbox"
-          inputProps={{
-            className: 'govuk-checkboxes__input',
-          }}
-          itemProps={{
-            className: 'govuk-checkboxes__item',
-          }}
-          labelProps={{
-            className: 'govuk-label govuk-checkboxes__label',
-          }}
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
           items={[
             {
               label: 'British',
@@ -198,15 +234,9 @@ In this section we are using the FormGroup component providing the GOV.UK Design
         <FormGroup
           name="filter-change"
           type="checkbox"
-          inputProps={{
-            className: 'govuk-checkboxes__input',
-          }}
-          itemProps={{
-            className: 'govuk-checkboxes__item',
-          }}
-          labelProps={{
-            className: 'govuk-label govuk-checkboxes__label',
-          }}
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
           items={[
             {
               label: 'Monthly',
@@ -248,15 +278,9 @@ In this section we are using the FormGroup component providing the GOV.UK Design
         <FormGroup
           name="live-error"
           type="checkbox"
-          inputProps={{
-            className: 'govuk-checkboxes__input',
-          }}
-          itemProps={{
-            className: 'govuk-checkboxes__item',
-          }}
-          labelProps={{
-            className: 'govuk-label govuk-checkboxes__label',
-          }}
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
           items={[
             {
               label: 'England',
@@ -318,15 +342,9 @@ In this section we are using the FormGroup component providing the GOV.UK Design
         <FormGroup
           name="where-do-you-live-divider"
           type="checkbox"
-          inputProps={{
-            className: 'govuk-checkboxes__input',
-          }}
-          itemProps={{
-            className: 'govuk-checkboxes__item',
-          }}
-          labelProps={{
-            className: 'govuk-label govuk-checkboxes__label',
-          }}
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
           items={[
             {
               label: 'England',
@@ -383,15 +401,9 @@ In this section we are using the FormGroup component providing the GOV.UK Design
         <FormGroup
           name="contact"
           type="checkbox"
-          inputProps={{
-            className: 'govuk-checkboxes__input',
-          }}
-          itemProps={{
-            className: 'govuk-checkboxes__item',
-          }}
-          labelProps={{
-            className: 'govuk-label govuk-checkboxes__label',
-          }}
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
           items={[
             {
               label: 'Email',
