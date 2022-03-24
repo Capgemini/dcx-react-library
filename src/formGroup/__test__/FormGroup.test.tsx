@@ -629,15 +629,9 @@ describe('FormGroup', () => {
         groupClasses=""
         id=""
         name="shared-name"
-        inputProps={{
-          className: 'shared-input-class',
-        }}
-        itemProps={{
-          className: 'shared-item-class',
-        }}
-        labelProps={{
-          className: 'shared-label-class',
-        }}
+        inputClassName="shared-input-class"
+        itemClassName="shared-item-class"
+        labelClassName="shared-label-class"
         legend={{
           text: 'Have you changed your name?',
           heading: {
@@ -673,21 +667,19 @@ describe('FormGroup', () => {
       'shared-name'
     );
 
-    //TODO: this 4 tests need to be rewritten when https://github.com/Capgemini/dcx-react-library/issues/252 is completed
+    expect(screen.getAllByRole('radio')[0].getAttribute('class')).toBe(
+      'shared-input-class'
+    );
+    expect(screen.getAllByRole('radio')[1].getAttribute('class')).toBe(
+      'shared-input-class'
+    );
 
-    // expect(screen.getAllByRole('radio')[0].getAttribute('class')).toBe(
-    //   'shared-input-class'
-    // );
-    // expect(screen.getAllByRole('radio')[1].getAttribute('class')).toBe(
-    //   'shared-input-class'
-    // );
-
-    // expect(screen.getByLabelText('Yes').getAttribute('class')).toBe(
-    //   'shared-input-class'
-    // );
-    // expect(screen.getByLabelText('No').getAttribute('class')).toBe(
-    //   'shared-input-class'
-    // );
+    expect(screen.getByLabelText('Yes').getAttribute('class')).toBe(
+      'shared-input-class'
+    );
+    expect(screen.getByLabelText('No').getAttribute('class')).toBe(
+      'shared-input-class'
+    );
   });
 
   it('should render a divider', () => {

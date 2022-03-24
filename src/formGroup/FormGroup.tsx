@@ -57,6 +57,18 @@ type FormGroupProps = {
    */
   groupClasses?: string;
   /**
+   * form group input class name
+   */
+  inputClassName?: string;
+  /**
+   * form group item class name
+   */
+  itemClassName?: string;
+  /**
+   * form group label class name
+   */
+  labelClassName?: string;
+  /**
    * form group hint
    */
   hint?: HintProps;
@@ -115,6 +127,9 @@ export const FormGroup = ({
   inputProps,
   itemProps,
   itemsClasses,
+  inputClassName,
+  itemClassName,
+  labelClassName,
   labelProps,
   legend,
   onChange,
@@ -203,6 +218,9 @@ export const FormGroup = ({
           inputProps={{ ...inputProps }}
           itemProps={{ ...itemProps }}
           labelProps={{ ...labelProps }}
+          inputClassName={inputClassName}
+          labelClassName={labelClassName}
+          itemClassName={itemClassName}
           label={item}
           value={item}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -222,6 +240,9 @@ export const FormGroup = ({
           inputProps={{ ...inputProps, ...item.inputProps }}
           itemProps={{ ...itemProps, ...item.itemProps }}
           labelProps={{ ...labelProps, ...item.labelProps }}
+          inputClassName={inputClassName}
+          labelClassName={labelClassName}
+          itemClassName={itemClassName}
           selected={isSelected(item)}
           onChange={(
             event: React.ChangeEvent<HTMLInputElement>,
