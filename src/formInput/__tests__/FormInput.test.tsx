@@ -262,7 +262,9 @@ describe('FormInput', () => {
   });
 
   it('should display the formInput error message on top', () => {
-    const { container } = render(<DummyComponent pos={ErrorPosition.TOP} />);
+    const { container } = render(
+      <DummyComponent pos={ErrorPosition.BEFORE_LABEL} />
+    );
     const input = screen.getByRole('textbox');
     userEvent.type(input, 'TEST VALUE');
     let error: any;
