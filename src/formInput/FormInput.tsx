@@ -171,14 +171,12 @@ export const FormInput = ({
   );
 
   const isStaticOrDynamicError = (): boolean =>
-    staticErrorMessage === undefined ||
-    (validity && !validity.valid && showError) ||
-    false;
+    staticErrorMessage !== undefined || (validity && !validity.valid) || false;
 
   return (
     <div
       className={`${containerClassName} ${
-        isStaticOrDynamicError() ? '' : containerClassNameError
+        isStaticOrDynamicError() ? containerClassNameError : ''
       }`.trim()}
     >
       {errorPosition && errorPosition === ErrorPosition.BEFORE_LABEL && (
