@@ -313,4 +313,68 @@ describe('FormCheckbox', () => {
 
     expect(container.querySelector('#conditional-id')).toBeInTheDocument();
   });
+
+  it('should style the checkbox label', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        value="choice 1"
+        label="my label"
+        labelProps={{
+          id: 'my-label',
+        }}
+        labelClassName="my-label-class"
+        name="group1"
+        onChange={handleChange}
+        nested={true}
+      />
+    );
+
+    const label: any = container.querySelector('#my-label');
+
+    expect(label.className).toBe('my-label-class');
+  });
+
+  it('should style the checkbox item', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group1"
+        disabled={true}
+        onChange={handleChange}
+        itemProps={{ id: 'checkbox-item' }}
+        itemClassName="my-checkbox-class"
+      />
+    );
+
+    const checkbox: any = container.querySelector('#checkbox-item');
+
+    expect(checkbox.className).toBe('my-checkbox-class');
+  });
+
+  it('should style the checkbox input', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group1"
+        disabled={true}
+        onChange={handleChange}
+        inputProps={{ id: 'input-item' }}
+        inputClassName="my-input-class"
+      />
+    );
+
+    const input: any = container.querySelector('#input-item');
+
+    expect(input.className).toBe('my-input-class');
+  });
 });

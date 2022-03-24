@@ -20,8 +20,11 @@ export const FormCheckbox = ({
   selected,
   hint,
   nested,
+  inputClassName,
+  labelClassName,
+  itemClassName,
 }: FormRadioCheckboxProps & {
-  onChange: (event: React.ChangeEvent, conditional?: string) => void;
+  onChange?: (event: React.ChangeEvent, conditional?: string) => void;
 }) => (
   <CheckboxRadioBase
     type="checkbox"
@@ -43,5 +46,8 @@ export const FormCheckbox = ({
     selected={selected}
     hint={hint}
     nested={nested}
+    inputClassName={inputClassName}
+    labelClassName={labelClassName}
+    itemClassName={itemClassName}
   />
 );

@@ -53,6 +53,9 @@ function FormCheckboxDemo() {
       }}
       selected={checked}
       nested={false}
+      inputClassName="inputClassName"
+      labelClassName="labelClassName"
+      itemClassName="itemClassName"
     />
   );
 }
