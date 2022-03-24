@@ -70,11 +70,27 @@ const DummyComponentTriggerError = () => {
           },
           message: 'is invalid',
         }}
+        containerClassNameError="error-container"
       />
       <button onClick={handleClick}>submit</button>
     </>
   );
 };
+
+const DummyStaticComponent = ({ pos, hint }: any) => (
+  <>
+    <FormInput
+      name="password"
+      type="text"
+      value="myValue"
+      errorPosition={pos}
+      staticErrorMessage="static error message"
+      containerClassName="container-class"
+      containerClassNameError="container-error"
+      hint={hint}
+    />
+  </>
+);
 
 describe('FormInput', () => {
   it('should display the formInput content', () => {
@@ -262,7 +278,9 @@ describe('FormInput', () => {
   });
 
   it('should display the formInput error message on top', () => {
-    const { container } = render(<DummyComponent pos={ErrorPosition.TOP} />);
+    const { container } = render(
+      <DummyComponent pos={ErrorPosition.BEFORE_LABEL} />
+    );
     const input = screen.getByRole('textbox');
     userEvent.type(input, 'TEST VALUE');
     let error: any;
@@ -303,5 +321,58 @@ describe('FormInput', () => {
     const button = screen.getByRole('button');
     userEvent.click(button);
     expect(screen.getByRole('error')).toContainHTML('is invalid');
+  });
+
+  it('should display a static error message', () => {
+    render(<DummyStaticComponent pos={ErrorPosition.AFTER_LABEL} />);
+    const error = screen.getByRole('error');
+    expect(error.textContent).toBe('static error message');
+  });
+
+  it('should add an extra class if the static error is displayed', () => {
+    const { container } = render(
+      <DummyStaticComponent pos={ErrorPosition.AFTER_LABEL} />
+    );
+    const inputContainer: Element | null =
+      container.querySelector('.container-error');
+    expect(inputContainer).not.toBeNull();
+  });
+
+  it('should add an extra class if the dynamic error is displayed', () => {
+    const { container } = render(<DummyComponentTriggerError />);
+    const button = screen.getByRole('button');
+    userEvent.click(button);
+    const inputContainer: Element | null =
+      container.querySelector('.error-container');
+    expect(inputContainer).not.toBeNull();
+  });
+
+  it('should display a hint message on top', () => {
+    const { container } = render(
+      <DummyStaticComponent
+        pos={ErrorPosition.AFTER_LABEL}
+        hint={{
+          id: 'my-hint',
+          text: 'my hint',
+          position: 'above',
+        }}
+      />
+    );
+    const hint: any = container.querySelector('#my-hint');
+    expect(hint.innerHTML).toBe('my hint');
+  });
+
+  it('should display a hint message on bottom', () => {
+    const { container } = render(
+      <DummyStaticComponent
+        pos={ErrorPosition.AFTER_LABEL}
+        hint={{
+          id: 'my-hint',
+          text: 'my hint',
+        }}
+      />
+    );
+    const hint: any = container.querySelector('#my-hint');
+    expect(hint.innerHTML).toBe('my hint');
   });
 });

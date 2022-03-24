@@ -1,6 +1,7 @@
 import React from 'react';
 import { isEmpty } from 'lodash';
-import { useValidationOnChange, Roles, Label } from '../common';
+import { useValidationOnChange, Roles, Label, Hint } from '../common';
+import { HintProps } from '../common/components/commonTypes';
 
 type FormInputProps = {
   /**
@@ -31,6 +32,10 @@ type FormInputProps = {
    * input container class name
    */
   containerClassName?: string;
+  /**
+   * allow to style the container in case of error
+   */
+  containerClassNameError?: string;
   /**
    * input label class name
    */
@@ -79,6 +84,10 @@ type FormInputProps = {
    **/
   errorMessage?: any;
   /**
+   * allow to specify an error message coming from another source
+   */
+  staticErrorMessage?: string;
+  /**
    * error position - top or bottom
    **/
   errorPosition?: ErrorPosition;
@@ -90,11 +99,16 @@ type FormInputProps = {
    * you can trigger to display an error without interact with the component
    */
   displayError?: boolean;
+  /**
+   * allow to define an hint
+   */
+  hint?: HintProps;
 };
 
 export enum ErrorPosition {
-  TOP = 'top',
+  BEFORE_LABEL = 'before-label',
   BOTTOM = 'bottom',
+  AFTER_LABEL = 'after-label',
 }
 
 export const FormInput = ({
@@ -111,12 +125,15 @@ export const FormInput = ({
   onChange,
   isValid,
   errorMessage,
+  staticErrorMessage,
   errorPosition,
   ariaLabel,
   displayError = false,
   inputClassName,
   containerClassName,
+  containerClassNameError,
   labelClassName,
+  hint,
   inputDivProps = { style: { display: 'flex' } },
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
@@ -141,7 +158,11 @@ export const FormInput = ({
 
   const ErrorMessage = () => (
     <div {...errorProps}>
-      {validity && !validity.valid && showError ? (
+      {staticErrorMessage !== undefined ? (
+        <div role={Roles.error} {...errorMessage}>
+          {staticErrorMessage}
+        </div>
+      ) : validity && !validity.valid && showError ? (
         <div role={Roles.error} {...errorMessage}>
           {validity.message}
         </div>
@@ -149,15 +170,28 @@ export const FormInput = ({
     </div>
   );
 
+  const isStaticOrDynamicError = (): boolean =>
+    staticErrorMessage !== undefined || (validity && !validity.valid) || false;
+
   return (
-    <div className={containerClassName}>
-      {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
+    <div
+      className={`${containerClassName} ${
+        isStaticOrDynamicError() ? containerClassNameError : ''
+      }`.trim()}
+    >
+      {errorPosition && errorPosition === ErrorPosition.BEFORE_LABEL && (
+        <ErrorMessage />
+      )}
       <Label
         label={label}
         labelProperties={labelProps}
         htmlFor={inputProps?.id}
         className={labelClassName}
       />
+      {errorPosition && errorPosition === ErrorPosition.AFTER_LABEL && (
+        <ErrorMessage />
+      )}
+      {hint && hint.position === 'above' && <Hint {...hint} />}
       {prefix || suffix ? (
         <div {...inputDivProps}>
           {prefix && !isEmpty(prefix) && (
@@ -187,6 +221,7 @@ export const FormInput = ({
           {...inputProps}
         />
       )}
+      {hint && hint.position !== 'above' && <Hint {...hint} />}
       {errorPosition && errorPosition === ErrorPosition.BOTTOM && (
         <ErrorMessage />
       )}

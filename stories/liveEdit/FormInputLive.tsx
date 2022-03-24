@@ -53,6 +53,8 @@ function FormInputDemo() {
         suffix={{
           content: <></>
         }}
+        staticErrorMessage="static error message"
+        containerClassNameError="govuk-form-group--error"
     />
   )
 }
