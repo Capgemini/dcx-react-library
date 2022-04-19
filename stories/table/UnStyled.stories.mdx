@@ -330,14 +330,7 @@ in the following example we display a custom header - _customHeaderLabelsh_ -
           actions:  <button className="btn btn-danger" name="delete">Delete</button>
         },
       ];
-      return <Table dataSource={data} handleCellClick={handleCellClick} withSearch={true} customHeaderLabels={[
-            { label: 'Test', data: 'id' },
-            { label: 'position', data: 'position' },
-            { label: 'name', data: 'name' },
-            { label: 'weight', data: 'weight' },
-            { label: 'symbol', data: 'symbol' },
-            { label: 'actions', data: 'actions' },
-          ]}/>;
+      return <Table dataSource={data} handleCellClick={handleCellClick} withSearch={true}   customHeaderLabels={['Test', 'position', 'name', 'weight', 'symbol', 'actions']}/>;
     }}
   </Story>
 </Canvas>

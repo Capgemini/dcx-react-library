@@ -460,14 +460,7 @@ in the following example we display a custom header - _customHeaderLabelsh_ -
       return (
         <Table
           dataSource={data}
-          customHeaderLabels={[
-            { label: 'Test', data: 'id' },
-            { label: 'position', data: 'position' },
-            { label: 'name', data: 'name' },
-            { label: 'weight', data: 'weight' },
-            { label: 'symbol', data: 'symbol' },
-            { label: 'actions', data: 'actions' },
-          ]}
+          customHeaderLabels={['Test', 'position', 'name', 'weight', 'symbol', 'actions']}
           handleCellClick={handleCellClick}
           tableClassName="table"
           theadClassName="thead"

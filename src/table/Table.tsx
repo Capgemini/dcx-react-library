@@ -4,6 +4,11 @@ import { Body } from './Body';
 import { Header } from './Header';
 import { useSortableData } from './useSortable';
 import { useTableSearch } from './useTableSearch';
+type CustomHeaderLabel = {
+  label: string;
+  data: string;
+  omit?: boolean;
+};
 type TableProps = {
   /**
    * the data source used to populate the table
@@ -76,7 +81,7 @@ type TableProps = {
   /**
    * allow to specify a custom header labels
    */
-  customHeaderLabels?: { label: string; data: string }[];
+  customHeaderLabels?: CustomHeaderLabel[] | string[];
   /**
    * allow to pass extra properties to each row
    */
@@ -117,13 +122,28 @@ export const Table = ({
     data: withOrderBy ? items : dataSource,
   });
 
+  const isListOfStrings = (
+    headers: CustomHeaderLabel[] | string[]
+  ): headers is string[] =>
+    headers.some(
+      (header: CustomHeaderLabel | string) => typeof header === 'string'
+    );
+
   const handleClick = (value: string) => {
     if (customHeaderLabels) {
-      const customHeaderEl = customHeaderLabels.find(c => c.label === value);
+      const customHeaderEl = isListOfStrings(customHeaderLabels)
+        ? customHeaderLabels.findIndex((c: string) => c === value)
+        : customHeaderLabels.find((c: CustomHeaderLabel) => c.label === value);
+
+      const key =
+        typeof customHeaderEl === 'number'
+          ? Object.keys(dataSource[0])[customHeaderEl]
+          : (customHeaderEl as CustomHeaderLabel).data;
+
       //@ts-ignore
-      requestSort(customHeaderEl.data);
+      requestSort(key);
       //@ts-ignore
-      setSelectedHeader(customHeaderEl.data);
+      setSelectedHeader(key);
     } else {
       requestSort(value);
       setSelectedHeader(value);
@@ -142,6 +162,26 @@ export const Table = ({
     );
   };
 
+  const getHeaderValues = () => {
+    if (customHeaderLabels && isListOfStrings(customHeaderLabels)) {
+      return customHeaderLabels.filter(
+        (label: string) => !columnsToOmit?.includes(label)
+      );
+    }
+
+    if (customHeaderLabels) {
+      return Array.from(
+        customHeaderLabels.filter(
+          (c: CustomHeaderLabel) =>
+            !columnsToOmit?.includes(c.data) && c.omit !== true
+        ),
+        (c: CustomHeaderLabel) => c.label
+      );
+    }
+
+    return keys(items, columnsToOmit);
+  };
+
   return (
     <>
       {withSearch && (
@@ -156,11 +196,7 @@ export const Table = ({
           theadClassName={theadClassName}
           trClassName={trClassName}
           thClassName={thClassName}
-          values={
-            customHeaderLabels
-              ? Array.from(customHeaderLabels, c => c.label)
-              : keys(items, columnsToOmit)
-          }
+          values={getHeaderValues()}
           keySorted={getClassNamesFor(selectedHeader)}
           sortAscIcon={sortAscIcon}
           sortDescIcon={sortDescIcon}
