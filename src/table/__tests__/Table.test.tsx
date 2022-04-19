@@ -124,6 +124,23 @@ describe('Table', () => {
     expect(tbody[1].children).toHaveLength(0);
   });
 
+  it('should display only the table header', () => {
+    render(
+      <Table
+        dataSource={[]}
+        customHeaderLabels={['Test', 'position', 'actions']}
+        selectedRowClassName="selectedRowClassName"
+        withSearch={true}
+      />
+    );
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('Test');
+    expect(row[2].innerHTML).toContain('position');
+    expect(row[3].innerHTML).toContain('actions');
+    const tbody = screen.getAllByRole('rowgroup');
+    expect(tbody[1].children).toHaveLength(0);
+  });
+
   it('should allow to reorder the data if the customHeader is specified', () => {
     render(
       <Table
@@ -148,7 +165,7 @@ describe('Table', () => {
     expect(row.innerHTML).toContain('<span>1</span>');
   });
 
-  it('should not reorder the data if the customHeader specified doesn\'t have a match data', () => {
+  it("should not reorder the data if the customHeader specified doesn't have a match data", () => {
     render(
       <Table
         dataSource={values}

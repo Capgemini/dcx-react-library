@@ -392,6 +392,66 @@ export const TableDemo = () => {
         columnsWidth={['100px']}
         trProps={trProps}
       />
+
+      <h1>custom header with order</h1>
+      <Table
+        dataSource={data}
+        customHeaderLabels={[
+          { label: 'Test', data: 'id' },
+          { label: 'position', data: 'position' },
+          { label: 'name', data: 'name' },
+          { label: 'weight', data: 'weight' },
+          { label: 'symbol', data: 'symbol' },
+          { label: 'actions', data: 'actions' },
+        ]}
+        onSelect={handleSelect}
+        handleCellClick={handleCellClick}
+        tableClassName="table"
+        theadClassName="thead"
+        trClassName="header-row"
+        thClassName="th"
+        tbodyClassName="tbody"
+        tdClassName="td"
+        selectedRowClassName="trSelected"
+        withOrderBy={true}
+        sortAscIcon={
+          <FontAwesomeIcon icon={faArrowUp} style={{ marginLeft: '4px' }} />
+        }
+        sortDescIcon={
+          <FontAwesomeIcon icon={faArrowDown} style={{ marginLeft: '4px' }} />
+        }
+        columnsWidth={['100px']}
+      />
+
+      <h1>custom 'shortened' header with order</h1>
+      <Table
+        dataSource={data}
+        customHeaderLabels={[
+          'Test',
+          'positions',
+          'names',
+          'weights',
+          'symbols',
+          'actions',
+        ]}
+        onSelect={handleSelect}
+        handleCellClick={handleCellClick}
+        tableClassName="table"
+        theadClassName="thead"
+        trClassName="header-row"
+        thClassName="th"
+        tbodyClassName="tbody"
+        tdClassName="td"
+        selectedRowClassName="trSelected"
+        withOrderBy={true}
+        sortAscIcon={
+          <FontAwesomeIcon icon={faArrowUp} style={{ marginLeft: '4px' }} />
+        }
+        sortDescIcon={
+          <FontAwesomeIcon icon={faArrowDown} style={{ marginLeft: '4px' }} />
+        }
+        columnsWidth={['100px']}
+      />
     </div>
   );
 };
