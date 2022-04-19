@@ -137,7 +137,7 @@ export const Table = ({
       const key =
         typeof customHeaderEl === 'number'
           ? Object.keys(dataSource[0])[customHeaderEl]
-          : (customHeaderEl as CustomHeaderLabel)?.data;
+          : (customHeaderEl as CustomHeaderLabel).data;
 
       //@ts-ignore
       requestSort(key);

@@ -52,6 +52,50 @@ describe('Table', () => {
     expect(row.innerHTML).toContain('<span>1</span>');
   });
 
+  it('should perform the order with short custom headers', () => {
+    render(
+      <Table
+        dataSource={values}
+        customHeaderLabels={['Test', 'position', 'actions']}
+        selectedRowClassName="selectedRowClassName"
+        withOrderBy={true}
+      />
+    );
+    //body
+    const { id } = values[0];
+    const row: any = screen.getByText(id).closest('tr');
+    expect(row.innerHTML).toContain('<span>2</span>');
+    //header
+    const rows: any = screen.getAllByRole('row');
+    const idHeader = rows[0].children[0];
+    fireEvent.click(idHeader);
+    expect(row.innerHTML).toContain('<span>1</span>');
+  });
+
+  it('should not perform the order when data can not be found', () => {
+    render(
+      <Table
+        dataSource={values}
+        customHeaderLabels={[
+          { label: 'invalid', data: 'undefined' },
+          { label: 'position', data: 'position' },
+          { label: 'actions', data: 'actions' },
+        ]}
+        selectedRowClassName="selectedRowClassName"
+        withOrderBy={true}
+      />
+    );
+    //body
+    const { id } = values[0];
+    const row: any = screen.getByText(id).closest('tr');
+    expect(row.innerHTML).toContain('<span>2</span>');
+    //header
+    const rows: any = screen.getAllByRole('row');
+    const idHeader = rows[0].children[0];
+    fireEvent.click(idHeader);
+    expect(row.innerHTML).toContain('<span>2</span>');
+  });
+
   it('should allow to search and return 0 elements', () => {
     render(
       <Table
