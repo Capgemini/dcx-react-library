@@ -7,6 +7,7 @@ import { useTableSearch } from './useTableSearch';
 type CustomHeaderLabel = {
   label: string;
   data: string;
+  omit?: boolean;
 };
 type TableProps = {
   /**
@@ -161,6 +162,26 @@ export const Table = ({
     );
   };
 
+  const getHeaderValues = () => {
+    if (customHeaderLabels && isListOfStrings(customHeaderLabels)) {
+      return customHeaderLabels.filter(
+        (label: string) => !columnsToOmit?.includes(label)
+      );
+    }
+
+    if (customHeaderLabels) {
+      return Array.from(
+        customHeaderLabels.filter(
+          (c: CustomHeaderLabel) =>
+            !columnsToOmit?.includes(c.data) && c.omit !== true
+        ),
+        (c: CustomHeaderLabel) => c.label
+      );
+    }
+
+    return keys(items, columnsToOmit);
+  };
+
   return (
     <>
       {withSearch && (
@@ -175,16 +196,7 @@ export const Table = ({
           theadClassName={theadClassName}
           trClassName={trClassName}
           thClassName={thClassName}
-          values={
-            customHeaderLabels
-              ? isListOfStrings(customHeaderLabels)
-                ? customHeaderLabels
-                : Array.from(
-                    customHeaderLabels,
-                    (c: CustomHeaderLabel) => c.label
-                  )
-              : keys(items, columnsToOmit)
-          }
+          values={getHeaderValues()}
           keySorted={getClassNamesFor(selectedHeader)}
           sortAscIcon={sortAscIcon}
           sortDescIcon={sortDescIcon}

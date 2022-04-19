@@ -168,6 +168,59 @@ describe('Table', () => {
     expect(tbody[1].children).toHaveLength(0);
   });
 
+  it('should not display omitted table headers', () => {
+    render(<Table dataSource={values} columnsToOmit={['position']} />);
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('id');
+    expect(row[2].innerHTML).toContain('actions');
+  });
+
+  it('should not display omitted table headers with given custom headers', () => {
+    render(
+      <Table
+        dataSource={values}
+        columnsToOmit={['position']}
+        customHeaderLabels={[
+          { label: 'Test', data: 'id' },
+          { label: 'position', data: 'position' },
+          { label: 'actions', data: 'actions' },
+        ]}
+      />
+    );
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('Test');
+    expect(row[2].innerHTML).toContain('actions');
+  });
+
+  it('should not display omitted table headers with given custom headers with omit flag', () => {
+    render(
+      <Table
+        dataSource={values}
+        customHeaderLabels={[
+          { label: 'Test', data: 'id' },
+          { label: 'position', data: 'position', omit: true },
+          { label: 'actions', data: 'actions' },
+        ]}
+      />
+    );
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('Test');
+    expect(row[2].innerHTML).toContain('actions');
+  });
+
+  it('should not display omitted table headers with given shorted custom headers', () => {
+    render(
+      <Table
+        dataSource={values}
+        columnsToOmit={['position']}
+        customHeaderLabels={['Test', 'position', 'actions']}
+      />
+    );
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('Test');
+    expect(row[2].innerHTML).toContain('actions');
+  });
+
   it('should display only the table header', () => {
     render(
       <Table
