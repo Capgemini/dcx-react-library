@@ -2,7 +2,7 @@
   "name": "@capgeminiuk/dcx-react-library",
   "author": "Capgemini UK",
   "license": "MIT",
-  "version": "0.4.0-beta-6",
+  "version": "0.4.0",
   "source": "src/index.ts",
   "main": "dist/dcx-react-library.js",
   "module": "dist/dcx-react-library.module.js",
