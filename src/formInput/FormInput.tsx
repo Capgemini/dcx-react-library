@@ -1,5 +1,7 @@
 import React from 'react';
-import { useValidationOnChange, Roles } from '../common';
+import { isEmpty } from 'lodash';
+import { useValidationOnChange, Roles, Label, Hint } from '../common';
+import { HintProps } from '../common/components/commonTypes';
 
 type FormInputProps = {
   /**
@@ -15,29 +17,64 @@ type FormInputProps = {
    **/
   value: any;
   /**
+   * input label
+   */
+  label?: string;
+  /**
    * pass the validation rules(please refer to forgJS) and the message you want to display
    **/
   validation?: { rule: any; message: string } | any;
   /**
-   * allow to customise the input with all the properites needed
-   **/
-  inputProps?: any;
+   * input class name
+   */
+  inputClassName?: string;
+  /**
+   * input container class name
+   */
+  containerClassName?: string;
+  /**
+   * allow to style the container in case of error
+   */
+  containerClassNameError?: string;
+  /**
+   * input label class name
+   */
+  labelClassName?: string;
   /**
    * allow to customise the error message with all the properites needed
    **/
   errorProps?: any;
   /**
+   * allow to customise the input with all the properites needed
+   **/
+  inputDivProps?: React.AllHTMLAttributes<HTMLDivElement>;
+  /**
+  /**
+   * allow to customise the input with all the properites needed
+   **/
+  inputProps?: React.AllHTMLAttributes<HTMLInputElement>;
+  /**
+   * allow to customise the label with all the properites needed
+   */
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
+  /**
    * generic parameter to pass whatever element before the input
    **/
-  prefix?: any;
+  prefix?: {
+    content?: JSX.Element | string;
+    properties: React.HTMLAttributes<HTMLDivElement>;
+  };
   /**
    * generic parameter to pass whatever element after the input
    **/
-  suffix?: any;
+  suffix?: {
+    content?: JSX.Element | string;
+    properties: React.HTMLAttributes<HTMLDivElement>;
+  };
   /**
    * function that will trigger all the time there's a change in the input
    **/
-  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
   /**
    * function that will check if is vald or not based on the validation rules
    **/
@@ -46,6 +83,10 @@ type FormInputProps = {
    * error message
    **/
   errorMessage?: any;
+  /**
+   * allow to specify an error message coming from another source
+   */
+  staticErrorMessage?: string;
   /**
    * error position - top or bottom
    **/
@@ -58,28 +99,42 @@ type FormInputProps = {
    * you can trigger to display an error without interact with the component
    */
   displayError?: boolean;
+  /**
+   * allow to define an hint
+   */
+  hint?: HintProps;
 };
 
 export enum ErrorPosition {
-  TOP = 'top',
+  BEFORE_LABEL = 'before-label',
   BOTTOM = 'bottom',
+  AFTER_LABEL = 'after-label',
 }
 
 export const FormInput = ({
   name,
   type,
   value,
+  label,
   validation = null,
   inputProps,
+  labelProps,
   errorProps,
   prefix,
   suffix,
   onChange,
   isValid,
   errorMessage,
+  staticErrorMessage,
   errorPosition,
   ariaLabel,
   displayError = false,
+  inputClassName,
+  containerClassName,
+  containerClassNameError,
+  labelClassName,
+  hint,
+  inputDivProps = { style: { display: 'flex' } },
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
 
@@ -98,12 +153,16 @@ export const FormInput = ({
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setShowError(true);
     if (onValueChange) onValueChange(event);
-    onChange(event);
+    if (onChange) onChange(event);
   };
 
   const ErrorMessage = () => (
     <div {...errorProps}>
-      {validity && !validity.valid && showError ? (
+      {staticErrorMessage !== undefined ? (
+        <div role={Roles.error} {...errorMessage}>
+          {staticErrorMessage}
+        </div>
+      ) : validity && !validity.valid && showError ? (
         <div role={Roles.error} {...errorMessage}>
           {validity.message}
         </div>
@@ -111,22 +170,58 @@ export const FormInput = ({
     </div>
   );
 
+  const isStaticOrDynamicError = (): boolean =>
+    staticErrorMessage !== undefined || (validity && !validity.valid) || false;
+
   return (
-    <div>
-      {errorPosition && errorPosition === ErrorPosition.TOP && <ErrorMessage />}
-      <div style={{ display: 'flex' }}>
-        {prefix && <div>{prefix}</div>}
+    <div
+      className={`${containerClassName} ${
+        isStaticOrDynamicError() ? containerClassNameError : ''
+      }`.trim()}
+    >
+      {errorPosition && errorPosition === ErrorPosition.BEFORE_LABEL && (
+        <ErrorMessage />
+      )}
+      <Label
+        label={label}
+        labelProperties={labelProps}
+        htmlFor={inputProps?.id}
+        className={labelClassName}
+      />
+      {errorPosition && errorPosition === ErrorPosition.AFTER_LABEL && (
+        <ErrorMessage />
+      )}
+      {hint && hint.position === 'above' && <Hint {...hint} />}
+      {prefix || suffix ? (
+        <div {...inputDivProps}>
+          {prefix && !isEmpty(prefix) && (
+            <div {...prefix.properties}>{prefix.content}</div>
+          )}
+          <input
+            name={name}
+            type={type}
+            value={value}
+            onChange={handleChange}
+            className={inputClassName}
+            aria-label={ariaLabel || name}
+            {...inputProps}
+          />
+          {suffix && !isEmpty(suffix) && (
+            <div {...suffix.properties}>{suffix.content}</div>
+          )}
+        </div>
+      ) : (
         <input
-          style={{ width: '100%' }}
           name={name}
           type={type}
           value={value}
           onChange={handleChange}
-          {...inputProps}
+          className={inputClassName}
           aria-label={ariaLabel || name}
+          {...inputProps}
         />
-        {suffix && <div>{suffix}</div>}
-      </div>
+      )}
+      {hint && hint.position !== 'above' && <Hint {...hint} />}
       {errorPosition && errorPosition === ErrorPosition.BOTTOM && (
         <ErrorMessage />
       )}

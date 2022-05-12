@@ -17,7 +17,7 @@ interface ToggleProps {
   /**
    * handle the check value
    */
-  onChange: (checked: boolean) => void;
+  onChange: (checked: boolean, evt?: React.FormEvent<HTMLInputElement>) => void;
   /**
    * define your own style
    */
@@ -42,6 +42,10 @@ interface ToggleProps {
    * specify a custom element for off state
    */
   customOffLabel?: JSX.Element;
+  /**
+   * will alloww to specify extra properties for the input
+   */
+  inputProps?: any;
 }
 
 export const Toggle = ({
@@ -54,9 +58,10 @@ export const Toggle = ({
   disabled,
   customOnLabel,
   customOffLabel,
+  inputProps,
 }: ToggleProps) => {
-  const handleChange = () => {
-    onChange(!checked);
+  const handleChange = (evt: React.FormEvent<HTMLInputElement>) => {
+    onChange(!checked, evt);
   };
 
   return (
@@ -113,6 +118,7 @@ export const Toggle = ({
         onChange={handleChange}
         disabled={disabled}
         className={style.switchInput}
+        {...inputProps}
       />
     </label>
   );

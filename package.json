@@ -1,8 +1,8 @@
 {
   "name": "@capgeminiuk/dcx-react-library",
-  "author": "Daniele Zurico",
+  "author": "Capgemini UK",
   "license": "MIT",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "source": "src/index.ts",
   "main": "dist/dcx-react-library.js",
   "module": "dist/dcx-react-library.module.js",
@@ -11,8 +11,23 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Capgemini/dcx-react-library.git"
+  },
+  "keywords": [
+    "react",
+    "library",
+    "agnostic",
+    "dcx",
+    "capgemini"
+  ],
+  "bugs": {
+    "url": "https://github.com/Capgemini/dcx-react-library/issues"
+  },
+  "homepage": "https://main--6069a6f47f4b9f002171f8e1.chromatic.com",
   "scripts": {
-    "build": "microbundle --jsx React.createElement",
+    "build": "microbundle --jsx React.createElement --css-modules true",
     "dev": "microbundle watch --jsx React.createElement",
     "clean": "if exist \"./dist\" rd /s /q \"./dist\"",
     "test": "jest",
@@ -41,17 +56,17 @@
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@commitlint/config-conventional": "^13.2.0",
-    "@storybook/addon-a11y": "^6.3.12",
-    "@storybook/addon-actions": "^6.3.12",
-    "@storybook/addon-controls": "^6.3.12",
-    "@storybook/addon-docs": "^6.3.12",
-    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-a11y": "^6.4.17",
+    "@storybook/addon-actions": "^6.4.17",
+    "@storybook/addon-controls": "^6.4.17",
+    "@storybook/addon-docs": "^6.4.17",
+    "@storybook/addon-essentials": "^6.4.17",
     "@storybook/addon-knobs": "^6.3.1",
-    "@storybook/addon-links": "^6.3.12",
-    "@storybook/addons": "^6.3.12",
+    "@storybook/addon-links": "^6.4.17",
+    "@storybook/addons": "^6.4.17",
     "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^6.3.12",
-    "@storybook/theming": "^6.3.12",
+    "@storybook/react": "^6.4.17",
+    "@storybook/theming": "^6.4.17",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
@@ -74,6 +89,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-storybook": "^0.5.6",
     "husky": "^7.0.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.3.1",

@@ -17,13 +17,13 @@ export const FormSelectDemo = () => {
       </label>
       <br />
       <FormSelect
-        nullOption="Select..."
+        value="Arsenal"
         optionGroups={[
           {
             label: 'English Premier League',
             displayCount: true,
             options: [
-              { label: 'Arsenal', value: 'Arsenal', selected: true },
+              { label: 'Arsenal', value: 'Arsenal' },
               { label: 'Chelsea', value: 'Chelsea' },
               { label: 'Liverpool', value: 'Liverpool' },
               { label: 'Manchester City', value: 'Manchester City' },

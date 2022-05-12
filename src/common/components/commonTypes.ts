@@ -1,6 +1,6 @@
 import React from 'react';
 
-type VisuallyHidden = {
+export type VisuallyHidden = {
   /**
    * visually hidden text
    */
@@ -165,6 +165,18 @@ export type FormRadioCheckboxProps = {
    * specifies whether the radio should be selected
    */
   selected?: boolean;
+  /**
+   * specifies an optional className for the input
+   */
+  inputClassName?: string;
+  /**
+   * specifies an optional className for the label
+   */
+  labelClassName?: string;
+  /**
+    * specifies an optional className for the item
+   */
+  itemClassName?: string;
 };
 
 export type HintProps = {
@@ -204,3 +216,22 @@ export type LegendProps = {
    */
   heading?: HeadingProps;
 };
+
+export type LabelProps = {
+  /**
+   * label text
+   **/
+  label?: string;
+  /**
+   * label class name
+   */
+  className?: string;
+  /**
+   * label html for
+   */
+  htmlFor?: string;
+  /**
+   * label properties
+   */
+  labelProperties?: React.LabelHTMLAttributes<HTMLLabelElement>;
+}

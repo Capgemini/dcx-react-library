@@ -24,8 +24,11 @@ export const CheckboxRadioBase = ({
   nested,
   selected,
   onChange,
+  inputClassName,
+  labelClassName,
+  itemClassName,
 }: FormRadioCheckboxProps & {
-  onChange: (
+  onChange?: (
     event: React.ChangeEvent<HTMLInputElement>,
     conditionalInput?: string
   ) => void;
@@ -40,7 +43,7 @@ export const CheckboxRadioBase = ({
   const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    onChange(event);
+    if (onChange) onChange(event);
   };
 
   const input: JSX.Element = (
@@ -57,25 +60,26 @@ export const CheckboxRadioBase = ({
       disabled={disabled}
       checked={selected}
       {...inputProps}
+      className={inputClassName}
       onChange={onChangeHandler}
     />
   );
   const el: JSX.Element = nested ? (
-    <label {...labelProps}>
+    <label {...labelProps} className={labelClassName}>
       {input}
       {label}
     </label>
   ) : (
     <>
       {input}
-      <label {...labelProps} htmlFor={id}>
+      <label {...labelProps} htmlFor={id} className={labelClassName}>
         {label}
       </label>
     </>
   );
 
   return (
-    <div {...itemProps}>
+    <div {...itemProps} className={itemClassName}>
       {hint && hint.position === 'above' && <Hint {...hint} />}
       {el}
       {hint && hint.position !== 'above' && <Hint {...hint} />}
@@ -86,7 +90,7 @@ export const CheckboxRadioBase = ({
           value: conditionalValue,
           onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
             setConditionalValue(event.currentTarget.value);
-            onChange(event, event.currentTarget.value);
+            if (onChange) onChange(event, event.currentTarget.value);
           },
         })}
     </div>

@@ -81,6 +81,9 @@ function FormGroupDemo() {
     itemProps={{}}
     itemsClasses=""
     labelProps={{}}
+    inputClassName=""
+    itemClassName=""
+    labelClassName=""
     legend={{
       text: "Heading text",
       className: "",

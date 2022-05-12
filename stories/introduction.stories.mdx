@@ -27,11 +27,20 @@ As soon the installation is completed you can use all the components built for y
 For example:
 
 ```js
-import {Button} from 'dcx-react-library`;
+import {Button} from '@capgeminiuk/dcx-react-library`;
 
 function App() {
   return (
       <Button label="start" onClick={()=>{}}/>
   )
 }
+```
+
+## Styling
+
+We don't ship `dcx-react-library` with any included CSS. However, some stylesheet is required to use some components (for example, `toggle` and `tooltip`).
+
+```js
+/* The following line can be included in your src/index.js or App.js file */
+import '@capgeminiuk/dcx-react-library/dist/dcx-react-library.css';
 ```

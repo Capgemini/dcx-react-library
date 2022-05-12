@@ -70,11 +70,27 @@ const DummyComponentTriggerError = () => {
           },
           message: 'is invalid',
         }}
+        containerClassNameError="error-container"
       />
       <button onClick={handleClick}>submit</button>
     </>
   );
 };
+
+const DummyStaticComponent = ({ pos, hint }: any) => (
+  <>
+    <FormInput
+      name="password"
+      type="text"
+      value="myValue"
+      errorPosition={pos}
+      staticErrorMessage="static error message"
+      containerClassName="container-class"
+      containerClassNameError="container-error"
+      hint={hint}
+    />
+  </>
+);
 
 describe('FormInput', () => {
   it('should display the formInput content', () => {
@@ -101,7 +117,12 @@ describe('FormInput', () => {
         type="text"
         value="@_-bddcd6A"
         onChange={handleChange}
-        prefix={<div data-testid="prefix">prefix</div>}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
       />
     );
     const input: any = screen.getByRole('textbox');
@@ -111,7 +132,116 @@ describe('FormInput', () => {
     expect(input).toBeInTheDocument();
   });
 
+  it('should display the formInput with className', () => {
+    const handleChange = jest.fn();
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="@_-bddcd6A"
+        inputClassName="myClassName"
+        onChange={handleChange}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+      />
+    );
+    const input: any = screen.getByRole('textbox');
+    expect(input.className).toBe('myClassName');
+  });
+
+  it('should display the formInput with a container className', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormInput
+        name="password"
+        type="text"
+        value="@_-bddcd6A"
+        containerClassName="myClassName"
+        onChange={handleChange}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+      />
+    );
+    const inputContainer: Element | null =
+      container.querySelector('.myClassName');
+    expect(inputContainer).not.toBeNull();
+  });
+
+  it('should display the formInput with a label className', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormInput
+        name="password"
+        type="text"
+        value="@_-bddcd6A"
+        labelClassName="myClassName"
+        onChange={handleChange}
+        label="password label"
+        labelProps={{
+          htmlFor: 'password',
+        }}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+        inputProps={{
+          id: 'password',
+        }}
+      />
+    );
+
+    expect(container.querySelector('.myClassName')).not.toBeNull();
+  });
+
+  it('should display the formInput prefix content', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormInput
+        name="password"
+        type="text"
+        value="test"
+        onChange={handleChange}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+      />
+    );
+    expect(container.querySelector('#prefix')).toBeInTheDocument();
+  });
+
   it('should display the formInput suffix content', () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <FormInput
+        name="password"
+        type="text"
+        value="test"
+        onChange={handleChange}
+        suffix={{
+          properties: {
+            id: 'suffix',
+          },
+          content: 'suffix',
+        }}
+      />
+    );
+    expect(container.querySelector('#suffix')).toBeInTheDocument();
+  });
+
+  it('should display the formInput with a label', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
@@ -119,10 +249,18 @@ describe('FormInput', () => {
         type="text"
         value="test"
         onChange={handleChange}
-        suffix={<div data-testid="suffix">suffix</div>}
+        inputProps={{
+          id: 'input-id',
+          placeholder: 'enter your email',
+        }}
+        label="this is a label"
+        labelProps={{
+          className: 'label-class-name',
+          htmlFor: 'input-id',
+        }}
       />
     );
-    expect(screen.getByTestId('suffix')).toBeInTheDocument();
+    expect(screen.getByLabelText('this is a label')).toBeInTheDocument();
   });
 
   it('should display the formInput error', () => {
@@ -140,7 +278,9 @@ describe('FormInput', () => {
   });
 
   it('should display the formInput error message on top', () => {
-    const { container } = render(<DummyComponent pos={ErrorPosition.TOP} />);
+    const { container } = render(
+      <DummyComponent pos={ErrorPosition.BEFORE_LABEL} />
+    );
     const input = screen.getByRole('textbox');
     userEvent.type(input, 'TEST VALUE');
     let error: any;
@@ -181,5 +321,58 @@ describe('FormInput', () => {
     const button = screen.getByRole('button');
     userEvent.click(button);
     expect(screen.getByRole('error')).toContainHTML('is invalid');
+  });
+
+  it('should display a static error message', () => {
+    render(<DummyStaticComponent pos={ErrorPosition.AFTER_LABEL} />);
+    const error = screen.getByRole('error');
+    expect(error.textContent).toBe('static error message');
+  });
+
+  it('should add an extra class if the static error is displayed', () => {
+    const { container } = render(
+      <DummyStaticComponent pos={ErrorPosition.AFTER_LABEL} />
+    );
+    const inputContainer: Element | null =
+      container.querySelector('.container-error');
+    expect(inputContainer).not.toBeNull();
+  });
+
+  it('should add an extra class if the dynamic error is displayed', () => {
+    const { container } = render(<DummyComponentTriggerError />);
+    const button = screen.getByRole('button');
+    userEvent.click(button);
+    const inputContainer: Element | null =
+      container.querySelector('.error-container');
+    expect(inputContainer).not.toBeNull();
+  });
+
+  it('should display a hint message on top', () => {
+    const { container } = render(
+      <DummyStaticComponent
+        pos={ErrorPosition.AFTER_LABEL}
+        hint={{
+          id: 'my-hint',
+          text: 'my hint',
+          position: 'above',
+        }}
+      />
+    );
+    const hint: any = container.querySelector('#my-hint');
+    expect(hint.innerHTML).toBe('my hint');
+  });
+
+  it('should display a hint message on bottom', () => {
+    const { container } = render(
+      <DummyStaticComponent
+        pos={ErrorPosition.AFTER_LABEL}
+        hint={{
+          id: 'my-hint',
+          text: 'my hint',
+        }}
+      />
+    );
+    const hint: any = container.querySelector('#my-hint');
+    expect(hint.innerHTML).toBe('my hint');
   });
 });

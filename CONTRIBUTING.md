@@ -11,24 +11,17 @@ developers managing and developing this project.
 1. Clone the repo
    `git clone git@github.com:Capgemini/dcx-react-library.git`
 2. Run `./setup.sh` in the root `dcx-react-library` folder
-3. Run `yarn` within `./example` folder
 
-Once this is done, you can modify any file locally and run `yarn start`,
-`yarn test` or `yarn run build`.
-
-If you want to test your component you can import the component into the
-`./example` application once you have `yarn start` the `cdcx-react-library`
-root project and run `yarn start` within the `./example` folder
+this command will install all the dependencies and it will links the dcx-react-library to the example folder.
 
 ## Commands
 
-DCX Component Library scaffolds your new library inside the `/src` folder and also sets up a [Parcel-based](https://parceljs.org) playground for it inside the `/example` folder.
+DCX Component Library scaffolds your new library inside the `/src` folder and also sets up a [Create-React-App](https://reactjs.org/docs/create-a-new-react-app.html) playground for it inside the `/example` folder.
 
 The recommended workflow is to run DCX Component Library in one terminal:
 
 ```bash
-yarn install #to install dependencies
-yarn start #to run the library
+yarn dev #to run the library
 ```
 
 This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
@@ -53,29 +46,30 @@ Run the example inside another terminal:
 
 ```bash
 cd example
-yarn install #to install dependencies
 yarn start #to run the examples
 ```
 
-The default example imports and live reloads whatever is in the `/dist` folder, so if you are seeing an out of date component, make sure DCX Component Library is running in watch mode as recommended above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
+The default example imports and live reloads whatever is in the `/dist` folder, so if you are seeing an out of date component, make sure DCX Component Library is running in watch mode as recommended above.
 
-- To do a one-off build, use `yarn build`;
+- To do a one-off build, use `yarn build` at the root of your project;
 
-- To run tests, use `yarn test`;
+- To run tests, use `yarn test` at the root of your project;
 
-- To check the code coverage use `yarn test: coverage;
+- To check the code coverage use `yarn test: coverage at the root of your project;
 
-- To fix all the linting errors use `yarn lint: fix`.
+- To fix all the linting errors use `yarn lint: fix` at the root of your project.
 
 ## Submit your PR
 
 To create a new component the following must be satisfied before adding
 `READY TO MERGE` labels on PR:
 
-1. create a branch called: feature/7-input (where 7 is the git issue number)
-2. create a folder under `src` for the component-name
-3. create the test under `__tests__` within the component-name folder
-4. create a demo in the `example/src`
+1. we usually have a base branch to branch from based on the release we currently are: release/x.x
+2. create a branch called: feature/7-input (where 7 is the git issue number) from the base branch (release/x.x)
+3. create a folder under `src` for the component-name
+4. create the test under `__tests__` within the component-name folder
+5. create or edit a demo in the `example/src`
+6. create or edit the story in the `stories`
 
 Example folder structure with component `SnackBar`:
 
@@ -136,6 +130,10 @@ We use circleCi for continuous integration. CircleCi configuration is stored und
 ## Configuration
 
 Code quality is set up for you with `prettier`, `husky`, and `lint-staged`.
+
+## Documentation
+
+All the stories created in Storybook are deployed in [Chromatic](main--6069a6f47f4b9f002171f8e1.chromatic.com). You can also see a preview of your PR before requesting a merge looking on the circle-ci pipline.
 
 ### Jest
 

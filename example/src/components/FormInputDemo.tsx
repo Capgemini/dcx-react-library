@@ -31,6 +31,21 @@ export const FormInputDemo = () => {
           placeholder: 'enter your email',
         }}
       />
+      <h1>Label</h1>
+      <FormInput
+        name="password"
+        type="text"
+        value={value}
+        onChange={handleChange}
+        inputProps={{
+          placeholder: 'enter your email',
+          htmlFor: 'input-id',
+        }}
+        label="this is a label"
+        labelProps={{
+          htmlFor: 'input-id',
+        }}
+      />
       <h1>Prefix</h1>
       <FormInput
         name="password"
@@ -40,16 +55,39 @@ export const FormInputDemo = () => {
         inputProps={{
           placeholder: 'enter your email',
         }}
-        prefix={
-          <div
-            style={{
+        prefix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
+      />
+      <h1>Prefix Label</h1>
+      <FormInput
+        name="password"
+        type="text"
+        value={value}
+        onChange={handleChange}
+        inputProps={{
+          placeholder: 'enter your email',
+          id: 'input-id',
+        }}
+        label="this is a label"
+        labelProps={{
+          htmlFor: 'input-id',
+        }}
+        prefix={{
+          properties: {
+            style: {
+              border: '1px solid #d2d2d2',
+              padding: '5px',
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
       />
       <h1>Suffix</h1>
       <FormInput
@@ -60,16 +98,15 @@ export const FormInputDemo = () => {
         inputProps={{
           placeholder: 'enter your email',
         }}
-        suffix={
-          <div
-            style={{
+        suffix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
       />
       <h1>Prefix and suffix</h1>
       <FormInput
@@ -80,26 +117,56 @@ export const FormInputDemo = () => {
         inputProps={{
           placeholder: 'enter your email',
         }}
-        prefix={
-          <div
-            style={{
+        prefix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
-        suffix={
-          <div
-            style={{
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
+        suffix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
+      />
+      <h1>Prefix and suffix with label</h1>
+      <FormInput
+        name="password"
+        type="text"
+        value={value}
+        onChange={handleChange}
+        inputProps={{
+          placeholder: 'enter your email',
+        }}
+        prefix={{
+          properties: {
+            style: {
+              border: '1px solid #d2d2d2',
+              padding: '5px',
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
+        suffix={{
+          properties: {
+            style: {
+              border: '1px solid #d2d2d2',
+              padding: '5px',
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
+        label="this is a label"
+        labelProps={{
+          htmlFor: 'input-id',
+        }}
       />
       <h1>Validation</h1>
       <FormInput
@@ -126,26 +193,24 @@ export const FormInputDemo = () => {
             'your password need to be min 8 chars 1 Uppercase, 1 Number and one special character',
         }}
         errorPosition={ErrorPosition.BOTTOM}
-        prefix={
-          <div
-            style={{
+        prefix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
-        suffix={
-          <div
-            style={{
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
+        suffix={{
+          properties: {
+            style: {
               border: '1px solid #d2d2d2',
               padding: '5px',
-            }}
-          >
-            <FontAwesomeIcon icon={faAt} />
-          </div>
-        }
+            },
+          },
+          content: <FontAwesomeIcon icon={faAt} />,
+        }}
       />
       <div>isValid:{showValid.toString()}</div>
     </>

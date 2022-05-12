@@ -8,11 +8,13 @@ import '../style.css';
 
 In this section we're using the formInput component providing the GovUk style passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
 
+# Basic
+
 <Canvas>
   <Story name="basic">
     {() => {
       const [value, setValue] = React.useState('');
-      const handleChange = event => setValue(event.currentTarget.value);
+      const handleChange = (event) => setValue(event.currentTarget.value);
       return (
         <FormInput
           name="text"
@@ -27,25 +29,52 @@ In this section we're using the formInput component providing the GovUk style pa
   </Story>
 </Canvas>
 
+# Label
+
+<Canvas>
+  <Story name="label">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const handleChange = (event) => setValue(event.currentTarget.value);
+      return (
+        <FormInput
+          name="text"
+          type="text"
+          label="User Reference (Optional)"
+          containerClassName="govuk-label"
+          inputProps={{ id: 'user-reference', className: 'govuk-input' }}
+          labelProps={{ htmlFor: 'user-reference', className: 'govuk-label' }}
+          value={value}
+          onChange={handleChange}
+          ariaLabel="standard-input"
+          inputDivProps={{}}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 # Suffix
 
 <Canvas>
   <Story name="suffix">
     {() => {
       const [value, setValue] = React.useState('');
-      const handleChange = event => setValue(event.currentTarget.value);
+      const handleChange = (event) => setValue(event.currentTarget.value);
       return (
         <FormInput
           name="text0"
           type="text"
-          inputProps={{ className: 'govuk-input' }}
+          inputClassName="govuk-input"
           value={value}
           onChange={handleChange}
-          suffix={
-            <div className="govuk-input__suffix" aria-hidden="true">
-              kg
-            </div>
-          }
+          suffix={{
+            properties: {
+              className: 'govuk-input__suffix',
+              'aria-hidden': 'true',
+            },
+            content: 'kg',
+          }}
           ariaLabel="standard-input-suffix"
         />
       );
@@ -59,19 +88,21 @@ In this section we're using the formInput component providing the GovUk style pa
   <Story name="prefix">
     {() => {
       const [value, setValue] = React.useState('');
-      const handleChange = event => setValue(event.currentTarget.value);
+      const handleChange = (event) => setValue(event.currentTarget.value);
       return (
         <FormInput
           name="text2"
           type="text"
-          inputProps={{ className: 'govuk-input' }}
+          inputClassName="govuk-input"
           value={value}
           onChange={handleChange}
-          prefix={
-            <div className="govuk-input__prefix" aria-hidden="true">
-              £
-            </div>
-          }
+          prefix={{
+            properties: {
+              className: 'govuk-input__prefix',
+              'aria-hidden': 'true',
+            },
+            content: '£',
+          }}
           aria-label="standard-input-pre-post-fix"
         />
       );
@@ -85,24 +116,28 @@ In this section we're using the formInput component providing the GovUk style pa
   <Story name="prefix+suffix">
     {() => {
       const [value, setValue] = React.useState('');
-      const handleChange = event => setValue(event.currentTarget.value);
+      const handleChange = (event) => setValue(event.currentTarget.value);
       return (
         <FormInput
           name="text2"
           type="text"
-          inputProps={{ className: 'govuk-input' }}
+          inputClassName="govuk-input"
           value={value}
           onChange={handleChange}
-          suffix={
-            <div className="govuk-input__suffix" aria-hidden="true">
-              per item
-            </div>
-          }
-          prefix={
-            <div className="govuk-input__prefix" aria-hidden="true">
-              £
-            </div>
-          }
+          suffix={{
+            properties: {
+              className: 'govuk-input__suffix',
+              'aria-hidden': 'true',
+            },
+            content: 'per item',
+          }}
+          prefix={{
+            properties: {
+              className: 'govuk-input__prefix',
+              'aria-hidden': 'true',
+            },
+            content: '£',
+          }}
           aria-label="standard-input-pre-post-fix"
         />
       );
@@ -110,14 +145,16 @@ In this section we're using the formInput component providing the GovUk style pa
   </Story>
 </Canvas>
 
+# Dynamic error
+
 Note: to display the error message type a letter and remove it
 
 <Canvas>
   <Story name="error-message">
     {() => {
       const [value, setValue] = React.useState('');
-      const handleChange = event => setValue(event.currentTarget.value);
-      const handleValidity = valid => console.log(valid);
+      const handleChange = (event) => setValue(event.currentTarget.value);
+      const handleValidity = (valid) => console.log(valid);
       return (
         <FormInput
           name="text3"
@@ -125,9 +162,7 @@ Note: to display the error message type a letter and remove it
           value={value}
           onChange={handleChange}
           isValid={handleValidity}
-          inputProps={{
-            className: 'govuk-input',
-          }}
+          inputClassName="govuk-input"
           errorProps={{
             className: 'govuk-error-message',
           }}
@@ -141,8 +176,67 @@ Note: to display the error message type a letter and remove it
           errorMessage={{
             className: 'govuk-error-message',
           }}
-          errorPosition="top"
+          errorPosition="before-label"
           aria-label="standard-input-validation"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Hint
+
+<Canvas>
+  <Story name="hint">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const handleChange = (event) => setValue(event.currentTarget.value);
+      const handleValidity = (valid) => console.log(valid);
+      return (
+        <FormInput
+          name="text3"
+          type="text"
+          value={value}
+          onChange={handleChange}
+          isValid={handleValidity}
+          inputClassName="govuk-input"
+          hint={{
+            position: 'above',
+            text: 'this is an example hint',
+            className: 'govuk-hint',
+          }}
+          aria-label="standard-input-validation"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Static error
+
+<Canvas>
+  <Story name="static error">
+    {() => {
+      return (
+        <FormInput
+          label="this is a label"
+          containerClassName="govuk-form-group"
+          inputClassName="govuk-input"
+          labelClassName="govuk-label"
+          name="id"
+          inputProps={{ id: 'id' }}
+          type="text"
+          value="value"
+          hint={{
+            position: 'above',
+            text: 'My hint',
+            id: 'id_hint',
+            className: 'govuk-hint',
+          }}
+          errorProps={{ className: 'govuk-error-message' }}
+          staticErrorMessage="some error appened here"
+          errorPosition="after-label"
+          containerClassNameError="govuk-form-group--error"
         />
       );
     }}

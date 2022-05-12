@@ -29,10 +29,6 @@ export type OptionProps = {
    * option label class name
    */
   labelClassName?: string;
-  /**
-   * option selected
-   */
-  selected?: boolean;
 };
 
 export const Option = ({

@@ -52,6 +52,50 @@ describe('Table', () => {
     expect(row.innerHTML).toContain('<span>1</span>');
   });
 
+  it('should perform the order with short custom headers', () => {
+    render(
+      <Table
+        dataSource={values}
+        customHeaderLabels={['Test', 'position', 'actions']}
+        selectedRowClassName="selectedRowClassName"
+        withOrderBy={true}
+      />
+    );
+    //body
+    const { id } = values[0];
+    const row: any = screen.getByText(id).closest('tr');
+    expect(row.innerHTML).toContain('<span>2</span>');
+    //header
+    const rows: any = screen.getAllByRole('row');
+    const idHeader = rows[0].children[0];
+    fireEvent.click(idHeader);
+    expect(row.innerHTML).toContain('<span>1</span>');
+  });
+
+  it('should not perform the order when data can not be found', () => {
+    render(
+      <Table
+        dataSource={values}
+        customHeaderLabels={[
+          { label: 'invalid', data: 'undefined' },
+          { label: 'position', data: 'position' },
+          { label: 'actions', data: 'actions' },
+        ]}
+        selectedRowClassName="selectedRowClassName"
+        withOrderBy={true}
+      />
+    );
+    //body
+    const { id } = values[0];
+    const row: any = screen.getByText(id).closest('tr');
+    expect(row.innerHTML).toContain('<span>2</span>');
+    //header
+    const rows: any = screen.getAllByRole('row');
+    const idHeader = rows[0].children[0];
+    fireEvent.click(idHeader);
+    expect(row.innerHTML).toContain('<span>2</span>');
+  });
+
   it('should allow to search and return 0 elements', () => {
     render(
       <Table
@@ -124,6 +168,76 @@ describe('Table', () => {
     expect(tbody[1].children).toHaveLength(0);
   });
 
+  it('should not display omitted table headers', () => {
+    render(<Table dataSource={values} columnsToOmit={['position']} />);
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('id');
+    expect(row[2].innerHTML).toContain('actions');
+  });
+
+  it('should not display omitted table headers with given custom headers', () => {
+    render(
+      <Table
+        dataSource={values}
+        columnsToOmit={['position']}
+        customHeaderLabels={[
+          { label: 'Test', data: 'id' },
+          { label: 'position', data: 'position' },
+          { label: 'actions', data: 'actions' },
+        ]}
+      />
+    );
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('Test');
+    expect(row[2].innerHTML).toContain('actions');
+  });
+
+  it('should not display omitted table headers with given custom headers with omit flag', () => {
+    render(
+      <Table
+        dataSource={values}
+        customHeaderLabels={[
+          { label: 'Test', data: 'id' },
+          { label: 'position', data: 'position', omit: true },
+          { label: 'actions', data: 'actions' },
+        ]}
+      />
+    );
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('Test');
+    expect(row[2].innerHTML).toContain('actions');
+  });
+
+  it('should not display omitted table headers with given shorted custom headers', () => {
+    render(
+      <Table
+        dataSource={values}
+        columnsToOmit={['position']}
+        customHeaderLabels={['Test', 'position', 'actions']}
+      />
+    );
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('Test');
+    expect(row[2].innerHTML).toContain('actions');
+  });
+
+  it('should display only the table header', () => {
+    render(
+      <Table
+        dataSource={[]}
+        customHeaderLabels={['Test', 'position', 'actions']}
+        selectedRowClassName="selectedRowClassName"
+        withSearch={true}
+      />
+    );
+    const row: any = screen.getAllByRole('row');
+    expect(row[1].innerHTML).toContain('Test');
+    expect(row[2].innerHTML).toContain('position');
+    expect(row[3].innerHTML).toContain('actions');
+    const tbody = screen.getAllByRole('rowgroup');
+    expect(tbody[1].children).toHaveLength(0);
+  });
+
   it('should allow to reorder the data if the customHeader is specified', () => {
     render(
       <Table
@@ -148,7 +262,7 @@ describe('Table', () => {
     expect(row.innerHTML).toContain('<span>1</span>');
   });
 
-  it('should not reorder the data if the customHeader specified doesn\'t have a match data', () => {
+  it("should not reorder the data if the customHeader specified doesn't have a match data", () => {
     render(
       <Table
         dataSource={values}
