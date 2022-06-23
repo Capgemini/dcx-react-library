@@ -201,4 +201,13 @@ describe('Button', () => {
     const button: any = screen.getByRole('button');
     expect(button.getAttribute('class')).toBe('test');
   });
+
+  it('should accept formAction as attribute', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} formAction={"https://www.w3schools.com/tags/att_button_formaction.asp"} />);
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('formAction')).toBe('https://www.w3schools.com/tags/att_button_formaction.asp');
+  });
+
+  
 });
