@@ -15,7 +15,7 @@ type FormInputProps = {
   /**
    * input value
    **/
-  value: any;
+  value?: any;
   /**
    * input label
    */

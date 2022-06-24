@@ -1,8 +1,7 @@
 import 'react-app-polyfill/ie11';
 import reportWebVitals from './reportWebVitals';
-import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {
   FormInputMaskedDemo,
   AutocompleteDemo,
@@ -30,29 +29,29 @@ import { Register } from './pages/Register';
 const App = () => (
   <div>
     <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/formInput" component={FormInputDemo} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/masked" component={FormInputMaskedDemo} />
-        <Route path="/radio" exact component={FormRadioDemo} />
-        <Route path="/checkbox" exact component={FormCheckboxDemo} />
-        <Route path="/AutocompleteDemo" component={AutocompleteDemo} />
-        <Route path="/ButtonDemo" component={ButtonDemo} />
-        <Route path="/progress" component={ProgressDemo} />
-        <Route path="/range" component={RangeDemo} />
-        <Route path="/toggle" component={ToggleDemo} />
-        <Route path="/select" component={FormSelectDemo} />
-        <Route path="/multiUpload" component={MultiUploadDemo} />
-        <Route path="/multiSelect" component={MultiSelectDemo} />
-        <Route path="/formDate" component={FormDateDemo} />
-        <Route path="/tabGroup" component={TabGroupDemo} />
-        <Route path="/copyToClipboard" component={CopyToClipboardDemo} />
-        <Route path="/table" component={TableDemo} />
-        <Route path="/tooltipDemo" component={TooltipDemo} />
-        <Route path="/details" component={DetailsDemo} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/formInput" element={<FormInputDemo />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/masked" element={<FormInputMaskedDemo />} />
+        <Route path="/radio" element={<FormRadioDemo />} />
+        <Route path="/checkbox" element={<FormCheckboxDemo />} />
+        <Route path="/AutocompleteDemo" element={<AutocompleteDemo />} />
+        <Route path="/ButtonDemo" element={<ButtonDemo />} />
+        <Route path="/progress" element={<ProgressDemo />} />
+        <Route path="/range" element={<RangeDemo />} />
+        <Route path="/toggle" element={<ToggleDemo />} />
+        <Route path="/select" element={<FormSelectDemo />} />
+        <Route path="/multiUpload" element={<MultiUploadDemo />} />
+        <Route path="/multiSelect" element={<MultiSelectDemo />} />
+        <Route path="/formDate" element={<FormDateDemo />} />
+        <Route path="/tabGroup" element={<TabGroupDemo />} />
+        <Route path="/copyToClipboard" element={<CopyToClipboardDemo />} />
+        <Route path="/table" element={<TableDemo />} />
+        <Route path="/tooltipDemo" element={<TooltipDemo />} />
+        <Route path="/details" element={<DetailsDemo />} />
+      </Routes>
     </BrowserRouter>
   </div>
 );
