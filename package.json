@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
-    "@commitlint/config-conventional": "^13.2.0",
+    "@commitlint/config-conventional": "^17.0.2",
     "@storybook/addon-a11y": "^6.5.9",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-controls": "^6.5.9",
