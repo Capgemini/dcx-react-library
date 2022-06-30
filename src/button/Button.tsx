@@ -57,7 +57,7 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    */
   customLoadingPostImage?: JSX.Element;
   /**
-   * allow to have form action attribute for button
+   * allow to specify where to send the form-data when a form is submitted.
   */
   formAction?: string;
 };
