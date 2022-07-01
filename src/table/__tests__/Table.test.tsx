@@ -96,7 +96,8 @@ describe('Table', () => {
     expect(row.innerHTML).toContain('<span>2</span>');
   });
 
-  it('should allow to search and return 0 elements', () => {
+  it('should allow to search and return 0 elements', async () => {
+    const user = userEvent.setup();
     render(
       <Table
         dataSource={values}
@@ -105,7 +106,7 @@ describe('Table', () => {
       />
     );
     const search = screen.getByRole('textbox');
-    userEvent.type(search, '33');
+    await user.type(search, '33');
     const row: any = screen.getAllByRole('row');
     expect(row[1].innerHTML).toContain('id');
     expect(row[2].innerHTML).toContain('position');
@@ -114,7 +115,9 @@ describe('Table', () => {
     expect(tbody[1].children).toHaveLength(0);
   });
 
-  it('should allow to search and return 1 elements', () => {
+  it('should allow to search and return 1 elements', async () => {
+    const user = userEvent.setup();
+
     render(
       <Table
         dataSource={values}
@@ -123,7 +126,7 @@ describe('Table', () => {
       />
     );
     const search = screen.getByRole('textbox');
-    userEvent.type(search, '3');
+    await user.type(search, '3');
     const row: any = screen.getAllByRole('row');
     expect(row[1].innerHTML).toContain('id');
     expect(row[2].innerHTML).toContain('position');

@@ -1,19 +1,10 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Button } from '../Button';
-
 import { BUTTON_TYPE } from '..';
 import userEvent from '@testing-library/user-event';
 import { act } from '@testing-library/react-hooks';
-
-beforeEach(() => {
-  jest.useFakeTimers();
-});
-
-afterEach(() => {
-  jest.clearAllTimers();
-});
 
 const DummyLoadingButton = ({ loadingLabel }: any) => {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -126,78 +117,81 @@ describe('Button', () => {
 
   it('should display disable button for 1sec', async () => {
     const handleClick = jest.fn();
+    const user = userEvent.setup();
     render(
       <Button label="start" onClick={handleClick} disableClickForMs={100} />
     );
     const button: any = screen.getByRole('button');
-    act(() => userEvent.click(button));
+    await act(() => user.click(button));
     expect(button).toBeDisabled();
-    act(() => {
-      jest.runAllTimers();
+    await waitFor(() => {
+      expect(button).not.toBeDisabled();
     });
-    expect(button).not.toBeDisabled();
   });
 
-  it('should disable the button if is in loading state', () => {
+  it('should disable the button if is in loading state', async () => {
+    const user = userEvent.setup();
     render(<DummyLoadingButton />);
     const button: any = screen.getByRole('button');
-    act(() => userEvent.click(button));
-    act(() => {
-      jest.runAllTimers();
+    await act(() => user.click(button));
+    await waitFor(() => {
+      expect(button).not.toBeDisabled();
     });
-    expect(button).not.toBeDisabled();
   });
-  it('should display a different label if is loading state', () => {
+
+  it('should display a different label if is loading state', async () => {
+    const user = userEvent.setup();
     render(<DummyLoadingButton loadingLabel="Loading..." />);
     const button: any = screen.getByRole('button');
-    act(() => userEvent.click(button));
+    await act(() => user.click(button));
     expect(button.innerHTML).toContain('Loading...');
-    act(() => {
-      jest.runAllTimers();
+    await waitFor(() => {
+      expect(button.innerHTML).toContain('Register');
     });
-    expect(button.innerHTML).toContain('Register');
   });
-  it('should display a different prefix and postfix if is loading state', () => {
+
+  it('should display a different prefix and postfix if is loading state', async () => {
+    const user = userEvent.setup();
     render(<DummyLoadingButton loadingLabel="Loading..." />);
     const button: any = screen.getByRole('button');
-    act(() => userEvent.click(button));
+    await act(() => user.click(button));
     expect(button.innerHTML).toContain(
       '<img id="preLoadingImg" alt="" src="">Loading...<img id="postLoadingImg" alt="" src="">'
     );
-    act(() => {
-      jest.runAllTimers();
+    await waitFor(() => {
+      expect(button.innerHTML).toContain(
+        '<img id="prefixImg" alt="" src="">Register<img id="postfixmg" alt="" src="">'
+      );
     });
-    expect(button.innerHTML).toContain(
-      '<img id="prefixImg" alt="" src="">Register<img id="postfixmg" alt="" src="">'
-    );
   });
 
-  it('should display the same label in loading state', () => {
+  it('should display the same label in loading state', async () => {
+    const user = userEvent.setup();
     render(<DummyLoadingButton />);
     const button: any = screen.getByRole('button');
-    act(() => userEvent.click(button));
+    await act(() => user.click(button));
     expect(button.innerHTML).toContain(
       '<img id="preLoadingImg" alt="" src="">Register<img id="postLoadingImg" alt="" src="">'
     );
-    act(() => {
-      jest.runAllTimers();
+    await waitFor(() => {
+      expect(button.innerHTML).toContain(
+        '<img id="prefixImg" alt="" src="">Register<img id="postfixmg" alt="" src="">'
+      );
     });
-    expect(button.innerHTML).toContain(
-      '<img id="prefixImg" alt="" src="">Register<img id="postfixmg" alt="" src="">'
-    );
   });
 
-  it('should remain enable', () => {
+  it('should remain enable', async () => {
     const handleClick = jest.fn();
+    const user = userEvent.setup();
     render(<Button onClick={handleClick} label="Register" />);
     const button: any = screen.getByRole('button');
-    act(() => userEvent.click(button));
+    await act(() => user.click(button));
     expect(button.disable).toBeFalsy();
   });
 
   it('should accept className as attribute', () => {
     const handleClick = jest.fn();
-    render(<Button onClick={handleClick} className="test" />);
+    render(<Button onClick={handleClick} className="test" label="Register" />);
     const button: any = screen.getByRole('button');
     expect(button.getAttribute('class')).toBe('test');
   });

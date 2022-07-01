@@ -2,32 +2,32 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   collectCoverage: true,
-  'coverageReporters': ['json', 'lcov', 'text', 'html'],
-  'coverageThreshold': {
-    'global': {
-      'branches': 100,
-      'functions': 100,
-      'lines': 100,
-      'statements': 100
-    }
+  coverageReporters: ['json', 'lcov', 'text', 'html'],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
   },
-  'moduleNameMapper': {
-    '^.+\\.(css|less|scss)$': 'identity-obj-proxy'
+  moduleNameMapper: {
+    '^.+\\.(css|less|scss)$': 'identity-obj-proxy',
   },
-  'modulePathIgnorePatterns': [
+  modulePathIgnorePatterns: [
     '<rootDir>/example',
     '<rootDir>/dist',
     '<rootDir>/coverage',
     '<rootDir>/static',
-    '<rootDir>/stories'
+    '<rootDir>/stories',
   ],
-  'collectCoverageFrom': [
+  collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!src/**/index.{ts,tsx}',
     '!src/typings.d.ts',
     '!<rootDir>/node_modules/',
     '!<rootDir>/path/to/dir/',
-    '!src/generatePresentationalComponent/createPresentationalComponent.ts'
+    '!src/generatePresentationalComponent/createPresentationalComponent.ts',
   ],
   globals: {
     'ts-jest': {
