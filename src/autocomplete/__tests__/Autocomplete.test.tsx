@@ -239,7 +239,7 @@ describe('FormInput', () => {
     fireEvent.keyDown(input, { code: 'ArrowDown' });
 
     const listItems: any = screen.getAllByRole('listitem');
-    expect(listItems[2].className).toBe('activeClass ');
+    expect(listItems[1].className).toBe('activeClass ');
   });
 
   it('should call the selected function after the selection', () => {
