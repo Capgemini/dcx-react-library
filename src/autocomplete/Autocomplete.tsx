@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FormInput } from '../formInput';
+import { FormSelect } from '../formSelect';
 import { Hint, Roles } from '../common';
 import { MultiSelectOption } from '../multiSelect/Types';
 import { ResultList } from './ResultList';
@@ -101,7 +102,11 @@ type autocompleteProps = {
    */
   notFoundText?: string;
   /**
-   * event that return the selected value
+   * autocomplete witout javascript parameter
+   */
+  progressiveEnhacement?: boolean;
+  /**
+   * event that return the selected value{}
    */
   onSelected?: (value: string) => void;
   /**
@@ -156,6 +161,7 @@ export const Autocomplete = ({
   searchContainerStyle,
   selectedListItemStyle,
   selected,
+  progressiveEnhacement = false,
   onSelected,
   onChange,
   onRemove,
@@ -275,18 +281,28 @@ export const Autocomplete = ({
               />
             )
           )}
-        <FormInput
-          name="autocompleteSearch"
-          type="text"
-          value={userInput}
-          onChange={handleChange}
-          inputProps={{
-            onKeyDown: onKeyDown,
-            autoComplete: 'off',
-            ...inputProps,
-          }}
-          {...props}
-        />
+        {progressiveEnhacement ? (
+          <FormSelect
+            name="autocompleteSearchSelect"
+            options={options}
+            containerClassName={props.containerClassName}
+            selectClassName={props.selectClassName}
+            labelClassName={props.labelClassName}
+          />
+        ) : (
+          <FormInput
+            name="autocompleteSearch"
+            type="text"
+            value={userInput}
+            onChange={handleChange}
+            inputProps={{
+              onKeyDown: onKeyDown,
+              autoComplete: 'off',
+              ...inputProps,
+            }}
+            {...props}
+          />
+        )}
       </div>
       <div>
         <SelectedItem
@@ -309,32 +325,42 @@ export const Autocomplete = ({
       {hintText && (
         <Hint text={hintText} className={hintClass} useLabel={true} />
       )}
-      <FormInput
-        name="autocompleteSearch"
-        type="text"
-        value={userInput}
-        onChange={handleChange}
-        inputProps={{
-          onKeyDown: onKeyDown,
-          autoComplete: 'off',
-          ...inputProps,
-        }}
-        suffix={{
-          content: (
-            <button type="submit" style={unstyleBtn}>
-              {suffix}
-            </button>
-          ),
-        }}
-        prefix={{
-          content: (
-            <button type="submit" style={unstyleBtn}>
-              {prefix}
-            </button>
-          ),
-        }}
-        {...props}
-      />
+
+      {progressiveEnhacement ? (
+        <FormSelect
+          options={options}
+          containerClassName={props.containerClassName}
+          selectClassName={props.selectClassName}
+          labelClassName={props.labelClassName}
+        />
+      ) : (
+        <FormInput
+          name="autocompleteSearch"
+          type="text"
+          value={userInput}
+          onChange={handleChange}
+          inputProps={{
+            onKeyDown: onKeyDown,
+            autoComplete: 'off',
+            ...inputProps,
+          }}
+          suffix={{
+            content: (
+              <button type="submit" style={unstyleBtn}>
+                {suffix}
+              </button>
+            ),
+          }}
+          prefix={{
+            content: (
+              <button type="submit" style={unstyleBtn}>
+                {prefix}
+              </button>
+            ),
+          }}
+          {...props}
+        />
+      )}
     </div>
   );
 
