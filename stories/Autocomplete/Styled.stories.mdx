@@ -159,6 +159,47 @@ The list of available options are:
   </Story>
 </Canvas>
 
+
+# Required
+
+<Canvas>
+  <Story name="required">
+    {() => {
+      const handleSelected = value => {
+        console.log(value);
+      };
+      return (
+        <form>
+        <Autocomplete
+          options={[
+            'Papaya',
+            'Persimmon',
+            'Paw Paw',
+            'Prickly Pear',
+            'Peach',
+            'Pomegranate',
+            'Pineapple',
+          ]}
+          minCharsBeforeSearch={1}
+          debounceMs={100}
+          hintText="Select your fruit"
+          hintClass="autocomplete__label"
+          inputProps={{ className: 'govuk-input' }}
+          resultUlClass="autocomplete__menu"
+          resultlLiClass="autocomplete__option"
+          resultNoOptionClass="resultNoOptionClass"
+          resultActiveClass="autocomplete__option"
+          notFoundText="No fruit found"
+          onSelected={handleSelected}
+          required 
+        />
+        <button type="submit">Search</button>
+        </form>
+      );
+    }}
+  </Story>
+</Canvas>
+
 # Properties
 
 <Props of={Autocomplete} />

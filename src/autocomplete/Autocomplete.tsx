@@ -120,6 +120,13 @@ type autocompleteProps = {
    * onRemoveAll of the selected listItems
    */
   onRemoveAll?: () => void;
+
+  /**
+   * Optional required flag
+   */
+
+  required?:  boolean;
+
 };
 
 //remove the default style from a button
@@ -161,6 +168,7 @@ export const Autocomplete = ({
   onRemove,
   onRemoveAll,
   onFocus,
+  required = false,
   props,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
@@ -280,6 +288,7 @@ export const Autocomplete = ({
           type="text"
           value={userInput}
           onChange={handleChange}
+          required = {required}
           inputProps={{
             onKeyDown: onKeyDown,
             autoComplete: 'off',
@@ -314,6 +323,7 @@ export const Autocomplete = ({
         type="text"
         value={userInput}
         onChange={handleChange}
+        required = {required}
         inputProps={{
           onKeyDown: onKeyDown,
           autoComplete: 'off',

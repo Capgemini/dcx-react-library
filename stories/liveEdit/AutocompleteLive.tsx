@@ -33,7 +33,7 @@ function AutocompleteDemo() {
       resultActiveClass=""
       inputProps={{}}
       notFoundText="No fruit found"
-      onSelected={handleSelected}  
+      onSelected={handleSelected} 
     />
   )
 }
