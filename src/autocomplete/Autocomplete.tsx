@@ -283,7 +283,7 @@ export const Autocomplete = ({
           )}
         {progressiveEnhacement ? (
           <FormSelect
-            name="autocompleteSearchSelect"
+            name="select"
             options={options}
             containerClassName={props.containerClassName}
             selectClassName={props.selectClassName}
@@ -328,6 +328,7 @@ export const Autocomplete = ({
 
       {progressiveEnhacement ? (
         <FormSelect
+          name="select"
           options={options}
           containerClassName={props.containerClassName}
           selectClassName={props.selectClassName}

@@ -43,6 +43,24 @@ const DummyAutoComplete = () => {
 };
 
 describe('FormInput', () => {
+
+  it('should display select if progresive enhancement', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        props={{
+          selectClassName: '',
+          containerClassName: '',
+          labelClassName: '',
+        }}
+        progressiveEnhacement
+      />
+    );
+    const formSelect: any = screen.getByRole('combobox');
+    expect(formSelect.name).toBe('select');
+    expect(formSelect).toBeInTheDocument();
+  });
+
   it('should display the formInput content', () => {
     render(<Autocomplete options={['daniele', 'isaac']} />);
 
