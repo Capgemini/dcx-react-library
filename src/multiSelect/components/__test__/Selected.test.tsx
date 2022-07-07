@@ -3,6 +3,7 @@ import { render, screen, within, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { Selected } from '../Selected';
+import { act } from '@testing-library/react-hooks';
 
 describe('Selected', () => {
   it('should render a selected', () => {
@@ -84,9 +85,9 @@ describe('Selected', () => {
     expect(style.color).toBe('blanchedalmond');
   });
 
-  it('should call click handler when remove button is clicked', () => {
+  it('should call click handler when remove button is clicked', async () => {
     const onRemoveHandler = jest.fn();
-
+    const user = userEvent.setup();
     render(
       <Selected
         onRemove={onRemoveHandler}
@@ -98,7 +99,7 @@ describe('Selected', () => {
       />
     );
 
-    userEvent.click(screen.getByRole('button'));
+    await act(() => user.click(screen.getByRole('button')));
 
     expect(onRemoveHandler).toHaveBeenCalled();
     expect(onRemoveHandler).toHaveBeenCalledWith({

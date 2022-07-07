@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import fireEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { FormCheckbox } from '../FormCheckbox';
+import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 
 describe('FormCheckbox', () => {
   it('should render a checkbox', () => {
@@ -72,9 +73,9 @@ describe('FormCheckbox', () => {
     expect(label?.querySelector('input[type=checkbox]')).not.toBeNull();
   });
 
-  it('should call on change', () => {
+  it('should call on change', async () => {
     const handleChange = jest.fn();
-
+    const user = userEvent.setup();
     render(
       <FormCheckbox
         id="myId"
@@ -85,7 +86,7 @@ describe('FormCheckbox', () => {
       />
     );
 
-    fireEvent['click'](screen.getByLabelText('my label'));
+    await act(() => user.click(screen.getByLabelText('my label')));
 
     expect(handleChange).toHaveBeenCalled();
   });
@@ -283,9 +284,9 @@ describe('FormCheckbox', () => {
     expect(container.querySelector('#conditional-id')).not.toBeInTheDocument();
   });
 
-  it('should render conditional input field when checkbox is checked', () => {
+  it('should render conditional input field when checkbox is checked', async () => {
     const handleChange = jest.fn();
-
+    const user = userEvent.setup();
     const { container } = render(
       <FormCheckbox
         id="myId"
@@ -309,7 +310,7 @@ describe('FormCheckbox', () => {
       />
     );
 
-    fireEvent['click'](screen.getByLabelText('my label'));
+    await user.click(screen.getByLabelText('my label'));
 
     expect(container.querySelector('#conditional-id')).toBeInTheDocument();
   });

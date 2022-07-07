@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Conditional } from '../Conditional';
+import { act } from '@testing-library/react-hooks';
 
 describe('Conditional', () => {
   it('should render a conditional input', () => {
@@ -58,7 +59,8 @@ describe('Conditional', () => {
     );
   });
 
-  it('should render a conditional input with an onChange', () => {
+  it('should render a conditional input with an onChange', async () => {
+    const user = userEvent.setup();
     const onChangeHandler = jest.fn();
     render(
       <Conditional
@@ -71,7 +73,7 @@ describe('Conditional', () => {
       />
     );
     const input = screen.getByRole('textbox');
-    userEvent.type(input, 'my@aol.com');
+    await act(() => user.type(input, 'my@aol.com'));
 
     expect(onChangeHandler).toHaveBeenCalled();
   });

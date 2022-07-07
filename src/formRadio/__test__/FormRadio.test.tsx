@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import fireEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { FormRadio } from '../FormRadio';
+import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 
 describe('FormRadio', () => {
   it('should render a radio', () => {
@@ -119,7 +120,8 @@ describe('FormRadio', () => {
     expect(container.querySelector('#myId')).toBeInTheDocument();
   });
 
-  it('should call on change', () => {
+  it('should call on change', async () => {
+    const user = userEvent.setup();
     const handleChange = jest.fn();
 
     render(
@@ -132,7 +134,7 @@ describe('FormRadio', () => {
       />
     );
 
-    fireEvent['click'](screen.getByLabelText('my label'));
+    await act(() => user.click(screen.getByLabelText('my label')));
 
     expect(handleChange).toHaveBeenCalled();
   });
@@ -227,9 +229,9 @@ describe('FormRadio', () => {
     expect(container.querySelector('#my-input')).not.toBeInTheDocument();
   });
 
-  it('should render an input field when selected', () => {
+  it('should render an input field when selected', async () => {
     const handleChange = jest.fn();
-
+    const user = userEvent.setup();
     const { container } = render(
       <FormRadio
         id="choice-1"
@@ -247,7 +249,7 @@ describe('FormRadio', () => {
         onChange={handleChange}
       />
     );
-    fireEvent['click'](screen.getByLabelText('my label'));
+    await user.click(screen.getByLabelText('my label'));
 
     expect(container.querySelector('#my-input')).toBeInTheDocument();
   });

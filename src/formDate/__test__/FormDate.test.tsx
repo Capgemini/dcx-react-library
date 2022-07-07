@@ -193,7 +193,8 @@ describe('FormInput', () => {
     expect(customLbl).toBeInTheDocument();
   });
 
-  it('should display an error message if the date is not valid', () => {
+  it('should display an error message if the date is not valid', async () => {
+    const user = userEvent.setup();
     render(
       <FormDate
         dateFormat="dd/mm/yyyy"
@@ -208,19 +209,20 @@ describe('FormInput', () => {
       />
     );
     const input = screen.getAllByRole('textbox');
-    userEvent.type(input[0], '29');
-    userEvent.type(input[0], '07');
-    userEvent.type(input[0], '19');
+    await user.type(input[0], '29');
+    await user.type(input[0], '07');
+    await user.type(input[0], '19');
     const errorMsg = screen.getByText('error date');
     expect(errorMsg).toBeInTheDocument();
   });
 
-  it('should be a valid date', () => {
+  it('should be a valid date', async () => {
+    const user = userEvent.setup();
     render(<DummyDateComponent />);
     const input = screen.getAllByRole('textbox');
-    userEvent.type(input[0], '29');
-    userEvent.type(input[1], '07');
-    userEvent.type(input[2], '1982');
+    await user.type(input[0], '29');
+    await user.type(input[1], '07');
+    await user.type(input[2], '1982');
     const valid = screen.getByTestId('valid');
     expect(valid.innerHTML).toBe('true');
   });
@@ -271,12 +273,13 @@ describe('FormInput', () => {
     expect(input[2].disabled).toBeTruthy();
   });
 
-  it('should allow only numbers', () => {
+  it('should allow only numbers', async () => {
+    const user = userEvent.setup();
     render(<DummyDateComponent />);
     const input = screen.getAllByRole('textbox');
-    userEvent.type(input[0], 'h');
-    userEvent.type(input[1], 'b');
-    userEvent.type(input[2], 'c');
+    await user.type(input[0], 'h');
+    await user.type(input[1], 'b');
+    await user.type(input[2], 'c');
     expect(input[0].innerHTML).toBe('');
     expect(input[1].innerHTML).toBe('');
     expect(input[2].innerHTML).toBe('');
