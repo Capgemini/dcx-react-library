@@ -104,7 +104,7 @@ type FormInputProps = {
    */
   hint?: HintProps;
    /**
-   * Optional required flag
+   * Specifies if that field needs to be filled or not
    */
     required?:  boolean;
 };
