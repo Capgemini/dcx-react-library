@@ -355,24 +355,14 @@ describe('FormInput', () => {
   });
 
   it('should check that required attribute is defaulted to false', () => {
-
     render(<Autocomplete options={[]} />);
-
     const input: any = screen.getByRole('textbox');
-
     expect(input.required).toBe(false);
-
   });
 
-
-
   it('should check that if required is set to true, input child is rendered with the attribute', () => {
-
     render(<Autocomplete options={[]} required />);
-
     const input: any = screen.getByRole('textbox');
-
     expect(input.required).toBe(true);
-
   });
 });

@@ -120,13 +120,10 @@ type autocompleteProps = {
    * onRemoveAll of the selected listItems
    */
   onRemoveAll?: () => void;
-
   /**
    * Optional required flag
    */
-
   required?:  boolean;
-
 };
 
 //remove the default style from a button

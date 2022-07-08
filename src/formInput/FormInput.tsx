@@ -103,11 +103,9 @@ type FormInputProps = {
    * allow to define an hint
    */
   hint?: HintProps;
-
    /**
    * Optional required flag
    */
-
     required?:  boolean;
 };
 
