@@ -44,6 +44,24 @@ const DummyAutoComplete = () => {
 
 describe('FormInput', () => {
 
+  it('should display multiselect if progresive enhancement and multiselect is true', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        progressiveEnhacement
+        props={{
+          selectClassName: '',
+          containerClassName: '',
+          labelClassName: '',
+        }}
+        multiSelect
+      />
+    );
+    const formSelect: any = screen.getByRole('combobox');
+    expect(formSelect.name).toBe('multiSelect');
+    expect(formSelect).toBeInTheDocument();
+  });
+
   it('should display select if progresive enhancement', () => {
     render(
       <Autocomplete
