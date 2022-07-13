@@ -790,7 +790,7 @@ describe('FormGroup', () => {
 
   it('should call on change of an item if a conditional input has changed', async () => {
     const handleChange = jest.fn();
-
+    const user = userEvent.setup();
     render(
       <FormGroup
         type="radio"
@@ -844,7 +844,7 @@ describe('FormGroup', () => {
       />
     );
     const input: Element = screen.getByRole('textbox');
-    userEvent.type(input, 'mo');
+    await user.type(input, 'mo');
 
     expect(handleChange).toHaveBeenCalledTimes(2);
   });

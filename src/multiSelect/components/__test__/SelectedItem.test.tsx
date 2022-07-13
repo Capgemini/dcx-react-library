@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { SelectedItem } from '../SelectedItem';
+import { act } from '@testing-library/react-hooks';
 
 describe('SelectedItem', () => {
   it('should render a selected item', () => {
@@ -64,12 +65,12 @@ describe('SelectedItem', () => {
     ).toBeTruthy();
   });
 
-  it('should call given on click handler when clicked', () => {
+  it('should call given on click handler when clicked', async () => {
     const handleClick = jest.fn();
-
+    const user = userEvent.setup();
     render(<SelectedItem label="X" role="button" onClick={handleClick} />);
 
-    userEvent.click(screen.getByRole('button'));
+    await act(() => user.click(screen.getByRole('button')));
     expect(handleClick).toHaveBeenCalled();
   });
 
