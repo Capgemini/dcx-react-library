@@ -39,6 +39,7 @@ function ButtonDemo() {
         formAction="URL"
         className=""
         style={style}
+        name=""
     />
   )
 }

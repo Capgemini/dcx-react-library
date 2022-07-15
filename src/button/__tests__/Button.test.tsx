@@ -209,4 +209,11 @@ describe('Button', () => {
       'https://www.w3schools.com/tags/att_button_formaction.asp'
     );
   });
+
+  it('should accept name as attribute', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} name="submit" />);
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('name')).toBe('submit');
+  });
 });
