@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormInput } from '../formInput';
 import { FormSelect } from '../formSelect';
-import { Hint, Roles } from '../common';
+import { Hint, Roles, useHydrated } from '../common';
 import { MultiSelectOption } from '../multiSelect/Types';
 import { ResultList } from './ResultList';
 import { Selected } from '../multiSelect/components/Selected';
@@ -102,10 +102,6 @@ type autocompleteProps = {
    */
   notFoundText?: string;
   /**
-   * autocomplete witout javascript parameter
-   */
-  progressiveEnhacement?: boolean;
-  /**
    * event that return the selected value{}
    */
   onSelected?: (value: string) => void;
@@ -128,7 +124,7 @@ type autocompleteProps = {
   /**
    * Specifies if that field needs to be filled or not
    */
-  required?:  boolean;
+  required?: boolean;
 };
 
 //remove the default style from a button
@@ -165,7 +161,6 @@ export const Autocomplete = ({
   searchContainerStyle,
   selectedListItemStyle,
   selected,
-  progressiveEnhacement = false,
   onSelected,
   onChange,
   onRemove,
@@ -178,6 +173,7 @@ export const Autocomplete = ({
   const [filterList, setFilterList] = useState<string[]>([]);
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<string>(defaultValue);
+  let hydrated = useHydrated();
 
   const delayResult = React.useMemo(
     () =>
@@ -286,21 +282,15 @@ export const Autocomplete = ({
               />
             )
           )}
-        {progressiveEnhacement ? (
-          <FormSelect
-            name="multiSelect"
-            options={options}
-            containerClassName={props.containerClassName}
-            selectClassName={props.selectClassName}
-            labelClassName={props.labelClassName}
-          />
+        {!hydrated ? (
+          <FormSelect name="multiSelect" options={options} {...props} />
         ) : (
           <FormInput
             name="autocompleteSearch"
             type="text"
             value={userInput}
             onChange={handleChange}
-            required = {required}
+            required={required}
             inputProps={{
               onKeyDown: onKeyDown,
               autoComplete: 'off',
@@ -332,21 +322,15 @@ export const Autocomplete = ({
         <Hint text={hintText} className={hintClass} useLabel={true} />
       )}
 
-      {progressiveEnhacement ? (
-        <FormSelect
-          name="select"
-          options={options}
-          containerClassName={props.containerClassName}
-          selectClassName={props.selectClassName}
-          labelClassName={props.labelClassName}
-        />
+      {!hydrated ? (
+        <FormSelect name="select" options={options} {...props} />
       ) : (
         <FormInput
           name="autocompleteSearch"
           type="text"
           value={userInput}
           onChange={handleChange}
-          required = {required}
+          required={required}
           inputProps={{
             onKeyDown: onKeyDown,
             autoComplete: 'off',

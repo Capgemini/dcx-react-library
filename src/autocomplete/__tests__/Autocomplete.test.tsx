@@ -4,6 +4,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { Autocomplete } from '../';
 import userEvent from '@testing-library/user-event';
+import * as hooks from '../../common/utils/clientOnly';
 
 const firstSearch = [
   'Papaya',
@@ -42,12 +43,12 @@ const DummyAutoComplete = () => {
 };
 
 describe('FormInput', () => {
-
   it('should display multiselect if progresive enhancement and multiselect is true', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
     render(
       <Autocomplete
         options={['daniele', 'isaac']}
-        progressiveEnhacement
         props={{
           selectClassName: '',
           containerClassName: '',
@@ -62,6 +63,9 @@ describe('FormInput', () => {
   });
 
   it('should display select if progresive enhancement', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+
     render(
       <Autocomplete
         options={['daniele', 'isaac']}
@@ -70,7 +74,6 @@ describe('FormInput', () => {
           containerClassName: '',
           labelClassName: '',
         }}
-        progressiveEnhacement
       />
     );
     const formSelect: any = screen.getByRole('combobox');
@@ -79,6 +82,8 @@ describe('FormInput', () => {
   });
 
   it('should display the formInput content', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
     render(<Autocomplete options={['daniele', 'isaac']} />);
 
     const input: any = screen.getByRole('textbox');

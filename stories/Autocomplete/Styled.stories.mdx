@@ -159,86 +159,41 @@ The list of available options are:
   </Story>
 </Canvas>
 
-
 # Required
 
 <Canvas>
   <Story name="required">
     {() => {
-      const handleSelected = value => {
-        console.log(value);
-      };
-      return (
-        <form>
-        <Autocomplete
-          options={[
-            'Papaya',
-            'Persimmon',
-            'Paw Paw',
-            'Prickly Pear',
-            'Peach',
-            'Pomegranate',
-            'Pineapple',
-          ]}
-          minCharsBeforeSearch={1}
-          debounceMs={100}
-          hintText="Select your fruit"
-          hintClass="autocomplete__label"
-          inputProps={{ className: 'govuk-input' }}
-          resultUlClass="autocomplete__menu"
-          resultlLiClass="autocomplete__option"
-          resultNoOptionClass="resultNoOptionClass"
-          resultActiveClass="autocomplete__option"
-          notFoundText="No fruit found"
-          onSelected={handleSelected}
-          required 
-        />
-        <button type="submit">Search</button>
-        </form>
-      );
-    }}
-  </Story>
-</Canvas>
-
-# Select
-
-<Canvas>
-  <Story name="select">
-    {() => {
       const handleSelected = (value) => {
         console.log(value);
       };
       return (
-        <Autocomplete
-          options={[
-            'Papaya',
-            'Persimmon',
-            'Paw Paw',
-            'Prickly Pear',
-            'Peach',
-            'Pomegranate',
-            'Pineapple',
-          ]}
-          minCharsBeforeSearch={1}
-          debounceMs={100}
-          hintText="Select your fruit"
-          hintClass="autocomplete__label"
-          progressiveEnhacement
-          inputProps={{
-            placeholder: 'Search for a fruit',
-          }}
-          props={{
-            containerClassName:"govuk-form-group",
-            selectClassName:"govuk-select",
-            labelClassName:"govuk-label",
-          }}
-          resultUlClass="autocomplete__menu"
-          resultlLiClass="autocomplete__option"
-          resultNoOptionClass="resultNoOptionClass"
-          resultActiveClass="autocomplete__option"
-          notFoundText="No fruit found"
-          onSelected={handleSelected}
-        />
+        <form>
+          <Autocomplete
+            options={[
+              'Papaya',
+              'Persimmon',
+              'Paw Paw',
+              'Prickly Pear',
+              'Peach',
+              'Pomegranate',
+              'Pineapple',
+            ]}
+            minCharsBeforeSearch={1}
+            debounceMs={100}
+            hintText="Select your fruit"
+            hintClass="autocomplete__label"
+            inputProps={{ className: 'govuk-input' }}
+            resultUlClass="autocomplete__menu"
+            resultlLiClass="autocomplete__option"
+            resultNoOptionClass="resultNoOptionClass"
+            resultActiveClass="autocomplete__option"
+            notFoundText="No fruit found"
+            onSelected={handleSelected}
+            required
+          />
+          <button type="submit">Search</button>
+        </form>
       );
     }}
   </Story>
