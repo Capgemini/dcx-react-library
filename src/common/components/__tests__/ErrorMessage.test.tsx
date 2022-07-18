@@ -32,4 +32,10 @@ describe('ErrorMessage', () => {
       screen.getByText('This text is visually hidden')
     ).toBeInTheDocument();
   });
+
+  it('will not render any element if the text property is blank', () => {
+    const { container } = render(<ErrorMessage text="" />);
+
+    expect(container.querySelector('span')).not.toBeInTheDocument();
+  });
 });
