@@ -503,4 +503,21 @@ describe('FormInput', () => {
     const formSelect: any = screen.getByRole('combobox');
     expect(formSelect.name).toBe('selectName');
   });
+  //Test show all values
+
+  it('should check that showAllValues attribute is true', () => {
+    render(<Autocomplete options={[]} showAllValues />);
+
+    const input: any = screen.getByTestId('input');
+
+    expect(input.getAttribute('showallvalues')).toBe('true');
+  });
+
+  it('should check that showAllValues attribute is defaulted to false', () => {
+    render(<Autocomplete options={[]} />);
+
+    const input: any = screen.getByTestId('input');
+
+    expect(input.getAttribute('showallvalues')).toBe('false');
+  });
 });

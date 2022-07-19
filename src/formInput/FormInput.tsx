@@ -5,6 +5,10 @@ import { HintProps } from '../common/components/commonTypes';
 
 type FormInputProps = {
   /**
+   * you need to provide a list of values to filter
+   */
+  options: string[];
+  /**
    * input name
    **/
   name: string;
@@ -107,6 +111,10 @@ type FormInputProps = {
    * Specifies if that field needs to be filled or not
    */
   required?: boolean;
+  /**
+   * show all values when click on an empty form input
+   */
+  showAllValues?: boolean;
 };
 
 export enum ErrorPosition {
@@ -116,6 +124,7 @@ export enum ErrorPosition {
 }
 
 export const FormInput = ({
+  options,
   name,
   type,
   value,
@@ -138,12 +147,14 @@ export const FormInput = ({
   containerClassNameError,
   labelClassName,
   required,
+  showAllValues,
   hint,
   inputDivProps = { style: { display: 'flex' } },
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
 
   const [showError, setShowError] = React.useState<boolean>(displayError);
+  const [isClicked, setIsClicked] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (isValid && validity)
@@ -202,6 +213,54 @@ export const FormInput = ({
           {prefix && !isEmpty(prefix) && (
             <div {...prefix.properties}>{prefix.content}</div>
           )}
+          <div
+            className="wrapper"
+            onClick={() => setIsClicked(!isClicked)}
+            role="InputShowAllValues"
+            style={{
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <input
+              name={name}
+              type={type}
+              value={value}
+              data-testid="input"
+              onChange={handleChange}
+              required={required}
+              className={inputClassName}
+              aria-label={ariaLabel || name}
+              {...inputProps}
+            />
+            {showAllValues && value === '' && (
+              <div
+                style={{
+                  position: 'absolute',
+                  right: '3%',
+                }}
+              >
+                &#8595;
+              </div>
+            )}
+          </div>
+
+          {suffix && !isEmpty(suffix) && (
+            <div {...suffix.properties}>{suffix.content}</div>
+          )}
+        </div>
+      ) : (
+        <div
+          className="wrapper"
+          onClick={() => setIsClicked(!isClicked)}
+          role="InputShowAllValues"
+          style={{
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
           <input
             name={name}
             type={type}
@@ -209,24 +268,37 @@ export const FormInput = ({
             onChange={handleChange}
             required={required}
             className={inputClassName}
+            data-testid="input"
             aria-label={ariaLabel || name}
             {...inputProps}
           />
-          {suffix && !isEmpty(suffix) && (
-            <div {...suffix.properties}>{suffix.content}</div>
+          {showAllValues && value === '' && (
+            <div
+              style={{
+                position: 'absolute',
+                right: '3%',
+              }}
+            >
+              &#8595;
+            </div>
           )}
         </div>
-      ) : (
-        <input
-          name={name}
-          type={type}
-          value={value}
-          onChange={handleChange}
-          required={required}
-          className={inputClassName}
-          aria-label={ariaLabel || name}
-          {...inputProps}
-        />
+      )}
+      {value === '' && isClicked && showAllValues && (
+        <div
+          style={{
+            border: '2px solid black',
+            maxHeight: '300px',
+            overflow: 'auto',
+            paddingLeft: '3px',
+          }}
+        >
+          {options?.map((option, index) => (
+            <p key={index} role="listItem">
+              {option}
+            </p>
+          ))}
+        </div>
       )}
       {hint && hint.position !== 'above' && <Hint {...hint} />}
       {errorPosition && errorPosition === ErrorPosition.BOTTOM && (

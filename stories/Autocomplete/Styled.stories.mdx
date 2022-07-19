@@ -9,9 +9,8 @@ import '../style.css';
 In this section we're using the Autocomplete component providing the GovUk style passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
 The list of available options are:
 
-```json
+json
 ['Papaya','Persimmon','Paw Paw','Prickly Pear','Peach',Pomegranate',Pineapple']
-```
 
 <Canvas>
   <Story name="hint-label">
@@ -120,44 +119,6 @@ The list of available options are:
   </Story>
 </Canvas>
 
-# no result found
-
-<Canvas>
-  <Story name="no-result">
-    {() => {
-      const handleSelected = (value) => {
-        console.log(value);
-      };
-      return (
-        <Autocomplete
-          options={[
-            'Papaya',
-            'Persimmon',
-            'Paw Paw',
-            'Prickly Pear',
-            'Peach',
-            'Pomegranate',
-            'Pineapple',
-          ]}
-          minCharsBeforeSearch={1}
-          debounceMs={100}
-          hintText="Select your fruit"
-          hintClass="autocomplete__label"
-          defaultValue="Papaya"
-          inputProps={{ className: 'govuk-input' }}
-          resultUlClass="autocomplete__menu"
-          resultlLiClass="autocomplete__option"
-          resultNoOptionClass="resultNoOptionClass"
-          resultActiveClass="autocomplete__option"
-          notFoundText="No fruit found"
-          onSelected={handleSelected}
-          notFoundText="No fruit found"
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
 # Placeholder
 
 <Canvas>
@@ -237,6 +198,43 @@ The list of available options are:
   </Story>
 </Canvas>
 
+# ShowAllValues
+
+<Canvas>
+  <Story name="showAllValues">
+    {() => {
+      const handleSelected = (value) => {
+        console.log(value);
+      };
+      return (
+        <Autocomplete
+          options={[
+            'Papaya',
+            'Persimmon',
+            'Paw Paw',
+            'Prickly Pear',
+            'Peach',
+            'Pomegranate',
+            'Pineapple',
+          ]}
+          minCharsBeforeSearch={1}
+          debounceMs={100}
+          hintText="Select your fruit"
+          hintClass="autocomplete__label"
+          inputProps={{ className: 'govuk-input' }}
+          resultUlClass="autocomplete__menu"
+          resultlLiClass="autocomplete__option"
+          resultNoOptionClass="resultNoOptionClass"
+          resultActiveClass="autocomplete__option"
+          notFoundText="No fruit found"
+          onSelected={handleSelected}
+          showAllValues
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 # with label
 
 <Canvas>
@@ -269,53 +267,6 @@ The list of available options are:
             notFoundText="No fruit found"
             onSelected={handleSelected}
             labelText="Search for a fruit"
-          />
-          <button type="submit">Search</button>
-        </form>
-      );
-    }}
-  </Story>
-</Canvas>
-
-# with error
-
-<Canvas>
-  <Story name="error">
-    {() => {
-      const handleSelected = (value) => {
-        console.log(value);
-      };
-      return (
-        <form>
-          <Autocomplete
-            options={[
-              'Papaya',
-              'Persimmon',
-              'Paw Paw',
-              'Prickly Pear',
-              'Peach',
-              'Pomegranate',
-              'Pineapple',
-            ]}
-            minCharsBeforeSearch={1}
-            hintText="Select your fruit"
-            hintClass="autocomplete__label"
-            inputProps={{ className: 'govuk-input' }}
-            resultUlClass="autocomplete__menu"
-            resultlLiClass="autocomplete__option"
-            resultNoOptionClass="resultNoOptionClass"
-            resultActiveClass="autocomplete__option"
-            notFoundText="No fruit found"
-            onSelected={handleSelected}
-            errorPostion="after-hint"
-            errorMessageText="an error occured"
-            errorMessageClassName="govuk-error-message"
-            labelText="Search for a fruit"
-            errorVisuallyHidden={{
-              text: 'Error:',
-              className: 'govuk-visually-hidden',
-            }}
-            id="fruit-search"
           />
           <button type="submit">Search</button>
         </form>

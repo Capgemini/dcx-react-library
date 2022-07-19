@@ -14,6 +14,7 @@ const DummyComponent = ({ pos, displayError = false }: any) => {
   return (
     <>
       <FormInput
+        options={['Papaya', 'Pineapple']}
         name="password"
         type="text"
         value={value}
@@ -51,6 +52,7 @@ const DummyComponentTriggerError = () => {
   return (
     <>
       <FormInput
+        options={['Papaya', 'Pineapple']}
         name="password"
         type="text"
         value=""
@@ -80,6 +82,7 @@ const DummyComponentTriggerError = () => {
 const DummyStaticComponent = ({ pos, hint }: any) => (
   <>
     <FormInput
+      options={['Papaya', 'Pineapple']}
       name="password"
       type="text"
       value="myValue"
@@ -93,10 +96,34 @@ const DummyStaticComponent = ({ pos, hint }: any) => (
 );
 
 describe('FormInput', () => {
+  it('should display all available options when click on an empty input ', async () => {
+    const handleChange = jest.fn();
+    render(
+      <FormInput
+        options={['Papaya', 'Pineapple']}
+        name="password"
+        type="text"
+        value=""
+        showAllValues
+        onChange={handleChange}
+        inputProps={{
+          placeholder: 'enter your email',
+        }}
+      />
+    );
+    const user = userEvent.setup();
+    const inputWrapper = screen.getByRole('InputShowAllValues');
+    await user.click(inputWrapper);
+    const listItems: any = screen.getAllByRole('listItem');
+    expect(listItems[0].innerHTML).toBe('Papaya');
+    expect(listItems[1].innerHTML).toBe('Pineapple');
+  });
+
   it('should display the formInput content', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
+        options={['Papaya', 'Pineapple']}
         name="password"
         type="text"
         value="test"
@@ -113,6 +140,7 @@ describe('FormInput', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
+        options={['Papaya', 'Pineapple']}
         name="password"
         type="text"
         value="@_-bddcd6A"
@@ -136,6 +164,7 @@ describe('FormInput', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
+        options={['Papaya', 'Pineapple']}
         name="password"
         type="text"
         value="@_-bddcd6A"
@@ -157,6 +186,7 @@ describe('FormInput', () => {
     const handleChange = jest.fn();
     const { container } = render(
       <FormInput
+        options={['Papaya', 'Pineapple']}
         name="password"
         type="text"
         value="@_-bddcd6A"
@@ -179,6 +209,7 @@ describe('FormInput', () => {
     const handleChange = jest.fn();
     const { container } = render(
       <FormInput
+        options={['Papaya', 'Pineapple']}
         name="password"
         type="text"
         value="@_-bddcd6A"
@@ -207,6 +238,7 @@ describe('FormInput', () => {
     const handleChange = jest.fn();
     const { container } = render(
       <FormInput
+        options={['Papaya', 'Pineapple']}
         name="password"
         type="text"
         value="test"
@@ -226,6 +258,7 @@ describe('FormInput', () => {
     const handleChange = jest.fn();
     const { container } = render(
       <FormInput
+        options={['Papaya', 'Pineapple']}
         name="password"
         type="text"
         value="test"
@@ -245,6 +278,7 @@ describe('FormInput', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
+        options={['Papaya', 'Pineapple']}
         name="password"
         type="text"
         value="test"

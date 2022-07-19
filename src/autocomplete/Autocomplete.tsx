@@ -159,6 +159,9 @@ type autocompleteProps = {
    * it will pass extra select element(in case of progressive enhancement)
    */
   selectProps?: FormSelectProps;
+  /** show all values when click on an empty form input
+   */
+  showAllValues?: boolean;
 };
 
 export enum AutoCompleteErrorPosition {
@@ -206,6 +209,8 @@ export const Autocomplete = ({
   errorVisuallyHiddenText,
   name,
   selectProps,
+  showAllValues = false,
+  props,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
@@ -333,7 +338,9 @@ export const Autocomplete = ({
               onKeyDown: onKeyDown,
               autoComplete: 'off',
               ...inputProps,
+              showallvalues: showAllValues.toString(),
             }}
+            {...props}
           />
         )}
       </div>
@@ -405,12 +412,18 @@ export const Autocomplete = ({
           value={userInput}
           onChange={handleChange}
           required={required}
+          options={options}
+          showAllValues={showAllValues}
           inputProps={{
             onKeyDown: onKeyDown,
+
             autoComplete: 'off',
-            id: id,
+
             ...inputProps,
+
+            showallvalues: showAllValues.toString(),
           }}
+          {...props}
         />
       )}
     </>
