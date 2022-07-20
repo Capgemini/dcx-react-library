@@ -397,14 +397,15 @@ export const Autocomplete = ({
       {hintText && (
         <Hint text={hintText} className={hintClass} useLabel={false} />
       )}
-      {
-        <ErrorMessage
-          text={errorMessageText}
-          className={errorMessageClassName}
-          id={errorId}
-          visuallyHiddenText={errorVisuallyHiddenText}
-        />
-      }
+      {errorPosition &&
+        errorPosition === AutoCompleteErrorPosition.AFTER_HINT && (
+          <ErrorMessage
+            text={errorMessageText}
+            className={errorMessageClassName}
+            id={errorId}
+            visuallyHiddenText={errorVisuallyHiddenText}
+          />
+        )}
       {!hydrated ? (
         <FormSelect
           name="select"
