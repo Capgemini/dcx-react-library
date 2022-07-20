@@ -107,7 +107,7 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@cesium133/forgjs": "1.1.11",
+    "@cesium133/forgjs": "1.1.10",
     "imask": "^6.4.2",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
