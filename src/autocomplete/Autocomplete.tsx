@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { FormInput } from '../formInput';
 import { FormSelect } from '../formSelect';
-import { Hint, Roles, useHydrated } from '../common';
+import { ErrorMessage, Hint, Roles, useHydrated } from '../common';
 import { MultiSelectOption } from '../multiSelect/Types';
 import { ResultList } from './ResultList';
 import { Selected } from '../multiSelect/components/Selected';
 import { SelectedItem } from '../multiSelect/components/SelectedItem';
 import { debounce } from 'lodash';
+import { VisuallyHidden } from '../common/components/commonTypes';
 
 type autocompleteProps = {
   /**
@@ -66,7 +67,7 @@ type autocompleteProps = {
    */
   resultUlStyle?: React.CSSProperties;
   /**
-   * if you want to pass a style class to the result LI list
+   * if you want to pass a style class to the result LI list (it will automatically add --odd,--even to the className to help you style the alternating rows)
    */
   resultlLiClass?: string;
   /**
@@ -125,6 +126,42 @@ type autocompleteProps = {
    * Specifies if that field needs to be filled or not
    */
   required?: boolean;
+  /**
+   * allow to specify a class for the container
+   */
+  containerClassName?: string;
+  /**
+   * if a label is provided, it will be displayed
+   */
+  labelText?: string;
+  /**
+   * if a label is provided, it will provide the ability to style it
+   */
+  labelClassName?: string;
+  /**
+   * it will pass an id to the input or select element(in case of progressive enhancement)
+   */
+  id?: string;
+  /**
+   * will display an error message in three different positions (BEFORE_LABEL, BOTTOM, AFTER_LABEL and AFTER_HINT)
+   */
+  errorPosition?: AutoCompleteErrorPosition;
+  /**
+   * error message text
+   */
+  errorMessageText?: string;
+  /**
+   * error className
+   */
+  errorMessageClassName?: string;
+  /**
+   * error id
+   **/
+  errorId?: string;
+  /**
+   * visually hidden text of the error
+   */
+  errorVisuallyHiddenText?: VisuallyHidden;
 };
 
 //remove the default style from a button
@@ -137,6 +174,13 @@ const unstyleBtn = {
   cursor: 'pointer',
   outline: 'inherit',
 };
+
+export enum AutoCompleteErrorPosition {
+  BEFORE_LABEL = 'before-label',
+  BOTTOM = 'bottom',
+  AFTER_LABEL = 'after-label',
+  AFTER_HINT = 'after-hint',
+}
 
 export const Autocomplete = ({
   options,
@@ -168,6 +212,15 @@ export const Autocomplete = ({
   onFocus,
   required = false,
   props,
+  containerClassName,
+  labelText,
+  labelClassName,
+  id,
+  errorPosition,
+  errorMessageText = '',
+  errorMessageClassName,
+  errorId,
+  errorVisuallyHiddenText,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
@@ -253,7 +306,7 @@ export const Autocomplete = ({
     showOptions && userInput.length >= minCharsBeforeSearch;
 
   const searchEl: JSX.Element = multiSelect ? (
-    <div className="search" style={{ ...searchContainerStyle }}>
+    <>
       <div
         role={Roles.presentation}
         style={{
@@ -315,15 +368,51 @@ export const Autocomplete = ({
           tabIndex={0}
         />
       </div>
-    </div>
+    </>
   ) : (
-    <div className="search">
-      {hintText && (
-        <Hint text={hintText} className={hintClass} useLabel={true} />
+    <>
+      {errorPosition &&
+        errorPosition === AutoCompleteErrorPosition.BEFORE_LABEL && (
+          <ErrorMessage
+            text={errorMessageText}
+            className={errorMessageClassName}
+            id={errorId}
+            visuallyHiddenText={errorVisuallyHiddenText}
+          />
+        )}
+      {labelText && (
+        <label htmlFor={id} className={labelClassName}>
+          {labelText}
+        </label>
       )}
-
+      {errorPosition &&
+        errorPosition === AutoCompleteErrorPosition.AFTER_LABEL && (
+          <ErrorMessage
+            text={errorMessageText}
+            className={errorMessageClassName}
+            id={errorId}
+            visuallyHiddenText={errorVisuallyHiddenText}
+          />
+        )}
+      {hintText && (
+        <Hint text={hintText} className={hintClass} useLabel={false} />
+      )}
+      {
+        <ErrorMessage
+          text={errorMessageText}
+          className={errorMessageClassName}
+          id={errorId}
+          visuallyHiddenText={errorVisuallyHiddenText}
+        />
+      }
       {!hydrated ? (
-        <FormSelect name="select" options={options} {...props} />
+        <FormSelect
+          name="select"
+          options={options}
+          {...props}
+          id={id}
+          defaultValue={defaultValue}
+        />
       ) : (
         <FormInput
           name="autocompleteSearch"
@@ -334,6 +423,7 @@ export const Autocomplete = ({
           inputProps={{
             onKeyDown: onKeyDown,
             autoComplete: 'off',
+            id: id,
             ...inputProps,
           }}
           suffix={{
@@ -353,31 +443,33 @@ export const Autocomplete = ({
           {...props}
         />
       )}
-    </div>
+    </>
   );
 
   return (
     <>
       {multiSelect && hintText && (
-        <Hint text={hintText} className={hintClass} useLabel={true} />
+        <Hint text={hintText} className={hintClass} useLabel={false} />
       )}
-      {searchEl}
-      {displayResultList() && (
-        <ResultList
-          list={filterList}
-          userInput={userInput}
-          activeOption={activeOption}
-          noElFoundText={notFoundText}
-          onClick={handleClick}
-          activeClass={resultActiveClass}
-          ulContainerId={resultId}
-          ulContainerClass={resultUlClass}
-          ulContainerStyle={resultUlStyle}
-          liContainerClass={resultlLiClass}
-          liContainerStyle={resultLiStyle}
-          noOptionClass={resultNoOptionClass}
-        />
-      )}
+      <div className={containerClassName} style={{ ...searchContainerStyle }}>
+        {searchEl}
+        {displayResultList() && (
+          <ResultList
+            list={filterList}
+            userInput={userInput}
+            activeOption={activeOption}
+            noElFoundText={notFoundText}
+            onClick={handleClick}
+            activeClass={resultActiveClass}
+            ulContainerId={resultId}
+            ulContainerClass={resultUlClass}
+            ulContainerStyle={resultUlStyle}
+            liContainerClass={resultlLiClass}
+            liContainerStyle={resultLiStyle}
+            noOptionClass={resultNoOptionClass}
+          />
+        )}
+      </div>
     </>
   );
 };

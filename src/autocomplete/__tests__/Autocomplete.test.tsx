@@ -2,7 +2,7 @@ import React from 'react';
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { Autocomplete } from '../';
+import { Autocomplete, AutoCompleteErrorPosition } from '../';
 import userEvent from '@testing-library/user-event';
 import * as hooks from '../../common/utils/clientOnly';
 
@@ -60,6 +60,120 @@ describe('FormInput', () => {
     const formSelect: any = screen.getByRole('combobox');
     expect(formSelect.name).toBe('multiSelect');
     expect(formSelect).toBeInTheDocument();
+  });
+
+  it('should select the default value if progressive enhancement is enable', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    render(
+      <Autocomplete options={['daniele', 'isaac']} defaultValue="isaac" />
+    );
+    const option: any = screen.getByRole('option', { name: 'isaac' });
+    expect(option.selected).toBe(true);
+  });
+
+  it('should allow to specify a containerClass name ', () => {
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        containerClassName="containerClass"
+      />
+    );
+    const containerClass = container.querySelector('.containerClass');
+    expect(containerClass).toBeInTheDocument();
+  });
+
+  it('should allow to specify a label text ', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        labelText="labelText"
+        labelClassName="labelClass"
+      />
+    );
+    const label: any = screen.getByText('labelText');
+    expect(label.className).toBe('labelClass');
+  });
+
+  it('should allow to specify a label className', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        labelText="labelText"
+        labelClassName="labelClass"
+      />
+    );
+    const label: any = screen.getByText('labelText');
+    expect(label).toBeInTheDocument();
+  });
+
+  it('should display an error', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        labelText="labelText"
+        labelClassName="labelClass"
+        errorMessageText="errorMessageText"
+        errorMessageClassName="errorMessageClass"
+        errorId="errorId"
+        errorPosition={AutoCompleteErrorPosition.AFTER_HINT}
+      />
+    );
+    const label: any = screen.getByText('errorMessageText');
+    expect(label.className).toBe('errorMessageClass');
+    expect(label.id).toBe('errorId');
+    expect(label).toBeInTheDocument();
+  });
+
+  it('should display an error after the label', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        labelText="labelText"
+        labelClassName="labelClass"
+        errorMessageText="errorMessageText"
+        errorMessageClassName="errorMessageClass"
+        errorId="errorId"
+        errorPosition={AutoCompleteErrorPosition.AFTER_LABEL}
+      />
+    );
+    const label: any = screen.getByText('errorMessageText');
+    expect(label.className).toBe('errorMessageClass');
+    expect(label.id).toBe('errorId');
+    expect(label).toBeInTheDocument();
+  });
+
+  it('should display an error before the label', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        labelText="labelText"
+        labelClassName="labelClass"
+        errorMessageText="errorMessageText"
+        errorMessageClassName="errorMessageClass"
+        errorId="errorId"
+        errorPosition={AutoCompleteErrorPosition.BEFORE_LABEL}
+      />
+    );
+    const label: any = screen.getByText('errorMessageText');
+    expect(label.className).toBe('errorMessageClass');
+    expect(label.id).toBe('errorId');
+    expect(label).toBeInTheDocument();
+  });
+
+  it('should allow to specify an id for the input', () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+    render(<Autocomplete options={['daniele', 'isaac']} id="myId" />);
+    const input: any = screen.getByRole('textbox');
+    expect(input.id).toBe('myId');
+  });
+
+  it('should allow to specify an id for the select in case of progressive enhnancment', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    render(<Autocomplete options={['daniele', 'isaac']} id="myId" />);
+    const select: any = screen.getByRole('combobox');
+    expect(select.id).toBe('myId');
   });
 
   it('should display select if progresive enhancement', () => {
@@ -290,10 +404,11 @@ describe('FormInput', () => {
         options={['daniele', 'darren', 'isaac']}
         resultActiveClass="activeClass"
         hintText="search names"
+        hintClass="hintClass"
       />
     );
-    const hintTag: any = container.querySelector('label');
-    expect(hintTag.innerHTML).toBe('search names');
+    const firstItem: any = container.firstChild?.childNodes[0];
+    expect(firstItem.innerHTML).toBe('search names');
   });
 
   it('should display an hint class if specified', () => {
@@ -305,8 +420,8 @@ describe('FormInput', () => {
         hintClass="labelClass"
       />
     );
-    const hintTag: any = container.querySelector('label');
-    expect(hintTag.className).toBe('labelClass');
+    const firstItem: any = container.firstChild?.childNodes[0];
+    expect(firstItem.className).toBe('labelClass');
   });
 
   it('should display the results after typing 2 character', async () => {

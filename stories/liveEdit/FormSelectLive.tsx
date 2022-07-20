@@ -55,6 +55,7 @@ function FormSelectDemo() {
         className: "",
       }}
       errorMessageId=""
+      defaultValue=""
     />
   );
 }

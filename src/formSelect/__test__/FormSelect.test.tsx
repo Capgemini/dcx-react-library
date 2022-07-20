@@ -444,4 +444,10 @@ describe('FormSelect', () => {
     const errorMessage = screen.getByText('errorMessage');
     expect(errorMessage.className).toBe('errorMessageClass');
   });
+
+  it('should select the default value if specified', () => {
+    render(<FormSelect options={['daniele', 'isaac']} defaultValue="isaac" />);
+    const option: any = screen.getByRole('option', { name: 'isaac' });
+    expect(option.selected).toBe(true);
+  });
 });

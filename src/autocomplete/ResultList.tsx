@@ -42,7 +42,12 @@ export const ResultList = ({
             className={
               index === activeOption && activeClass
                 ? [activeClass, liContainerClass].join(' ')
-                : liContainerClass
+                : [
+                    liContainerClass,
+                    index % 2 === 0
+                      ? `${liContainerClass}--even`
+                      : `${liContainerClass}--odd`,
+                  ].join(' ')
             }
             key={optionName}
             onClick={onClick}

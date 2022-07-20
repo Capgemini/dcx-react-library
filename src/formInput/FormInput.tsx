@@ -103,10 +103,10 @@ type FormInputProps = {
    * allow to define an hint
    */
   hint?: HintProps;
-   /**
+  /**
    * Specifies if that field needs to be filled or not
    */
-    required?:  boolean;
+  required?: boolean;
 };
 
 export enum ErrorPosition {
@@ -207,7 +207,7 @@ export const FormInput = ({
             type={type}
             value={value}
             onChange={handleChange}
-            required = {required}
+            required={required}
             className={inputClassName}
             aria-label={ariaLabel || name}
             {...inputProps}
@@ -222,7 +222,7 @@ export const FormInput = ({
           type={type}
           value={value}
           onChange={handleChange}
-          required = {required}
+          required={required}
           className={inputClassName}
           aria-label={ariaLabel || name}
           {...inputProps}

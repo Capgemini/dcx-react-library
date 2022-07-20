@@ -199,6 +199,93 @@ The list of available options are:
   </Story>
 </Canvas>
 
+# with label
+
+<Canvas>
+  <Story name="label">
+    {() => {
+      const handleSelected = (value) => {
+        console.log(value);
+      };
+      return (
+        <form>
+          <Autocomplete
+            options={[
+              'Papaya',
+              'Persimmon',
+              'Paw Paw',
+              'Prickly Pear',
+              'Peach',
+              'Pomegranate',
+              'Pineapple',
+            ]}
+            minCharsBeforeSearch={1}
+            debounceMs={100}
+            hintText="Select your fruit"
+            hintClass="autocomplete__label"
+            inputProps={{ className: 'govuk-input' }}
+            resultUlClass="autocomplete__menu"
+            resultlLiClass="autocomplete__option"
+            resultNoOptionClass="resultNoOptionClass"
+            resultActiveClass="autocomplete__option"
+            notFoundText="No fruit found"
+            onSelected={handleSelected}
+            labelText="Search for a fruit"
+          />
+          <button type="submit">Search</button>
+        </form>
+      );
+    }}
+  </Story>
+</Canvas>
+
+# with error
+
+<Canvas>
+  <Story name="error">
+    {() => {
+      const handleSelected = (value) => {
+        console.log(value);
+      };
+      return (
+        <form>
+          <Autocomplete
+            options={[
+              'Papaya',
+              'Persimmon',
+              'Paw Paw',
+              'Prickly Pear',
+              'Peach',
+              'Pomegranate',
+              'Pineapple',
+            ]}
+            minCharsBeforeSearch={1}
+            hintText="Select your fruit"
+            hintClass="autocomplete__label"
+            inputProps={{ className: 'govuk-input' }}
+            resultUlClass="autocomplete__menu"
+            resultlLiClass="autocomplete__option"
+            resultNoOptionClass="resultNoOptionClass"
+            resultActiveClass="autocomplete__option"
+            notFoundText="No fruit found"
+            onSelected={handleSelected}
+            errorPostion="after-hint"
+            errorMessageText="an error occured"
+            errorMessageClassName="govuk-error-message"
+            labelText="Search for a fruit"
+            errorVisuallyHidden={{
+              text: 'Error:',
+              className: 'govuk-visually-hidden',
+            }}
+            id="fruit-search"
+          />
+          <button type="submit">Search</button>
+        </form>
+      );
+    }}
+  </Story>
+</Canvas>
+
 # Properties
 
 <Props of={Autocomplete} />

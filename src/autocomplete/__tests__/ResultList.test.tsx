@@ -52,8 +52,46 @@ describe('ResultList', () => {
     const liEl: HTMLLIElement | null = container.querySelector('li');
     const el: Element | null = container.querySelector('#ulContainerId');
     expect(ulEl?.className).toBe('ulContainerClass');
-    expect(liEl?.className).toBe('liContainerClass');
+    expect(liEl?.className).toBe('liContainerClass liContainerClass--even');
     expect(el?.getAttribute('id')).toBe('ulContainerId');
+  });
+
+  it('should contain the first item with classname liContainerClass--odd', () => {
+    const handleClick = jest.fn();
+    render(
+      <ResultList
+        list={['daniele', 'isaac']}
+        userInput="d"
+        activeOption={1}
+        onClick={handleClick}
+        ulContainerClass="ulContainerClass"
+        liContainerClass="liContainerClass"
+        noOptionClass="noOptionClass"
+      />
+    );
+    const listItems: any = screen.getAllByRole('listitem');
+    expect(listItems[1].className).toBe(
+      'liContainerClass liContainerClass--odd'
+    );
+  });
+
+  it('should contain the second item with classname liContainerClass--even', () => {
+    const handleClick = jest.fn();
+    render(
+      <ResultList
+        list={['daniele', 'isaac']}
+        userInput="d"
+        activeOption={1}
+        onClick={handleClick}
+        ulContainerClass="ulContainerClass"
+        liContainerClass="liContainerClass"
+        noOptionClass="noOptionClass"
+      />
+    );
+    const listItems: any = screen.getAllByRole('listitem');
+    expect(listItems[0].className).toBe(
+      'liContainerClass liContainerClass--even'
+    );
   });
 
   it('should display optional properties when empty', () => {

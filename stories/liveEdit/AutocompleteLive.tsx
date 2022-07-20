@@ -34,6 +34,18 @@ function AutocompleteDemo() {
       inputProps={{}}
       notFoundText="No fruit found"
       onSelected={handleSelected} 
+      containerClassName=""
+      labelText=""
+      labelClassName=""
+      id=""
+      errorPosition='below'
+      errorMessageText=""
+      errorMessageClassName=""
+      errorId=""
+      errorMessageVisuallyHidden={{
+        text: "",
+        className: "",
+      }}
     />
   )
 }
