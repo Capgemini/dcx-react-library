@@ -20,20 +20,6 @@ describe('ResultList', () => {
     expect(listItems[1].innerHTML).toBe('isaac');
   });
 
-  it('should display the empty content', () => {
-    const handleClick = jest.fn();
-    const { container } = render(
-      <ResultList
-        list={[]}
-        userInput="da"
-        activeOption={1}
-        onClick={handleClick}
-      />
-    );
-    const noOptionTag: any = container.querySelector('li');
-    expect(noOptionTag.innerHTML).toBe('No Option!');
-  });
-
   it('should display optional properties', () => {
     const handleClick = jest.fn();
     const { container } = render(
@@ -94,7 +80,7 @@ describe('ResultList', () => {
     );
   });
 
-  it('should display optional properties when empty', () => {
+  it('should not display optional properties when empty', () => {
     const handleClick = jest.fn();
     const { container } = render(
       <ResultList
@@ -107,7 +93,7 @@ describe('ResultList', () => {
       />
     );
     const el: any = container.querySelector('li');
-    expect(el.className).toBe('liContainerClass noOptionClass');
+    expect(el).not.toBeInTheDocument();
   });
 
   it('should display empty custom text', () => {
