@@ -325,24 +325,22 @@ export const Autocomplete = ({
               />
             )
           )}
-        {!hydrated ? (
-          <FormSelect name="multiSelect" options={options} {...inputProps} />
-        ) : (
-          <FormInput
-            name="autocompleteSearch"
-            type="text"
-            value={userInput}
-            onChange={handleChange}
-            required={required}
-            inputProps={{
-              onKeyDown: onKeyDown,
-              autoComplete: 'off',
-              ...inputProps,
-              showallvalues: showAllValues,
-            }}
-            {...props}
-          />
-        )}
+        <FormInput
+          name="autocompleteSearch"
+          type="text"
+          value={userInput}
+          onChange={handleChange}
+          required={required}
+          options={options}
+          showAllValues={showAllValues}
+          inputProps={{
+            onKeyDown: onKeyDown,
+            autoComplete: 'off',
+            showallvalues: showAllValues ? 1 : 0,
+            ...inputProps,
+          }}
+          {...props}
+        />
       </div>
       <div>
         <SelectedItem
@@ -421,7 +419,7 @@ export const Autocomplete = ({
 
             ...inputProps,
 
-          showallvalues: showAllValues,
+            showallvalues: showAllValues ? 1 : 0,
         }}
         suffix={{
           content: (

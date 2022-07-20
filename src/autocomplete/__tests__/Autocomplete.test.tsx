@@ -510,7 +510,7 @@ describe('FormInput', () => {
 
     const input: any = screen.getByTestId('input');
 
-    expect(input.getAttribute('showallvalues')).toBe(true);
+    expect(input.getAttribute('showallvalues')).toBe('1');
   });
 
   it('should check that showAllValues attribute is defaulted to false', () => {
@@ -518,6 +518,6 @@ describe('FormInput', () => {
 
     const input: any = screen.getByTestId('input');
 
-    expect(input.getAttribute('showallvalues')).toBe(false);
+    expect(input.getAttribute('showallvalues')).toBe('0');
   });
 });
