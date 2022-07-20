@@ -28,41 +28,37 @@ export const ResultList = ({
   noOptionClass,
   noElFoundText,
   onClick,
-}: ResultListProps) => {
-  if (userInput && list.length) {
-    return (
-      <ul
-        id={ulContainerId}
-        className={ulContainerClass}
-        style={ulContainerStyle}
-        aria-live="polite"
-      >
-        {list.map((optionName: string, index: number) => (
-          <li
-            className={
-              index === activeOption && activeClass
-                ? [activeClass, liContainerClass].join(' ')
-                : [
-                    liContainerClass,
-                    index % 2 === 0
-                      ? `${liContainerClass}--even`
-                      : `${liContainerClass}--odd`,
-                  ].join(' ')
-            }
-            key={optionName}
-            onClick={onClick}
-            style={liContainerStyle}
-          >
-            {optionName}
-          </li>
-        ))}
-      </ul>
-    );
-  } else {
-    return (
-      <div className={noOptionClass}>
-        <em>{noElFoundText || 'No Option!'}</em>
-      </div>
-    );
-  }
-};
+}: ResultListProps) => (
+  <ul
+    id={ulContainerId}
+    className={ulContainerClass}
+    style={ulContainerStyle}
+    aria-live="polite"
+  >
+    {userInput && list.length > 0 ? (
+      list.map((optionName: string, index: number) => (
+        <li
+          className={
+            index === activeOption && activeClass
+              ? [activeClass, liContainerClass].join(' ')
+              : [
+                  liContainerClass,
+                  index % 2 === 0
+                    ? `${liContainerClass}--even`
+                    : `${liContainerClass}--odd`,
+                ].join(' ')
+          }
+          key={optionName}
+          onClick={onClick}
+          style={liContainerStyle}
+        >
+          {optionName}
+        </li>
+      ))
+    ) : (
+      <li className={[liContainerClass, noOptionClass].join(' ')}>
+        {noElFoundText || 'No Option!'}
+      </li>
+    )}
+  </ul>
+);

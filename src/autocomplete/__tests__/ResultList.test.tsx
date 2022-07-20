@@ -30,7 +30,7 @@ describe('ResultList', () => {
         onClick={handleClick}
       />
     );
-    const noOptionTag: any = container.querySelector('em');
+    const noOptionTag: any = container.querySelector('li');
     expect(noOptionTag.innerHTML).toBe('No Option!');
   });
 
@@ -102,11 +102,12 @@ describe('ResultList', () => {
         userInput="d"
         activeOption={1}
         onClick={handleClick}
+        liContainerClass="liContainerClass"
         noOptionClass="noOptionClass"
       />
     );
-    const emEl: any = container.querySelector('div');
-    expect(emEl.className).toBe('noOptionClass');
+    const el: any = container.querySelector('li');
+    expect(el.className).toBe('liContainerClass noOptionClass');
   });
 
   it('should display empty custom text', () => {
@@ -121,7 +122,7 @@ describe('ResultList', () => {
         noElFoundText="nada de nada"
       />
     );
-    const emEl: any = container.querySelector('em');
-    expect(emEl.innerHTML).toBe('nada de nada');
+    const el: any = container.querySelector('li');
+    expect(el.innerHTML).toBe('nada de nada');
   });
 });
