@@ -247,12 +247,12 @@ describe('FormInput', () => {
 
   it('should not display available options', async () => {
     const user = userEvent.setup();
-    render(<Autocomplete options={['first', 'isaac']} />);
+    const { container } = render(<Autocomplete options={['first', 'isaac']} />);
     const input = screen.getByRole('textbox');
     await user.type(input, 'test value');
 
-    const noOptionTag: any = screen.getByText('No Option!');
-    expect(noOptionTag.innerHTML).toBe('No Option!');
+    const el: any = container.querySelector('li');
+    expect(el).not.toBeInTheDocument();
   });
 
   it('should allow to select the first item', async () => {
