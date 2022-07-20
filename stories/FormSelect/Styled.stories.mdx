@@ -76,8 +76,7 @@ In this section we're using the formSelect component providing the GovUk style p
             { label: 'Most comments', value: 'comments' },
           ]}
           hint={{
-            text:
-              'This is and example of hintText/description of what we need from you',
+            text: 'This is and example of hintText/description of what we need from you',
             className: 'govuk-hint',
           }}
         />
@@ -163,6 +162,38 @@ In this section we're using the formSelect component providing the GovUk style p
             text: 'Error:',
             className: 'govuk-visually-hidden',
           }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Select with default value selected
+
+<Canvas>
+  <Story name="select with default value">
+    {() => {
+      return (
+        <FormSelect
+          containerClassName="govuk-form-group"
+          selectClassName="govuk-select govuk-select--error"
+          labelClassName="govuk-label"
+          options={[
+            { label: 'Recently published', value: 'published' },
+            { label: 'Recently updated', value: 'updated' },
+            { label: 'Most views', value: 'views' },
+            { label: 'Most comments', value: 'comments' },
+          ]}
+          id="sort-5"
+          label="Sort by"
+          name="sort-5"
+          errorMessage="Select an option"
+          errorMessageClassName="govuk-error-message"
+          errorVisuallyHidden={{
+            text: 'Error:',
+            className: 'govuk-visually-hidden',
+          }}
+          defaultValue="views"
         />
       );
     }}

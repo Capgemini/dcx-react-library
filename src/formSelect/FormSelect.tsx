@@ -100,6 +100,10 @@ export type FormSelectProps = {
    * select value which is programatically added by user
    */
   value?: number | string;
+  /**
+   * will select the default value
+   */
+  defaultValue?: string;
 };
 
 export const FormSelect = ({
@@ -123,6 +127,7 @@ export const FormSelect = ({
   errorMessageId,
   style,
   nullOption,
+  defaultValue = '',
 }: FormSelectProps) => {
   let initialValue: string | number = '';
 
@@ -137,7 +142,6 @@ export const FormSelect = ({
   }
 
   const [selectValue, setSelectValue] = useState<string | number>(initialValue);
-
   const getOptions = (options: OptionProps[] | string[]): JSX.Element[] =>
     options.map((item: OptionProps | string, index: number) => {
       let convertedItem: OptionProps;
@@ -182,7 +186,7 @@ export const FormSelect = ({
         />
       )}
       <select
-        value={selectValue}
+        value={defaultValue !== '' ? defaultValue : selectValue}
         name={name || 'formSelect'}
         id={id || 'formSelect'}
         className={selectClassName}
