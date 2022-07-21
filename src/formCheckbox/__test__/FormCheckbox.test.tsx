@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 import { FormCheckbox } from '../FormCheckbox';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
+import * as hooks from '../../common/utils/clientOnly';
 
 describe('FormCheckbox', () => {
   it('should render a checkbox', () => {
@@ -313,6 +314,54 @@ describe('FormCheckbox', () => {
     await user.click(screen.getByLabelText('my label'));
 
     expect(container.querySelector('#conditional-id')).toBeInTheDocument();
+  });
+
+  it('should render conditional input field when progressive enhancement is ture', () => {
+    const handleChange = jest.fn();
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label="my label"
+        onChange={handleChange}
+        selected={false}
+        conditional={{
+          value: 'conditional-value',
+          name: 'conditional-reveal',
+          label: 'conditional label',
+          type: 'text',
+          className: 'classes',
+          groupClassName: 'group-classes',
+          id: 'conditional-id',
+          inputClassName: 'input-classes',
+          inputId: 'input-id',
+          labelClassName: 'label-classes',
+        }}
+      />
+    );
+
+    expect(container.querySelector('#conditional-id')).toBeInTheDocument();
+  });
+
+  it('should not render conditional input field when progressive enhancement is ture but no conditional data', () => {
+    const handleChange = jest.fn();
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label="my label"
+        onChange={handleChange}
+        selected={false}
+      />
+    );
+
+    expect(container.querySelector('#conditional-id')).not.toBeInTheDocument();
   });
 
   it('should style the checkbox label', () => {

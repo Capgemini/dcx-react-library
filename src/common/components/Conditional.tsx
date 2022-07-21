@@ -13,12 +13,11 @@ export const Conditional = ({
   labelClassName,
   value,
   onChange,
-}: ConditionalInputProps & { onChange: React.ChangeEventHandler }) => {
-  const onChangeHandler: (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => void = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event);
-  };
+}: ConditionalInputProps & { onChange?: React.ChangeEventHandler }) => {
+  const onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void =
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (onChange) onChange(event);
+    };
 
   return (
     <div className={className} id={id}>
