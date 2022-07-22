@@ -49,7 +49,7 @@ describe('FormInput', () => {
     render(
       <Autocomplete
         options={['daniele', 'isaac']}
-        props={{
+        selectProps={{
           selectClassName: '',
           containerClassName: '',
           labelClassName: '',
@@ -183,7 +183,7 @@ describe('FormInput', () => {
     render(
       <Autocomplete
         options={['daniele', 'isaac']}
-        props={{
+        selectProps={{
           selectClassName: '',
           containerClassName: '',
           labelClassName: '',
@@ -217,20 +217,6 @@ describe('FormInput', () => {
     expect(input.type).toBe('text');
     expect(input.value).toBe('daniele');
     expect(input).toBeInTheDocument();
-  });
-
-  it('should contains the formInput suffix and prefix', () => {
-    render(
-      <Autocomplete
-        options={['daniele', 'isaac']}
-        debounceMs={100}
-        prefix={<div data-testid="prefix">prefix</div>}
-        suffix={<div data-testid="suffix">suffix</div>}
-      />
-    );
-
-    expect(screen.getByTestId('suffix')).toBeInTheDocument();
-    expect(screen.getByTestId('prefix')).toBeInTheDocument();
   });
 
   it('should display available options', async () => {
@@ -320,13 +306,7 @@ describe('FormInput', () => {
 
   it('should highlight the selected option(s) on keyDown', async () => {
     const user = userEvent.setup();
-    render(
-      <Autocomplete
-        options={['daniele', 'darren', 'isaac']}
-        prefix={<div>prefix</div>}
-        suffix={<div>suffix</div>}
-      />
-    );
+    render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
     await user.type(input, 'da');
     fireEvent.keyDown(input, { code: 'ArrowDown' });
@@ -498,5 +478,29 @@ describe('FormInput', () => {
     render(<Autocomplete options={[]} required />);
     const input: any = screen.getByRole('textbox');
     expect(input.required).toBe(true);
+  });
+
+  it('should contains the input name if specified', () => {
+    render(<Autocomplete options={[]} name="inputName" />);
+    const input: any = screen.getByRole('textbox');
+    expect(input.name).toBe('inputName');
+  });
+
+  it('should contains the select name if specified and progressive enhancment', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        selectProps={{
+          selectClassName: '',
+          containerClassName: '',
+          labelClassName: '',
+        }}
+        name="selectName"
+      />
+    );
+    const formSelect: any = screen.getByRole('combobox');
+    expect(formSelect.name).toBe('selectName');
   });
 });

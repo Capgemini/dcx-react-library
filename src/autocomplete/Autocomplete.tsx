@@ -152,11 +152,11 @@ type autocompleteProps = {
    */
   errorVisuallyHiddenText?: VisuallyHidden;
   /**
-   *
+   * if you want to pass a name for the input or for the select (in case of progressive enhancement)
    */
   name?: string;
   /**
-   *
+   * it will pass extra select element(in case of progressive enhancement)
    */
   selectProps?: FormSelectProps;
 };
