@@ -8,6 +8,7 @@ import { Selected } from '../multiSelect/components/Selected';
 import { SelectedItem } from '../multiSelect/components/SelectedItem';
 import { debounce } from 'lodash';
 import { VisuallyHidden } from '../common/components/commonTypes';
+import { FormSelectProps } from '../formSelect/FormSelect';
 
 type autocompleteProps = {
   /**
@@ -42,18 +43,6 @@ type autocompleteProps = {
    * you can style the look and feel of your hint text
    */
   hintClass?: string;
-  /**
-   * if you want to pass extra properties
-   */
-  props?: any;
-  /**
-   * if you want to style your input passing extra properties (e.g. search icon etc)
-   */
-  suffix?: any;
-  /**
-   * if you want to style your input passing extra properties (e.g. search icon etc)
-   */
-  prefix?: any;
   /**
    * if you want to pass an id to the result UL list
    */
@@ -162,17 +151,14 @@ type autocompleteProps = {
    * visually hidden text of the error
    */
   errorVisuallyHiddenText?: VisuallyHidden;
-};
-
-//remove the default style from a button
-const unstyleBtn = {
-  background: 'none',
-  color: 'inherit',
-  border: 'none',
-  padding: 0,
-  font: 'inherit',
-  cursor: 'pointer',
-  outline: 'inherit',
+  /**
+   * if you want to pass a name for the input or for the select (in case of progressive enhancement)
+   */
+  name?: string;
+  /**
+   * it will pass extra select element(in case of progressive enhancement)
+   */
+  selectProps?: FormSelectProps;
 };
 
 export enum AutoCompleteErrorPosition {
@@ -190,8 +176,6 @@ export const Autocomplete = ({
   defaultValue = '',
   hintText,
   hintClass,
-  suffix,
-  prefix,
   multiSelect = false,
   notFoundText,
   resultId,
@@ -211,7 +195,6 @@ export const Autocomplete = ({
   onRemoveAll,
   onFocus,
   required = false,
-  props,
   containerClassName,
   labelText,
   labelClassName,
@@ -221,6 +204,8 @@ export const Autocomplete = ({
   errorMessageClassName,
   errorId,
   errorVisuallyHiddenText,
+  name,
+  selectProps,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
@@ -336,7 +321,7 @@ export const Autocomplete = ({
             )
           )}
         {!hydrated ? (
-          <FormSelect name="multiSelect" options={options} {...props} />
+          <FormSelect name="multiSelect" options={options} {...inputProps} />
         ) : (
           <FormInput
             name="autocompleteSearch"
@@ -349,7 +334,6 @@ export const Autocomplete = ({
               autoComplete: 'off',
               ...inputProps,
             }}
-            {...props}
           />
         )}
       </div>
@@ -408,15 +392,15 @@ export const Autocomplete = ({
         )}
       {!hydrated ? (
         <FormSelect
-          name="select"
+          name={name || 'select'}
           options={options}
-          {...props}
           id={id}
           defaultValue={defaultValue}
+          {...selectProps}
         />
       ) : (
         <FormInput
-          name="autocompleteSearch"
+          name={name || 'autocompleteSearch'}
           type="text"
           value={userInput}
           onChange={handleChange}
@@ -427,21 +411,6 @@ export const Autocomplete = ({
             id: id,
             ...inputProps,
           }}
-          suffix={{
-            content: (
-              <button type="submit" style={unstyleBtn}>
-                {suffix}
-              </button>
-            ),
-          }}
-          prefix={{
-            content: (
-              <button type="submit" style={unstyleBtn}>
-                {prefix}
-              </button>
-            ),
-          }}
-          {...props}
         />
       )}
     </>
