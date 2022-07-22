@@ -80,26 +80,32 @@ export const CheckboxRadioBase = ({
     </>
   );
 
+  const getConditionalElement = () => {
+    let hydratedElm = <></>;
+    if (!hydrated && conditional !== undefined) {
+      hydratedElm = Conditional({
+        ...conditional,
+        value: conditionalValue,
+      });
+    } else if (conditional !== undefined && conditionalReveal()) {
+      hydratedElm = Conditional({
+        ...conditional,
+        value: conditionalValue,
+        onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+          setConditionalValue(event.currentTarget.value);
+          if (onChange) onChange(event, event.currentTarget.value);
+        },
+      });
+    }
+    return hydratedElm;
+  };
+
   return (
     <div {...itemProps} className={itemClassName}>
       {hint && hint.position === 'above' && <Hint {...hint} />}
       {el}
       {hint && hint.position !== 'above' && <Hint {...hint} />}
-      {!hydrated && conditional !== undefined
-        ? Conditional({
-            ...conditional,
-            value: conditionalValue,
-          })
-        : conditional !== undefined &&
-          conditionalReveal() &&
-          Conditional({
-            ...conditional,
-            value: conditionalValue,
-            onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-              setConditionalValue(event.currentTarget.value);
-              if (onChange) onChange(event, event.currentTarget.value);
-            },
-          })}
+      {getConditionalElement()}
     </div>
   );
 };
