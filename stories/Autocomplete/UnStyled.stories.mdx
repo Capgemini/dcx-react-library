@@ -5,63 +5,45 @@ import '../style.css';
 <Meta title="DCXLibrary/Form/Autocomplete" component={Autocomplete} />
 
 ### An example of 'un-styled' Autocomplete
+
 The list of available options are:
+
 ```json
 ['Papaya','Persimmon','Paw Paw','Prickly Pear','Peach',Pomegranate',Pineapple']
 ```
+
 <Canvas>
   <Story name="un-styled">
-      {() => {
-        const handleSelected = value => {
-          console.log(value)
-        }
-        return (
-          <Autocomplete
-            options={[
-              'Papaya',
-              'Persimmon',
-              'Paw Paw',
-              'Prickly Pear',
-              'Peach',
-              'Pomegranate',
-              'Pineapple',
-            ]}
-            defaultValue="Papaya"
-            minCharsBeforeSearch={1}
-            debounceMs={100}
-            hintText="search the list of fruits"
-            hintClass="hintClass"
-            prefix={
-              <div
-                style={{
-                  border: '1px solid #d2d2d2',
-                  padding: '5px',
-                }}
-              >
-                Pre
-              </div>
-            }
-            suffix={
-              <div
-                style={{
-                  border: '1px solid #d2d2d2',
-                  padding: '5px',
-                }}
-              >
-                Post
-              </div>
-            }
-            resultUlClass="resultUlClass"
-            resultlLiClass="resultlLiClass"
-            resultNoOptionClass="resultNoOptionClass"
-            resultActiveClass="resultActiveClass"
-            notFoundText="No fruit found"
-            onSelected={handleSelected}  
-          />
-        );
+    {() => {
+      const handleSelected = (value) => {
+        console.log(value);
+      };
+      return (
+        <Autocomplete
+          options={[
+            'Papaya',
+            'Persimmon',
+            'Paw Paw',
+            'Prickly Pear',
+            'Peach',
+            'Pomegranate',
+            'Pineapple',
+          ]}
+          defaultValue="Papaya"
+          minCharsBeforeSearch={1}
+          debounceMs={100}
+          hintText="search the list of fruits"
+          hintClass="hintClass"
+          resultUlClass="resultUlClass"
+          resultlLiClass="resultlLiClass"
+          resultNoOptionClass="resultNoOptionClass"
+          resultActiveClass="resultActiveClass"
+          notFoundText="No fruit found"
+          onSelected={handleSelected}
+        />
+      );
     }}
   </Story>
 </Canvas>
-
 
 <Props of={Autocomplete} />

@@ -46,6 +46,9 @@ function AutocompleteDemo() {
         text: "",
         className: "",
       }}
+      name=""
+      inputProps={{}}
+      selectProps={{}}
     />
   )
 }
