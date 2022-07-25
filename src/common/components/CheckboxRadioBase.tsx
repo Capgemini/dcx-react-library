@@ -3,6 +3,7 @@ import { isEmpty } from 'lodash';
 import { Hint } from './Hint';
 import { Conditional } from './Conditional';
 import { FormRadioCheckboxProps } from './commonTypes';
+import { useHydrated } from '../utils';
 
 export const CheckboxRadioBase = ({
   label,
@@ -33,6 +34,7 @@ export const CheckboxRadioBase = ({
     conditionalInput?: string
   ) => void;
 }) => {
+  let hydrated = useHydrated();
   const conditionalReveal = (): boolean =>
     !isEmpty(conditional) && selected === true;
 
@@ -78,21 +80,32 @@ export const CheckboxRadioBase = ({
     </>
   );
 
+  const getConditionalElement = () => {
+    let hydratedElm = <></>;
+    if (!hydrated && conditional !== undefined) {
+      hydratedElm = Conditional({
+        ...conditional,
+        value: conditionalValue,
+      });
+    } else if (conditional !== undefined && conditionalReveal()) {
+      hydratedElm = Conditional({
+        ...conditional,
+        value: conditionalValue,
+        onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+          setConditionalValue(event.currentTarget.value);
+          if (onChange) onChange(event, event.currentTarget.value);
+        },
+      });
+    }
+    return hydratedElm;
+  };
+
   return (
     <div {...itemProps} className={itemClassName}>
       {hint && hint.position === 'above' && <Hint {...hint} />}
       {el}
       {hint && hint.position !== 'above' && <Hint {...hint} />}
-      {conditional !== undefined &&
-        conditionalReveal() &&
-        Conditional({
-          ...conditional,
-          value: conditionalValue,
-          onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-            setConditionalValue(event.currentTarget.value);
-            if (onChange) onChange(event, event.currentTarget.value);
-          },
-        })}
+      {getConditionalElement()}
     </div>
   );
 };
