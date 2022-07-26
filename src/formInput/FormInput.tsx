@@ -92,9 +92,13 @@ type FormInputProps = {
    **/
   errorPosition?: ErrorPosition;
   /**
-   * input ariaLabel
+   * define a string that labels the current element.
    **/
   ariaLabel?: string;
+   /**
+   * allows input to have aria-required
+   */
+    ariaRequired?: boolean
   /**
    * you can trigger to display an error without interact with the component
    */
@@ -128,6 +132,7 @@ export const FormInput = ({
   staticErrorMessage,
   errorPosition,
   ariaLabel,
+  ariaRequired,
   displayError = false,
   inputClassName,
   containerClassName,
@@ -204,6 +209,7 @@ export const FormInput = ({
             onChange={handleChange}
             className={inputClassName}
             aria-label={ariaLabel || name}
+            aria-required = {ariaRequired}
             {...inputProps}
           />
           {suffix && !isEmpty(suffix) && (
@@ -218,6 +224,7 @@ export const FormInput = ({
           onChange={handleChange}
           className={inputClassName}
           aria-label={ariaLabel || name}
+          aria-required = {ariaRequired}
           {...inputProps}
         />
       )}

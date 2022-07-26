@@ -25,6 +25,8 @@ function FormInputDemo() {
         type="text"
         value={value}
         label="password"
+        ariaRequired = "true"
+        ariaLabel = "someLabel"
         onChange={handleChange}
         isValid={handleValidation}
         displayError={false}
