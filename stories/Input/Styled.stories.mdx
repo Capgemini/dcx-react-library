@@ -23,6 +23,7 @@ In this section we're using the formInput component providing the GovUk style pa
           value={value}
           onChange={handleChange}
           ariaLabel="standard-input"
+          ariaRequired = "true"
         />
       );
     }}
@@ -47,6 +48,7 @@ In this section we're using the formInput component providing the GovUk style pa
           value={value}
           onChange={handleChange}
           ariaLabel="standard-input"
+          ariaRequired = "true"
           inputDivProps={{}}
         />
       );
@@ -76,6 +78,7 @@ In this section we're using the formInput component providing the GovUk style pa
             content: 'kg',
           }}
           ariaLabel="standard-input-suffix"
+          ariaRequired = "true"
         />
       );
     }}
@@ -104,6 +107,7 @@ In this section we're using the formInput component providing the GovUk style pa
             content: '£',
           }}
           aria-label="standard-input-pre-post-fix"
+          ariaRequired = "true"
         />
       );
     }}
@@ -139,6 +143,7 @@ In this section we're using the formInput component providing the GovUk style pa
             content: '£',
           }}
           aria-label="standard-input-pre-post-fix"
+          ariaRequired = "true"
         />
       );
     }}
@@ -177,7 +182,8 @@ Note: to display the error message type a letter and remove it
             className: 'govuk-error-message',
           }}
           errorPosition="before-label"
-          aria-label="standard-input-validation"
+          ariaLabel="standard-input-validation"
+          ariaRequired = "true"
         />
       );
     }}
@@ -205,7 +211,8 @@ Note: to display the error message type a letter and remove it
             text: 'this is an example hint',
             className: 'govuk-hint',
           }}
-          aria-label="standard-input-validation"
+          ariaLabel="standard-input-validation"
+          ariaRequired = "true"
         />
       );
     }}
@@ -227,6 +234,8 @@ Note: to display the error message type a letter and remove it
           inputProps={{ id: 'id' }}
           type="text"
           value="value"
+          ariaLabel="input-with-error"
+          ariaRequired = "true"
           hint={{
             position: 'above',
             text: 'My hint',
