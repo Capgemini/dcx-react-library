@@ -210,7 +210,6 @@ export const Autocomplete = ({
   name,
   selectProps,
   showAllValues = false,
-  props,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
@@ -339,7 +338,6 @@ export const Autocomplete = ({
             showallvalues: showAllValues ? 1 : 0,
             ...inputProps,
           }}
-          {...props}
         />
       </div>
       <div>
@@ -374,23 +372,24 @@ export const Autocomplete = ({
           {labelText}
         </label>
       )}
-      <FormInput
-        name="autocompleteSearch"
-        type="text"
-        value={userInput}
-        onChange={handleChange}
-        required={required}
-        options={options}
-        showAllValues={showAllValues}
-        inputProps={{
-          onKeyDown: onKeyDown,
-          autoComplete: 'off',
-          showallvalues: showAllValues ? 1 : 0,
-          ...inputProps,
-        }}
-        {...props}
-      />
-    </div>
+      <div>
+        <FormInput
+          name="autocompleteSearch"
+          type="text"
+          value={userInput}
+          onChange={handleChange}
+          required={required}
+          options={options}
+          showAllValues={showAllValues}
+          inputProps={{
+            onKeyDown: onKeyDown,
+            autoComplete: 'off',
+            showallvalues: showAllValues ? 1 : 0,
+            ...inputProps,
+          }}
+        />
+      </div>
+    </>
   );
 
   return (
