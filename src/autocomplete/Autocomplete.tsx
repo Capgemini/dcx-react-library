@@ -338,7 +338,7 @@ export const Autocomplete = ({
               onKeyDown: onKeyDown,
               autoComplete: 'off',
               ...inputProps,
-              showallvalues: showAllValues.toString(),
+              showallvalues: showAllValues,
             }}
             {...props}
           />
@@ -421,12 +421,25 @@ export const Autocomplete = ({
 
             ...inputProps,
 
-            showallvalues: showAllValues.toString(),
-          }}
-          {...props}
-        />
-      )}
-    </>
+          showallvalues: showAllValues,
+        }}
+        suffix={{
+          content: (
+            <button type="submit" style={unstyleBtn}>
+              {suffix}
+            </button>
+          ),
+        }}
+        prefix={{
+          content: (
+            <button type="submit" style={unstyleBtn}>
+              {prefix}
+            </button>
+          ),
+        }}
+        {...props}
+      />
+    </div>
   );
 
   return (
