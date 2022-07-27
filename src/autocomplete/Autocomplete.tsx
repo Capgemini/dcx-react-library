@@ -374,66 +374,19 @@ export const Autocomplete = ({
           {labelText}
         </label>
       )}
-      {errorPosition &&
-        errorPosition === AutoCompleteErrorPosition.AFTER_LABEL && (
-          <ErrorMessage
-            text={errorMessageText}
-            className={errorMessageClassName}
-            id={errorId}
-            visuallyHiddenText={errorVisuallyHiddenText}
-          />
-        )}
-      {hintText && (
-        <Hint text={hintText} className={hintClass} useLabel={false} />
-      )}
-      {errorPosition &&
-        errorPosition === AutoCompleteErrorPosition.AFTER_HINT && (
-          <ErrorMessage
-            text={errorMessageText}
-            className={errorMessageClassName}
-            id={errorId}
-            visuallyHiddenText={errorVisuallyHiddenText}
-          />
-        )}
-      {!hydrated ? (
-        <FormSelect
-          name={name || 'select'}
-          options={options}
-          id={id}
-          defaultValue={defaultValue}
-          {...selectProps}
-        />
-      ) : (
-        <FormInput
-          name={name || 'autocompleteSearch'}
-          type="text"
-          value={userInput}
-          onChange={handleChange}
-          required={required}
-          options={options}
-          showAllValues={showAllValues}
-          inputProps={{
-            onKeyDown: onKeyDown,
-
-            autoComplete: 'off',
-
-            ...inputProps,
-
-            showallvalues: showAllValues ? 1 : 0,
-        }}
-        suffix={{
-          content: (
-            <button type="submit" style={unstyleBtn}>
-              {suffix}
-            </button>
-          ),
-        }}
-        prefix={{
-          content: (
-            <button type="submit" style={unstyleBtn}>
-              {prefix}
-            </button>
-          ),
+      <FormInput
+        name="autocompleteSearch"
+        type="text"
+        value={userInput}
+        onChange={handleChange}
+        required={required}
+        options={options}
+        showAllValues={showAllValues}
+        inputProps={{
+          onKeyDown: onKeyDown,
+          autoComplete: 'off',
+          showallvalues: showAllValues ? 1 : 0,
+          ...inputProps,
         }}
         {...props}
       />
