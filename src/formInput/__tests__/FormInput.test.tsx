@@ -140,6 +140,22 @@ describe('FormInput', () => {
     expect(input).toBeInTheDocument();
   });
 
+  it('should have the ariarequrired attribute', () => {
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="@_-bddcd6A"
+        ariaLabel="input-label"
+        ariaRequired={true}
+      />
+    );
+    const input: any = screen.getByRole('textbox');
+    console.debug('======>', input.ariaRequired);
+    console.debug('======>', input);
+    expect(input['aria-required']).toBeTruthy();
+  });
+
   it('should display the formInput with className', () => {
     const handleChange = jest.fn();
     render(
