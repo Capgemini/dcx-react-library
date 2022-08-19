@@ -151,9 +151,7 @@ describe('FormInput', () => {
       />
     );
     const input: any = screen.getByRole('textbox');
-    console.debug('======>', input.ariaRequired);
-    console.debug('======>', input);
-    expect(input['aria-required']).toBeTruthy();
+    expect(input.getAttribute('aria-required')).toBeTruthy();
   });
 
   it('should display the formInput with className', () => {
