@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { Autocomplete } from '../';
+import { Autocomplete, AutoCompleteErrorPosition } from '../';
 import userEvent from '@testing-library/user-event';
-import { act } from '@testing-library/react-hooks';
+import * as hooks from '../../common/utils/clientOnly';
 
 const firstSearch = [
   'Papaya',
@@ -43,7 +43,161 @@ const DummyAutoComplete = () => {
 };
 
 describe('FormInput', () => {
+  it('should display multiselect if progresive enhancement and multiselect is true', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        selectProps={{
+          selectClassName: '',
+          containerClassName: '',
+          labelClassName: '',
+        }}
+        multiSelect
+      />
+    );
+    const formSelect: any = screen.getByRole('combobox');
+    expect(formSelect.name).toBe('multiSelect');
+    expect(formSelect).toBeInTheDocument();
+  });
+
+  it('should select the default value if progressive enhancement is enable', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    render(
+      <Autocomplete options={['daniele', 'isaac']} defaultValue="isaac" />
+    );
+    const option: any = screen.getByRole('option', { name: 'isaac' });
+    expect(option.selected).toBe(true);
+  });
+
+  it('should allow to specify a containerClass name ', () => {
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        containerClassName="containerClass"
+      />
+    );
+    const containerClass = container.querySelector('.containerClass');
+    expect(containerClass).toBeInTheDocument();
+  });
+
+  it('should allow to specify a label text ', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        labelText="labelText"
+        labelClassName="labelClass"
+      />
+    );
+    const label: any = screen.getByText('labelText');
+    expect(label.className).toBe('labelClass');
+  });
+
+  it('should allow to specify a label className', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        labelText="labelText"
+        labelClassName="labelClass"
+      />
+    );
+    const label: any = screen.getByText('labelText');
+    expect(label).toBeInTheDocument();
+  });
+
+  it('should display an error', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        labelText="labelText"
+        labelClassName="labelClass"
+        errorMessageText="errorMessageText"
+        errorMessageClassName="errorMessageClass"
+        errorId="errorId"
+        errorPosition={AutoCompleteErrorPosition.AFTER_HINT}
+      />
+    );
+    const label: any = screen.getByText('errorMessageText');
+    expect(label.className).toBe('errorMessageClass');
+    expect(label.id).toBe('errorId');
+    expect(label).toBeInTheDocument();
+  });
+
+  it('should display an error after the label', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        labelText="labelText"
+        labelClassName="labelClass"
+        errorMessageText="errorMessageText"
+        errorMessageClassName="errorMessageClass"
+        errorId="errorId"
+        errorPosition={AutoCompleteErrorPosition.AFTER_LABEL}
+      />
+    );
+    const label: any = screen.getByText('errorMessageText');
+    expect(label.className).toBe('errorMessageClass');
+    expect(label.id).toBe('errorId');
+    expect(label).toBeInTheDocument();
+  });
+
+  it('should display an error before the label', () => {
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        labelText="labelText"
+        labelClassName="labelClass"
+        errorMessageText="errorMessageText"
+        errorMessageClassName="errorMessageClass"
+        errorId="errorId"
+        errorPosition={AutoCompleteErrorPosition.BEFORE_LABEL}
+      />
+    );
+    const label: any = screen.getByText('errorMessageText');
+    expect(label.className).toBe('errorMessageClass');
+    expect(label.id).toBe('errorId');
+    expect(label).toBeInTheDocument();
+  });
+
+  it('should allow to specify an id for the input', () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+    render(<Autocomplete options={['daniele', 'isaac']} id="myId" />);
+    const input: any = screen.getByRole('textbox');
+    expect(input.id).toBe('myId');
+  });
+
+  it('should allow to specify an id for the select in case of progressive enhnancment', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    render(<Autocomplete options={['daniele', 'isaac']} id="myId" />);
+    const select: any = screen.getByRole('combobox');
+    expect(select.id).toBe('myId');
+  });
+
+  it('should display select if progresive enhancement', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        selectProps={{
+          selectClassName: '',
+          containerClassName: '',
+          labelClassName: '',
+        }}
+      />
+    );
+    const formSelect: any = screen.getByRole('combobox');
+    expect(formSelect.name).toBe('select');
+    expect(formSelect).toBeInTheDocument();
+  });
+
   it('should display the formInput content', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
     render(<Autocomplete options={['daniele', 'isaac']} />);
 
     const input: any = screen.getByRole('textbox');
@@ -65,90 +219,73 @@ describe('FormInput', () => {
     expect(input).toBeInTheDocument();
   });
 
-  it('should contains the formInput suffix and prefix', () => {
-    render(
-      <Autocomplete
-        options={['daniele', 'isaac']}
-        debounceMs={100}
-        prefix={<div data-testid="prefix">prefix</div>}
-        suffix={<div data-testid="suffix">suffix</div>}
-      />
-    );
+  it('should display available options', async () => {
+    const user = userEvent.setup();
 
-    expect(screen.getByTestId('suffix')).toBeInTheDocument();
-    expect(screen.getByTestId('prefix')).toBeInTheDocument();
-  });
-
-  it('should display available options', () => {
     render(<Autocomplete options={['daniele', 'isaac']} />);
     const input = screen.getByRole('textbox');
-    jest.useFakeTimers('modern');
-    act(() => userEvent.type(input, 'da'));
-    act(() => {
-      jest.runAllTimers();
-    });
+    await user.type(input, 'da');
     const listItems: any = screen.getAllByRole('listitem');
-    expect(listItems[0].innerHTML).toBe('daniele');
+    await waitFor(() => {
+      expect(listItems[0].innerHTML).toBe('daniele');
+    });
   });
 
-  it('should not display available options', () => {
-    render(<Autocomplete options={['first', 'isaac']} />);
+  it('should not display available options', async () => {
+    const user = userEvent.setup();
+    const { container } = render(<Autocomplete options={['first', 'isaac']} />);
     const input = screen.getByRole('textbox');
-    jest.useFakeTimers('modern');
-    act(() => userEvent.type(input, 'test value'));
-    act(() => {
-      jest.runAllTimers();
-    });
-    const noOptionTag: any = screen.getByText('No Option!');
-    expect(noOptionTag.innerHTML).toBe('No Option!');
+    await user.type(input, 'test value');
+
+    const el: any = container.querySelector('li');
+    expect(el).not.toBeInTheDocument();
   });
 
-  it('should allow to select the first item', () => {
+  it('should allow to select the first item', async () => {
+    const user = userEvent.setup();
     render(<Autocomplete options={['daniele', 'destiny', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
-    jest.useFakeTimers('modern');
-    act(() => userEvent.type(input, 'd'));
-    act(() => {
-      jest.runAllTimers();
+    await user.type(input, 'd');
+    await waitFor(() => {
+      const item: any = screen
+        .getAllByRole('listitem')
+        .filter((listitem: any) => listitem.textContent === 'daniele');
+      fireEvent.click(item[0]);
+      expect(input.value).toBe('daniele');
     });
-    const item: any = screen
-      .getAllByRole('listitem')
-      .filter((listitem: any) => listitem.textContent === 'daniele');
-    fireEvent.click(item[0]);
-    expect(input.value).toBe('daniele');
   });
 
-  it("should allow to select the first item even if it's uppercase", () => {
+  it("should allow to select the first item even if it's uppercase", async () => {
+    const user = userEvent.setup();
+
     render(<Autocomplete options={['daniele', 'destiny', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
-    jest.useFakeTimers('modern');
-    act(() => userEvent.type(input, 'D'));
-    act(() => {
-      jest.runAllTimers();
+    await user.type(input, 'D');
+    await waitFor(() => {
+      const item: any = screen
+        .getAllByRole('listitem')
+        .filter((listitem: any) => listitem.textContent === 'daniele');
+      fireEvent.click(item[0]);
+      expect(input.value).toBe('daniele');
     });
-    const item: any = screen
-      .getAllByRole('listitem')
-      .filter((listitem: any) => listitem.textContent === 'daniele');
-    fireEvent.click(item[0]);
-    expect(input.value).toBe('daniele');
   });
 
-  it('should allow to select the first item even if the list of choices is uppercase', () => {
+  it('should allow to select the first item even if the list of choices is uppercase', async () => {
+    const user = userEvent.setup();
     render(<Autocomplete options={['Daniele', 'destiny', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
-    jest.useFakeTimers('modern');
-    act(() => userEvent.type(input, 'd'));
-    act(() => {
-      jest.runAllTimers();
+    await user.type(input, 'd');
+    await waitFor(() => {
+      const item: any = screen
+        .getAllByRole('listitem')
+        .filter((listitem: any) => listitem.textContent === 'Daniele');
+      fireEvent.click(item[0]);
+      expect(input.value).toBe('Daniele');
     });
-    const item: any = screen
-      .getAllByRole('listitem')
-      .filter((listitem: any) => listitem.textContent === 'Daniele');
-    fireEvent.click(item[0]);
-    expect(input.value).toBe('Daniele');
   });
 
-  it('should call the onSelected function if the function is provided', () => {
+  it('should call the onSelected function if the function is provided', async () => {
+    const user = userEvent.setup();
     const handleOnSelected = jest.fn();
     render(
       <Autocomplete
@@ -157,52 +294,40 @@ describe('FormInput', () => {
       />
     );
     const input: any = screen.getByRole('textbox');
-    jest.useFakeTimers('modern');
-    act(() => userEvent.type(input, 'd'));
-    act(() => {
-      jest.runAllTimers();
+    await user.type(input, 'd');
+    await waitFor(() => {
+      const item: any = screen
+        .getAllByRole('listitem')
+        .filter((listitem: any) => listitem.textContent === 'daniele');
+      fireEvent.click(item[0]);
+      expect(handleOnSelected).toBeCalled();
     });
-    const item: any = screen
-      .getAllByRole('listitem')
-      .filter((listitem: any) => listitem.textContent === 'daniele');
-    fireEvent.click(item[0]);
-    expect(handleOnSelected).toBeCalled();
   });
 
-  it('should highlight the selected option(s) on keyDown', () => {
-    render(
-      <Autocomplete
-        options={['daniele', 'darren', 'isaac']}
-        prefix={<div>prefix</div>}
-        suffix={<div>suffix</div>}
-      />
-    );
+  it('should highlight the selected option(s) on keyDown', async () => {
+    const user = userEvent.setup();
+    render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
-    jest.useFakeTimers('modern');
-    act(() => userEvent.type(input, 'da'));
-    act(() => {
-      jest.runAllTimers();
-    });
+    await user.type(input, 'da');
     fireEvent.keyDown(input, { code: 'ArrowDown' });
     fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
     expect(input.value).toBe('darren');
   });
 
-  it('should highlight the selected option(s) on keyUp', () => {
+  it('should highlight the selected option(s) on keyUp', async () => {
+    const user = userEvent.setup();
+
     render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
     const input: any = screen.getByRole('textbox');
-    jest.useFakeTimers('modern');
-    act(() => userEvent.type(input, 'da'));
-    act(() => {
-      jest.runAllTimers();
-    });
+    await user.type(input, 'da');
     fireEvent.keyDown(input, { code: 'ArrowDown' });
     fireEvent.keyDown(input, { code: 'ArrowUp' });
     fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
     expect(input.value).toBe('daniele');
   });
 
-  it('should higlight the first one as active if you try to keyUp', () => {
+  it('should higlight the first one as active if you try to keyUp', async () => {
+    const user = userEvent.setup();
     render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
@@ -210,18 +335,15 @@ describe('FormInput', () => {
       />
     );
     const input: any = screen.getByRole('textbox');
-    jest.useFakeTimers('modern');
-    act(() => userEvent.type(input, 'da'));
-    act(() => {
-      jest.runAllTimers();
-    });
+    await user.type(input, 'da');
     fireEvent.keyDown(input, { code: 'ArrowUp' });
 
     const listItems: any = screen.getAllByRole('listitem');
     expect(listItems[0].className).toBe('activeClass ');
   });
 
-  it('should highlight the last one as active if you try to keyDown', () => {
+  it('should highlight the last one as active if you try to keyDown', async () => {
+    const user = userEvent.setup();
     render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
@@ -229,21 +351,19 @@ describe('FormInput', () => {
       />
     );
     const input: any = screen.getByRole('textbox');
-    jest.useFakeTimers('modern');
-    act(() => userEvent.type(input, 'da'));
-    act(() => {
-      jest.runAllTimers();
-    });
+    await user.type(input, 'da');
+
     fireEvent.keyDown(input, { code: 'ArrowDown' });
     fireEvent.keyDown(input, { code: 'ArrowDown' });
     fireEvent.keyDown(input, { code: 'ArrowDown' });
 
     const listItems: any = screen.getAllByRole('listitem');
-    expect(listItems[2].className).toBe('activeClass ');
+    expect(listItems[1].className).toBe('activeClass ');
   });
 
-  it('should call the selected function after the selection', () => {
+  it('should call the selected function after the selection', async () => {
     const handleSelected = jest.fn();
+    const user = userEvent.setup();
     render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
@@ -251,10 +371,8 @@ describe('FormInput', () => {
       />
     );
     const input: any = screen.getByRole('textbox');
-    act(() => userEvent.type(input, 'da'));
-    act(() => {
-      jest.runAllTimers();
-    });
+    await user.type(input, 'da');
+
     fireEvent.keyDown(input, { code: 'ArrowDown' });
     fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
     expect(handleSelected).toBeCalled();
@@ -266,10 +384,11 @@ describe('FormInput', () => {
         options={['daniele', 'darren', 'isaac']}
         resultActiveClass="activeClass"
         hintText="search names"
+        hintClass="hintClass"
       />
     );
-    const hintTag: any = container.querySelector('label');
-    expect(hintTag.innerHTML).toBe('search names');
+    const firstItem: any = container.firstChild?.childNodes[0];
+    expect(firstItem.innerHTML).toBe('search names');
   });
 
   it('should display an hint class if specified', () => {
@@ -281,11 +400,12 @@ describe('FormInput', () => {
         hintClass="labelClass"
       />
     );
-    const hintTag: any = container.querySelector('label');
-    expect(hintTag.className).toBe('labelClass');
+    const firstItem: any = container.firstChild?.childNodes[0];
+    expect(firstItem.className).toBe('labelClass');
   });
 
-  it('should display the results after typing 2 character', () => {
+  it('should display the results after typing 2 character', async () => {
+    const user = userEvent.setup();
     const { container } = render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
@@ -295,37 +415,31 @@ describe('FormInput', () => {
       />
     );
     const input: any = screen.getByRole('textbox');
-    act(() => userEvent.type(input, 'd'));
-    act(() => {
-      jest.runAllTimers();
-    });
+    await user.type(input, 'd');
+
     const ulEl: any = container.querySelector('ul');
     expect(ulEl).toBeNull();
-    act(() => userEvent.type(input, 'a'));
-    act(() => {
-      jest.runAllTimers();
-    });
+    await user.type(input, 'a');
+
     const listItems: any = screen.getAllByRole('listitem');
     expect(listItems.length).toBe(2);
   });
 
-  it('should populate the list dynamically - i.e. fetch from the server', () => {
+  it('should populate the list dynamically - i.e. fetch from the server', async () => {
+    const user = userEvent.setup();
     render(<DummyAutoComplete />);
-    jest.useFakeTimers('modern');
     const input: any = screen.getByRole('textbox');
-    act(() => userEvent.type(input, 'p'));
-    act(() => {
-      jest.runAllTimers();
-    });
-    const listItemsFirst: any = screen.getAllByRole('listitem');
+    await user.type(input, 'p');
+    await waitFor(() => {
+      const listItemsFirst: any = screen.getAllByRole('listitem');
 
-    expect(listItemsFirst.length).toBe(7);
-    act(() => userEvent.type(input, 'e'));
-    act(() => {
-      jest.runAllTimers();
+      expect(listItemsFirst.length).toBe(7);
     });
-    const listItemsSecond: any = screen.getAllByRole('listitem');
-    expect(listItemsSecond.length).toBe(2);
+    await user.type(input, 'e');
+    await waitFor(() => {
+      const listItemsSecond: any = screen.getAllByRole('listitem');
+      expect(listItemsSecond.length).toBe(2);
+    });
   });
 
   it('should display a remove all button if specified', () => {
@@ -352,5 +466,41 @@ describe('FormInput', () => {
     fireEvent.click(removeAllEl);
 
     expect(onRemoveAllHandler).toHaveBeenCalled();
+  });
+
+  it('should check that required attribute is defaulted to false', () => {
+    render(<Autocomplete options={[]} />);
+    const input: any = screen.getByRole('textbox');
+    expect(input.required).toBe(false);
+  });
+
+  it('should check that if required is set to true, input child is rendered with the attribute', () => {
+    render(<Autocomplete options={[]} required />);
+    const input: any = screen.getByRole('textbox');
+    expect(input.required).toBe(true);
+  });
+
+  it('should contains the input name if specified', () => {
+    render(<Autocomplete options={[]} name="inputName" />);
+    const input: any = screen.getByRole('textbox');
+    expect(input.name).toBe('inputName');
+  });
+
+  it('should contains the select name if specified and progressive enhancment', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        selectProps={{
+          selectClassName: '',
+          containerClassName: '',
+          labelClassName: '',
+        }}
+        name="selectName"
+      />
+    );
+    const formSelect: any = screen.getByRole('combobox');
+    expect(formSelect.name).toBe('selectName');
   });
 });

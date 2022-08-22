@@ -20,6 +20,8 @@ An Input autocomplete component ready to use in your form.
 Autocomplete is UI/UX agnostic so you need to provide your style to have the look
 and feel you prefer.
 
+_The autocomplete is a progressive component that will automatically detect if your browser support or not js. It will render as an input when javascript is enabled, a select otherwise_
+
 ## Usage
 
 An example with all the available properties is (the only mandatory property is `options`):
@@ -40,14 +42,28 @@ An example with all the available properties is (the only mandatory property is 
   debounceMs={2000}
   hintText="search the list of fruits"
   hintClass="hintClass"
-  suffix={<FontAwesomeIcon icon={faAt} />}
-  prefix={<FontAwesomeIcon icon={faAt} />}
   resultUlClass="resultUlClass"
   resultlLiClass="resultlLiClass"
   resultNoOptionClass="resultNoOptionClass"
   resultActiveClass="resultActiveClass"
   notFoundText="No fruit found"
   onSelected={handleSelected}
+  required={false}
+  containerClassName=""
+  labelText=""
+  labelClassName=""
+  id=""
+  errorPosition={AutoCompleteErrorPosition.TOP}
+  errorMessageText=""
+  errorMessageClassName=""
+  errorId=""
+  errorMessageVisuallyHidden={{
+    text: '',
+    className: '',
+  }}
+  name=""
+  inputProps={{}}
+  selectProps={{}}
 />
 ```
 

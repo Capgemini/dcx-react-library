@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
-import fireEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { FormSelect, FormSelectProps } from '../FormSelect';
 import { OptionProps } from '../../common/components/Option';
+import userEvent from '@testing-library/user-event';
 
 const DummySelect = ({
   selectClassName,
@@ -192,9 +192,9 @@ describe('FormSelect', () => {
     expect(container.getElementsByClassName('className4').length).toBe(1);
   });
 
-  it('should call the onChange event if provided', () => {
+  it('should call the onChange event if provided', async () => {
     const handleChange = jest.fn();
-
+    const user = userEvent.setup();
     const options: OptionProps[] = [
       {
         label: 'option1',
@@ -213,15 +213,15 @@ describe('FormSelect', () => {
         onChange={handleChange}
       />
     );
-    fireEvent.selectOptions(screen.getByRole('combobox'), 'value1');
+    await user.selectOptions(screen.getByRole('combobox'), 'value1');
 
     expect(container.querySelector('#custom-option-1')).toBeInTheDocument();
     expect(handleChange).toHaveBeenCalled();
   });
 
-  it('should not call the onChange event if it is not provided', () => {
+  it('should not call the onChange event if it is not provided', async () => {
     const handleChange = jest.fn();
-
+    const user = userEvent.setup();
     const options: OptionProps[] = [
       {
         label: 'option1',
@@ -235,7 +235,7 @@ describe('FormSelect', () => {
     const { container } = render(
       <DummySelect id="myId" name="the name" options={options} />
     );
-    fireEvent.selectOptions(screen.getByRole('combobox'), 'value1');
+    await user.selectOptions(screen.getByRole('combobox'), 'value1');
 
     expect(container.querySelector('#custom-option-1')).toBeInTheDocument();
     expect(handleChange).not.toHaveBeenCalled();
@@ -443,5 +443,11 @@ describe('FormSelect', () => {
     );
     const errorMessage = screen.getByText('errorMessage');
     expect(errorMessage.className).toBe('errorMessageClass');
+  });
+
+  it('should select the default value if specified', () => {
+    render(<FormSelect options={['daniele', 'isaac']} defaultValue="isaac" />);
+    const option: any = screen.getByRole('option', { name: 'isaac' });
+    expect(option.selected).toBe(true);
   });
 });

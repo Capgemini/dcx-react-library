@@ -33,7 +33,22 @@ function AutocompleteDemo() {
       resultActiveClass=""
       inputProps={{}}
       notFoundText="No fruit found"
-      onSelected={handleSelected}  
+      onSelected={handleSelected} 
+      containerClassName=""
+      labelText=""
+      labelClassName=""
+      id=""
+      errorPosition='below'
+      errorMessageText=""
+      errorMessageClassName=""
+      errorId=""
+      errorMessageVisuallyHidden={{
+        text: "",
+        className: "",
+      }}
+      name=""
+      inputProps={{}}
+      selectProps={{}}
     />
   )
 }

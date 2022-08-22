@@ -4,6 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { FormInputMasked } from '../';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 
 const DummyComponentMasked = () => {
   const [value, setValue] = React.useState('15');
@@ -39,14 +40,22 @@ describe('FormInput', () => {
     expect(input).toBeInTheDocument();
   });
 
-  it('should display the masked content', () => {
+  it('should display $1 533', async () => {
+    const user = userEvent.setup();
     render(<DummyComponentMasked />);
 
     const input: any = screen.getByRole('textbox');
-    userEvent.type(input, '33');
+    await act(() => user.type(input, '33'));
     expect(input.value).toBe('$1 533');
+  });
 
-    userEvent.type(input, '{selectall}{backspace}56');
-    expect(input.value).toBe('$56');
+  it('should display $156', async () => {
+    const user = userEvent.setup();
+    render(<DummyComponentMasked />);
+
+    const input: any = screen.getByRole('textbox');
+
+    await act(() => user.type(input, '{selectall}{backspace}56'));
+    expect(input.value).toBe('$156');
   });
 });

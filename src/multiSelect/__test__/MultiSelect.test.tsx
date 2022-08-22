@@ -1,10 +1,16 @@
 import React from 'react';
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { MultiSelect } from '../MultiSelect';
 import { MultiSelectOption } from '../Types';
-import { act } from '@testing-library/react-hooks';
 
 describe('MultiSelect', () => {
   describe('when rendering the container', () => {
@@ -118,7 +124,7 @@ describe('MultiSelect', () => {
       expect(screen.getAllByRole('listitem').length).toBe(3);
     });
 
-    it('should call onFocusHandler of first multi select selected option', () => {
+    it('should call onFocusHandler of first multi select selected option', async () => {
       const onFocusHandler = jest.fn();
       const options: MultiSelectOption[] = [
         {
@@ -131,13 +137,14 @@ describe('MultiSelect', () => {
 
       render(<MultiSelect selectOptions={options} onFocus={onFocusHandler} />);
 
-      screen.getAllByRole('button')[0].focus();
+      await act(() => screen.getAllByRole('button')[0].focus());
 
       expect(onFocusHandler).toHaveBeenCalled();
     });
 
-    it('should call onRemoveHandler of first multi select selected option', () => {
+    it('should call onRemoveHandler of first multi select selected option', async () => {
       const onRemoveHandler = jest.fn();
+      const user = userEvent.setup();
       const options: MultiSelectOption[] = [
         {
           id: 'myId-1',
@@ -163,7 +170,7 @@ describe('MultiSelect', () => {
         <MultiSelect selectOptions={options} onRemove={onRemoveHandler} />
       );
 
-      userEvent.click(
+      await user.click(
         within(screen.getAllByRole('listitem')[0]).getByRole('button')
       );
 
@@ -173,7 +180,8 @@ describe('MultiSelect', () => {
       expect(screen.getAllByRole('listitem').length).toBe(2);
     });
 
-    it('should not call onRemoveHandler of first multi select selected option', () => {
+    it('should not call onRemoveHandler of first multi select selected option', async () => {
+      const user = userEvent.setup();
       const onRemoveHandler = jest.fn();
       const options: MultiSelectOption[] = [
         {
@@ -198,7 +206,7 @@ describe('MultiSelect', () => {
 
       render(<MultiSelect selectOptions={options} />);
 
-      userEvent.click(
+      await user.click(
         within(screen.getAllByRole('listitem')[0]).getByRole('button')
       );
 
@@ -320,16 +328,13 @@ describe('MultiSelect', () => {
       },
     ];
 
-    it('should render a combobox with 3 options', () => {
+    it('should render a combobox with 3 options', async () => {
+      const user = userEvent.setup();
       render(<MultiSelect selectOptions={options} />);
 
-      jest.useFakeTimers('modern');
       const input = screen.getByRole('textbox');
 
-      act(() => userEvent.type(input, 'o'));
-      act(() => {
-        jest.runOnlyPendingTimers();
-      });
+      await user.type(input, 'o');
 
       expect(
         within(screen.getByRole('list')).getAllByRole('listitem')
@@ -339,7 +344,9 @@ describe('MultiSelect', () => {
       ).toBe(3);
     });
 
-    it('should render a combobox with 1 options', () => {
+    it('should render a combobox with 1 options', async () => {
+      const user = userEvent.setup();
+
       render(
         <MultiSelect
           selectOptions={[
@@ -354,36 +361,31 @@ describe('MultiSelect', () => {
         />
       );
 
-      jest.useFakeTimers('modern');
       const input = screen.getByRole('textbox');
 
-      act(() => userEvent.type(input, 'u'));
-      act(() => {
-        jest.runAllTimers();
-      });
+      await user.type(input, 'u');
 
       expect(
         within(screen.getByRole('list')).getAllByRole('listitem')
       ).toBeDefined();
-      expect(
-        within(screen.getByRole('list')).getAllByRole('listitem').length
-      ).toBe(1);
+
+      await waitFor(() => {
+        expect(
+          within(screen.getByRole('list')).getAllByRole('listitem').length
+        ).toBe(1);
+      });
     });
 
-    it('should add a selected option to the selected list', () => {
+    it('should add a selected option to the selected list', async () => {
       const onSelectedHandler = jest.fn();
-
+      const user = userEvent.setup();
       render(
         <MultiSelect selectOptions={options} onSelect={onSelectedHandler} />
       );
 
       const input = screen.getByRole('textbox');
 
-      jest.useFakeTimers('modern');
-      act(() => userEvent.type(input, 'o'));
-      act(() => {
-        jest.runAllTimers();
-      });
+      await user.type(input, 'o');
 
       const liElements: HTMLElement[] = screen
         .getAllByRole('listitem')
@@ -401,17 +403,14 @@ describe('MultiSelect', () => {
       ).toBe(3);
     });
 
-    it('should not add a selected option to the selected list', () => {
+    it('should not add a selected option to the selected list', async () => {
+      const user = userEvent.setup();
+
       render(<MultiSelect selectOptions={options} />);
 
       const input = screen.getByRole('textbox');
 
-      jest.useFakeTimers('modern');
-      act(() => userEvent.type(input, 'o'));
-      act(() => {
-        jest.runAllTimers();
-      });
-
+      await user.type(input, 'o');
       const liElements: HTMLElement[] = screen
         .getAllByRole('listitem')
         .filter(
@@ -428,18 +427,16 @@ describe('MultiSelect', () => {
       ).toBe(2);
     });
 
-    it('should not call on selected', () => {
+    it('should not call on selected', async () => {
+      const user = userEvent.setup();
+
       const onSelectedHandler = jest.fn();
 
       render(<MultiSelect selectOptions={options} />);
 
       const input = screen.getByRole('textbox');
 
-      jest.useFakeTimers('modern');
-      act(() => userEvent.type(input, 'o'));
-      act(() => {
-        jest.runAllTimers();
-      });
+      await user.type(input, 'o');
 
       const liElements: HTMLElement[] = screen
         .getAllByRole('listitem')

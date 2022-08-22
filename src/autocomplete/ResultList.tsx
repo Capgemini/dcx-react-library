@@ -28,21 +28,25 @@ export const ResultList = ({
   noOptionClass,
   noElFoundText,
   onClick,
-}: ResultListProps) => {
-  if (userInput && list.length) {
-    return (
-      <ul
-        id={ulContainerId}
-        className={ulContainerClass}
-        style={ulContainerStyle}
-        aria-live="polite"
-      >
-        {list.map((optionName: string, index: number) => (
+}: ResultListProps) => (
+  <ul
+    id={ulContainerId}
+    className={ulContainerClass}
+    style={ulContainerStyle}
+    aria-live="polite"
+  >
+    {userInput && list.length > 0
+      ? list.map((optionName: string, index: number) => (
           <li
             className={
               index === activeOption && activeClass
                 ? [activeClass, liContainerClass].join(' ')
-                : liContainerClass
+                : [
+                    liContainerClass,
+                    index % 2 === 0
+                      ? `${liContainerClass}--even`
+                      : `${liContainerClass}--odd`,
+                  ].join(' ')
             }
             key={optionName}
             onClick={onClick}
@@ -50,14 +54,11 @@ export const ResultList = ({
           >
             {optionName}
           </li>
-        ))}
-      </ul>
-    );
-  } else {
-    return (
-      <div className={noOptionClass}>
-        <em>{noElFoundText || 'No Option!'}</em>
-      </div>
-    );
-  }
-};
+        ))
+      : noElFoundText && (
+          <li className={[liContainerClass, noOptionClass].join(' ')}>
+            {noElFoundText}
+          </li>
+        )}
+  </ul>
+);
