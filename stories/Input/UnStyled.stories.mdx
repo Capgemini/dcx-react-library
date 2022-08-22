@@ -21,6 +21,8 @@ import '../style.css';
           name="password"
           type="text"
           value={value}
+          ariaLabel="unstyled-input"
+          ariaRequired = "true"
           onChange={handleChange}
           isValid={handleValidity}
           inputProps={{
@@ -84,6 +86,8 @@ import '../style.css';
           type="text"
           value={value}
           label="Password"
+          ariaLabel="unstyled-input-with-label"
+          ariaRequired = "true"
           onChange={handleChange}
           isValid={handleValidity}
           inputProps={{
@@ -169,6 +173,8 @@ const handleClick = () => {
             name="password"
             type="text"
             value={value}
+            ariaLabel="unstyled-input-trigger-validity"
+            ariaRequired = "true"
             displayError={displayError}
             onChange={handleChange}
             isValid={handleValidity}
@@ -230,6 +236,8 @@ const handleClick = () => {
           name="text3"
           type="text"
           value={value}
+          ariaLabel="unstyled-input-with-hint"
+          ariaRequired = "true"
           onChange={handleChange}
           isValid={handleValidity}
           inputClassName="govuk-input"
@@ -259,6 +267,8 @@ const handleClick = () => {
           inputProps={{ id: 'id' }}
           type="text"
           value="value"
+          ariaLabel="unstyled-input-with-static-error"
+          ariaRequired = "true"
           hint={{
             position: 'above',
             text: 'My hint',

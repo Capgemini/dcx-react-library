@@ -17,6 +17,8 @@ const DummyComponent = ({ pos, displayError = false }: any) => {
         name="password"
         type="text"
         value={value}
+        ariaLabel="input-label"
+        ariaRequired={true}
         errorPosition={pos}
         onChange={handleInputChange}
         isValid={handleValidity}
@@ -54,6 +56,8 @@ const DummyComponentTriggerError = () => {
         name="password"
         type="text"
         value=""
+        ariaLabel="input-label"
+        ariaRequired={true}
         onChange={handleInputChange}
         displayError={displayError}
         errorPosition={ErrorPosition.BOTTOM}
@@ -83,6 +87,8 @@ const DummyStaticComponent = ({ pos, hint }: any) => (
       name="password"
       type="text"
       value="myValue"
+      ariaLabel="input-label"
+      ariaRequired={true}
       errorPosition={pos}
       staticErrorMessage="static error message"
       containerClassName="container-class"
@@ -116,6 +122,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="@_-bddcd6A"
+        ariaLabel="input-label"
+        ariaRequired={true}
         onChange={handleChange}
         prefix={{
           properties: {
@@ -132,6 +140,20 @@ describe('FormInput', () => {
     expect(input).toBeInTheDocument();
   });
 
+  it('should have the ariarequrired attribute', () => {
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="@_-bddcd6A"
+        ariaLabel="input-label"
+        ariaRequired={true}
+      />
+    );
+    const input: any = screen.getByRole('textbox');
+    expect(input.getAttribute('aria-required')).toBeTruthy();
+  });
+
   it('should display the formInput with className', () => {
     const handleChange = jest.fn();
     render(
@@ -139,6 +161,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="@_-bddcd6A"
+        ariaLabel="input-label"
+        ariaRequired={true}
         inputClassName="myClassName"
         onChange={handleChange}
         prefix={{
@@ -160,6 +184,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="@_-bddcd6A"
+        ariaLabel="input-label"
+        ariaRequired={true}
         containerClassName="myClassName"
         onChange={handleChange}
         prefix={{
@@ -181,6 +207,8 @@ describe('FormInput', () => {
       <FormInput
         name="password"
         type="text"
+        ariaLabel="input-label"
+        ariaRequired={true}
         value="@_-bddcd6A"
         labelClassName="myClassName"
         onChange={handleChange}
@@ -210,6 +238,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="test"
+        ariaLabel="input-label"
+        ariaRequired={true}
         onChange={handleChange}
         prefix={{
           properties: {
@@ -229,6 +259,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="test"
+        ariaLabel="input-label"
+        ariaRequired={true}
         onChange={handleChange}
         suffix={{
           properties: {
@@ -248,6 +280,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="test"
+        ariaLabel="input-label"
+        ariaRequired={true}
         onChange={handleChange}
         inputProps={{
           id: 'input-id',
@@ -381,5 +415,25 @@ describe('FormInput', () => {
     );
     const hint: any = container.querySelector('#my-hint');
     expect(hint.innerHTML).toBe('my hint');
+  });
+
+  it('should display the aria-label name if the aria-label attribute is not passed', () => {
+    const handleChange = jest.fn();
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="test"
+        onChange={handleChange}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+      />
+    );
+    const input = screen.getByRole('textbox');
+    expect(input.getAttribute('aria-label')).toBe('password');
   });
 });
