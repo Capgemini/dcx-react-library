@@ -416,4 +416,24 @@ describe('FormInput', () => {
     const hint: any = container.querySelector('#my-hint');
     expect(hint.innerHTML).toBe('my hint');
   });
+
+  it('should display the aria-label name if the aria-label attribute is not passed', () => {
+    const handleChange = jest.fn();
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="test"
+        onChange={handleChange}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+      />
+    );
+    const input = screen.getByRole('textbox');
+    expect(input.getAttribute('aria-label')).toBe('password');
+  });
 });
