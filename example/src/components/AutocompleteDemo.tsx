@@ -49,8 +49,14 @@ export const AutocompleteDemo = () => {
           'Pomegranate',
           'Pineapple',
         ]}
-        suffix={<FontAwesomeIcon icon={faAt} title="at-button" />}
-        prefix={<FontAwesomeIcon icon={faAt} title="at-button" />}
+        suffix={{
+          content: <FontAwesomeIcon icon={faAt} title="at-button" />,
+          properties: {},
+        }}
+        prefix={{
+          content: <FontAwesomeIcon icon={faAt} title="at-button" />,
+          properties: {},
+        }}
         defaultValue="Papaya"
         minCharsBeforeSearch={1}
         debounceMs={2000}
@@ -58,7 +64,7 @@ export const AutocompleteDemo = () => {
         hintText="search the list of fruits"
       />
       selected: {selected}
-      <h1>Server fetch</h1>
+      <h2>Server fetch</h2>
       <Autocomplete
         //@ts-ignore
         options={serverOptions}
@@ -70,6 +76,53 @@ export const AutocompleteDemo = () => {
         notFoundText=" "
       />
       selected: {selected}
+      <h2>With conditional prompt</h2>
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        defaultValue=""
+        minCharsBeforeSearch={1}
+        promptCondition={() => true}
+        promptMessage="Enter a valid date before typing here"
+        debounceMs={100}
+        hintText="click inside the input to see the prompt"
+        hintClass="hintClass"
+        resultUlClass="resultUlClass"
+        resultlLiClass="resultlLiClass"
+        resultNoOptionClass="resultNoOptionClass"
+        resultActiveClass="resultActiveClass"
+        notFoundText="No fruit found"
+      />
+      <h2>With min-chars prompt</h2>
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        defaultValue=""
+        minCharsBeforeSearch={1}
+        minCharsMessage="Type at least 1 character to see the available options"
+        debounceMs={100}
+        hintText="click inside the input to see the prompt"
+        hintClass="hintClass"
+        resultUlClass="resultUlClass"
+        resultlLiClass="resultlLiClass"
+        resultNoOptionClass="resultNoOptionClass"
+        resultActiveClass="resultActiveClass"
+        notFoundText="No fruit found"
+      />
     </>
   );
 };

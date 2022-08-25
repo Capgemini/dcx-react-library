@@ -24,6 +24,28 @@ type autocompleteProps = {
    */
   minCharsBeforeSearch?: number;
   /**
+   * the messsage to display if the specified number of minimum characters (minCharsBeforeSearch)
+   *  has not yet been entered by the user
+   */
+  minCharsMessage?: string;
+  /**
+   * a predicate function for determining whether to display a promptMessage
+   *  when the search input receives focus
+   */
+  promptCondition?: () => boolean;
+  /**
+   * the message to display if the promptCondition has been met
+   */
+  promptMessage?: string;
+  /**
+   * the value for the id attribute of the prompt container
+   */
+  promptId?: string;
+  /**
+   * a CSS class for styling the prompt
+   */
+  promptClassName?: string;
+  /**
    * will allow to delay the filter results (the value is in ms)
    */
   debounceMs?: number;
@@ -159,6 +181,20 @@ type autocompleteProps = {
    * it will pass extra select element(in case of progressive enhancement)
    */
   selectProps?: FormSelectProps;
+  /**
+   * generic parameter to pass whatever element before the input
+   **/
+  prefix?: {
+    content?: JSX.Element | string;
+    properties: React.HTMLAttributes<HTMLDivElement>;
+  };
+  /**
+   * generic parameter to pass whatever element after the input
+   **/
+  suffix?: {
+    content?: JSX.Element | string;
+    properties: React.HTMLAttributes<HTMLDivElement>;
+  };
 };
 
 export enum AutoCompleteErrorPosition {
@@ -171,6 +207,11 @@ export enum AutoCompleteErrorPosition {
 export const Autocomplete = ({
   options,
   minCharsBeforeSearch = 1,
+  minCharsMessage = '',
+  promptCondition = () => false,
+  promptMessage = '',
+  promptId = 'input-prompt',
+  promptClassName,
   debounceMs = 0,
   inputProps,
   defaultValue = '',
@@ -206,12 +247,37 @@ export const Autocomplete = ({
   errorVisuallyHiddenText,
   name,
   selectProps,
+  prefix,
+  suffix,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
   const [showOptions, setShowOptions] = useState<boolean>(false);
+  const [showPrompt, setShowPrompt] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<string>(defaultValue);
   let hydrated = useHydrated();
+
+  const showPromptMessage = (): boolean =>
+    userInput.trim().length === 0 &&
+    promptCondition() &&
+    promptMessage.length > 0;
+
+  const showMinCharsMessage = (): boolean =>
+    !showPromptMessage() &&
+    userInput.trim().length < minCharsBeforeSearch &&
+    minCharsMessage.length > 0;
+
+  const handlePrompt = () => {
+    const canShowPrompt = showMinCharsMessage() || showPromptMessage();
+
+    if (!showPrompt && canShowPrompt) {
+      setShowPrompt(true);
+    } else if (showPrompt && !canShowPrompt) {
+      setShowPrompt(false);
+    }
+  };
+
+  const hidePrompt = () => setShowPrompt(false);
 
   const delayResult = React.useMemo(
     () =>
@@ -242,6 +308,11 @@ export const Autocomplete = ({
   const debounceSearch = React.useCallback(searchMemo, [searchMemo]);
 
   const handleChange = (evt: React.FormEvent<HTMLInputElement>) => {
+    // prevent user input if promptCondition() is true
+    if (promptCondition()) {
+      return;
+    }
+
     const { value } = evt.currentTarget;
     setUserInput(value);
 
@@ -259,6 +330,10 @@ export const Autocomplete = ({
       setShowOptions(true);
     }
   }, [options, onChange]);
+
+  React.useEffect(() => {
+    handlePrompt();
+  }, [userInput]);
 
   const handleClick = (evt: React.FormEvent<HTMLInputElement>) => {
     setActiveOption(0);
@@ -288,7 +363,36 @@ export const Autocomplete = ({
   };
 
   const displayResultList = (): boolean =>
-    showOptions && userInput.length >= minCharsBeforeSearch;
+    showOptions && userInput.trim().length >= minCharsBeforeSearch;
+
+  const formInput: JSX.Element = (
+    <>
+      <FormInput
+        name={name || 'autocompleteSearch'}
+        type="text"
+        value={userInput}
+        onChange={handleChange}
+        onFocus={handlePrompt}
+        onBlur={hidePrompt}
+        prefix={prefix}
+        suffix={suffix}
+        required={required}
+        inputProps={{
+          onKeyDown,
+          autoComplete: 'off',
+          id,
+          ...inputProps,
+          ...(showPrompt && { 'aria-describedby': promptId }),
+        }}
+      />
+      {showPrompt && (
+        <div className={promptClassName} id={promptId}>
+          {showPromptMessage() && promptMessage}
+          {showMinCharsMessage() && minCharsMessage}
+        </div>
+      )}
+    </>
+  );
 
   const searchEl: JSX.Element = multiSelect ? (
     <>
@@ -299,6 +403,7 @@ export const Autocomplete = ({
           flexDirection: 'row',
           width: '100%',
           flexWrap: 'wrap',
+          position: 'relative',
         }}
       >
         {selected &&
@@ -323,18 +428,7 @@ export const Autocomplete = ({
         {!hydrated ? (
           <FormSelect name="multiSelect" options={options} {...inputProps} />
         ) : (
-          <FormInput
-            name="autocompleteSearch"
-            type="text"
-            value={userInput}
-            onChange={handleChange}
-            required={required}
-            inputProps={{
-              onKeyDown: onKeyDown,
-              autoComplete: 'off',
-              ...inputProps,
-            }}
-          />
+          formInput
         )}
       </div>
       <div>
@@ -354,7 +448,7 @@ export const Autocomplete = ({
       </div>
     </>
   ) : (
-    <>
+    <div style={{ position: 'relative' }}>
       {errorPosition &&
         errorPosition === AutoCompleteErrorPosition.BEFORE_LABEL && (
           <ErrorMessage
@@ -399,21 +493,9 @@ export const Autocomplete = ({
           {...selectProps}
         />
       ) : (
-        <FormInput
-          name={name || 'autocompleteSearch'}
-          type="text"
-          value={userInput}
-          onChange={handleChange}
-          required={required}
-          inputProps={{
-            onKeyDown: onKeyDown,
-            autoComplete: 'off',
-            id: id,
-            ...inputProps,
-          }}
-        />
+        formInput
       )}
-    </>
+    </div>
   );
 
   return (
