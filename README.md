@@ -130,5 +130,12 @@ Thanks goes to these wonderful people
         <sub><b>Ellie Tahmasebi</b></sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/sri-viswanathan">
+        <img src="https://avatars.githubusercontent.com/u/27343753?v=4" width="100px;" alt=sri-viswanathan"/>
+        <br />
+        <sub><b>Sri Viswanathan</b></sub>
+      </a>
+    </td>
   </tr>
 </table>
