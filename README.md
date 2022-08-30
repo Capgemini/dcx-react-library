@@ -116,6 +116,26 @@ Thanks goes to these wonderful people
         <sub><b>Claudio Ricci</b></sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/SandraRoDiaz">
+        <img src="https://avatars.githubusercontent.com/u/68821446?v=4" width="100px;" alt="sandra-ro-diaz"/>
+        <br />
+        <sub><b>Sandra Ro Diaz</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/ellietms">
+        <img src="https://avatars.githubusercontent.com/u/59767576?v=4" width="100px;" alt="ellie-tahmasebi"/>
+        <br />
+        <sub><b>Ellie Tahmasebi</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/sri-viswanathan">
+        <img src="https://avatars.githubusercontent.com/u/27343753?v=4" width="100px;" alt=sri-viswanathan"/>
+        <br />
+        <sub><b>Sri Viswanathan</b></sub>
+      </a>
+    </td>
   </tr>
-
 </table>
