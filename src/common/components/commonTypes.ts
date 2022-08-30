@@ -72,7 +72,7 @@ export type ConditionalInputProps = {
    */
   labelFor?: string;
   /**
-   * Sets if the conditional element will be rendered as a sibling element instead of a child element
+   * Sets the position of the conditional element. By default if not defined it will be rendered as a child but if set to 'sibling', it will the conditional will be rendered as a sibling of the main input element.
    */
   position?: 'sibling' | undefined;
 };
