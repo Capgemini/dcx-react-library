@@ -11,7 +11,7 @@ import '../style.css';
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
-      const handleChange = event => {
+      const handleChange = (event) => {
         setValue(event.currentTarget.value);
         setChecked(!checked);
       };
@@ -40,7 +40,7 @@ By default, the hint will display underneath the checkbox
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
-      const handleChange = event => {
+      const handleChange = (event) => {
         setValue(event.currentTarget.value);
         setChecked(!checked);
       };
@@ -56,7 +56,7 @@ By default, the hint will display underneath the checkbox
           selected={checked}
           hint={{
             text: 'Hint text below',
-            position: 'below'
+            position: 'below',
           }}
         />
       );
@@ -71,7 +71,7 @@ By default, the hint will display underneath the checkbox
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
-      const handleChange = event => {
+      const handleChange = (event) => {
         setValue(event.currentTarget.value);
         setChecked(!checked);
       };
@@ -87,7 +87,7 @@ By default, the hint will display underneath the checkbox
           selected={checked}
           hint={{
             text: 'Hint text above',
-            position: 'above'
+            position: 'above',
           }}
         />
       );
@@ -102,7 +102,7 @@ By default, the hint will display underneath the checkbox
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
-      const handleChange = event => {
+      const handleChange = (event) => {
         setValue(event.currentTarget.value);
         setChecked(!checked);
       };
@@ -130,7 +130,7 @@ By default, the hint will display underneath the checkbox
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(true);
-      const handleChange = event => {
+      const handleChange = (event) => {
         setValue(event.currentTarget.value);
         setChecked(!checked);
       };
@@ -167,6 +167,80 @@ By default, the hint will display underneath the checkbox
       };
       return (
         <>
+          <FormCheckbox
+            label="checkbox label"
+            value={value}
+            id="checkbox-6"
+            inputProps={{
+              name: 'checkbox-6',
+            }}
+            onChange={handleChange}
+            selected={checked}
+            conditional={{
+              value: '',
+              name: 'conditional-6',
+              label: 'condition label',
+              type: 'text',
+              className: 'classes',
+              groupClassName: 'group-classes',
+              id: 'checkbox-6',
+              inputClassName: 'input-classes',
+              inputId: 'input-6',
+            }}
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Example of nested checkbox
+
+<Canvas>
+  <Story name="nested">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = (event) => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <FormCheckbox
+          label="checkbox label"
+          value={value}
+          id="checkbox-7"
+          inputProps={{
+            name: 'checkbox-7',
+          }}
+          onChange={handleChange}
+          selected={checked}
+          nested={true}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Example of a checkbox with a sibling conditional
+
+The property conditionalPosition can be set to 'sibling' if you want the conditional element to be a sibling of the main input elment for styling purposes
+
+<Canvas>
+  <Story name="conditional">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(true);
+      const handleChange = (event, conditional) => {
+        if (conditional) {
+          console.log(conditional);
+          return;
+        }
+        setValue(event.currentTarget.value);
+        setChecked(event.currentTarget.checked);
+      };
+      return (
+        <>
         <FormCheckbox
           label="checkbox label"
           value={value}
@@ -186,37 +260,10 @@ By default, the hint will display underneath the checkbox
             id: 'checkbox-6',
             inputClassName: 'input-classes',
             inputId: 'input-6',
+            position='sibling'
           }}
         />
         </>
-      );
-    }}
-  </Story>
-</Canvas>
-
-### Example of nested checkbox
-
-<Canvas>
-  <Story name="nested">
-    {() => {
-      const [value, setValue] = React.useState('');
-      const [checked, setChecked] = React.useState(false);
-      const handleChange = event => {
-        setValue(event.currentTarget.value);
-        setChecked(!checked);
-      };
-      return (
-        <FormCheckbox
-          label="checkbox label"
-          value={value}
-          id="checkbox-7"
-          inputProps={{
-            name: 'checkbox-7',
-          }}
-          onChange={handleChange}
-          selected={checked}
-          nested={true}
-        />
       );
     }}
   </Story>

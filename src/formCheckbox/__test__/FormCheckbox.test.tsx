@@ -294,6 +294,7 @@ describe('FormCheckbox', () => {
         name="group1"
         value="choice 1"
         label="my label"
+        itemClassName="container-div"
         onChange={handleChange}
         selected={true}
         conditional={{
@@ -314,6 +315,51 @@ describe('FormCheckbox', () => {
     await user.click(screen.getByLabelText('my label'));
 
     expect(container.querySelector('#conditional-id')).toBeInTheDocument();
+    expect(
+      container.querySelector('.container-div #conditional-id')
+    ).toBeTruthy();
+    expect(
+      container.querySelector('.container-div + #conditional-id')
+    ).toBeFalsy();
+  });
+
+  it('should render conditional input field as a sibling when position is sibling', async () => {
+    const handleChange = jest.fn();
+    const user = userEvent.setup();
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label="my label"
+        onChange={handleChange}
+        selected={true}
+        itemClassName="container-div"
+        conditional={{
+          value: 'conditional-value',
+          name: 'conditional-reveal',
+          label: 'conditional label',
+          type: 'text',
+          className: 'classes',
+          groupClassName: 'group-classes',
+          id: 'conditional-id',
+          inputClassName: 'input-classes',
+          inputId: 'input-id',
+          labelClassName: 'label-classes',
+          position: 'sibling',
+        }}
+      />
+    );
+
+    await user.click(screen.getByLabelText('my label'));
+
+    expect(container.querySelector('#conditional-id')).toBeInTheDocument();
+    expect(
+      container.querySelector('.container-div #conditional-id')
+    ).toBeFalsy();
+    expect(
+      container.querySelector('.container-div + #conditional-id')
+    ).toBeTruthy();
   });
 
   it('should render conditional input field when progressive enhancement is ture', () => {

@@ -71,6 +71,10 @@ export type ConditionalInputProps = {
    * conditional for
    */
   labelFor?: string;
+  /**
+   * Sets if the conditional element will be rendered as a sibling element instead of a child element
+   */
+  position?: 'sibling' | undefined;
 };
 
 export type ErrorMessageProps = {

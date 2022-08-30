@@ -101,11 +101,18 @@ export const CheckboxRadioBase = ({
   };
 
   return (
-    <div {...itemProps} className={itemClassName}>
-      {hint && hint.position === 'above' && <Hint {...hint} />}
-      {el}
-      {hint && hint.position !== 'above' && <Hint {...hint} />}
-      {getConditionalElement()}
-    </div>
+    <>
+      <div {...itemProps} className={itemClassName}>
+        {hint && hint.position === 'above' && <Hint {...hint} />}
+        {el}
+        {hint && hint.position !== 'above' && <Hint {...hint} />}
+        {conditional && !conditional.position ? getConditionalElement() : <></>}
+      </div>
+      {conditional && conditional.position === 'sibling' ? (
+        getConditionalElement()
+      ) : (
+        <></>
+      )}
+    </>
   );
 };

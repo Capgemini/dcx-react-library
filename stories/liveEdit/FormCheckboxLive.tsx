@@ -50,6 +50,7 @@ function FormCheckboxDemo() {
         inputClassName: "",
         inputId: "",
         labelClassName: "",
+        position: ""
       }}
       selected={checked}
       nested={false}
