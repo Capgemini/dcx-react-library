@@ -76,6 +76,14 @@ type FormInputProps = {
    **/
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
   /**
+   * function that will trigger when the input receives focus
+   **/
+  onFocus?: (event: React.FormEvent<HTMLInputElement>) => void;
+  /**
+   * function that will trigger when the input loses focus
+   **/
+  onBlur?: (event: React.FormEvent<HTMLInputElement>) => void;
+  /**
    * function that will check if is vald or not based on the validation rules
    **/
   isValid?: (valid: boolean, errorMessageVisible?: boolean) => void;
@@ -95,10 +103,10 @@ type FormInputProps = {
    * define a string that labels the current element.
    **/
   ariaLabel?: string;
-   /**
+  /**
    * allows input to have aria-required
    */
-    ariaRequired?: boolean
+  ariaRequired?: boolean;
   /**
    * you can trigger to display an error without interact with the component
    */
@@ -131,6 +139,8 @@ export const FormInput = ({
   prefix,
   suffix,
   onChange,
+  onFocus,
+  onBlur,
   isValid,
   errorMessage,
   staticErrorMessage,
@@ -166,6 +176,14 @@ export const FormInput = ({
     if (onChange) onChange(event);
   };
 
+  const handleFocus = (event: React.FormEvent<HTMLInputElement>) => {
+    if (onFocus) onFocus(event);
+  };
+
+  const handleBlur = (event: React.FormEvent<HTMLInputElement>) => {
+    if (onBlur) onBlur(event);
+  };
+
   const ErrorMessage = () => (
     <div {...errorProps}>
       {staticErrorMessage !== undefined ? (
@@ -182,6 +200,22 @@ export const FormInput = ({
 
   const isStaticOrDynamicError = (): boolean =>
     staticErrorMessage !== undefined || (validity && !validity.valid) || false;
+
+  const inputEl: JSX.Element = (
+    <input
+      name={name}
+      type={type}
+      value={value}
+      onChange={handleChange}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      required={required}
+      className={inputClassName}
+      aria-label={ariaLabel || name}
+      aria-required={ariaRequired}
+      {...inputProps}
+    />
+  );
 
   return (
     <div
@@ -207,33 +241,13 @@ export const FormInput = ({
           {prefix && !isEmpty(prefix) && (
             <div {...prefix.properties}>{prefix.content}</div>
           )}
-          <input
-            name={name}
-            type={type}
-            value={value}
-            onChange={handleChange}
-            required={required}
-            className={inputClassName}
-            aria-label={ariaLabel || name}
-            aria-required = {ariaRequired}
-            {...inputProps}
-          />
+          {inputEl}
           {suffix && !isEmpty(suffix) && (
             <div {...suffix.properties}>{suffix.content}</div>
           )}
         </div>
       ) : (
-        <input
-          name={name}
-          type={type}
-          value={value}
-          onChange={handleChange}
-          required={required}
-          className={inputClassName}
-          aria-label={ariaLabel || name}
-          aria-required = {ariaRequired}
-          {...inputProps}
-        />
+        inputEl
       )}
       {hint && hint.position !== 'above' && <Hint {...hint} />}
       {errorPosition && errorPosition === ErrorPosition.BOTTOM && (

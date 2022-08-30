@@ -42,7 +42,7 @@ const DummyAutoComplete = () => {
   );
 };
 
-describe('FormInput', () => {
+describe('Autocomplete', () => {
   it('should display multiselect if progresive enhancement and multiselect is true', () => {
     //@ts-ignore
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
@@ -379,6 +379,8 @@ describe('FormInput', () => {
   });
 
   it('should display an hint label if specified', () => {
+    const hintClass = 'hintClass';
+
     const { container } = render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
@@ -387,11 +389,13 @@ describe('FormInput', () => {
         hintClass="hintClass"
       />
     );
-    const firstItem: any = container.firstChild?.childNodes[0];
-    expect(firstItem.innerHTML).toBe('search names');
+    const hint: any = container.querySelector(`.${hintClass}`);
+    expect(hint?.innerHTML).toBe('search names');
   });
 
   it('should display an hint class if specified', () => {
+    const hintClass = 'labelClass';
+
     const { container } = render(
       <Autocomplete
         options={['daniele', 'darren', 'isaac']}
@@ -400,8 +404,8 @@ describe('FormInput', () => {
         hintClass="labelClass"
       />
     );
-    const firstItem: any = container.firstChild?.childNodes[0];
-    expect(firstItem.className).toBe('labelClass');
+    const hint: any = container.querySelector(`.${hintClass}`);
+    expect(hint).not.toBeNull();
   });
 
   it('should display the results after typing 2 character', async () => {
@@ -502,5 +506,159 @@ describe('FormInput', () => {
     );
     const formSelect: any = screen.getByRole('combobox');
     expect(formSelect.name).toBe('selectName');
+  });
+
+  it('should display a prompt if receiving focus and the minimum number of characters have not yet been entered', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    const minCharsBeforeSearch = 2;
+    const minCharsMessage = `Please type at least ${minCharsBeforeSearch} character(s) to see the available options`;
+    const promptId = 'input-prompt';
+
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'darren', 'isaac']}
+        resultActiveClass="activeClass"
+        resultUlClass="list"
+        minCharsBeforeSearch={minCharsBeforeSearch}
+        minCharsMessage={minCharsMessage}
+        promptId={promptId}
+      />
+    );
+
+    const input: any = screen.getByRole('textbox');
+    input.focus();
+
+    expect(input).toHaveAttribute('aria-describedby');
+
+    let prompt: any = container.querySelector(`#${promptId}`);
+
+    expect(prompt.innerHTML).toBe(minCharsMessage);
+
+    // check if prompt is hidden on blur
+    fireEvent.blur(input);
+
+    expect(input).not.toHaveAttribute('aria-describedby');
+
+    prompt = container.querySelector(`#${promptId}`);
+
+    expect(prompt).toBeNull();
+  });
+
+  it('should hide the prompt after the required minimum number of characters have been entered', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    const user = userEvent.setup();
+    const minCharsBeforeSearch = 1;
+    const minCharsMessage = `Please type at least ${minCharsBeforeSearch} character(s) to see the available options`;
+    const promptId = 'input-prompt';
+
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'darren', 'isaac']}
+        resultActiveClass="activeClass"
+        resultUlClass="list"
+        minCharsBeforeSearch={minCharsBeforeSearch}
+        minCharsMessage={minCharsMessage}
+        promptId={promptId}
+      />
+    );
+
+    const input: any = screen.getByRole('textbox');
+
+    expect(input).toHaveAttribute('aria-describedby');
+
+    await user.type(input, 'da');
+
+    expect(input).not.toHaveAttribute('aria-describedby');
+
+    const prompt: any = container.querySelector(`#${promptId}`);
+
+    expect(prompt).toBeNull();
+  });
+
+  it('should display a conditional prompt before any characters have been entered', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    const user = userEvent.setup();
+    const promptMessage = 'Enter a valid date before typing here';
+    const promptId = 'input-prompt';
+
+    // contrived predicate for testing purposes
+    let age = 3;
+    const predicate = () => age < 5;
+
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'darren', 'isaac']}
+        resultActiveClass="activeClass"
+        resultUlClass="list"
+        promptCondition={predicate}
+        promptMessage={promptMessage}
+        promptId={promptId}
+      />
+    );
+
+    const input: any = screen.getByRole('textbox');
+    input.focus();
+
+    expect(input).toHaveAttribute('aria-describedby');
+
+    let prompt: any = container.querySelector(`#${promptId}`);
+
+    expect(prompt.innerHTML).toBe(promptMessage);
+
+    // check if user input is prevented and the prompt is still visible
+    await user.type(input, 'd');
+
+    expect(input.value).toContain('');
+    expect(input).toHaveAttribute('aria-describedby');
+
+    prompt = container.querySelector(`#${promptId}`);
+
+    expect(prompt.innerHTML).toBe(promptMessage);
+
+    // check if user input is allowed and the prompt is hidden when promptCondition becomes false
+    age = 7;
+
+    await user.type(input, 'd');
+
+    expect(input.value).toContain('d');
+    expect(input).not.toHaveAttribute('aria-describedby');
+
+    prompt = container.querySelector(`#${promptId}`);
+
+    expect(prompt).toBeNull();
+  });
+
+  it('conditional prompt should take precedence over the minChars if both props are provided', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    const minCharsBeforeSearch = 2;
+    const minCharsMessage = `Please type at least ${minCharsBeforeSearch} character(s) to see the available options`;
+    const promptMessage = 'Enter a valid date before typing here';
+    const promptId = 'input-prompt';
+
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'darren', 'isaac']}
+        resultActiveClass="activeClass"
+        resultUlClass="list"
+        minCharsBeforeSearch={minCharsBeforeSearch}
+        minCharsMessage={minCharsMessage}
+        promptCondition={() => true}
+        promptMessage={promptMessage}
+        promptId={promptId}
+      />
+    );
+
+    const input: any = screen.getByRole('textbox');
+    input.focus();
+
+    expect(input).toHaveAttribute('aria-describedby');
+
+    const prompt: any = container.querySelector(`#${promptId}`);
+
+    expect(prompt.innerHTML).toBe(promptMessage);
   });
 });
