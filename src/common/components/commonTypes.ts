@@ -71,6 +71,10 @@ export type ConditionalInputProps = {
    * conditional for
    */
   labelFor?: string;
+  /**
+   * Sets the position of the conditional element. By default if not defined it will be rendered as a child but if set to 'sibling', it will the conditional will be rendered as a sibling of the main input element.
+   */
+  position?: 'sibling' | undefined;
 };
 
 export type ErrorMessageProps = {
