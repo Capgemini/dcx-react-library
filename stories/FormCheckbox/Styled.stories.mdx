@@ -15,7 +15,7 @@ In this section we're using the formCheckbox component providing the GovUk style
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
-      const handleChange = event => {
+      const handleChange = (event) => {
         setValue(event.currentTarget.value);
         setChecked(!checked);
       };
@@ -97,7 +97,7 @@ In this section we're using the formCheckbox component providing the GovUk style
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
-      const handleChange = event => {
+      const handleChange = (event) => {
         setValue(event.currentTarget.value);
         setChecked(!checked);
       };
@@ -187,7 +187,7 @@ In this section we're using the formCheckbox component providing the GovUk style
   <Story name="conditional input">
     {() => {
       const [value, setValue] = React.useState({
-        'contact': false,
+        contact: false,
         'contact-2': false,
         'contact-3': false,
       });
@@ -260,7 +260,7 @@ In this section we're using the formCheckbox component providing the GovUk style
                 selected={value['contact-2']}
                 conditional={{
                   value: '',
-                  onChange: value => {},
+                  onChange: (value) => {},
                   name: 'contact-by-phone',
                   label: 'Phone number',
                   type: 'text',
@@ -292,7 +292,7 @@ In this section we're using the formCheckbox component providing the GovUk style
                 selected={value['contact-3']}
                 conditional={{
                   value: '',
-                  onChange: value => {},
+                  onChange: (value) => {},
                   name: 'contact-by-text',
                   label: 'Mobile phone number',
                   type: 'text',
@@ -313,6 +313,141 @@ In this section we're using the formCheckbox component providing the GovUk style
   </Story>
 </Canvas>
 
+### GDS styled checkboxes with conditionally revealing content where the conditinal is a sibling
+
+<Canvas>
+  <Story name="conditional input with sibling conditional">
+    {() => {
+      const [value, setValue] = React.useState({
+        contact: false,
+        'contact-2': false,
+        'contact-3': false,
+      });
+      const handleChange = (event, conditional) => {
+        setValue({
+          ...value,
+          [event.target.id]: event.target.checked,
+        });
+        console.log(conditional);
+      };
+      return (
+        <div className="govuk-form-group">
+          <fieldset className="govuk-fieldset" aria-describedby="contact-hint">
+            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 className="govuk-fieldset__heading">
+                How would you like to be contacted?
+              </h1>
+            </legend>
+            <div id="contact-hint" className="govuk-hint">
+              Select all options that are relevant to you.
+            </div>
+            <div className="govuk-checkboxes">
+              <FormCheckbox
+                name="contact"
+                label="Email"
+                value="contact-by-email"
+                id="contact"
+                ariaDataControls="conditional-contact"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                selected={value['contact']}
+                conditional={{
+                  value: '',
+                  name: 'contact-by-email',
+                  label: 'Email address',
+                  type: 'text',
+                  className: 'govuk-form-group',
+                  groupClassName:
+                    'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+                  id: 'conditional-contact',
+                  inputClassName: 'govuk-input govuk-!-width-one-third',
+                  inputId: 'contact-by-email',
+                  labelClassName: 'govuk-label',
+                  position: 'sibling',
+                }}
+              />
+              <FormCheckbox
+                name="contact"
+                label="Phone"
+                value="contact-by-phone"
+                id="contact-2"
+                ariaDataControls="conditional-contact-2"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                selected={value['contact-2']}
+                conditional={{
+                  value: '',
+                  onChange: (value) => {},
+                  name: 'contact-by-phone',
+                  label: 'Phone number',
+                  type: 'text',
+                  className: 'govuk-form-group',
+                  groupClassName:
+                    'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+                  id: 'conditional-contact-2',
+                  inputClassName: 'govuk-input govuk-!-width-one-third',
+                  inputId: 'contact-by-phone',
+                  labelClassName: 'govuk-label',
+                  position: 'sibling',
+                }}
+              />
+              <FormCheckbox
+                name="contact"
+                label="Text"
+                value="contact-by-text"
+                id="contact-3"
+                ariaDataControls="conditional-contact-3"
+                onChange={handleChange}
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                selected={value['contact-3']}
+                conditional={{
+                  value: '',
+                  onChange: (value) => {},
+                  name: 'contact-by-text',
+                  label: 'Mobile phone number',
+                  type: 'text',
+                  className: 'govuk-form-group',
+                  groupClassName:
+                    'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+                  id: 'conditional-contact-3',
+                  inputClassName: 'govuk-input govuk-!-width-one-third',
+                  inputId: 'contact-by-text',
+                  labelClassName: 'govuk-label',
+                  position: 'sibling',
+                }}
+              />
+            </div>
+          </fieldset>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ### GDS styled small checkboxes
 
 <Canvas>
@@ -320,7 +455,7 @@ In this section we're using the formCheckbox component providing the GovUk style
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
-      const handleChange = event => {
+      const handleChange = (event) => {
         setValue(event.currentTarget.value);
         setChecked(!checked);
       };
@@ -414,7 +549,7 @@ In this section we're using the formCheckbox component providing the GovUk style
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
-      const handleChange = event => {
+      const handleChange = (event) => {
         setValue(event.currentTarget.value);
         setChecked(!checked);
       };

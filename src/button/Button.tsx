@@ -56,6 +56,14 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    * allow to add an image after the label when loading
    */
   customLoadingPostImage?: JSX.Element;
+  /**
+   * allow to specify where to send the form-data when a form is submitted.
+   */
+  formAction?: string;
+  /**
+   * allow the user to define the buttons name
+   */
+  name?: string;
 };
 
 export const Button = ({
@@ -71,6 +79,8 @@ export const Button = ({
   loadingLabel,
   customLoadingPreImage,
   customLoadingPostImage,
+  formAction,
+  name,
   ...props
 }: ButtonProps) => {
   const [disable, setDisable] = React.useState<boolean>(disabled);
@@ -118,6 +128,8 @@ export const Button = ({
       disabled={disable}
       type={type}
       aria-label={ariaLabel}
+      formAction={formAction}
+      name={name}
       {...props}
     >
       {prefix}

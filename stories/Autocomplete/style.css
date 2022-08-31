@@ -1,0 +1,8 @@
+.prompt {
+  position: absolute;
+  top: 100%;
+  z-index: 10;
+  background-color: #cccccc;
+  color: #000000;
+  padding: 0.3rem;
+}

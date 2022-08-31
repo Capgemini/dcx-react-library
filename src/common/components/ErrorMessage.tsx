@@ -6,13 +6,23 @@ export const ErrorMessage = ({
   className,
   id,
   visuallyHiddenText,
-}: ErrorMessageProps) => (
-  <span id={id} className={className}>
-    {visuallyHiddenText && (
-      <span className={visuallyHiddenText.className}>
-        {visuallyHiddenText.text}
-      </span>
-    )}
-    {text}
-  </span>
-);
+}: ErrorMessageProps) => {
+  const getErrorElement = () => {
+    let errorElement = <></>;
+    if (text && typeof text === 'string') {
+      errorElement = (
+        <span id={id} className={className}>
+          {visuallyHiddenText && (
+            <span className={visuallyHiddenText.className}>
+              {visuallyHiddenText.text}
+            </span>
+          )}
+          {text}
+        </span>
+      );
+    }
+    return errorElement;
+  };
+
+  return <>{getErrorElement()}</>;
+};

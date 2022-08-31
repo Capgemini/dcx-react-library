@@ -1,8 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import fireEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { FormCheckbox } from '../FormCheckbox';
+import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
+import * as hooks from '../../common/utils/clientOnly';
 
 describe('FormCheckbox', () => {
   it('should render a checkbox', () => {
@@ -72,9 +74,9 @@ describe('FormCheckbox', () => {
     expect(label?.querySelector('input[type=checkbox]')).not.toBeNull();
   });
 
-  it('should call on change', () => {
+  it('should call on change', async () => {
     const handleChange = jest.fn();
-
+    const user = userEvent.setup();
     render(
       <FormCheckbox
         id="myId"
@@ -85,7 +87,7 @@ describe('FormCheckbox', () => {
       />
     );
 
-    fireEvent['click'](screen.getByLabelText('my label'));
+    await act(() => user.click(screen.getByLabelText('my label')));
 
     expect(handleChange).toHaveBeenCalled();
   });
@@ -283,15 +285,16 @@ describe('FormCheckbox', () => {
     expect(container.querySelector('#conditional-id')).not.toBeInTheDocument();
   });
 
-  it('should render conditional input field when checkbox is checked', () => {
+  it('should render conditional input field when checkbox is checked', async () => {
     const handleChange = jest.fn();
-
+    const user = userEvent.setup();
     const { container } = render(
       <FormCheckbox
         id="myId"
         name="group1"
         value="choice 1"
         label="my label"
+        itemClassName="container-div"
         onChange={handleChange}
         selected={true}
         conditional={{
@@ -309,9 +312,102 @@ describe('FormCheckbox', () => {
       />
     );
 
-    fireEvent['click'](screen.getByLabelText('my label'));
+    await user.click(screen.getByLabelText('my label'));
 
     expect(container.querySelector('#conditional-id')).toBeInTheDocument();
+    expect(
+      container.querySelector('.container-div #conditional-id')
+    ).toBeTruthy();
+    expect(
+      container.querySelector('.container-div + #conditional-id')
+    ).toBeFalsy();
+  });
+
+  it('should render conditional input field as a sibling when position is sibling', async () => {
+    const handleChange = jest.fn();
+    const user = userEvent.setup();
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label="my label"
+        onChange={handleChange}
+        selected={true}
+        itemClassName="container-div"
+        conditional={{
+          value: 'conditional-value',
+          name: 'conditional-reveal',
+          label: 'conditional label',
+          type: 'text',
+          className: 'classes',
+          groupClassName: 'group-classes',
+          id: 'conditional-id',
+          inputClassName: 'input-classes',
+          inputId: 'input-id',
+          labelClassName: 'label-classes',
+          position: 'sibling',
+        }}
+      />
+    );
+
+    await user.click(screen.getByLabelText('my label'));
+
+    expect(container.querySelector('#conditional-id')).toBeInTheDocument();
+    expect(
+      container.querySelector('.container-div #conditional-id')
+    ).toBeFalsy();
+    expect(
+      container.querySelector('.container-div + #conditional-id')
+    ).toBeTruthy();
+  });
+
+  it('should render conditional input field when progressive enhancement is ture', () => {
+    const handleChange = jest.fn();
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label="my label"
+        onChange={handleChange}
+        selected={false}
+        conditional={{
+          value: 'conditional-value',
+          name: 'conditional-reveal',
+          label: 'conditional label',
+          type: 'text',
+          className: 'classes',
+          groupClassName: 'group-classes',
+          id: 'conditional-id',
+          inputClassName: 'input-classes',
+          inputId: 'input-id',
+          labelClassName: 'label-classes',
+        }}
+      />
+    );
+
+    expect(container.querySelector('#conditional-id')).toBeInTheDocument();
+  });
+
+  it('should not render conditional input field when progressive enhancement is ture but no conditional data', () => {
+    const handleChange = jest.fn();
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label="my label"
+        onChange={handleChange}
+        selected={false}
+      />
+    );
+
+    expect(container.querySelector('#conditional-id')).not.toBeInTheDocument();
   });
 
   it('should style the checkbox label', () => {

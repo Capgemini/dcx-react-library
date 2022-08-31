@@ -17,6 +17,8 @@ const DummyComponent = ({ pos, displayError = false }: any) => {
         name="password"
         type="text"
         value={value}
+        ariaLabel="input-label"
+        ariaRequired={true}
         errorPosition={pos}
         onChange={handleInputChange}
         isValid={handleValidity}
@@ -54,6 +56,8 @@ const DummyComponentTriggerError = () => {
         name="password"
         type="text"
         value=""
+        ariaLabel="input-label"
+        ariaRequired={true}
         onChange={handleInputChange}
         displayError={displayError}
         errorPosition={ErrorPosition.BOTTOM}
@@ -83,6 +87,8 @@ const DummyStaticComponent = ({ pos, hint }: any) => (
       name="password"
       type="text"
       value="myValue"
+      ariaLabel="input-label"
+      ariaRequired={true}
       errorPosition={pos}
       staticErrorMessage="static error message"
       containerClassName="container-class"
@@ -116,6 +122,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="@_-bddcd6A"
+        ariaLabel="input-label"
+        ariaRequired={true}
         onChange={handleChange}
         prefix={{
           properties: {
@@ -132,6 +140,20 @@ describe('FormInput', () => {
     expect(input).toBeInTheDocument();
   });
 
+  it('should have the ariarequrired attribute', () => {
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="@_-bddcd6A"
+        ariaLabel="input-label"
+        ariaRequired={true}
+      />
+    );
+    const input: any = screen.getByRole('textbox');
+    expect(input.getAttribute('aria-required')).toBeTruthy();
+  });
+
   it('should display the formInput with className', () => {
     const handleChange = jest.fn();
     render(
@@ -139,6 +161,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="@_-bddcd6A"
+        ariaLabel="input-label"
+        ariaRequired={true}
         inputClassName="myClassName"
         onChange={handleChange}
         prefix={{
@@ -160,6 +184,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="@_-bddcd6A"
+        ariaLabel="input-label"
+        ariaRequired={true}
         containerClassName="myClassName"
         onChange={handleChange}
         prefix={{
@@ -181,6 +207,8 @@ describe('FormInput', () => {
       <FormInput
         name="password"
         type="text"
+        ariaLabel="input-label"
+        ariaRequired={true}
         value="@_-bddcd6A"
         labelClassName="myClassName"
         onChange={handleChange}
@@ -210,6 +238,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="test"
+        ariaLabel="input-label"
+        ariaRequired={true}
         onChange={handleChange}
         prefix={{
           properties: {
@@ -229,6 +259,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="test"
+        ariaLabel="input-label"
+        ariaRequired={true}
         onChange={handleChange}
         suffix={{
           properties: {
@@ -248,6 +280,8 @@ describe('FormInput', () => {
         name="password"
         type="text"
         value="test"
+        ariaLabel="input-label"
+        ariaRequired={true}
         onChange={handleChange}
         inputProps={{
           id: 'input-id',
@@ -263,48 +297,53 @@ describe('FormInput', () => {
     expect(screen.getByLabelText('this is a label')).toBeInTheDocument();
   });
 
-  it('should display the formInput error', () => {
+  it('should display the formInput error', async () => {
+    const user = userEvent.setup();
     render(<DummyComponent pos={ErrorPosition.BOTTOM} />);
     const input = screen.getByRole('textbox');
-    userEvent.type(input, 'TEST VALUE');
+    await user.type(input, 'TEST VALUE');
     expect(screen.getByRole('error')).toBeInTheDocument();
   });
 
-  it('should display the formInput error message', () => {
+  it('should display the formInput error message', async () => {
+    const user = userEvent.setup();
     render(<DummyComponent pos={ErrorPosition.BOTTOM} />);
     const input = screen.getByRole('textbox');
-    userEvent.type(input, 'TEST VALUE');
+    await user.type(input, 'TEST VALUE');
     expect(screen.getByRole('error')).toContainHTML('is invalid');
   });
 
-  it('should display the formInput error message on top', () => {
+  it('should display the formInput error message on top', async () => {
+    const user = userEvent.setup();
     const { container } = render(
       <DummyComponent pos={ErrorPosition.BEFORE_LABEL} />
     );
     const input = screen.getByRole('textbox');
-    userEvent.type(input, 'TEST VALUE');
+    await user.type(input, 'TEST VALUE');
     let error: any;
     if (container.firstChild && container.firstChild.firstChild)
       error = container.firstChild.firstChild.childNodes[0];
     expect(error.innerHTML).toBe('is invalid');
   });
 
-  it('should display the formInput error message on the bottom', () => {
+  it('should display the formInput error message on the bottom', async () => {
+    const user = userEvent.setup();
     const { container } = render(<DummyComponent pos={ErrorPosition.BOTTOM} />);
     const input = screen.getByRole('textbox');
-    userEvent.type(input, 'TEST VALUE');
+    await user.type(input, 'TEST VALUE');
     let error: any;
     if (container.firstChild && container.firstChild.lastChild)
       error = container.firstChild.lastChild.childNodes[0];
     expect(error.innerHTML).toBe('is invalid');
   });
 
-  it('should return validation false on startup if the validation rules are not met', () => {
+  it('should return validation false on startup if the validation rules are not met', async () => {
+    const user = userEvent.setup();
     render(<DummyComponent pos={ErrorPosition.BOTTOM} />);
     const validLabel = screen.getByTestId('check-validity');
     expect(validLabel.innerHTML).toBe('false');
     const input = screen.getByRole('textbox');
-    userEvent.type(input, '@_-bddcd6A');
+    await user.type(input, '@_-bddcd6A');
     expect(validLabel.innerHTML).toBe('true');
   });
 
@@ -313,13 +352,14 @@ describe('FormInput', () => {
     expect(screen.getByRole('error')).toContainHTML('is invalid');
   });
 
-  it('should display the error message without interact with the component', () => {
+  it('should display the error message without interact with the component', async () => {
+    const user = userEvent.setup();
     render(<DummyComponentTriggerError />);
     expect(() => screen.getByText('is invalid')).toThrow(
       'Unable to find an element'
     );
     const button = screen.getByRole('button');
-    userEvent.click(button);
+    await user.click(button);
     expect(screen.getByRole('error')).toContainHTML('is invalid');
   });
 
@@ -338,10 +378,11 @@ describe('FormInput', () => {
     expect(inputContainer).not.toBeNull();
   });
 
-  it('should add an extra class if the dynamic error is displayed', () => {
+  it('should add an extra class if the dynamic error is displayed', async () => {
+    const user = userEvent.setup();
     const { container } = render(<DummyComponentTriggerError />);
     const button = screen.getByRole('button');
-    userEvent.click(button);
+    await user.click(button);
     const inputContainer: Element | null =
       container.querySelector('.error-container');
     expect(inputContainer).not.toBeNull();
@@ -374,5 +415,25 @@ describe('FormInput', () => {
     );
     const hint: any = container.querySelector('#my-hint');
     expect(hint.innerHTML).toBe('my hint');
+  });
+
+  it('should display the aria-label name if the aria-label attribute is not passed', () => {
+    const handleChange = jest.fn();
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="test"
+        onChange={handleChange}
+        prefix={{
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
+        }}
+      />
+    );
+    const input = screen.getByRole('textbox');
+    expect(input.getAttribute('aria-label')).toBe('password');
   });
 });

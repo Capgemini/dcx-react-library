@@ -1,3 +1,37 @@
+## 0.5.0 (1/09/2022)
+
+<a name="0.5.0"></a>
+
+- [FormInput - add aria-required option](https://github.com/Capgemini/dcx-react-library/issues/293)
+- [FormInput - value attribute optional](https://github.com/Capgemini/dcx-react-library/issues/286)
+- [checkbox - Conditional fields in only works when JS enabled](https://github.com/Capgemini/dcx-react-library/issues/309)
+- [checkbox/radio - show conditional with nonjs](https://github.com/Capgemini/dcx-react-library/pull/325)
+- [checkbox - Allow developer to specify position of conditional via an additional prop](https://github.com/Capgemini/dcx-react-library/issues/329)
+- [Autocomplete - revise props names for consistency](https://github.com/Capgemini/dcx-react-library/issues/319)
+- [Autocomplete - (js-mode): no results found should be part of the drop down list](https://github.com/Capgemini/dcx-react-library/issues/322)
+- [Autocomplete - is not non-js compliant](https://github.com/Capgemini/dcx-react-library/issues/276)
+- [Autocomplete - Add option 'required'](https://github.com/Capgemini/dcx-react-library/issues/291)
+- [Autocomplete - allow developer to prompt user with a custom message on cursor focus on the input field](https://github.com/Capgemini/dcx-react-library/issues/330)
+- [FormRadio - to be be wrapped with outer containers and be able to set question and hint](https://github.com/Capgemini/dcx-react-library/issues/310)
+- [Button - doesn't allow to pass property name](https://github.com/Capgemini/dcx-react-library/issues/314)
+- [Button - Make formAction property available](https://github.com/Capgemini/dcx-react-library/issues/279)
+- [FormSelect - Don't print/render the error span if text value in the error prop is null/undefined/falsy](https://github.com/Capgemini/dcx-react-library/issues/315)
+
+## 0.4.0 (12/05/2022)
+
+<a name="0.4.0"></a>
+
+- [table - simplify usage](https://github.com/Capgemini/dcx-react-library/issues/245)
+- [form group - simplify usage](https://github.com/Capgemini/dcx-react-library/issues/252)
+- [checkbox - Simplify usage](https://github.com/Capgemini/dcx-react-library/issues/280)
+- [form radio - simplify usage](https://github.com/Capgemini/dcx-react-library/issues/274)
+- [Button - Make onSubmit optional](https://github.com/Capgemini/dcx-react-library/issues/270)
+- [Radio Button - Make onChange optional](https://github.com/Capgemini/dcx-react-library/issues/272)
+- [Form Input - simplify usage](https://github.com/Capgemini/dcx-react-library/issues/253)
+- [FormSelect - enhancement](https://github.com/Capgemini/dcx-react-library/issues/242)
+- [Toggle - add extra parameters](https://github.com/Capgemini/dcx-react-library/issues/254)
+- [Form Input - add support to nonJs](https://github.com/Capgemini/dcx-react-library/issues/277)
+
 ## 0.3.2 (18/11/2021)
 
 <a name="0.3.2"></a>
