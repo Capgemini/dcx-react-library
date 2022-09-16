@@ -67,7 +67,7 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
     /**
    * allows to use a value in the button
    */
-     value?: string | number; 
+  value?: string | number; 
 };
 
 export const Button = ({
