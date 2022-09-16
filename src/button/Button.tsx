@@ -64,8 +64,8 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    * allow the user to define the buttons name
    */
   name?: string;
-    /**
-   * allows to use a value in the button
+  /**
+   * allow the user to define the button value
    */
   value?: string | number; 
 };
