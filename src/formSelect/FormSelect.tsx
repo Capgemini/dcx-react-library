@@ -104,6 +104,10 @@ export type FormSelectProps = {
    * will select the default value
    */
   defaultValue?: string;
+  /**
+   * provide an container props
+   */
+  containerProps?: any;
 };
 
 export const FormSelect = ({
@@ -128,6 +132,7 @@ export const FormSelect = ({
   style,
   nullOption,
   defaultValue = '',
+  containerProps,
 }: FormSelectProps) => {
   let initialValue: string | number = '';
 
@@ -168,7 +173,7 @@ export const FormSelect = ({
   };
 
   return (
-    <div className={containerClassName}>
+    <div className={containerClassName} {...containerProps}>
       <Label
         label={label}
         labelProperties={labelProps}

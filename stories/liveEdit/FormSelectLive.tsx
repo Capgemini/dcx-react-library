@@ -13,6 +13,7 @@ function FormSelectDemo() {
     <FormSelect
       id="select"
       nullOption="Select..."
+      containerProps={containerProps}
       value=""
       label="Basic"
       labelProps={{
