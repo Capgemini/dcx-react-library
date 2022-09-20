@@ -216,4 +216,11 @@ describe('Button', () => {
     const button: any = screen.getByRole('button');
     expect(button.getAttribute('name')).toBe('submit');
   });
+
+  it('should accept value as attribute', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} value="buttonValue" />);
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('value')).toBe('buttonValue');
+  });
 });
