@@ -33,6 +33,7 @@ function ButtonDemo() {
         customPostfixImg={<></>} 
         customPrefixImg={<></>} 
         isLoading={isLoading} 
+        value={value}
         loadingLabel="saving..." 
         customLoadingPreImage={<></>} 
         customLoadingPostImage={<></>}
