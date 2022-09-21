@@ -108,7 +108,6 @@ export type FormSelectProps = {
    * provide an container props
    */
   containerProps?: any;
-
 };
 
 export const FormSelect = ({

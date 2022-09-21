@@ -14,7 +14,6 @@ function FormSelectDemo() {
       id="select"
       nullOption="Select..."
       containerProps={containerProps}
-      
       value=""
       label="Basic"
       labelProps={{

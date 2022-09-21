@@ -451,7 +451,7 @@ describe('FormSelect', () => {
     expect(option.selected).toBe(true);
   });
 
-  it('should read the containerProps' , () => {
+  it('should read the containerProps', () => {
     render(
       <FormSelect
         containerProps={{ 'data-testid': 'container-props', id: 4}}
