@@ -450,4 +450,14 @@ describe('FormSelect', () => {
     const option: any = screen.getByRole('option', { name: 'isaac' });
     expect(option.selected).toBe(true);
   });
+
+  it('should read the containerProps', () => {
+    render(
+      <FormSelect
+        containerProps={{ 'data-testid': 'container-props', id: 4}}
+      />
+    );
+    const container: any = screen.getByTestId('container-props');
+    expect(container).toBeInTheDocument();
+  });
 });
