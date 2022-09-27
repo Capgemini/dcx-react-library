@@ -26,6 +26,8 @@ export const FormRadio = ({
   inputClassName,
   labelClassName,
   itemClassName,
+  displayError,
+  containerClassNameError,
 }: FormRadioCheckboxProps & {
   onChange?: (event: React.ChangeEvent, conditional?: string) => void;
 }) => (
@@ -52,5 +54,7 @@ export const FormRadio = ({
     inputClassName={inputClassName}
     labelClassName={labelClassName}
     itemClassName={itemClassName}
-  />
+    displayError={displayError}
+    containerClassNameError={containerClassNameError}
+    />
 );

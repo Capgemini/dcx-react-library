@@ -181,6 +181,14 @@ export type FormRadioCheckboxProps = {
     * specifies an optional className for the item
    */
   itemClassName?: string;
+  /**
+   * you can trigger to display an error without interact with the component
+   */
+  displayError?:boolean;
+  /**
+   * allow to style the container in case of error
+   */
+  containerClassNameError?: string;
 };
 
 export type HintProps = {

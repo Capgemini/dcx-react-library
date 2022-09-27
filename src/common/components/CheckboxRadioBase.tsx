@@ -28,6 +28,8 @@ export const CheckboxRadioBase = ({
   inputClassName,
   labelClassName,
   itemClassName,
+  displayError,
+  containerClassNameError,
 }: FormRadioCheckboxProps & {
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -102,7 +104,7 @@ export const CheckboxRadioBase = ({
 
   return (
     <>
-      <div {...itemProps} className={itemClassName}>
+      <div {...itemProps}  className= { displayError ? containerClassNameError : itemClassName}>
         {hint && hint.position === 'above' && <Hint {...hint} />}
         {el}
         {hint && hint.position !== 'above' && <Hint {...hint} />}

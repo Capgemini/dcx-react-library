@@ -317,4 +317,25 @@ describe('FormRadio', () => {
 
     expect(input.className).toBe('my-input-class');
   });
+
+  it('should render error style', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormRadio
+        id="myId"
+        value="choice 1"
+        label="my label"
+        name="group1"
+        displayError={false}
+        disabled={true}
+        onChange={handleChange}
+        itemProps={{ id: 'radio-item' }}
+        itemClassName='my-no-error-radio'
+        containerClassNameError='my-error-radio'
+      />
+    );
+    const radio: any = container.querySelector('#radio-item');
+    expect(radio.className).toBe('my-error-radio');
+  });
 });

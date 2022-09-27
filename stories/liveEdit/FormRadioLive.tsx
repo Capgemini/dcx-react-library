@@ -16,6 +16,8 @@ function FormRadioDemo() {
         name="group1"
         value="value"
         id="radio-1"
+        displayError={displayError}
+        containerClassNameError={containerClassNameError}
         onChange={handleChange}
         ariaLabel=""
         ariaDataControls=""
