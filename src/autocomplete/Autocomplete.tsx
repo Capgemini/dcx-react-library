@@ -257,18 +257,26 @@ export const Autocomplete = ({
   const [userInput, setUserInput] = useState<string>(defaultValue);
   let hydrated = useHydrated();
 
-  const showPromptMessage = (): boolean =>
-    userInput.trim().length === 0 &&
+  const showPromptMessage = (inputValue = userInput): boolean =>
+    inputValue.trim().length === 0 &&
     promptCondition() &&
     promptMessage.length > 0;
 
-  const showMinCharsMessage = (): boolean =>
+  const showMinCharsMessage = (inputValue = userInput): boolean =>
     !showPromptMessage() &&
-    userInput.trim().length < minCharsBeforeSearch &&
+    inputValue.trim().length < minCharsBeforeSearch &&
     minCharsMessage.length > 0;
 
-  const handlePrompt = () => {
-    const canShowPrompt = showMinCharsMessage() || showPromptMessage();
+  const displayResultList = (inputValue = userInput): boolean =>
+    showOptions && inputValue.trim().length >= minCharsBeforeSearch;
+
+  const handlePrompt = (
+    _evt: React.FormEvent<HTMLInputElement>,
+    inputValue = userInput
+  ) => {
+    const canShowPrompt =
+      !displayResultList(inputValue) &&
+      (showMinCharsMessage(inputValue) || showPromptMessage(inputValue));
 
     if (!showPrompt && canShowPrompt) {
       setShowPrompt(true);
@@ -315,6 +323,7 @@ export const Autocomplete = ({
 
     const { value } = evt.currentTarget;
     setUserInput(value);
+    handlePrompt(evt, value);
 
     if (onChange) {
       debounceSearch(value);
@@ -330,10 +339,6 @@ export const Autocomplete = ({
       setShowOptions(true);
     }
   }, [options, onChange]);
-
-  React.useEffect(() => {
-    handlePrompt();
-  }, [userInput]);
 
   const handleClick = (evt: React.FormEvent<HTMLInputElement>) => {
     setActiveOption(0);
@@ -361,9 +366,6 @@ export const Autocomplete = ({
       setActiveOption(activeOption + 1);
     }
   };
-
-  const displayResultList = (): boolean =>
-    showOptions && userInput.trim().length >= minCharsBeforeSearch;
 
   const formInput: JSX.Element = (
     <>
