@@ -29,18 +29,21 @@ module.exports = {
     '!<rootDir>/path/to/dir/',
     '!src/generatePresentationalComponent/createPresentationalComponent.ts',
   ],
-  globals: {
-    'ts-jest': {
-      tsconfig: {
-        outDir: './dist/',
-        sourceMap: true,
-        noImplicitAny: true,
-        module: 'commonjs',
-        target: 'es6',
-        jsx: 'react',
-        allowSyntheticDefaultImports: true,
-        esModuleInterop: true,
+  transform: {
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: {
+          outDir: './dist/',
+          sourceMap: true,
+          noImplicitAny: true,
+          module: 'commonjs',
+          target: 'es6',
+          jsx: 'react',
+          allowSyntheticDefaultImports: true,
+          esModuleInterop: true,
+        },
       },
-    },
+    ],
   },
 };
