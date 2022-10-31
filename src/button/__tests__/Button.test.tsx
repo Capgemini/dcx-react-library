@@ -155,9 +155,11 @@ describe('Button', () => {
     render(<DummyLoadingButton loadingLabel="Loading..." />);
     const button: any = screen.getByRole('button');
     await act(() => user.click(button));
-    expect(button.innerHTML).toContain(
-      '<img id="preLoadingImg" alt="" src="">Loading...<img id="postLoadingImg" alt="" src="">'
-    );
+    await waitFor(() => {
+      expect(button.innerHTML).toContain(
+        '<img id="preLoadingImg" alt="" src="">Loading...<img id="postLoadingImg" alt="" src="">'
+      );
+    });
     await waitFor(() => {
       expect(button.innerHTML).toContain(
         '<img id="prefixImg" alt="" src="">Register<img id="postfixmg" alt="" src="">'
