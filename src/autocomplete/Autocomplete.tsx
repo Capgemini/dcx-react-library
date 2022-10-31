@@ -352,7 +352,7 @@ export const Autocomplete = ({
     if (evt.code === 'Enter') {
       setActiveOption(0);
       setShowOptions(false);
-      setUserInput(filterList[activeOption]);
+      setUserInput(filterList[activeOption] || '');
       if (onSelected) onSelected(filterList[activeOption]);
     } else if (evt.code === 'ArrowUp') {
       if (activeOption === 0) {

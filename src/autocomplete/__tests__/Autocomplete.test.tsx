@@ -305,6 +305,16 @@ describe('Autocomplete', () => {
     });
   });
 
+  it('should set the input to an empty string when there is no text in the input and on pressing Enter', async () => {
+    render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
+
+    const input: any = screen.getByRole('textbox');
+
+    fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
+
+    expect(input.value).toBe('');
+  });
+
   it('should highlight the selected option(s) on keyDown', async () => {
     const user = userEvent.setup();
     render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
