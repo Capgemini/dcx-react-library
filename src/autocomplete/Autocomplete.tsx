@@ -285,8 +285,6 @@ export const Autocomplete = ({
     }
   };
 
-  const hidePrompt = () => setShowPrompt(false);
-
   const delayResult = React.useMemo(
     () =>
       debounce((value) => {
@@ -349,11 +347,19 @@ export const Autocomplete = ({
   };
 
   const onKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!showOptions) {
+      return;
+    }
+
     if (evt.code === 'Enter') {
+      evt.preventDefault();
       setActiveOption(0);
       setShowOptions(false);
-      setUserInput(filterList[activeOption] || '');
-      if (onSelected) onSelected(filterList[activeOption]);
+
+      if (filterList.length > 0) {
+        setUserInput(filterList[activeOption]);
+        if (onSelected) onSelected(filterList[activeOption]);
+      }
     } else if (evt.code === 'ArrowUp') {
       if (activeOption === 0) {
         return;
@@ -367,6 +373,11 @@ export const Autocomplete = ({
     }
   };
 
+  const onBlur = () => {
+    setShowOptions(false);
+    setShowPrompt(false);
+  };
+
   const formInput: JSX.Element = (
     <>
       <FormInput
@@ -375,7 +386,7 @@ export const Autocomplete = ({
         value={userInput}
         onChange={handleChange}
         onFocus={handlePrompt}
-        onBlur={hidePrompt}
+        onBlur={onBlur}
         prefix={prefix}
         suffix={suffix}
         required={required}
