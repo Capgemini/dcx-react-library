@@ -519,6 +519,33 @@ describe('Autocomplete', () => {
     expect(formSelect.name).toBe('selectName');
   });
 
+  it('should hide the results list if losing focus', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    const user = userEvent.setup();
+
+    render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
+
+    const input = screen.getByRole('textbox');
+
+    await act(() => user.click(input));
+
+    let resultList = screen.queryByRole('list');
+    expect(resultList).toBe(null);
+
+    await act(() => user.type(input, 'da'));
+
+    resultList = screen.queryByRole('list');
+    expect(resultList).not.toBeNull();
+
+    act(() => {
+      fireEvent.blur(input);
+    });
+
+    resultList = screen.queryByRole('list');
+    expect(resultList).toBe(null);
+  });
+
   it('should display a prompt if receiving focus and the minimum number of characters have not yet been entered', async () => {
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
 
