@@ -16,6 +16,12 @@ type autocompleteProps = {
    */
   options: string[];
   /**
+   * it will add a dynamic id to every option provided. It will concatenate an index for each item
+   * @example
+   * optionsId: 'dcx-option-id will result as dcx-option-id-1, dcx-option-id-2, etc
+   */
+  optionsId?: string;
+  /**
    * list of selected options for multi select
    */
   selected?: MultiSelectOption[];
@@ -206,6 +212,7 @@ export enum AutoCompleteErrorPosition {
 
 export const Autocomplete = ({
   options,
+  optionsId,
   minCharsBeforeSearch = 1,
   minCharsMessage = '',
   promptCondition = () => false,
@@ -521,6 +528,7 @@ export const Autocomplete = ({
         {displayResultList() && (
           <ResultList
             list={filterList}
+            listId={optionsId}
             userInput={userInput}
             activeOption={activeOption}
             noElFoundText={notFoundText}
