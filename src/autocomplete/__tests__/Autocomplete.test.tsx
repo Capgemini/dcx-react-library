@@ -739,7 +739,7 @@ describe('Autocomplete', () => {
     });
   });
 
-  it.only('should not contain an id item if listId is not specified', async () => {
+  it('should not contain an id item if listId is not specified', async () => {
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
 
     const user = userEvent.setup();
