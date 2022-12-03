@@ -111,7 +111,6 @@
     "@cesium133/forgjs": "1.1.10",
     "imask": "^6.4.2",
     "lodash": "4.17.21",
-    "lodash-es": "4.17.21",
-    "react-jss": "^10.9.0"
+    "lodash-es": "4.17.21"
   }
 }
