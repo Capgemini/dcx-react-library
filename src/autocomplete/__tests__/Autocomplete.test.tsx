@@ -735,7 +735,7 @@ describe('Autocomplete', () => {
     await user.type(input, 'da');
     await waitFor(() => {
       const el: any = container.querySelector('li');
-      expect(el.id).toBe('dcx-option-id-1');
+      expect(el.id).toBe('dcx-option-id--1');
     });
   });
 

@@ -126,7 +126,7 @@ describe('ResultList', () => {
       />
     );
     const el: any = container.querySelector('li');
-    expect(el.id).toBe('dcx-list-id-1');
+    expect(el.id).toBe('dcx-list-id--1');
   });
 
   it('should not contain an id item if listId is not specified', () => {

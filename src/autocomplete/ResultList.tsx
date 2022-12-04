@@ -40,7 +40,7 @@ export const ResultList = ({
     {userInput && list.length > 0
       ? list.map((optionName: string, index: number) => (
           <li
-            id={listId ? `${listId}-${index + 1}` : undefined}
+            id={listId ? `${listId}--${index + 1}` : undefined}
             className={
               index === activeOption && activeClass
                 ? [activeClass, liContainerClass].join(' ')
