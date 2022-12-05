@@ -715,4 +715,49 @@ describe('Autocomplete', () => {
 
     expect(prompt.innerHTML).toBe(promptMessage);
   });
+
+  it('should contain the dynamic id for every item in the list if listId is present', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    const user = userEvent.setup();
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        optionsId="dcx-option-id"
+        selectProps={{
+          selectClassName: '',
+          containerClassName: '',
+          labelClassName: '',
+        }}
+      />
+    );
+    const input = screen.getByRole('textbox');
+    await user.type(input, 'da');
+    await waitFor(() => {
+      const el: any = container.querySelector('li');
+      expect(el.id).toBe('dcx-option-id--1');
+    });
+  });
+
+  it('should not contain an id item if listId is not specified', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    const user = userEvent.setup();
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        selectProps={{
+          selectClassName: '',
+          containerClassName: '',
+          labelClassName: '',
+        }}
+      />
+    );
+    const input = screen.getByRole('textbox');
+    await user.type(input, 'da');
+    await waitFor(() => {
+      const el: any = container.querySelector('li');
+      expect(el.id).toBe('');
+    });
+  });
 });
