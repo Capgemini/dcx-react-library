@@ -16,4 +16,3 @@ export * from './tabGroup';
 export * from './copyToClipboard';
 export * from './table';
 export * from './details';
-export { DynamicComponent } from './common/components/DynamicComponent';
