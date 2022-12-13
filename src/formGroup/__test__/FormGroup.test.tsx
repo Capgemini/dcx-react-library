@@ -848,4 +848,38 @@ describe('FormGroup', () => {
 
     expect(handleChange).toHaveBeenCalledTimes(2);
   });
+
+  it('should render a form group of radio buttons with onChange param ommitted', () => {
+    render(
+      <FormGroup
+        type="radio"
+        groupClasses=""
+        id=""
+        name=""
+        legend={{
+          text: 'Have you changed your name?',
+        }}
+        items={[
+          {
+            value: 'yes',
+            label: 'Yes',
+            id: 'first',
+          },
+          {
+            value: 'no',
+            label: 'No',
+            id: 'second',
+          },
+        ]}
+      />
+    );
+
+    fireEvent.click(screen.getAllByRole('radio')[1]);
+    expect(screen.getAllByRole('radio')[1]).toBeChecked();
+    expect(screen.getAllByRole('radio')[0]).not.toBeChecked();
+
+    const legend: string = '<legend>Have you changed your name?</legend>';
+
+    expect(screen.getByRole('group')).toContainHTML(legend);
+  });
 });
