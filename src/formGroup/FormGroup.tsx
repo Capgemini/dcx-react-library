@@ -99,7 +99,7 @@ type FormGroupProps = {
   /**
    * function that will trigger all the time there's a change of choice
    */
-  onChange: (
+  onChange?: (
     event: React.FormEvent<HTMLInputElement>,
     conditionalInput?: string
   ) => void;
@@ -185,7 +185,9 @@ export const FormGroup = ({
       setSelection(newSelection);
     }
 
-    onChange(e);
+    if (onChange) {
+      onChange(e);
+    }
   };
 
   const isSelected = (item: SelectionItem) =>
@@ -248,7 +250,7 @@ export const FormGroup = ({
             event: React.ChangeEvent<HTMLInputElement>,
             conditionalInput?: string
           ) => {
-            if (conditionalInput) {
+            if (conditionalInput && onChange) {
               onChange(event, conditionalInput);
               return;
             }
