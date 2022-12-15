@@ -77,6 +77,21 @@ export type ConditionalInputProps = {
   position?: 'sibling' | undefined;
 };
 
+export type DividerProps = {
+  /**
+   * divider text
+   **/
+  text: string;
+  /**
+   * class name to customise divider
+   **/
+  className?: string;
+  /**
+   * divider id
+   **/
+  id?: string;
+};
+
 export type ErrorMessageProps = {
   /**
    * error message
@@ -95,6 +110,85 @@ export type ErrorMessageProps = {
    */
   visuallyHiddenText?: VisuallyHidden;
 };
+
+export type FormRadioCheckboxBaseProps = {
+  /**
+   * form group name
+   */
+  name: string;
+  /**
+   * form item type can be "radio" or "checkbox"
+   */
+  type: 'radio' | 'checkbox';
+  /**
+   * form group items
+   */
+  items: (FormRadioCheckboxProps | DividerProps | string)[];
+  /**
+   * form group aria-describedby
+   */
+  ariaDescribedBy?: string;
+  /**
+   * form group error
+   */
+  error?: ErrorMessageProps;
+  /**
+   * form group fieldset class names
+   */
+  fieldsetClasses?: string;
+  /**
+   * form group class names
+   */
+  groupClasses?: string;
+  /**
+   * form group input class name
+   */
+  inputClassName?: string;
+  /**
+   * form group item class name
+   */
+  itemClassName?: string;
+  /**
+   * form group label class name
+   */
+  labelClassName?: string;
+  /**
+   * form group hint
+   */
+  hint?: HintProps;
+  /**
+   * form group id
+   */
+  id?: string;
+  /**
+   * form group input properties for all items
+   */
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  /**
+   * form group item properties for all items
+   */
+  itemProps?: React.HTMLAttributes<HTMLDivElement>;
+  /**
+   * form group items class names
+   */
+  itemsClasses?: string;
+  /**
+   * form group label properties for all items
+   */
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
+  /**
+   * form group legend properties
+   */
+  legend?: LegendProps;
+  /**
+   * function that will trigger all the time there's a change of choice
+   */
+  onChange?: (
+    event: React.FormEvent<HTMLInputElement>,
+    conditionalInput?: string
+  ) => void;
+};
+
 
 export type FormRadioCheckboxProps = {
   /**
