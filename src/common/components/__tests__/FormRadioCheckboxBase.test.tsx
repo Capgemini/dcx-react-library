@@ -783,9 +783,48 @@ describe('FormRadioCheckboxBase', () => {
         onChange={handleChange}
       />
     );
+
     fireEvent.click(screen.getAllByRole('radio')[0]);
     expect(screen.getAllByRole('radio')[0]).toBeChecked();
     expect(screen.getAllByRole('radio')[1]).not.toBeChecked();
+
+    fireEvent.click(screen.getAllByRole('radio')[1]);
+    expect(screen.getAllByRole('radio')[0]).not.toBeChecked();
+    expect(screen.getAllByRole('radio')[1]).toBeChecked();
+  });
+
+  it('should call on change of an item (declared with strings) if an input has changed', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <FormRadioCheckboxBase
+        type="checkbox"
+        groupClasses=""
+        id=""
+        name="group1"
+        legend={{
+          text: 'Have you changed your name?',
+          heading: {
+            priority: 1,
+          },
+        }}
+        items={['yes', 'no']}
+        onChange={handleChange}
+      />
+    );
+
+    fireEvent.click(screen.getAllByRole('checkbox')[0]);
+    expect(screen.getAllByRole('checkbox')[0]).toBeChecked();
+    expect(screen.getAllByRole('checkbox')[1]).not.toBeChecked();
+
+    fireEvent.click(screen.getAllByRole('checkbox')[1]);
+    expect(screen.getAllByRole('checkbox')[0]).toBeChecked();
+    expect(screen.getAllByRole('checkbox')[1]).toBeChecked();
+
+    fireEvent.click(screen.getAllByRole('checkbox')[0]);
+    fireEvent.click(screen.getAllByRole('checkbox')[1]);
+    expect(screen.getAllByRole('checkbox')[0]).not.toBeChecked();
+    expect(screen.getAllByRole('checkbox')[1]).not.toBeChecked();
   });
 
   it('should call on change of an item if a conditional input has changed', async () => {

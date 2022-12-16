@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormRadioCheckboxBaseProps } from '../components/commonTypes';
-import { FormRadioCheckboxBase } from './FormRadioCheckboxBase';
+import { FormRadioCheckboxBaseProps } from '../common/components/commonTypes';
+import { FormRadioCheckboxBase } from '../common/components/FormRadioCheckboxBase';
 
-export const FormRadio = ({
+export const RadioGroup = ({
   name,
   items,
   ariaDescribedBy,

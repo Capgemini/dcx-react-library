@@ -2,14 +2,14 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
-import { FormRadio } from '../FormRadio';
+import { RadioGroup } from '../RadioGroup';
 
 describe('FormGroup', () => {
   it('should render a form group with radio buttons', () => {
     const handleChange = jest.fn();
 
     const { container } = render(
-      <FormRadio
+      <RadioGroup
         groupClasses=""
         id=""
         name=""
