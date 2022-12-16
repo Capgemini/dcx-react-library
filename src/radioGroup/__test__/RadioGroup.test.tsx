@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { RadioGroup } from '../RadioGroup';
 
-describe('FormGroup', () => {
+describe('RadioGroup', () => {
   it('should render a form group with radio buttons', () => {
     const handleChange = jest.fn();
 
