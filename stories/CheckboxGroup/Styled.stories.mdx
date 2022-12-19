@@ -1,0 +1,708 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { CheckboxGroup } from '../../src/checkboxGroup/CheckboxGroup';
+import '../style.css';
+
+<Meta title="DCXLibrary/Form/checkboxGroup/Styled" component={CheckboxGroup} />
+
+# GOVUK Style
+
+In this section we are using the CheckboxGroup component providing the GOV.UK Design System styles by passing the relative `className`. Feel free to use your own css and style the CheckboxGroup as you prefer
+
+<Canvas>
+  <Story name="multiple checkboxes with shared styles">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
+      return (
+        <CheckboxGroup
+          name="waste"
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
+          items={[
+            {
+              label: 'Waste from animal carcasses',
+              value: 'carcasses',
+              id: 'waste',
+            },
+            {
+              label: 'Waste from mines of quarries',
+              value: 'mines',
+              id: 'waste-2',
+            },
+            {
+              label: 'Farm or agricultural waste',
+              value: 'farm',
+              id: 'waste-3',
+            },
+          ]}
+          onChange={handleChange}
+          ariaDescribedBy="changed-name-hint"
+          groupClasses="govuk-form-group"
+          fieldsetClasses="govuk-fieldset"
+          itemsClasses="govuk-checkboxes"
+          legend={{
+            text: 'Which types of waste do you transport?',
+            className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
+            heading: {
+              priority: 1,
+              className: 'govuk-fieldset__heading',
+            },
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Titled
+
+<Canvas>
+  <Story name="titled">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
+      return (
+        <CheckboxGroup
+          name="waste-2"
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
+          items={[
+            {
+              label: 'Waste from animal carcasses',
+              value: 'carcasses',
+              id: 'waste',
+            },
+            {
+              label: 'Waste from mines of quarries',
+              value: 'mines',
+              id: 'waste-2',
+            },
+            {
+              label: 'Farm or agricultural waste',
+              value: 'farm',
+              id: 'waste-3',
+            },
+          ]}
+          onChange={handleChange}
+          groupClasses="govuk-form-group"
+          fieldsetClasses="govuk-fieldset"
+          itemsClasses="govuk-checkboxes"
+          legend={{
+            text: 'Which types of waste do you transport?',
+            className: 'govuk-fieldset__legend govuk-fieldset__legend',
+            heading: {
+              priority: 1,
+              className: 'govuk-fieldset__heading',
+            },
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# With hints
+
+<Canvas>
+  <Story name="items with hints">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      return (
+        <CheckboxGroup
+          name="nationality"
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
+          items={[
+            {
+              label: 'British',
+              value: 'british',
+              id: 'nationality',
+              hint: {
+                text: 'including English, Scottish, Welsh and Northern Irish.',
+                className: 'govuk-hint govuk-checkboxes__hint',
+                id: 'nationality-hint',
+                position: 'below',
+              },
+              ariaDescribedBy: 'nationality-hint',
+            },
+            {
+              label: 'Irish',
+              value: 'irish',
+              id: 'nationality-2',
+            },
+            {
+              label: 'Citizen of another country',
+              value: 'other',
+              id: 'nationality-3',
+            },
+          ]}
+          onChange={handleChange}
+          ariaDescribedBy="nationality-hint"
+          groupClasses="govuk-form-group"
+          fieldsetClasses="govuk-fieldset"
+          hint={{
+            id: 'nationality-hint',
+            text:
+              'If you have dual nationality, select all options that are relevant to you.',
+            className: 'govuk-hint',
+          }}
+          itemsClasses="govuk-checkboxes"
+          legend={{
+            text: 'What is your nationality?',
+            className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
+            heading: {
+              priority: 1,
+              className: 'govuk-fieldset__heading',
+            },
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+# Small checkboxes
+
+<Canvas>
+  <Story name="small checkboxes">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      return (
+        <CheckboxGroup
+          name="filter-change"
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
+          items={[
+            {
+              label: 'Monthly',
+              value: 'month',
+              id: 'changed-name-month',
+            },
+            {
+              label: 'Yearly',
+              value: 'year',
+              id: 'changed-name-year',
+            },
+          ]}
+          onChange={handleChange}
+          groupClasses="govuk-checkboxes govuk-checkboxes--small"
+          fieldsetClasses="govuk-fieldset"
+          itemsClasses="govuk-checkboxes govuk-checkboxes--small"
+          legend={{
+            text: 'Filter',
+            className: 'govuk-fieldset__legend govuk-fieldset__legend--m',
+            heading: {
+              priority: 1,
+              className: 'govuk-fieldset__heading',
+            },
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Error message
+
+<Canvas>
+  <Story name="error message">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value)
+      return (
+        <CheckboxGroup
+          name="live-error"
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
+          items={[
+            {
+              label: 'England',
+              value: 'england',
+              id: 'live-england-error',
+            },
+            {
+              label: 'Ireland',
+              value: 'ireland',
+              id: 'live-ireland-error',
+            },
+            {
+              label: 'Scotland',
+              value: 'scotland',
+              id: 'live-scotland-error',
+            },
+            {
+              label: 'Wales',
+              value: 'wales',
+              id: 'live-wales-error',
+            },
+          ]}
+          onChange={handleChange}
+          ariaDescribedBy="changed-name-hint changed-name-error"
+          groupClasses="govuk-form-group govuk-form-group--error"
+          fieldsetClasses="govuk-fieldset"
+          error={{
+            text: 'Please confirm where you live',
+            className: 'govuk-error-message',
+            id: 'changed-name-error',
+            visuallyHiddenText: {
+              text: 'Error:',
+              className: 'govuk-visually-hidden',
+            },
+          }}
+          itemsClasses="govuk-checkboxes"
+          legend={{
+            text: 'Where do you live?',
+            className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
+            heading: {
+              priority: 1,
+              className: 'govuk-fieldset__heading',
+            },
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Text divider
+
+<Canvas>
+  <Story name="with a text divider">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      return (
+        <CheckboxGroup
+          name="where-do-you-live-divider"
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
+          items={[
+            {
+              label: 'England',
+              value: 'england',
+              id: 'where-do-you-live-divider',
+            },
+            {
+              label: 'Scotland',
+              value: 'scotland',
+              id: 'where-do-you-live-divider-2',
+            },
+            {
+              label: 'Wales',
+              value: 'wales',
+              id: 'where-do-you-live-divider-3',
+            },
+            {
+              label: 'Northern Ireland',
+              value: 'northen-ireland',
+              id: 'where-do-you-live-divider-4',
+            },
+            {
+              className: 'govuk-checkboxes__divider',
+              text: 'or',
+            },
+            {
+              label: 'I am a British citizen living abroad',
+              value: 'living-abroad',
+              id: 'where-do-you-live-divider-5',
+            },
+          ]}
+          onChange={handleChange}
+          groupClasses="govuk-form-group"
+          fieldsetClasses="govuk-fieldset"
+          itemsClasses="govuk-checkboxes"
+          legend={{
+            text: 'Where do you live?',
+            className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+# Conditionally revealing content
+
+<Canvas>
+  <Story name="conditionally revealing content">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      return (
+        <CheckboxGroup
+          name="contact"
+          inputClassName="govuk-checkboxes__input"
+          itemClassName="govuk-checkboxes__item"
+          labelClassName="govuk-label govuk-checkboxes__label"
+          items={[
+            {
+              label: 'Email',
+              value: 'email',
+              id: 'contact',
+              selected: true,
+              ariaDataControls: 'conditional-contact',
+              conditional: {
+                name: 'contact-by-email',
+                label: 'Email address',
+                type: 'email',
+                className:
+                  'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+                groupClassName: 'govuk-form-group',
+                id: 'conditional-contact',
+                inputClassName: 'govuk-input govuk-!-width-one-third',
+                inputId: 'contact-by-email',
+                value: ''
+              },
+            },
+            {
+              label: 'Phone',
+              value: 'phone',
+              id: 'contact-2',
+              selected: false,
+              ariaDataControls: 'conditional-contact-2',
+              conditional: {
+                name: 'contact-by-phone',
+                label: 'Phone number',
+                type: 'tel',
+                className:
+                  'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+                groupClassName: 'govuk-form-group',
+                id: 'conditional-contact-2',
+                inputClassName: 'govuk-input govuk-!-width-one-third',
+                inputId: 'contact-by-phone',
+                value: ''
+              },
+            },
+            {
+              label: 'Text message',
+              value: 'text',
+              id: 'contact-3',
+              selected: false,
+              ariaDataControls: 'conditional-contact-3',
+              conditional: {
+                name: 'contact-by-text',
+                label: 'Mobile phone number',
+                type: 'tel',
+                className:
+                  'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+                groupClassName: 'govuk-form-group',
+                id: 'conditional-contact-3',
+                inputClassName: 'govuk-input govuk-!-width-one-third',
+                inputId: 'contact-by-text',
+                value: ''
+              },
+            },
+          ]}
+          onChange={handleChange}
+          ariaDescribedBy="contact-hint"
+          groupClasses="govuk-form-group"
+          fieldsetClasses="govuk-fieldset"
+          hint={{
+            id: 'contact-hint',
+            text: 'Select all options that are relevant to you.',
+            className: 'govuk-hint',
+          }}
+          itemsClasses="govuk-checkboxes govuk-checkboxes--conditional"
+          legend={{
+            text: 'How would you prefer to be contacted?',
+            className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
+            heading: {
+              priority: 1,
+              className: 'govuk-fieldset__heading',
+            },
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+The css we used to styled the formGroup component is the following:
+
+```css
+.govuk-checkboxes__item {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  display: block;
+  position: relative;
+  min-height: 40px;
+  margin-bottom: 10px;
+  padding-left: 40px;
+  clear: left;
+}
+
+@media print {
+  .govuk-checkboxes__item {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-checkboxes__item {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .govuk-checkboxes__item {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+.govuk-checkboxes__item:last-child,
+.govuk-checkboxes__item:last-of-type {
+  margin-bottom: 0;
+}
+
+.govuk-checkboxes__input {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  top: -2px;
+  left: -2px;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  opacity: 0;
+}
+
+.govuk-checkboxes__label {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 8px 15px 5px;
+  cursor: pointer;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+.govuk-checkboxes__label:before {
+  content: '';
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 2px solid currentColor;
+  background: transparent;
+}
+
+.govuk-checkboxes__label:after {
+  content: '';
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  top: 11px;
+  left: 9px;
+  width: 23px;
+  height: 12px;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  border: solid;
+  border-width: 0 0 5px 5px;
+  border-top-color: transparent;
+  opacity: 0;
+  background: transparent;
+}
+
+.govuk-checkboxes__hint {
+  display: block;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.govuk-checkboxes__input:focus + .govuk-checkboxes__label:before {
+  border-width: 4px;
+  -webkit-box-shadow: 0 0 0 3px #fd0;
+  box-shadow: 0 0 0 3px #fd0;
+}
+
+.govuk-checkboxes__input:selected + .govuk-checkboxes__label:after {
+  opacity: 1;
+}
+
+.govuk-checkboxes__input:disabled,
+.govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
+  cursor: default;
+}
+
+.govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
+  opacity: 0.5;
+}
+
+.govuk-checkboxes__conditional {
+  margin-bottom: 15px;
+  margin-left: 18px;
+  padding-left: 33px;
+  border-left: 4px solid #b1b4b6;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-checkboxes__conditional {
+    margin-bottom: 20px;
+  }
+}
+
+.js-enabled .govuk-checkboxes__conditional--hidden {
+  display: none;
+}
+
+.govuk-checkboxes__conditional > :last-child {
+  margin-bottom: 0;
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__item {
+  min-height: 0;
+  margin-bottom: 0;
+  padding-left: 34px;
+  float: left;
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__item:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__input {
+  left: -10px;
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__label {
+  margin-top: -2px;
+  padding: 13px 15px 13px 1px;
+  float: left;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-checkboxes--small .govuk-checkboxes__label {
+    padding: 11px 15px 10px 1px;
+  }
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__label:before {
+  top: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__label:after {
+  top: 15px;
+  left: 6px;
+  width: 12px;
+  height: 6.5px;
+  border-width: 0 0 3px 3px;
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__hint {
+  padding: 0;
+  clear: both;
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__conditional {
+  margin-left: 10px;
+  padding-left: 20px;
+  clear: both;
+}
+
+.govuk-checkboxes--small
+  .govuk-checkboxes__item:hover
+  .govuk-checkboxes__input:not(:disabled)
+  + .govuk-checkboxes__label:before {
+  -webkit-box-shadow: 0 0 0 10px #b1b4b6;
+  box-shadow: 0 0 0 10px #b1b4b6;
+}
+
+.govuk-checkboxes--small
+  .govuk-checkboxes__item:hover
+  .govuk-checkboxes__input:focus
+  + .govuk-checkboxes__label:before {
+  -webkit-box-shadow: 0 0 0 3px #fd0, 0 0 0 10px #b1b4b6;
+  box-shadow: 0 0 0 3px #fd0, 0 0 0 10px #b1b4b6;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .govuk-checkboxes--small
+    .govuk-checkboxes__item:hover
+    .govuk-checkboxes__input:not(:disabled)
+    + .govuk-checkboxes__label:before {
+    -webkit-box-shadow: initial;
+    box-shadow: initial;
+  }
+
+  .govuk-checkboxes--small
+    .govuk-checkboxes__item:hover
+    .govuk-checkboxes__input:focus
+    + .govuk-checkboxes__label:before {
+    -webkit-box-shadow: 0 0 0 3px #fd0;
+    box-shadow: 0 0 0 3px #fd0;
+  }
+}
+
+.govuk-checkboxes__divider {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #0b0c0c;
+  width: 40px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+@media print {
+  .govuk-checkboxes__divider {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-checkboxes__divider {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .govuk-checkboxes__divider {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+@media print {
+  .govuk-checkboxes__divider {
+    color: #000;
+  }
+}
+
+.govuk-checkboxes--small .govuk-checkboxes__divider {
+  width: 24px;
+  margin-bottom: 5px;
+}
+```
+
+<Props of={CheckboxGroup} />
