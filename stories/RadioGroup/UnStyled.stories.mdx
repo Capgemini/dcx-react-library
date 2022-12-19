@@ -2,7 +2,7 @@ import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
 import { RadioGroup } from '../../src/radioGroup/RadioGroup';
 import '../style.css';
 
-<Meta title="DCXLibrary/Form/RadioGroup" component={RadioGroup} />
+<Meta title="DCXLibrary/Form/RadioGroup/Unstyled" component={RadioGroup} />
 
 ### An example of 'un-styled' RadioGroup of radio buttons
 
@@ -13,8 +13,7 @@ import '../style.css';
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
-          name="name-of-group"
-          type="radio"
+          name="un-styled-radio"
           legend={{
             text:
               'Heading text customisable by a given priority of type number between 1 to 6 (inclusive)',
@@ -51,8 +50,7 @@ import '../style.css';
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
-          name="name-of-group"
-          type="radio"
+          name="un-styled-radios-with-strings"
           items={['yes','no']}
           onChange={handleChange}
         />
