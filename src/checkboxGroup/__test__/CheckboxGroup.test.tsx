@@ -36,6 +36,6 @@ describe('CheckboxGroup', () => {
     );
 
     expect(screen.getByRole('group')).toBeInTheDocument();
-    expect(container.querySelector('input[type=radio]')).toBeInTheDocument();
+    expect(container.querySelector('input[type=checkbox]')).toBeInTheDocument();
   });
 });
