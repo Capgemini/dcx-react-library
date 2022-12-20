@@ -41,47 +41,262 @@ import '../style.css';
   </Story>
 </Canvas>
 
-### An example of 'un-styled' RadioGroup of radio buttons
+### An example of 'un-styled' radioGroup with hints
 
 <Canvas>
-  <Story name="un-styled-radios-with-strings">
+  <Story name="un-styled-radio-buttons-with-hints">
     {() => {
       const [selected, setSelected] = React.useState('');
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
-          name="un-styled-radios-with-strings"
-          items={['yes','no']}
-          onChange={handleChange}
-        />
-      );
-    }}
-    />
-  </Story>
-</Canvas>
-
-# Error
-
-<Canvas>
-  <Story name="error">
-    {() => {
-      const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
-      return (
-        <RadioGroup
-          name="name-of-group"
+          name="sign-in"
           items={[
             {
-              label: 'item-label',
-              value: 'yes',
-              id: 'first',
+              label: 'Sign in with Government Gateway',
+              value: 'government-gateway',
+              id: 'sign-in',
+              hint: {
+                text:
+                  'You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.',
+                id: 'sign-in-item-hint',
+                position: 'below'
+              },
+              ariaDescribedBy: 'sign-in-item-hint',
+            },
+            {
+              label: 'Sign in with GOV.UK Verify',
+              value: 'govuk-verify',
+              id: 'sign-in-2',
+              hint: {
+                text:
+                  'You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.',
+                id: 'sign-in-2-item-hint',
+                position: 'below'
+              },
+              ariaDescribedBy: 'sign-in-item-hint',
             },
           ]}
           onChange={handleChange}
+          ariaDescribedBy="sign-in-hint"
+          hint={{
+            id: 'sign-in-hint',
+            text:
+              'You’ll need an account to prove your identity and complete your Self Assessment',
+          }}
+          legend={{
+            text: 'How do you want to sign in?',
+            heading: {
+              priority: 1,
+            },
+          }}
         />
       );
     }}
-    />
+  </Story>
+</Canvas>
+
+### An example of 'un-styled' radioGroup with Filter
+
+<Canvas>
+  <Story name="un-styled-filter-radio-buttons">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
+      return (
+        <RadioGroup
+          name="filter-change"
+          items={[
+            {
+              label: 'Monthly',
+              value: 'month',
+              id: 'changed-name-month',
+            },
+            {
+              label: 'Yearly',
+              value: 'year',
+              id: 'changed-name-year',
+            },
+          ]}
+          onChange={handleChange}
+          legend={{
+            text: 'Filter',
+            heading: {
+              priority: 1,
+            },
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'un-styled' radioGroup with Error message
+
+<Canvas>
+  <Story name="un-styled-error-message-radio-buttons">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
+      return (
+        <RadioGroup
+          name="change-name-error"
+          items={[
+            {
+              label: 'Yes',
+              value: 'yes',
+              id: 'change-name-yes-error',
+            },
+            {
+              label: 'No',
+              value: 'no',
+              id: 'change-name-no-error',
+            },
+          ]}
+          onChange={handleChange}
+          ariaDescribedBy="changed-name-hint changed-name-error"
+          error={{
+            text: 'Select yes if you have changed your name',
+            id: 'changed-name-error',
+            visuallyHiddenText: {
+              text: 'Error:',
+            },
+          }}
+          hint={{
+            id: 'changed-name-hint',
+            text:
+              'This includes changing your last name or spelling your name differently.',
+          }}
+          legend={{
+            text: 'Have you changed your name?',
+            heading: {
+              priority: 1,
+            },
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'un-styled' radioGroup with Text divider
+
+<Canvas>
+  <Story name="un-styled-radio-buttons-with-a-text-divider">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = event => setSelected(event.currentTarget.value);
+      return (
+        <RadioGroup
+          name="where-do-you-live-divider"
+          items={[
+            {
+              label: 'England',
+              value: 'england',
+              id: 'where-do-you-live-divider',
+            },
+            {
+              label: 'Scotland',
+              value: 'scotland',
+              id: 'where-do-you-live-divider-2',
+            },
+            {
+              label: 'Wales',
+              value: 'wales',
+              id: 'where-do-you-live-divider-3',
+            },
+            {
+              label: 'Northern Ireland',
+              value: 'northen-ireland',
+              id: 'where-do-you-live-divider-4',
+            },
+            {
+              text: 'or',
+            },
+            {
+              label: 'I am a British citizen living abroad',
+              value: 'living-abroad',
+              id: 'where-do-you-live-divider-5',
+            },
+          ]}
+          onChange={handleChange}
+          legend={{
+            text: 'Where do you live?',
+          }}
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### An example of 'un-styled' Conditionally revealing content
+
+<Canvas>
+  <Story name="un-styled-radio-buttons-conditionally-revealing-content">
+    {() => {
+      const [selected, setSelected] = React.useState('');
+      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      return (
+        <RadioGroup
+          name="contact"
+          items={[
+            {
+              label: 'Email',
+              value: 'email',
+              id: 'contact',
+              ariaDataControls: 'conditional-contact',
+              conditional: {
+                name: 'contact-by-email',
+                label: 'Email address',
+                type: 'email',
+                inputId: 'contact-by-email',
+                value: ''
+              },
+            },
+            {
+              label: 'Phone',
+              value: 'phone',
+              id: 'contact-2',
+              ariaDataControls: 'conditional-contact-2',
+              conditional: {
+                name: 'contact-by-phone',
+                label: 'Phone number',
+                type: 'tel',
+                id: 'conditional-contact-2',
+                inputId: 'contact-by-phone',
+                value: ''
+              },
+            },
+            {
+              label: 'Text message',
+              value: 'text',
+              id: 'contact-3',
+              ariaDataControls: 'conditional-contact-3',
+              conditional: {
+                name: 'contact-by-text',
+                label: 'Mobile phone number',
+                type: 'tel',
+                id: 'conditional-contact-3',
+                inputId: 'contact-by-text',
+                value: ''
+              },
+            },
+          ]}
+          onChange={handleChange}
+          ariaDescribedBy="contact-hint"
+          hint={{
+            id: 'contact-hint',
+            text: 'Select one option.',
+          }}
+          legend={{
+            text: 'How would you prefer to be contacted?',
+            heading: {
+              priority: 1,
+            },
+          }}
+        />
+      );
+    }}
   </Story>
 </Canvas>
 
