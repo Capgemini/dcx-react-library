@@ -1,12 +1,12 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
-import { FormGroup } from '../../src/formGroup/FormGroup';
+import { RadioGroup } from '../../src/radioGroup/RadioGroup';
 import '../style.css';
 
-<Meta title="DCXLibrary/Form/Group/StyledRadios" component={FormGroup} />
+<Meta title="DCXLibrary/Form/RadioGroup/Styled" component={RadioGroup} />
 
 # GOVUK Style
 
-In this section we are using the FormGroup component providing the GOV.UK Design System styles by passing the relative `className`. Feel free to use your own css and style the FormGroup as you prefer
+In this section we are using the RadioGroup component providing the GOV.UK Design System styles by passing the relative `className`. Feel free to use your own css and style the RadioGroup as you prefer
 
 <Canvas>
   <Story name="inline radio buttons">
@@ -14,9 +14,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
-        <FormGroup
+        <RadioGroup
           name="change-name"
-          type="radio"
           inputClassName='govuk-radios__input'
           itemClassName='govuk-radios__item'
           labelClassName='govuk-label govuk-radios__label'
@@ -65,9 +64,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
-        <FormGroup
+        <RadioGroup
           name="change-name-2"
-          type="radio"
           inputClassName='govuk-radios__input'
           itemClassName='govuk-radios__item'
           labelClassName='govuk-label govuk-radios__label'
@@ -116,9 +114,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
-        <FormGroup
+        <RadioGroup
           name="where-do-you-live"
-          type="radio"
           inputClassName='govuk-radios__input'
           itemClassName='govuk-radios__item'
           labelClassName='govuk-label govuk-radios__label'
@@ -166,9 +163,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
-        <FormGroup
+        <RadioGroup
           name="sign-in"
-          type="radio"
           inputClassName='govuk-radios__input'
           itemClassName='govuk-radios__item'
           labelClassName='govuk-label govuk-radios__label'
@@ -233,9 +229,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
-        <FormGroup
+        <RadioGroup
           name="filter-change"
-          type="radio"
           inputClassName='govuk-radios__input'
           itemClassName='govuk-radios__item'
           labelClassName='govuk-label govuk-radios__label'
@@ -277,9 +272,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
-        <FormGroup
+        <RadioGroup
           name="change-name-error"
-          type="radio"
           inputClassName='govuk-radios__input'
           itemClassName='govuk-radios__item'
           labelClassName='govuk-label govuk-radios__label'
@@ -337,9 +331,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
-        <FormGroup
+        <RadioGroup
           name="where-do-you-live-divider"
-          type="radio"
           inputClassName='govuk-radios__input'
           itemClassName='govuk-radios__item'
           labelClassName='govuk-label govuk-radios__label'
@@ -388,7 +381,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
   </Story>
 </Canvas>
 
-# conditionally revealing content
+# Conditionally revealing content
 
 <Canvas>
   <Story name="radio buttons conditionally revealing content">
@@ -396,9 +389,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
       return (
-        <FormGroup
+        <RadioGroup
           name="contact"
-          type="radio"
           inputClassName='govuk-radios__input'
           itemClassName='govuk-radios__item'
           labelClassName='govuk-label govuk-radios__label'
@@ -482,7 +474,7 @@ In this section we are using the FormGroup component providing the GOV.UK Design
   </Story>
 </Canvas>
 
-The css we used to styled the formGroup component is the following:
+The css we used to styled the radioGroup component is the following:
 
 ```css
 .govuk-radios__input {
@@ -680,4 +672,4 @@ The css we used to styled the formGroup component is the following:
 }
 ```
 
-<Props of={FormGroup} />
+<Props of={RadioGroup} />

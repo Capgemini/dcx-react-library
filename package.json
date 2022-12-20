@@ -28,7 +28,7 @@
   "homepage": "https://main--6069a6f47f4b9f002171f8e1.chromatic.com",
   "scripts": {
     "build": "microbundle --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react --globals react/jsx-runtime=jsx --css-modules true",
-    "dev": "microbundle --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react --globals react/jsx-runtime=jsx --css-modules true",
+    "dev": "microbundle watch --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react --globals react/jsx-runtime=jsx --css-modules true",
     "clean": "if exist \"./dist\" rd /s /q \"./dist\"",
     "test": "jest",
     "test:cache": "jest --no-cache",

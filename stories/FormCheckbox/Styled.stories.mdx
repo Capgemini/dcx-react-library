@@ -8,10 +8,10 @@ import '../style.css';
 
 In this section we're using the formCheckbox component providing the GovUk style passing the relative `className`. Feel free to use your own css and style the formInput as you prefer
 
-### GDS styled checkboxes
+### GDS styled checkbox
 
 <Canvas>
-  <Story name="multiple checkboxes">
+  <Story name="checkbox">
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
@@ -20,57 +20,18 @@ In this section we're using the formCheckbox component providing the GovUk style
         setChecked(!checked);
       };
       return (
-        <div className="govuk-form-group">
-          <fieldset className="govuk-fieldset" aria-describedby="waste-hint">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 className="govuk-fieldset__heading">
-                Which types of waste do you transport?
-              </h1>
-            </legend>
-            <div id="waste-hint" className="govuk-hint">
-              Select all that apply.
-            </div>
-            <div className="govuk-checkboxes">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="">
+            <div class="govuk-checkboxes">
               <FormCheckbox
-                name="waste"
-                label="Waste from animal carcasses"
-                value="carcasses"
-                id="waste"
+                name="lorem"
+                label="Lorem ipsum"
+                value="lorem"
+                id="lorem"
                 onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                defaultChecked={checked}
-              />
-              <FormCheckbox
-                name="waste-2"
-                label="Waste from mines of quarries"
-                value="mines"
-                id="waste-2"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                defaultChecked={checked}
-              />
-              <FormCheckbox
-                name="waste-3"
-                label="Farm or agricultural waste"
-                value="farm"
-                id="waste-3"
-                onChange={handleChange}
+                inputClassName='govuk-checkboxes__input'
+                labelClassName="govuk-label govuk-checkboxes__label"
+                itemClassName='govuk-checkboxes__item'
                 inputProps={{
                   className: 'govuk-checkboxes__input',
                 }}
@@ -90,10 +51,10 @@ In this section we're using the formCheckbox component providing the GovUk style
   </Story>
 </Canvas>
 
-### GDS styled checkboxes with hint
+### GDS styled checkbox preselected
 
 <Canvas>
-  <Story name="multiple checkboxes with hint">
+  <Story name="checkbox preselected">
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
@@ -102,27 +63,105 @@ In this section we're using the formCheckbox component providing the GovUk style
         setChecked(!checked);
       };
       return (
-        <div className="govuk-form-group">
-          <fieldset
-            className="govuk-fieldset"
-            aria-describedby="nationality-hint"
-          >
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 className="govuk-fieldset__heading">
-                What is your nationality?
-              </h1>
-            </legend>
-            <div id="nationality-hint" className="govuk-hint">
-              If you have dual nationality, select all options that are relevant
-              to you.
-            </div>
-            <div className="govuk-checkboxes">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="">
+            <div class="govuk-checkboxes">
               <FormCheckbox
-                name="nationality"
-                label="British"
-                value="british"
-                id="nationality"
+                name="lorem-preselected"
+                label="Lorem ipsum"
+                value="lorem"
+                id="lorem-preselected"
                 onChange={handleChange}
+                inputClassName='govuk-checkboxes__input'
+                labelClassName="govuk-label govuk-checkboxes__label"
+                itemClassName='govuk-checkboxes__item'
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                selected={true}
+              />
+            </div>
+          </fieldset>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+### GDS styled checkbox disabled
+
+<Canvas>
+  <Story name="checkbox disabled">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = (event) => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="">
+            <div class="govuk-checkboxes">
+              <FormCheckbox
+                name="lorem-disabled"
+                label="Lorem ipsum"
+                value="lorem"
+                id="lorem-disabled"
+                onChange={handleChange}
+                inputClassName='govuk-checkboxes__input'
+                labelClassName="govuk-label govuk-checkboxes__label"
+                itemClassName='govuk-checkboxes__item'
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                disabled={true}
+              />
+            </div>
+          </fieldset>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### GDS styled checkbox with hint
+
+<Canvas>
+  <Story name="checkbox with hint">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = (event) => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="">
+            <div class="govuk-checkboxes">
+              <FormCheckbox
+                name="lorem-2"
+                label="Lorem ipsum"
+                value="lorem ipsum"
+                id="lorem-2"
+                onChange={handleChange}
+                inputClassName='govuk-checkboxes__input'
+                labelClassName="govuk-label govuk-checkboxes__label"
+                itemClassName='govuk-checkboxes__item'
                 inputProps={{
                   className: 'govuk-checkboxes__input',
                 }}
@@ -134,44 +173,10 @@ In this section we're using the formCheckbox component providing the GovUk style
                 }}
                 defaultChecked={checked}
                 hint={{
-                  text: 'including English, Scottish, Welsh and Northern Irish',
+                  text: 'Lorem ipsum hint text',
                   className: 'govuk-hint govuk-checkboxes__hint',
                   id: 'nationality-item-hint',
                 }}
-              />
-              <FormCheckbox
-                name="nationality-2"
-                label="Irish"
-                value="irish"
-                id="nationality-2"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                defaultChecked={checked}
-              />
-              <FormCheckbox
-                name="nationality-3"
-                label="Citizen of another country"
-                value="other"
-                id="nationality-3"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                defaultChecked={checked}
               />
             </div>
           </fieldset>
@@ -181,15 +186,62 @@ In this section we're using the formCheckbox component providing the GovUk style
   </Story>
 </Canvas>
 
-### GDS styled checkboxes with conditionally revealing content
+### GDS styled checkbox with hint above
+
+<Canvas>
+  <Story name="checkbox with hint above">
+    {() => {
+      const [value, setValue] = React.useState('');
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = (event) => {
+        setValue(event.currentTarget.value);
+        setChecked(!checked);
+      };
+      return (
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="">
+            <div class="govuk-checkboxes">
+              <FormCheckbox
+                name="lorem-3"
+                label="Lorem ipsum"
+                value="lorem ipsum"
+                id="lorem-3"
+                onChange={handleChange}
+                inputClassName='govuk-checkboxes__input'
+                labelClassName="govuk-label govuk-checkboxes__label"
+                itemClassName='govuk-checkboxes__item'
+                inputProps={{
+                  className: 'govuk-checkboxes__input',
+                }}
+                itemProps={{
+                  className: 'govuk-checkboxes__item',
+                }}
+                labelProps={{
+                  className: 'govuk-label govuk-checkboxes__label',
+                }}
+                defaultChecked={checked}
+                hint={{
+                  position: 'above',
+                  text: 'Lorem ipsum hint text',
+                  className: 'govuk-hint govuk-checkboxes__hint',
+                  id: 'nationality-item-hint',
+                }}
+              />
+            </div>
+          </fieldset>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### GDS styled checkbox with conditionally revealing content
 
 <Canvas>
   <Story name="conditional input">
     {() => {
       const [value, setValue] = React.useState({
         contact: false,
-        'contact-2': false,
-        'contact-3': false,
       });
       const handleChange = (event, conditional) => {
         setValue({
@@ -199,17 +251,9 @@ In this section we're using the formCheckbox component providing the GovUk style
         console.log(conditional);
       };
       return (
-        <div className="govuk-form-group">
-          <fieldset className="govuk-fieldset" aria-describedby="contact-hint">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 className="govuk-fieldset__heading">
-                How would you like to be contacted?
-              </h1>
-            </legend>
-            <div id="contact-hint" className="govuk-hint">
-              Select all options that are relevant to you.
-            </div>
-            <div className="govuk-checkboxes">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="">
+            <div class="govuk-checkboxes">
               <FormCheckbox
                 name="contact"
                 label="Email"
@@ -217,6 +261,9 @@ In this section we're using the formCheckbox component providing the GovUk style
                 id="contact"
                 ariaDataControls="conditional-contact"
                 onChange={handleChange}
+                inputClassName='govuk-checkboxes__input'
+                labelClassName="govuk-label govuk-checkboxes__label"
+                itemClassName='govuk-checkboxes__item'
                 inputProps={{
                   className: 'govuk-checkboxes__input',
                 }}
@@ -241,70 +288,6 @@ In this section we're using the formCheckbox component providing the GovUk style
                   labelClassName: 'govuk-label',
                 }}
               />
-              <FormCheckbox
-                name="contact"
-                label="Phone"
-                value="contact-by-phone"
-                id="contact-2"
-                ariaDataControls="conditional-contact-2"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                selected={value['contact-2']}
-                conditional={{
-                  value: '',
-                  onChange: (value) => {},
-                  name: 'contact-by-phone',
-                  label: 'Phone number',
-                  type: 'text',
-                  className: 'govuk-form-group',
-                  groupClassName:
-                    'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
-                  id: 'conditional-contact-2',
-                  inputClassName: 'govuk-input govuk-!-width-one-third',
-                  inputId: 'contact-by-phone',
-                  labelClassName: 'govuk-label',
-                }}
-              />
-              <FormCheckbox
-                name="contact"
-                label="Text"
-                value="contact-by-text"
-                id="contact-3"
-                ariaDataControls="conditional-contact-3"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                selected={value['contact-3']}
-                conditional={{
-                  value: '',
-                  onChange: (value) => {},
-                  name: 'contact-by-text',
-                  label: 'Mobile phone number',
-                  type: 'text',
-                  className: 'govuk-form-group',
-                  groupClassName:
-                    'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
-                  id: 'conditional-contact-3',
-                  inputClassName: 'govuk-input govuk-!-width-one-third',
-                  inputId: 'contact-by-text',
-                  labelClassName: 'govuk-label',
-                }}
-              />
             </div>
           </fieldset>
         </div>
@@ -313,15 +296,13 @@ In this section we're using the formCheckbox component providing the GovUk style
   </Story>
 </Canvas>
 
-### GDS styled checkboxes with conditionally revealing content where the conditinal is a sibling
+### GDS styled checkbox with conditionally revealing content where the conditinal is a sibling
 
 <Canvas>
   <Story name="conditional input with sibling conditional">
     {() => {
       const [value, setValue] = React.useState({
-        contact: false,
-        'contact-2': false,
-        'contact-3': false,
+        'contact-sibiling': false,
       });
       const handleChange = (event, conditional) => {
         setValue({
@@ -331,24 +312,19 @@ In this section we're using the formCheckbox component providing the GovUk style
         console.log(conditional);
       };
       return (
-        <div className="govuk-form-group">
-          <fieldset className="govuk-fieldset" aria-describedby="contact-hint">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 className="govuk-fieldset__heading">
-                How would you like to be contacted?
-              </h1>
-            </legend>
-            <div id="contact-hint" className="govuk-hint">
-              Select all options that are relevant to you.
-            </div>
-            <div className="govuk-checkboxes">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="">
+            <div class="govuk-checkboxes">
               <FormCheckbox
                 name="contact"
                 label="Email"
                 value="contact-by-email"
-                id="contact"
+                id="contact-sibiling"
                 ariaDataControls="conditional-contact"
                 onChange={handleChange}
+                inputClassName='govuk-checkboxes__input'
+                labelClassName="govuk-label govuk-checkboxes__label"
+                itemClassName='govuk-checkboxes__item'
                 inputProps={{
                   className: 'govuk-checkboxes__input',
                 }}
@@ -358,7 +334,7 @@ In this section we're using the formCheckbox component providing the GovUk style
                 labelProps={{
                   className: 'govuk-label govuk-checkboxes__label',
                 }}
-                selected={value['contact']}
+                selected={value['contact-sibiling']}
                 conditional={{
                   value: '',
                   name: 'contact-by-email',
@@ -374,72 +350,6 @@ In this section we're using the formCheckbox component providing the GovUk style
                   position: 'sibling',
                 }}
               />
-              <FormCheckbox
-                name="contact"
-                label="Phone"
-                value="contact-by-phone"
-                id="contact-2"
-                ariaDataControls="conditional-contact-2"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                selected={value['contact-2']}
-                conditional={{
-                  value: '',
-                  onChange: (value) => {},
-                  name: 'contact-by-phone',
-                  label: 'Phone number',
-                  type: 'text',
-                  className: 'govuk-form-group',
-                  groupClassName:
-                    'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
-                  id: 'conditional-contact-2',
-                  inputClassName: 'govuk-input govuk-!-width-one-third',
-                  inputId: 'contact-by-phone',
-                  labelClassName: 'govuk-label',
-                  position: 'sibling',
-                }}
-              />
-              <FormCheckbox
-                name="contact"
-                label="Text"
-                value="contact-by-text"
-                id="contact-3"
-                ariaDataControls="conditional-contact-3"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                selected={value['contact-3']}
-                conditional={{
-                  value: '',
-                  onChange: (value) => {},
-                  name: 'contact-by-text',
-                  label: 'Mobile phone number',
-                  type: 'text',
-                  className: 'govuk-form-group',
-                  groupClassName:
-                    'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
-                  id: 'conditional-contact-3',
-                  inputClassName: 'govuk-input govuk-!-width-one-third',
-                  inputId: 'contact-by-text',
-                  labelClassName: 'govuk-label',
-                  position: 'sibling',
-                }}
-              />
             </div>
           </fieldset>
         </div>
@@ -448,10 +358,10 @@ In this section we're using the formCheckbox component providing the GovUk style
   </Story>
 </Canvas>
 
-### GDS styled small checkboxes
+### GDS styled small checkbox
 
 <Canvas>
-  <Story name="small styled checkboxes">
+  <Story name="small styled checkbox">
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
@@ -460,164 +370,18 @@ In this section we're using the formCheckbox component providing the GovUk style
         setChecked(!checked);
       };
       return (
-        <div className="govuk-form-group">
-          <fieldset className="govuk-fieldset" aria-describedby="contact-hint">
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 className="govuk-fieldset__heading">Organisation</h1>
-            </legend>
-            <div className="govuk-checkboxes govuk-checkboxes--small">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="">
+            <div class="govuk-checkboxes govuk-checkboxes--small">
               <FormCheckbox
                 name="organisation"
                 label="HM Revenue and Customs (HMRC)"
                 value="hmrc"
                 id="organisation"
                 onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                defaultChecked={checked}
-              />
-              <FormCheckbox
-                name="organisation-2"
-                label="Employment Tribunal"
-                value="employment-tribunal"
-                id="organisation-2"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                defaultChecked={checked}
-              />
-              <FormCheckbox
-                name="organisation-3"
-                label="Ministry of Defence"
-                value="MOD"
-                id="organisation-3"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                defaultChecked={checked}
-              />
-              <FormCheckbox
-                name="organisation-4"
-                label="Department for Transport"
-                value="DfT"
-                id="organisation-4"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                defaultChecked={checked}
-              />
-            </div>
-          </fieldset>
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
-
-### GDS styled checkboxes with error validation
-
-<Canvas>
-  <Story name="checkboxes with error">
-    {() => {
-      const [value, setValue] = React.useState('');
-      const [checked, setChecked] = React.useState(false);
-      const handleChange = (event) => {
-        setValue(event.currentTarget.value);
-        setChecked(!checked);
-      };
-      return (
-        <div className="govuk-form-group govuk-form-group--error">
-          <fieldset
-            className="govuk-fieldset"
-            aria-describedby="nationality-hint"
-          >
-            <legend className="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 className="govuk-fieldset__heading">
-                What is your nationality?
-              </h1>
-            </legend>
-            <div id="nationality-hint" className="govuk-hint">
-              If you have dual nationality, select all options that are relevant
-              to you.
-            </div>
-            <span id="nationality-error" className="govuk-error-message">
-              <span className="govuk-visually-hidden">Error:</span> Select if
-              you are British, Irish or a citizen of a different country
-            </span>
-            <div className="govuk-checkboxes">
-              <FormCheckbox
-                name="nationality"
-                label="British"
-                value="british"
-                id="nationality"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                defaultChecked={checked}
-                hint={{
-                  text: 'including English, Scottish, Welsh and Northern Irish',
-                  className: 'govuk-hint govuk-checkboxes__hint',
-                  id: 'nationality-item-hint',
-                }}
-              />
-              <FormCheckbox
-                name="nationality-2"
-                label="Irish"
-                value="irish"
-                id="nationality-2"
-                onChange={handleChange}
-                inputProps={{
-                  className: 'govuk-checkboxes__input',
-                }}
-                itemProps={{
-                  className: 'govuk-checkboxes__item',
-                }}
-                labelProps={{
-                  className: 'govuk-label govuk-checkboxes__label',
-                }}
-                defaultChecked={checked}
-              />
-              <FormCheckbox
-                name="nationality-3"
-                label="Citizen of another country"
-                value="other"
-                id="nationality-3"
-                onChange={handleChange}
+                inputClassName='govuk-checkboxes__input'
+                labelClassName="govuk-label govuk-checkboxes__label"
+                itemClassName='govuk-checkboxes__item'
                 inputProps={{
                   className: 'govuk-checkboxes__input',
                 }}

@@ -5,6 +5,9 @@ import { CheckboxRadioBase } from '../common/components';
 
 import { FormRadioCheckboxProps } from '../common/components/commonTypes';
 
+/**
+ * @deprecated since release 0.6
+ */
 export const FormRadio = ({
   label,
   value,

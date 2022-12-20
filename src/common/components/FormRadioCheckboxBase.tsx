@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import {
-  CheckboxRadioBase,
-  ErrorMessage,
-  Hint,
-  Legend,
-} from '../common/components';
+import { CheckboxRadioBase, ErrorMessage, Hint, Legend } from '../components';
 import {
   ErrorMessageProps,
   FormRadioCheckboxProps,
   HintProps,
   LegendProps,
-} from '../common/components/commonTypes';
+} from '../components/commonTypes';
 
 type DividerProps = {
   /**
@@ -114,7 +109,7 @@ const isDivider = (item: SelectionItem): item is DividerProps =>
 const isString = (item: SelectionItem): item is string =>
   typeof item === 'string';
 
-export const FormGroup = ({
+export const FormRadioCheckboxBase = ({
   name,
   type,
   items,
@@ -160,29 +155,24 @@ export const FormGroup = ({
 
   const handleChange = (
     item: FormRadioCheckboxProps | string,
-    type: string,
     e: React.FormEvent<HTMLInputElement>
   ) => {
-    if (isString(item)) {
-      setSelection({ ...selection, [item]: e.currentTarget.checked }); // TODO test
-    } else if (type === 'checkbox') {
-      setSelection({ ...selection, [item.id]: e.currentTarget.checked });
-    } else {
-      let newSelection = {};
-      items.forEach((item: FormRadioCheckboxProps | DividerProps | string) => {
-        if ((item as FormRadioCheckboxProps).id === e.currentTarget.id) {
-          newSelection = {
-            ...newSelection,
-            [(item as FormRadioCheckboxProps).id]: e.currentTarget.checked,
-          };
-        } else {
-          newSelection = {
-            ...newSelection,
-            [(item as FormRadioCheckboxProps).id]: false,
-          };
-        }
+    if (type === 'radio') {
+      let newSelection: { [key: string]: boolean } = {};
+
+      items.forEach((item) => {
+        newSelection[(item as FormRadioCheckboxProps).id] =
+          (item as FormRadioCheckboxProps).id === e.currentTarget.id
+            ? e.currentTarget.checked
+            : false;
       });
+
       setSelection(newSelection);
+    } else {
+      setSelection({
+        ...selection,
+        [isString(item) ? item : item.id]: e.currentTarget.checked,
+      });
     }
 
     if (onChange) {
@@ -226,7 +216,7 @@ export const FormGroup = ({
           label={item}
           value={item}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            handleChange(item, type, event);
+            handleChange(item, event);
           }}
         />
       );
@@ -255,7 +245,7 @@ export const FormGroup = ({
               return;
             }
 
-            handleChange(item, type, event);
+            handleChange(item, event);
           }}
         />
       );
@@ -277,6 +267,6 @@ export const FormGroup = ({
       </fieldset>
     </div>
   ) : (
-    <div>Can not render a Form Group with less than 2 items</div>
+    <div>Can not render a {type} group with less than 2 items</div>
   );
 };

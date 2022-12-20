@@ -7,7 +7,7 @@ import '../style.css';
 ### Example of basic checkbox
 
 <Canvas>
-  <Story name="basic">
+  <Story name="un-styled-basic">
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
@@ -36,7 +36,7 @@ import '../style.css';
 By default, the hint will display underneath the checkbox
 
 <Canvas>
-  <Story name="with hint">
+  <Story name="un-styled-basic-with-hint">
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
@@ -67,7 +67,7 @@ By default, the hint will display underneath the checkbox
 ### Example of basic checkbox with hint positioned above
 
 <Canvas>
-  <Story name="with hint above">
+  <Story name="un-styled-basic-with-hint-above">
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
@@ -98,7 +98,7 @@ By default, the hint will display underneath the checkbox
 ### Example of disabled checkbox
 
 <Canvas>
-  <Story name="disabled">
+  <Story name="un-styled-disabled">
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(false);
@@ -126,7 +126,7 @@ By default, the hint will display underneath the checkbox
 ### Example of preselected checkbox
 
 <Canvas>
-  <Story name="preselected">
+  <Story name="un-styled-preselected">
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(true);
@@ -153,7 +153,7 @@ By default, the hint will display underneath the checkbox
 ### Example of checkbox with conditional input field
 
 <Canvas>
-  <Story name="conditional">
+  <Story name="un-styled-conditional">
     {() => {
       const [value, setValue] = React.useState('');
       const [checked, setChecked] = React.useState(true);
@@ -181,42 +181,11 @@ By default, the hint will display underneath the checkbox
               name: 'conditional-6',
               label: 'condition label',
               type: 'text',
-              className: 'classes',
-              groupClassName: 'group-classes',
               id: 'checkbox-6',
-              inputClassName: 'input-classes',
               inputId: 'input-6',
             }}
           />
         </>
-      );
-    }}
-  </Story>
-</Canvas>
-
-### Example of nested checkbox
-
-<Canvas>
-  <Story name="nested">
-    {() => {
-      const [value, setValue] = React.useState('');
-      const [checked, setChecked] = React.useState(false);
-      const handleChange = (event) => {
-        setValue(event.currentTarget.value);
-        setChecked(!checked);
-      };
-      return (
-        <FormCheckbox
-          label="checkbox label"
-          value={value}
-          id="checkbox-7"
-          inputProps={{
-            name: 'checkbox-7',
-          }}
-          onChange={handleChange}
-          selected={checked}
-          nested={true}
-        />
       );
     }}
   </Story>
@@ -227,43 +196,39 @@ By default, the hint will display underneath the checkbox
 The property conditionalPosition can be set to 'sibling' if you want the conditional element to be a sibling of the main input elment for styling purposes
 
 <Canvas>
-  <Story name="conditional">
+  <Story name="un-styled-conditional-sibiling">
     {() => {
-      const [value, setValue] = React.useState('');
-      const [checked, setChecked] = React.useState(true);
+      const [value, setValue] = React.useState({
+        'contact-sibiling': false,
+        'contact-sibiling-2': false,
+        'contact-sibiling-3': false,
+      });
       const handleChange = (event, conditional) => {
-        if (conditional) {
-          console.log(conditional);
-          return;
-        }
-        setValue(event.currentTarget.value);
-        setChecked(event.currentTarget.checked);
+        setValue({
+          ...value,
+          [event.target.id]: event.target.checked,
+        });
+        console.log(conditional);
       };
       return (
-        <>
         <FormCheckbox
-          label="checkbox label"
-          value={value}
-          id="checkbox-6"
-          inputProps={{
-            name: 'checkbox-6',
-          }}
+          name="contact"
+          label="Email"
+          value="contact-by-email"
+          id="contact-sibiling"
+          ariaDataControls="conditional-contact"
           onChange={handleChange}
-          selected={checked}
+          selected={value['contact-sibiling']}
           conditional={{
             value: '',
-            name: 'conditional-6',
-            label: 'condition label',
+            name: 'contact-by-email',
+            label: 'Email address',
             type: 'text',
-            className: 'classes',
-            groupClassName: 'group-classes',
-            id: 'checkbox-6',
-            inputClassName: 'input-classes',
-            inputId: 'input-6',
-            position='sibling'
+            id: 'conditional-contact',
+            inputId: 'contact-by-email',
+            position: 'sibling',
           }}
         />
-        </>
       );
     }}
   </Story>

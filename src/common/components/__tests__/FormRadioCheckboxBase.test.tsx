@@ -2,14 +2,14 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { FormGroup } from '../FormGroup';
+import { FormRadioCheckboxBase } from '../FormRadioCheckboxBase';
 
-describe('FormGroup', () => {
+describe('FormRadioCheckboxBase', () => {
   it('should render a form group of radio buttons', () => {
     const handleChange = jest.fn();
 
     const { container } = render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -44,7 +44,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     const { container } = render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -69,7 +69,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     const { container } = render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="checkbox"
         groupClasses=""
         id=""
@@ -105,7 +105,7 @@ describe('FormGroup', () => {
     const type = '';
 
     const { container } = render(
-      <FormGroup
+      <FormRadioCheckboxBase
         //@ts-ignore
         type={type}
         groupClasses=""
@@ -145,7 +145,7 @@ describe('FormGroup', () => {
     const type = 'something';
 
     const { container } = render(
-      <FormGroup
+      <FormRadioCheckboxBase
         //@ts-ignore
         type={type}
         groupClasses=""
@@ -184,7 +184,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -217,7 +217,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -251,7 +251,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -289,7 +289,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -329,7 +329,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     const { container } = render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -362,7 +362,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -400,7 +400,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -424,7 +424,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="checkbox"
         groupClasses=""
         id=""
@@ -464,7 +464,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -502,7 +502,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="checkbox"
         groupClasses=""
         id=""
@@ -540,7 +540,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -582,7 +582,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="checkbox"
         groupClasses=""
         id=""
@@ -624,7 +624,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -686,7 +686,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     const { container } = render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -721,11 +721,11 @@ describe('FormGroup', () => {
     expect(container.querySelector('#my-divider-id')).toBeTruthy();
   });
 
-  it('should not render a form group with less than 2 items', () => {
+  it('should not render a radio group with less than 2 items', () => {
     const handleChange = jest.fn();
 
     const { container } = render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id="my-group"
@@ -749,7 +749,7 @@ describe('FormGroup', () => {
 
     expect(container.querySelector('#my-group')).not.toBeInTheDocument();
     expect(
-      screen.getByText('Can not render a Form Group with less than 2 items')
+      screen.getByText('Can not render a radio group with less than 2 items')
     ).toBeInTheDocument();
   });
 
@@ -757,7 +757,7 @@ describe('FormGroup', () => {
     const handleChange = jest.fn();
 
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -783,16 +783,55 @@ describe('FormGroup', () => {
         onChange={handleChange}
       />
     );
+
     fireEvent.click(screen.getAllByRole('radio')[0]);
     expect(screen.getAllByRole('radio')[0]).toBeChecked();
     expect(screen.getAllByRole('radio')[1]).not.toBeChecked();
+
+    fireEvent.click(screen.getAllByRole('radio')[1]);
+    expect(screen.getAllByRole('radio')[0]).not.toBeChecked();
+    expect(screen.getAllByRole('radio')[1]).toBeChecked();
+  });
+
+  it('should call on change of an item (declared with strings) if an input has changed', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <FormRadioCheckboxBase
+        type="checkbox"
+        groupClasses=""
+        id=""
+        name="group1"
+        legend={{
+          text: 'Have you changed your name?',
+          heading: {
+            priority: 1,
+          },
+        }}
+        items={['yes', 'no']}
+        onChange={handleChange}
+      />
+    );
+
+    fireEvent.click(screen.getAllByRole('checkbox')[0]);
+    expect(screen.getAllByRole('checkbox')[0]).toBeChecked();
+    expect(screen.getAllByRole('checkbox')[1]).not.toBeChecked();
+
+    fireEvent.click(screen.getAllByRole('checkbox')[1]);
+    expect(screen.getAllByRole('checkbox')[0]).toBeChecked();
+    expect(screen.getAllByRole('checkbox')[1]).toBeChecked();
+
+    fireEvent.click(screen.getAllByRole('checkbox')[0]);
+    fireEvent.click(screen.getAllByRole('checkbox')[1]);
+    expect(screen.getAllByRole('checkbox')[0]).not.toBeChecked();
+    expect(screen.getAllByRole('checkbox')[1]).not.toBeChecked();
   });
 
   it('should call on change of an item if a conditional input has changed', async () => {
     const handleChange = jest.fn();
     const user = userEvent.setup();
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
@@ -851,7 +890,7 @@ describe('FormGroup', () => {
 
   it('should render a form group of radio buttons with onChange param ommitted', () => {
     render(
-      <FormGroup
+      <FormRadioCheckboxBase
         type="radio"
         groupClasses=""
         id=""
