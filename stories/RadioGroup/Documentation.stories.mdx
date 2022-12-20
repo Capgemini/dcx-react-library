@@ -1,0 +1,143 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { RadioGroup } from '../../src/radioGroup/RadioGroup';
+import '../style.css';
+
+<Meta
+  title="DCXLibrary/Form/RadioGroup/documentation"
+  component={RadioGroup}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# RadioGroup
+
+A group of radio components ready to use in your form.
+
+RadioGroup is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
+
+## Usage
+
+Use the radio group component when users can only select one option from a list.
+
+It provides heading, hint text and error message components.
+
+An example with all the available properties is:
+
+```js
+<RadioGroup
+    name='name-of-group'
+    inputProps={{
+        color: 'purple'
+    }}
+    itemProps={{
+        color: 'purple'
+    }}
+    labelProps={{
+        color: 'purple'
+    }}
+    inputClassName='shared input class names'
+    itemClassName='shared item class names'
+    labelClassName='shared label class names'
+    items={[
+        {
+            label: 'item-label',
+            value: 'yes',
+            ariaLabel: 'aria-label',
+            disabled: false,
+            hint: {
+                text: 'hint-text',
+                className: 'class names',
+                id: 'id',
+                position: 'above'
+            },
+            id: 'id',
+            inputProps: {
+                style: {
+                    lineHeight: '10px'
+                }
+            },
+            itemProps: {
+                style: {
+                    display: 'flex'
+                }
+            },
+            labelProps: {
+                style: {
+                    fontSize: '14px'
+                }
+            },
+            selected: false,
+            onChange: handleChange
+        },
+        {
+            text: 'divider',
+            className: 'divider classes',
+            id: 'divider-id'
+        },
+        {
+            label: 'item-label',
+            value: 'no',
+            ariaLabel: 'aria-label',
+            disabled: false,
+            hint: {
+                text: 'hint-text',
+                className: 'class names',
+                id: 'id'
+            },
+            id: 'id',
+            inputProps: {
+                style: {
+                    lineHeight: '10px'
+                }
+            },
+            itemProps: {
+                style: {
+                    display: 'flex'
+                }
+            },
+            labelProps: {
+                style: {
+                    fontSize: '14px'
+                }
+            },
+            selected: false,
+            onChange: handleChange
+        }
+    ]}
+    ariaDescribedBy='aria-described-by'
+    ariaLabelledBy='aria-labelled-by'
+    groupClassess='group-classes'
+    error={{
+       text: 'error message'
+       className: 'error-classes'
+       id: 'error-id',
+       visuallyHiddenText: {
+           className='visually-hidden-classes',
+           text='visually hidden text'
+       }
+    }}
+    fieldsetClasses='fieldset classes'
+    hint={{
+        text: 'hint-text',
+        className: 'class names',
+        id: 'hint-id'
+    }}
+    id='id'
+    itemsClasses='class names for the group items'
+    legend={{
+        text: 'heading',
+        className: 'legend classes',
+        heading: {
+            priority: 2,
+            className: 'heading class name'
+        }
+    }}
+    onChange={handleChange}
+/>
+```
+
+<Props of={RadioGroup} />
