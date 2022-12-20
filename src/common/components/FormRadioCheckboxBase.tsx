@@ -267,6 +267,6 @@ export const FormRadioCheckboxBase = ({
       </fieldset>
     </div>
   ) : (
-    <div>Can not render a Form Group with less than 2 items</div>
+    <div>Can not render a {type} group with less than 2 items</div>
   );
 };

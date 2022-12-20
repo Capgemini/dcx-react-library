@@ -721,7 +721,7 @@ describe('FormRadioCheckboxBase', () => {
     expect(container.querySelector('#my-divider-id')).toBeTruthy();
   });
 
-  it('should not render a form group with less than 2 items', () => {
+  it('should not render a radio group with less than 2 items', () => {
     const handleChange = jest.fn();
 
     const { container } = render(
@@ -749,7 +749,7 @@ describe('FormRadioCheckboxBase', () => {
 
     expect(container.querySelector('#my-group')).not.toBeInTheDocument();
     expect(
-      screen.getByText('Can not render a Form Group with less than 2 items')
+      screen.getByText('Can not render a radio group with less than 2 items')
     ).toBeInTheDocument();
   });
 
