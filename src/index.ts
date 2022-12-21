@@ -1,4 +1,4 @@
-export * from './formGroup';
+export * from './checkboxGroup';
 export * from './radioGroup';
 export * from './formInput';
 export * from './formRadio';
