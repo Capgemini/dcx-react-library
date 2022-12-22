@@ -237,7 +237,7 @@ describe('Button', () => {
     );
     const buttons: any = screen.getAllByRole('button');
 
-    expect(buttons[0].getAttribute('aria-label')).toBeUndefined;
+    expect(buttons[0].getAttribute('aria-label')).toBeNull();
     expect(buttons[1].getAttribute('aria-label')).toBe('button-button');
     expect(buttons[2].getAttribute('aria-label')).toBe('submit-button');
     expect(buttons[3].getAttribute('aria-label')).toBe('reset-button');
