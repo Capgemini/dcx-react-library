@@ -132,7 +132,7 @@ export const Button = ({
       onClick={handleClick}
       disabled={disable}
       type={type}
-      aria-label={ariaLabel}
+      {...(label ? {} : { 'aria-label': ariaLabel })}
       formAction={formAction}
       name={name}
       value={value}
