@@ -225,4 +225,21 @@ describe('Button', () => {
     const button: any = screen.getByRole('button');
     expect(button.getAttribute('value')).toBe('buttonValue');
   });
+
+  it('should not render aria-label if label omitted', () => {
+    render(
+      <>
+        <Button label="buttonValue" />
+        <Button type={BUTTON_TYPE.BUTTON} />
+        <Button type={BUTTON_TYPE.SUBMIT} />
+        <Button type={BUTTON_TYPE.RESET} />
+      </>
+    );
+    const buttons: any = screen.getAllByRole('button');
+
+    expect(buttons[0].getAttribute('aria-label')).toBeNull();
+    expect(buttons[1].getAttribute('aria-label')).toBe('button-button');
+    expect(buttons[2].getAttribute('aria-label')).toBe('submit-button');
+    expect(buttons[3].getAttribute('aria-label')).toBe('reset-button');
+  });
 });
