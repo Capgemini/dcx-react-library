@@ -1,66 +1,12 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
-import { FormGroup } from '../../src/formGroup/FormGroup';
+import { CheckboxGroup } from '../../src/checkboxGroup/CheckboxGroup';
 import '../style.css';
 
-<Meta title="DCXLibrary/Form/Group/StyledCheckbox" component={FormGroup} />
+<Meta title="DCXLibrary/Form/checkboxGroup/Styled" component={CheckboxGroup} />
 
 # GOVUK Style
 
-In this section we are using the FormGroup component providing the GOV.UK Design System styles by passing the relative `className`. Feel free to use your own css and style the FormGroup as you prefer
-
-<Canvas>
-  <Story name="multiple checkboxes">
-    {() => {
-      const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
-      return (
-        <FormGroup
-          name="waste"
-          type="checkbox"
-          inputProps={{
-            className: 'govuk-checkboxes__input',
-          }}
-          itemProps={{
-            className: 'govuk-checkboxes__item',
-          }}
-          labelProps={{
-            className: 'govuk-label govuk-checkboxes__label',
-          }}
-          items={[
-            {
-              label: 'Waste from animal carcasses',
-              value: 'carcasses',
-              id: 'waste',
-            },
-            {
-              label: 'Waste from mines of quarries',
-              value: 'mines',
-              id: 'waste-2',
-            },
-            {
-              label: 'Farm or agricultural waste',
-              value: 'farm',
-              id: 'waste-3',
-            },
-          ]}
-          onChange={handleChange}
-          ariaDescribedBy="changed-name-hint"
-          groupClasses="govuk-form-group"
-          fieldsetClasses="govuk-fieldset"
-          itemsClasses="govuk-checkboxes"
-          legend={{
-            text: 'Which types of waste do you transport?',
-            className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
-            heading: {
-              priority: 1,
-              className: 'govuk-fieldset__heading',
-            },
-          }}
-        />
-      );
-    }}
-  </Story>
-</Canvas>
+In this section we are using the CheckboxGroup component providing the GOV.UK Design System styles by passing the relative `className`. Feel free to use your own css and style the CheckboxGroup as you prefer
 
 <Canvas>
   <Story name="multiple checkboxes with shared styles">
@@ -68,9 +14,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
-        <FormGroup
+        <CheckboxGroup
           name="waste"
-          type="checkbox"
           inputClassName="govuk-checkboxes__input"
           itemClassName="govuk-checkboxes__item"
           labelClassName="govuk-label govuk-checkboxes__label"
@@ -118,9 +63,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = event => setSelected(event.currentTarget.value);
       return (
-        <FormGroup
+        <CheckboxGroup
           name="waste-2"
-          type="checkbox"
           inputClassName="govuk-checkboxes__input"
           itemClassName="govuk-checkboxes__item"
           labelClassName="govuk-label govuk-checkboxes__label"
@@ -167,9 +111,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
       return (
-        <FormGroup
+        <CheckboxGroup
           name="nationality"
-          type="checkbox"
           inputClassName="govuk-checkboxes__input"
           itemClassName="govuk-checkboxes__item"
           labelClassName="govuk-label govuk-checkboxes__label"
@@ -231,9 +174,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
       return (
-        <FormGroup
+        <CheckboxGroup
           name="filter-change"
-          type="checkbox"
           inputClassName="govuk-checkboxes__input"
           itemClassName="govuk-checkboxes__item"
           labelClassName="govuk-label govuk-checkboxes__label"
@@ -275,9 +217,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = event => setSelected(event.currentTarget.value)
       return (
-        <FormGroup
+        <CheckboxGroup
           name="live-error"
-          type="checkbox"
           inputClassName="govuk-checkboxes__input"
           itemClassName="govuk-checkboxes__item"
           labelClassName="govuk-label govuk-checkboxes__label"
@@ -339,9 +280,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
       return (
-        <FormGroup
+        <CheckboxGroup
           name="where-do-you-live-divider"
-          type="checkbox"
           inputClassName="govuk-checkboxes__input"
           itemClassName="govuk-checkboxes__item"
           labelClassName="govuk-label govuk-checkboxes__label"
@@ -398,9 +338,8 @@ In this section we are using the FormGroup component providing the GOV.UK Design
       const [selected, setSelected] = React.useState('');
       const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
       return (
-        <FormGroup
+        <CheckboxGroup
           name="contact"
-          type="checkbox"
           inputClassName="govuk-checkboxes__input"
           itemClassName="govuk-checkboxes__item"
           labelClassName="govuk-label govuk-checkboxes__label"
@@ -766,4 +705,4 @@ The css we used to styled the formGroup component is the following:
 }
 ```
 
-<Props of={FormGroup} />
+<Props of={CheckboxGroup} />

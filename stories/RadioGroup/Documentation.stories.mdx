@@ -1,10 +1,10 @@
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
-import { FormGroup } from '../../src/formGroup/FormGroup';
+import { RadioGroup } from '../../src/radioGroup/RadioGroup';
 import '../style.css';
 
 <Meta
-  title="DCXLibrary/Form/Group/documentation"
-  component={FormGroup}
+  title="DCXLibrary/Form/RadioGroup/documentation"
+  component={RadioGroup}
   parameters={{
     viewMode: 'docs',
     previewTabs: {
@@ -13,22 +13,22 @@ import '../style.css';
   }}
 />
 
-# FormGroup
+# RadioGroup
 
-A group component ready to use in your form.
+A group of radio components ready to use in your form.
 
-FormGroup is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
+RadioGroup is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
 
 ## Usage
 
-Use the group component when users can only select one option from a list.
+Use the radio group component when users can only select one option from a list.
 
 It provides heading, hint text and error message components.
 
 An example with all the available properties is:
 
 ```js
-<FormGroup
+<RadioGroup
     name='name-of-group'
     inputProps={{
         color: 'purple'
@@ -140,4 +140,4 @@ An example with all the available properties is:
 />
 ```
 
-<Props of={FormGroup} />
+<Props of={RadioGroup} />

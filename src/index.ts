@@ -1,4 +1,5 @@
-export * from './formGroup';
+export * from './checkboxGroup';
+export * from './radioGroup';
 export * from './formInput';
 export * from './formRadio';
 export * from './formCheckbox';
@@ -16,4 +17,3 @@ export * from './tabGroup';
 export * from './copyToClipboard';
 export * from './table';
 export * from './details';
-export { DynamicComponent } from './common/components/DynamicComponent';
