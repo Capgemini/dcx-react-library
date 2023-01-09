@@ -45,7 +45,7 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    */
   isLoading?: boolean;
   /**
-   * a custom loding label
+   * a custom loading label
    */
   loadingLabel?: string;
   /**
@@ -67,7 +67,7 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   /**
    * button tab index
    */
-  tabIndex?: number;
+  tabIndex?: string;
 };
 
 export const Button = ({
@@ -85,7 +85,7 @@ export const Button = ({
   customLoadingPostImage,
   formAction,
   name,
-  tabIndex = 0,
+  tabIndex = '0',
   ...props
 }: ButtonProps) => {
   const [disable, setDisable] = React.useState<boolean>(disabled);
