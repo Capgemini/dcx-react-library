@@ -9,7 +9,7 @@ import {
   FormRadio,
   FormSelect,
   Toggle,
-  FormGroup,
+  RadioGroup,
   Autocomplete,
   FormDate,
   ErrorPosition,
@@ -462,9 +462,8 @@ export const Register = () => {
         </div>
 
         <div className="form-group">
-          <FormGroup
+          <RadioGroup
             name="heard-about"
-            type="radio"
             inputProps={{
               className: 'class-name',
             }}
@@ -517,8 +516,7 @@ export const Register = () => {
             fieldsetClasses="field-set-class"
             hint={{
               id: 'heard-about-hint',
-              text:
-                'Please select the one closest to where you first heard about us',
+              text: 'Please select the one closest to where you first heard about us',
               className: 'hint-class',
             }}
             itemsClasses="item-classes"

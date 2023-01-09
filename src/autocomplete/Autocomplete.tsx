@@ -16,6 +16,12 @@ type autocompleteProps = {
    */
   options: string[];
   /**
+   * it will add a dynamic id to every option provided. It will concatenate an index for each item
+   * @example
+   * optionsId: 'dcx-option-id will result as dcx-option-id-1, dcx-option-id-2, etc
+   */
+  optionsId?: string;
+  /**
    * list of selected options for multi select
    */
   selected?: MultiSelectOption[];
@@ -206,6 +212,7 @@ export enum AutoCompleteErrorPosition {
 
 export const Autocomplete = ({
   options,
+  optionsId,
   minCharsBeforeSearch = 1,
   minCharsMessage = '',
   promptCondition = () => false,
@@ -257,18 +264,26 @@ export const Autocomplete = ({
   const [userInput, setUserInput] = useState<string>(defaultValue);
   let hydrated = useHydrated();
 
-  const showPromptMessage = (): boolean =>
-    userInput.trim().length === 0 &&
+  const showPromptMessage = (inputValue = userInput): boolean =>
+    inputValue.trim().length === 0 &&
     promptCondition() &&
     promptMessage.length > 0;
 
-  const showMinCharsMessage = (): boolean =>
+  const showMinCharsMessage = (inputValue = userInput): boolean =>
     !showPromptMessage() &&
-    userInput.trim().length < minCharsBeforeSearch &&
+    inputValue.trim().length < minCharsBeforeSearch &&
     minCharsMessage.length > 0;
 
-  const handlePrompt = () => {
-    const canShowPrompt = showMinCharsMessage() || showPromptMessage();
+  const displayResultList = (inputValue = userInput): boolean =>
+    showOptions && inputValue.trim().length >= minCharsBeforeSearch;
+
+  const handlePrompt = (
+    _evt: React.FormEvent<HTMLInputElement>,
+    inputValue = userInput
+  ) => {
+    const canShowPrompt =
+      !displayResultList(inputValue) &&
+      (showMinCharsMessage(inputValue) || showPromptMessage(inputValue));
 
     if (!showPrompt && canShowPrompt) {
       setShowPrompt(true);
@@ -276,8 +291,6 @@ export const Autocomplete = ({
       setShowPrompt(false);
     }
   };
-
-  const hidePrompt = () => setShowPrompt(false);
 
   const delayResult = React.useMemo(
     () =>
@@ -315,6 +328,7 @@ export const Autocomplete = ({
 
     const { value } = evt.currentTarget;
     setUserInput(value);
+    handlePrompt(evt, value);
 
     if (onChange) {
       debounceSearch(value);
@@ -331,10 +345,6 @@ export const Autocomplete = ({
     }
   }, [options, onChange]);
 
-  React.useEffect(() => {
-    handlePrompt();
-  }, [userInput]);
-
   const handleClick = (evt: React.FormEvent<HTMLInputElement>) => {
     setActiveOption(0);
     setFilterList([]);
@@ -344,11 +354,19 @@ export const Autocomplete = ({
   };
 
   const onKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!showOptions) {
+      return;
+    }
+
     if (evt.code === 'Enter') {
+      evt.preventDefault();
       setActiveOption(0);
       setShowOptions(false);
-      setUserInput(filterList[activeOption]);
-      if (onSelected) onSelected(filterList[activeOption]);
+
+      if (filterList.length > 0) {
+        setUserInput(filterList[activeOption]);
+        if (onSelected) onSelected(filterList[activeOption]);
+      }
     } else if (evt.code === 'ArrowUp') {
       if (activeOption === 0) {
         return;
@@ -362,8 +380,10 @@ export const Autocomplete = ({
     }
   };
 
-  const displayResultList = (): boolean =>
-    showOptions && userInput.trim().length >= minCharsBeforeSearch;
+  const onBlur = () => {
+    setShowOptions(false);
+    setShowPrompt(false);
+  };
 
   const formInput: JSX.Element = (
     <>
@@ -373,7 +393,7 @@ export const Autocomplete = ({
         value={userInput}
         onChange={handleChange}
         onFocus={handlePrompt}
-        onBlur={hidePrompt}
+        onBlur={onBlur}
         prefix={prefix}
         suffix={suffix}
         required={required}
@@ -508,6 +528,7 @@ export const Autocomplete = ({
         {displayResultList() && (
           <ResultList
             list={filterList}
+            listId={optionsId}
             userInput={userInput}
             activeOption={activeOption}
             noElFoundText={notFoundText}

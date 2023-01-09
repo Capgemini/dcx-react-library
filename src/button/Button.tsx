@@ -65,6 +65,10 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    */
   name?: string;
   /**
+   * allows to use a value in the button
+   */
+  value?: string | number;
+  /**
    * button tab index
    */
   tabIndex?: string;
@@ -85,6 +89,7 @@ export const Button = ({
   customLoadingPostImage,
   formAction,
   name,
+  value,
   tabIndex = '0',
   ...props
 }: ButtonProps) => {
@@ -132,9 +137,10 @@ export const Button = ({
       onClick={handleClick}
       disabled={disable}
       type={type}
-      aria-label={ariaLabel}
+      {...(label ? {} : { 'aria-label': ariaLabel })}
       formAction={formAction}
       name={name}
+      value={value}
       tabIndex={tabIndex}
       {...props}
     >

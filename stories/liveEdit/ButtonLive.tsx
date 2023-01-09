@@ -40,6 +40,7 @@ function ButtonDemo() {
         className=""
         style={style}
         name=""
+        value=""
         tabIndex="0"
     />
   )

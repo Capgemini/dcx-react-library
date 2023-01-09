@@ -4,6 +4,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { Autocomplete, AutoCompleteErrorPosition } from '../';
 import userEvent from '@testing-library/user-event';
+import { act } from '@testing-library/react-hooks';
 import * as hooks from '../../common/utils/clientOnly';
 
 const firstSearch = [
@@ -304,6 +305,16 @@ describe('Autocomplete', () => {
     });
   });
 
+  it('should set the input to an empty string when there is no text in the input and on pressing Enter', async () => {
+    render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
+
+    const input: any = screen.getByRole('textbox');
+
+    fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
+
+    expect(input.value).toBe('');
+  });
+
   it('should highlight the selected option(s) on keyDown', async () => {
     const user = userEvent.setup();
     render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
@@ -508,9 +519,37 @@ describe('Autocomplete', () => {
     expect(formSelect.name).toBe('selectName');
   });
 
+  it('should hide the results list if losing focus', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    const user = userEvent.setup();
+
+    render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
+
+    const input = screen.getByRole('textbox');
+
+    await act(() => user.click(input));
+
+    let resultList = screen.queryByRole('list');
+    expect(resultList).toBe(null);
+
+    await act(() => user.type(input, 'da'));
+
+    resultList = screen.queryByRole('list');
+    expect(resultList).not.toBeNull();
+
+    act(() => {
+      fireEvent.blur(input);
+    });
+
+    resultList = screen.queryByRole('list');
+    expect(resultList).toBe(null);
+  });
+
   it('should display a prompt if receiving focus and the minimum number of characters have not yet been entered', async () => {
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
 
+    const user = userEvent.setup();
     const minCharsBeforeSearch = 2;
     const minCharsMessage = `Please type at least ${minCharsBeforeSearch} character(s) to see the available options`;
     const promptId = 'input-prompt';
@@ -527,7 +566,10 @@ describe('Autocomplete', () => {
     );
 
     const input: any = screen.getByRole('textbox');
-    input.focus();
+
+    expect(input).not.toHaveAttribute('aria-describedby');
+
+    await act(() => user.click(input));
 
     expect(input).toHaveAttribute('aria-describedby');
 
@@ -535,8 +577,9 @@ describe('Autocomplete', () => {
 
     expect(prompt.innerHTML).toBe(minCharsMessage);
 
-    // check if prompt is hidden on blur
-    fireEvent.blur(input);
+    act(() => {
+      fireEvent.blur(input);
+    });
 
     expect(input).not.toHaveAttribute('aria-describedby');
 
@@ -566,9 +609,13 @@ describe('Autocomplete', () => {
 
     const input: any = screen.getByRole('textbox');
 
+    expect(input).not.toHaveAttribute('aria-describedby');
+
+    await act(() => user.click(input));
+
     expect(input).toHaveAttribute('aria-describedby');
 
-    await user.type(input, 'da');
+    await act(() => user.type(input, 'da'));
 
     expect(input).not.toHaveAttribute('aria-describedby');
 
@@ -600,7 +647,10 @@ describe('Autocomplete', () => {
     );
 
     const input: any = screen.getByRole('textbox');
-    input.focus();
+
+    expect(input).not.toHaveAttribute('aria-describedby');
+
+    await act(() => user.click(input));
 
     expect(input).toHaveAttribute('aria-describedby');
 
@@ -609,7 +659,7 @@ describe('Autocomplete', () => {
     expect(prompt.innerHTML).toBe(promptMessage);
 
     // check if user input is prevented and the prompt is still visible
-    await user.type(input, 'd');
+    await act(() => user.type(input, 'd'));
 
     expect(input.value).toContain('');
     expect(input).toHaveAttribute('aria-describedby');
@@ -634,6 +684,7 @@ describe('Autocomplete', () => {
   it('conditional prompt should take precedence over the minChars if both props are provided', async () => {
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
 
+    const user = userEvent.setup();
     const minCharsBeforeSearch = 2;
     const minCharsMessage = `Please type at least ${minCharsBeforeSearch} character(s) to see the available options`;
     const promptMessage = 'Enter a valid date before typing here';
@@ -653,12 +704,60 @@ describe('Autocomplete', () => {
     );
 
     const input: any = screen.getByRole('textbox');
-    input.focus();
+
+    expect(input).not.toHaveAttribute('aria-describedby');
+
+    await act(() => user.click(input));
 
     expect(input).toHaveAttribute('aria-describedby');
 
     const prompt: any = container.querySelector(`#${promptId}`);
 
     expect(prompt.innerHTML).toBe(promptMessage);
+  });
+
+  it('should contain the dynamic id for every item in the list if listId is present', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    const user = userEvent.setup();
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        optionsId="dcx-option-id"
+        selectProps={{
+          selectClassName: '',
+          containerClassName: '',
+          labelClassName: '',
+        }}
+      />
+    );
+    const input = screen.getByRole('textbox');
+    await user.type(input, 'da');
+    await waitFor(() => {
+      const el: any = container.querySelector('li');
+      expect(el.id).toBe('dcx-option-id--1');
+    });
+  });
+
+  it('should not contain an id item if listId is not specified', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    const user = userEvent.setup();
+    const { container } = render(
+      <Autocomplete
+        options={['daniele', 'isaac']}
+        selectProps={{
+          selectClassName: '',
+          containerClassName: '',
+          labelClassName: '',
+        }}
+      />
+    );
+    const input = screen.getByRole('textbox');
+    await user.type(input, 'da');
+    await waitFor(() => {
+      const el: any = container.querySelector('li');
+      expect(el.id).toBe('');
+    });
   });
 });

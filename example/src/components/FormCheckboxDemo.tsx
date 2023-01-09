@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormCheckbox, FormGroup } from '@capgeminiuk/dcx-react-library';
+import { FormCheckbox, CheckboxGroup } from '@capgeminiuk/dcx-react-library';
 
 export const FormCheckboxDemo = () => {
   const [value, setValue] = React.useState('');
@@ -48,9 +48,8 @@ export const FormCheckboxDemo = () => {
         disabled={true}
       />
       <h2>Group</h2>
-      <FormGroup
+      <CheckboxGroup
         name="name-of-group"
-        type="checkbox"
         onChange={handleFormChange}
         items={[
           {
@@ -133,9 +132,8 @@ export const FormCheckboxDemo = () => {
         }}
       />
       <h2>Group using string values</h2>
-      <FormGroup
+      <CheckboxGroup
         name="name-of-group-string"
-        type="checkbox"
         onChange={handleFormChange}
         items={['yes', 'no']}
       />

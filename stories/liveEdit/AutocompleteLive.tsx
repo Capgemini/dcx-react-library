@@ -20,6 +20,7 @@ function AutocompleteDemo() {
         'Pomegranate',
         'Pineapple',
       ]}
+      optionsId='dcx-dynamic-id'
       defaultValue="Papaya"
       minCharsBeforeSearch={1}
       debounceMs={100}
