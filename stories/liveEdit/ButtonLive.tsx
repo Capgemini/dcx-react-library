@@ -41,7 +41,7 @@ function ButtonDemo() {
         style={style}
         name=""
         value=""
-        tabIndex="0"
+        tabIndex={0}
     />
   )
 }

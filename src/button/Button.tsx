@@ -71,7 +71,7 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   /**
    * button tab index
    */
-  tabIndex?: string;
+  tabIndex?: number;
 };
 
 export const Button = ({
@@ -90,7 +90,7 @@ export const Button = ({
   formAction,
   name,
   value,
-  tabIndex = '0',
+  tabIndex = 0,
   ...props
 }: ButtonProps) => {
   const [disable, setDisable] = React.useState<boolean>(disabled);
