@@ -64,6 +64,10 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    * allow the user to define the buttons name
    */
   name?: string;
+  /**
+   * button tab index
+   */
+  tabIndex?: number;
 };
 
 export const Button = ({
@@ -81,6 +85,7 @@ export const Button = ({
   customLoadingPostImage,
   formAction,
   name,
+  tabIndex = 0,
   ...props
 }: ButtonProps) => {
   const [disable, setDisable] = React.useState<boolean>(disabled);
@@ -130,6 +135,7 @@ export const Button = ({
       aria-label={ariaLabel}
       formAction={formAction}
       name={name}
+      tabIndex={tabIndex}
       {...props}
     >
       {prefix}

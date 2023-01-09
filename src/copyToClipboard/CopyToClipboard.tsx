@@ -7,12 +7,13 @@ type CopyToClipboardProps = Omit<
   onCopy: (value: string) => void;
   children?: JSX.Element;
   text?: string;
+  tabIndex?: number;
 };
 
 export const CopyToClipboard = React.forwardRef<
   HTMLElement,
   CopyToClipboardProps
->(({ icon, onCopy, text, children, ...props }, ref) => {
+>(({ icon, onCopy, text, children, tabIndex = 0, ...props }, ref) => {
   const onClickHandler = () => {
     const inputRef = ref as MutableRefObject<HTMLElement>;
     document.execCommand('copy');
@@ -24,7 +25,7 @@ export const CopyToClipboard = React.forwardRef<
         );
   };
   return (
-    <button onClick={onClickHandler} {...props}>
+    <button onClick={onClickHandler} {...props} tabIndex={tabIndex}>
       {icon}
       {children}
     </button>

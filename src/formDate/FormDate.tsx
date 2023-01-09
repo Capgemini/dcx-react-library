@@ -114,6 +114,10 @@ type FormDateProps = {
    * allow to disable the input
    */
   disabled?: boolean;
+  /**
+   * formDate tab index
+   */
+  tabIndex?: number;
 };
 
 const initialState = (
@@ -165,6 +169,7 @@ export const FormDate = ({
   month,
   year,
   disabled = false,
+  tabIndex = 0,
 }: FormDateProps) => {
   const dateSplit: string[] = dateFormat.toLowerCase().split('/');
   const [state, dispatch] = React.useReducer(
@@ -217,6 +222,7 @@ export const FormDate = ({
             label={yearProps?.label}
             classNameInput={[yearProps?.classNameInput, inputClass].join(' ')}
             disabled={disabled}
+            tabIndex={tabIndex}
           />
         );
       case 'm':
@@ -233,6 +239,7 @@ export const FormDate = ({
             label={monthProps?.label}
             classNameInput={[monthProps?.classNameInput, inputClass].join(' ')}
             disabled={disabled}
+            tabIndex={tabIndex}
           />
         );
       case 'd':
@@ -249,6 +256,7 @@ export const FormDate = ({
             label={dayProps?.label}
             classNameInput={[dayProps?.classNameInput, inputClass].join(' ')}
             disabled={disabled}
+            tabIndex={tabIndex}
           />
         );
       default:
