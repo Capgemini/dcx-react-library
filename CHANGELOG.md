@@ -14,11 +14,13 @@
 - [FormGroup - make onChange optional](https://github.com/Capgemini/dcx-react-library/issues/366) [same property apply to FormRadio and FormCheckbox]
 
 **Deprecated**
+
 The following component has been deprecated and removed from storybook. It will be removed in the next release
 
 - [FormGroup component](https://github.com/Capgemini/dcx-react-library/issues/353)
 
 **New components**
+
 Two new components has been created. In case you used the FormRadio component will be easy enough to rename it and remove the type property.
 
 - [FormRadio component](https://github.com/Capgemini/dcx-react-library/issues/353)
