@@ -29,6 +29,14 @@ export type FormSelectProps = {
    */
   containerClassName?: string;
   /**
+   * specify a custom class name to be applied to the full container when there's an error
+   */
+  containerErrorClassName?: string;
+  /**
+   * specify a custom class name to be applied to the full container when the select has a value selected
+   */
+  containerFilledClassName?: string;
+  /**
    * select options. The options can be:
    * an array of strings,
    * an array of objects with: `label` (mandatory), `value` (mandatory), `ariaLabel`, `className`, `disabled`, `id`, `labelClassName`
@@ -101,6 +109,10 @@ export type FormSelectProps = {
    */
   value?: number | string;
   /**
+   *
+   */
+  variant?: 'floating' | 'normal';
+  /**
    * will select the default value
    */
   defaultValue?: string;
@@ -118,6 +130,8 @@ export const FormSelect = ({
   selectClassName,
   labelClassName,
   containerClassName,
+  containerErrorClassName,
+  containerFilledClassName,
   name,
   optionGroups,
   options = [],
@@ -138,6 +152,7 @@ export const FormSelect = ({
   containerProps,
   defaultValue = '',
   tabIndex = 0,
+  variant = 'normal',
 }: FormSelectProps) => {
   let initialValue: string | number = '';
 
@@ -176,9 +191,26 @@ export const FormSelect = ({
     setSelectValue(event.currentTarget.value);
     if (onChange) onChange(event);
   };
-
+  const _containerErrorClassName =
+    errorMessage &&
+    ['dcx-formselect--error', containerErrorClassName].join(' ');
+  const _containerFilledClassName =
+    selectValue &&
+    selectValue !== nullOption &&
+    ['dcx-formselect--filled', containerFilledClassName].join(' ');
+  const _containerVariantClassName =
+    variant === 'floating' && 'dcx-floating-label';
   return (
-    <div className={containerClassName} {...containerProps}>
+    <div
+      className={[
+        'dcx-formselect',
+        containerClassName,
+        _containerErrorClassName,
+        _containerFilledClassName,
+        _containerVariantClassName,
+      ].join(' ')}
+      {...containerProps}
+    >
       <Label
         label={label}
         labelProperties={labelProps}

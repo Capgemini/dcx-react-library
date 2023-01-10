@@ -3,11 +3,11 @@ import { HintProps } from './commonTypes';
 
 export const Hint = ({ text, className, id, useLabel }: HintProps) =>
   useLabel ? (
-    <label id={id} className={className}>
+    <label id={id} className={['dcx-hint', className].join(' ')}>
       {text}
     </label>
   ) : (
-    <div id={id} className={className}>
+    <div id={id} className={['dcx-hint', className].join(' ')}>
       {text}
     </div>
   );

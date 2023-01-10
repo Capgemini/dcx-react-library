@@ -11,7 +11,7 @@ export const ErrorMessage = ({
     let errorElement = <></>;
     if (text && typeof text === 'string') {
       errorElement = (
-        <span id={id} className={className}>
+        <span id={id} className={['dcx-error-message', className].join(' ')}>
           {visuallyHiddenText && (
             <span className={visuallyHiddenText.className}>
               {visuallyHiddenText.text}
