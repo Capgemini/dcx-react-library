@@ -284,4 +284,38 @@ describe('FormInput', () => {
     expect(input[1].innerHTML).toBe('');
     expect(input[2].innerHTML).toBe('');
   });
+
+  it('should accept tabIndex attribute for year and month and day inputs', () => {
+    const { container } = render(
+      <FormDate
+        dateFormat="dd/mm/yyyy"
+        handleValidity={jest.fn()}
+        yearProps={{ label: 'Year', tabIndex: 0 }}
+        monthProps={{ label: 'Month', tabIndex: 1 }}
+        dayProps={{ label: 'Day', tabIndex: 0 }}
+      />
+    );
+
+    const inputField: any = container.querySelectorAll('input');
+    expect(inputField[0].getAttribute('tabindex')).toBe('0');
+    expect(inputField[1].getAttribute('tabindex')).toBe('1');
+    expect(inputField[2].getAttribute('tabindex')).toBe('0');
+  });
+
+  it('should have 0 tabIndex value for the inputs by default', () => {
+    const { container } = render(
+      <FormDate
+        dateFormat="dd/mm/yyyy"
+        handleValidity={jest.fn()}
+        yearProps={{ label: 'Year' }}
+        monthProps={{ label: 'Month' }}
+        dayProps={{ label: 'Day' }}
+      />
+    );
+
+    const inputField: any = container.querySelectorAll('input');
+    expect(inputField[0].getAttribute('tabindex')).toBe('0');
+    expect(inputField[1].getAttribute('tabindex')).toBe('0');
+    expect(inputField[2].getAttribute('tabindex')).toBe('0');
+  });
 });

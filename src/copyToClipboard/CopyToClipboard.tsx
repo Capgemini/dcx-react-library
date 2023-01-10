@@ -7,7 +7,6 @@ type CopyToClipboardProps = Omit<
   onCopy: (value: string) => void;
   children?: JSX.Element;
   text?: string;
-  tabIndex?: number;
 };
 
 export const CopyToClipboard = React.forwardRef<

@@ -242,4 +242,12 @@ describe('Button', () => {
     expect(buttons[2].getAttribute('aria-label')).toBe('submit-button');
     expect(buttons[3].getAttribute('aria-label')).toBe('reset-button');
   });
+
+  it('should accept tabIndex attribute', () => {
+    render(<Button label="X" tabIndex={1} />);
+
+    const button: any = screen.getByRole('button');
+
+    expect(button.getAttribute('tabindex')).toBe('1');
+  });
 });
