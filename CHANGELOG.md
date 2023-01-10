@@ -1,3 +1,34 @@
+## 0.6.0 (10/01/2023)
+
+<a name="0.6.0"></a>
+
+- [Radio - add extra prop](https://github.com/Capgemini/dcx-react-library/issues/313)
+- [Autocomplete - a11y enable keyboard keys](https://github.com/Capgemini/dcx-react-library/issues/320)
+- [Button - add value prop](https://github.com/Capgemini/dcx-react-library/issues/332)
+- [Button - default aria attribute](https://github.com/Capgemini/dcx-react-library/issues/334)
+- [FormSelect - add containerId prop](https://github.com/Capgemini/dcx-react-library/issues/335)
+- [MultiUpload - HTML output refactor](https://github.com/Capgemini/dcx-react-library/issues/352)
+- [Autocomplete - empty field on enter](https://github.com/Capgemini/dcx-react-library/issues/354)
+- [Autocomplete - remove prompt on page load](https://github.com/Capgemini/dcx-react-library/issues/355)
+- [Autocomplete - add props optionsId for each item in the list](https://github.com/Capgemini/dcx-react-library/issues/363)
+- [FormGroup - make onChange optional](https://github.com/Capgemini/dcx-react-library/issues/366) [same property apply to FormRadio and FormCheckbox]
+
+**Deprecated**
+The following component has been deprecated and removed from storybook. It will be removed in the next release
+
+- [FormGroup] (https://github.com/Capgemini/dcx-react-library/issues/353)
+
+**New components**
+Two new components has been created. In case you used the FormRadio component will be easy enough to rename it and remove the type property.
+
+- [FormRadio] (https://github.com/Capgemini/dcx-react-library/issues/353)
+- [FormCheckbox](https://github.com/Capgemini/dcx-react-library/issues/353)
+
+**Dependencies**
+
+- [remove external dependency from react-jss](https://github.com/Capgemini/dcx-react-library/issues/356)
+- [bumping versions](https://github.com/Capgemini/dcx-react-library/issues/341)
+
 ## 0.5.0 (1/09/2022)
 
 <a name="0.5.0"></a>
