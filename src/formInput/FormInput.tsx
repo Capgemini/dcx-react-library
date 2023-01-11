@@ -119,6 +119,10 @@ type FormInputProps = {
    * Specifies if that field needs to be filled or not
    */
   required?: boolean;
+  /**
+   * tab index value
+   */
+  tabIndex?: number;
 };
 
 export enum ErrorPosition {
@@ -155,6 +159,7 @@ export const FormInput = ({
   required,
   hint,
   inputDivProps = { style: { display: 'flex' } },
+  tabIndex = 0,
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
 
@@ -213,6 +218,7 @@ export const FormInput = ({
       className={inputClassName}
       aria-label={ariaLabel || name}
       aria-required={ariaRequired}
+      tabIndex={tabIndex}
       {...inputProps}
     />
   );

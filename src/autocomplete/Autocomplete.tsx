@@ -201,6 +201,10 @@ type autocompleteProps = {
     content?: JSX.Element | string;
     properties: React.HTMLAttributes<HTMLDivElement>;
   };
+  /**
+   * tab index value to focus on the input
+   */
+  tabIndex?: number;
 };
 
 export enum AutoCompleteErrorPosition {
@@ -256,6 +260,7 @@ export const Autocomplete = ({
   selectProps,
   prefix,
   suffix,
+  tabIndex = 0,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
@@ -404,6 +409,7 @@ export const Autocomplete = ({
           ...inputProps,
           ...(showPrompt && { 'aria-describedby': promptId }),
         }}
+        tabIndex={tabIndex}
       />
       {showPrompt && (
         <div className={promptClassName} id={promptId}>

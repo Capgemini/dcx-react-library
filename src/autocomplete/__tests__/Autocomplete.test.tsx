@@ -760,4 +760,18 @@ describe('Autocomplete', () => {
       expect(el.id).toBe('');
     });
   });
+
+  it('should have a 0 tabIndex value by default', () => {
+    render(<Autocomplete options={['daniele', 'isaac']} />);
+
+    const input: any = screen.getByRole('textbox');
+    expect(input.getAttribute('tabindex')).toBe('0');
+  });
+
+  it('should accept tabIndex attribute', () => {
+    render(<Autocomplete options={['daniele', 'isaac']} tabIndex={1} />);
+
+    const input: any = screen.getByRole('textbox');
+    expect(input.getAttribute('tabindex')).toBe('1');
+  });
 });

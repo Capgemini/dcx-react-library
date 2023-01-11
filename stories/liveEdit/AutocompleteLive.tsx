@@ -32,7 +32,6 @@ function AutocompleteDemo() {
       resultlLiClass=""
       resultNoOptionClass=""
       resultActiveClass=""
-      inputProps={{}}
       notFoundText="No fruit found"
       onSelected={handleSelected} 
       containerClassName=""
@@ -50,6 +49,7 @@ function AutocompleteDemo() {
       name=""
       inputProps={{}}
       selectProps={{}}
+      tabIndex={0}
     />
   )
 }

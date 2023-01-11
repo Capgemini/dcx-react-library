@@ -90,6 +90,24 @@ describe('MultiSelect', () => {
         'my-hint-class'
       );
     });
+
+    it('should have a 0 tabindex value by default', () => {
+      const options: MultiSelectOption[] = [];
+
+      render(<MultiSelect selectOptions={options} />);
+
+      const input = screen.getByRole('textbox');
+      expect(input.getAttribute('tabindex')).toBe('0');
+    });
+
+    it('should accept tabIndex attribute', () => {
+      const options: MultiSelectOption[] = [];
+
+      render(<MultiSelect selectOptions={options} tabIndex={1} />);
+
+      const input = screen.getByRole('textbox');
+      expect(input.getAttribute('tabindex')).toBe('1');
+    });
   });
 
   describe('when rendering the selected list', () => {
