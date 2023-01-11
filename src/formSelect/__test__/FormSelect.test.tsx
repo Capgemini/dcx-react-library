@@ -454,10 +454,22 @@ describe('FormSelect', () => {
   it('should read the containerProps', () => {
     render(
       <FormSelect
-        containerProps={{ 'data-testid': 'container-props', id: 4}}
+        containerProps={{ 'data-testid': 'container-props', id: 4 }}
       />
     );
     const container: any = screen.getByTestId('container-props');
     expect(container).toBeInTheDocument();
+  });
+
+  it('should have a 0 tabIndex value by default', () => {
+    const { container } = render(<FormSelect id="select" />);
+    const select: any = container.querySelector('#select');
+    expect(select.getAttribute('tabindex')).toBe('0');
+  });
+
+  it('should take tabIndex attribute', () => {
+    const { container } = render(<FormSelect id="select" tabIndex={1} />);
+    const select: any = container.querySelector('#select');
+    expect(select.getAttribute('tabindex')).toBe('1');
   });
 });

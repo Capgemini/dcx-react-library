@@ -107,7 +107,11 @@ export type FormSelectProps = {
   /**
    * provide an container props
    */
-   containerProps?: any;
+  containerProps?: any;
+  /**
+   * tab index value
+   */
+  tabIndex?: number;
 };
 
 export const FormSelect = ({
@@ -133,6 +137,7 @@ export const FormSelect = ({
   nullOption,
   containerProps,
   defaultValue = '',
+  tabIndex = 0,
 }: FormSelectProps) => {
   let initialValue: string | number = '';
 
@@ -198,6 +203,7 @@ export const FormSelect = ({
         aria-label={ariaLabel || Roles.list}
         onChange={handleChange}
         style={style}
+        tabIndex={tabIndex}
       >
         {nullOption && <Option value="" label={nullOption} />}
         {getOptions(options)}

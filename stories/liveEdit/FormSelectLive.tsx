@@ -57,6 +57,7 @@ function FormSelectDemo() {
       }}
       errorMessageId=""
       defaultValue=""
+      tabIndex={0}
     />
   );
 }
