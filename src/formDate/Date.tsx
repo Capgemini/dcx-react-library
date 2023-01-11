@@ -8,6 +8,7 @@ type DateProps = DateType & {
   disabled?: boolean;
   maxLength?: number;
   handleChange: (evt: React.FormEvent<HTMLInputElement>) => void;
+  tabIndex?: number;
 };
 
 export const DateComponent = ({
@@ -22,6 +23,7 @@ export const DateComponent = ({
   classNameInput,
   disabled,
   maxLength = 2,
+  tabIndex = 0,
 }: DateProps) => (
   <label
     style={{ display: 'flex', flexDirection: 'column' }}
@@ -41,6 +43,7 @@ export const DateComponent = ({
       inputMode="numeric"
       maxLength={maxLength}
       pattern="[0-9]*"
+      tabIndex={tabIndex}
     />
   </label>
 );

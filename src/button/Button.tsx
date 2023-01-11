@@ -45,7 +45,7 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    */
   isLoading?: boolean;
   /**
-   * a custom loding label
+   * a custom loading label
    */
   loadingLabel?: string;
   /**
