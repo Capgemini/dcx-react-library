@@ -23,24 +23,21 @@ function FormDateDemo() {
           classNameInput: "",
           classNameLabel: "",
           classNameSpan: "",
-          customLabel: <></>,
-          tabIndex: 0
+          customLabel: <></>
         }}
         monthProps={{
           label: "",
           classNameInput: "",
           classNameLabel: "",
           classNameSpan: "",
-          customLabel: <></>,
-          tabIndex: 0
+          customLabel: <></>
         }}
         dayProps={{
           label: "",
           classNameInput: "",
           classNameLabel: "",
           classNameSpan: "",
-          customLabel: <></>,
-          tabIndex: 0
+          customLabel: <></>
         }}
         displayError={false}
         errorMessage=""
