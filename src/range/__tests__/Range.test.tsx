@@ -138,4 +138,18 @@ describe('Range', () => {
     fireEvent.click(screen.getByTestId('max-test'));
     expect(handleChange).not.toHaveBeenCalled();
   });
+
+  it('should have a 0 tabIndex value by default', () => {
+    render(<Range min={0} max={100} value={50} />);
+
+    const slider = screen.getByRole('slider');
+    expect(slider.getAttribute('tabindex')).toBe('0');
+  });
+
+  it('should accept tabIndex attribute', () => {
+    render(<Range min={0} max={100} value={50} tabIndex={1} />);
+
+    const slider = screen.getByRole('slider');
+    expect(slider.getAttribute('tabindex')).toBe('1');
+  });
 });
