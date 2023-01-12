@@ -254,6 +254,7 @@ function TableDemo() {
             'data-testId': 'Hydrogen',
              className: 'errorRow',
           }]}
+        tabIndex={0}
       />
     </div>
   );
