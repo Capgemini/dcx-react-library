@@ -17,6 +17,10 @@
 
 The following component has been deprecated and removed from storybook. It will be removed in the next release
 
+- [FormRadio component](https://github.com/Capgemini/dcx-react-library/issues/353)
+
+**Removed**
+
 - [FormGroup component](https://github.com/Capgemini/dcx-react-library/issues/353)
 
 **New components**
