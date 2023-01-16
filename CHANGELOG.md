@@ -27,8 +27,8 @@ The following component has been deprecated and removed from storybook. It will 
 
 Two new components has been created. In case you used the FormRadio component will be easy enough to rename it and remove the type property.
 
-- [FormRadio component](https://github.com/Capgemini/dcx-react-library/issues/353)
-- [FormCheckbox component](https://github.com/Capgemini/dcx-react-library/issues/353)
+- [RadioGroup component](https://github.com/Capgemini/dcx-react-library/issues/353)
+- [CheckboxGroup component](https://github.com/Capgemini/dcx-react-library/issues/353)
 
 **Dependencies**
 
