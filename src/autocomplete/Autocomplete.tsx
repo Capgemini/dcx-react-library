@@ -377,11 +377,12 @@ export const Autocomplete = ({
         return;
       }
       setActiveOption(activeOption + 1);
+    } else if (evt.code === 'Escape') {
+      setShowOptions(false);
     }
   };
 
   const onBlur = () => {
-    setShowOptions(false);
     setShowPrompt(false);
   };
 
