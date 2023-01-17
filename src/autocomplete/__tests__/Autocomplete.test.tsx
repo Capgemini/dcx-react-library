@@ -519,7 +519,7 @@ describe('Autocomplete', () => {
     expect(formSelect.name).toBe('selectName');
   });
 
-  it('should hide the results list if losing focus', async () => {
+  it('should hide the results list if pressing the Escape key', async () => {
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
 
     const user = userEvent.setup();
@@ -538,9 +538,7 @@ describe('Autocomplete', () => {
     resultList = screen.queryByRole('list');
     expect(resultList).not.toBeNull();
 
-    act(() => {
-      fireEvent.blur(input);
-    });
+    fireEvent.keyDown(input, { code: 'Escape' });
 
     resultList = screen.queryByRole('list');
     expect(resultList).toBe(null);
