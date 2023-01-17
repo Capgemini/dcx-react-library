@@ -9,7 +9,6 @@ export type DateType = {
   classNameLabel?: string;
   classNameSpan?: string;
   customLabel?: JSX.Element;
-  tabIndex?: number;
 };
 
 type ErrorPosition = 'top' | 'bottom';
@@ -52,8 +51,6 @@ type FormDateProps = {
    * classNameSpan?: string;
    * // if you want to pass a custom Label (i.e. an h1 etc)
    * customLabel?: JSX.Element;
-   * // if you want to pass tab index for the input
-   * tabIndex?: number;
    */
   yearProps?: DateType;
   /**
@@ -68,8 +65,6 @@ type FormDateProps = {
    * classNameSpan?: string;
    * // if you want to pass a custom Label (i.e. an h1 etc)
    * customLabel?: JSX.Element;
-   * // if you want to pass tab index for the input
-   * tabIndex?: number;
    */
   monthProps?: DateType;
   /**
@@ -84,8 +79,6 @@ type FormDateProps = {
    * classNameSpan?: string;
    * // if you want to pass a custom Label (i.e. an h1 etc)
    * customLabel?: JSX.Element;
-   * // if you want to pass tab index for the input
-   * tabIndex?: number;
    */
   dayProps?: DateType;
 
@@ -224,7 +217,6 @@ export const FormDate = ({
             label={yearProps?.label}
             classNameInput={[yearProps?.classNameInput, inputClass].join(' ')}
             disabled={disabled}
-            tabIndex={yearProps?.tabIndex}
           />
         );
       case 'm':
@@ -241,7 +233,6 @@ export const FormDate = ({
             label={monthProps?.label}
             classNameInput={[monthProps?.classNameInput, inputClass].join(' ')}
             disabled={disabled}
-            tabIndex={monthProps?.tabIndex}
           />
         );
       case 'd':
@@ -258,7 +249,6 @@ export const FormDate = ({
             label={dayProps?.label}
             classNameInput={[dayProps?.classNameInput, inputClass].join(' ')}
             disabled={disabled}
-            tabIndex={dayProps?.tabIndex}
           />
         );
       default:

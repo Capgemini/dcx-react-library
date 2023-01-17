@@ -153,32 +153,4 @@ describe('CopyToClipboard', () => {
     const copiedValue = screen.getByTestId('copied');
     expect(copiedValue.innerHTML).toBe('helloWorld');
   });
-
-  it('should have 0 tabIndex value by default', () => {
-    const onCopyHandler = jest.fn();
-
-    render(
-      <CopyToClipboard onCopy={onCopyHandler}>
-        <div>custom</div>
-      </CopyToClipboard>
-    );
-
-    const button: any = screen.getByRole('button');
-
-    expect(button.getAttribute('tabindex')).toBe('0');
-  });
-
-  it('should accept tabIndex attribute', () => {
-    const onCopyHandler = jest.fn();
-
-    render(
-      <CopyToClipboard tabIndex={1} onCopy={onCopyHandler}>
-        <div>custom</div>
-      </CopyToClipboard>
-    );
-
-    const button: any = screen.getByRole('button');
-
-    expect(button.getAttribute('tabindex')).toBe('1');
-  });
 });

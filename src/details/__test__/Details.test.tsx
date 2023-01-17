@@ -159,32 +159,4 @@ describe('Details', () => {
     );
     expect(container.querySelector('.details-text-class-name.open')).toBeNull();
   });
-
-  it('should have 0 tabIndex value by default', () => {
-    const { container } = render(
-      <Details summary="my summary" summaryClassName="summary-class-name">
-        my details
-      </Details>
-    );
-
-    const summary: any = container.querySelector('.summary-class-name');
-
-    expect(summary.getAttribute('tabindex')).toBe('0');
-  });
-
-  it('should accept tabIndex attribute', () => {
-    const { container } = render(
-      <Details
-        summary="my summary"
-        summaryClassName="summary-class-name"
-        tabIndex={1}
-      >
-        my details
-      </Details>
-    );
-
-    const summary: any = container.querySelector('.summary-class-name');
-
-    expect(summary.getAttribute('tabindex')).toBe('1');
-  });
 });
