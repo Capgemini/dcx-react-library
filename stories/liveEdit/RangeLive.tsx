@@ -1,8 +1,7 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { Range } from '../../src/range/Range';
-import {faVolumeDown, faVolumeUp} from "@fortawesome/free-solid-svg-icons";
-
+import { faVolumeDown, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 
 const RangeDemo = `
 function RangeDemo() {
@@ -35,6 +34,7 @@ function RangeDemo() {
                    </div>
 
                }
+      tabIndex={0}
     />
   );
 }

@@ -51,6 +51,10 @@ type RangeProps = {
    * allow to enable displaying a tooltip on the range slider
    */
   showTooltip?: boolean;
+  /**
+   * tab index value
+   */
+  tabIndex?: number;
 };
 
 export const Range = ({
@@ -66,6 +70,7 @@ export const Range = ({
   onChangeMin,
   inputClass,
   showTooltip = false,
+  tabIndex = 0,
   ...props
 }: RangeProps) => {
   const [defaultValue, setDefaultValue] = React.useState<number>(value);
@@ -119,6 +124,7 @@ export const Range = ({
         aria-label={ariaLabel || 'input-slider'}
         value-tooltip={defaultValue}
         style={styling}
+        tabIndex={tabIndex}
         {...props}
       />
 
