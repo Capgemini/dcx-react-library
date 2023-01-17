@@ -44,7 +44,28 @@ describe('Progress', () => {
       <Progress label="Progress" max={100} className="my-class" value={80} />
     );
 
-    expect(container.querySelector('div')?.className).toBe('my-class');
-    expect(container.querySelector('div')?.className).toBe('my-class');
+    expect(container.querySelector('progress>div')?.className).toBe('my-class');
+  });
+
+  it('should have 0 tabIndex value by default', () => {
+    render(<Progress id="progress-id" label="Progress" max={100} value={80} />);
+
+    const container = screen.getByTestId('progress-id');
+    expect(container.getAttribute('tabindex')).toBe('0');
+  });
+
+  it('should accept tabIndex attribute', () => {
+    render(
+      <Progress
+        id="progress-id"
+        label="Progress"
+        max={100}
+        value={80}
+        tabIndex={1}
+      />
+    );
+
+    const container = screen.getByTestId('progress-id');
+    expect(container.getAttribute('tabindex')).toBe('1');
   });
 });
