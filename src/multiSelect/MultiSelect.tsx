@@ -91,6 +91,10 @@ export type MultiSelectProps = {
    * Multi Select onSelect
    */
   onSelect?: (value: string) => void;
+  /**
+   * tab index value to focus on input field
+   */
+  tabIndex?: number;
 };
 
 function multiSelectReducer(
@@ -156,6 +160,7 @@ export const MultiSelect = ({
   onRemove,
   onRemoveAll,
   onSelect,
+  tabIndex = 0,
 }: MultiSelectProps) => {
   const [state, dispatch] = useReducer(multiSelectReducer, {
     selected: selectOptions
@@ -278,6 +283,7 @@ export const MultiSelect = ({
           onRemove={onRemoveHandler}
           onRemoveAll={onRemoveAllHander}
           onFocus={onFocusHandler}
+          tabIndex={tabIndex}
         />
       </div>
     </div>

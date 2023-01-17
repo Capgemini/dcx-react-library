@@ -436,4 +436,18 @@ describe('FormInput', () => {
     const input = screen.getByRole('textbox');
     expect(input.getAttribute('aria-label')).toBe('password');
   });
+
+  it('should have a 0 tabIndex value by default', () => {
+    render(<FormInput name="password" type="text" value="test" />);
+
+    const input: any = screen.getByRole('textbox');
+    expect(input.getAttribute('tabindex')).toBe('0');
+  });
+
+  it('should accept tabIndex attribute', () => {
+    render(<FormInput name="password" type="text" value="test" tabIndex={1} />);
+
+    const input: any = screen.getByRole('textbox');
+    expect(input.getAttribute('tabindex')).toBe('1');
+  });
 });
