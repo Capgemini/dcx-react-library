@@ -137,5 +137,19 @@ Thanks goes to these wonderful people
         <sub><b>Sri Viswanathan</b></sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/cg-julian-taylor">
+        <img src="https://avatars.githubusercontent.com/u/107050226?v=4" width="100px;" alt=julian-taylor"/>
+        <br />
+        <sub><b>Julian Taylor</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SergioBanderaGarcia">
+        <img src="https://avatars.githubusercontent.com/u/113599747?v=4" width="100px;" alt=sergio-bandera-garcia"/>
+        <br />
+        <sub><b>Sergio Bandera Garcia</b></sub>
+      </a>
+    </td>
   </tr>
 </table>

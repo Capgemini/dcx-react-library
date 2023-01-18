@@ -111,4 +111,37 @@ describe('ResultList', () => {
     const el: any = container.querySelector('li');
     expect(el.innerHTML).toBe('nada de nada');
   });
+
+  it('should contain the dynamic id for every item in the list if listId is present', () => {
+    const handleClick = jest.fn();
+    const { container } = render(
+      <ResultList
+        list={['firstItem']}
+        listId="dcx-list-id"
+        userInput="d"
+        activeOption={1}
+        onClick={handleClick}
+        noOptionClass="noOptionClass"
+        noElFoundText="nada de nada"
+      />
+    );
+    const el: any = container.querySelector('li');
+    expect(el.id).toBe('dcx-list-id--1');
+  });
+
+  it('should not contain an id item if listId is not specified', () => {
+    const handleClick = jest.fn();
+    const { container } = render(
+      <ResultList
+        list={['firstItem']}
+        userInput="d"
+        activeOption={1}
+        onClick={handleClick}
+        noOptionClass="noOptionClass"
+        noElFoundText="nada de nada"
+      />
+    );
+    const el: any = container.querySelector('li');
+    expect(el.id).toBe('');
+  });
 });

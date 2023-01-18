@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormRadio, FormGroup } from '@capgeminiuk/dcx-react-library';
+import { FormRadio, RadioGroup } from '@capgeminiuk/dcx-react-library';
 
 export const FormRadioDemo = () => {
   const [selected, setSelected] = React.useState('single-2');
@@ -153,10 +153,9 @@ export const FormRadioDemo = () => {
         }}
       />
       <h4 id="basic-radio-group-tag">Basic Group Radios</h4>
-      <FormGroup
+      <RadioGroup
         ariaDescribedBy="basic-radio-group-tag"
         name="group3"
-        type="radio"
         items={[
           {
             id: 'radio-1',
@@ -212,10 +211,9 @@ export const FormRadioDemo = () => {
       <h4 id="basic-radio-group-with-string-tag">
         Basic Group Radios using string
       </h4>
-      <FormGroup
+      <RadioGroup
         ariaDescribedBy="basic-radio-group-tag"
         name="group4"
-        type="radio"
         items={['Option 1', 'Option 2', 'Option 3']}
         //@ts-ignore
         onChange={handleGroupConditionalChange}

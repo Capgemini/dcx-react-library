@@ -1,19 +1,18 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import { FormGroup } from '../../src/formGroup/FormGroup';
+import { CheckboxGroup } from '../../src/checkboxGroup/CheckboxGroup';
 import './style.css';
 
-const FormGroupDemo = `
-function FormGroupDemo() {
+const CheckboxGroupDemo = `
+function CheckboxGroupDemo() {
   const [value, setValue] = React.useState('');
   const handleChange = (event, conditional) => {
     setValue(event.currentTarget.value);
   }
   
   return (
-    <FormGroup
+    <CheckboxGroup
     name="name-of-group"
-    type="radio"
     items={[
       {
         label: 'item-label',
@@ -98,10 +97,10 @@ function FormGroupDemo() {
 }
 `.trim();
 
-const FormGroupLive = () => {
-  const scope = { FormGroup };
+const CheckboxGroupLive = () => {
+  const scope = { CheckboxGroup };
   return (
-    <LiveProvider code={FormGroupDemo} scope={scope}>
+    <LiveProvider code={CheckboxGroupDemo} scope={scope}>
       <div className="container">
         <LiveEditor className="liveEditor" aria-label="editor" />
         <LivePreview className="livePreview" aria-label="preview" />
@@ -111,4 +110,4 @@ const FormGroupLive = () => {
   );
 };
 
-export default FormGroupLive;
+export default CheckboxGroupLive;

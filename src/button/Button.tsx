@@ -45,7 +45,7 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    */
   isLoading?: boolean;
   /**
-   * a custom loding label
+   * a custom loading label
    */
   loadingLabel?: string;
   /**
@@ -64,6 +64,10 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    * allow the user to define the buttons name
    */
   name?: string;
+  /**
+   * allows to use a value in the button
+   */
+  value?: string | number;
 };
 
 export const Button = ({
@@ -81,6 +85,7 @@ export const Button = ({
   customLoadingPostImage,
   formAction,
   name,
+  value,
   ...props
 }: ButtonProps) => {
   const [disable, setDisable] = React.useState<boolean>(disabled);
@@ -127,9 +132,10 @@ export const Button = ({
       onClick={handleClick}
       disabled={disable}
       type={type}
-      aria-label={ariaLabel}
+      {...(label ? {} : { 'aria-label': ariaLabel })}
       formAction={formAction}
       name={name}
+      value={value}
       {...props}
     >
       {prefix}

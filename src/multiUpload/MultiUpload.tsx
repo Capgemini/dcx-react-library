@@ -99,18 +99,18 @@ export const MultiUpload = ({
     <div className={className}>
       <label {...labelProperties} aria-controls={id} htmlFor={id}>
         {label && <span>{label}</span>}
-        {hint && <Hint {...hint} />}
-        {error && <ErrorMessage {...error} />}
-        <input
-          id={id}
-          type="file"
-          name={name}
-          accept={acceptedFormats}
-          multiple={multiple}
-          onChange={onChangeHandler}
-          {...inputProperties}
-        />
       </label>
+      {hint && <Hint {...hint} />}
+      {error && <ErrorMessage {...error} />}
+      <input
+        id={id}
+        type="file"
+        name={name}
+        accept={acceptedFormats}
+        multiple={multiple}
+        onChange={onChangeHandler}
+        {...inputProperties}
+      />
       {fileData && renderFileData()}
     </div>
   );
