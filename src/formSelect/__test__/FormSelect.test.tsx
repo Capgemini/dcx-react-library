@@ -442,7 +442,7 @@ describe('FormSelect', () => {
       />
     );
     const errorMessage = screen.getByText('errorMessage');
-    expect(errorMessage.className).toBe('errorMessageClass');
+    expect(errorMessage.className).toBe('dcx-error-message errorMessageClass');
   });
 
   it('should select the default value if specified', () => {
@@ -471,5 +471,96 @@ describe('FormSelect', () => {
     const { container } = render(<FormSelect id="select" tabIndex={1} />);
     const select: any = container.querySelector('#select');
     expect(select.getAttribute('tabindex')).toBe('1');
+  });
+
+  it('should have the basic dcx-formselect class name', () => {
+    render(
+      <FormSelect
+        id="select"
+        containerProps={{ 'data-testid': 'containerId' }}
+      />
+    );
+    const containerEl = screen.getByTestId('containerId');
+    expect(containerEl.className).toBe('dcx-formselect');
+  });
+
+  it('should have the basic dcx-formselect class name and the containerClassName provided by the user', () => {
+    render(
+      <FormSelect
+        id="select"
+        containerProps={{ 'data-testid': 'containerId' }}
+        containerClassName="containerClassName"
+      />
+    );
+    const containerEl = screen.getByTestId('containerId');
+    expect(containerEl.className).toBe('dcx-formselect containerClassName');
+  });
+
+  it('should have, in case of error, the basic dcx-formselect class name and the basic dcx-formselect--error', () => {
+    render(
+      <FormSelect
+        id="myId"
+        containerProps={{ 'data-testid': 'containerId' }}
+        errorMessage="errorMessage"
+        errorMessageClassName="errorMessageClass"
+      />
+    );
+    const containerEl = screen.getByTestId('containerId');
+    expect(containerEl.className).toBe('dcx-formselect dcx-formselect--error');
+  });
+
+  it('should have, in case of error and user provided className, the basic dcx-formselect class name and the basic dcx-formselect--error and the user defined className', () => {
+    render(
+      <FormSelect
+        id="myId"
+        containerProps={{ 'data-testid': 'containerId' }}
+        containerClassName="containerClass"
+        errorMessage="errorMessage"
+        errorMessageClassName="errorMessageClass"
+      />
+    );
+    const containerEl = screen.getByTestId('containerId');
+    expect(containerEl.className).toBe(
+      'dcx-formselect containerClass dcx-formselect--error'
+    );
+  });
+
+  it('should add the className dcx-floating-label and the basic dcx-formselect class name if the variant is passed', () => {
+    render(
+      <FormSelect
+        id="select"
+        containerProps={{ 'data-testid': 'containerId' }}
+        variant="floating"
+      />
+    );
+    const containerEl = screen.getByTestId('containerId');
+    expect(containerEl.className).toBe('dcx-formselect dcx-floating-label');
+  });
+
+  it('should add dcx-formselect--filled class if theres a value selected', () => {
+    render(
+      <FormSelect
+        options={['daniele', 'isaac']}
+        defaultValue="isaac"
+        containerProps={{ 'data-testid': 'containerId' }}
+      />
+    );
+    const containerEl = screen.getByTestId('containerId');
+    expect(containerEl.className).toBe('dcx-formselect dcx-formselect--filled');
+  });
+
+  it('should add dcx-formselect--filled class and a user base class if theres a value selected', () => {
+    render(
+      <FormSelect
+        options={['daniele', 'isaac']}
+        defaultValue="isaac"
+        containerProps={{ 'data-testid': 'containerId' }}
+        containerFilledClassName="containerFilledClassName"
+      />
+    );
+    const containerEl = screen.getByTestId('containerId');
+    expect(containerEl.className).toBe(
+      'dcx-formselect dcx-formselect--filled containerFilledClassName'
+    );
   });
 });

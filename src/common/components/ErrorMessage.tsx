@@ -1,4 +1,5 @@
 import React from 'react';
+import { classNames } from '../utils';
 import { ErrorMessageProps } from './commonTypes';
 
 export const ErrorMessage = ({
@@ -11,7 +12,7 @@ export const ErrorMessage = ({
     let errorElement = <></>;
     if (text && typeof text === 'string') {
       errorElement = (
-        <span id={id} className={['dcx-error-message', className].join(' ')}>
+        <span id={id} className={classNames(['dcx-error-message', className])}>
           {visuallyHiddenText && (
             <span className={visuallyHiddenText.className}>
               {visuallyHiddenText.text}

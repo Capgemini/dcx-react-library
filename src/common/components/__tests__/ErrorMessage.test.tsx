@@ -10,11 +10,19 @@ describe('ErrorMessage', () => {
     expect(screen.getByText('We have a problem')).toBeInTheDocument();
   });
 
-  it('will render an error message with a className', () => {
+  it('will render an error message with a className and the default dcx-erro-message className', () => {
     render(<ErrorMessage text="We have a problem" className="my-class-name" />);
 
     expect(screen.getByText('We have a problem').getAttribute('class')).toBe(
-      'my-class-name'
+      'dcx-error-message my-class-name'
+    );
+  });
+
+  it('will render an error message with only the default dcx-error-message className if no className is passed', () => {
+    render(<ErrorMessage text="We have a problem" />);
+
+    expect(screen.getByText('We have a problem').getAttribute('class')).toBe(
+      'dcx-error-message'
     );
   });
 

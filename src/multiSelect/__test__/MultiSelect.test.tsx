@@ -87,7 +87,7 @@ describe('MultiSelect', () => {
 
       expect(screen.getByText('hint text')).toBeInTheDocument();
       expect(screen.getByText('hint text').getAttribute('class')).toBe(
-        'my-hint-class'
+        'dcx-hint my-hint-class'
       );
     });
 

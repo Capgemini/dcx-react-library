@@ -6,6 +6,7 @@ import {
   Option,
   Roles,
   Label,
+  conditionalClassNames,
 } from '../common';
 import {
   ErrorMessageProps,
@@ -109,7 +110,7 @@ export type FormSelectProps = {
    */
   value?: number | string;
   /**
-   *
+   * if a variant floating is specified it will add a class 'dcx-floating-label' for supporting a floating label feature
    */
   variant?: 'floating' | 'normal';
   /**
@@ -191,26 +192,23 @@ export const FormSelect = ({
     setSelectValue(event.currentTarget.value);
     if (onChange) onChange(event);
   };
-  const _containerErrorClassName =
-    errorMessage &&
-    ['dcx-formselect--error', containerErrorClassName].join(' ');
-  const _containerFilledClassName =
-    selectValue &&
-    selectValue !== nullOption &&
-    ['dcx-formselect--filled', containerFilledClassName].join(' ');
-  const _containerVariantClassName =
-    variant === 'floating' && 'dcx-floating-label';
+
+  const containerClasses = conditionalClassNames([
+    'dcx-formselect',
+    containerClassName,
+    {
+      [`dcx-formselect--error ${containerErrorClassName}`]:
+        errorMessage !== undefined,
+    },
+    { 'dcx-floating-label': variant === 'floating' },
+    {
+      [`dcx-formselect--filled ${containerFilledClassName}`]:
+        selectValue && selectValue !== nullOption,
+    },
+  ]);
+
   return (
-    <div
-      className={[
-        'dcx-formselect',
-        containerClassName,
-        _containerErrorClassName,
-        _containerFilledClassName,
-        _containerVariantClassName,
-      ].join(' ')}
-      {...containerProps}
-    >
+    <div className={containerClasses} {...containerProps}>
       <Label
         label={label}
         labelProperties={labelProps}
