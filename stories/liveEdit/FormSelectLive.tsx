@@ -58,6 +58,9 @@ function FormSelectDemo() {
       errorMessageId=""
       defaultValue=""
       tabIndex={0}
+      containerErrorClassName="containerErrorClassName"
+      containerFilledClassName="containerFilledClassName"
+      variant="floating"
     />
   );
 }
