@@ -64,6 +64,8 @@
     "@storybook/addon-knobs": "6.4.0",
     "@storybook/addon-links": "^6.5.15",
     "@storybook/addons": "^6.5.15",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
     "@storybook/preset-typescript": "3.0.0",
     "@storybook/react": "^6.5.15",
     "@storybook/theming": "^6.5.15",
