@@ -199,9 +199,7 @@ export const FormSelect = ({
     {
       [`dcx-formselect--error ${containerErrorClassName}`]:
         errorMessage !== undefined,
-    },
-    { 'dcx-floating-label': variant === 'floating' },
-    {
+      'dcx-floating-label': variant === 'floating',
       [`dcx-formselect--filled ${containerFilledClassName}`]:
         selectValue && selectValue !== nullOption,
     },

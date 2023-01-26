@@ -35,7 +35,7 @@ describe('ClassNames', () => {
     expect(conditionalClassNames(['a', { 'c d': undefined }, 'd'])).toBe('a d');
   });
 
-  it.only('should remove the undefined classNames', () => {
+  it('should remove the undefined classNames', () => {
     expect(conditionalClassNames(['a', { 'c undefined': true }, 'd'])).toBe(
       'a c d'
     );
@@ -47,5 +47,27 @@ describe('ClassNames', () => {
 
   it('should add conditional classNames if the value is true', () => {
     expect(conditionalClassNames(['a', { 'c d': true }, 'b'])).toBe('a c d b');
+  });
+
+  it('should loop through the object and concatenate all the values', () => {
+    expect(
+      conditionalClassNames(['a', { 'c d': true, 'e f': true }, 'b'])
+    ).toBe('a c d e f b');
+  });
+
+  it('should loop through the object and concatenate all the values and filter undefined and null', () => {
+    expect(
+      conditionalClassNames(['a', { 'c undefined': true, 'e null': true }, 'b'])
+    ).toBe('a c e b');
+  });
+
+  it.only('should loop through the object and concatenate all the values and filter undefined and null and the falsy', () => {
+    expect(
+      conditionalClassNames([
+        'a',
+        { 'c undefined': false, 'e null': true },
+        'b',
+      ])
+    ).toBe('a e b');
   });
 });
