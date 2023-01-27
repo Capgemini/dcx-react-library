@@ -6,6 +6,7 @@ import {
   Option,
   Roles,
   Label,
+  conditionalClassNames,
 } from '../common';
 import {
   ErrorMessageProps,
@@ -28,6 +29,14 @@ export type FormSelectProps = {
    * specify a custom class name to be applied to the full container
    */
   containerClassName?: string;
+  /**
+   * specify a custom class name to be applied to the full container when there's an error
+   */
+  containerErrorClassName?: string;
+  /**
+   * specify a custom class name to be applied to the full container when the select has a value selected
+   */
+  containerFilledClassName?: string;
   /**
    * select options. The options can be:
    * an array of strings,
@@ -101,6 +110,10 @@ export type FormSelectProps = {
    */
   value?: number | string;
   /**
+   * if a variant floating is specified it will add a class 'dcx-floating-label' for supporting a floating label feature
+   */
+  variant?: 'floating' | 'normal';
+  /**
    * will select the default value
    */
   defaultValue?: string;
@@ -118,6 +131,8 @@ export const FormSelect = ({
   selectClassName,
   labelClassName,
   containerClassName,
+  containerErrorClassName,
+  containerFilledClassName,
   name,
   optionGroups,
   options = [],
@@ -138,6 +153,7 @@ export const FormSelect = ({
   containerProps,
   defaultValue = '',
   tabIndex = 0,
+  variant = 'normal',
 }: FormSelectProps) => {
   let initialValue: string | number = '';
 
@@ -177,8 +193,20 @@ export const FormSelect = ({
     if (onChange) onChange(event);
   };
 
+  const containerClasses = conditionalClassNames([
+    'dcx-formselect',
+    containerClassName,
+    {
+      [`dcx-formselect--error ${containerErrorClassName}`]:
+        errorMessage !== undefined,
+      'dcx-floating-label': variant === 'floating',
+      [`dcx-formselect--filled ${containerFilledClassName}`]:
+        selectValue && selectValue !== nullOption,
+    },
+  ]);
+
   return (
-    <div className={containerClassName} {...containerProps}>
+    <div className={containerClasses} {...containerProps}>
       <Label
         label={label}
         labelProperties={labelProps}

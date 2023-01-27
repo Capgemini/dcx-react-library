@@ -33,7 +33,43 @@ describe('Hint', () => {
     const { container } = render(
       <Hint id="my-id" text="This is a hint text" useLabel={true} />
     );
-
     expect(container.querySelector('label#my-id')).toBeTruthy();
+  });
+
+  it('will render with a default className dcx-hint using a label tag', () => {
+    const { container } = render(
+      <Hint id="my-id" text="This is a hint text" useLabel={true} />
+    );
+    expect(container.querySelector('label#my-id')?.className).toBe('dcx-hint');
+  });
+
+  it('will render with a default className dcx-hint', () => {
+    const { container } = render(
+      <Hint id="my-id" text="This is a hint text" />
+    );
+    expect(container.querySelector('div#my-id')?.className).toBe('dcx-hint');
+  });
+
+  it('will render with a default className dcx-hint and a user based className using a label tag', () => {
+    const { container } = render(
+      <Hint
+        id="my-id"
+        text="This is a hint text"
+        useLabel={true}
+        className="hintContainer"
+      />
+    );
+    expect(container.querySelector('label#my-id')?.className).toBe(
+      'dcx-hint hintContainer'
+    );
+  });
+
+  it('will render with a default className and a user based className dcx-hint', () => {
+    const { container } = render(
+      <Hint id="my-id" text="This is a hint text" className="hintContainer" />
+    );
+    expect(container.querySelector('div#my-id')?.className).toBe(
+      'dcx-hint hintContainer'
+    );
   });
 });

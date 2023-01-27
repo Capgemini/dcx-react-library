@@ -121,7 +121,7 @@ describe('Autocomplete', () => {
       />
     );
     const label: any = screen.getByText('errorMessageText');
-    expect(label.className).toBe('errorMessageClass');
+    expect(label.className).toBe('dcx-error-message errorMessageClass');
     expect(label.id).toBe('errorId');
     expect(label).toBeInTheDocument();
   });
@@ -139,7 +139,7 @@ describe('Autocomplete', () => {
       />
     );
     const label: any = screen.getByText('errorMessageText');
-    expect(label.className).toBe('errorMessageClass');
+    expect(label.className).toBe('dcx-error-message errorMessageClass');
     expect(label.id).toBe('errorId');
     expect(label).toBeInTheDocument();
   });
@@ -157,7 +157,7 @@ describe('Autocomplete', () => {
       />
     );
     const label: any = screen.getByText('errorMessageText');
-    expect(label.className).toBe('errorMessageClass');
+    expect(label.className).toBe('dcx-error-message errorMessageClass');
     expect(label.id).toBe('errorId');
     expect(label).toBeInTheDocument();
   });
