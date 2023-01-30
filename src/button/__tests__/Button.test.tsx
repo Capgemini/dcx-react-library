@@ -1,10 +1,15 @@
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Button } from '../Button';
 import { BUTTON_TYPE } from '..';
 import userEvent from '@testing-library/user-event';
-import { act } from '@testing-library/react-hooks';
 
 const DummyLoadingButton = ({ loadingLabel }: any) => {
   const [isLoading, setIsLoading] = React.useState(false);
