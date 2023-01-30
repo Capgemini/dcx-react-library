@@ -129,6 +129,7 @@ export enum ErrorPosition {
   BEFORE_LABEL = 'before-label',
   BOTTOM = 'bottom',
   AFTER_LABEL = 'after-label',
+  AFTER_HINT = 'after-hint',
 }
 
 export const FormInput = ({
@@ -242,6 +243,9 @@ export const FormInput = ({
         <ErrorMessage />
       )}
       {hint && hint.position === 'above' && <Hint {...hint} />}
+      {errorPosition && errorPosition === ErrorPosition.AFTER_HINT && (
+        <ErrorMessage />
+      )}
       {prefix || suffix ? (
         <div {...inputDivProps}>
           {prefix && !isEmpty(prefix) && (

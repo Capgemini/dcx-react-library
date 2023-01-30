@@ -417,6 +417,21 @@ describe('FormInput', () => {
     expect(hint.innerHTML).toBe('my hint');
   });
 
+  it('should display the formInput error message after the hint', async () => {
+    const { container } = render(
+      <DummyStaticComponent
+        pos={ErrorPosition.AFTER_HINT}
+        hint={{
+          id: 'my-hint',
+          text: 'my hint',
+        }}
+      />
+    );
+
+    const error: any = container.querySelector('[role=error]');
+    expect(error.innerHTML).toContain('static error message');
+  });
+
   it('should display the aria-label name if the aria-label attribute is not passed', () => {
     const handleChange = jest.fn();
     render(
