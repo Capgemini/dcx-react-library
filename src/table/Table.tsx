@@ -188,7 +188,7 @@ export const Table = ({
   };
 
   return (
-    <div tabIndex={tabIndex} data-testId="table-container">
+    <div tabIndex={tabIndex} data-testid="table-container">
       {withSearch && (
         <input
           onChange={(e: any) => setSearchVal(e.target.value)}

@@ -40,7 +40,7 @@ export const Progress = ({
   value,
   tabIndex = 0,
 }: ProgressProps) => (
-  <div tabIndex={tabIndex} data-testId={id}>
+  <div tabIndex={tabIndex} data-testid={id}>
     <label className={labelClassName} htmlFor={id}>{`${label}: `}</label>
     <progress id={id} className={className} max={max} value={value}>
       <div id={id} className={className}>
