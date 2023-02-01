@@ -1,6 +1,12 @@
 import React from 'react';
 import { isEmpty } from 'lodash';
-import { useValidationOnChange, Roles, Label, Hint } from '../common';
+import {
+  useValidationOnChange,
+  Roles,
+  Label,
+  Hint,
+  conditionalClassNames,
+} from '../common';
 import { HintProps } from '../common/components/commonTypes';
 
 type FormInputProps = {
@@ -226,9 +232,10 @@ export const FormInput = ({
 
   return (
     <div
-      className={`${containerClassName} ${
-        isStaticOrDynamicError() ? containerClassNameError : ''
-      }`.trim()}
+      className={conditionalClassNames([
+        containerClassName,
+        { [`${containerClassNameError}`]: isStaticOrDynamicError() },
+      ])}
     >
       {errorPosition && errorPosition === ErrorPosition.BEFORE_LABEL && (
         <ErrorMessage />

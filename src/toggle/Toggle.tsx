@@ -1,4 +1,5 @@
 import React from 'react';
+import { classNames, conditionalClassNames } from '../common';
 import style from './toggle.module.css';
 
 interface ToggleProps {
@@ -70,10 +71,13 @@ export const Toggle = ({
         cursor: disabled ? 'not-allowed' : 'pointer',
         filter: disabled ? 'brightness(0.9)' : 'unset',
       }}
-      className={`${style.switch} ${className || ''}`}
+      className={classNames([style.switch, className])}
     >
       <div
-        className={`${style.switchBg} ${checked ? style.isChecked : ''}`}
+        className={conditionalClassNames([
+          style.switchBg,
+          { [`${style.isChecked}`]: checked },
+        ])}
         style={{
           backgroundColor: checked ? onColor : offColor,
           borderRadius: borderRadius || '34px',
@@ -101,7 +105,10 @@ export const Toggle = ({
       <div
         id="dragswitch-handle"
         title="dragswitch-handle"
-        className={`${style.switchHandle} ${checked ? style.isChecked : ''}`}
+        className={conditionalClassNames([
+          style.switchHandle,
+          { [`${style.isChecked}`]: checked },
+        ])}
         style={{
           WebkitTransition: 'transform .2s',
           MozTransition: 'transform .2s',

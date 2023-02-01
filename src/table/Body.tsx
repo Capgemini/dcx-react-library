@@ -1,6 +1,7 @@
 import React from 'react';
 import { omit } from 'lodash';
 import { Row } from './Row';
+import { conditionalClassNames } from '../common';
 
 const rowValues = (dataSource: any, columnsToOmit?: string[]): any[] =>
   Object.values(omit(omit(dataSource, ['trProps']), columnsToOmit || []));
@@ -46,12 +47,14 @@ export const Body = ({
     <tbody className={tbodyClassName}>
       {combineValueWithTrProps.map((v: any, key: number) => (
         <Row
-          onSelect={v => handleSelected(v, key)}
+          onSelect={(v) => handleSelected(v, key)}
           handleCellClick={handleCellClick}
-          trClassName={[
+          trClassName={conditionalClassNames([
             trClassName,
-            selected === key ? selectedRowClassName : undefined,
-          ].join(' ')}
+            {
+              [`${selectedRowClassName}`]: selected === key,
+            },
+          ])}
           tdClassName={tdClassName}
           key={key}
           values={rowValues(v, columnsToOmit)}

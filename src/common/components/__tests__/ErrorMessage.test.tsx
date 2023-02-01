@@ -10,7 +10,7 @@ describe('ErrorMessage', () => {
     expect(screen.getByText('We have a problem')).toBeInTheDocument();
   });
 
-  it('will render an error message with a className and the default dcx-erro-message className', () => {
+  it('will render an error message with a className and the default dcx-error-message className', () => {
     render(<ErrorMessage text="We have a problem" className="my-class-name" />);
 
     expect(screen.getByText('We have a problem').getAttribute('class')).toBe(

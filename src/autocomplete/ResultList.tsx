@@ -1,4 +1,5 @@
 import React from 'react';
+import { classNames } from '../common';
 
 type ResultListProps = {
   list: string[];
@@ -59,7 +60,7 @@ export const ResultList = ({
           </li>
         ))
       : noElFoundText && (
-          <li className={[liContainerClass, noOptionClass].join(' ')}>
+          <li className={classNames([liContainerClass, noOptionClass])}>
             {noElFoundText}
           </li>
         )}

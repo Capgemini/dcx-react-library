@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { conditionalClassNames } from '../common';
 import { Roles } from '../common/utils/rolesType';
 import style from './scrubber.module.css';
 
@@ -118,9 +119,10 @@ export const Range = ({
         value={defaultValue}
         onChange={handleChange}
         disabled={disabled}
-        className={[showTooltip ? style.tooltip : '', inputClass]
-          .join(' ')
-          .trim()}
+        className={conditionalClassNames([
+          inputClass,
+          { [`${style.tooltip}`]: showTooltip },
+        ])}
         aria-label={ariaLabel || 'input-slider'}
         value-tooltip={defaultValue}
         style={styling}

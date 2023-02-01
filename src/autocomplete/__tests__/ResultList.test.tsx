@@ -105,11 +105,13 @@ describe('ResultList', () => {
         activeOption={1}
         onClick={handleClick}
         noOptionClass="noOptionClass"
+        liContainerClass="liContainerClass"
         noElFoundText="nada de nada"
       />
     );
     const el: any = container.querySelector('li');
     expect(el.innerHTML).toBe('nada de nada');
+    expect(el.className).toBe('liContainerClass noOptionClass');
   });
 
   it('should contain the dynamic id for every item in the list if listId is present', () => {
