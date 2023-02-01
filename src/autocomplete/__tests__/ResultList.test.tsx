@@ -48,7 +48,7 @@ describe('ResultList', () => {
       <ResultList
         list={['daniele', 'isaac']}
         userInput="d"
-        activeOption={1}
+        activeOption={0}
         onClick={handleClick}
         ulContainerClass="ulContainerClass"
         liContainerClass="liContainerClass"
