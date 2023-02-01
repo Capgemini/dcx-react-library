@@ -8,7 +8,8 @@ const classNames = (classes: any[]): string =>
         c !== null &&
         typeof c === 'string'
     )
-    .join(' ');
+    .join(' ')
+    .trim();
 
 const conditionalClassNames = (classes: any[]) => {
   let result = '';
@@ -30,7 +31,7 @@ const conditionalClassNames = (classes: any[]) => {
         result = result.concat(c).concat(' ');
     }
   });
-  return result.slice(0, -1);
+  return result.slice(0, -1).trim();
 };
 
 export { classNames, conditionalClassNames };
