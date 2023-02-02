@@ -1,16 +1,4 @@
-const classNames = (classes: any[]): string =>
-  classes
-    .filter(
-      (c: string) =>
-        c !== 'undefined' &&
-        c !== undefined &&
-        c !== 'null' &&
-        c !== null &&
-        typeof c === 'string'
-    )
-    .join(' ');
-
-const conditionalClassNames = (classes: any[]) => {
+export const classNames = (classes: any[]) => {
   let result = '';
   classes.forEach((c: any) => {
     if (c !== null && typeof c === 'object') {
@@ -30,7 +18,5 @@ const conditionalClassNames = (classes: any[]) => {
         result = result.concat(c).concat(' ');
     }
   });
-  return result.slice(0, -1);
+  return result.slice(0, -1).trim();
 };
-
-export { classNames, conditionalClassNames };

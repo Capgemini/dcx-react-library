@@ -1,4 +1,5 @@
 import React from 'react';
+import { classNames } from '../common';
 
 type ResultListProps = {
   list: string[];
@@ -41,16 +42,16 @@ export const ResultList = ({
       ? list.map((optionName: string, index: number) => (
           <li
             id={listId ? `${listId}--${index + 1}` : undefined}
-            className={
-              index === activeOption && activeClass
-                ? [activeClass, liContainerClass].join(' ')
-                : [
-                    liContainerClass,
-                    index % 2 === 0
-                      ? `${liContainerClass}--even`
-                      : `${liContainerClass}--odd`,
-                  ].join(' ')
-            }
+            className={classNames([
+              liContainerClass,
+              {
+                [`${activeClass}`]: index === activeOption,
+                [`${liContainerClass}--even`]:
+                  index !== activeOption && index % 2 === 0,
+                [`${liContainerClass}--odd`]:
+                  index !== activeOption && index % 2 !== 0,
+              },
+            ])}
             key={optionName}
             onClick={onClick}
             style={liContainerStyle}
@@ -59,7 +60,7 @@ export const ResultList = ({
           </li>
         ))
       : noElFoundText && (
-          <li className={[liContainerClass, noOptionClass].join(' ')}>
+          <li className={classNames([liContainerClass, noOptionClass])}>
             {noElFoundText}
           </li>
         )}

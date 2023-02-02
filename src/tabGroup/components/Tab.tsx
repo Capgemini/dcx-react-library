@@ -1,5 +1,5 @@
 import React from 'react';
-import { Roles } from '../../common';
+import { classNames, Roles } from '../../common';
 import { useTabGroup } from '../TabGroup';
 
 export type TabProps = {
@@ -54,14 +54,14 @@ export const Tab = ({
   const { activeTab, changeActiveTab } = useTabGroup();
 
   const selected = activeTab === eventKey;
-  const classes: string = [
+
+  const classes: string = classNames([
     className,
-    selected ? activeTabClassName : undefined,
-    disabled ? disabledClassName : undefined,
-  ]
-    .filter((cls: string | undefined) => cls !== undefined)
-    .join(' ')
-    .trim();
+    {
+      [`${activeTabClassName}`]: selected,
+      [`${disabledClassName}`]: disabled,
+    },
+  ]);
 
   const onClickHandler: (
     event:

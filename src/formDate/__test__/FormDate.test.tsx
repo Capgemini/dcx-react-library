@@ -96,6 +96,33 @@ describe('FormInput', () => {
     expect(parent.getAttribute('class')).toBe('containerClass');
   });
 
+  it('should render the correct input classes when provided', () => {
+    const { container } = render(
+      <FormDate
+        dateFormat="dd/mm/yyyy"
+        handleValidity={jest.fn()}
+        inputClass="input"
+        yearProps={{
+          classNameInput: 'year-input',
+        }}
+        monthProps={{
+          classNameInput: 'month-input',
+        }}
+        dayProps={{
+          classNameInput: 'day-input',
+        }}
+      />
+    );
+
+    const year: any = container.querySelector('input[name="year"]');
+    const month: any = container.querySelector('input[name="month"]');
+    const day: any = container.querySelector('input[name="day"]');
+
+    expect(year.getAttribute('class')).toBe('year-input input');
+    expect(month.getAttribute('class')).toBe('month-input input');
+    expect(day.getAttribute('class')).toBe('day-input input');
+  });
+
   it('should render dd/mm/yyyy inputs in the order specified by the user', () => {
     const { container } = render(
       <FormDate dateFormat="dd/mm/yyyy" handleValidity={jest.fn()} />

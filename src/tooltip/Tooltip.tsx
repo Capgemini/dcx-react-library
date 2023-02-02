@@ -1,4 +1,5 @@
 import React from 'react';
+import { classNames } from '../common';
 import style from './tooltip.module.css';
 
 type Direction = 'top' | 'bottom' | 'left' | 'right';
@@ -76,9 +77,11 @@ export const ToolTip = ({
       {props.children}
       {active && (
         <div
-          className={[style.tooltip, className, containerClassDirection()].join(
-            ' '
-          )}
+          className={classNames([
+            style.tooltip,
+            className,
+            containerClassDirection(),
+          ])}
           style={{
             color: color,
             background: background,

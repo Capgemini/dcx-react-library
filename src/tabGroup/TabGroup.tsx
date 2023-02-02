@@ -7,7 +7,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { Roles } from '../common';
+import { classNames, Roles } from '../common';
 
 export type TabGroupProps = {
   /**
@@ -144,9 +144,10 @@ export const TabGroup = forwardRef(
             value={{ activeTab, changeActiveTab: onClickHandler }}
           >
             {children.map((child: JSX.Element, index: number) => {
-              const classes: string = [tabClassName, child.props.className]
-                .filter((cls: string) => cls !== undefined)
-                .join(' ');
+              const classes: string = classNames([
+                tabClassName,
+                child.props.className,
+              ]);
 
               return (
                 <child.type
@@ -174,9 +175,7 @@ export const TabGroup = forwardRef(
             >
               {tab.props.children}
             </div>
-          ) : (
-            undefined
-          )
+          ) : undefined
         )}
       </div>
     );
