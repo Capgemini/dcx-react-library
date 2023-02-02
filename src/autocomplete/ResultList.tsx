@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames, conditionalClassNames } from '../common';
+import { classNames } from '../common';
 
 type ResultListProps = {
   list: string[];
@@ -42,7 +42,7 @@ export const ResultList = ({
       ? list.map((optionName: string, index: number) => (
           <li
             id={listId ? `${listId}--${index + 1}` : undefined}
-            className={conditionalClassNames([
+            className={classNames([
               liContainerClass,
               {
                 [`${activeClass}`]: index === activeOption,

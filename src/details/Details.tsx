@@ -1,5 +1,5 @@
 import React, { MouseEventHandler, useState } from 'react';
-import { conditionalClassNames } from '../common';
+import { classNames } from '../common';
 
 type DetailsProps = {
   /**
@@ -60,7 +60,7 @@ export const Details = ({
         <span className={summaryTextClassName}>{summary}</span>
       </summary>
       <div
-        className={conditionalClassNames([
+        className={classNames([
           {
             [`${detailsTextClassName}`]: detailsTextClassName !== undefined,
             [`${openClassName || OPEN}`]: isOpen,

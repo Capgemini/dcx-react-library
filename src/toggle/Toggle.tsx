@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames, conditionalClassNames } from '../common';
+import { classNames } from '../common';
 import style from './toggle.module.css';
 
 interface ToggleProps {
@@ -74,7 +74,7 @@ export const Toggle = ({
       className={classNames([style.switch, className])}
     >
       <div
-        className={conditionalClassNames([
+        className={classNames([
           style.switchBg,
           { [`${style.isChecked}`]: checked },
         ])}
@@ -105,7 +105,7 @@ export const Toggle = ({
       <div
         id="dragswitch-handle"
         title="dragswitch-handle"
-        className={conditionalClassNames([
+        className={classNames([
           style.switchHandle,
           { [`${style.isChecked}`]: checked },
         ])}

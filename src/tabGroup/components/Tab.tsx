@@ -1,5 +1,5 @@
 import React from 'react';
-import { conditionalClassNames, Roles } from '../../common';
+import { classNames, Roles } from '../../common';
 import { useTabGroup } from '../TabGroup';
 
 export type TabProps = {
@@ -55,7 +55,7 @@ export const Tab = ({
 
   const selected = activeTab === eventKey;
 
-  const classes: string = conditionalClassNames([
+  const classes: string = classNames([
     className,
     {
       [`${activeTabClassName}`]: selected,

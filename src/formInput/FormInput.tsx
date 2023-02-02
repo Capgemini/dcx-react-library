@@ -5,7 +5,7 @@ import {
   Roles,
   Label,
   Hint,
-  conditionalClassNames,
+  classNames,
 } from '../common';
 import { HintProps } from '../common/components/commonTypes';
 
@@ -232,7 +232,7 @@ export const FormInput = ({
 
   return (
     <div
-      className={conditionalClassNames([
+      className={classNames([
         containerClassName,
         { [`${containerClassNameError}`]: isStaticOrDynamicError() },
       ])}

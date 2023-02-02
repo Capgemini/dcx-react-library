@@ -1,7 +1,7 @@
 import React from 'react';
 import { omit } from 'lodash';
 import { Row } from './Row';
-import { conditionalClassNames } from '../common';
+import { classNames } from '../common';
 
 const rowValues = (dataSource: any, columnsToOmit?: string[]): any[] =>
   Object.values(omit(omit(dataSource, ['trProps']), columnsToOmit || []));
@@ -49,7 +49,7 @@ export const Body = ({
         <Row
           onSelect={(v) => handleSelected(v, key)}
           handleCellClick={handleCellClick}
-          trClassName={conditionalClassNames([
+          trClassName={classNames([
             trClassName,
             {
               [`${selectedRowClassName}`]: selected === key,

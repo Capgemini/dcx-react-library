@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { conditionalClassNames } from '../common';
+import { classNames } from '../common';
 import { Roles } from '../common/utils/rolesType';
 import style from './scrubber.module.css';
 
@@ -119,7 +119,7 @@ export const Range = ({
         value={defaultValue}
         onChange={handleChange}
         disabled={disabled}
-        className={conditionalClassNames([
+        className={classNames([
           inputClass,
           { [`${style.tooltip}`]: showTooltip },
         ])}

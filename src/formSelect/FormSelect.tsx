@@ -6,7 +6,7 @@ import {
   Option,
   Roles,
   Label,
-  conditionalClassNames,
+  classNames,
 } from '../common';
 import {
   ErrorMessageProps,
@@ -193,7 +193,7 @@ export const FormSelect = ({
     if (onChange) onChange(event);
   };
 
-  const containerClasses = conditionalClassNames([
+  const containerClasses = classNames([
     'dcx-formselect',
     containerClassName,
     {
