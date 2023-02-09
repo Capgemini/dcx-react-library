@@ -17,10 +17,11 @@ export const parameters = {
         return order--;
       } else if (a[0].includes('details')) {
         return order--;
-      }
-       else {
+      } else if (a[0].includes('utils')) {
+        return order--;
+      } else {
         return 0;
       }
-    }
-  }
+    },
+  },
 };
