@@ -14,6 +14,7 @@ import {
   FormDate,
   ErrorPosition,
   BUTTON_TYPE,
+  classNames,
 } from '@capgeminiuk/dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -209,9 +210,10 @@ export const Register = () => {
       <HeadingOne>Register</HeadingOne>
       <form>
         <div
-          className={['form-group', userNameErrorState ? 'has-error' : ''].join(
-            ' '
-          )}
+          className={classNames([
+            'form-group',
+            { 'has-error': userNameErrorState },
+          ])}
         >
           <Label htmlFor="username">Username</Label>
           <FormInput
@@ -240,9 +242,10 @@ export const Register = () => {
         </div>
 
         <div
-          className={['form-group', passwordErrorState ? 'has-error' : ''].join(
-            ' '
-          )}
+          className={classNames([
+            'form-group',
+            { 'has-error': passwordErrorState },
+          ])}
         >
           <Label htmlFor="password" className="control-label">
             Password
@@ -284,9 +287,10 @@ export const Register = () => {
         </div>
 
         <div
-          className={['form-group', displayDobError ? 'has-error' : ''].join(
-            ' '
-          )}
+          className={classNames([
+            'form-group',
+            { 'has-error': displayDobError },
+          ])}
         >
           <Label htmlFor="dateOfBirth">Date of Birth</Label>
           <FormDate
@@ -565,9 +569,10 @@ export const Register = () => {
               <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
             </div>
           }
-          className={['btn btn-primary', isLoading ? 'btn-loading' : ''].join(
-            ' '
-          )}
+          className={classNames([
+            'btn btn-primary',
+            { 'btn-loading': isLoading },
+          ])}
           type={BUTTON_TYPE.SUBMIT}
         />
       </form>
