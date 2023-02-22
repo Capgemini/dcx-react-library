@@ -33,6 +33,10 @@
   margin-bottom: 5px;
 }
 
+.govuk-textarea--error {
+  border-color: #d4351c;
+}
+
 .govuk-input {
   font-family: 'GDS Transport', arial, sans-serif;
   font-weight: 400;

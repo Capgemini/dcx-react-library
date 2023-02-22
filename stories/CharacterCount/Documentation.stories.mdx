@@ -1,0 +1,53 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { CharacterCount } from '../../src/characterCount';
+
+<Meta
+  title="DCXLibrary/Form/CharacterCount/documentation"
+  component={CharacterCount}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Character Count
+
+A character count component ready to use in your form.
+
+The CharacterCount component is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
+
+## Usage
+
+Use the CharacterCount component when there is a limit on the number of characters the user is allowed to enter in a textbox.
+
+The CharacterCount component shows users the limit on characters to be entered in a textarea element. The component consists of the label for the textarea, optional hint, the textarea and a message advising the user of the remaining characters.
+
+An example with all the available properties is:
+
+```js
+<CharacterCount
+  id="id"
+  label="Label for text area"
+  hint={{ text: 'Optional hint' }}
+  containerClassName="container-class-name"
+  formGroupClassName="form-group-class-name"
+  labelClassName="label-class-name"
+  textareaClassName="textarea-class-name"
+  messageClassName="message-class-name"
+  name="textarea-name"
+  cols={30}
+  rows={5}
+  maxLength={15}
+  ariaDescribedBy="aria-described-by"
+  displayError={false}
+  errorMessage="error-text"
+  errorMessageClassName="error-class-name"
+  errorId="error-id"
+  errorVisuallyHiddenText={{ text: 'visually-hidden-error-message' }}
+  onChange={onChangeHandler}
+/>
+```
+
+<Props of={CharacterCount} />
