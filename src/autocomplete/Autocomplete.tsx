@@ -14,7 +14,7 @@ type autocompleteProps = {
   /**
    * you need to provide a list of values to filter
    */
-  options: any | string[];
+  options: any[];
   /**
    * it will add a dynamic id to every option provided. It will concatenate an index for each item
    * @example
@@ -268,7 +268,7 @@ export const Autocomplete = ({
   search,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
-  const [filterList, setFilterList] = useState<any[]>([]);
+  const [filterList, setFilterList] = useState<string[]>([]);
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [showPrompt, setShowPrompt] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<string>(defaultValue);
@@ -305,7 +305,7 @@ export const Autocomplete = ({
   const delayResult = React.useMemo(
     () =>
       debounce((value) => {
-        const filtered = search
+        const filtered: string[] = search
           ? search(value, options)
           : options.filter((optionsName: string) =>
               optionsName.toLowerCase().includes(value.toLowerCase())

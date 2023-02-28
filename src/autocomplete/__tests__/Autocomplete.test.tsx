@@ -11,7 +11,6 @@ import '@testing-library/jest-dom/extend-expect';
 import { Autocomplete, AutoCompleteErrorPosition } from '../';
 import userEvent from '@testing-library/user-event';
 import * as hooks from '../../common/utils/clientOnly';
-jest.setTimeout(30000);
 
 const firstSearch = [
   'Papaya',
