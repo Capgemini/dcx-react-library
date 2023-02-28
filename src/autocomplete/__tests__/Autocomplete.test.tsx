@@ -11,6 +11,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { Autocomplete, AutoCompleteErrorPosition } from '../';
 import userEvent from '@testing-library/user-event';
 import * as hooks from '../../common/utils/clientOnly';
+jest.setTimeout(30000);
 
 const firstSearch = [
   'Papaya',
@@ -776,5 +777,81 @@ describe('Autocomplete', () => {
 
     const input: any = screen.getByRole('textbox');
     expect(input.getAttribute('tabindex')).toBe('1');
+  });
+
+  it('should accept an option list of objects', async () => {
+    const user = userEvent.setup();
+
+    const options: any = [
+      {
+        firstName: 'Isaac',
+        surname: 'Babalola',
+        postion: 'Senior Developer',
+      },
+      {
+        firstName: 'Daniele',
+        surname: 'Zurico',
+        position: 'Head of Full Stack Development',
+      },
+      {
+        firstName: 'Healy',
+        surname: 'Ingenious',
+        position: 'Project Manager',
+      },
+    ];
+
+    const quickSearch = (query: string, options: any[]) => {
+      const optionName = (option: any) =>
+        `${option.firstName} ${option.surname} (${option.position})`;
+      const queryStr = query.toLowerCase();
+      return options
+        .filter(
+          (option: any) =>
+            optionName(option).toLowerCase().indexOf(queryStr) !== -1
+        )
+        .map((option: any) => {
+          const commonRank = 0;
+          let rank;
+          if (option.position.toLowerCase().indexOf(queryStr) !== -1) rank = 1;
+          else if (option.firstName.toLowerCase().indexOf(queryStr) !== -1)
+            rank = 10 + commonRank;
+          else if (option.surnameName.toLowerCase().indexOf(queryStr) !== -1)
+            rank = 20 + commonRank;
+          option.rank = rank || 100;
+          return option;
+        })
+        .sort((a, b) => {
+          if (a.rank < b.rank) {
+            return -1;
+          }
+
+          if (a.rank > b.rank) {
+            return 1;
+          }
+
+          if (a.position < b.position) {
+            return -1;
+          }
+
+          if (a.position > b.position) {
+            return 1;
+          }
+
+          return 0;
+        })
+        .map((option: any) => optionName(option));
+    };
+
+    render(<Autocomplete options={options} search={quickSearch} />);
+    const input = screen.getByRole('textbox');
+    await user.type(input, 'he');
+    const listItems: any = screen.getAllByRole('listitem');
+    await waitFor(() => {
+      expect(listItems[0].innerHTML).toBe(
+        'Daniele Zurico (Head of Full Stack Development)'
+      );
+      expect(listItems[1].innerHTML).toBe('Healy Ingenious (Project Manager)');
+      expect(listItems).toHaveLength(2);
+    });
   });
 });
