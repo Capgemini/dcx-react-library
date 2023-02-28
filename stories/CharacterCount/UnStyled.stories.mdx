@@ -7,8 +7,60 @@ import { CharacterCount } from '../../src/characterCount';
 
 The CharacterCount component shows users the limit on characters to be entered in a textarea element. The component consists of the label, optional hint, the textarea and a message advising the user of the remaining characters.
 
+## Character count with message when limit has been reached
+
 <Canvas>
-  <Story name="un-styled">
+  <Story name="un-styled-with-over-limit-message">
+    {() => (
+      <CharacterCount
+        label="Label for text area"
+        hint={{ text: 'Optional hint' }}
+        maxLength={10}
+        cols={30}
+        rows={5}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Character count with constraint on typing more than limit
+
+<Canvas>
+  <Story name="un-styled-with-limiting-text-box">
+    {() => (
+      <CharacterCount
+        label="Label for text area"
+        hint={{ text: 'Optional hint' }}
+        maxLength={10}
+        cols={30}
+        rows={5}
+        constrained={true}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Character count with threshold to show message
+
+<Canvas>
+  <Story name="un-styled-with-threshold">
+    {() => (
+      <CharacterCount
+        label="Label for text area"
+        hint={{ text: 'Optional hint' }}
+        maxLength={30}
+        cols={30}
+        rows={5}
+        threshold={50}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Character count with word count limit
+
+<Canvas>
+  <Story name="un-styled-with-word-count">
     {() => (
       <CharacterCount
         label="Label for text area"
@@ -16,6 +68,7 @@ The CharacterCount component shows users the limit on characters to be entered i
         maxLength={15}
         cols={30}
         rows={5}
+        limitType="words"
       />
     )}
   </Story>

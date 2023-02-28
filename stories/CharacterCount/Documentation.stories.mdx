@@ -20,9 +20,10 @@ The CharacterCount component is UI/UX agnostic so you need to provide your style
 
 ## Usage
 
-Use the CharacterCount component when there is a limit on the number of characters the user is allowed to enter in a textbox.
+Use the CharacterCount component when there is a limit on the number of characters or words the user is allowed to enter in a textbox.
 
-The CharacterCount component shows users the limit on characters to be entered in a textarea element. The component consists of the label for the textarea, optional hint, the textarea and a message advising the user of the remaining characters.
+The CharacterCount component shows users the limit on characters or words to be entered in a textarea element. The component consists of the label for the textarea, optional hint, the textarea and a message advising the user of the remaining characters.
+To use this component for words count, pass in the `limitType` prop set to `words`. The limit type is characters by default.
 
 An example with all the available properties is:
 
@@ -35,7 +36,9 @@ An example with all the available properties is:
   formGroupClassName="form-group-class-name"
   labelClassName="label-class-name"
   textareaClassName="textarea-class-name"
+  textareaErrorClassName="textarea-error-class-name"
   messageClassName="message-class-name"
+  messageErrorClassName="message-error-class-name"
   name="textarea-name"
   cols={30}
   rows={5}
@@ -47,6 +50,9 @@ An example with all the available properties is:
   errorId="error-id"
   errorVisuallyHiddenText={{ text: 'visually-hidden-error-message' }}
   onChange={onChangeHandler}
+  limitType="characters"
+  constrained={false}
+  threshold={20}
 />
 ```
 

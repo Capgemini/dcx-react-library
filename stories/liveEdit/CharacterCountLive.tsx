@@ -19,6 +19,9 @@ function CharacterCountDemo() {
     errorMessageClassName="error-class-name"
     errorId="error-id"
     errorVisuallyHiddenText={{ text: 'visually-hidden-error-message' }}
+    limitType ="characters"
+    constrained={false}
+    threshold={20}
       />)
 }
 `;
