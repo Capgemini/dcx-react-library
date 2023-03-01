@@ -14,7 +14,7 @@ type autocompleteProps = {
   /**
    * you need to provide a list of values to filter
    */
-  options: string[];
+  options: any[];
   /**
    * it will add a dynamic id to every option provided. It will concatenate an index for each item
    * @example
@@ -205,6 +205,10 @@ type autocompleteProps = {
    * tab index value to focus on the input
    */
   tabIndex?: number;
+  /**
+   * search function to decide how the autocomplete component finds results
+   */
+  search?: (value: string, options: any) => string[];
 };
 
 export enum AutoCompleteErrorPosition {
@@ -261,6 +265,7 @@ export const Autocomplete = ({
   prefix,
   suffix,
   tabIndex = 0,
+  search,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
@@ -300,9 +305,11 @@ export const Autocomplete = ({
   const delayResult = React.useMemo(
     () =>
       debounce((value) => {
-        const filtered = options.filter((optionsName) =>
-          optionsName.toLowerCase().includes(value.toLowerCase())
-        );
+        const filtered: string[] = search
+          ? search(value, options)
+          : options.filter((optionsName: string) =>
+              optionsName.toLowerCase().includes(value.toLowerCase())
+            );
         setActiveOption(0);
         setFilterList(filtered);
         setShowOptions(true);

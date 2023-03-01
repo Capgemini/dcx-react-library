@@ -9,6 +9,17 @@ function AutocompleteDemo() {
   const handleSelected = value => {
     console.log(value)
   }
+
+  const handleSearch = (value, options) => {
+    return options
+      .filter(optionsName => optionsName.toLowerCase().includes(value.toLowerCase()))
+      .sort((a, b) => {
+        if (a < b) { return -1; }
+        if (a > b) { return 1; }
+        return 0
+      });
+  }
+
   return (
     <Autocomplete
       options={[
@@ -50,6 +61,7 @@ function AutocompleteDemo() {
       inputProps={{}}
       selectProps={{}}
       tabIndex={0}
+      search={handleSearch}
     />
   )
 }
