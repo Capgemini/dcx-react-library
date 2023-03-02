@@ -84,5 +84,13 @@ export const Home = () => (
         </li>
       </ul>
     </nav>
+    <h1>List of release 0.7 DCX library components</h1>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/characterCount">CharacterCountDemo</Link>
+        </li>
+      </ul>
+    </nav>
   </>
 );
