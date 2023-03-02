@@ -195,7 +195,7 @@ export const CharacterCount = ({
           maxLength={constrained && !isWordsCount ? maxLength : undefined}
           aria-describedby={ariaDescribedBy || ''}
           {...props}
-        ></textarea>
+        />
         {showMessage && (
           <div
             className={classNames([
