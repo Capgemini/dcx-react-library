@@ -135,7 +135,7 @@ export const CharacterCount = ({
 
   const isWordsCount = limitType === 'words';
 
-  let hydrated = useHydrated();
+  const hydrated = useHydrated();
 
   useEffect(() => {
     setShowError(displayError);
