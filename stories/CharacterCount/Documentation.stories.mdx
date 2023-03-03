@@ -53,6 +53,9 @@ An example with all the available properties is:
   limitType="characters"
   constrained={false}
   threshold={20}
+  customMaxCharMsgFunc={(remainingCount, overLimitBy, hydrated) =>
+    `this is a custom message with ${remainingCount} and ${overLimitBy} with js enabled ${hydrated}`
+  }
 />
 ```
 
