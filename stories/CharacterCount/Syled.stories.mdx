@@ -118,35 +118,6 @@ Set to 80% for 15 characters maximum length
   </Story>
 </Canvas>
 
-### Custom word count message
-
-It will allow to specify a custom message whilst the user is typing
-
-<Canvas>
-  <Story name="custom-message">
-    {() => (
-      <CharacterCount
-        containerClassName="govuk-character-count"
-        labelClassName="govuk-label govuk-label--l"
-        label="Label for text area"
-        hint={{
-          text: 'Type more than 15 characters to see the message change',
-          className: 'govuk-hint',
-        }}
-        textareaClassName="govuk-textarea govuk-character-count"
-        textareaErrorClassName="govuk-textarea--error"
-        messageClassName="govuk-hint"
-        messageErrorClassName="govuk-character-count__message govuk-error-message"
-        maxLength={15}
-        rows={5}
-        customMaxCharMsgFunc={(remainingCount, overLimitBy, hydrated) =>
-          `this is a custom message with ${remainingCount} and ${overLimitBy} with js enabled ${hydrated}`
-        }
-      />
-    )}
-  </Story>
-</Canvas>
-
 ### Error
 
 <Canvas>

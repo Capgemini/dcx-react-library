@@ -22,9 +22,6 @@ function CharacterCountDemo() {
     limitType ="characters"
     constrained={false}
     threshold={20}
-    customMaxCharMsgFunc={(remainingCount, overLimitBy, hydrated) =>
-      "this is a custom message"
-    }
       />)
 }
 `;

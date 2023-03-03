@@ -290,24 +290,4 @@ describe('CharacterCount with character limit', () => {
       screen.getByText('You can enter up to 15 words.')
     ).toBeInTheDocument();
   });
-
-  it('should allow to specify a custom max character message', async () => {
-    render(
-      <CharacterCount
-        label="Label for text area"
-        maxLength={15}
-        cols={30}
-        rows={5}
-        messageClassName="message"
-        customMaxCharMsgFunc={(remainingCount, overLimitBy) =>
-          `this is a custom message with ${remainingCount} and ${overLimitBy}`
-        }
-      />
-    );
-
-    expect(screen.getByRole('textbox')).toBeInTheDocument();
-    expect(
-      screen.getByText('this is a custom message with 15 and 0')
-    ).toBeInTheDocument();
-  });
 });
