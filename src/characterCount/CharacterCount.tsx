@@ -99,6 +99,14 @@ type CharacterCountProps = React.HTMLAttributes<HTMLTextAreaElement> & {
    * visually hidden text of the error
    */
   errorVisuallyHiddenText?: VisuallyHidden;
+  /**
+   *
+   */
+  customMaxCharMsgFunc?: (
+    remainingCount?: number,
+    overLimitBy?: number,
+    hydrated?: boolean
+  ) => string;
 };
 
 export const CharacterCount = ({
@@ -126,6 +134,7 @@ export const CharacterCount = ({
   errorMessageClassName,
   errorId,
   errorVisuallyHiddenText,
+  customMaxCharMsgFunc,
   ...props
 }: CharacterCountProps) => {
   const [remainingCount, setRemainingCount] = useState<number>(maxLength);
@@ -205,7 +214,9 @@ export const CharacterCount = ({
               },
             ])}
           >
-            {maxCharactersMessage}
+            {customMaxCharMsgFunc
+              ? customMaxCharMsgFunc(remainingCount, overLimitBy, hydrated)
+              : maxCharactersMessage}
           </div>
         )}
       </div>

@@ -57,6 +57,27 @@ The CharacterCount component shows users the limit on characters to be entered i
   </Story>
 </Canvas>
 
+### Custom word count message
+
+<Canvas>
+  <Story name="custom-message">
+    {() => (
+      <CharacterCount
+        label="Label for text area"
+        hint={{
+          text: 'Type more than 15 characters to see the message change',
+          className: 'govuk-hint',
+        }}
+        maxLength={15}
+        rows={5}
+        customMaxCharMsgFunc={(remainingCount, overLimitBy, hydrated) =>
+          `this is a custom message with ${remainingCount} and ${overLimitBy} with js enabled ${hydrated}`
+        }
+      />
+    )}
+  </Story>
+</Canvas>
+
 ## Character count with word count limit
 
 <Canvas>
