@@ -1,7 +1,6 @@
 import React from 'react';
-import { omit } from 'lodash';
 import { Row } from './Row';
-import { classNames } from '../common';
+import { classNames, omit } from '../common';
 
 const rowValues = (dataSource: any, columnsToOmit?: string[]): any[] =>
   Object.values(omit(omit(dataSource, ['trProps']), columnsToOmit || []));

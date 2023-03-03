@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { FormInput } from '../formInput';
 import { FormSelect } from '../formSelect';
-import { ErrorMessage, Hint, Roles, useHydrated } from '../common';
+import { ErrorMessage, Hint, Roles, useHydrated, debounce } from '../common';
 import { MultiSelectOption } from '../multiSelect/Types';
 import { ResultList } from './ResultList';
 import { Selected } from '../multiSelect/components/Selected';
 import { SelectedItem } from '../multiSelect/components/SelectedItem';
-import { debounce } from 'lodash';
 import { VisuallyHidden } from '../common/components/commonTypes';
 import { FormSelectProps } from '../formSelect/FormSelect';
 
