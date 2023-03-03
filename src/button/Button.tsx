@@ -1,5 +1,5 @@
-import { debounce } from 'lodash';
 import React from 'react';
+import { debounce } from '../common';
 
 export enum BUTTON_TYPE {
   BUTTON = 'button',

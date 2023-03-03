@@ -1,7 +1,6 @@
 import React from 'react';
-import { upperFirst } from 'lodash';
 import { ErrorMessage } from '../common/components';
-import { classNames, validateDateString } from '../common/utils';
+import { classNames, upperFirst, validateDateString } from '../common/utils';
 import { DateComponent } from './Date';
 export type DateType = {
   label?: string;

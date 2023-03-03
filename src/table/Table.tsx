@@ -1,5 +1,5 @@
 import React from 'react';
-import { omit } from 'lodash';
+import { omit } from '../common';
 import { Body } from './Body';
 import { Header } from './Header';
 import { useSortableData } from './useSortable';

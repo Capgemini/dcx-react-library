@@ -1,11 +1,11 @@
 import React from 'react';
-import { isEmpty } from 'lodash';
 import {
   useValidationOnChange,
   Roles,
   Label,
   Hint,
   classNames,
+  isEmpty,
 } from '../common';
 import { HintProps } from '../common/components/commonTypes';
 

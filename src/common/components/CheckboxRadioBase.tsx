@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { isEmpty } from 'lodash';
 import { Hint } from './Hint';
 import { Conditional } from './Conditional';
 import { FormRadioCheckboxProps } from './commonTypes';
-import { useHydrated } from '../utils';
+import { useHydrated, isEmpty } from '../utils';
 
 export const CheckboxRadioBase = ({
   label,
