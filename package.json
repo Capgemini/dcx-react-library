@@ -72,7 +72,6 @@
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "14.4.3",
-    "@types/lodash": "4.14.186",
     "@types/mock-fs": "4.13.1",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
@@ -111,8 +110,6 @@
   },
   "dependencies": {
     "@cesium133/forgjs": "1.1.10",
-    "imask": "^6.4.2",
-    "lodash": "4.17.21",
-    "lodash-es": "4.17.21"
+    "imask": "^6.4.2"
   }
 }
