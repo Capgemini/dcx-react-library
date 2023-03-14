@@ -82,40 +82,20 @@ export const TabGroup = ({
   onSelect,
 }: TabGroupProps) =>
   !isServer() ? (
-    forwardRef(
-      (
-        {
-          children,
-          id,
-          ariaLabelTabList,
-          activeTabClassName,
-          disabledClassName,
-          activeKey,
-          className,
-          containerClassName,
-          contentClassName,
-          tabClassName,
-          tabLinkClassName,
-          onSelect,
-        }: TabGroupProps,
-        ref: any
-      ) => (
-        <TabGroupWithJs
-          children={children}
-          id={id}
-          ariaLabelTabList={ariaLabelTabList}
-          activeTabClassName={activeTabClassName}
-          disabledClassName={disabledClassName}
-          activeKey={activeKey}
-          className={className}
-          containerClassName={containerClassName}
-          contentClassName={contentClassName}
-          tabClassName={tabClassName}
-          tabLinkClassName={tabLinkClassName}
-          onSelect={onSelect}
-        />
-      )
-    )
+    <TabGroupWithJs
+      children={children}
+      id={id}
+      ariaLabelTabList={ariaLabelTabList}
+      activeTabClassName={activeTabClassName}
+      disabledClassName={disabledClassName}
+      activeKey={activeKey}
+      className={className}
+      containerClassName={containerClassName}
+      contentClassName={contentClassName}
+      tabClassName={tabClassName}
+      tabLinkClassName={tabLinkClassName}
+      onSelect={onSelect}
+    />
   ) : (
     <TabGroupNonJs
       children={children}
