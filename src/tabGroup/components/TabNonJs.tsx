@@ -1,7 +1,5 @@
 import React from 'react';
-import { isServer } from '../../common';
-import { TabNonJs } from './TabNonJs';
-import { TabWithJs } from './TabWithJs';
+import { classNames, Roles } from '../../common';
 
 export type TabProps = {
   /**
@@ -42,36 +40,33 @@ export type TabProps = {
   disabledClassName?: string;
 };
 
-export const Tab = ({
+export const TabNonJs = ({
   eventKey,
-  activeTabClassName,
   ariaControls,
   disabled,
   disabledClassName,
   label,
   className,
   linkClassName,
-}: TabProps) =>
-  isServer() ? (
-    <TabNonJs
-      eventKey={eventKey}
-      activeTabClassName={activeTabClassName}
-      ariaControls={ariaControls}
-      disabled={disabled}
-      disabledClassName={disabledClassName}
-      label={label}
-      className={className}
-      linkClassName={linkClassName}
-    />
-  ) : (
-    <TabWithJs
-      eventKey={eventKey}
-      activeTabClassName={activeTabClassName}
-      ariaControls={ariaControls}
-      disabled={disabled}
-      disabledClassName={disabledClassName}
-      label={label}
-      className={className}
-      linkClassName={linkClassName}
-    />
+}: TabProps) => {
+  const classes: string = classNames([
+    className,
+    {
+      [`${disabledClassName}`]: disabled,
+    },
+  ]);
+
+  return (
+    <li role={Roles.presentation} className={classes}>
+      <a
+        role={Roles.tab}
+        id={eventKey}
+        className={linkClassName}
+        aria-controls={ariaControls}
+        href={`#${eventKey}`}
+      >
+        {label}
+      </a>
+    </li>
   );
+};
