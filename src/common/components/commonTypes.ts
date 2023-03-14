@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 export type VisuallyHidden = {
   /**
@@ -193,7 +193,7 @@ export type FormRadioCheckboxProps = {
   /**
    * allow to specify a label that can be a string or a custom element
    */
-  label: string | any;
+  label: string | ReactElement;
   /**
    * value
    */
