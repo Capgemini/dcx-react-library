@@ -38,7 +38,7 @@ function CheckboxGroupDemo() {
         }
       },
       {
-        label: 'item-label',
+        label: <>This is a custom label <a href="#">hello</a></>,
         value: 'no',
         id: 'radio-2',
         conditional: {

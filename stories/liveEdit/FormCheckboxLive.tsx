@@ -19,7 +19,7 @@ function FormCheckboxDemo() {
   return (
     <FormCheckbox
       name="checkbox-1"
-      label="checkbox label"
+      label=<>This is a custom label <a href="#">hello</a></>
       value={value}
       onChange={handleChange}
       id="checkbox-1"
