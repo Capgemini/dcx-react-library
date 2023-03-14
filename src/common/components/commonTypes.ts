@@ -189,12 +189,11 @@ export type FormRadioCheckboxBaseProps = {
   ) => void;
 };
 
-
 export type FormRadioCheckboxProps = {
   /**
-   * label
+   * allow to specify a label that can be a string or a custom element
    */
-  label: string;
+  label: string | any;
   /**
    * value
    */
@@ -272,7 +271,7 @@ export type FormRadioCheckboxProps = {
    */
   labelClassName?: string;
   /**
-    * specifies an optional className for the item
+   * specifies an optional className for the item
    */
   itemClassName?: string;
 };
@@ -332,4 +331,4 @@ export type LabelProps = {
    * label properties
    */
   labelProperties?: React.LabelHTMLAttributes<HTMLLabelElement>;
-}
+};

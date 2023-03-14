@@ -473,4 +473,26 @@ describe('FormCheckbox', () => {
 
     expect(input.className).toBe('my-input-class');
   });
+
+
+  it('should render a checkbox with a custom label', () => {
+    const handleChange = jest.fn();
+    render(
+      <FormCheckbox
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label=
+          <>
+            This is a custom label{' '}
+            <a data-testid="mylink" href="#">
+              hello
+            </a>
+          </>
+        onChange={handleChange}
+      />
+    );
+    const firstItemEl: any = screen.getByRole('link');
+    expect(firstItemEl.href).toBe('http://localhost/#');
+  });
 });
