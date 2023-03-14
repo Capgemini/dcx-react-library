@@ -59,7 +59,7 @@ describe('RadioGroup', () => {
             label: (
               <>
                 This is a custom label{' '}
-                <a data-testid="mylink" href="#">
+                <a data-testid="mylink" href="link">
                   hello
                 </a>
               </>
@@ -77,6 +77,6 @@ describe('RadioGroup', () => {
     );
 
     const firstItemEl: any = screen.getByRole('link');
-    expect(firstItemEl.href).toBe('http://localhost/#');
+    expect(firstItemEl.href).toBe('http://localhost/link');
   });
 });
