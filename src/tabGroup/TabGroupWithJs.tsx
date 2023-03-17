@@ -1,6 +1,5 @@
 import React, {
   createContext,
-  forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
@@ -57,6 +56,10 @@ export type TabGroupProps = {
    * Tab Group onSelect handler
    */
   onSelect?: (eventKey: string) => void;
+  /**
+   * ref passed in of DOM element
+   */
+  ref: any;
 };
 
 type TabContextProps = {
@@ -72,111 +75,106 @@ type TabContextProps = {
 
 export const TabContext = createContext<TabContextProps | undefined>(undefined);
 
-export const TabGroupWithJs = forwardRef(
-  (
-    {
-      children,
-      id,
-      ariaLabelTabList,
-      activeTabClassName,
-      disabledClassName,
-      activeKey,
-      className,
-      containerClassName,
-      contentClassName,
-      tabClassName,
-      tabLinkClassName,
-      onSelect,
-    }: TabGroupProps,
-    ref: any
-  ) => {
-    const hasUniqueEventKeys: (children: JSX.Element[]) => boolean = (
-      children: JSX.Element[]
-    ) =>
-      children.length ===
-      new Set(children.map((child: JSX.Element) => child.props.eventKey)).size;
+export const TabGroupWithJs = ({
+  children,
+  id,
+  ariaLabelTabList,
+  activeTabClassName,
+  disabledClassName,
+  activeKey,
+  className,
+  containerClassName,
+  contentClassName,
+  tabClassName,
+  tabLinkClassName,
+  onSelect,
+  ref,
+}: TabGroupProps) => {
+  const hasUniqueEventKeys: (children: JSX.Element[]) => boolean = (
+    children: JSX.Element[]
+  ) =>
+    children.length ===
+    new Set(children.map((child: JSX.Element) => child.props.eventKey)).size;
 
-    if (!hasUniqueEventKeys(children)) {
-      throw new Error('Tab event keys must be unique');
+  if (!hasUniqueEventKeys(children)) {
+    throw new Error('Tab event keys must be unique');
+  }
+
+  const defaultActiveTab: string = children.find(
+    (child: JSX.Element) => activeKey === child.props.eventKey
+  )?.props.eventKey;
+
+  const initialMount = useRef(true);
+
+  const [activeTab, setActiveTab] = useState<string>(
+    defaultActiveTab || children[0].props.eventKey
+  );
+
+  const onClickHandler: (id: string) => void = (id: string) => setActiveTab(id);
+
+  const updateActiveTab: (id: string) => boolean = (id: string) => {
+    if (children.some((child: JSX.Element) => child.props.eventKey === id)) {
+      setActiveTab(id);
+      return true;
     }
 
-    const defaultActiveTab: string = children.find(
-      (child: JSX.Element) => activeKey === child.props.eventKey
-    )?.props.eventKey;
+    return false;
+  };
 
-    const initialMount = useRef(true);
+  useImperativeHandle(ref, () => ({
+    updateActiveTab,
+  }));
 
-    const [activeTab, setActiveTab] = useState<string>(
-      defaultActiveTab || children[0].props.eventKey
-    );
+  useEffect(() => {
+    if (!initialMount.current) onSelect && onSelect(activeTab);
+    else initialMount.current = false;
+  }, [activeTab]);
 
-    const onClickHandler: (id: string) => void = (id: string) =>
-      setActiveTab(id);
-
-    const updateActiveTab: (id: string) => boolean = (id: string) => {
-      if (children.some((child: JSX.Element) => child.props.eventKey === id)) {
-        setActiveTab(id);
-        return true;
-      }
-
-      return false;
-    };
-
-    useImperativeHandle(ref, () => ({
-      updateActiveTab,
-    }));
-
-    useEffect(() => {
-      if (!initialMount.current) onSelect && onSelect(activeTab);
-      else initialMount.current = false;
-    }, [activeTab]);
-
-    return (
-      <div className={containerClassName}>
-        <ol
-          role={Roles.tablist}
-          id={id}
-          className={className}
-          aria-label={ariaLabelTabList}
+  return (
+    <div className={containerClassName}>
+      <ol
+        role={Roles.tablist}
+        id={id}
+        className={className}
+        aria-label={ariaLabelTabList}
+      >
+        <TabContext.Provider
+          value={{ activeTab, changeActiveTab: onClickHandler }}
         >
-          <TabContext.Provider
-            value={{ activeTab, changeActiveTab: onClickHandler }}
-          >
-            {children.map((child: JSX.Element, index: number) => {
-              const classes: string = classNames([
-                tabClassName,
-                child.props.className,
-              ]);
+          {children.map((child: JSX.Element, index: number) => {
+            const classes: string = classNames([
+              tabClassName,
+              child.props.className,
+            ]);
 
-              return (
-                <child.type
-                  key={index}
-                  {...child.props}
-                  activeTabClassName={activeTabClassName}
-                  ariaControls={child.props.eventKey}
-                  disabledClassName={disabledClassName}
-                  className={classes}
-                  linkClassName={tabLinkClassName}
-                />
-              );
-            })}
-          </TabContext.Provider>
-        </ol>
-        {children.map((tab: JSX.Element, index: number) =>
-          tab.props.eventKey === activeTab ? (
-            <div
-              id={tab.props.eventKey}
-              key={index}
-              role={Roles.tabpanel}
-              className={contentClassName}
-              tabIndex={0}
-              aria-labelledby={tab.props.eventKey}
-            >
-              {tab.props.children}
-            </div>
-          ) : undefined
-        )}
-      </div>
-    );
-  }
-);
+            return (
+              <child.type
+                key={index}
+                {...child.props}
+                activeTabClassName={activeTabClassName}
+                ariaControls={child.props.eventKey}
+                disabledClassName={disabledClassName}
+                className={classes}
+                linkClassName={tabLinkClassName}
+              />
+            );
+          })}
+        </TabContext.Provider>
+      </ol>
+      {children.map((tab: JSX.Element, index: number) =>
+        tab.props.eventKey === activeTab ? (
+          <div
+            id={tab.props.eventKey}
+            key={index}
+            role={Roles.tabpanel}
+            className={contentClassName}
+            tabIndex={0}
+            aria-labelledby={tab.props.eventKey}
+          >
+            {tab.props.children}
+          </div>
+        ) : undefined
+      )}
+    </div>
+  );
+};
