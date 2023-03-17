@@ -1,4 +1,4 @@
-import React, { createContext, forwardRef, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import { isServer } from '../common';
 import { TabGroupNonJs } from './TabGroupNonJs';
 import { TabGroupWithJs } from './TabGroupWithJs';
@@ -52,6 +52,10 @@ export type TabGroupProps = {
    * Tab Group onSelect handler
    */
   onSelect?: (eventKey: string) => void;
+  /**
+   * ref passed in of DOM element
+   */
+  ref?: any;
 };
 
 type TabContextProps = {
@@ -80,6 +84,7 @@ export const TabGroup = ({
   tabClassName,
   tabLinkClassName,
   onSelect,
+  ref,
 }: TabGroupProps) =>
   !isServer() ? (
     <TabGroupWithJs
@@ -95,6 +100,7 @@ export const TabGroup = ({
       tabClassName={tabClassName}
       tabLinkClassName={tabLinkClassName}
       onSelect={onSelect}
+      ref={ref}
     />
   ) : (
     <TabGroupNonJs
