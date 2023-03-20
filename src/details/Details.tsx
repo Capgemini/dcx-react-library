@@ -34,6 +34,10 @@ type DetailsProps = {
    */
   summaryTextClassName?: string;
   /**
+   * summary text id name
+   */
+  summaryTextId?: any;
+  /**
    * details tab index
    */
   tabIndex?: number;
@@ -50,6 +54,7 @@ export const Details = ({
   openClassName,
   summaryClassName,
   summaryTextClassName,
+  summaryTextId,
   tabIndex = 0,
 }: DetailsProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(open);
@@ -65,7 +70,7 @@ export const Details = ({
         onClick={handleOnChange}
         tabIndex={tabIndex}
       >
-        <span className={summaryTextClassName}>{summary}</span>
+        <span id={summaryTextId} className={summaryTextClassName}>{summary}</span>
       </summary>
       <div
         className={`${
