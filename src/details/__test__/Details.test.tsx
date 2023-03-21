@@ -159,4 +159,24 @@ describe('Details', () => {
     );
     expect(container.querySelector('.details-text-class-name.open')).toBeNull();
   });
+
+  it('should render a details component with a summary text class name and id', () => {
+    const { container } = render(
+      <Details
+        summary="my summary"
+        summaryTextClassName="summary-text-class-name"
+        summaryTextId="summary-text-id"
+      >
+        my details
+      </Details>
+    );
+    expect(container.querySelector('.summary-text-class-name')).not.toBeNull();
+    expect(container.querySelector('#summary-text-id')).not.toBeNull();
+    expect(screen.getByText('my summary').getAttribute('class')).toBe(
+      'summary-text-class-name'
+    );
+    expect(screen.getByText('my summary').getAttribute('id')).toBe(
+      'summary-text-id'
+    );
+  });
 });
