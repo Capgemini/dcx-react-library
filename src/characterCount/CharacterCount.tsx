@@ -113,7 +113,7 @@ type CharacterCountProps = React.HTMLAttributes<HTMLTextAreaElement> & {
     hydrated?: boolean
   ) => string;
   /**
-   *
+   * will allow to expose the reset function to clear textbox and reset the component;
    */
   ref?: any;
 };
