@@ -563,4 +563,32 @@ describe('FormSelect', () => {
       'dcx-formselect dcx-formselect--filled containerFilledClassName'
     );
   });
+
+  it('should allow to disable the select', () => {
+    render(
+      <FormSelect
+        id="myId"
+        containerProps={{ 'data-testid': 'containerId' }}
+        errorMessage="errorMessage"
+        errorMessageClassName="errorMessageClass"
+        disabled={true}
+      />
+    );
+    const select: any = screen.getByRole('combobox');
+    expect(select.disabled).toBeTruthy();
+  });
+
+  it('should allow to extend the properties of the select', () => {
+    render(
+      <FormSelect
+        id="myId"
+        containerProps={{ 'data-testid': 'containerId' }}
+        errorMessage="errorMessage"
+        errorMessageClassName="errorMessageClass"
+        selectProps={{ disabled: true }}
+      />
+    );
+    const select: any = screen.getByRole('combobox');
+    expect(select.disabled).toBeTruthy();
+  });
 });
