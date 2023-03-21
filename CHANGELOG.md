@@ -1,3 +1,16 @@
+## 0.7.0 (xx/xx/2023)
+
+<a name="0.7.0"></a>
+
+- [Details - add prop for summaryText](https://github.com/Capgemini/dcx-react-library/issues/438)
+- [FormSelect - add extra props](https://github.com/Capgemini/dcx-react-library/issues/441)
+- [Checkbox - support anchor elements](https://github.com/Capgemini/dcx-react-library/issues/431)
+- [Autocomplete - sorting results](https://github.com/Capgemini/dcx-react-library/issues/422)
+- [FormSelect - add extra default classes](https://github.com/Capgemini/dcx-react-library/issues/390)
+- [FormInput - add the ability to position the error after the hint](https://github.com/Capgemini/dcx-react-library/issues/405)
+- [All component - add tabindex property](https://github.com/Capgemini/dcx-react-library/issues/301)
+- [allow the library to work with node18](https://github.com/Capgemini/dcx-react-library/issues/376)
+
 ## 0.6.0 (10/01/2023)
 
 <a name="0.6.0"></a>
