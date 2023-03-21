@@ -62,7 +62,7 @@ export const Details = ({
   return (
     <details className={detailsClassName} open={open}>
       <summary className={summaryClassName} onClick={handleOnChange}>
-        <span id={summaryTextProps?.id} className={summaryTextClassName} {...summaryTextProps}>{summary}</span>
+        <span className={summaryTextClassName} {...summaryTextProps}>{summary}</span>
       </summary>
       <div
         className={classNames([
