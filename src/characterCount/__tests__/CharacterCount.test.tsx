@@ -310,4 +310,21 @@ describe('CharacterCount with character limit', () => {
       screen.getByText('this is a custom message with 15 and 0')
     ).toBeInTheDocument();
   });
+
+  it('should call given on focus handler when focused', () => {
+    const onFocusHandler = jest.fn();
+
+    render(
+      <CharacterCount
+        onFocus={onFocusHandler}
+        label="Label for text area"
+        maxLength={15}
+        cols={30}
+        rows={5}
+      />
+    );
+
+    screen.getByRole('textbox').focus();
+    expect(onFocusHandler).toHaveBeenCalled();
+  });
 });

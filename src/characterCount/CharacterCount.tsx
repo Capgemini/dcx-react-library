@@ -203,6 +203,7 @@ export const CharacterCount = ({
           cols={cols}
           maxLength={constrained && !isWordsCount ? maxLength : undefined}
           aria-describedby={ariaDescribedBy || ''}
+          onFocus={handleChange}
           {...props}
         />
         {showMessage && (
