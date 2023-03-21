@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { CharacterCount } from '../CharacterCount';
 import userEvent from '@testing-library/user-event';
 import * as hooks from '../../common/utils/clientOnly';
+
+const DummyResetCharacterCountComponent = () => {
+  const textRef = useRef<any>(null);
+  return (
+    <form>
+      <CharacterCount
+        label="Label for text area"
+        hint={{
+          text: 'Type more than 15 characters to see the message change',
+        }}
+        maxLength={15}
+        rows={5}
+        cols={50}
+        ref={textRef}
+      />
+      <button onClick={() => textRef.current.reset()}>Cancel</button>
+    </form>
+  );
+};
 
 describe('CharacterCount with character limit', () => {
   it('should render', () => {
@@ -311,20 +330,21 @@ describe('CharacterCount with character limit', () => {
     ).toBeInTheDocument();
   });
 
-  it('should call given on focus handler when focused', () => {
-    const onFocusHandler = jest.fn();
+  it('should reset textfield and message when textarea is reset', async () => {
+    const user = userEvent.setup();
 
-    render(
-      <CharacterCount
-        onFocus={onFocusHandler}
-        label="Label for text area"
-        maxLength={15}
-        cols={30}
-        rows={5}
-      />
-    );
+    render(<DummyResetCharacterCountComponent />);
 
-    screen.getByRole('textbox').focus();
-    expect(onFocusHandler).toHaveBeenCalled();
+    const button = screen.getByRole('button');
+    const textarea: any = screen.getByRole('textbox');
+
+    await user.type(textarea, 'ab');
+
+    await user.click(button);
+
+    expect(textarea.value).toBe('');
+    expect(
+      screen.getByText('You can enter up to 15 characters.')
+    ).toBeInTheDocument();
   });
 });
