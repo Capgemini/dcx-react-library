@@ -31,7 +31,7 @@ type DetailsProps = {
    */
   summaryClassName?: string;
    /**
-   * allow to customise the span with all the properites needed
+   * allow to customise the span with all the properties needed
    */
    summaryTextProps?:  React.AllHTMLAttributes<HTMLSpanElement>;
   /**
