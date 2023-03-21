@@ -165,7 +165,7 @@ describe('Details', () => {
       <Details
         summary="my summary"
         summaryTextClassName="summary-text-class-name"
-        summaryTextId="summary-text-id"
+        summaryTextProps={{id:'summary-text-id'}}
       >
         my details
       </Details>
