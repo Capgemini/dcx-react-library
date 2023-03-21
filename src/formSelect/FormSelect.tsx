@@ -125,6 +125,14 @@ export type FormSelectProps = {
    * tab index value
    */
   tabIndex?: number;
+  /**
+   * will enable/disable the select
+   */
+  disabled?: boolean;
+  /**
+   * will allow to extend the select
+   */
+  selectProps?: React.AllHTMLAttributes<HTMLSelectElement>;
 };
 
 export const FormSelect = ({
@@ -154,6 +162,8 @@ export const FormSelect = ({
   defaultValue = '',
   tabIndex = 0,
   variant = 'normal',
+  disabled = false,
+  selectProps,
 }: FormSelectProps) => {
   let initialValue: string | number = '';
 
@@ -232,6 +242,8 @@ export const FormSelect = ({
         onChange={handleChange}
         style={style}
         tabIndex={tabIndex}
+        disabled={disabled}
+        {...selectProps}
       >
         {nullOption && <Option value="" label={nullOption} />}
         {getOptions(options)}
