@@ -5,7 +5,8 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { classNames, Roles } from '../common';
+import { Roles } from '../common';
+import { TabLinks } from './components/TabLinks';
 
 export type TabGroupProps = {
   /**
@@ -79,14 +80,10 @@ export const TabGroupWithJs = ({
   children,
   id,
   ariaLabelTabList,
-  activeTabClassName,
-  disabledClassName,
   activeKey,
   className,
   containerClassName,
   contentClassName,
-  tabClassName,
-  tabLinkClassName,
   onSelect,
   ref,
 }: TabGroupProps) => {
@@ -141,24 +138,7 @@ export const TabGroupWithJs = ({
         <TabContext.Provider
           value={{ activeTab, changeActiveTab: onClickHandler }}
         >
-          {children.map((child: JSX.Element, index: number) => {
-            const classes: string = classNames([
-              tabClassName,
-              child.props.className,
-            ]);
-
-            return (
-              <child.type
-                key={index}
-                {...child.props}
-                activeTabClassName={activeTabClassName}
-                ariaControls={child.props.eventKey}
-                disabledClassName={disabledClassName}
-                className={classes}
-                linkClassName={tabLinkClassName}
-              />
-            );
-          })}
+          <TabLinks children={children} />
         </TabContext.Provider>
       </ol>
       {children.map((tab: JSX.Element, index: number) =>

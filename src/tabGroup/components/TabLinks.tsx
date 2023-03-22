@@ -1,8 +1,6 @@
 import React from 'react';
-import { Roles } from '../common';
-import { TabLinks } from './components/TabLinks';
 
-export type TabGroupProps = {
+export type TabLinksProps = {
   /**
    * Tab Group children
    */
@@ -49,34 +47,30 @@ export type TabGroupProps = {
   tabLinkClassName?: string;
 };
 
-export const TabGroupNonJs = ({
+export const TabLinks = ({
   children,
-  id,
-  ariaLabelTabList,
-  className,
-  containerClassName,
-  contentClassName,
-}: TabGroupProps) => (
-  <div className={containerClassName}>
-    <ol
-      role={Roles.tablist}
-      id={id}
-      className={className}
-      aria-label={ariaLabelTabList}
-    >
-      <TabLinks children={children} />
-    </ol>
-    {children.map((tab: JSX.Element, index: number) => (
-      <div
-        id={tab.props.eventKey}
-        key={index}
-        role={Roles.tabpanel}
-        className={contentClassName}
-        tabIndex={0}
-        aria-labelledby={tab.props.eventKey}
-      >
-        {tab.props.children}
-      </div>
-    ))}
-  </div>
+  tabClassName,
+  activeTabClassName,
+  disabledClassName,
+  tabLinkClassName,
+}: TabLinksProps) => (
+  <>
+    {children.map((child: JSX.Element, index: number) => {
+      const classes: string = [tabClassName, child.props.className]
+        .filter((cls: string) => cls !== undefined)
+        .join(' ');
+
+      return (
+        <child.type
+          key={index}
+          {...child.props}
+          activeTabClassName={activeTabClassName}
+          ariaControls={child.props.eventKey}
+          disabledClassName={disabledClassName}
+          className={classes}
+          linkClassName={tabLinkClassName}
+        />
+      );
+    })}
+  </>
 );
