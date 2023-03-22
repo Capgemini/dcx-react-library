@@ -53,6 +53,10 @@ type CharacterCountProps = React.HTMLAttributes<HTMLTextAreaElement> & {
    */
   name?: string;
   /**
+   * text in textarea
+   */
+  value?: string;
+  /**
    * textarea rows value
    */
   rows?: number;
@@ -132,6 +136,7 @@ export const CharacterCount = forwardRef(
       messageErrorClassName,
       id,
       name,
+      value = '',
       rows,
       cols,
       maxLength,
@@ -154,21 +159,41 @@ export const CharacterCount = forwardRef(
     const [overLimitBy, setOverLimitBy] = useState<number>(0);
     const [showMessage, setShowMessage] = useState<boolean>(!threshold);
     const [showError, setShowError] = useState<boolean>(displayError);
-    const [value, setValue] = useState<string>('');
+    const [textareaValue, setTextareaValue] = useState<string>(value);
     const isWordsCount = limitType === 'words';
 
     const hydrated = useHydrated();
 
+    const getRemaining = (value: string) =>
+      isWordsCount
+        ? maxLength -
+          (value === '' ? value.split(' ').length - 1 : value.split(' ').length)
+        : maxLength - value.length;
+
+    const isOverThreshold = (value: string) =>
+      isWordsCount && threshold
+        ? (value.split(' ').length / maxLength) * 100 >= threshold
+        : threshold && (value.length / maxLength) * 100 >= threshold;
+
     useEffect(() => {
       setShowError(displayError);
     }, [displayError]);
+
+    useEffect(() => {
+      const remaining = getRemaining(textareaValue);
+      const overThreshold = isOverThreshold(textareaValue);
+
+      setShowMessage(overThreshold || !threshold);
+      if (remaining < 0) setOverLimitBy(-remaining);
+      setRemainingCount(remaining);
+    }, []);
 
     const reset = () => {
       setRemainingCount(maxLength);
       setShowError(displayError);
       setShowMessage(!threshold);
       setOverLimitBy(0);
-      setValue('');
+      setTextareaValue('');
     };
 
     useImperativeHandle(ref, () => ({
@@ -176,20 +201,13 @@ export const CharacterCount = forwardRef(
     }));
 
     const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
-      const remaining = isWordsCount
-        ? maxLength - evt.target.value.split(' ').length
-        : maxLength - evt.target.value.length;
-
-      const overThreshold =
-        isWordsCount && threshold
-          ? (evt.target.value.split(' ').length / maxLength) * 100 >= threshold
-          : threshold &&
-            (evt.target.value.length / maxLength) * 100 >= threshold;
+      const remaining = getRemaining(evt.target.value);
+      const overThreshold = isOverThreshold(evt.target.value);
 
       setShowMessage(overThreshold || !threshold);
       setOverLimitBy(-remaining);
       setRemainingCount(remaining);
-      setValue(evt.target.value);
+      setTextareaValue(evt.target.value);
 
       onChange && onChange(evt);
     };
@@ -233,7 +251,7 @@ export const CharacterCount = forwardRef(
             onReset={handleChange}
             ref={ref}
             {...props}
-            value={value}
+            value={textareaValue}
           />
           {showMessage && (
             <div

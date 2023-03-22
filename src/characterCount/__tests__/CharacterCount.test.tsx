@@ -330,6 +330,27 @@ describe('CharacterCount with character limit', () => {
     ).toBeInTheDocument();
   });
 
+  it('should allow to specify a custom max character message when there is a value passed in and it is over the limit', () => {
+    render(
+      <CharacterCount
+        label="Label for text area"
+        maxLength={15}
+        cols={30}
+        rows={5}
+        messageClassName="message"
+        customMaxCharMsgFunc={(remainingCount, overLimitBy) =>
+          `this is a custom message with ${remainingCount} and ${overLimitBy}`
+        }
+        value="This text is more than 15 characters"
+      />
+    );
+
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
+    expect(
+      screen.getByText('this is a custom message with -21 and 21')
+    ).toBeInTheDocument();
+  });
+
   it('should reset textfield and message when textarea is reset', async () => {
     const user = userEvent.setup();
 
@@ -345,6 +366,28 @@ describe('CharacterCount with character limit', () => {
     expect(textarea.value).toBe('');
     expect(
       screen.getByText('You can enter up to 15 characters.')
+    ).toBeInTheDocument();
+  });
+
+  it('should show correct message when there is an existing text value', () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    render(
+      <CharacterCount
+        label="Label for text area"
+        maxLength={15}
+        cols={30}
+        rows={5}
+        messageClassName="message"
+        value="hello"
+      />
+    );
+
+    const textarea: any = screen.getByRole('textbox');
+
+    expect(textarea.value).toBe('hello');
+    expect(
+      screen.getByText('You have 10 characters remaining')
     ).toBeInTheDocument();
   });
 });
