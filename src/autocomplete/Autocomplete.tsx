@@ -71,6 +71,10 @@ type autocompleteProps = {
    */
   hintClass?: string;
   /**
+   * if you want to pass an id to the hint
+   */
+  hintId?: string;
+  /**
    * if you want to pass an id to the result UL list
    */
   resultId?: string;
@@ -155,6 +159,10 @@ type autocompleteProps = {
    */
   labelClassName?: string;
   /**
+   * form group label properties for all items
+   */
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
+  /**
    * it will pass an id to the input or select element(in case of progressive enhancement)
    */
   id?: string;
@@ -231,6 +239,7 @@ export const Autocomplete = ({
   defaultValue = '',
   hintText,
   hintClass,
+  hintId,
   multiSelect = false,
   notFoundText,
   resultId,
@@ -253,6 +262,7 @@ export const Autocomplete = ({
   containerClassName,
   labelText,
   labelClassName,
+  labelProps,
   id,
   errorPosition,
   errorMessageText = '',
@@ -492,7 +502,7 @@ export const Autocomplete = ({
           />
         )}
       {labelText && (
-        <label htmlFor={id} className={labelClassName}>
+        <label htmlFor={id} className={labelClassName} {...labelProps}>
           {labelText}
         </label>
       )}
@@ -506,7 +516,7 @@ export const Autocomplete = ({
           />
         )}
       {hintText && (
-        <Hint text={hintText} className={hintClass} useLabel={false} />
+        <Hint text={hintText} className={hintClass} id={hintId} useLabel={false} />
       )}
       {errorPosition &&
         errorPosition === AutoCompleteErrorPosition.AFTER_HINT && (
@@ -534,7 +544,7 @@ export const Autocomplete = ({
   return (
     <>
       {multiSelect && hintText && (
-        <Hint text={hintText} className={hintClass} useLabel={false} />
+        <Hint text={hintText} className={hintClass} id={hintId} useLabel={false} />
       )}
       <div className={containerClassName} style={{ ...searchContainerStyle }}>
         {searchEl}
