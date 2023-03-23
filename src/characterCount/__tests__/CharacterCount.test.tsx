@@ -257,59 +257,6 @@ describe('CharacterCount with character limit', () => {
     expect(screen.getByText('You have 27 words remaining')).toBeInTheDocument();
   });
 
-  it('should show static message when progressive enhancement is true and limit type is characters', async () => {
-    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
-
-    const handleChange = jest.fn();
-    const user = userEvent.setup();
-
-    render(
-      <CharacterCount
-        label="Label for text area"
-        hint={{ text: 'Optional hint' }}
-        maxLength={15}
-        onChange={handleChange}
-        messageClassName="message"
-      />
-    );
-
-    const textarea = screen.getByRole('textbox');
-
-    await user.type(textarea, 'some text');
-
-    expect(handleChange).toBeCalled();
-    expect(
-      screen.getByText('You can enter up to 15 characters.')
-    ).toBeInTheDocument();
-  });
-
-  it('should show static message when progressive enhancement is true and limit type is words', async () => {
-    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
-
-    const handleChange = jest.fn();
-    const user = userEvent.setup();
-
-    render(
-      <CharacterCount
-        label="Label for text area"
-        hint={{ text: 'Optional hint' }}
-        maxLength={15}
-        onChange={handleChange}
-        messageClassName="message"
-        limitType="words"
-      />
-    );
-
-    const textarea = screen.getByRole('textbox');
-
-    await user.type(textarea, 'some text');
-
-    expect(handleChange).toBeCalled();
-    expect(
-      screen.getByText('You can enter up to 15 words.')
-    ).toBeInTheDocument();
-  });
-
   it('should allow to specify a custom max character message', async () => {
     render(
       <CharacterCount
@@ -365,13 +312,11 @@ describe('CharacterCount with character limit', () => {
 
     expect(textarea.value).toBe('');
     expect(
-      screen.getByText('You can enter up to 15 characters.')
+      screen.getByText('You have 15 characters remaining')
     ).toBeInTheDocument();
   });
 
   it('should show correct message when there is an existing text value', () => {
-    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
-
     render(
       <CharacterCount
         label="Label for text area"
@@ -388,6 +333,58 @@ describe('CharacterCount with character limit', () => {
     expect(textarea.value).toBe('hello');
     expect(
       screen.getByText('You have 10 characters remaining')
+    ).toBeInTheDocument();
+  });
+
+  it('should show static message when progressive enhancement is true and limit type is characters', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    const handleChange = jest.fn();
+    const user = userEvent.setup();
+
+    render(
+      <CharacterCount
+        label="Label for text area"
+        hint={{ text: 'Optional hint' }}
+        maxLength={15}
+        onChange={handleChange}
+        messageClassName="message"
+      />
+    );
+
+    const textarea = screen.getByRole('textbox');
+
+    await user.type(textarea, 'some text');
+
+    expect(handleChange).toBeCalled();
+    expect(
+      screen.getByText('You can enter up to 15 characters.')
+    ).toBeInTheDocument();
+  });
+
+  it('should show static message when progressive enhancement is true and limit type is words', async () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+
+    const handleChange = jest.fn();
+    const user = userEvent.setup();
+
+    render(
+      <CharacterCount
+        label="Label for text area"
+        hint={{ text: 'Optional hint' }}
+        maxLength={15}
+        onChange={handleChange}
+        messageClassName="message"
+        limitType="words"
+      />
+    );
+
+    const textarea = screen.getByRole('textbox');
+
+    await user.type(textarea, 'some text');
+
+    expect(handleChange).toBeCalled();
+    expect(
+      screen.getByText('You can enter up to 15 words.')
     ).toBeInTheDocument();
   });
 });

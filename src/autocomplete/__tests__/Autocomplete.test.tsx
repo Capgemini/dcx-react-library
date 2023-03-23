@@ -119,7 +119,7 @@ describe('Autocomplete', () => {
         options={['abc', 'xyz']}
         labelText="labelText"
         labelClassName="labelClass"
-        labelProps={{id:'labelid'}}
+        labelProps={{ id: 'labelid' }}
       />
     );
     const label: any = screen.getByText('labelText');
