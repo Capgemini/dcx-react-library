@@ -37,6 +37,7 @@ function AutocompleteDemo() {
       debounceMs={100}
       hintText="search the list of fruits"
       hintClass=""
+      hintId="hintid"
       prefix={<></>}
       suffix={<></>}
       resultUlClass=""
@@ -48,6 +49,7 @@ function AutocompleteDemo() {
       containerClassName=""
       labelText=""
       labelClassName=""
+      labelProps={{id:'labelid'}}
       id=""
       errorPosition='below'
       errorMessageText=""
