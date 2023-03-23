@@ -180,13 +180,17 @@ export const CharacterCount = forwardRef(
     }, [displayError]);
 
     useEffect(() => {
+      setTextareaValue(value);
+    }, [value]);
+
+    useEffect(() => {
       const remaining = getRemaining(textareaValue);
       const overThreshold = isOverThreshold(textareaValue);
 
       setShowMessage(overThreshold || !threshold);
       if (remaining < 0) setOverLimitBy(-remaining);
       setRemainingCount(remaining);
-    }, []);
+    }, [textareaValue]);
 
     const reset = () => {
       setRemainingCount(maxLength);
