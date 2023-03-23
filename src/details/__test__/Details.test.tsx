@@ -159,4 +159,19 @@ describe('Details', () => {
     );
     expect(container.querySelector('.details-text-class-name.open')).toBeNull();
   });
+
+  it('should render a details component with a summary text class name and id', () => {
+    render(
+      <Details
+        summary="my summary"
+        summaryTextClassName="summary-text-class-name"
+        summaryTextProps={{id:'summary-text-id'}}
+      >
+        my details
+      </Details>
+    );
+    expect(screen.getByText('my summary').getAttribute('id')).toBe(
+      'summary-text-id'
+    );
+  });
 });

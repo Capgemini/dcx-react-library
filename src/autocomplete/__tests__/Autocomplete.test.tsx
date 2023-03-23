@@ -113,6 +113,19 @@ describe('Autocomplete', () => {
     expect(label).toBeInTheDocument();
   });
 
+  it('should allow to specify a label id', () => {
+    render(
+      <Autocomplete
+        options={['abc', 'xyz']}
+        labelText="labelText"
+        labelClassName="labelClass"
+        labelProps={{id:'labelid'}}
+      />
+    );
+    const label: any = screen.getByText('labelText');
+    expect(label.id).toBe('labelid');
+  });
+
   it('should display an error', () => {
     render(
       <Autocomplete
@@ -422,6 +435,19 @@ describe('Autocomplete', () => {
     );
     const hint: any = container.querySelector(`.${hintClass}`);
     expect(hint).not.toBeNull();
+  });
+
+  it('should display an hint id if specified', () => {
+    render(
+      <Autocomplete
+        options={['abc', 'xyz']}
+        hintText="search names"
+        hintClass="hintclass"
+        hintId="hintid"
+      />
+    );
+    const hint: any = screen.getByText('search names');
+    expect(hint.id).toBe('hintid');
   });
 
   it('should display the results after typing 2 character', async () => {

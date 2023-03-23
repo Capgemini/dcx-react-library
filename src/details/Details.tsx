@@ -30,6 +30,10 @@ type DetailsProps = {
    * summary class name
    */
   summaryClassName?: string;
+   /**
+   * allow to customise the span with all the properties needed
+   */
+   summaryTextProps?:  React.AllHTMLAttributes<HTMLSpanElement>;
   /**
    * summary text class name
    */
@@ -47,6 +51,7 @@ export const Details = ({
   openClassName,
   summaryClassName,
   summaryTextClassName,
+  summaryTextProps
 }: DetailsProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(open);
 
@@ -57,7 +62,7 @@ export const Details = ({
   return (
     <details className={detailsClassName} open={open}>
       <summary className={summaryClassName} onClick={handleOnChange}>
-        <span className={summaryTextClassName}>{summary}</span>
+        <span className={summaryTextClassName} {...summaryTextProps}>{summary}</span>
       </summary>
       <div
         className={classNames([
