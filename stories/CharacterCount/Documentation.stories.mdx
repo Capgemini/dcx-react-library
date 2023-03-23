@@ -56,7 +56,34 @@ An example with all the available properties is:
   customMaxCharMsgFunc={(remainingCount, overLimitBy, hydrated) =>
     `this is a custom message with ${remainingCount} and ${overLimitBy} with js enabled ${hydrated}`
   }
+  ref={textRef}
 />
+```
+
+### Resetting the component
+
+If you want to use a button to clear the textarea and reset the component, you can do this with calling the reset function which can be exposed with a **ref**.
+Create a ref to pass in to the CharacterCount component with React's **useRef** hook.
+For the button that you want to use to clear the text and messages, call the CharacterCount component's exposed **reset()** function, accessing it through the ref e.g. `() => textRef.current.reset()`.
+
+An example for resetting the component with a button:
+
+```js
+const textRef = useRef(null);
+
+<form>
+  <CharacterCount
+    label="Label for text area"
+    hint={{
+      text: 'Type more than 15 characters to see the message change',
+    }}
+    maxLength={15}
+    rows={5}
+    cols={50}
+    ref={textRef}
+  />
+  <button onClick={() => textRef.current.reset()}>Cancel</button>
+</form>;
 ```
 
 <Props of={CharacterCount} />

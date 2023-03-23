@@ -1,4 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useImperativeHandle,
+  forwardRef,
+  RefObject,
+} from 'react';
 import { classNames, ErrorMessage, useHydrated } from '../common';
 import { HintProps, VisuallyHidden } from '../common/components/commonTypes';
 
@@ -47,6 +53,10 @@ type CharacterCountProps = React.HTMLAttributes<HTMLTextAreaElement> & {
    * textarea name
    */
   name?: string;
+  /**
+   * text in textarea
+   */
+  value?: string;
   /**
    * textarea rows value
    */
@@ -107,119 +117,166 @@ type CharacterCountProps = React.HTMLAttributes<HTMLTextAreaElement> & {
     overLimitBy?: number,
     hydrated?: boolean
   ) => string;
+  /**
+   * will allow to expose the reset function to clear textbox and reset the component;
+   * @example
+   * const textRef = useRef<any>(null);
+   * <Button onClick={() => textRef.current.reset()} label="Cancel" />
+   */
+  ref?: RefObject<any>;
 };
 
-export const CharacterCount = ({
-  label,
-  hint,
-  containerClassName,
-  formGroupClassName,
-  labelClassName,
-  textareaClassName,
-  textareaErrorClassName,
-  messageClassName,
-  messageErrorClassName,
-  id,
-  name,
-  rows,
-  cols,
-  maxLength,
-  limitType = 'characters',
-  constrained = false,
-  threshold,
-  ariaDescribedBy,
-  onChange,
-  displayError = false,
-  errorMessage = '',
-  errorMessageClassName,
-  errorId,
-  errorVisuallyHiddenText,
-  customMaxCharMsgFunc,
-  ...props
-}: CharacterCountProps) => {
-  const [remainingCount, setRemainingCount] = useState<number>(maxLength);
-  const [overLimitBy, setOverLimitBy] = useState<number>(0);
-  const [showMessage, setShowMessage] = useState<boolean>(!threshold);
-  const [showError, setShowError] = useState<boolean>(displayError);
+export const CharacterCount = forwardRef(
+  (
+    {
+      label,
+      hint,
+      containerClassName,
+      formGroupClassName,
+      labelClassName,
+      textareaClassName,
+      textareaErrorClassName,
+      messageClassName,
+      messageErrorClassName,
+      id,
+      name,
+      value = '',
+      rows,
+      cols,
+      maxLength,
+      limitType = 'characters',
+      constrained = false,
+      threshold,
+      ariaDescribedBy,
+      onChange,
+      displayError = false,
+      errorMessage = '',
+      errorMessageClassName,
+      errorId,
+      errorVisuallyHiddenText,
+      customMaxCharMsgFunc,
+      ...props
+    }: CharacterCountProps,
+    ref
+  ) => {
+    const [remainingCount, setRemainingCount] = useState<number>(maxLength);
+    const [overLimitBy, setOverLimitBy] = useState<number>(0);
+    const [showMessage, setShowMessage] = useState<boolean>(!threshold);
+    const [showError, setShowError] = useState<boolean>(displayError);
+    const [textareaValue, setTextareaValue] = useState<string>(value);
+    const isWordsCount = limitType === 'words';
 
-  const isWordsCount = limitType === 'words';
+    const hydrated = useHydrated();
 
-  const hydrated = useHydrated();
+    const getRemaining = (value: string) =>
+      isWordsCount
+        ? maxLength -
+          (value === '' ? value.split(' ').length - 1 : value.split(' ').length)
+        : maxLength - value.length;
 
-  useEffect(() => {
-    setShowError(displayError);
-  }, [displayError]);
-
-  const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const remaining = isWordsCount
-      ? maxLength - evt.target.value.split(' ').length
-      : maxLength - evt.target.value.length;
-
-    const overThreshold =
+    const isOverThreshold = (value: string) =>
       isWordsCount && threshold
-        ? (evt.target.value.split(' ').length / maxLength) * 100 >= threshold
-        : threshold && (evt.target.value.length / maxLength) * 100 >= threshold;
+        ? (value.split(' ').length / maxLength) * 100 >= threshold
+        : threshold && (value.length / maxLength) * 100 >= threshold;
 
-    setShowMessage(overThreshold || !threshold);
-    setOverLimitBy(-remaining);
+    const calcRemainingCount = (value: string) => {
+      const remaining = getRemaining(value);
+      const overThreshold = isOverThreshold(value);
 
-    setRemainingCount(remaining);
+      setShowMessage(overThreshold || !threshold);
+      if (remaining < 0) setOverLimitBy(-remaining);
+      setRemainingCount(remaining);
+    };
 
-    onChange && onChange(evt);
-  };
+    useEffect(() => {
+      setShowError(displayError);
+    }, [displayError]);
 
-  const maxCharactersMessage = !hydrated
-    ? `You can enter up to ${maxLength} ${limitType}.`
-    : remainingCount >= 0
-    ? `You have ${remainingCount} ${limitType} remaining`
-    : `You have ${overLimitBy} ${limitType} too many`;
+    useEffect(() => {
+      setTextareaValue(value);
+    }, [value]);
 
-  return (
-    <div className={containerClassName}>
-      <div className={formGroupClassName}>
-        {label && (
-          <label className={labelClassName} htmlFor={id}>
-            {label}
-          </label>
-        )}
-        {hint && <div className={hint.className}>{hint.text}</div>}
-        {showError && (
-          <ErrorMessage
-            text={errorMessage}
-            className={errorMessageClassName}
-            id={errorId}
-            visuallyHiddenText={errorVisuallyHiddenText}
-          />
-        )}
-        <textarea
-          className={classNames([
-            textareaClassName,
-            { [`${textareaErrorClassName}`]: overLimitBy > 0 },
-          ])}
-          id={id}
-          name={name}
-          onChange={handleChange}
-          rows={rows}
-          cols={cols}
-          maxLength={constrained && !isWordsCount ? maxLength : undefined}
-          aria-describedby={ariaDescribedBy || ''}
-          {...props}
-        />
-        {showMessage && (
-          <div
+    useEffect(() => {
+      calcRemainingCount(textareaValue);
+    }, [textareaValue]);
+
+    const reset = () => {
+      setRemainingCount(maxLength);
+      setShowError(displayError);
+      setShowMessage(!threshold);
+      setOverLimitBy(0);
+      setTextareaValue('');
+    };
+
+    useImperativeHandle(ref, () => ({
+      reset,
+    }));
+
+    const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
+      calcRemainingCount(evt.target.value);
+
+      setTextareaValue(evt.target.value);
+
+      onChange && onChange(evt);
+    };
+
+    const maxCharactersMessage = !hydrated
+      ? `You can enter up to ${maxLength} ${limitType}.`
+      : remainingCount >= 0
+      ? `You have ${remainingCount} ${limitType} remaining`
+      : `You have ${overLimitBy} ${limitType} too many`;
+
+    return (
+      <div className={containerClassName}>
+        <div className={formGroupClassName}>
+          {label && (
+            <label className={labelClassName} htmlFor={id}>
+              {label}
+            </label>
+          )}
+          {hint && <div className={hint.className}>{hint.text}</div>}
+          {showError && (
+            <ErrorMessage
+              text={errorMessage}
+              className={errorMessageClassName}
+              id={errorId}
+              visuallyHiddenText={errorVisuallyHiddenText}
+            />
+          )}
+          <textarea
             className={classNames([
-              {
-                [`${messageErrorClassName}`]: overLimitBy > 0 || showError,
-                [`${messageClassName}`]: overLimitBy <= 0 && !showError,
-              },
+              textareaClassName,
+              { [`${textareaErrorClassName}`]: overLimitBy > 0 },
             ])}
-          >
-            {customMaxCharMsgFunc
-              ? customMaxCharMsgFunc(remainingCount, overLimitBy, hydrated)
-              : maxCharactersMessage}
-          </div>
-        )}
+            id={id}
+            name={name}
+            onChange={handleChange}
+            rows={rows}
+            cols={cols}
+            maxLength={constrained && !isWordsCount ? maxLength : undefined}
+            aria-describedby={ariaDescribedBy || ''}
+            onFocus={handleChange}
+            onReset={handleChange}
+            ref={ref}
+            value={textareaValue}
+            {...props}
+          />
+          {showMessage && (
+            <div
+              className={classNames([
+                {
+                  [`${messageErrorClassName}`]: overLimitBy > 0 || showError,
+                  [`${messageClassName}`]: overLimitBy <= 0 && !showError,
+                },
+              ])}
+            >
+              {customMaxCharMsgFunc
+                ? customMaxCharMsgFunc(remainingCount, overLimitBy, hydrated)
+                : maxCharactersMessage}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
