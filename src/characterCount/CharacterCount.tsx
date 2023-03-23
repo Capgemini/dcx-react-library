@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useImperativeHandle,
   forwardRef,
+  RefObject,
 } from 'react';
 import { classNames, ErrorMessage, useHydrated } from '../common';
 import { HintProps, VisuallyHidden } from '../common/components/commonTypes';
@@ -118,8 +119,11 @@ type CharacterCountProps = React.HTMLAttributes<HTMLTextAreaElement> & {
   ) => string;
   /**
    * will allow to expose the reset function to clear textbox and reset the component;
+   * @example
+   * const textRef = useRef<any>(null);
+   * <Button onClick={() => textRef.current.reset()} label="Cancel" />
    */
-  ref?: any;
+  ref?: RefObject<any>;
 };
 
 export const CharacterCount = forwardRef(
@@ -175,6 +179,15 @@ export const CharacterCount = forwardRef(
         ? (value.split(' ').length / maxLength) * 100 >= threshold
         : threshold && (value.length / maxLength) * 100 >= threshold;
 
+    const calcRemainingCount = (value: string) => {
+      const remaining = getRemaining(value);
+      const overThreshold = isOverThreshold(value);
+
+      setShowMessage(overThreshold || !threshold);
+      if (remaining < 0) setOverLimitBy(-remaining);
+      setRemainingCount(remaining);
+    };
+
     useEffect(() => {
       setShowError(displayError);
     }, [displayError]);
@@ -184,12 +197,7 @@ export const CharacterCount = forwardRef(
     }, [value]);
 
     useEffect(() => {
-      const remaining = getRemaining(textareaValue);
-      const overThreshold = isOverThreshold(textareaValue);
-
-      setShowMessage(overThreshold || !threshold);
-      if (remaining < 0) setOverLimitBy(-remaining);
-      setRemainingCount(remaining);
+      calcRemainingCount(textareaValue);
     }, [textareaValue]);
 
     const reset = () => {
@@ -205,12 +213,8 @@ export const CharacterCount = forwardRef(
     }));
 
     const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
-      const remaining = getRemaining(evt.target.value);
-      const overThreshold = isOverThreshold(evt.target.value);
+      calcRemainingCount(evt.target.value);
 
-      setShowMessage(overThreshold || !threshold);
-      setOverLimitBy(-remaining);
-      setRemainingCount(remaining);
       setTextareaValue(evt.target.value);
 
       onChange && onChange(evt);
@@ -254,8 +258,8 @@ export const CharacterCount = forwardRef(
             onFocus={handleChange}
             onReset={handleChange}
             ref={ref}
-            {...props}
             value={textareaValue}
+            {...props}
           />
           {showMessage && (
             <div
