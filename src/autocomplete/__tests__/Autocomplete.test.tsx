@@ -1,16 +1,14 @@
 import React from 'react';
-
 import {
-  act,
   fireEvent,
   render,
   screen,
   waitFor,
+  act,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { Autocomplete, AutoCompleteErrorPosition } from '../';
 import userEvent from '@testing-library/user-event';
-import { act } from '@testing-library/react-hooks';
 import * as hooks from '../../common/utils/clientOnly';
 
 const firstSearch = [

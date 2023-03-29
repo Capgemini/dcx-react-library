@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
-import { RadioGroup } from '../../src/radioGroup/RadioGroup';
-import '../style.css';
-=======
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs';
 import { RadioGroup } from '../../src/radioGroup/RadioGroup';
->>>>>>> 2204b9e (feat: rebase branch)
 
 <Meta title="DCXLibrary/Form/RadioGroup/Styled" component={RadioGroup} />
 
@@ -17,13 +11,13 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
   <Story name="inline radio buttons">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="change-name"
-          inputClassName='govuk-radios__input'
-          itemClassName='govuk-radios__item'
-          labelClassName='govuk-label govuk-radios__label'
+          inputClassName="govuk-radios__input"
+          itemClassName="govuk-radios__item"
+          labelClassName="govuk-label govuk-radios__label"
           items={[
             {
               label: 'Yes',
@@ -42,8 +36,7 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
           fieldsetClasses="govuk-fieldset"
           hint={{
             id: 'changed-name-hint',
-            text:
-              'This includes changing your last name or spelling your name differently.',
+            text: 'This includes changing your last name or spelling your name differently.',
             className: 'govuk-hint',
           }}
           itemsClasses="govuk-radios govuk-radios--inline"
@@ -67,13 +60,13 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
   <Story name="titled radio buttons">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="change-name-2"
-          inputClassName='govuk-radios__input'
-          itemClassName='govuk-radios__item'
-          labelClassName='govuk-label govuk-radios__label'
+          inputClassName="govuk-radios__input"
+          itemClassName="govuk-radios__item"
+          labelClassName="govuk-label govuk-radios__label"
           items={[
             {
               label: 'Yes',
@@ -92,8 +85,7 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
           fieldsetClasses="govuk-fieldset"
           hint={{
             id: 'changed-name-hint',
-            text:
-              'This includes changing your last name or spelling your name differently.',
+            text: 'This includes changing your last name or spelling your name differently.',
             className: 'govuk-hint',
           }}
           itemsClasses="govuk-radios govuk-radios--inline"
@@ -117,13 +109,13 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
   <Story name="stacked radio buttons">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="where-do-you-live"
-          inputClassName='govuk-radios__input'
-          itemClassName='govuk-radios__item'
-          labelClassName='govuk-label govuk-radios__label'
+          inputClassName="govuk-radios__input"
+          itemClassName="govuk-radios__item"
+          labelClassName="govuk-label govuk-radios__label"
           items={[
             {
               label: 'England',
@@ -166,24 +158,23 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
   <Story name="radio buttons with hints">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="sign-in"
-          inputClassName='govuk-radios__input'
-          itemClassName='govuk-radios__item'
-          labelClassName='govuk-label govuk-radios__label'
+          inputClassName="govuk-radios__input"
+          itemClassName="govuk-radios__item"
+          labelClassName="govuk-label govuk-radios__label"
           items={[
             {
               label: 'Sign in with Government Gateway',
               value: 'government-gateway',
               id: 'sign-in',
               hint: {
-                text:
-                  'You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.',
+                text: 'You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.',
                 className: 'govuk-hint govuk-radios__hint',
                 id: 'sign-in-item-hint',
-                position: 'below'
+                position: 'below',
               },
               ariaDescribedBy: 'sign-in-item-hint',
             },
@@ -192,11 +183,10 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
               value: 'govuk-verify',
               id: 'sign-in-2',
               hint: {
-                text:
-                  'You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.',
+                text: 'You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.',
                 className: 'govuk-hint govuk-radios__hint',
                 id: 'sign-in-2-item-hint',
-                position: 'below'
+                position: 'below',
               },
               ariaDescribedBy: 'sign-in-item-hint',
             },
@@ -207,8 +197,7 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
           fieldsetClasses="govuk-fieldset"
           hint={{
             id: 'sign-in-hint',
-            text:
-              'You’ll need an account to prove your identity and complete your Self Assessment',
+            text: 'You’ll need an account to prove your identity and complete your Self Assessment',
             className: 'govuk-hint',
           }}
           itemsClasses="govuk-radios"
@@ -232,13 +221,13 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
   <Story name="filter radio buttons">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="filter-change"
-          inputClassName='govuk-radios__input'
-          itemClassName='govuk-radios__item'
-          labelClassName='govuk-label govuk-radios__label'
+          inputClassName="govuk-radios__input"
+          itemClassName="govuk-radios__item"
+          labelClassName="govuk-label govuk-radios__label"
           items={[
             {
               label: 'Monthly',
@@ -275,13 +264,13 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
   <Story name="error message radio buttons">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="change-name-error"
-          inputClassName='govuk-radios__input'
-          itemClassName='govuk-radios__item'
-          labelClassName='govuk-label govuk-radios__label'
+          inputClassName="govuk-radios__input"
+          itemClassName="govuk-radios__item"
+          labelClassName="govuk-label govuk-radios__label"
           items={[
             {
               label: 'Yes',
@@ -309,8 +298,7 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
           }}
           hint={{
             id: 'changed-name-hint',
-            text:
-              'This includes changing your last name or spelling your name differently.',
+            text: 'This includes changing your last name or spelling your name differently.',
             className: 'govuk-hint',
           }}
           itemsClasses="govuk-radios govuk-radios--inline"
@@ -334,13 +322,13 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
   <Story name="radio buttons with a text divider">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="where-do-you-live-divider"
-          inputClassName='govuk-radios__input'
-          itemClassName='govuk-radios__item'
-          labelClassName='govuk-label govuk-radios__label'
+          inputClassName="govuk-radios__input"
+          itemClassName="govuk-radios__item"
+          labelClassName="govuk-label govuk-radios__label"
           items={[
             {
               label: 'England',
@@ -392,13 +380,16 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
   <Story name="radio buttons conditionally revealing content">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      const handleChange = (event, conditional) => {
+        setSelected(event.currentTarget.value);
+        console.log(conditional);
+      };
       return (
         <RadioGroup
           name="contact"
-          inputClassName='govuk-radios__input'
-          itemClassName='govuk-radios__item'
-          labelClassName='govuk-label govuk-radios__label'
+          inputClassName="govuk-radios__input"
+          itemClassName="govuk-radios__item"
+          labelClassName="govuk-label govuk-radios__label"
           items={[
             {
               label: 'Email',
@@ -415,7 +406,7 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
                 id: 'conditional-contact',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-email',
-                value: ''
+                value: '',
               },
             },
             {
@@ -433,7 +424,7 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
                 id: 'conditional-contact-2',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-phone',
-                value: ''
+                value: '',
               },
             },
             {
@@ -451,7 +442,7 @@ In this section we are using the RadioGroup component providing the GOV.UK Desig
                 id: 'conditional-contact-3',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-text',
-                value: ''
+                value: '',
               },
             },
           ]}

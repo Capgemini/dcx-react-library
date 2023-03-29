@@ -21,12 +21,6 @@ type autocompleteProps = {
    */
   optionsId?: string;
   /**
-   * it will add a dynamic id to every option provided. It will concatenate an index for each item
-   * @example
-   * optionsId: 'dcx-option-id will result as dcx-option-id-1, dcx-option-id-2, etc
-   */
-  optionsId?: string;
-  /**
    * list of selected options for multi select
    */
   selected?: MultiSelectOption[];
@@ -522,7 +516,12 @@ export const Autocomplete = ({
           />
         )}
       {hintText && (
-        <Hint text={hintText} className={hintClass} id={hintId} useLabel={false} />
+        <Hint
+          text={hintText}
+          className={hintClass}
+          id={hintId}
+          useLabel={false}
+        />
       )}
       {errorPosition &&
         errorPosition === AutoCompleteErrorPosition.AFTER_HINT && (
@@ -550,7 +549,12 @@ export const Autocomplete = ({
   return (
     <>
       {multiSelect && hintText && (
-        <Hint text={hintText} className={hintClass} id={hintId} useLabel={false} />
+        <Hint
+          text={hintText}
+          className={hintClass}
+          id={hintId}
+          useLabel={false}
+        />
       )}
       <div className={containerClassName} style={{ ...searchContainerStyle }}>
         {searchEl}
