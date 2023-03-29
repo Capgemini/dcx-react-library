@@ -9,6 +9,17 @@ function AutocompleteDemo() {
   const handleSelected = value => {
     console.log(value)
   }
+
+  const handleSearch = (value, options) => {
+    return options
+      .filter(optionsName => optionsName.toLowerCase().includes(value.toLowerCase()))
+      .sort((a, b) => {
+        if (a < b) { return -1; }
+        if (a > b) { return 1; }
+        return 0
+      });
+  }
+
   return (
     <Autocomplete
       options={[
@@ -26,18 +37,19 @@ function AutocompleteDemo() {
       debounceMs={100}
       hintText="search the list of fruits"
       hintClass=""
+      hintId="hintid"
       prefix={<></>}
       suffix={<></>}
       resultUlClass=""
       resultlLiClass=""
       resultNoOptionClass=""
       resultActiveClass=""
-      inputProps={{}}
       notFoundText="No fruit found"
       onSelected={handleSelected} 
       containerClassName=""
       labelText=""
       labelClassName=""
+      labelProps={{id:'labelid'}}
       id=""
       errorPosition='below'
       errorMessageText=""
@@ -50,6 +62,8 @@ function AutocompleteDemo() {
       name=""
       inputProps={{}}
       selectProps={{}}
+      tabIndex={0}
+      search={handleSearch}
     />
   )
 }

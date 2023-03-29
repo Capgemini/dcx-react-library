@@ -1,15 +1,15 @@
-import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs';
 import { Range } from '../../src/range/Range';
 
 <Meta
-    title="DCXLibrary/Form/Range/documentation"
-    component={Range}
-    parameters={{
-        viewMode: 'docs',
-        previewTabs: {
-            canvas: { hidden: true },
-        },
-    }}
+  title="DCXLibrary/Form/Range/documentation"
+  component={Range}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
 />
 
 # Range
@@ -26,24 +26,27 @@ Use the range component when users need to input based on a range of values
 An example with all the available properties is:
 
 ```js
-<Range  min={0}
-        max={100}
-        value={75}
-        inputClass="customRange"
-        disabled={false}
-        showTooltip={true}
-        onChange={setDisplayValue}
-        ariaLabel="rangeComponent"
-        prefix={
-                    <div>
-                        <p1>Low</p1>
-                    </div>
-                }
-        suffix={
-                    <div>
-                        <p1>High</p1>
-                    </div>
-                }/>
+<Range
+  min={0}
+  max={100}
+  value={75}
+  inputClass="customRange"
+  disabled={false}
+  showTooltip={true}
+  onChange={setDisplayValue}
+  ariaLabel="rangeComponent"
+  prefix={
+    <div>
+      <p1>Low</p1>
+    </div>
+  }
+  suffix={
+    <div>
+      <p1>High</p1>
+    </div>
+  }
+  tabIndex={0}
+/>
 ```
 
 <Props of={Range} />

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { classNames } from '../common';
 import { Roles } from '../common/utils/rolesType';
 import style from './scrubber.module.css';
 
@@ -51,6 +52,10 @@ type RangeProps = {
    * allow to enable displaying a tooltip on the range slider
    */
   showTooltip?: boolean;
+  /**
+   * tab index value
+   */
+  tabIndex?: number;
 };
 
 export const Range = ({
@@ -66,6 +71,7 @@ export const Range = ({
   onChangeMin,
   inputClass,
   showTooltip = false,
+  tabIndex = 0,
   ...props
 }: RangeProps) => {
   const [defaultValue, setDefaultValue] = React.useState<number>(value);
@@ -113,12 +119,14 @@ export const Range = ({
         value={defaultValue}
         onChange={handleChange}
         disabled={disabled}
-        className={[showTooltip ? style.tooltip : '', inputClass]
-          .join(' ')
-          .trim()}
+        className={classNames([
+          inputClass,
+          { [`${style.tooltip}`]: showTooltip },
+        ])}
         aria-label={ariaLabel || 'input-slider'}
         value-tooltip={defaultValue}
         style={styling}
+        tabIndex={tabIndex}
         {...props}
       />
 

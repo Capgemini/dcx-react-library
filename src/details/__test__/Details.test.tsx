@@ -182,9 +182,22 @@ describe('Details', () => {
         my details
       </Details>
     );
-
     const summary: any = container.querySelector('.summary-class-name');
-
     expect(summary.getAttribute('tabindex')).toBe('1');
+  });
+
+  it('should render a details component with a summary text class name and id', () => {
+    render(
+      <Details
+        summary="my summary"
+        summaryTextClassName="summary-text-class-name"
+        summaryTextProps={{ id: 'summary-text-id' }}
+      >
+        my details
+      </Details>
+    );
+    expect(screen.getByText('my summary').getAttribute('id')).toBe(
+      'summary-text-id'
+    );
   });
 });

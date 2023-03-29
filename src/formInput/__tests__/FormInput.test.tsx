@@ -373,9 +373,10 @@ describe('FormInput', () => {
     const { container } = render(
       <DummyStaticComponent pos={ErrorPosition.AFTER_LABEL} />
     );
-    const inputContainer: Element | null =
-      container.querySelector('.container-error');
-    expect(inputContainer).not.toBeNull();
+    const inputContainer: Element | null = container.querySelector('div');
+    expect(inputContainer?.getAttribute('class')).toBe(
+      'container-class container-error'
+    );
   });
 
   it('should add an extra class if the dynamic error is displayed', async () => {
@@ -417,6 +418,21 @@ describe('FormInput', () => {
     expect(hint.innerHTML).toBe('my hint');
   });
 
+  it('should display the formInput error message after the hint', async () => {
+    const { container } = render(
+      <DummyStaticComponent
+        pos={ErrorPosition.AFTER_HINT}
+        hint={{
+          id: 'my-hint',
+          text: 'my hint',
+        }}
+      />
+    );
+
+    const error: any = container.querySelector('[role=error]');
+    expect(error.innerHTML).toContain('static error message');
+  });
+
   it('should display the aria-label name if the aria-label attribute is not passed', () => {
     const handleChange = jest.fn();
     render(
@@ -435,5 +451,19 @@ describe('FormInput', () => {
     );
     const input = screen.getByRole('textbox');
     expect(input.getAttribute('aria-label')).toBe('password');
+  });
+
+  it('should have a 0 tabIndex value by default', () => {
+    render(<FormInput name="password" type="text" value="test" />);
+
+    const input: any = screen.getByRole('textbox');
+    expect(input.getAttribute('tabindex')).toBe('0');
+  });
+
+  it('should accept tabIndex attribute', () => {
+    render(<FormInput name="password" type="text" value="test" tabIndex={1} />);
+
+    const input: any = screen.getByRole('textbox');
+    expect(input.getAttribute('tabindex')).toBe('1');
   });
 });

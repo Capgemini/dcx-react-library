@@ -13,7 +13,8 @@ function FormSelectDemo() {
     <FormSelect
       id="select"
       nullOption="Select..."
-      containerProps={containerProps}
+      disabled={false}
+      selectProps={{}}
       value=""
       label="Basic"
       labelProps={{
@@ -57,6 +58,10 @@ function FormSelectDemo() {
       }}
       errorMessageId=""
       defaultValue=""
+      tabIndex={0}
+      containerErrorClassName="containerErrorClassName"
+      containerFilledClassName="containerFilledClassName"
+      variant="floating"
     />
   );
 }

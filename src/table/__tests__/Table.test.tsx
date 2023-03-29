@@ -288,4 +288,18 @@ describe('Table', () => {
     fireEvent.click(idHeader);
     expect(row.innerHTML).not.toContain('<span>1</span>');
   });
+
+  it('should have 0 tabIndex value by default', () => {
+    render(<Table dataSource={values} />);
+
+    const container = screen.getByTestId('table-container');
+    expect(container.getAttribute('tabindex')).toBe('0');
+  });
+
+  it('should accept tabIndex attribute', () => {
+    render(<Table dataSource={values} tabIndex={1} />);
+
+    const container = screen.getByTestId('table-container');
+    expect(container.getAttribute('tabindex')).toBe('1');
+  });
 });

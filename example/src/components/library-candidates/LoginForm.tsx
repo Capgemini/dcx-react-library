@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { FormInput, Button } from '@capgeminiuk/dcx-react-library';
+import { FormInput, Button, classNames } from '@capgeminiuk/dcx-react-library';
 import { Label } from '../../generated-components';
 
 const initialState = {
@@ -220,9 +220,10 @@ export const LoginForm = ({
   return (
     <form {...formProps}>
       <div
-        className={['form-group', userNameErrorState ? 'has-error' : ''].join(
-          ' '
-        )}
+        className={classNames([
+          'form-group',
+          { 'has-error': userNameErrorState },
+        ])}
       >
         <Label htmlFor="username" className="control-label">
           {usernameLabel}
@@ -249,9 +250,10 @@ export const LoginForm = ({
       </div>
 
       <div
-        className={['form-group', passwordErrorState ? 'has-error' : ''].join(
-          ' '
-        )}
+        className={classNames([
+          'form-group',
+          { 'has-error': passwordErrorState },
+        ])}
       >
         <Label htmlFor="password" className="control-label">
           {passwordLabel}
@@ -289,9 +291,10 @@ export const LoginForm = ({
             <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
           </div>
         }
-        className={['btn btn-primary', isLoading ? 'btn-loading' : ''].join(
-          ' '
-        )}
+        className={classNames([
+          'btn btn-primary',
+          { 'btn-loading': isLoading },
+        ])}
         //@ts-ignore
         type="submit"
       />

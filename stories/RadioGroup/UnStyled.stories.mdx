@@ -1,6 +1,5 @@
-import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs';
 import { RadioGroup } from '../../src/radioGroup/RadioGroup';
-import '../style.css';
 
 <Meta title="DCXLibrary/Form/RadioGroup" component={RadioGroup} />
 
@@ -10,13 +9,12 @@ import '../style.css';
   <Story name="un-styled-radios">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="un-styled-radio"
           legend={{
-            text:
-              'Heading text customisable by a given priority of type number between 1 to 6 (inclusive)',
+            text: 'Heading text customisable by a given priority of type number between 1 to 6 (inclusive)',
             heading: {
               priority: 2,
             },
@@ -47,7 +45,7 @@ import '../style.css';
   <Story name="un-styled-radio-buttons-with-hints">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="sign-in"
@@ -57,10 +55,9 @@ import '../style.css';
               value: 'government-gateway',
               id: 'sign-in',
               hint: {
-                text:
-                  'You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.',
+                text: 'You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.',
                 id: 'sign-in-item-hint',
-                position: 'below'
+                position: 'below',
               },
               ariaDescribedBy: 'sign-in-item-hint',
             },
@@ -69,10 +66,9 @@ import '../style.css';
               value: 'govuk-verify',
               id: 'sign-in-2',
               hint: {
-                text:
-                  'You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.',
+                text: 'You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.',
                 id: 'sign-in-2-item-hint',
-                position: 'below'
+                position: 'below',
               },
               ariaDescribedBy: 'sign-in-item-hint',
             },
@@ -81,8 +77,7 @@ import '../style.css';
           ariaDescribedBy="sign-in-hint"
           hint={{
             id: 'sign-in-hint',
-            text:
-              'You’ll need an account to prove your identity and complete your Self Assessment',
+            text: 'You’ll need an account to prove your identity and complete your Self Assessment',
           }}
           legend={{
             text: 'How do you want to sign in?',
@@ -102,7 +97,7 @@ import '../style.css';
   <Story name="un-styled-filter-radio-buttons">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="filter-change"
@@ -137,7 +132,7 @@ import '../style.css';
   <Story name="un-styled-error-message-radio-buttons">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="change-name-error"
@@ -164,8 +159,7 @@ import '../style.css';
           }}
           hint={{
             id: 'changed-name-hint',
-            text:
-              'This includes changing your last name or spelling your name differently.',
+            text: 'This includes changing your last name or spelling your name differently.',
           }}
           legend={{
             text: 'Have you changed your name?',
@@ -185,7 +179,7 @@ import '../style.css';
   <Story name="un-styled-radio-buttons-with-a-text-divider">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <RadioGroup
           name="where-do-you-live-divider"
@@ -235,7 +229,10 @@ import '../style.css';
   <Story name="un-styled-radio-buttons-conditionally-revealing-content">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      const handleChange = (event, conditional) => {
+        setSelected(event.currentTarget.value);
+        console.log(conditional);
+      };
       return (
         <RadioGroup
           name="contact"
@@ -250,7 +247,7 @@ import '../style.css';
                 label: 'Email address',
                 type: 'email',
                 inputId: 'contact-by-email',
-                value: ''
+                value: '',
               },
             },
             {
@@ -264,7 +261,7 @@ import '../style.css';
                 type: 'tel',
                 id: 'conditional-contact-2',
                 inputId: 'contact-by-phone',
-                value: ''
+                value: '',
               },
             },
             {
@@ -278,7 +275,7 @@ import '../style.css';
                 type: 'tel',
                 id: 'conditional-contact-3',
                 inputId: 'contact-by-text',
-                value: ''
+                value: '',
               },
             },
           ]}

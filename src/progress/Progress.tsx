@@ -25,6 +25,10 @@ type ProgressProps = {
    * current value of the progress bar
    */
   value?: number;
+  /**
+   * tab index value
+   */
+  tabIndex?: number;
 };
 
 export const Progress = ({
@@ -34,8 +38,9 @@ export const Progress = ({
   id,
   labelClassName,
   value,
+  tabIndex = 0,
 }: ProgressProps) => (
-  <>
+  <div tabIndex={tabIndex} data-testid={id}>
     <label className={labelClassName} htmlFor={id}>{`${label}: `}</label>
     <progress id={id} className={className} max={max} value={value}>
       <div id={id} className={className}>
@@ -48,5 +53,5 @@ export const Progress = ({
         </span>
       </div>
     </progress>
-  </>
+  </div>
 );

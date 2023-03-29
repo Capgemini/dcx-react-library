@@ -219,6 +219,43 @@ export const FormRadioDemo = () => {
         onChange={handleGroupConditionalChange}
       />
       <br />
+
+      <h4>Radio with custom label</h4>
+      <RadioGroup
+        ariaDescribedBy="basic-radio-group-tag"
+        name="group3"
+        items={[
+          {
+            id: 'radio-1',
+            label: (
+              <>
+                This is a custom label <a href="#">hello</a>
+              </>
+            ),
+            value: 'value-1',
+            selected: groupSelected === 'radio-1',
+          },
+          {
+            id: 'radio-2',
+            label: 'Option 2',
+            value: 'value-2',
+            selected: groupSelected === 'radio-2',
+          },
+          {
+            id: 'radio-3',
+            label: 'Option 3',
+            disabled: true,
+            hint: {
+              text: 'Hint text for this item',
+              position: 'above',
+            },
+            value: 'value-3',
+            selected: groupSelected === 'radio-3',
+          },
+        ]}
+        //@ts-ignore
+        onChange={handleGroupConditionalChange}
+      />
     </>
   );
 };

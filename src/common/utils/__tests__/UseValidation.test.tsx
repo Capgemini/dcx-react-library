@@ -1,5 +1,5 @@
 import { useValidation, useValidationOnChange } from '../useValidation';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 
 interface Validity {
   rule: any;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { omit } from 'lodash';
+import { omit } from '../common';
 import { Body } from './Body';
 import { Header } from './Header';
 import { useSortableData } from './useSortable';
@@ -86,6 +86,10 @@ type TableProps = {
    * allow to pass extra properties to each row
    */
   trProps?: any[];
+  /**
+   * tab index value
+   */
+  tabIndex?: number;
 };
 
 const keys = (dataSource: any[], columnsToOmit?: string[]): string[] =>
@@ -111,6 +115,7 @@ export const Table = ({
   searchProps,
   customHeaderLabels,
   trProps,
+  tabIndex = 0,
 }: TableProps) => {
   const { items, requestSort, sortConfig } = useSortableData(dataSource);
   const [selectedHeader, setSelectedHeader] = React.useState('');
@@ -183,7 +188,7 @@ export const Table = ({
   };
 
   return (
-    <>
+    <div tabIndex={tabIndex} data-testid="table-container">
       {withSearch && (
         <input
           onChange={(e: any) => setSearchVal(e.target.value)}
@@ -214,6 +219,6 @@ export const Table = ({
           trProps={trProps}
         />
       </table>
-    </>
+    </div>
   );
 };

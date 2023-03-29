@@ -5,7 +5,7 @@ import { Details } from '../../src/details/Details';
 const DetailsDemo = `
   function DetailsDemo() {
     return (
-      <Details summary="headline summary" tabIndex={0}>some details</Details>
+      <Details summary="headline summary" summaryTextProps={{id:'summary-text-id'}}>some details</Details>
     )
   }
 `.trim();

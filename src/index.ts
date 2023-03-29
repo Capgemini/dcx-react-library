@@ -17,3 +17,5 @@ export * from './tabGroup';
 export * from './copyToClipboard';
 export * from './table';
 export * from './details';
+export * from './common/utils/classNames';
+export * from './characterCount';

@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs';
 import { FormSelect } from '../../src/formSelect/FormSelect';
 
 <Meta
@@ -29,7 +29,12 @@ An example with all the available properties is:
   <FormSelect
     nullOption="Select..."
     containerProps={containerProps}
+    disabled={false}
+    selectProps={{}}
     className="select classes"
+    containerErrorClassName="containerErrorClassName"
+    containerFilledClassName="containerFilledClassName"
+    variant="floating"
     style={{
       fontSize: '10px'
     }}
@@ -132,6 +137,7 @@ An example with all the available properties is:
       }
     }}
     defaultValue="option1"
+    tabIndex={0}
   />
 ```
 

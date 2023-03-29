@@ -1,6 +1,5 @@
-import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs';
 import { Autocomplete } from '../../src/autocomplete/Autocomplete';
-import '../style.css';
 
 <Meta
   title="DCXLibrary/Form/Autocomplete/documentation"
@@ -43,6 +42,7 @@ An example with all the available properties is (the only mandatory property is 
   debounceMs={2000}
   hintText="search the list of fruits"
   hintClass="hintClass"
+  hintId="hintId"
   resultUlClass="resultUlClass"
   resultlLiClass="resultlLiClass"
   resultNoOptionClass="resultNoOptionClass"
@@ -53,6 +53,7 @@ An example with all the available properties is (the only mandatory property is 
   containerClassName=""
   labelText=""
   labelClassName=""
+  labelProps={{id:'labelid'}}
   id=""
   errorPosition={AutoCompleteErrorPosition.TOP}
   errorMessageText=""
@@ -65,6 +66,8 @@ An example with all the available properties is (the only mandatory property is 
   name=""
   inputProps={{}}
   selectProps={{}}
+  tabIndex={0}
+  search={handleSearch}
 />
 ```
 
