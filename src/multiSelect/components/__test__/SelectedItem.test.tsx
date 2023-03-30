@@ -1,9 +1,8 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { act, render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { SelectedItem } from '../SelectedItem';
-import { act } from '@testing-library/react-hooks';
 
 describe('SelectedItem', () => {
   it('should render a selected item', () => {

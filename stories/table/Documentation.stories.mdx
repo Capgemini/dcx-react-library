@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs';
 import { Table } from '../../src/table/Table';
 
 <Meta
@@ -84,6 +84,7 @@ const handleCellClick = (target: any, value: any) => {
     <FontAwesomeIcon icon={faArrowDown} style={{ marginLeft: '4px' }} />
   }
   columnsWidth={['100px']}
+  tabIndex={0}
 />;
 ```
 

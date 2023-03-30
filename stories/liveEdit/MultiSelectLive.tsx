@@ -99,6 +99,7 @@ function MultiSelectDemo() {
           onRemove={handleRemove}
           onSelect={handleSelect}
           onRemoveAll={handleRemoveAll}
+          tabIndex={0}
         />
       </div>
     )

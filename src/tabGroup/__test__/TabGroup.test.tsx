@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { renderHook } from '@testing-library/react-hooks';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, renderHook } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Tab } from '../components/Tab';
 import { TabGroup } from '../TabGroup';

@@ -1,6 +1,5 @@
-import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs';
 import { CheckboxGroup } from '../../src/checkboxGroup/CheckboxGroup';
-import '../style.css';
 
 <Meta title="DCXLibrary/Form/CheckboxGroup" component={CheckboxGroup} />
 
@@ -10,13 +9,12 @@ import '../style.css';
   <Story name="un-styled-checkboxes">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <CheckboxGroup
           name="name-of-group"
           legend={{
-            text:
-              'Heading text customisable by a given priority of type number between 1 to 6 (inclusive)',
+            text: 'Heading text customisable by a given priority of type number between 1 to 6 (inclusive)',
             heading: {
               priority: 2,
             },
@@ -47,7 +45,7 @@ import '../style.css';
   <Story name="un-styled-titled">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <CheckboxGroup
           name="waste-2"
@@ -87,7 +85,10 @@ import '../style.css';
   <Story name="un-styled-items-with-hints">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      const handleChange = (event, conditional) => {
+        setSelected(event.currentTarget.value);
+        console.log(conditional);
+      };
       return (
         <CheckboxGroup
           name="nationality"
@@ -118,8 +119,7 @@ import '../style.css';
           ariaDescribedBy="nationality-hint"
           hint={{
             id: 'nationality-hint',
-            text:
-              'If you have dual nationality, select all options that are relevant to you.',
+            text: 'If you have dual nationality, select all options that are relevant to you.',
           }}
           legend={{
             text: 'What is your nationality?',
@@ -133,14 +133,16 @@ import '../style.css';
   </Story>
 </Canvas>
 
-
 ### An example of 'un-styled' CheckboxGroup with Small checkboxes
 
 <Canvas>
   <Story name="un-styled-small-checkboxes">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      const handleChange = (event, conditional) => {
+        setSelected(event.currentTarget.value);
+        console.log(conditional);
+      };
       return (
         <CheckboxGroup
           name="filter-change"
@@ -175,7 +177,7 @@ import '../style.css';
   <Story name="un-styled-error-message">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value)
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <CheckboxGroup
           name="live-error"
@@ -228,7 +230,10 @@ import '../style.css';
   <Story name="un-styled-with-a-text-divider">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      const handleChange = (event, conditional) => {
+        setSelected(event.currentTarget.value);
+        console.log(conditional);
+      };
       return (
         <CheckboxGroup
           name="where-do-you-live-divider"
@@ -278,7 +283,10 @@ import '../style.css';
   <Story name="un-styled-conditionally-revealing-content">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      const handleChange = (event, conditional) => {
+        setSelected(event.currentTarget.value);
+        console.log(conditional);
+      };
       return (
         <CheckboxGroup
           name="un styled contact conditionally revealing content"
@@ -295,7 +303,7 @@ import '../style.css';
                 type: 'email',
                 id: 'conditional-contact',
                 inputId: 'contact-by-email',
-                value: ''
+                value: '',
               },
             },
             {
@@ -310,7 +318,7 @@ import '../style.css';
                 type: 'tel',
                 id: 'conditional-contact-2',
                 inputId: 'contact-by-phone',
-                value: ''
+                value: '',
               },
             },
             {
@@ -325,7 +333,7 @@ import '../style.css';
                 type: 'tel',
                 id: 'conditional-contact-3',
                 inputId: 'contact-by-text',
-                value: ''
+                value: '',
               },
             },
           ]}

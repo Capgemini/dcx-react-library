@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { FormInput } from '../formInput';
 import { FormSelect } from '../formSelect';
-import { ErrorMessage, Hint, Roles, useHydrated } from '../common';
+import { ErrorMessage, Hint, Roles, useHydrated, debounce } from '../common';
 import { MultiSelectOption } from '../multiSelect/Types';
 import { ResultList } from './ResultList';
 import { Selected } from '../multiSelect/components/Selected';
 import { SelectedItem } from '../multiSelect/components/SelectedItem';
-import { debounce } from 'lodash';
 import { VisuallyHidden } from '../common/components/commonTypes';
 import { FormSelectProps } from '../formSelect/FormSelect';
 
@@ -14,7 +13,7 @@ type autocompleteProps = {
   /**
    * you need to provide a list of values to filter
    */
-  options: string[];
+  options: any[];
   /**
    * it will add a dynamic id to every option provided. It will concatenate an index for each item
    * @example
@@ -71,6 +70,10 @@ type autocompleteProps = {
    * you can style the look and feel of your hint text
    */
   hintClass?: string;
+  /**
+   * if you want to pass an id to the hint
+   */
+  hintId?: string;
   /**
    * if you want to pass an id to the result UL list
    */
@@ -156,6 +159,10 @@ type autocompleteProps = {
    */
   labelClassName?: string;
   /**
+   * allow to customise the label with all the properties needed
+   **/
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
+  /**
    * it will pass an id to the input or select element(in case of progressive enhancement)
    */
   id?: string;
@@ -201,6 +208,14 @@ type autocompleteProps = {
     content?: JSX.Element | string;
     properties: React.HTMLAttributes<HTMLDivElement>;
   };
+  /**
+   * tab index value to focus on the input
+   */
+  tabIndex?: number;
+  /**
+   * search function to decide how the autocomplete component finds results
+   */
+  search?: (value: string, options: any) => string[];
 };
 
 export enum AutoCompleteErrorPosition {
@@ -224,6 +239,7 @@ export const Autocomplete = ({
   defaultValue = '',
   hintText,
   hintClass,
+  hintId,
   multiSelect = false,
   notFoundText,
   resultId,
@@ -246,6 +262,7 @@ export const Autocomplete = ({
   containerClassName,
   labelText,
   labelClassName,
+  labelProps,
   id,
   errorPosition,
   errorMessageText = '',
@@ -256,6 +273,8 @@ export const Autocomplete = ({
   selectProps,
   prefix,
   suffix,
+  tabIndex = 0,
+  search,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
@@ -295,9 +314,11 @@ export const Autocomplete = ({
   const delayResult = React.useMemo(
     () =>
       debounce((value) => {
-        const filtered = options.filter((optionsName) =>
-          optionsName.toLowerCase().includes(value.toLowerCase())
-        );
+        const filtered: string[] = search
+          ? search(value, options)
+          : options.filter((optionsName: string) =>
+              optionsName.toLowerCase().includes(value.toLowerCase())
+            );
         setActiveOption(0);
         setFilterList(filtered);
         setShowOptions(true);
@@ -405,6 +426,7 @@ export const Autocomplete = ({
           ...inputProps,
           ...(showPrompt && { 'aria-describedby': promptId }),
         }}
+        tabIndex={tabIndex}
       />
       {showPrompt && (
         <div className={promptClassName} id={promptId}>
@@ -480,7 +502,7 @@ export const Autocomplete = ({
           />
         )}
       {labelText && (
-        <label htmlFor={id} className={labelClassName}>
+        <label htmlFor={id} className={labelClassName} {...labelProps}>
           {labelText}
         </label>
       )}
@@ -494,7 +516,12 @@ export const Autocomplete = ({
           />
         )}
       {hintText && (
-        <Hint text={hintText} className={hintClass} useLabel={false} />
+        <Hint
+          text={hintText}
+          className={hintClass}
+          id={hintId}
+          useLabel={false}
+        />
       )}
       {errorPosition &&
         errorPosition === AutoCompleteErrorPosition.AFTER_HINT && (
@@ -522,7 +549,12 @@ export const Autocomplete = ({
   return (
     <>
       {multiSelect && hintText && (
-        <Hint text={hintText} className={hintClass} useLabel={false} />
+        <Hint
+          text={hintText}
+          className={hintClass}
+          id={hintId}
+          useLabel={false}
+        />
       )}
       <div className={containerClassName} style={{ ...searchContainerStyle }}>
         {searchEl}

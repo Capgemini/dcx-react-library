@@ -152,4 +152,27 @@ Thanks goes to these wonderful people
       </a>
     </td>
   </tr>
+  <tr>
+  <td align="center">
+    <a href="https://github.com/szilvihorvath">
+      <img src="https://avatars.githubusercontent.com/u/50360435?v=4" width="100px;" alt="szilvi-horvath"/>
+      <br />
+      <sub><b>Szilvi Horvath</b></sub>
+    </a>
+  </td>
+    <td align="center">
+      <a href="https://github.com/Jaya-Rathore">
+        <img src="https://avatars.githubusercontent.com/u/119496797?v=4" width="100px;" alt="jaya-rathore"/>
+        <br />
+        <sub><b>Jaya Rathore</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/arpakuma">
+        <img src="https://avatars.githubusercontent.com/u/128031818?v=4" width="100px;" alt="arpana-kumari"/>
+        <br />
+        <sub><b>Arpana Kumari</b></sub>
+      </a>
+    </td>
+  </tr>
 </table>

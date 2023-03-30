@@ -1,7 +1,6 @@
 import React from 'react';
-import { upperFirst } from 'lodash';
 import { ErrorMessage } from '../common/components';
-import { validateDateString } from '../common/utils';
+import { classNames, upperFirst, validateDateString } from '../common/utils';
 import { DateComponent } from './Date';
 export type DateType = {
   label?: string;
@@ -222,7 +221,7 @@ export const FormDate = ({
             customLabel={yearProps?.customLabel}
             classNameSpan={yearProps?.classNameSpan}
             label={yearProps?.label}
-            classNameInput={[yearProps?.classNameInput, inputClass].join(' ')}
+            classNameInput={classNames([yearProps?.classNameInput, inputClass])}
             disabled={disabled}
             tabIndex={yearProps?.tabIndex}
           />
@@ -239,7 +238,10 @@ export const FormDate = ({
             customLabel={monthProps?.customLabel}
             classNameSpan={monthProps?.classNameSpan}
             label={monthProps?.label}
-            classNameInput={[monthProps?.classNameInput, inputClass].join(' ')}
+            classNameInput={classNames([
+              monthProps?.classNameInput,
+              inputClass,
+            ])}
             disabled={disabled}
             tabIndex={monthProps?.tabIndex}
           />
@@ -256,7 +258,7 @@ export const FormDate = ({
             customLabel={dayProps?.customLabel}
             classNameSpan={dayProps?.classNameSpan}
             label={dayProps?.label}
-            classNameInput={[dayProps?.classNameInput, inputClass].join(' ')}
+            classNameInput={classNames([dayProps?.classNameInput, inputClass])}
             disabled={disabled}
             tabIndex={dayProps?.tabIndex}
           />

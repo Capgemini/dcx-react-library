@@ -1,3 +1,33 @@
+## 0.7.0 (27/03/2023)
+
+<a name="0.7.0"></a>
+
+- [Details - add prop for summaryText](https://github.com/Capgemini/dcx-react-library/issues/438)
+- [FormSelect - add extra props](https://github.com/Capgemini/dcx-react-library/issues/441)
+- [Checkbox - support anchor elements](https://github.com/Capgemini/dcx-react-library/issues/431)
+- [Autocomplete - sorting results](https://github.com/Capgemini/dcx-react-library/issues/422)
+- [Autocomplete - add id prop for hint and label](https://github.com/Capgemini/dcx-react-library/issues/439)
+- [FormSelect - add extra default classes](https://github.com/Capgemini/dcx-react-library/issues/390)
+- [FormInput - add the ability to position the error after the hint](https://github.com/Capgemini/dcx-react-library/issues/405)
+- [All component - add tabindex property](https://github.com/Capgemini/dcx-react-library/issues/301)
+- [allow the library to work with node18](https://github.com/Capgemini/dcx-react-library/issues/376)
+
+**New components**
+
+- [classNames utils](https://github.com/Capgemini/dcx-react-library/issues/412)
+- [TextCharacterCount component](https://github.com/Capgemini/dcx-react-library/issues/414)
+
+**Documentation**
+
+- [Storybook - enhancement](https://github.com/Capgemini/dcx-react-library/issues/430)
+- [Storybook - enhancement](https://github.com/Capgemini/dcx-react-library/issues/413)
+- [Storybook - enhancement](https://github.com/Capgemini/dcx-react-library/issues/408)
+
+**Dependencies**
+
+- [lodash - removed](https://github.com/Capgemini/dcx-react-library/issues/420)
+- [bumping versions](https://github.com/Capgemini/dcx-react-library/issues/403)
+
 ## 0.6.0 (10/01/2023)
 
 <a name="0.6.0"></a>

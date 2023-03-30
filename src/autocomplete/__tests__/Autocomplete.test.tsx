@@ -1,10 +1,14 @@
 import React from 'react';
-
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  act,
+} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { Autocomplete, AutoCompleteErrorPosition } from '../';
 import userEvent from '@testing-library/user-event';
-import { act } from '@testing-library/react-hooks';
 import * as hooks from '../../common/utils/clientOnly';
 
 const firstSearch = [
@@ -108,6 +112,19 @@ describe('Autocomplete', () => {
     expect(label).toBeInTheDocument();
   });
 
+  it('should allow to specify a label id', () => {
+    render(
+      <Autocomplete
+        options={['abc', 'xyz']}
+        labelText="labelText"
+        labelClassName="labelClass"
+        labelProps={{ id: 'labelid' }}
+      />
+    );
+    const label: any = screen.getByText('labelText');
+    expect(label.id).toBe('labelid');
+  });
+
   it('should display an error', () => {
     render(
       <Autocomplete
@@ -121,7 +138,7 @@ describe('Autocomplete', () => {
       />
     );
     const label: any = screen.getByText('errorMessageText');
-    expect(label.className).toBe('errorMessageClass');
+    expect(label.className).toBe('dcx-error-message errorMessageClass');
     expect(label.id).toBe('errorId');
     expect(label).toBeInTheDocument();
   });
@@ -139,7 +156,7 @@ describe('Autocomplete', () => {
       />
     );
     const label: any = screen.getByText('errorMessageText');
-    expect(label.className).toBe('errorMessageClass');
+    expect(label.className).toBe('dcx-error-message errorMessageClass');
     expect(label.id).toBe('errorId');
     expect(label).toBeInTheDocument();
   });
@@ -157,7 +174,7 @@ describe('Autocomplete', () => {
       />
     );
     const label: any = screen.getByText('errorMessageText');
-    expect(label.className).toBe('errorMessageClass');
+    expect(label.className).toBe('dcx-error-message errorMessageClass');
     expect(label.id).toBe('errorId');
     expect(label).toBeInTheDocument();
   });
@@ -350,7 +367,7 @@ describe('Autocomplete', () => {
     fireEvent.keyDown(input, { code: 'ArrowUp' });
 
     const listItems: any = screen.getAllByRole('listitem');
-    expect(listItems[0].className).toBe('activeClass ');
+    expect(listItems[0].className).toBe('activeClass');
   });
 
   it('should highlight the last one as active if you try to keyDown', async () => {
@@ -369,7 +386,7 @@ describe('Autocomplete', () => {
     fireEvent.keyDown(input, { code: 'ArrowDown' });
 
     const listItems: any = screen.getAllByRole('listitem');
-    expect(listItems[1].className).toBe('activeClass ');
+    expect(listItems[1].className).toBe('activeClass');
   });
 
   it('should call the selected function after the selection', async () => {
@@ -417,6 +434,19 @@ describe('Autocomplete', () => {
     );
     const hint: any = container.querySelector(`.${hintClass}`);
     expect(hint).not.toBeNull();
+  });
+
+  it('should display an hint id if specified', () => {
+    render(
+      <Autocomplete
+        options={['abc', 'xyz']}
+        hintText="search names"
+        hintClass="hintclass"
+        hintId="hintid"
+      />
+    );
+    const hint: any = screen.getByText('search names');
+    expect(hint.id).toBe('hintid');
   });
 
   it('should display the results after typing 2 character', async () => {
@@ -756,6 +786,96 @@ describe('Autocomplete', () => {
     await waitFor(() => {
       const el: any = container.querySelector('li');
       expect(el.id).toBe('');
+    });
+  });
+
+  it('should have a 0 tabIndex value by default', () => {
+    render(<Autocomplete options={['daniele', 'isaac']} />);
+
+    const input: any = screen.getByRole('textbox');
+    expect(input.getAttribute('tabindex')).toBe('0');
+  });
+
+  it('should accept tabIndex attribute', () => {
+    render(<Autocomplete options={['daniele', 'isaac']} tabIndex={1} />);
+
+    const input: any = screen.getByRole('textbox');
+    expect(input.getAttribute('tabindex')).toBe('1');
+  });
+
+  it('should accept an option list of objects', async () => {
+    const user = userEvent.setup();
+
+    const options: any = [
+      {
+        firstName: 'Isaac',
+        surname: 'Babalola',
+        postion: 'Senior Developer',
+      },
+      {
+        firstName: 'Daniele',
+        surname: 'Zurico',
+        position: 'Head of Full Stack Development',
+      },
+      {
+        firstName: 'Healy',
+        surname: 'Ingenious',
+        position: 'Project Manager',
+      },
+    ];
+
+    const quickSearch = (query: string, options: any[]) => {
+      const optionName = (option: any) =>
+        `${option.firstName} ${option.surname} (${option.position})`;
+      const queryStr = query.toLowerCase();
+      return options
+        .filter(
+          (option: any) =>
+            optionName(option).toLowerCase().indexOf(queryStr) !== -1
+        )
+        .map((option: any) => {
+          const commonRank = 0;
+          let rank;
+          if (option.position.toLowerCase().indexOf(queryStr) !== -1) rank = 1;
+          else if (option.firstName.toLowerCase().indexOf(queryStr) !== -1)
+            rank = 10 + commonRank;
+          else if (option.surnameName.toLowerCase().indexOf(queryStr) !== -1)
+            rank = 20 + commonRank;
+          option.rank = rank || 100;
+          return option;
+        })
+        .sort((a, b) => {
+          if (a.rank < b.rank) {
+            return -1;
+          }
+
+          if (a.rank > b.rank) {
+            return 1;
+          }
+
+          if (a.position < b.position) {
+            return -1;
+          }
+
+          if (a.position > b.position) {
+            return 1;
+          }
+
+          return 0;
+        })
+        .map((option: any) => optionName(option));
+    };
+
+    render(<Autocomplete options={options} search={quickSearch} />);
+    const input = screen.getByRole('textbox');
+    await user.type(input, 'he');
+    const listItems: any = screen.getAllByRole('listitem');
+    await waitFor(() => {
+      expect(listItems[0].innerHTML).toBe(
+        'Daniele Zurico (Head of Full Stack Development)'
+      );
+      expect(listItems[1].innerHTML).toBe('Healy Ingenious (Project Manager)');
+      expect(listItems).toHaveLength(2);
     });
   });
 });

@@ -13,6 +13,7 @@ function ProgressDemo() {
       className=""
       labelClassName=""
       id="progress"
+      tabIndex={0}
     />
   );
 }

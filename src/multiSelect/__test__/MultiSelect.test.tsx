@@ -87,8 +87,26 @@ describe('MultiSelect', () => {
 
       expect(screen.getByText('hint text')).toBeInTheDocument();
       expect(screen.getByText('hint text').getAttribute('class')).toBe(
-        'my-hint-class'
+        'dcx-hint my-hint-class'
       );
+    });
+
+    it('should have a 0 tabindex value by default', () => {
+      const options: MultiSelectOption[] = [];
+
+      render(<MultiSelect selectOptions={options} />);
+
+      const input = screen.getByRole('textbox');
+      expect(input.getAttribute('tabindex')).toBe('0');
+    });
+
+    it('should accept tabIndex attribute', () => {
+      const options: MultiSelectOption[] = [];
+
+      render(<MultiSelect selectOptions={options} tabIndex={1} />);
+
+      const input = screen.getByRole('textbox');
+      expect(input.getAttribute('tabindex')).toBe('1');
     });
   });
 

@@ -1,6 +1,5 @@
-import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs';
 import { CheckboxGroup } from '../../src/checkboxGroup/CheckboxGroup';
-import '../style.css';
 
 <Meta title="DCXLibrary/Form/checkboxGroup/Styled" component={CheckboxGroup} />
 
@@ -12,7 +11,7 @@ In this section we are using the CheckboxGroup component providing the GOV.UK De
   <Story name="multiple checkboxes with shared styles">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <CheckboxGroup
           name="waste"
@@ -61,7 +60,7 @@ In this section we are using the CheckboxGroup component providing the GOV.UK De
   <Story name="titled">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value);
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <CheckboxGroup
           name="waste-2"
@@ -109,7 +108,10 @@ In this section we are using the CheckboxGroup component providing the GOV.UK De
   <Story name="items with hints">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      const handleChange = (event, conditional) => {
+        setSelected(event.currentTarget.value);
+        console.log(conditional);
+      };
       return (
         <CheckboxGroup
           name="nationality"
@@ -146,8 +148,7 @@ In this section we are using the CheckboxGroup component providing the GOV.UK De
           fieldsetClasses="govuk-fieldset"
           hint={{
             id: 'nationality-hint',
-            text:
-              'If you have dual nationality, select all options that are relevant to you.',
+            text: 'If you have dual nationality, select all options that are relevant to you.',
             className: 'govuk-hint',
           }}
           itemsClasses="govuk-checkboxes"
@@ -165,14 +166,16 @@ In this section we are using the CheckboxGroup component providing the GOV.UK De
   </Story>
 </Canvas>
 
-
 # Small checkboxes
 
 <Canvas>
   <Story name="small checkboxes">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      const handleChange = (event, conditional) => {
+        setSelected(event.currentTarget.value);
+        console.log(conditional);
+      };
       return (
         <CheckboxGroup
           name="filter-change"
@@ -215,7 +218,7 @@ In this section we are using the CheckboxGroup component providing the GOV.UK De
   <Story name="error message">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = event => setSelected(event.currentTarget.value)
+      const handleChange = (event) => setSelected(event.currentTarget.value);
       return (
         <CheckboxGroup
           name="live-error"
@@ -278,7 +281,10 @@ In this section we are using the CheckboxGroup component providing the GOV.UK De
   <Story name="with a text divider">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      const handleChange = (event, conditional) => {
+        setSelected(event.currentTarget.value);
+        console.log(conditional);
+      };
       return (
         <CheckboxGroup
           name="where-do-you-live-divider"
@@ -336,7 +342,10 @@ In this section we are using the CheckboxGroup component providing the GOV.UK De
   <Story name="conditionally revealing content">
     {() => {
       const [selected, setSelected] = React.useState('');
-      const handleChange = (event, conditional) => { setSelected(event.currentTarget.value); console.log(conditional); }
+      const handleChange = (event, conditional) => {
+        setSelected(event.currentTarget.value);
+        console.log(conditional);
+      };
       return (
         <CheckboxGroup
           name="contact"
@@ -360,7 +369,7 @@ In this section we are using the CheckboxGroup component providing the GOV.UK De
                 id: 'conditional-contact',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-email',
-                value: ''
+                value: '',
               },
             },
             {
@@ -379,7 +388,7 @@ In this section we are using the CheckboxGroup component providing the GOV.UK De
                 id: 'conditional-contact-2',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-phone',
-                value: ''
+                value: '',
               },
             },
             {
@@ -398,7 +407,7 @@ In this section we are using the CheckboxGroup component providing the GOV.UK De
                 id: 'conditional-contact-3',
                 inputClassName: 'govuk-input govuk-!-width-one-third',
                 inputId: 'contact-by-text',
-                value: ''
+                value: '',
               },
             },
           ]}

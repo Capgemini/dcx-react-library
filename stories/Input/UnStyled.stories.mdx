@@ -1,6 +1,5 @@
-import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs';
 import { FormInput } from '../../src/formInput/FormInput';
-import '../style.css';
 
 <Meta title="DCXLibrary/Form/Input" component={FormInput} />
 
@@ -22,7 +21,7 @@ import '../style.css';
           type="text"
           value={value}
           ariaLabel="unstyled-input"
-          ariaRequired = "true"
+          ariaRequired="true"
           onChange={handleChange}
           isValid={handleValidity}
           inputProps={{
@@ -87,7 +86,7 @@ import '../style.css';
           value={value}
           label="Password"
           ariaLabel="unstyled-input-with-label"
-          ariaRequired = "true"
+          ariaRequired="true"
           onChange={handleChange}
           isValid={handleValidity}
           inputProps={{
@@ -174,7 +173,7 @@ const handleClick = () => {
             type="text"
             value={value}
             ariaLabel="unstyled-input-trigger-validity"
-            ariaRequired = "true"
+            ariaRequired="true"
             displayError={displayError}
             onChange={handleChange}
             isValid={handleValidity}
@@ -237,10 +236,9 @@ const handleClick = () => {
           type="text"
           value={value}
           ariaLabel="unstyled-input-with-hint"
-          ariaRequired = "true"
+          ariaRequired="true"
           onChange={handleChange}
           isValid={handleValidity}
-          inputClassName="govuk-input"
           hint={{
             position: 'above',
             text: 'this is an example hint',
@@ -261,14 +259,12 @@ const handleClick = () => {
       return (
         <FormInput
           label="this is a label"
-          inputClassName="govuk-input"
-          labelClassName="govuk-label"
           name="id"
           inputProps={{ id: 'id' }}
           type="text"
           value="value"
           ariaLabel="unstyled-input-with-static-error"
-          ariaRequired = "true"
+          ariaRequired="true"
           hint={{
             position: 'above',
             text: 'My hint',

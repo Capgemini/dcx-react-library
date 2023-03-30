@@ -38,4 +38,45 @@ describe('CheckboxGroup', () => {
     expect(screen.getByRole('group')).toBeInTheDocument();
     expect(container.querySelector('input[type=checkbox]')).toBeInTheDocument();
   });
+
+  it('should render a checkbox group with custom label', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <CheckboxGroup
+        groupClasses=""
+        id=""
+        name=""
+        legend={{
+          text: 'Have you changed your name?',
+          heading: {
+            priority: 1,
+          },
+        }}
+        items={[
+          {
+            value: 'yes',
+            label: (
+              <>
+                This is a custom label{' '}
+                <a data-testid="mylink" href="link">
+                  hello
+                </a>
+              </>
+            ),
+            id: 'first',
+          },
+          {
+            value: 'no',
+            label: 'No',
+            id: 'second',
+          },
+        ]}
+        onChange={handleChange}
+      />
+    );
+
+    const firstItemEl: any = screen.getByRole('link');
+    expect(firstItemEl.href).toBe('http://localhost/link');
+  });
 });

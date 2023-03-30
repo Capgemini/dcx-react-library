@@ -1,4 +1,5 @@
 import React, { MouseEventHandler, useState } from 'react';
+import { classNames } from '../common';
 
 type DetailsProps = {
   /**
@@ -30,6 +31,10 @@ type DetailsProps = {
    */
   summaryClassName?: string;
   /**
+   * allow to customise the span with all the properties needed
+   */
+  summaryTextProps?: React.AllHTMLAttributes<HTMLSpanElement>;
+  /**
    * summary text class name
    */
   summaryTextClassName?: string;
@@ -51,6 +56,7 @@ export const Details = ({
   summaryClassName,
   summaryTextClassName,
   tabIndex = 0,
+  summaryTextProps,
 }: DetailsProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(open);
 
@@ -65,12 +71,17 @@ export const Details = ({
         onClick={handleOnChange}
         tabIndex={tabIndex}
       >
-        <span className={summaryTextClassName}>{summary}</span>
+        <span className={summaryTextClassName} {...summaryTextProps}>
+          {summary}
+        </span>
       </summary>
       <div
-        className={`${
-          detailsTextClassName !== undefined ? detailsTextClassName : ''
-        } ${isOpen === true ? openClassName || OPEN : ''}`.trim()}
+        className={classNames([
+          {
+            [`${detailsTextClassName}`]: detailsTextClassName !== undefined,
+            [`${openClassName || OPEN}`]: isOpen,
+          },
+        ])}
       >
         {children}
       </div>

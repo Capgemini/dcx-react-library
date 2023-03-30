@@ -1,0 +1,30 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs';
+import { CharacterCount } from '../../src/characterCount';
+import CharacterCountLive from '../liveEdit/CharacterCountLive';
+
+<Meta
+  title="DCXLibrary/Form/CharacterCount/live"
+  component={CharacterCount}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Character Count
+
+In the live editor you can play with all the available properties, change the look and feel and interact with the component
+
+<Canvas>
+  <Story name="live">
+    <CharacterCountLive />
+  </Story>
+</Canvas>
+
+# Properties
+
+below are described the list of all available properties. the one marked with (\*) are mandatory the other instead are optional.
+
+<Props of={CharacterCount} />

@@ -1,6 +1,12 @@
 import React from 'react';
-import { isEmpty } from 'lodash';
-import { useValidationOnChange, Roles, Label, Hint } from '../common';
+import {
+  useValidationOnChange,
+  Roles,
+  Label,
+  Hint,
+  classNames,
+  isEmpty,
+} from '../common';
 import { HintProps } from '../common/components/commonTypes';
 
 type FormInputProps = {
@@ -119,12 +125,17 @@ type FormInputProps = {
    * Specifies if that field needs to be filled or not
    */
   required?: boolean;
+  /**
+   * tab index value
+   */
+  tabIndex?: number;
 };
 
 export enum ErrorPosition {
   BEFORE_LABEL = 'before-label',
   BOTTOM = 'bottom',
   AFTER_LABEL = 'after-label',
+  AFTER_HINT = 'after-hint',
 }
 
 export const FormInput = ({
@@ -155,6 +166,7 @@ export const FormInput = ({
   required,
   hint,
   inputDivProps = { style: { display: 'flex' } },
+  tabIndex = 0,
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
 
@@ -213,15 +225,17 @@ export const FormInput = ({
       className={inputClassName}
       aria-label={ariaLabel || name}
       aria-required={ariaRequired}
+      tabIndex={tabIndex}
       {...inputProps}
     />
   );
 
   return (
     <div
-      className={`${containerClassName} ${
-        isStaticOrDynamicError() ? containerClassNameError : ''
-      }`.trim()}
+      className={classNames([
+        containerClassName,
+        { [`${containerClassNameError}`]: isStaticOrDynamicError() },
+      ])}
     >
       {errorPosition && errorPosition === ErrorPosition.BEFORE_LABEL && (
         <ErrorMessage />
@@ -236,6 +250,9 @@ export const FormInput = ({
         <ErrorMessage />
       )}
       {hint && hint.position === 'above' && <Hint {...hint} />}
+      {errorPosition && errorPosition === ErrorPosition.AFTER_HINT && (
+        <ErrorMessage />
+      )}
       {prefix || suffix ? (
         <div {...inputDivProps}>
           {prefix && !isEmpty(prefix) && (
