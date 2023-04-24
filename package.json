@@ -2,7 +2,11 @@
   "name": "@capgeminiuk/dcx-react-library",
   "author": "Capgemini UK",
   "license": "MIT",
+<<<<<<< HEAD
   "version": "0.7.0",
+=======
+  "version": "0.7.0-alpha-10",
+>>>>>>> 5096580 (feat: add design system)
   "source": "src/index.ts",
   "main": "dist/dcx-react-library.js",
   "module": "dist/dcx-react-library.module.js",
@@ -27,7 +31,9 @@
   },
   "homepage": "https://main--6069a6f47f4b9f002171f8e1.chromatic.com",
   "scripts": {
+    "build:css": "rollup -c --bundleConfigAsCjs",
     "build": "microbundle --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react --globals react/jsx-runtime=jsx --css-modules true",
+    "postbuild": "yarn build:css",
     "dev": "microbundle watch --no-compress --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react --globals react/jsx-runtime=jsx --css-modules true",
     "clean": "if exist \"./dist\" rd /s /q \"./dist\"",
     "test": "jest",
@@ -54,8 +60,13 @@
     "trailingComma": "es5"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@babel/core": "7.21.3",
     "@commitlint/config-conventional": "17.4.4",
+=======
+    "@babel/core": "7.19.6",
+    "@commitlint/config-conventional": "17.2.0",
+>>>>>>> 5096580 (feat: add design system)
     "@storybook/addon-a11y": "^6.5.16",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-controls": "^6.5.16",
@@ -70,6 +81,7 @@
     "@storybook/react": "^6.5.16",
     "@storybook/theming": "^6.5.16",
     "@testing-library/jest-dom": "5.16.5",
+<<<<<<< HEAD
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
     "@types/mock-fs": "4.13.1",
@@ -111,5 +123,56 @@
   "dependencies": {
     "@cesium133/forgjs": "1.1.10",
     "imask": "^6.4.3"
+=======
+    "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "14.4.3",
+    "@types/mock-fs": "4.13.1",
+    "@types/react": "18.0.24",
+    "@types/react-dom": "18.0.8",
+    "@typescript-eslint/eslint-plugin": "5.41.0",
+    "@typescript-eslint/parser": "5.41.0",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "9.0.0",
+    "chromatic": "6.11.2",
+    "codecov": "3.8.3",
+    "commitlint": "17.2.0",
+    "cssnano": "^5.1.15",
+    "cssnano-preset-default": "^5.2.14",
+    "eslint": "8.26.0",
+    "eslint-config-react-app": "7.0.1",
+    "eslint-plugin-flowtype": "8.0.3",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-react": "7.31.10",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-storybook": "0.6.11",
+    "husky": "8.0.1",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "29.2.2",
+    "jest-environment-jsdom": "29.2.2",
+    "lint": "0.7.0",
+    "microbundle": "0.15.1",
+    "mock-fs": "5.2.0",
+    "postcss-functions": "^4.0.2",
+    "postcss-import": "^15.1.0",
+    "postcss-nesting": "^11.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-is": "18.2.0",
+    "react-live": "3.1.1",
+    "resolve-url-loader": "5.0.0",
+    "rollup": "^3.19.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "sass": "^1.56.2",
+    "storybook-css-modules-preset": "1.1.1",
+    "storybook-design-token": "^2.9.0",
+    "ts-jest": "29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "4.8.4"
+  },
+  "dependencies": {
+    "@cesium133/forgjs": "1.1.10",
+    "imask": "^6.4.2"
+>>>>>>> 5096580 (feat: add design system)
   }
 }

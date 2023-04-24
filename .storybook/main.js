@@ -1,3 +1,5 @@
+process.env.DESIGN_TOKEN_GLOB = "**/tokens.css";
+
 module.exports = {
   core: {
     builder: 'webpack5',
@@ -10,5 +12,10 @@ module.exports = {
     '@storybook/addon-controls',
     'storybook-css-modules-preset',
     '@storybook/addon-a11y',
-  ],
+    {
+      name: "storybook-design-token", options: {
+        preserveCSSVars: false,
+      }
+    }
+  ]
 };

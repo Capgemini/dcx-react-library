@@ -1,2 +1,14 @@
-<link rel="shortcut icon" href="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/favicon.ico">
+<link rel="shortcut icon"
+  href="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/favicon.ico">
 <link rel="icon" type="image/png" href="/storybook.png" sizes="192x192">
+<script defer>
+  if (location.hostname !== 'localhost') {
+    const $hideDesignSystemFromSidebar = document.createElement('style');
+    $hideDesignSystemFromSidebar.innerText = `
+      button[data-item-id*="design-system"] {
+        display: none !important;
+      }
+    `;
+    document.head.appendChild($hideDesignSystemFromSidebar);
+  }
+</script>

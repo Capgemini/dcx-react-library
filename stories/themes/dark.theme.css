@@ -1,0 +1,7 @@
+.dcx-formselect {
+  --dcx-color-chevron-formcontrol: white;
+  --dcx-color-text-formcontrol: white;
+  --dcx-color-text-formcontrol_label: white;
+  --dcx-color-text-formcontrol_hint: #999;
+  --dcx-color-outline-formcontrol: darkorange;
+}
