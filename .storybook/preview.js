@@ -19,7 +19,7 @@ export const parameters = {
   }
 };
 
-//It will allow to refresh the iframe all the time you move from one story to another - buggy ... it doesn't work
+//It will allow to refresh the iframe all the time you move from one story to another - https://github.com/storybookjs/storybook/issues/16016
 let storyId;
 let storyTitle;
 export const decorators = [
