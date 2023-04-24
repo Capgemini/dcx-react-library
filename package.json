@@ -38,7 +38,7 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "storybook": "yarn build:css && start-storybook -p 6006 --no-manager-cache -s ./static",
-    "build-storybook": "build-storybook",
+    "build-storybook": "yarn build:css && build-storybook",
     "publish-storybook": "npx chromatic --project-token c6317a751fef"
   },
   "peerDependencies": {
