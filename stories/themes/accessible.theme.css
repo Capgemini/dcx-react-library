@@ -1,0 +1,8 @@
+.dcx-formselect {
+  --dcx-border-radius-formcontrol: 0px;
+  --dcx-spacing-y-formcontrol: 30px;
+  --dcx-font-formcontrol_hint-size: 16px;
+  --dcx-font-formcontrol_hint-line-height: 20px;
+  --dcx-font-formcontrol_error-size: 16px;
+  --dcx-font-formcontrol_error-line-height: 20px;
+}
