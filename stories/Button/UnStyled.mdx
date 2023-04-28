@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas, Props } from '@storybook/blocks';
+import { Button } from '../../src/button/Button';
+import * as UnStyledStories from './UnStyled.stories';
+
+<Meta of={UnStyledStories} />
+
+# Button
+
+A Button component ready to use in your form with support for delayClick and add an image before or after your label.
+
+Button is UI/UX agnostic so you need to provide your style to have the look
+and feel you prefer.
+
+### An example of 'un-styled' Button
+
+<Canvas>
+  <Story of={UnStyledStories.UnStyled} />
+</Canvas>
+
+```js
+```
+
+<Props of={Button} />
