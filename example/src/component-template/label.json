@@ -1,0 +1,20 @@
+{
+  "label": {
+    "tag": "label",
+    "color": {
+      "value": "black"
+    },
+    "display": {
+      "value": "inline-block"
+    },
+    "max-width": {
+      "value": "100%"
+    },
+    "margin-bottom": {
+      "value": "5px"
+    },
+    "font-weight": {
+      "value": "700"
+    }
+  }
+}

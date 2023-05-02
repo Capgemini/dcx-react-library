@@ -7,12 +7,14 @@ export const parameters = {
         [
           'Introduction',
           'Utils',
-          'Form', ['Select', ['documentation', 'live', 'Default', 'Design-System', 'Class-Based']],
-          'CopyToClipboard',
-          'Details',
-          'Tabs',
-          'Table',
-          'Changelog'
+          'Form', [
+            'Button', ['Documentation', 'Live', 'Without style', 'Class based', ],
+            'Select', ['documentation', 'live', 'Default', 'Design-System', 'Class-Based']],
+            'CopyToClipboard',
+            'Details',
+            'Tabs',
+            'Table',
+            'Changelog'
         ]
       ]
     },

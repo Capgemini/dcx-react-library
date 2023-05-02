@@ -1,0 +1,74 @@
+.yearLabel {
+  margin-right: 20px;
+  margin-bottom: 0px;
+  width: 50px;
+}
+
+.monthLabel {
+  margin-right: 20px;
+  margin-bottom: 0px;
+  width: 50px;
+}
+.span {
+  font-family: nta, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgb(11, 12, 12);
+  display: block;
+  clear: none;
+  padding-bottom: 2px;
+  margin-bottom: 0px;
+}
+
+.dayLabel {
+  margin-right: 20px;
+  margin-bottom: 0px;
+  width: 70px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input {
+  font-family: nta, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  margin-top: 0px;
+  padding: 5px;
+  border: 2px solid rgb(11, 12, 12);
+  border-radius: 0px;
+  appearance: none;
+  margin-bottom: 0px;
+}
+
+.input:focus {
+  outline: rgb(255, 191, 71) solid 3px;
+  outline-offset: 0px;
+}
+
+.error {
+  font-family: nta, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  display: block;
+  margin-bottom: 15px;
+  clear: both;
+  color: rgb(177, 14, 30);
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  border-left: 4px solid rgb(177, 14, 30);
+  margin-right: 15px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
