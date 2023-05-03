@@ -10,7 +10,9 @@ export const parameters = {
           'Form', [
             'Button', ['Documentation', 'Live', 'Without style', 'Class based', ],
             'CharacterCount', ['Documentation', 'Live', 'Without style', 'Class based', ],
+            'Checkbox', ['Documentation', 'Live', 'Without style', 'Class based', ],
             'CheckboxGroup', ['Documentation', 'Live', 'Without style', 'Class based', ],
+            'RadioGroup', ['Documentation', 'Live', 'Without style', 'Class based', ],
             'Select', ['documentation', 'live', 'Default', 'Design-System', 'Class-Based']],
             'CopyToClipboard',
             'Details',

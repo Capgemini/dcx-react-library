@@ -1,12 +1,12 @@
-import { CheckboxGroup } from '../../src/checkboxGroup/CheckboxGroup';
+import { RadioGroup } from '../../src/radioGroup/RadioGroup';
 
 /**
- * In this section we're using the CheckboxGroup component providing the **GovUk style** passing the relative `className.   
+ * In this section we're using the RadioGroup component providing the **GovUk style** passing the relative `className.   
  * Feel free to use your own css to style the formInput as you prefer.
  */
 export default {
-  title: 'DCXLibrary/Form/CheckboxGroup/Class based',
-  component: CheckboxGroup,
+  title: 'DCXLibrary/Form/RadioGroup/Class based',
+  component: RadioGroup,
   parameters: {
     options: {
       showPanel: true,
@@ -19,9 +19,9 @@ export const SharedStyle = {
   name: 'shared styles',
   args: {
     name: 'waste',
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
+    inputClassName:"govuk-radios__input",
+    itemClassName:"govuk-radios__item",
+    labelClassName:"govuk-label govuk-radios__label",
     items:[
       {
         label: 'Waste from animal carcasses',
@@ -42,7 +42,7 @@ export const SharedStyle = {
     ariaDescribedBy:"changed-name-hint",
     groupClasses:"govuk-form-group",
     fieldsetClasses:"govuk-fieldset",
-    itemsClasses:"govuk-checkboxes",
+    itemsClasses:"govuk-radios",
     legend:{
       text: 'Which types of waste do you transport?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
@@ -55,13 +55,48 @@ export const SharedStyle = {
   argTypes: { onClick: { action: 'clicked' } },
 };
 
+export const Inline = {
+  name: 'Inline',
+  args: {
+    name: 'waste',
+    inputClassName:"govuk-radios__input",
+    itemClassName:"govuk-radios__item",
+    labelClassName:"govuk-label govuk-radios__label",
+    itemsClasses: "govuk-radios govuk-radios--inline",
+    items:[
+      {
+        label: 'Waste from animal carcasses',
+        value: 'carcasses',
+        id: 'waste',
+      },
+      {
+        label: 'Waste from mines of quarries',
+        value: 'mines',
+        id: 'waste-2',
+      },
+    ],
+    ariaDescribedBy:"changed-name-hint",
+    groupClasses:"govuk-form-group",
+    fieldsetClasses:"govuk-fieldset",
+    legend:{
+      text: 'Which types of waste do you transport?',
+      className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
+      heading: {
+        priority: 1,
+        className: 'govuk-fieldset__heading',
+      },
+    }
+  },
+  argTypes: { onClick: { action: 'clicked' } },
+}
+
 export const Titled = {  
   name: 'Titled',
   args: {
     name:"waste-2",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
+    inputClassName:"govuk-radios__input",
+    itemClassName:"govuk-radios__item",
+    labelClassName:"govuk-label govuk-radios__label",
     items:[
       {
         label: 'Waste from animal carcasses',
@@ -81,7 +116,7 @@ export const Titled = {
     ],
     groupClasses:"govuk-form-group",
     fieldsetClasses:"govuk-fieldset",
-    itemsClasses:"govuk-checkboxes",
+    itemsClasses:"govuk-radios",
     legend:{
       text: 'Which types of waste do you transport?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend',
@@ -98,9 +133,9 @@ export const Hint = {
   name: 'With hints',
   args: {
     name:"nationality",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
+    inputClassName:"govuk-radios__input",
+    itemClassName:"govuk-radios__item",
+    labelClassName:"govuk-label govuk-radios__label",
     items:[
       {
         label: 'British',
@@ -108,7 +143,7 @@ export const Hint = {
         id: 'nationality',
         hint: {
           text: 'including English, Scottish, Welsh and Northern Irish.',
-          className: 'govuk-hint govuk-checkboxes__hint',
+          className: 'govuk-hint govuk-radios__hint',
           id: 'nationality-hint',
           position: 'below',
         },
@@ -133,7 +168,7 @@ export const Hint = {
       text: 'If you have dual nationality, select all options that are relevant to you.',
       className: 'govuk-hint',
     },
-    itemsClasses:"govuk-checkboxes",
+    itemsClasses:"govuk-radios",
     legend:{
       text: 'What is your nationality?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
@@ -147,13 +182,13 @@ export const Hint = {
 };
 
 
-export const SmallCheckbox = {  
-  name: 'Small checkboxes',
+export const SmallRadios = {  
+  name: 'Small radios',
   args: {
     name:"filter-change",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
+    inputClassName:"govuk-radios__input",
+    itemClassName:"govuk-radios__item",
+    labelClassName:"govuk-label govuk-radios__label",
     items:[
       {
         label: 'Monthly',
@@ -166,9 +201,9 @@ export const SmallCheckbox = {
         id: 'changed-name-year',
       },
     ],
-    groupClasses:"govuk-checkboxes govuk-checkboxes--small",
+    groupClasses:"govuk-radios govuk-radios--small",
     fieldsetClasses:"govuk-fieldset",
-    itemsClasses:"govuk-checkboxes govuk-checkboxes--small",
+    itemsClasses:"govuk-radios govuk-radios--small",
     legend:{
       text: 'Filter',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--m',
@@ -185,9 +220,9 @@ export const Error = {
   name: 'Error message',
   args: {
     name:"live-error",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
+    inputClassName:"govuk-radios__input",
+    itemClassName:"govuk-radios__item",
+    labelClassName:"govuk-label govuk-radios__label",
     items:[
       {
         label: 'England',
@@ -222,7 +257,7 @@ export const Error = {
         className: 'govuk-visually-hidden',
       },
     },
-    itemsClasses:"govuk-checkboxes",
+    itemsClasses:"govuk-radios",
     legend:{
       text: 'Where do you live?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
@@ -240,9 +275,9 @@ export const TextDivider = {
   name: 'Text divider',
   args: {
     name:"where-do-you-live-divider",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
+    inputClassName:"govuk-radios__input",
+    itemClassName:"govuk-radios__item",
+    labelClassName:"govuk-label govuk-radios__label",
     items:[
       {
         label: 'England',
@@ -265,7 +300,7 @@ export const TextDivider = {
         id: 'where-do-you-live-divider-4',
       },
       {
-        className: 'govuk-checkboxes__divider',
+        className: 'govuk-radios__divider',
         text: 'or',
       },
       {
@@ -276,7 +311,7 @@ export const TextDivider = {
     ],
     groupClasses:"govuk-form-group",
     fieldsetClasses:"govuk-fieldset",
-    itemsClasses:"govuk-checkboxes",
+    itemsClasses:"govuk-radios",
     legend:{
       text: 'Where do you live?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
@@ -289,9 +324,9 @@ export const ConditionalRevealing = {
   name: 'Conditionally revealing content',
   args: {
     name:"contact",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
+    inputClassName:"govuk-radios__input",
+    itemClassName:"govuk-radios__item",
+    labelClassName:"govuk-label govuk-radios__label",
     items:[
       {
         label: 'Email',
@@ -304,7 +339,7 @@ export const ConditionalRevealing = {
           label: 'Email address',
           type: 'email',
           className:
-            'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+            'govuk-radios__conditional govuk-radios__conditional--hidden',
           groupClassName: 'govuk-form-group',
           id: 'conditional-contact',
           inputClassName: 'govuk-input govuk-!-width-one-third',
@@ -323,7 +358,7 @@ export const ConditionalRevealing = {
           label: 'Phone number',
           type: 'tel',
           className:
-            'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+            'govuk-radios__conditional govuk-radios__conditional--hidden',
           groupClassName: 'govuk-form-group',
           id: 'conditional-contact-2',
           inputClassName: 'govuk-input govuk-!-width-one-third',
@@ -342,7 +377,7 @@ export const ConditionalRevealing = {
           label: 'Mobile phone number',
           type: 'tel',
           className:
-            'govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden',
+            'govuk-radios__conditional govuk-radios__conditional--hidden',
           groupClassName: 'govuk-form-group',
           id: 'conditional-contact-3',
           inputClassName: 'govuk-input govuk-!-width-one-third',
@@ -359,7 +394,7 @@ export const ConditionalRevealing = {
       text: 'Select all options that are relevant to you.',
       className: 'govuk-hint',
     },
-    itemsClasses:"govuk-checkboxes govuk-checkboxes--conditional",
+    itemsClasses:"govuk-radios govuk-radios--conditional",
     legend:{
       text: 'How would you prefer to be contacted?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
