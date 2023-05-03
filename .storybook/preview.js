@@ -9,6 +9,8 @@ export const parameters = {
           'Utils',
           'Form', [
             'Button', ['Documentation', 'Live', 'Without style', 'Class based', ],
+            'CharacterCount', ['Documentation', 'Live', 'Without style', 'Class based', ],
+            'CheckboxGroup', ['Documentation', 'Live', 'Without style', 'Class based', ],
             'Select', ['documentation', 'live', 'Default', 'Design-System', 'Class-Based']],
             'CopyToClipboard',
             'Details',
