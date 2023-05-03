@@ -13,12 +13,14 @@ export const parameters = {
             'Checkbox', ['Documentation', 'Live', 'Without style', 'Class based', ],
             'CheckboxGroup', ['Documentation', 'Live', 'Without style', 'Class based', ],
             'RadioGroup', ['Documentation', 'Live', 'Without style', 'Class based', ],
-            'Select', ['documentation', 'live', 'Default', 'Design-System', 'Class-Based']],
-            'CopyToClipboard',
-            'Details',
-            'Tabs',
-            'Table',
-            'Changelog'
+            'Select', ['Documentation', 'live', 'Default', 'Design-System', 'Class-Based'],
+            'Toggle', ['Documentation', 'Live', 'Without style', 'Class based', ],
+          ],
+          'CopyToClipboard',
+          'Details',
+          'Tabs',
+          'Table',
+          'Changelog'
         ]
       ]
     },
