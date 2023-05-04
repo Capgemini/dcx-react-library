@@ -1,0 +1,45 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as RangeStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/Range/Documentation" />
+
+# Range
+
+Range component ready to use in your UI.  
+Range is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the rance component without providing any className or style associated will looks as following:
+
+<Canvas of={RangeStories.Unstyled} />
+
+## Usage
+
+Use the range component when users need to input based on a range of values  
+An example with all the available properties is:
+
+```js
+<Range
+  min={0}
+  max={100}
+  value={75}
+  inputClass="customRange"
+  disabled={false}
+  showTooltip={true}
+  onChange={setDisplayValue}
+  ariaLabel="rangeComponent"
+  prefix={
+    <div>
+      <p1>Low</p1>
+    </div>
+  }
+  suffix={
+    <div>
+      <p1>High</p1>
+    </div>
+  }
+  tabIndex={0}
+/>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={RangeStories} />
