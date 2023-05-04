@@ -1,0 +1,122 @@
+import { Meta, Story, Canvas, ArgTypes } from '@storybook/addon-docs';
+import * as AutocompleteStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/Autocomplete/Documentation" />
+
+# Autocomplete
+
+An Input autocomplete component ready to use in your form.  
+Autocomplete is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
+The autocomplete is a progressive component that will automatically detect if your browser support or not js. It will render as an input when javascript is enabled, a select otherwise  
+When you import the button component without providing any className or style associated will looks as following:
+
+<Canvas of={AutocompleteStories.Unstyled} />
+
+An example with all the available properties is:
+
+```js
+<Autocomplete
+  options={[
+    'Papaya',
+    'Persimmon',
+    'Paw Paw',
+    'Prickly Pear',
+    'Peach',
+    'Pomegranate',
+    'Pineapple',
+  ]}
+  optionsId="dcx-dynamic-id"
+  defaultValue="Papaya"
+  minCharsBeforeSearch={2}
+  debounceMs={2000}
+  hintText="search the list of fruits"
+  hintClass="hintClass"
+  hintId="hintId"
+  resultUlClass="resultUlClass"
+  resultlLiClass="resultlLiClass"
+  resultNoOptionClass="resultNoOptionClass"
+  resultActiveClass="resultActiveClass"
+  notFoundText="No fruit found"
+  onSelected={handleSelected}
+  required={false}
+  containerClassName=""
+  labelText=""
+  labelClassName=""
+  labelProps={{ id: 'labelid' }}
+  id=""
+  errorPosition={AutoCompleteErrorPosition.TOP}
+  errorMessageText=""
+  errorMessageClassName=""
+  errorId=""
+  errorMessageVisuallyHidden={{
+    text: '',
+    className: '',
+  }}
+  name=""
+  inputProps={{}}
+  selectProps={{}}
+  tabIndex={0}
+  search={handleSearch}
+/>
+```
+
+# Autocomplete with Dynamic values (options)
+
+Autocomplete will work with dynamic values in case you need to provide the results from an exteral source like a server API.  
+The usage is quite similar to the previous documentation but you'll use the method **onChange** to populate dyanically the **options** list
+
+```js
+export const AutocompleteDemo = () => {
+  const [selected, setSelected] = React.useState('');
+  const handleSelected = (value: string) => setSelected(value);
+
+  const [serverOptions, setServerOptions] = React.useState<String[]>([]);
+
+  const handleOnChange = (value: string) => {
+    switch (value) {
+      case 'p':
+        setServerOptions(firstSearch);
+        break;
+      case 'pe':
+        setServerOptions(secondSearch);
+        break;
+      case 'per':
+        setServerOptions(thirdSearch);
+        break;
+      default:
+        setServerOptions(['no results']);
+    }
+  };
+
+  const handleSearch = (value, options) => {
+    return options
+      .filter((optionsName) =>
+        optionsName.toLowerCase().includes(value.toLowerCase())
+      )
+      .sort((a, b) => {
+        if (a < b) {
+          return -1;
+        }
+        if (a > b) {
+          return 1;
+        }
+        return 0;
+      });
+  };
+
+  return (
+    <Autocomplete
+      options={serverOptions}
+      minCharsBeforeSearch={1}
+      debounceMs={1000}
+      onSelected={handleSelected}
+      hintText="search the list of fruits dynamically"
+      onChange={handleOnChange}
+      notFoundText=" "
+      search={handleSearch}
+    />
+  );
+};
+```
+
+<ArgTypes of={AutocompleteStories} />

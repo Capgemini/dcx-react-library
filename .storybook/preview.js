@@ -8,6 +8,7 @@ export const parameters = {
           'Introduction',
           'Utils',
           'Form', [
+            'Autocomplete', ['Documentation', 'Live', 'Without style', 'Class based'],
             'Button', ['Documentation', 'Live', 'Without style', 'Class based'],
             'CharacterCount', ['Documentation', 'Live', 'Without style', 'Class based'],
             'Checkbox', ['Documentation', 'Live', 'Without style', 'Class based'],
