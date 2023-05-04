@@ -15,6 +15,7 @@ export const parameters = {
             'RadioGroup', ['Documentation', 'Live', 'Without style', 'Class based', ],
             'Select', ['Documentation', 'live', 'Default', 'Design-System', 'Class-Based'],
             'Toggle', ['Documentation', 'Live', 'Without style', 'Class based', ],
+            'Tooltip', ['Documentation', 'Live', 'Class based', ],
           ],
           'CopyToClipboard',
           'Details',
