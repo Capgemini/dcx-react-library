@@ -12,8 +12,9 @@ export const parameters = {
             'CharacterCount', ['Documentation', 'Live', 'Without style', 'Class based'],
             'Checkbox', ['Documentation', 'Live', 'Without style', 'Class based'],
             'CheckboxGroup', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Input', ['Documentation', 'Live', 'Without style', 'Class based'],
             'RadioGroup', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Input', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'InputMasked', ['Documentation', 'Live', 'Without style', 'Class based'],
             'Select', ['Documentation', 'Live', 'Without style','Class based', 'Design system', [
               'Playground', 'Default', 'Accessible','Dark','Material','Floating'
             ]],
