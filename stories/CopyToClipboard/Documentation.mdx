@@ -1,0 +1,67 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as CopyToClipboardStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/CopyToClipboard/Documentation" />
+
+# CopyToClipboard
+
+A component which lets you copy the contents of a text field to your clipboard.  
+The component can render text and/or a custom element to show the end users where to click.  
+You can use passing the text to copy (text) or the reference to element (ref) CopyToClipboard is UI/UX agnostic so you need to provide your style to have the look
+and feel you prefer.
+
+When you import the button component without providing any className or style associated will looks as following:
+
+<Canvas of={CopyToClipboardStories.Unstyled} />
+
+An example with all the available properties is:
+
+## Usage with ref
+
+```js
+export const CopyToClipboardDemo = () => {
+  const [value, setValue] = React.useState('');
+  const inputRef = React.useRef(null);
+  return (
+    <>
+      <input
+        value={value}
+        ref={inputRef}
+        onChange={(evt) => setValue(evt.currentTarget.value)}
+      />
+      <CopyToClipboard
+        ref={inputRef}
+        onCopy={(value) => {
+          alert(value);
+        }}
+        icon={<FontAwesomeIcon icon={faCopy} />}
+      >
+        <p>Copy</p>
+      </CopyToClipboard>
+    </>
+  );
+};
+```
+
+## Usage with text
+
+```js
+export const CopyToClipboardDemo = () => (
+  <>
+    <div>copy me</div>
+    <CopyToClipboard
+      text="copy me"
+      onCopy={(value) => {
+        alert(value);
+      }}
+      icon={<FontAwesomeIcon icon={faCopy} />}
+    >
+      <p>Copy</p>
+    </CopyToClipboard>
+  </>
+);
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={CopyToClipboardStories} />
