@@ -29,7 +29,7 @@ export const parameters = {
             
           ],
           'CopyToClipboard',
-          'Details',
+          'Details', ['Documentation', 'Live', 'Without style', 'Class based'],
           'Tabs',
           'Table',
           'Changelog'
