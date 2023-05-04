@@ -16,6 +16,7 @@ export const parameters = {
             'Select', ['Documentation', 'Live', 'Without style','Class based', 'Design system', [
               'Playground', 'Default', 'Accessible','Dark','Material','Floating'
             ]],
+            'MultiSelect', ['Documentation', 'Live', 'Without style', 'Class based'],
             'Date', ['Documentation', 'Live', 'Without style', 'Class based'],
             'MultiUpload', ['Documentation', 'Live', 'Without style', 'Class based'],
             'Progress', ['Documentation', 'Live', 'Without style', 'Class based'],
