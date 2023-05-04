@@ -13,7 +13,9 @@ export const parameters = {
             'Checkbox', ['Documentation', 'Live', 'Without style', 'Class based'],
             'CheckboxGroup', ['Documentation', 'Live', 'Without style', 'Class based'],
             'RadioGroup', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Select', ['Documentation', 'live', 'Default', 'Design-System', 'Class-Based'],
+            'Select', ['Documentation', 'Live', 'Without style','Class based', 'Design system', [
+              'Playground', 'Default', 'Accessible','Dark','Material','Floating'
+            ]],
             'Date', ['Documentation', 'Live', 'Without style', 'Class based'],
             'MultiUpload', ['Documentation', 'Live', 'Without style', 'Class based'],
             'Progress', ['Documentation', 'Live', 'Without style', 'Class based'],
