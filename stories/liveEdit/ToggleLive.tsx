@@ -1,7 +1,6 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { Toggle } from '../../src/toggle/Toggle';
-import './style.css';
 
 const ToggleDemo = `
 function ToggleDemo() {

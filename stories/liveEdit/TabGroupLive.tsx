@@ -2,7 +2,6 @@ import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { TabGroup } from '../../src/tabGroup/TabGroup';
 import { Tab } from '../../src/tabGroup/components/Tab';
-import './style.css';
 
 const TabGroupDemo = `
 function TabGroupDemo() {

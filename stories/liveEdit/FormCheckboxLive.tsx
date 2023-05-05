@@ -1,7 +1,6 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { FormCheckbox } from '../../src/formCheckbox/FormCheckbox';
-import './style.css';
 
 const FormCheckboxDemo = `
 function FormCheckboxDemo() {
