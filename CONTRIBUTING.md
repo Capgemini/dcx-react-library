@@ -70,6 +70,7 @@ To create a new component the following must be satisfied before adding
 4. create the test under `__tests__` within the component-name folder
 5. create or edit a demo in the `example/src`
 6. create or edit the story in the `stories`
+7. in case you create a new component update the `./storybook/preview,js` file adding your component (follow the style of the other items already present)
 
 Example folder structure with component `SnackBar`:
 

@@ -1,0 +1,85 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import { CharacterCount } from '../../src/characterCount';
+import * as CharacterCountStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/CharacterCount/Documentation" />
+
+# Character Count
+
+A character count component ready to use in your form.  
+The CharacterCount component is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the character count component without providing any className or style associated will looks as following:
+
+<Canvas of={CharacterCountStories.Unstyled} />
+
+## Usage
+
+Use the CharacterCount component when there is a limit on the number of characters or words the user is allowed to enter in a textbox.  
+The CharacterCount component shows users the limit on characters or words to be entered in a textarea element.  
+The component consists of the label for the textarea, optional hint, the textarea and a message advising the user of the remaining characters.  
+To use this component for words count, pass in the `limitType` prop set to `words`. The limit type is characters by default.
+
+An example with all the available properties is:
+
+```js
+<CharacterCount
+  id="id"
+  label="Label for text area"
+  hint={{ text: 'Optional hint' }}
+  containerClassName="container-class-name"
+  formGroupClassName="form-group-class-name"
+  labelClassName="label-class-name"
+  textareaClassName="textarea-class-name"
+  textareaErrorClassName="textarea-error-class-name"
+  messageClassName="message-class-name"
+  messageErrorClassName="message-error-class-name"
+  name="textarea-name"
+  cols={30}
+  rows={5}
+  maxLength={15}
+  ariaDescribedBy="aria-described-by"
+  displayError={false}
+  errorMessage="error-text"
+  errorMessageClassName="error-class-name"
+  errorId="error-id"
+  errorVisuallyHiddenText={{ text: 'visually-hidden-error-message' }}
+  onChange={onChangeHandler}
+  limitType="characters"
+  constrained={false}
+  threshold={20}
+  customMaxCharMsgFunc={(remainingCount, overLimitBy, hydrated) =>
+    `this is a custom message with ${remainingCount} and ${overLimitBy} with js enabled ${hydrated}`
+  }
+  ref={textRef}
+/>
+```
+
+### Resetting the component
+
+If you want to use a button to clear the textarea and reset the component, you can do this with calling the reset function which can be exposed with a **ref**.
+Create a ref to pass in to the CharacterCount component with React's **useRef** hook.
+For the button that you want to use to clear the text and messages, call the CharacterCount component's exposed **reset()** function, accessing it through the ref e.g. `() => textRef.current.reset()`.
+
+An example for resetting the component with a button:
+
+```js
+const textRef = useRef(null);
+
+<form>
+  <CharacterCount
+    label="Label for text area"
+    hint={{
+      text: 'Type more than 15 characters to see the message change',
+    }}
+    maxLength={15}
+    rows={5}
+    cols={50}
+    ref={textRef}
+  />
+  <button onClick={() => textRef.current.reset()}>Cancel</button>
+</form>;
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={CharacterCountStories} />

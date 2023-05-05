@@ -1,0 +1,58 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as ButtonStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/Button/Documentation" />
+
+# Button
+
+A Button component ready to use in your form with support for delayClick and add an image before or after your label.  
+Button is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the button component without providing any className or style associated will looks as following:
+
+<Canvas of={ButtonStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+<Button
+  label="Start Now"
+  onClick={buttonHandler}
+  disableClickForMs={2000}
+  disable={true}
+  isLoading={true},
+  loadingLabel="loading..."
+  customLoadingPreImage={<span>spinner</span>}
+  customLoadingPostImage={<span>spinner</span>}
+  customPostfixImg={
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="17.5"
+      height="19"
+      viewBox="0 0 33 40"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+    </svg>
+  }
+  customPrefixImg={
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="17.5"
+      height="19"
+      viewBox="0 0 33 40"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+    </svg>
+  }
+  formAction="https://www.capgemini.com/gb-en/"
+  name="submit"
+  value="value"
+/>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={ButtonStories} />

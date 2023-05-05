@@ -7,11 +7,31 @@ export const parameters = {
         [
           'Introduction',
           'Utils',
-          'Form', ['Select', ['documentation', 'live', 'Default', 'Design-System', 'Class-Based']],
-          'CopyToClipboard',
-          'Details',
-          'Tabs',
-          'Table',
+          'Form', [
+            'Autocomplete', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Button', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'CharacterCount', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Checkbox', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'CheckboxGroup', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'RadioGroup', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Input', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'InputMasked', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Select', ['Documentation', 'Live', 'Without style','Class based', 'Design system', [
+              'Playground', 'Default', 'Accessible','Dark','Material','Floating'
+            ]],
+            'MultiSelect', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Date', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'MultiUpload', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Progress', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Range', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Toggle', ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Tooltip', ['Documentation', 'Live', 'Class based'],
+            
+          ],
+          'CopyToClipboard', ['Documentation', 'Live', 'Without style', 'Class based'],
+          'Details', ['Documentation', 'Live', 'Without style', 'Class based'],
+          'Tabs', ['Documentation', 'Live', 'Without style', 'Class based'],
+          'Table', ['Documentation', 'Live', 'Without style', 'Class based'],
           'Changelog'
         ]
       ]
