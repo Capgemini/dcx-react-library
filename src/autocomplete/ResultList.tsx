@@ -2,7 +2,7 @@ import React from 'react';
 import { classNames } from '../common';
 
 type ResultListProps = {
-  resultUlRef: any;
+  resultLiRef: React.MutableRefObject<any>;
   list: string[];
   listId?: string;
   userInput: string;
@@ -19,7 +19,7 @@ type ResultListProps = {
 };
 
 export const ResultList = ({
-  resultUlRef,
+  resultLiRef,
   list,
   listId,
   userInput,
@@ -58,7 +58,7 @@ export const ResultList = ({
             onClick={onClick}
             style={liContainerStyle}
             ref={(ref) => {
-              resultUlRef.current = { ...resultUlRef.current, [index]: ref };
+              resultLiRef.current = { ...resultLiRef.current, [index]: ref };
             }}
           >
             {optionName}

@@ -1,16 +1,18 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { ResultList } from '../ResultList';
 
-const resultRef = useRef({});
+const resultRef = {
+  current: []
+};
 describe('ResultList', () => {
   it('should display the result content', () => {
     const handleClick = jest.fn();
     render(
       <ResultList
-        resultUlRef={resultRef}
+        resultLiRef={resultRef}
         list={['daniele', 'isaac']}
         userInput="d"
         activeOption={1}
@@ -26,7 +28,7 @@ describe('ResultList', () => {
     const handleClick = jest.fn();
     const { container } = render(
       <ResultList
-        resultUlRef={resultRef}
+        resultLiRef={resultRef}
         list={['daniele', 'isaac']}
         userInput="d"
         activeOption={1}
@@ -49,7 +51,7 @@ describe('ResultList', () => {
     const handleClick = jest.fn();
     render(
       <ResultList
-        resultUlRef={resultRef}
+        resultLiRef={resultRef}
         list={['daniele', 'isaac']}
         userInput="d"
         activeOption={0}
@@ -69,7 +71,7 @@ describe('ResultList', () => {
     const handleClick = jest.fn();
     render(
       <ResultList
-        resultUlRef={resultRef}
+        resultLiRef={resultRef}
         list={['daniele', 'isaac']}
         userInput="d"
         activeOption={1}
@@ -89,7 +91,7 @@ describe('ResultList', () => {
     const handleClick = jest.fn();
     const { container } = render(
       <ResultList
-        resultUlRef={resultRef}
+        resultLiRef={resultRef}
         list={[]}
         userInput="d"
         activeOption={1}
@@ -106,7 +108,7 @@ describe('ResultList', () => {
     const handleClick = jest.fn();
     const { container } = render(
       <ResultList
-        resultUlRef={resultRef}
+        resultLiRef={resultRef}
         list={[]}
         userInput="d"
         activeOption={1}
@@ -125,7 +127,7 @@ describe('ResultList', () => {
     const handleClick = jest.fn();
     const { container } = render(
       <ResultList
-        resultUlRef={resultRef}
+        resultLiRef={resultRef}
         list={['firstItem']}
         listId="dcx-list-id"
         userInput="d"
@@ -143,7 +145,7 @@ describe('ResultList', () => {
     const handleClick = jest.fn();
     const { container } = render(
       <ResultList
-        resultUlRef={resultRef}
+        resultLiRef={resultRef}
         list={['firstItem']}
         userInput="d"
         activeOption={1}
@@ -160,7 +162,7 @@ describe('ResultList', () => {
     const handleClick = jest.fn();
     const { container } = render(
       <ResultList
-        resultUlRef={resultRef}
+        resultLiRef={resultRef}
         list={['firstItem']}
         listId="dcx-list-id"
         userInput="d"
@@ -178,7 +180,7 @@ describe('ResultList', () => {
     const handleClick = jest.fn();
     const { container } = render(
       <ResultList
-        resultUlRef={resultRef}
+        resultLiRef={resultRef}
         list={['firstItem']}
         userInput="d"
         activeOption={1}

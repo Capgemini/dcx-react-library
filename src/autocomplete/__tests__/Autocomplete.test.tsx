@@ -48,6 +48,10 @@ const DummyAutoComplete = () => {
 };
 
 describe('Autocomplete', () => {
+  beforeAll(() => {
+    window.HTMLLIElement.prototype.scrollIntoView = jest.fn();
+  });
+
   it('should display multiselect if progresive enhancement and multiselect is true', () => {
     //@ts-ignore
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
