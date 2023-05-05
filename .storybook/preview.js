@@ -31,7 +31,7 @@ export const parameters = {
           'CopyToClipboard', ['Documentation', 'Live', 'Without style', 'Class based'],
           'Details', ['Documentation', 'Live', 'Without style', 'Class based'],
           'Tabs', ['Documentation', 'Live', 'Without style', 'Class based'],
-          'Table',
+          'Table', ['Documentation', 'Live', 'Without style', 'Class based'],
           'Changelog'
         ]
       ]
