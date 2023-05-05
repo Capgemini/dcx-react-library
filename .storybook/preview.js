@@ -1,5 +1,6 @@
 // https://storybook.js.org/docs/react/writing-stories/parameters#global-parameters
 import '../stories/govUkStyle.css';
+import '../stories/liveEdit/style.css';
 export const parameters = {
   options: {
     storySort: {
