@@ -2,6 +2,7 @@ import React from 'react';
 import { classNames } from '../common';
 
 type ResultListProps = {
+  resultUlRef: any;
   list: string[];
   listId?: string;
   userInput: string;
@@ -18,6 +19,7 @@ type ResultListProps = {
 };
 
 export const ResultList = ({
+  resultUlRef,
   list,
   listId,
   userInput,
@@ -55,6 +57,9 @@ export const ResultList = ({
             key={optionName}
             onClick={onClick}
             style={liContainerStyle}
+            ref={(ref) => {
+              resultUlRef.current = { ...resultUlRef.current, [index]: ref };
+            }}
           >
             {optionName}
           </li>
