@@ -156,6 +156,7 @@ export const Register = () => {
   const [passwordInputType, setPasswordInputType] = React.useState(false);
   const [displayDobError, setDobError] = React.useState(false);
 
+  //@ts-ignore
   React.useEffect(() => {
     checkFormValidity();
   }, [
