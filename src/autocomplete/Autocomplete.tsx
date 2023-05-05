@@ -281,7 +281,7 @@ export const Autocomplete = ({
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [showPrompt, setShowPrompt] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<string>(defaultValue);
-  const resultRef = useRef<HTMLLIElement[]>(null);
+  const resultRef = useRef<HTMLLIElement[]>(null) as React.MutableRefObject<HTMLLIElement[]>;
   let hydrated = useHydrated();
 
   const showPromptMessage = (inputValue = userInput): boolean =>
