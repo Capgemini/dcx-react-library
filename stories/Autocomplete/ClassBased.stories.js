@@ -57,7 +57,7 @@ export const Hint = {
  * Before the autocomplete appear you need to type at least 2 character
  */
 export const MinChars = {  
-  name: 'Hint',
+  name: 'MinChars',
   args: {
     options: options,
     minCharsBeforeSearch:2,
