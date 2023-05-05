@@ -1247,6 +1247,14 @@
   outline: 0;
 }
 
+.autocomplete__option--focused,
+.autocomplete__option:hover {
+  background-color: #1d70b8;
+  border-color: #1d70b8;
+  color: white;
+  outline: none;
+}
+
 .govuk-button {
   font-family: 'GDS Transport', arial, sans-serif;
   font-weight: 400;

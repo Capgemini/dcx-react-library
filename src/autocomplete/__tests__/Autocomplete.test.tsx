@@ -48,6 +48,10 @@ const DummyAutoComplete = () => {
 };
 
 describe('Autocomplete', () => {
+  beforeAll(() => {
+    window.HTMLLIElement.prototype.scrollIntoView = jest.fn();
+  });
+
   it('should display multiselect if progresive enhancement and multiselect is true', () => {
     //@ts-ignore
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
@@ -352,6 +356,53 @@ describe('Autocomplete', () => {
     fireEvent.keyDown(input, { code: 'ArrowUp' });
     fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
     expect(input.value).toBe('daniele');
+  });
+
+  it('should display the next item when you scroll with the keyboard', async () => {
+    const user = userEvent.setup();
+
+    render(<Autocomplete options={[
+      'Papaya',
+      'Persimmon',
+      'Paw Paw',
+      'Prickly Pear',
+      'Peach',
+      'Pomegranate',
+      'Pineapple 1',
+      'Pineapple 2',
+      'Pineapple 3',
+      'Pineapple 4',
+      'Pineapple 5',
+      'Pineapple 6',
+      'Pineapple 7',
+      'Pineapple 8',
+      'Pineapple 9',
+      'Pineapple 10',
+      'Pineapple 11',
+      'Pineapple 12',
+      'Pineapple 13',
+      'Pineapple 14'
+    ]} />);
+    const input: any = screen.getByRole('textbox');
+    await user.type(input, 'p');
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+    fireEvent.keyDown(input, { code: 'ArrowDown' });
+
+    const listItems: HTMLLIElement[] = screen.getAllByRole('listitem');
+    const exactItem = screen.queryByText(/Pineapple 5/i);
+
+    expect(listItems[10]).toBeVisible();
+    expect(exactItem).toBeVisible();
   });
 
   it('should higlight the first one as active if you try to keyUp', async () => {
