@@ -281,7 +281,9 @@ export const Autocomplete = ({
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [showPrompt, setShowPrompt] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<string>(defaultValue);
-  const resultRef = useRef<HTMLLIElement[]>(null) as React.MutableRefObject<HTMLLIElement[]>;
+  const resultRef = useRef<HTMLLIElement[]>(null) as React.MutableRefObject<
+    HTMLLIElement[]
+  >;
   let hydrated = useHydrated();
 
   const showPromptMessage = (inputValue = userInput): boolean =>
@@ -395,13 +397,15 @@ export const Autocomplete = ({
       }
       setActiveOption(activeOption - 1);
       const prevItem = resultRef.current && resultRef.current[activeOption - 1];
-      prevItem && prevItem.scrollIntoView({ block: 'nearest', inline: 'start'});
+      prevItem &&
+        prevItem.scrollIntoView({ block: 'nearest', inline: 'start' });
     } else if (evt.code === 'ArrowDown') {
       if (activeOption === filterList.length - 1) {
         return;
       }
       const nextItem = resultRef.current && resultRef.current[activeOption + 1];
-      nextItem && nextItem.scrollIntoView({ block: 'nearest', inline: 'start'});
+      nextItem &&
+        nextItem.scrollIntoView({ block: 'nearest', inline: 'start' });
       setActiveOption(activeOption + 1);
     } else if (evt.code === 'Escape') {
       setShowOptions(false);
