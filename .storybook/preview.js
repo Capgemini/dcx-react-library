@@ -1,6 +1,8 @@
 // https://storybook.js.org/docs/react/writing-stories/parameters#global-parameters
 import '../stories/govUkStyle.css';
 import '../stories/liveEdit/style.css';
+import { Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+
 export const parameters = {
   options: {
     storySort: {
@@ -37,7 +39,19 @@ export const parameters = {
         ]
       ]
     },
-  }
+  },
+  //with this custom configuration we removed the <Controls/> (the properties table) from the page. By default it sits between Primary and Stories
+  docs: {
+    page: () => (
+      <>
+        <Title />
+        <Subtitle />
+        <Description />
+        <Primary />
+        <Stories />
+      </>
+    ),
+  },
 };
 
 //It will allow to refresh the iframe all the time you move from one story to another - https://github.com/storybookjs/storybook/issues/16016
