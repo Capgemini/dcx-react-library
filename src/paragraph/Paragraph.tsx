@@ -13,7 +13,7 @@ type ParagraphProps = React.HTMLAttributes<HTMLParagraphElement> & {
 
 export const Paragraph = ({ className, value, ...props }: ParagraphProps) => (
   <p
-    className={className}
+    className = {className}
     {...props}
   >
     {value}

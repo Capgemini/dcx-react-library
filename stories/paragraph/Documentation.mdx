@@ -1,0 +1,25 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as ParagraphStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Typography/Paragraph/Documentation" />
+
+# Paragraph
+
+A Paragraph component ready to use in your Typography
+Paragraph is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the paragraph component without providing any className or style associated will looks as following:
+
+<Canvas of={ParagraphStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+<Paragraph
+  label="Start Now"
+  value="This is the content of the paragraph."
+/>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={ParagraphStories} />
