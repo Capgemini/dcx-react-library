@@ -1,4 +1,3 @@
-/* eslint-disable arrow-body-style */
 import React from 'react';
 import { classNames } from '../common';
 
@@ -19,11 +18,7 @@ type labelProps = {
 
 export const Label = ({ className, value, id, ...props }: labelProps) => {
   return (
-    <label
-      className={classNames(['dcx-library', className])}
-      id={id}
-      {...props}
-    >
+    <label className={classNames(['dcx-label', className])} id={id} {...props}>
       {value}
     </label>
   );
