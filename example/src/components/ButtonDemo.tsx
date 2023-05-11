@@ -13,7 +13,7 @@ export const ButtonDemo = () => {
 
   return (
     <>
-      <h1>Simple props test</h1>
+      <h1>Simple props</h1>
       <Button onClick={() => {}} label="Register" />
       <h1>Simple props disable</h1>
       <Button onClick={() => {}} label="Register" disabled={true} />
