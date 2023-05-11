@@ -1,4 +1,5 @@
 import React from 'react';
+import { classNames } from '../common/utils';
 
 export type HeadingLevel = '1' | '2' | '3' | '4' | '5' | '6'
 
@@ -31,20 +32,17 @@ type HeadingProps = {
 
 export const Heading = ({ label, level, className, id, props }: HeadingProps) => {
 
-    const embeddedClassName = `dcx-heading dcx-heading-${level} `;
+    const dynamicClassName = classNames([
+        'dcx-heading',
+        `dcx-heading-${level}`,
+        className,
+    ]);
 
-    switch (level) {
-        case '1':
-            return (<h1 id={id} className={embeddedClassName + className} {...props}>{label}</h1>);
-        case '2':
-            return (<h2 id={id} className={embeddedClassName + className} {...props}>{label}</h2>);
-        case '3':
-            return (<h3 id={id} className={embeddedClassName + className} {...props}>{label}</h3>);
-        case '4':
-            return (<h4 id={id} className={embeddedClassName + className} {...props}>{label}</h4>);
-        case '5':
-            return (<h5 id={id} className={embeddedClassName + className} {...props}>{label}</h5>);
-        case '6':
-            return (<h6 id={id} className={embeddedClassName + className} {...props}>{label}</h6>);
-    }
+    const HeaderTag = `h${level}` as keyof JSX.IntrinsicElements;
+
+    return (
+        <HeaderTag className={dynamicClassName} id={id} {...props}>
+            {label}
+        </HeaderTag>
+    );
 };
