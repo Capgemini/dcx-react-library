@@ -1,48 +1,53 @@
 import React from 'react';
 import { classNames } from '../common/utils';
 
-export type HeadingLevel = '1' | '2' | '3' | '4' | '5' | '6'
+export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 type HeadingProps = {
-    /**
-     * Content of the Heading
-     */
-    label: string;
+  /**
+   * Content of the Heading
+   */
+  label: string;
 
-    /**
-     * Level of the heading (1-6)
-     */
-    level: HeadingLevel;
+  /**
+   * Level of the heading (1-6)
+   */
+  level: HeadingLevel;
 
-    /**
-     * CSS Classes of the heading
-     */
-    className?: string;
+  /**
+   * CSS Classes of the heading
+   */
+  className?: string;
 
-    /**
-     * Unique html #id of the heading
-     */
-    id?: string;
+  /**
+   * Unique html #id of the heading
+   */
+  id?: string;
 
-    /**
-     * Additional props/attributes
-     */
-    props?: React.HTMLAttributes<HTMLHeadingElement>;
+  /**
+   * Additional props/attributes
+   */
+  props?: React.HTMLAttributes<HTMLHeadingElement>;
 };
 
-export const Heading = ({ label, level, className, id, props }: HeadingProps) => {
+export const Heading = ({
+  label,
+  level,
+  className,
+  id,
+  props,
+}: HeadingProps) => {
+  const dynamicClassName = classNames([
+    'dcx-heading',
+    `dcx-heading-${level}`,
+    className,
+  ]);
 
-    const dynamicClassName = classNames([
-        'dcx-heading',
-        `dcx-heading-${level}`,
-        className,
-    ]);
+  const HeaderTag: HeadingLevel = level;
 
-    const HeaderTag = `h${level}` as keyof JSX.IntrinsicElements;
-
-    return (
-        <HeaderTag className={dynamicClassName} id={id} {...props}>
-            {label}
-        </HeaderTag>
-    );
+  return (
+    <HeaderTag className={dynamicClassName} id={id} {...props}>
+      {label}
+    </HeaderTag>
+  );
 };
