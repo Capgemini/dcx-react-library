@@ -1,0 +1,28 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as HeadingStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Typography/Heading/Documentation" />
+
+# Heading
+
+A Heading component that renders HTML headers from levels 1 to 6
+Heading is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the Heading component without providing any className or style associated will looks as following:
+
+<Canvas of={HeadingStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+<Heading
+    label="This is a Heading"
+    level="h1"
+    className="title"
+    id="user-defined-id" 
+    props={{ role: 'heading' }}
+/>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={HeadingStories} />
