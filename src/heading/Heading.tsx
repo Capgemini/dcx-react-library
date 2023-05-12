@@ -10,7 +10,7 @@ type HeadingProps = {
   label: string;
 
   /**
-   * Level of the heading (1-6)
+   * Level of the heading (h1-h6)
    */
   level: HeadingLevel;
 
