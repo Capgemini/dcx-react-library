@@ -7,9 +7,9 @@ type labelProps = {
    */
   className?: string;
   /**
-   * Allows us to use the Value in label
+   * define the value of the label
    */
-  value?: string;
+  value: string;
   /**
    * it will pass an id to the label element
    */

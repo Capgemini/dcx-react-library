@@ -19,6 +19,6 @@ export const Basic = {
   name: 'Basic',
   args: {
     value: 'text',
-    className: 'govuk-button',
+    className: 'govuk-label',
   },
 };
