@@ -54,7 +54,7 @@ describe('Heading', () => {
         expect(container.querySelector('.dcx-heading.dcx-heading-2.test-heading')).toBeInTheDocument();
     });
 
-    it('the ability to provide other props', () => {
+    it('the ability to provide other heading props', () => {
         const { container } = render(<Heading id="first" className="heading" label="This is a Level 1 Heading" level="1" props={{ 'custom-attribute': 'testHeader' }} />);
         expect(container.querySelector('h1[custom-attribute="testHeader"]')).toBeInTheDocument();
     });
