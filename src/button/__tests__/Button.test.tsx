@@ -200,7 +200,7 @@ describe('Button', () => {
     const handleClick = jest.fn();
     render(<Button onClick={handleClick} className="test" label="Register" />);
     const button: any = screen.getByRole('button');
-    expect(button.getAttribute('class')).toBe('test');
+    expect(button.getAttribute('class')).toBe('dcx-button test');
   });
 
   it('should accept formAction as attribute', () => {
@@ -246,5 +246,33 @@ describe('Button', () => {
     expect(buttons[1].getAttribute('aria-label')).toBe('button-button');
     expect(buttons[2].getAttribute('aria-label')).toBe('submit-button');
     expect(buttons[3].getAttribute('aria-label')).toBe('reset-button');
+  });
+
+  it('should render the default className dcx-button', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} label="Register" />);
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('class')).toBe('dcx-button');
+  });
+
+  it('should render the primary variant to the className', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} variant="primary" label="Register" />);
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('class')).toBe('dcx-button dcx-button--primary');
+  });
+
+  it('should render the secondary variant to the className', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} variant="secondary" label="Register" />);
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('class')).toBe('dcx-button dcx-button--secondary');
+  });
+
+  it('should render the default, user specified and variant className', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} className="active" variant="tertiary" label="Register" />);
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('class')).toBe('dcx-button active dcx-button--tertiary');
   });
 });

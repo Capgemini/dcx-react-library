@@ -1,5 +1,5 @@
 import React from 'react';
-import { debounce } from '../common';
+import { classNames, debounce } from '../common';
 
 export enum BUTTON_TYPE {
   BUTTON = 'button',
@@ -68,6 +68,14 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    * allows to use a value in the button
    */
   value?: string | number;
+  /**
+   * allow the user to define the buttons class name
+   */
+  className?: string;
+    /**
+   * allow the user to add a variant to the buttons class name
+   */
+  variant?: 'primary' | 'secondary' | 'tertiary';
 };
 
 export const Button = ({
@@ -86,6 +94,8 @@ export const Button = ({
   formAction,
   name,
   value,
+  className,
+  variant,
   ...props
 }: ButtonProps) => {
   const [disable, setDisable] = React.useState<boolean>(disabled);
@@ -127,6 +137,16 @@ export const Button = ({
     if (customPostfixImg) postfix = <>{customPostfixImg}</>;
   }
 
+  const btnClassName = classNames([
+    'dcx-button',
+    className,
+    {
+      'dcx-button--primary': variant === 'primary',
+      'dcx-button--secondary': variant === 'secondary',
+      'dcx-button--tertiary': variant === 'tertiary'
+    },
+  ]);
+
   return (
     <button
       onClick={handleClick}
@@ -135,6 +155,7 @@ export const Button = ({
       {...(label ? {} : { 'aria-label': ariaLabel })}
       formAction={formAction}
       name={name}
+      className={btnClassName}
       value={value}
       {...props}
     >
