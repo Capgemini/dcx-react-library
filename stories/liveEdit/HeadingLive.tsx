@@ -7,9 +7,10 @@ function HeadingDemo() {
 
   return (
     <Heading 
-        level="1"
+        level="h1"
         label="This is a Level 1 Heading"
         className="govuk-body"
+        props={{ role: 'heading' }}
     />
   )
 }
