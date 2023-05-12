@@ -17,12 +17,12 @@ type HeadingProps = {
     /**
      * CSS Classes of the heading
      */
-    className: string;
+    className?: string;
 
     /**
      * Unique html #id of the heading
      */
-    id: string;
+    id?: string;
 
     /**
      * Additional props/attributes
