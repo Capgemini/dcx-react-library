@@ -1,46 +1,90 @@
 // https://storybook.js.org/docs/react/writing-stories/parameters#global-parameters
 import '../stories/govUkStyle.css';
 import '../stories/liveEdit/style.css';
-import { Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+import {
+  Title,
+  Subtitle,
+  Description,
+  Primary,
+  Controls,
+  Stories,
+} from '@storybook/blocks';
 
 export const parameters = {
   options: {
     storySort: {
-      order: ['DCXLibrary',
+      order: [
+        'DCXLibrary',
         [
           'Introduction',
           'Utils',
-          'Form', [
-            'Autocomplete', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Button', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'CharacterCount', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Checkbox', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'CheckboxGroup', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'RadioGroup', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Input', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'InputMasked', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Select', ['Documentation', 'Live', 'Without style','Class based', 'Design system', [
-              'Playground', 'Default', 'Accessible','Dark','Material','Floating'
-            ]],
-            'MultiSelect', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Date', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'MultiUpload', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Progress', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Range', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Toggle', ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Tooltip', ['Documentation', 'Live', 'Class based'],
-            
+          'Form',
+          [
+            'Autocomplete',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Button',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'CharacterCount',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Checkbox',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'CheckboxGroup',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'RadioGroup',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Input',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'InputMasked',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Select',
+            [
+              'Documentation',
+              'Live',
+              'Without style',
+              'Class based',
+              'Design system',
+              [
+                'Playground',
+                'Default',
+                'Accessible',
+                'Dark',
+                'Material',
+                'Floating',
+              ],
+            ],
+            'MultiSelect',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Date',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'MultiUpload',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Progress',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Range',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Toggle',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Tooltip',
+            ['Documentation', 'Live', 'Class based'],
           ],
-          'CopyToClipboard', ['Documentation', 'Live', 'Without style', 'Class based'],
-          'Details', ['Documentation', 'Live', 'Without style', 'Class based'],
-          'Tabs', ['Documentation', 'Live', 'Without style', 'Class based'],
-          'Table', ['Documentation', 'Live', 'Without style', 'Class based'],
-          'Typography', [
-            'Heading',['Documentation', 'Live', 'Without style', 'Class based']
+          'CopyToClipboard',
+          ['Documentation', 'Live', 'Without style', 'Class based'],
+          'Details',
+          ['Documentation', 'Live', 'Without style', 'Class based'],
+          'Tabs',
+          ['Documentation', 'Live', 'Without style', 'Class based'],
+          'Table',
+          ['Documentation', 'Live', 'Without style', 'Class based'],
+          'Typography',
+          [
+            'Heading',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Label',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
           ],
-          'Changelog'
-        ]
-      ]
+          'Changelog',
+        ],
+      ],
     },
   },
   //with this custom configuration we removed the <Controls/> (the properties table) from the page. By default it sits between Primary and Stories
@@ -66,13 +110,17 @@ export const decorators = [
     console.log('storyTitle:', storyTitle);
     if (storyTitle && context.title !== storyTitle) {
       document.location.reload();
-      console.log('first')
-    } else if (storyId && context.id !== storyId && context.title !== storyTitle) {
+      console.log('first');
+    } else if (
+      storyId &&
+      context.id !== storyId &&
+      context.title !== storyTitle
+    ) {
       document.location.reload();
-      console.log('second')
+      console.log('second');
     }
     storyId = context.id;
     storyTitle = context.title;
     return storyFn();
-  }
+  },
 ];

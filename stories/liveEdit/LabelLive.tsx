@@ -7,7 +7,7 @@ function LabelDemo() {
 
   return (
     <Label
-      className="dcx-label additional classes" value="text" id="user-defined-id"
+      className="additional classes" value="text" id="user-defined-id" props={{}}
     />
   )
 }

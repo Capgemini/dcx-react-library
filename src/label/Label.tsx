@@ -14,9 +14,13 @@ type labelProps = {
    * it will pass an id to the label element
    */
   id?: string;
+  /**
+   * Additional props/attributes
+   */
+  props?: React.HtmlHTMLAttributes<HTMLLabelElement>;
 };
 
-export const Label = ({ className, value, id, ...props }: labelProps) => (
+export const Label = ({ className, value, id, props }: labelProps) => (
   <label className={classNames(['dcx-label', className])} id={id} {...props}>
     {value}
   </label>
