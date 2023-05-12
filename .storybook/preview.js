@@ -35,6 +35,9 @@ export const parameters = {
           'Details', ['Documentation', 'Live', 'Without style', 'Class based'],
           'Tabs', ['Documentation', 'Live', 'Without style', 'Class based'],
           'Table', ['Documentation', 'Live', 'Without style', 'Class based'],
+          'Typography', [
+            'Heading',['Documentation', 'Live', 'Without style', 'Class based']
+          ],
           'Changelog'
         ]
       ]
