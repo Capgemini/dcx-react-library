@@ -55,7 +55,7 @@ describe('Heading', () => {
     });
 
     it('the ability to provide other heading props', () => {
-        const { container } = render(<Heading id="first" className="heading" label="This is a Level 1 Heading" level="1" props={{ 'custom-attribute': 'testHeader' }} />);
+        const { container } = render(<Heading id="first" className="heading" label="This is a Level 1 Heading" level="1" props={{ 'role': 'heading' }} />);
         expect(container.querySelector('h1[custom-attribute="testHeader"]')).toBeInTheDocument();
     });
 
