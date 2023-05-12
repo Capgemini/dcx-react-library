@@ -16,10 +16,8 @@ type labelProps = {
   id?: string;
 };
 
-export const Label = ({ className, value, id, ...props }: labelProps) => {
-  return (
-    <label className={classNames(['dcx-label', className])} id={id} {...props}>
-      {value}
-    </label>
-  );
-};
+export const Label = ({ className, value, id, ...props }: labelProps) => (
+  <label className={classNames(['dcx-label', className])} id={id} {...props}>
+    {value}
+  </label>
+);
