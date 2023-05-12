@@ -12,7 +12,7 @@ export default {
 
 export const Unstyled = {
   args: {
-    label: 'This is the content of the heading.',
+    label: 'This is the content of the heading',
     level: 'h1',
   },
 };

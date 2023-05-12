@@ -16,18 +16,18 @@ export default {
 
 function createHeading(level) {
   return {
-    name: `Basic H${level}`,
+    name: `${level} header`,
     args: {
       className: 'govuk-body',
-      label: `This is a Level ${level} Header`,
+      label: `This is an ${level} Header`,
       level,
     },
   };
 }
 
-export const BasicH1 = createHeading('h1');
-export const BasicH2 = createHeading('h2');
-export const BasicH3 = createHeading('h3');
-export const BasicH4 = createHeading('h4');
-export const BasicH5 = createHeading('h5');
-export const BasicH6 = createHeading('h6');
+export const H1 = createHeading('h1');
+export const H2 = createHeading('h2');
+export const H3 = createHeading('h3');
+export const H4 = createHeading('h4');
+export const H5 = createHeading('h5');
+export const H6 = createHeading('h6');
