@@ -27,7 +27,7 @@ type HeadingProps = {
     /**
      * Additional props/attributes
      */
-    props?: any;
+    props?: React.HTMLAttributes<HTMLHeadingElement>;
 };
 
 export const Heading = ({ label, level, className, id, props }: HeadingProps) => {
