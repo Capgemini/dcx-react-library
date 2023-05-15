@@ -37,6 +37,7 @@ function ButtonDemo() {
         customLoadingPostImage={<></>}
         formAction="URL"
         className=""
+        variant="primary"
         style={style}
         name=""
         value=""
