@@ -19,3 +19,4 @@ export * from './table';
 export * from './details';
 export * from './common/utils/classNames';
 export * from './characterCount';
+export * from './insertText';
