@@ -28,7 +28,7 @@ describe('Label', () => {
     expect(container.firstChild).toHaveAttribute('id', 'my_id');
   });
 
-  it('should be able to pass some extra properties', async () => {
+  it('should be able to pass some extra properties', () => {
     const { container } = render(
       <Label value="text" props={{ style: { color: 'red' } }} />
     );

@@ -5,7 +5,7 @@ import { Label } from '../../src/label/Label';
  * Feel free to use your own css to style the formInput as you prefer.
  */
 export default {
-  title: 'DCXLibrary/Form/Label/Class based',
+  title: 'DCXLibrary/Typography/Label/Class based',
   component: Label,
   parameters: {
     options: {

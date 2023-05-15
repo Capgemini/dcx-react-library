@@ -2,7 +2,7 @@ import { Label } from '../../src/label/Label';
 import LabelLive from '../liveEdit/LabelLive';
 
 export default {
-  title: 'DCXLibrary/Form/Label/Live',
+  title: 'DCXLibrary/Typography/Label/Live',
   component: Label,
 
   parameters: {
