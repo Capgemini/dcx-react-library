@@ -141,9 +141,7 @@ export const Button = ({
     'dcx-button',
     className,
     {
-      'dcx-button--primary': variant === 'primary',
-      'dcx-button--secondary': variant === 'secondary',
-      'dcx-button--tertiary': variant === 'tertiary'
+      [`dcx-button--${variant}`]:  variant !== undefined,
     },
   ]);
 
