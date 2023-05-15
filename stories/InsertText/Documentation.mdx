@@ -1,0 +1,39 @@
+import {
+  Meta,
+  Story,
+  Canvas,
+  Props,
+  ArgTypes,
+} from '@storybook/addon-docs/blocks';
+
+import * as InsertTextStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/InsertText/Documentation" />
+
+# InsertText
+
+With InsertText component An Input component ready to use in your form with support for
+InsertText.
+
+InsertText is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
+
+An example with all the available properties is:
+
+When you import the InsertText component without providing any className or style associated
+will looks as following:
+
+<Canvas of={InsertTextStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+<InsertText value="insert text" id="user-defined-id" props={{}} />
+```
+
+// ComponentName can be added here
+
+// Here is where a general description of the component can be added
+
+// Usage example added here
+
+<ArgTypes of={InsertTextStories} />

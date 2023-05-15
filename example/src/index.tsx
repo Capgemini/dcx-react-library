@@ -29,6 +29,8 @@ import { Login } from './pages/Login';
 import { Home } from './pages/HomePage';
 import { Register } from './pages/Register';
 import { LabelDemo } from './components/LabelDemo';
+import { InsertTextDemo } from './components/InsertTextDemo';
+
 const App = () => (
   <div>
     <BrowserRouter>
@@ -57,6 +59,7 @@ const App = () => (
         <Route path="/characterCount" element={<CharacterCountDemo />} />
         <Route path="/link" element={<LinkDemo />} />
         <Route path="/label" element={<LabelDemo />} />
+        <Route path="/insertText" element={<InsertTextDemo />} />
       </Routes>
     </BrowserRouter>
   </div>
