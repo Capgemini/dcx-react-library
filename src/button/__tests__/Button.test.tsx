@@ -255,6 +255,13 @@ describe('Button', () => {
     expect(button.getAttribute('class')).toBe('dcx-button');
   });
 
+  it('should render the developer specified className', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} className="daniele" label="Login" />);
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('class')).toBe('dcx-button daniele');
+  });
+
   it('should render the primary variant to the className', () => {
     const handleClick = jest.fn();
     render(<Button onClick={handleClick} variant="primary" label="Register" />);
