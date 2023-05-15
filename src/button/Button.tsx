@@ -69,11 +69,11 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    */
   value?: string | number;
   /**
-   * allow the user to define the buttons class name
+   * allows to define a class name
    */
   className?: string;
-    /**
-   * allow the user to add a variant to the buttons class name
+  /**
+   * allows to specify a variant
    */
   variant?: 'primary' | 'secondary' | 'tertiary';
 };
