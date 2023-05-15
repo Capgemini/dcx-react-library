@@ -27,6 +27,7 @@ import './global-styles.scss';
 import { Login } from './pages/Login';
 import { Home } from './pages/HomePage';
 import { Register } from './pages/Register';
+import { LabelDemo } from './components/LabelDemo';
 const App = () => (
   <div>
     <BrowserRouter>
@@ -53,6 +54,7 @@ const App = () => (
         <Route path="/tooltipDemo" element={<TooltipDemo />} />
         <Route path="/details" element={<DetailsDemo />} />
         <Route path="/characterCount" element={<CharacterCountDemo />} />
+        <Route path="/label" element={<LabelDemo />} />
       </Routes>
     </BrowserRouter>
   </div>

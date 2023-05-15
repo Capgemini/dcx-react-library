@@ -17,4 +17,5 @@ export { TableDemo } from './TableDemo';
 export { TooltipDemo } from './TooltipDemo';
 export { DetailsDemo } from './DetailsDemo';
 export { CharacterCountDemo } from './CharacterCountDemo';
+export { LabelDemo } from './LabelDemo';
 export * from './library-candidates';
