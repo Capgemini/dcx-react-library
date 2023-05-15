@@ -72,7 +72,7 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    * allow the user to define the buttons class name
    */
   className?: string;
-    /**
+ /**
    * allow the user to add a variant to the buttons class name
    */
   variant?: 'primary' | 'secondary' | 'tertiary';
