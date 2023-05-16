@@ -95,7 +95,7 @@ export const parameters = {
         <Subtitle />
         <Description />
         <Primary />
-        <Stories />
+        <Stories includePrimary={false}/>
       </>
     ),
   },
