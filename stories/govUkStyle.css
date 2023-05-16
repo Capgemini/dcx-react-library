@@ -79,6 +79,10 @@
   -webkit-appearance: none;
 }
 
+.govuk-link:visited {
+  color: #4c2c92;
+}
+
 @media (min-width: 40.0625em) {
   .govuk-textarea {
     font-size: 19px;

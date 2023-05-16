@@ -6,14 +6,19 @@ import { Link } from '../Link';
 describe('Link', () => {
   const link = 'https://www.google.com/';
 
-  it('renders anchor tag with correct href', () => {
+  it('should display the value as Google', () => {
+    render(<Link to={link} value="Google" />);
+    expect(screen.getByText('Google')).toBeInTheDocument();
+  });
+
+  it('should renders anchor tag with correct href', () => {
     render(<Link to={link} value="Google" />);
     const anchorElement = screen.getByRole('link', { name: 'Google' });
     expect(anchorElement).toBeInTheDocument();
     expect(anchorElement).toHaveAttribute('href', 'https://www.google.com/');
   });
 
-  it('fires onClick event when clicked', () => {
+  it('should fires onClick event when clicked', () => {
     const onClickMock = jest.fn();
     render(<Link to={link} props={{ onClick: onClickMock }} value="Google" />);
     const anchorElement = screen.getByRole('link', { name: 'Google' });
