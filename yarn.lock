@@ -1384,14 +1384,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@capgeminiuk/dcx-react-library@^0.8.0-alpha-2":
-  version "0.8.0-alpha-2"
-  resolved "https://registry.yarnpkg.com/@capgeminiuk/dcx-react-library/-/dcx-react-library-0.8.0-alpha-2.tgz#23cfda3d377356fdaa7f45bd6c4c1d951e641563"
-  integrity sha512-zLtnZxeAZmkKn+pIWnkIE+ne6LKlPlpzETaASV23rXvWsq8+OwU3sT9OlAxgm5xPEWwH5H9FPhWSE4djlVLaNg==
-  dependencies:
-    "@cesium133/forgjs" "1.1.10"
-    imask "^6.4.3"
-
 "@cesium133/forgjs@1.1.10":
   version "1.1.10"
   resolved "https://registry.yarnpkg.com/@cesium133/forgjs/-/forgjs-1.1.10.tgz#0a30d3229c1fc1c8a353db29fdde5f55e408beb1"
@@ -3618,7 +3610,7 @@
     lodash "^4.17.15"
     redent "^3.0.0"
 
-"@testing-library/react@^14.0.0":
+"@testing-library/react@14.0.0":
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-14.0.0.tgz#59030392a6792450b9ab8e67aea5f3cc18d6347c"
   integrity sha512-S04gSNJbYE30TlIMLTzv6QCTzt9AqIF5y6s6SzVFILNcNvbV/jU96GeiTPillGQo+Ny64M/5PV7klNYYgv5Dfg==
@@ -13092,7 +13084,7 @@ react-virtual@^2.10.4:
   dependencies:
     "@reach/observe-rect" "^1.1.0"
 
-react@^18.2.0:
+react@18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
