@@ -15,7 +15,6 @@ export const Basic = {
   name: 'Basic',
   args: {
     value: 'insert text',
-
     className: 'govuk-inset-text',
   },
 };
