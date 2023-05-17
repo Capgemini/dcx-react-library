@@ -22,6 +22,7 @@ import {
   RangeDemo,
   DetailsDemo,
   CharacterCountDemo,
+  LinkDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -29,6 +30,7 @@ import { Home } from './pages/HomePage';
 import { Register } from './pages/Register';
 import { InsertTextDemo } from './components/InsertTextDemo';
 
+import { LabelDemo } from './components/LabelDemo';
 const App = () => (
   <div>
     <BrowserRouter>
@@ -56,6 +58,8 @@ const App = () => (
         <Route path="/details" element={<DetailsDemo />} />
         <Route path="/characterCount" element={<CharacterCountDemo />} />
         <Route path="/insertText" element={<InsertTextDemo />} />
+        <Route path="/link" element={<LinkDemo />} />
+        <Route path="/label" element={<LabelDemo />} />
       </Routes>
     </BrowserRouter>
   </div>
