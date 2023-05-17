@@ -22,6 +22,7 @@ import {
   RangeDemo,
   DetailsDemo,
   CharacterCountDemo,
+  LinkDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -54,6 +55,7 @@ const App = () => (
         <Route path="/tooltipDemo" element={<TooltipDemo />} />
         <Route path="/details" element={<DetailsDemo />} />
         <Route path="/characterCount" element={<CharacterCountDemo />} />
+        <Route path="/link" element={<LinkDemo />} />
         <Route path="/label" element={<LabelDemo />} />
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,22 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as LinkStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Typography/Link/Documentation" />
+
+# Link
+
+A Link component ready to use in your form.  
+Link is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the Link component without providing any className or style associated will looks as following:
+
+<Canvas of={LinkStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+<Link value="Google" to={link} props={{ target: '_blank' }} />
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={LinkStories} />

@@ -79,6 +79,109 @@
   -webkit-appearance: none;
 }
 
+.govuk-link {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: underline;
+}
+
+@media print {
+  .govuk-link {
+    font-family: sans-serif;
+  }
+}
+.govuk-link:focus {
+  outline: 3px solid transparent;
+  color: #0b0c0c;
+  background-color: #ffdd00;
+  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+  text-decoration: none;
+}
+.govuk-link:link {
+  color: #1d70b8;
+}
+.govuk-link:visited {
+  color: #4c2c92;
+}
+.govuk-link:hover {
+  color: #003078;
+}
+.govuk-link:active {
+  color: #0b0c0c;
+}
+.govuk-link:focus {
+  color: #0b0c0c;
+}
+
+.govuk-link--muted:link,
+.govuk-link--muted:visited {
+  color: #505a5f;
+}
+.govuk-link--muted:hover,
+.govuk-link--muted:active {
+  color: #0b0c0c;
+}
+.govuk-link--muted:focus {
+  color: #0b0c0c;
+}
+
+.govuk-link--text-colour:link,
+.govuk-link--text-colour:visited {
+  color: #0b0c0c;
+}
+@media print {
+  .govuk-link--text-colour:link,
+  .govuk-link--text-colour:visited {
+    color: #000000;
+  }
+}
+.govuk-link--text-colour:hover {
+  color: rgba(11, 12, 12, 0.99);
+}
+.govuk-link--text-colour:active,
+.govuk-link--text-colour:focus {
+  color: #0b0c0c;
+}
+@media print {
+  .govuk-link--text-colour:active,
+  .govuk-link--text-colour:focus {
+    color: #000000;
+  }
+}
+
+.govuk-link--inverse:link,
+.govuk-link--inverse:visited {
+  color: #ffffff;
+}
+.govuk-link--inverse:hover,
+.govuk-link--inverse:active {
+  color: rgba(255, 255, 255, 0.99);
+}
+.govuk-link--inverse:focus {
+  color: #0b0c0c;
+}
+
+.govuk-link--no-underline:not(:hover):not(:active) {
+  text-decoration: none;
+}
+
+.govuk-link--no-visited-state:link {
+  color: #1d70b8;
+}
+.govuk-link--no-visited-state:visited {
+  color: #1d70b8;
+}
+.govuk-link--no-visited-state:hover {
+  color: #003078;
+}
+.govuk-link--no-visited-state:active {
+  color: #0b0c0c;
+}
+.govuk-link--no-visited-state:focus {
+  color: #0b0c0c;
+}
+
 @media (min-width: 40.0625em) {
   .govuk-textarea {
     font-size: 19px;
