@@ -40,4 +40,11 @@ describe('InsertText', () => {
     const style = window.getComputedStyle(inserttextElement[0]);
     expect(style.color).toBe('red');
   });
+
+  it('should be able to pass an id', () => {
+    const { container } = render(
+      <InsertText value="insert text" id="user_defined_id" />
+    );
+    expect(container.firstChild).toHaveAttribute('id', 'user_defined_id');
+  });
 });

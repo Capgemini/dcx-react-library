@@ -1,7 +1,7 @@
 import { InsertText } from '../../src/insertText/InsertText';
 
 export default {
-  title: 'DCXLibrary/Form/InsertText/Without style',
+  title: 'DCXLibrary/Typography/InsertText/Without style',
   component: InsertText,
   parameters: {
     options: {

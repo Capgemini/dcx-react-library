@@ -7,9 +7,9 @@ export type TextProps = {
    */
   className?: string;
   /**
-   * select value which is added by user
+   *value specified by user
    */
-  value?: 'insert text';
+  value: 'insert text';
   /**
    * It will pass an id to the InsertText element
    */
@@ -18,7 +18,7 @@ export type TextProps = {
   /**
    * Additional props/attributes
    */
-  props?: React.HTMLAttributes<HTMLHeadingElement>;
+  props?: React.HTMLAttributes<HTMLDivElement>;
 };
 
 export const InsertText = ({ value, className, id, props }: TextProps) => {
