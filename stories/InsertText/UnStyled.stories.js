@@ -13,6 +13,5 @@ export default {
 export const Unstyled = {
   args: {
     value: 'insert text',
-    className: 'govuk-input',
   },
 };

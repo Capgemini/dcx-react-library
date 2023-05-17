@@ -6,7 +6,7 @@ const InsertTextDemo = `
 function InsertTextDemo() {
 
   return (
-    <InsertText value="insert text" id="user-defined-id" props={{}}  />
+    <InsertText value="insert text" id="user-defined-id" props={{}} className="" />
   )
 }
 `.trim();

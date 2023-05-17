@@ -19,22 +19,3 @@ export default {
 export const Live = {
   render: () => <InsertTextLive />,
 };
-// />
-
-// // ComponentName
-
-// // In the live editor you can play with all the available properties
-// // change the look and feel and interact with the component
-
-// <Canvas>
-//   <Story name="live">
-//     <ComponentNameLive />
-//   </Story>
-// </Canvas>
-
-// // Properties
-
-// // below are described the list of all available properties.
-// // the one marked with (\*) are mandatory the other instead are optional.
-
-// <Props of={ComponentName} />
