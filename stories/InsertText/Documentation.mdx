@@ -12,19 +12,21 @@ import * as InsertTextStories from './UnStyled.stories';
 
 # InsertText
 
-An InsertText component ready to use in your form with support to insert the text.
-
-InsertText is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
-
-When you import the InsertText component without providing any className or style associated
-will looks as following:
+An InsertText component ready to use in your application.  
+InsertText is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the InsertText component without providing any className or associated style it will looks as following:
 
 <Canvas of={InsertTextStories.Unstyled} />
 
 A more complex example with all the possible properties is:
 
 ```js
-<InsertText value="insert text" id="user-defined-id" props={{}} />
+<InsertText
+  value="insert text"
+  id="user-defined-id"
+  className="my-class"
+  props={{ style: { color: red } }}
+/>
 ```
 
 Below a list of all the available properties:
