@@ -237,6 +237,21 @@ describe('Autocomplete', () => {
     expect(input).toBeInTheDocument();
   });
 
+  it('When defaultValue prop is changed, Autocomplete component updates.', () => {
+    const defaultValue: string = 'initial value';
+    const updatedValue: string = 'updated value';
+  
+    const { getByRole, rerender } = render(<Autocomplete options={['first', 'second']} defaultValue={defaultValue} />);
+  
+    const inputElement: any = getByRole('textbox');
+    expect(inputElement.value).toBe(defaultValue);
+  
+    // Trigger a change in defaultValue
+    rerender(<Autocomplete options={['first', 'second']} defaultValue={updatedValue} />);
+    const updatedInputElement: any = getByRole('textbox');
+    expect(updatedInputElement.value).toBe(updatedValue);
+  });
+  
   it('should display available options', async () => {
     const user = userEvent.setup();
 
