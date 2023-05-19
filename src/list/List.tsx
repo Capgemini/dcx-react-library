@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { classNames } from '../common';
 
 export type list = {
   /**
-   * Type property to specify ordered or unordered lists
+   * details
    */
-  type: 'unordered' | 'ordered';
+  children: JSX.Element[];
+  /**
+   * optional Type property with default value unordered to specify unordered and ordered lists
+   */
+  type?: 'unordered' | 'ordered';
   /**
    * A CSS class for styling list
    */
@@ -24,9 +28,13 @@ export type list = {
 
 export type listItem = {
   /**
-   * define the value of the link
+   * details
    */
-  value?: string;
+  children: JSX.Element | string;
+  /**
+   * define the value of the item
+   */
+  value: string;
   /**
    * A CSS class for styling list
    */
@@ -39,18 +47,42 @@ export type listItem = {
 
 type ElementType = 'ul' | 'ol';
 
-export const List = ({ type, className, listProps, itemClassName }: list) => {
+export const List = ({
+  type = 'unordered',
+  className,
+  listProps,
+  itemClassName,
+  children,
+}: list) => {
   const Element: ElementType = type === 'unordered' ? 'ul' : 'ol';
-
   return (
     <Element className={classNames(['dcx-list', className])} {...listProps}>
-      <ListItem value="list text" className={itemClassName} />
+      {Children.map(children, (child) => (
+        <div className={itemClassName}>{child}</div>
+      ))}
     </Element>
   );
 };
 
-export const ListItem = ({ value, listItemProps, className }: listItem) => (
-  <li className={classNames(['dcx-list-item', className])} {...listItemProps}>
-    {value}
+export const ListItem = ({
+  listItemProps,
+  className,
+  children,
+  value,
+}: listItem) => (
+  <li
+    className={classNames(['dcx-list-item', className])}
+    value={value}
+    {...listItemProps}
+  >
+    {children}
   </li>
+);
+
+export const example = () => (
+  <List>
+    <ListItem value="100">item 1</ListItem>
+    <ListItem value="100">item 2</ListItem>
+    <ListItem value="100">item 3</ListItem>
+  </List>
 );
