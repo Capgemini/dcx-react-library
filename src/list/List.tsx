@@ -47,31 +47,39 @@ export type listItem = {
 
 type ElementType = 'ul' | 'ol';
 
-type ListContextType = {
+export type ListContextType = {
   /**
-   * ListContext default parameter
+   * A CSS class for applying same styling to all the listItems
    */
-  isListItemAllowed: boolean;
+  itemClassName?: string;
 };
 
-export const ListContext = createContext<ListContextType>({
-  isListItemAllowed: false,
-});
+export const ListContext =
+  createContext<ListContextType | undefined>(undefined);
 
 export const List = ({
   type = 'unordered',
   className,
   listProps,
   children,
+  itemClassName,
 }: list) => {
   const Element: ElementType = type === 'unordered' ? 'ul' : 'ol';
   return (
-    <ListContext.Provider value={{ isListItemAllowed: true }}>
+    <ListContext.Provider value={{ itemClassName }}>
       <Element className={classNames(['dcx-list', className])} {...listProps}>
         {children}
       </Element>
     </ListContext.Provider>
   );
+};
+
+export const useList = () => {
+  const context = useContext(ListContext);
+  if (context === undefined) {
+    throw new Error('ListItem component must be used within Item component');
+  }
+  return context;
 };
 
 export const ListItem = ({
@@ -80,14 +88,11 @@ export const ListItem = ({
   children,
   value,
 }: listItem) => {
-  const { isListItemAllowed } = useContext(ListContext);
+  const { itemClassName } = useList();
 
-  if (!isListItemAllowed) {
-    throw new Error('ListItem component must be used within Item component');
-  }
   return (
     <li
-      className={classNames(['dcx-list-item', className])}
+      className={classNames(['dcx-list-item', className, itemClassName])}
       value={value}
       {...listItemProps}
     >

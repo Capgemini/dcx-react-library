@@ -61,6 +61,7 @@ describe('ListItem', () => {
     expect(onClickMock).toHaveBeenCalledTimes(1);
   });
 });
+
 // List
 describe('List', () => {
   it('should render with the dcx-list className when no className is Provided', () => {
@@ -121,7 +122,7 @@ describe('List', () => {
 
   it('should display the text of the listItem on rendering List component', () => {
     render(
-      <List itemClassName="myStyle">
+      <List>
         <ListItem value="10">abc 1</ListItem>
         <ListItem value="10">abc 2</ListItem>
         <ListItem value="10">abc 3</ListItem>
@@ -129,6 +130,18 @@ describe('List', () => {
     );
     expect(screen.getByText('abc 2')).toBeInTheDocument();
     expect(screen.getByText('abc 3')).toBeInTheDocument();
+  });
+
+  it('should be able to render with itemClassName', () => {
+    const { container } = render(
+      <List itemClassName="myStyle">
+        <ListItem value="10">abc 1</ListItem>
+        <ListItem value="10">abc 2</ListItem>
+        <ListItem value="10">abc 3</ListItem>
+      </List>
+    );
+    const childComponents = container.querySelectorAll('.myStyle');
+    expect(childComponents.length).toBe(3);
   });
 
   it('should allow to use the ListItem component only in the List component', () => {
