@@ -5,22 +5,30 @@ import { List, ListItem } from '../List';
 
 describe('ListItem', () => {
   it('should display the text of the listItem', () => {
-    render(<ListItem value="10">List item example</ListItem>);
+    render(
+      <List>
+        <ListItem value="10">List item example</ListItem>
+      </List>
+    );
     expect(screen.getByText('List item example')).toBeInTheDocument();
   });
 
   it('should render with the dcx-list-item className when no className is Provided', () => {
     const { container } = render(
-      <ListItem value="10">List item example</ListItem>
+      <List>
+        <ListItem value="10">List item example</ListItem>
+      </List>
     );
     expect(container.querySelector('.dcx-list-item')).toBeInTheDocument();
   });
 
   it('should be able to render the dcx-list-item and the user specific className', () => {
     const { container } = render(
-      <ListItem value="10" className="myStyle">
-        List item example
-      </ListItem>
+      <List>
+        <ListItem value="10" className="myStyle">
+          List item example
+        </ListItem>
+      </List>
     );
     expect(container.querySelector('.dcx-list-item')).toBeInTheDocument();
     expect(container.querySelector('.myStyle')).toBeInTheDocument();
@@ -28,9 +36,11 @@ describe('ListItem', () => {
 
   it('should be able to pass some extra properties', () => {
     const { container } = render(
-      <ListItem value="10" listItemProps={{ style: { color: 'red' } }}>
-        List item example
-      </ListItem>
+      <List>
+        <ListItem value="10" listItemProps={{ style: { color: 'red' } }}>
+          List item example
+        </ListItem>
+      </List>
     );
     const labelElement = container.getElementsByClassName('dcx-list-item');
     const style = window.getComputedStyle(labelElement[0]);
@@ -40,9 +50,11 @@ describe('ListItem', () => {
   it('should trigger a callback function when clicked', () => {
     const onClickMock = jest.fn();
     render(
-      <ListItem value="10" listItemProps={{ onClick: onClickMock() }}>
-        List item example
-      </ListItem>
+      <List>
+        <ListItem value="10" listItemProps={{ onClick: onClickMock() }}>
+          List item example
+        </ListItem>
+      </List>
     );
     const listItemElement = screen.getByText('List item example');
     fireEvent.click(listItemElement);
@@ -107,26 +119,21 @@ describe('List', () => {
     expect(orderedList.tagName).toBe('OL');
   });
 
-  it('should be able to pass itemClassName prop', () => {
-    const { container } = render(
-      <List itemClassName="myStyle">
-        <ListItem value="10">abc 1</ListItem>
-        <ListItem value="10">abc 2</ListItem>
-        <ListItem value="10">abc 3</ListItem>
-      </List>
-    );
-    expect(container.querySelector('.myStyle')).toBeInTheDocument();
-  });
   it('should display the text of the listItem on rendering List component', () => {
-    const { container } = render(
+    render(
       <List itemClassName="myStyle">
         <ListItem value="10">abc 1</ListItem>
         <ListItem value="10">abc 2</ListItem>
         <ListItem value="10">abc 3</ListItem>
       </List>
     );
-    expect(container.querySelector('.myStyle')).toBeInTheDocument();
     expect(screen.getByText('abc 2')).toBeInTheDocument();
     expect(screen.getByText('abc 3')).toBeInTheDocument();
+  });
+
+  it('should allow to use the ListItem component only in the List component', () => {
+    expect(() => render(<ListItem value="10">abc 3</ListItem>)).toThrow(
+      'ListItem component must be used within Item component'
+    );
   });
 });

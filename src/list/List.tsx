@@ -1,11 +1,11 @@
-import React, { Children } from 'react';
+import React, { createContext, useContext } from 'react';
 import { classNames } from '../common';
 
 export type list = {
   /**
    * details
    */
-  children: JSX.Element[];
+  children: JSX.Element[] | JSX.Element;
   /**
    * optional Type property with default value unordered to specify unordered and ordered lists
    */
@@ -47,20 +47,30 @@ export type listItem = {
 
 type ElementType = 'ul' | 'ol';
 
+type ListContextType = {
+  /**
+   * ListContext default parameter
+   */
+  isListItemAllowed: boolean;
+};
+
+export const ListContext = createContext<ListContextType>({
+  isListItemAllowed: false,
+});
+
 export const List = ({
   type = 'unordered',
   className,
   listProps,
-  itemClassName,
   children,
 }: list) => {
   const Element: ElementType = type === 'unordered' ? 'ul' : 'ol';
   return (
-    <Element className={classNames(['dcx-list', className])} {...listProps}>
-      {Children.map(children, (child) => (
-        <div className={itemClassName}>{child}</div>
-      ))}
-    </Element>
+    <ListContext.Provider value={{ isListItemAllowed: true }}>
+      <Element className={classNames(['dcx-list', className])} {...listProps}>
+        {children}
+      </Element>
+    </ListContext.Provider>
   );
 };
 
@@ -69,20 +79,19 @@ export const ListItem = ({
   className,
   children,
   value,
-}: listItem) => (
-  <li
-    className={classNames(['dcx-list-item', className])}
-    value={value}
-    {...listItemProps}
-  >
-    {children}
-  </li>
-);
+}: listItem) => {
+  const { isListItemAllowed } = useContext(ListContext);
 
-export const example = () => (
-  <List>
-    <ListItem value="100">item 1</ListItem>
-    <ListItem value="100">item 2</ListItem>
-    <ListItem value="100">item 3</ListItem>
-  </List>
-);
+  if (!isListItemAllowed) {
+    throw new Error('ListItem component must be used within Item component');
+  }
+  return (
+    <li
+      className={classNames(['dcx-list-item', className])}
+      value={value}
+      {...listItemProps}
+    >
+      {children}
+    </li>
+  );
+};
