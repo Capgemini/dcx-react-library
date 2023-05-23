@@ -1,0 +1,31 @@
+import {
+  Meta,
+  Story,
+  Canvas,
+  Props,
+  ArgTypes,
+} from '@storybook/addon-docs/blocks';
+
+import * as KeyboardInputStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Typography/KeyboardInput/Documentation" />
+
+# KeyboardInput
+
+KeyboardInput component ready to use in your application.
+
+KeyboardInput is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
+
+When you import the KeyboardInput component without providing any className or associated style it will looks as following:
+
+<Canvas of={KeyboardInputStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+<KeyboardInput>ctrl + p</KeyboardInput>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={KeyboardInputStories} />
