@@ -1,5 +1,14 @@
-import { useContext } from 'react';
-import { ListContext } from './List';
+import { createContext, useContext } from 'react';
+
+export type ListContextType = {
+  /**
+   * A CSS class for applying same styling to all the listItems
+   */
+  itemClassName?: string;
+};
+
+export const ListContext =
+  createContext<ListContextType | undefined>(undefined);
 
 export const useList = () => {
   const context = useContext(ListContext);

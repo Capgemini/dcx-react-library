@@ -1,15 +1,12 @@
-import React, { ReactNode, createContext } from 'react';
+import React, { ReactNode } from 'react';
 import { classNames } from '../common';
+import { ListContext } from './UseList';
 
-export type ListProps = {
-  /**
-   * details
-   */
-  children: ReactNode;
+export type UnorderedListType = {
   /**
    * optional Type property with default value unordered to specify unordered and ordered lists
    */
-  type?: 'unordered' | 'ordered';
+  type?: 'unordered';
   /**
    * A CSS class for styling list
    */
@@ -19,38 +16,74 @@ export type ListProps = {
    */
   itemClassName?: string;
   /**
+   * details
+   */
+  children: ReactNode;
+  /**
    * Additional props/attributes
    */
-  listProps?:
-    | React.HTMLAttributes<HTMLOListElement>
-    | React.HTMLAttributes<HTMLUListElement>;
+  listProps?: React.HTMLAttributes<HTMLUListElement>;
 };
 
-type ElementType = 'ul' | 'ol';
-
-export type ListContextType = {
+export type OrderedListType = {
+  /**
+   * optional Type property with default value unordered to specify unordered and ordered lists
+   */
+  type?: 'ordered';
+  /**
+   * A CSS class for styling list
+   */
+  className?: string;
   /**
    * A CSS class for applying same styling to all the listItems
    */
   itemClassName?: string;
+  /**
+   * details
+   */
+  children: ReactNode;
+  /**
+   * Additional props/attributes
+   */
+  listProps?: React.HTMLAttributes<HTMLOListElement>;
 };
-
-export const ListContext =
-  createContext<ListContextType | undefined>(undefined);
 
 export const List = ({
-  type = 'unordered',
+  type,
   className,
-  listProps,
-  children,
   itemClassName,
-}: ListProps) => {
-  const Element: ElementType = type === 'unordered' ? 'ul' : 'ol';
-  return (
-    <ListContext.Provider value={{ itemClassName }}>
-      <Element className={classNames(['dcx-list', className])} {...listProps}>
-        {children}
-      </Element>
-    </ListContext.Provider>
-  );
-};
+  children,
+  listProps,
+}: UnorderedListType | OrderedListType) => (
+  <ListContext.Provider value={{ itemClassName }}>
+    {type === 'ordered' ? (
+      <UnorderedList
+        className={classNames(['dcx-list', className])}
+        children={children}
+        listProps={listProps}
+      />
+    ) : (
+      <OrderedList
+        className={classNames(['dcx-list', className])}
+        children={children}
+        listProps={listProps}
+      />
+    )}
+  </ListContext.Provider>
+);
+
+const UnorderedList = ({
+  className,
+  children,
+  listProps,
+}: UnorderedListType) => (
+  <ul className={className} {...listProps}>
+    {children}
+  </ul>
+);
+
+const OrderedList = ({ className, children, listProps }: OrderedListType) => (
+  <ul className={className} {...listProps}>
+    {children}
+  </ul>
+);
