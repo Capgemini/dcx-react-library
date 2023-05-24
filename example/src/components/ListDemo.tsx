@@ -21,7 +21,7 @@ export const ListDemo = () => {
         <ListItem>List Item 2</ListItem>
       </List>
       <ol>
-        <li value={'10'}>123a</li>
+        <li value={10}>123a</li>
         <li>123b</li>
         <li>123c</li>
       </ol>
