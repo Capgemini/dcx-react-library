@@ -7,12 +7,12 @@ export const ListDemo = () => {
       <h1>Demo of List</h1>
       <h2>when Type is ordered</h2>
       <List type="ordered">
-        <ListItem>List Item 1</ListItem>
+        <ListItem value={10}>List Item 1</ListItem>
         <ListItem>List Item 2</ListItem>
       </List>
       <h2>when Type is unordered</h2>
       <List type="unordered">
-        <ListItem value="10">List Item 1</ListItem>
+        <ListItem>List Item 1</ListItem>
         <ListItem>List Item 2</ListItem>
       </List>
       <h2>when Type is not given</h2>

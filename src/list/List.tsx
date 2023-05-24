@@ -1,11 +1,11 @@
-import React, { createContext } from 'react';
+import React, { ReactNode, createContext } from 'react';
 import { classNames } from '../common';
 
-export type list = {
+export type ListProps = {
   /**
    * details
    */
-  children: JSX.Element[] | JSX.Element;
+  children: ReactNode;
   /**
    * optional Type property with default value unordered to specify unordered and ordered lists
    */
@@ -33,7 +33,6 @@ export type ListContextType = {
    * A CSS class for applying same styling to all the listItems
    */
   itemClassName?: string;
-  type?: 'unordered' | 'ordered';
 };
 
 export const ListContext =
@@ -45,10 +44,10 @@ export const List = ({
   listProps,
   children,
   itemClassName,
-}: list) => {
+}: ListProps) => {
   const Element: ElementType = type === 'unordered' ? 'ul' : 'ol';
   return (
-    <ListContext.Provider value={{ itemClassName, type }}>
+    <ListContext.Provider value={{ itemClassName }}>
       <Element className={classNames(['dcx-list', className])} {...listProps}>
         {children}
       </Element>

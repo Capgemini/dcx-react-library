@@ -3,7 +3,7 @@ import { classNames } from '../common';
 
 import { useList } from './UseList';
 
-export type UnOrderedList = {
+export type ListItemProps = {
   /**
    * details
    */
@@ -16,39 +16,29 @@ export type UnOrderedList = {
    * Additional props/attributes to pass in listitems
    */
   listItemProps?: React.HTMLProps<HTMLLIElement>;
-};
-
-export type OrderedList = UnOrderedList & {
   /**
-   * define the value of the item
+   * Only for ordererd lists.
+   * Specifies the start value of a list item.
+   * The following list items will increment from that number
    */
-  value?: string;
+  value?: number;
 };
 
-export const ListItem = (props: OrderedList) => {
-  const { itemClassName, type } = useList();
+export const ListItem = ({
+  className,
+  listItemProps,
+  children,
+  value,
+}: ListItemProps) => {
+  const { itemClassName } = useList();
 
-  if (type === 'unordered') {
-    const { children, className, listItemProps } = props;
-
-    return (
-      <li
-        className={classNames(['dcx-list-item', className, itemClassName])}
-        {...listItemProps}
-      >
-        {children}
-      </li>
-    );
-  } else {
-    const { children, className, value, listItemProps } = props;
-    return (
-      <li
-        className={classNames(['dcx-list-item', className, itemClassName])}
-        value={value}
-        {...listItemProps}
-      >
-        {children}
-      </li>
-    );
-  }
+  return (
+    <li
+      className={classNames(['dcx-list-item', className, itemClassName])}
+      value={value}
+      {...listItemProps}
+    >
+      {children}
+    </li>
+  );
 };
