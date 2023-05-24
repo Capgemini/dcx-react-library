@@ -1,75 +1,16 @@
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { List, ListItem } from '../List';
+import { ListItem } from '../ListItem';
+import { List } from '../List';
 
-describe('ListItem', () => {
-  it('should display the text of the listItem', () => {
-    render(
-      <List>
-        <ListItem value="10">List item example</ListItem>
-      </List>
-    );
-    expect(screen.getByText('List item example')).toBeInTheDocument();
-  });
-
-  it('should render with the dcx-list-item className when no className is Provided', () => {
-    const { container } = render(
-      <List>
-        <ListItem value="10">List item example</ListItem>
-      </List>
-    );
-    expect(container.querySelector('.dcx-list-item')).toBeInTheDocument();
-  });
-
-  it('should be able to render the dcx-list-item and the user specific className', () => {
-    const { container } = render(
-      <List>
-        <ListItem value="10" className="myStyle">
-          List item example
-        </ListItem>
-      </List>
-    );
-    expect(container.querySelector('.dcx-list-item')).toBeInTheDocument();
-    expect(container.querySelector('.myStyle')).toBeInTheDocument();
-  });
-
-  it('should be able to pass some extra properties', () => {
-    const { container } = render(
-      <List>
-        <ListItem value="10" listItemProps={{ style: { color: 'red' } }}>
-          List item example
-        </ListItem>
-      </List>
-    );
-    const labelElement = container.getElementsByClassName('dcx-list-item');
-    const style = window.getComputedStyle(labelElement[0]);
-    expect(style.color).toBe('red');
-  });
-
-  it('should trigger a callback function when clicked', () => {
-    const onClickMock = jest.fn();
-    render(
-      <List>
-        <ListItem value="10" listItemProps={{ onClick: onClickMock() }}>
-          List item example
-        </ListItem>
-      </List>
-    );
-    const listItemElement = screen.getByText('List item example');
-    fireEvent.click(listItemElement);
-    expect(onClickMock).toHaveBeenCalledTimes(1);
-  });
-});
-
-// List
 describe('List', () => {
   it('should render with the dcx-list className when no className is Provided', () => {
     const { container } = render(
       <List>
-        <ListItem value="10">item 1</ListItem>
-        <ListItem value="10">item 2</ListItem>
-        <ListItem value="10">item 3</ListItem>
+        <ListItem>item 1</ListItem>
+        <ListItem>item 2</ListItem>
+        <ListItem>item 3</ListItem>
       </List>
     );
     expect(container.querySelector('.dcx-list')).toBeInTheDocument();
@@ -79,8 +20,8 @@ describe('List', () => {
   it('should be able to render the dcx-list and the user specific className', () => {
     const { container } = render(
       <List className="myStyle">
-        <ListItem value="10">item 1</ListItem>
-        <ListItem value="10">item 2</ListItem>
+        <ListItem>item 1</ListItem>
+        <ListItem>item 2</ListItem>
       </List>
     );
     expect(container.querySelector('.dcx-list')).toBeInTheDocument();
@@ -90,8 +31,8 @@ describe('List', () => {
   it('should render ul if the type is not given', () => {
     render(
       <List>
-        <ListItem value="10">item 1</ListItem>
-        <ListItem value="10">item 2</ListItem>
+        <ListItem>item 1</ListItem>
+        <ListItem>item 2</ListItem>
       </List>
     );
     const unorderedList = screen.getByRole('list');
@@ -101,8 +42,8 @@ describe('List', () => {
   it('should render ul if the list type is unordered list', () => {
     render(
       <List type="unordered">
-        <ListItem value="10">item 1</ListItem>
-        <ListItem value="10">item 2</ListItem>
+        <ListItem>item 1</ListItem>
+        <ListItem>item 2</ListItem>
       </List>
     );
     const unorderedList = screen.getByRole('list');
@@ -112,20 +53,31 @@ describe('List', () => {
   it('should render ol if the list type is ordered list', () => {
     render(
       <List type="ordered">
-        <ListItem value="10">item 1</ListItem>
-        <ListItem value="10">item 2</ListItem>
+        <ListItem>item 1</ListItem>
+        <ListItem>item 2</ListItem>
       </List>
     );
     const orderedList = screen.getByRole('list');
     expect(orderedList.tagName).toBe('OL');
   });
 
+  it('should be able to pass some extra properties', () => {
+    const { container } = render(
+      <List listProps={{ style: { color: 'red' } }}>
+        <ListItem>List item example</ListItem>
+      </List>
+    );
+    const labelElement = container.getElementsByClassName('dcx-list');
+    const style = window.getComputedStyle(labelElement[0]);
+    expect(style.color).toBe('red');
+  });
+
   it('should display the text of the listItem on rendering List component', () => {
     render(
       <List>
-        <ListItem value="10">abc 1</ListItem>
-        <ListItem value="10">abc 2</ListItem>
-        <ListItem value="10">abc 3</ListItem>
+        <ListItem>abc 1</ListItem>
+        <ListItem>abc 2</ListItem>
+        <ListItem>abc 3</ListItem>
       </List>
     );
     expect(screen.getByText('abc 2')).toBeInTheDocument();
@@ -135,9 +87,9 @@ describe('List', () => {
   it('should be able to render with itemClassName', () => {
     const { container } = render(
       <List itemClassName="myStyle">
-        <ListItem value="10">abc 1</ListItem>
-        <ListItem value="10">abc 2</ListItem>
-        <ListItem value="10">abc 3</ListItem>
+        <ListItem>abc 1</ListItem>
+        <ListItem>abc 2</ListItem>
+        <ListItem>abc 3</ListItem>
       </List>
     );
     const childComponents = container.querySelectorAll('.myStyle');
@@ -145,7 +97,7 @@ describe('List', () => {
   });
 
   it('should allow to use the ListItem component only in the List component', () => {
-    expect(() => render(<ListItem value="10">abc 3</ListItem>)).toThrow(
+    expect(() => render(<ListItem>abc 3</ListItem>)).toThrow(
       'ListItem component must be used within Item component'
     );
   });
