@@ -4,19 +4,15 @@ import { KeyboardInput } from '@capgeminiuk/dcx-react-library';
 
 describe('KeyboardInput', () => {
   it('renders without errors', () => {
-    render(<KeyboardInput>Test</KeyboardInput>);
-    // No error should be thrown during rendering
+    expect(() => {
+      render(<KeyboardInput>Press Enter</KeyboardInput>);
+    }).not.toThrow();
   });
 
   it('applies custom class name', () => {
     const { container } = render(<KeyboardInput>Test</KeyboardInput>);
     const element = container.querySelector('.custom-class');
     expect(element).toBeNull();
-  });
-
-  it('handles empty props gracefully', () => {
-    render(<KeyboardInput>Press Enter</KeyboardInput>);
-    // No errors thrown
   });
 
   it('renders children correctly', () => {
