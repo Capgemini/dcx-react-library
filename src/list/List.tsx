@@ -57,13 +57,13 @@ export const List = ({
 }: UnorderedListType | OrderedListType) => (
   <ListContext.Provider value={{ itemClassName }}>
     {type === 'ordered' ? (
-      <UnorderedList
+      <OrderedList
         className={classNames(['dcx-list', className])}
         children={children}
         listProps={listProps}
       />
     ) : (
-      <OrderedList
+      <UnorderedList
         className={classNames(['dcx-list', className])}
         children={children}
         listProps={listProps}
@@ -83,7 +83,7 @@ const UnorderedList = ({
 );
 
 const OrderedList = ({ className, children, listProps }: OrderedListType) => (
-  <ul className={className} {...listProps}>
+  <ol className={className} {...listProps}>
     {children}
-  </ul>
+  </ol>
 );
