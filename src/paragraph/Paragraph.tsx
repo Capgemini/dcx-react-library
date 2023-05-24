@@ -11,7 +11,7 @@ type ParagraphProps = React.HTMLAttributes<HTMLParagraphElement> & {
   value: string | number;
 };
 
-export const Paragraph = ({ className, value, ...props }: ParagraphProps) => (
+export const Paragraph = ({ className, value, props }: ParagraphProps) => (
   <p
     className = {className}
     {...props}
