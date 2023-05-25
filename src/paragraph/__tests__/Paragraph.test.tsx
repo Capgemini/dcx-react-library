@@ -1,22 +1,34 @@
 import React from 'react';
 import { Paragraph } from '../Paragraph';
-import {
-  render,
-  screen,
-} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-
-
 describe('Paragraph', () => {
-  it('should render', () => {
-    const { getByText } = render(<Paragraph className="paragraph" value="paragraph text" />);
-    const paragraph = getByText('paragraph text');
-    expect(paragraph).toBeTruthy();
+  it('should render the given content in the paragraph.', () => {
+    render(<Paragraph className="paragraph" value="paragraph text" />);
+    expect(screen.getByText('paragraph text')).toBeInTheDocument();
   });
 
-  it('Renders the given content in the paragraph.', () => {
-    render(<Paragraph  className="paragraph" value="paragraph text"/>);
-    expect(screen.getByText('paragraph text')).toBeInTheDocument();
+  it('should provide the ability to specify arbitrary props', () => {
+    const { container } = render(
+      <Paragraph
+        className="paragraph"
+        value="paragraph text"
+        id="my-paragraph"
+      />
+    );
+    expect(container.querySelector('#my-paragraph')).toBeInTheDocument();
+  });
+
+  it('should contains a class called dcx-paragraph', () => {
+    const { container } = render(<Paragraph value="paragraph text" />);
+    expect(container.querySelector('.dcx-paragraph')).toBeInTheDocument();
+  });
+  it('should contains the class dcx-paragraph and the class decided by the developer', () => {
+    const { container } = render(
+      <Paragraph className="my-classname" value="paragraph text" />
+    );
+    expect(container.querySelector('.dcx-paragraph')).toBeInTheDocument();
+    expect(container.querySelector('.my-classname')).toBeInTheDocument();
   });
 });

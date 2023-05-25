@@ -1,4 +1,5 @@
 import React from 'react';
+import { classNames } from '../common/utils';
 
 type ParagraphProps = React.HTMLAttributes<HTMLParagraphElement> & {
   /**
@@ -11,11 +12,12 @@ type ParagraphProps = React.HTMLAttributes<HTMLParagraphElement> & {
   value: string | number;
 };
 
-export const Paragraph = ({ className, value, props }: ParagraphProps) => (
-  <p
-    className = {className}
-    {...props}
-  >
-    {value}
-  </p>
-);
+export const Paragraph = ({ className, value, ...props }: ParagraphProps) => {
+  const dynamicClassName = classNames(['dcx-paragraph', className]);
+  
+  return (
+    <p className={dynamicClassName} {...props}>
+      {value}
+    </p>
+  );
+};

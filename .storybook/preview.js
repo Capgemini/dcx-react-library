@@ -79,6 +79,8 @@ export const parameters = {
           [
             'Heading',
             ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Paragraph',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
             'Label',
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Link',

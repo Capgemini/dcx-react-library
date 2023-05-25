@@ -5,14 +5,13 @@ import { Paragraph } from '../../src/paragraph/Paragraph';
 const ParagraphDemo = `
 function ParagraphDemo() {
 
-  const style = {
-    color: 'red'
-  }
-
   return (
     <Paragraph 
         className="govuk-body"
-    >This is the content of the paragraph.</Paragraph>
+        value="This is the content of the paragraph."
+        id="para"
+        style={{ color:'red' }}
+    />
   )
 }
 `.trim();
