@@ -1,7 +1,7 @@
 import React from 'react';
 import { classNames } from '../common/utils';
 
-type ParagraphProps = React.HTMLAttributes<HTMLParagraphElement> & {
+type ParagraphProps = {
   /**
    * optional CSS class name
    */
@@ -10,9 +10,13 @@ type ParagraphProps = React.HTMLAttributes<HTMLParagraphElement> & {
    * content of the paragraph
    */
   value: string | number;
+  /**
+   * Additional props/attributes
+   */
+  props?: React.HTMLAttributes<HTMLParagraphElement>;
 };
 
-export const Paragraph = ({ className, value, ...props }: ParagraphProps) => {
+export const Paragraph = ({ className, value, props }: ParagraphProps) => {
   const dynamicClassName = classNames(['dcx-paragraph', className]);
   
   return (

@@ -5,16 +5,17 @@ import '@testing-library/jest-dom';
 
 describe('Paragraph', () => {
   it('should render the given content in the paragraph.', () => {
-    render(<Paragraph className="paragraph" value="paragraph text" />);
+    const { container } = render(<Paragraph value="paragraph text" />);
+    expect(container.querySelector('p')).toBeInTheDocument();
     expect(screen.getByText('paragraph text')).toBeInTheDocument();
   });
-
+  
   it('should provide the ability to specify arbitrary props', () => {
     const { container } = render(
       <Paragraph
         className="paragraph"
         value="paragraph text"
-        id="my-paragraph"
+        props={{ id: 'my-paragraph' }}
       />
     );
     expect(container.querySelector('#my-paragraph')).toBeInTheDocument();
