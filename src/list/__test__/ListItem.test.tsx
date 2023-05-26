@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { List } from '../List';
+import { List, TYPE_LIST } from '../List';
 import { ListItem } from '../ListItem';
 
 describe('ListItem', () => {
@@ -68,7 +68,7 @@ describe('ListItem', () => {
 
   it('should render with list starting with 100', () => {
     const { getByRole } = render(
-      <List type="ordered" start={100}>
+      <List type={TYPE_LIST.ORDERERED} start={100}>
         <ListItem>List Item a</ListItem>
         <ListItem>List Item b</ListItem>
         <ListItem>List Item c</ListItem>
@@ -81,7 +81,7 @@ describe('ListItem', () => {
 
   it('should render with list having reverse attribute', () => {
     const { getByRole } = render(
-      <List type="ordered" reversed>
+      <List type={TYPE_LIST.ORDERERED} reversed>
         <ListItem>List Item a</ListItem>
         <ListItem>List Item b</ListItem>
         <ListItem>List Item c</ListItem>
@@ -94,7 +94,7 @@ describe('ListItem', () => {
 
   it('should render with list having markerType atttribute', () => {
     const { getByRole } = render(
-      <List type="ordered" markerType="A">
+      <List type={TYPE_LIST.ORDERERED} markerType="A">
         <ListItem>List Item a</ListItem>
         <ListItem>List Item b</ListItem>
         <ListItem>List Item c</ListItem>
