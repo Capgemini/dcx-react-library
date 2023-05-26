@@ -2,7 +2,7 @@ import { InsertText } from '../../src/insertText/InsertText';
 import InsertTextLive from '../liveEdit/InsertTextLive';
 
 export default {
-  title: 'DCXLibrary/Typography/InsertText/live',
+  title: 'DCXLibrary/Typography/InsertText/Live',
   component: InsertText,
 
   parameters: {

@@ -22,3 +22,4 @@ export * from './label';
 export * from './characterCount';
 export * from './insertText';
 export * from './link';
+export * from './keyBoard';
