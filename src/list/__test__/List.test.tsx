@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { ListItem } from '../ListItem';
-import { List } from '../List';
+import { List, TYPE_LIST } from '../List';
 
 describe('List', () => {
   it('should render with the dcx-list className when no className is Provided', () => {
@@ -41,7 +41,7 @@ describe('List', () => {
 
   it('should render ul if the list type is unordered list', () => {
     render(
-      <List type="unordered">
+      <List type={TYPE_LIST.UNORDERED}>
         <ListItem>item 1</ListItem>
         <ListItem>item 2</ListItem>
       </List>
@@ -52,7 +52,7 @@ describe('List', () => {
 
   it('should render ol if the list type is ordered list', () => {
     render(
-      <List type="ordered">
+      <List type={TYPE_LIST.ORDERERED}>
         <ListItem>item 1</ListItem>
         <ListItem>item 2</ListItem>
       </List>

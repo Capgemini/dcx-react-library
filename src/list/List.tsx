@@ -2,11 +2,17 @@ import React, { ReactNode } from 'react';
 import { classNames } from '../common';
 import { ListContext } from './UseList';
 
+export enum TYPE_LIST {
+  UNORDERED = 'unordered',
+  ORDERERED = 'ordered',
+}
+
+//ul
 export type UnorderedListType = {
   /**
    * optional Type property with default value unordered to specify unordered and ordered lists
    */
-  type?: 'unordered';
+  type?: TYPE_LIST.UNORDERED;
   /**
    * A CSS class for styling list
    */
@@ -23,25 +29,14 @@ export type UnorderedListType = {
    * Additional props/attributes
    */
   listProps?: React.HTMLAttributes<HTMLUListElement>;
-  /**
-   * optional reversed property that specifies the list order should be in descending order
-   */
-  reversed?: boolean;
-  /**
-   * optional start property that specifies the start value of the first list item
-   */
-  start?: number;
-  /**
-   * optional markerType property that specifies the type of marking among "1|a|A|i|I"
-   */
-  markerType?: 'a' | 'i' | '1' | 'A' | 'I';
 };
 
+//ol
 export type OrderedListType = {
   /**
    * optional Type property with default value unordered to specify unordered and ordered lists
    */
-  type?: 'ordered';
+  type?: TYPE_LIST.ORDERERED;
   /**
    * A CSS class for styling list
    */
@@ -72,35 +67,30 @@ export type OrderedListType = {
   markerType?: 'a' | 'i' | '1' | 'A' | 'I';
 };
 
-export const List = ({
-  type,
-  className,
-  itemClassName,
-  children,
-  listProps,
-  reversed,
-  markerType,
-  start,
-}: UnorderedListType | OrderedListType) => (
-  <ListContext.Provider value={{ itemClassName }}>
-    {type === 'ordered' ? (
-      <OrderedList
-        className={classNames(['dcx-list', className])}
-        children={children}
-        listProps={listProps}
-        reversed={reversed}
-        start={start}
-        markerType={markerType}
-      />
-    ) : (
-      <UnorderedList
-        className={classNames(['dcx-list', className])}
-        children={children}
-        listProps={listProps}
-      />
-    )}
-  </ListContext.Provider>
-);
+export const List = (props: OrderedListType | UnorderedListType) => {
+  const { type, className, itemClassName, children, listProps } = props;
+
+  return (
+    <ListContext.Provider value={{ itemClassName }}>
+      {type === TYPE_LIST.ORDERERED ? (
+        <OrderedList
+          className={classNames(['dcx-list', className])}
+          children={children}
+          listProps={listProps}
+          markerType={props.markerType}
+          reversed={props.reversed}
+          start={props.start}
+        />
+      ) : (
+        <UnorderedList
+          className={classNames(['dcx-list', className])}
+          children={children}
+          listProps={listProps}
+        />
+      )}
+    </ListContext.Provider>
+  );
+};
 
 const UnorderedList = ({
   className,
