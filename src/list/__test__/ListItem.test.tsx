@@ -59,4 +59,49 @@ describe('ListItem', () => {
     fireEvent.click(listItemElement);
     expect(onClickMock).toHaveBeenCalledTimes(1);
   });
+
+  it('should allow to use the ListItem component only in the List component', () => {
+    expect(() => render(<ListItem>abc 3</ListItem>)).toThrow(
+      'ListItem component must be used within Item component'
+    );
+  });
+
+  it('should render with list starting with 100', () => {
+    const { getByRole } = render(
+      <List type="ordered" start={100}>
+        <ListItem>List Item a</ListItem>
+        <ListItem>List Item b</ListItem>
+        <ListItem>List Item c</ListItem>
+      </List>
+    );
+
+    const list = getByRole('list');
+    expect(list.getAttribute('start')).toBe((100).toString());
+  });
+
+  it('should render with list having reverse attribute', () => {
+    const { getByRole } = render(
+      <List type="ordered" reversed>
+        <ListItem>List Item a</ListItem>
+        <ListItem>List Item b</ListItem>
+        <ListItem>List Item c</ListItem>
+      </List>
+    );
+
+    const list = getByRole('list');
+    expect(list.getAttribute('reversed')).toBeDefined();
+  });
+
+  it('should render with list having markerType atttribute', () => {
+    const { getByRole } = render(
+      <List type="ordered" markerType="A">
+        <ListItem>List Item a</ListItem>
+        <ListItem>List Item b</ListItem>
+        <ListItem>List Item c</ListItem>
+      </List>
+    );
+
+    const list = getByRole('list');
+    expect(list.getAttribute('type')).toBe('A');
+  });
 });

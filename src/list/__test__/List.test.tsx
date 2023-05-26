@@ -95,10 +95,4 @@ describe('List', () => {
     const childComponents = container.querySelectorAll('.myStyle');
     expect(childComponents.length).toBe(3);
   });
-
-  it('should allow to use the ListItem component only in the List component', () => {
-    expect(() => render(<ListItem>abc 3</ListItem>)).toThrow(
-      'ListItem component must be used within Item component'
-    );
-  });
 });

@@ -23,6 +23,18 @@ export type UnorderedListType = {
    * Additional props/attributes
    */
   listProps?: React.HTMLAttributes<HTMLUListElement>;
+  /**
+   * optional reversed property that specifies the list order should be in descending order
+   */
+  reversed?: boolean;
+  /**
+   * optional start property that specifies the start value of the first list item
+   */
+  start?: number;
+  /**
+   * optional markerType property that specifies the type of marking among "1|a|A|i|I"
+   */
+  markerType?: 'a' | 'i' | '1' | 'A' | 'I';
 };
 
 export type OrderedListType = {
@@ -46,6 +58,18 @@ export type OrderedListType = {
    * Additional props/attributes
    */
   listProps?: React.HTMLAttributes<HTMLOListElement>;
+  /**
+   * optional reversed property that specifies the list order should be in descending order
+   */
+  reversed?: boolean;
+  /**
+   * optional start property that specifies the start value of the first list item
+   */
+  start?: number;
+  /**
+   * optional markerType property that specifies the type of marking among "1|a|A|i|I"
+   */
+  markerType?: 'a' | 'i' | '1' | 'A' | 'I';
 };
 
 export const List = ({
@@ -54,6 +78,9 @@ export const List = ({
   itemClassName,
   children,
   listProps,
+  reversed,
+  markerType,
+  start,
 }: UnorderedListType | OrderedListType) => (
   <ListContext.Provider value={{ itemClassName }}>
     {type === 'ordered' ? (
@@ -61,6 +88,9 @@ export const List = ({
         className={classNames(['dcx-list', className])}
         children={children}
         listProps={listProps}
+        reversed={reversed}
+        start={start}
+        markerType={markerType}
       />
     ) : (
       <UnorderedList
@@ -82,8 +112,21 @@ const UnorderedList = ({
   </ul>
 );
 
-const OrderedList = ({ className, children, listProps }: OrderedListType) => (
-  <ol className={className} {...listProps}>
+const OrderedList = ({
+  className,
+  children,
+  listProps,
+  reversed,
+  markerType,
+  start,
+}: OrderedListType) => (
+  <ol
+    className={className}
+    {...listProps}
+    reversed={reversed}
+    start={start}
+    type={markerType}
+  >
     {children}
   </ol>
 );
