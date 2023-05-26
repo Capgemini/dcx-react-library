@@ -23,7 +23,12 @@ When you import the KeyboardInput component without providing any className or a
 A more complex example with all the possible properties is:
 
 ```js
-<KeyboardInput>ctrl + p</KeyboardInput>
+<KeyboardInput
+  className="additional classes"
+  children="ctrl+p"
+  id="user-defined-id"
+  props={{ style: { color: red } }}
+/>
 ```
 
 Below a list of all the available properties:

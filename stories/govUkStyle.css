@@ -49,16 +49,7 @@
   margin-top: 0;
   margin-bottom: 0;
 }
-
-@supports (font-variant-numeric: tabular-nums) {
-  .govuk-character-count__message {
-    -webkit-font-feature-settings: normal;
-    font-feature-settings: normal;
-    font-variant-numeric: tabular-nums;
-  }
-}
-
-kbd {
+.kbd {
   background-color: #eee;
   border-radius: 3px;
   border: 1px solid #b4b4b4;
@@ -71,6 +62,14 @@ kbd {
   line-height: 1;
   padding: 2px 4px;
   white-space: nowrap;
+}
+
+@supports (font-variant-numeric: tabular-nums) {
+  .govuk-character-count__message {
+    -webkit-font-feature-settings: normal;
+    font-feature-settings: normal;
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 .govuk-inset-text {

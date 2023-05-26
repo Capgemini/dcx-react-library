@@ -6,7 +6,7 @@ const KeyboardInputDemo = `
 function KeyboardInputDemo() {
 
   return (
-    <KeyboardInput>ctrl + p</KeyboardInput>
+    <KeyboardInput id="user-defined-id" props={{}} className="">ctrl + p</KeyboardInput>
   )
 }
 `.trim();
