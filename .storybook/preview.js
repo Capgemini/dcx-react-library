@@ -81,7 +81,7 @@ export const parameters = {
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Paragraph',
             ['Documentation', 'Live', 'Without style', 'Class based'],
-            'Blockquote',
+            'BlockQuote',
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Label',
             ['Documentation', 'Live', 'Without style', 'Class based'],
