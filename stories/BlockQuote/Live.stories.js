@@ -1,8 +1,8 @@
-import ParagraphLive from '../liveEdit/ParagraphLive';
+import BlockquoteLive from '../liveEdit/BlockquoteLive';
 import { Blockquote } from '../../src/blockquote/Blockquote';
 
 export default {
-  title: 'DCXLibrary/Typography/Paragraph/Live',
+  title: 'DCXLibrary/Typography/Blockquote/Live',
   component: Blockquote,
 
   parameters: {
@@ -19,5 +19,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <ParagraphLive />
+  render: () => <BlockquoteLive />
 };

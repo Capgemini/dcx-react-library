@@ -1,1 +1,1 @@
-export { BlockQuote, BlockQuote_TYPE } from './BlockQuote';
+export { Blockquote } from './Blockquote';

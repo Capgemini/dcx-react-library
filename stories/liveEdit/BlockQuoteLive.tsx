@@ -1,33 +1,34 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import { BlockQuote } from '../../src/blockquote/BlockQuote';
+import { Blockquote } from '../../src/blockquote/Blockquote';
 
-const BlockQuoteDemo = `
-function BlockQuote() {
+const BlockquoteDemo = `
+function BlockquoteDemo() {
     const style = {
     color:'red'
     }
     return (
-    <Paragraph 
-        className="govuk-body"
-        value="This is the content of the blockquote."
-        props={{ id: 'my-paragraph', style }}
+    <Blockquote 
+        className="blockquote-reverse"
+        text="This is the content of the blockquote."
+        footer="From WWF's websit"
+        props={{ id: 'my-blockquote', style }} 
     />
     )
 }
 `.trim();
 
-const BlockQuoteLive = () => {
-    const scope = { BlockQuote };
+const BlockquoteLive = () => {
+    const scope = { Blockquote };
     return (
-    <LiveProvider code={BlockQuoteDemo} scope={scope}>
+    <LiveProvider code={BlockquoteDemo} scope={scope}>
         <div className="container">
-        <LiveEditor className="liveEditor" aria-label="editor" />
-        <LivePreview className="livePreview" aria-label="preview" />
+            <LiveEditor className="liveEditor" aria-label="editor" />
+            <LivePreview className="livePreview" aria-label="preview" />
         </div>
         <LiveError className="liveError" aria-label="error" />
     </LiveProvider>
     );
 };
 
-export default BlockQuoteLive;
+export default BlockquoteLive;

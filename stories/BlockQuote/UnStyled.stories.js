@@ -12,6 +12,7 @@ export default {
 
 export const Unstyled = {
   args: {
-    value: 'This is the content of the blockquote.'
+    text: 'This is the content of the blockquote.',
+    footer: 'This is the footer of the blockquote.'
   },
 };

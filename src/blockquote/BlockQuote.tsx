@@ -1,27 +1,34 @@
 import React from 'react';
 import { classNames } from '../common/utils';
 
-type BlockQuoteProps = {
+type BlockquoteProps = {
     /**
    * optional CSS class name
    */
     className?: string;
     /**
-   * content of the paragraph
+   * content of the blockquotes
    */
-    value: string | number;
+    text: string | number;
+    /**
+   * footer of the blockquotes
+   */
+    footer: string | number;
     /**
    * Additional props/attributes
    */
     props?: React.HTMLAttributes<HTMLParagraphElement>;
 };
 
-export const BlockQuote = ({ className, value, props }: BlockQuoteProps) => {
+export const Blockquote = ({ className, text, footer, props }: BlockquoteProps) => {
     const dynamicClassName = classNames(['dcx-blockquote', className]);
 
     return (
-    <p className={dynamicClassName} {...props}>
-        {value}
-    </p>
-    );
+        <blockquote>
+            <p className={dynamicClassName} {...props}>
+                {text}
+            </p>
+            <footer>{footer}</footer>
+        </blockquote>
+        );
 };
