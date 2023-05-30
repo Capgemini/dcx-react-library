@@ -20,7 +20,12 @@ type BlockquoteProps = {
     props?: React.HTMLAttributes<HTMLParagraphElement>;
 };
 
-export const Blockquote = ({ className, text, footer, props }: BlockquoteProps) => {
+export const Blockquote = ({ 
+    className, 
+    text, 
+    footer, 
+    props 
+    }: BlockquoteProps) => {
     const dynamicClassName = classNames(['dcx-blockquote', className]);
 
     return (
