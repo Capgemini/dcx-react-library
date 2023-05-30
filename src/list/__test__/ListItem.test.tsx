@@ -68,7 +68,7 @@ describe('ListItem', () => {
 
   it('should render with list starting with 100', () => {
     const { getByRole } = render(
-      <List type={TYPE_LIST.ORDERERED} start={100}>
+      <List type={TYPE_LIST.ORDERED} start={100}>
         <ListItem>List Item a</ListItem>
         <ListItem>List Item b</ListItem>
         <ListItem>List Item c</ListItem>
@@ -81,7 +81,7 @@ describe('ListItem', () => {
 
   it('should render with list having reverse attribute', () => {
     const { getByRole } = render(
-      <List type={TYPE_LIST.ORDERERED} reversed>
+      <List type={TYPE_LIST.ORDERED} reversed>
         <ListItem>List Item a</ListItem>
         <ListItem>List Item b</ListItem>
         <ListItem>List Item c</ListItem>
@@ -94,7 +94,7 @@ describe('ListItem', () => {
 
   it('should render with list having markerType atttribute', () => {
     const { getByRole } = render(
-      <List type={TYPE_LIST.ORDERERED} markerType="A">
+      <List type={TYPE_LIST.ORDERED} markerType="A">
         <ListItem>List Item a</ListItem>
         <ListItem>List Item b</ListItem>
         <ListItem>List Item c</ListItem>
@@ -103,5 +103,11 @@ describe('ListItem', () => {
 
     const list = getByRole('list');
     expect(list.getAttribute('type')).toBe('A');
+  });
+
+  it('should allow to use the ListItem component only in the List component', () => {
+    expect(() => render(<ListItem>abc 3</ListItem>)).toThrow(
+      'ListItem component must be used within Item component'
+    );
   });
 });

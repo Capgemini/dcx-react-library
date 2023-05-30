@@ -4,7 +4,7 @@ import { ListContext } from './UseList';
 
 export enum TYPE_LIST {
   UNORDERED = 'unordered',
-  ORDERERED = 'ordered',
+  ORDERED = 'ordered',
 }
 
 //ul
@@ -36,7 +36,7 @@ export type OrderedListType = {
   /**
    * optional Type property with default value unordered to specify unordered and ordered lists
    */
-  type?: TYPE_LIST.ORDERERED;
+  type?: TYPE_LIST.ORDERED;
   /**
    * A CSS class for styling list
    */
@@ -72,7 +72,7 @@ export const List = (props: OrderedListType | UnorderedListType) => {
 
   return (
     <ListContext.Provider value={{ itemClassName }}>
-      {type === TYPE_LIST.ORDERERED ? (
+      {type === TYPE_LIST.ORDERED ? (
         <OrderedList
           className={classNames(['dcx-list', className])}
           children={children}

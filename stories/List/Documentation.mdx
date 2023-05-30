@@ -1,0 +1,40 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as ListStories from './UnStyled.stories.js';
+import { List, ListItem, TYPE_LIST } from '../../src/list';
+
+<Meta title="DCXLibrary/Typography/List/Documentation" />
+
+# List
+
+A List component ready to use in your form.  
+List is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the List component without providing any className or style associated will looks as following:
+
+<Canvas of={ListStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+<List
+  type={TYPE_LIST.ORDERED}
+  className="myStyle"
+  itemClassName="myStyle"
+  markerType={'A'}
+  start={2}
+  reversed
+  listProps={{ style: { color: 'red' } }}
+>
+  <ListItem
+    value={10}
+    className="myStyle"
+    listItemProps={{ style: { color: 'red' } }}
+  >
+    List Item 1
+  </ListItem>
+  <ListItem>List Item 2</ListItem>
+</List>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={ListStories} />

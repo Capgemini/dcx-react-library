@@ -52,7 +52,7 @@ describe('List', () => {
 
   it('should render ol if the list type is ordered list', () => {
     render(
-      <List type={TYPE_LIST.ORDERERED}>
+      <List type={TYPE_LIST.ORDERED}>
         <ListItem>item 1</ListItem>
         <ListItem>item 2</ListItem>
       </List>
@@ -94,5 +94,62 @@ describe('List', () => {
     );
     const childComponents = container.querySelectorAll('.myStyle');
     expect(childComponents.length).toBe(3);
+  });
+
+  it('should render with list starting with 100', () => {
+    const { getByRole } = render(
+      <List type={TYPE_LIST.ORDERED} start={100}>
+        <ListItem>List Item a</ListItem>
+        <ListItem>List Item b</ListItem>
+        <ListItem>List Item c</ListItem>
+      </List>
+    );
+
+    const list = getByRole('list');
+    expect(list.getAttribute('start')).toBe((100).toString());
+  });
+
+  it('should render with list starting with 100', () => {
+    const { getAllByRole } = render(
+      <List type={TYPE_LIST.ORDERED}>
+        <ListItem value={100}>List Item a</ListItem>
+        <ListItem>List Item b</ListItem>
+        <ListItem>List Item c</ListItem>
+      </List>
+    );
+    const listItems = getAllByRole('listitem');
+
+    expect(listItems[0]).toHaveAttribute('value', '100');
+  });
+
+  it('should render with list having reverse attribute', () => {
+    const { getByRole } = render(
+      <List type={TYPE_LIST.ORDERED} reversed>
+        <ListItem>List Item a</ListItem>
+        <ListItem>List Item b</ListItem>
+        <ListItem>List Item c</ListItem>
+      </List>
+    );
+
+    const list = getByRole('list');
+    expect(list.getAttribute('reversed')).toBeDefined();
+  });
+
+  it('should allow to pass a specific marker type, a-i-1-A-I to an ordered list and display it properly', () => {
+    const arr: string[] = ['a', 'i', '1', 'A', 'I'];
+    let num = 0;
+
+    arr.map((element) => {
+      render(
+        <List type={TYPE_LIST.ORDERED} markerType={element as any}>
+          <ListItem>List Item a</ListItem>
+          <ListItem>List Item b</ListItem>
+          <ListItem>List Item c</ListItem>
+        </List>
+      );
+
+      const lists = screen.getAllByRole('list');
+      expect(lists[num++].getAttribute('type')).toBe(element);
+    });
   });
 });
