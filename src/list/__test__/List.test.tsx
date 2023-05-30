@@ -139,7 +139,7 @@ describe('List', () => {
     const arr: string[] = ['a', 'i', '1', 'A', 'I'];
     let num = 0;
 
-    arr.map((element) => {
+    arr.forEach((element) => {
       render(
         <List type={TYPE_LIST.ORDERED} markerType={element as any}>
           <ListItem>List Item a</ListItem>

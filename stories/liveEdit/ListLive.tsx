@@ -7,7 +7,7 @@ function ListDemo() {
     return (
         <List
             type={TYPE_LIST.ORDERED}
-            className="myStyle"
+            className="govuk-list govuk-list--number"
             itemClassName="myStyle"
             markerType={'A'}
             start={2}
@@ -15,13 +15,13 @@ function ListDemo() {
             listProps={{ style: { color: 'red' } }}
             >
             <ListItem
-                value={10}
+                value={2}
                 className="myStyle"
                 listItemProps={{ style: { color: 'red' } }}
             >
-                List Item 1
+                Coffee
             </ListItem>
-            <ListItem>List Item 2</ListItem>
+            <ListItem>Tea</ListItem>
         </List>
     )
 }

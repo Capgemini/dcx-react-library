@@ -13,7 +13,7 @@ export type ListItemProps = {
    */
   className?: string;
   /**
-   * Additional props/attributes to pass in listitems
+   * allow to specify a user with Additional props/attributes
    */
   listItemProps?: React.HTMLProps<HTMLLIElement>;
   /**

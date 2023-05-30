@@ -13,22 +13,10 @@ export default {
 export const Unstyled = {
   render: function () {
     return (
-      <List
-        type={TYPE_LIST.ORDERED}
-        className="myStyle"
-        itemClassName="myStyle"
-        markerType={'A'}
-        start={2}
-        reversed
-      >
-        <ListItem value={2} className="myStyle">
-          List Item 1
-        </ListItem>
-        <ListItem>List Item 2</ListItem>
+      <List type={TYPE_LIST.ORDERED} markerType={'A'} start={2} reversed>
+        <ListItem value={2}>Coffee</ListItem>
+        <ListItem>Tea</ListItem>
       </List>
     );
-  },
-  args: {
-    // type: TYPE_LIST.ORDERED,
   },
 };

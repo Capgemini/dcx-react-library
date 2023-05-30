@@ -83,6 +83,8 @@ export const parameters = {
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Link',
             ['Documentation', 'Live', 'Without style', 'Class based'],
+            'List',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
           ],
           'Changelog',
         ],
@@ -97,7 +99,7 @@ export const parameters = {
         <Subtitle />
         <Description />
         <Primary />
-        <Stories includePrimary={false}/>
+        <Stories includePrimary={false} />
       </>
     ),
   },

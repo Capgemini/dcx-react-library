@@ -10,7 +10,8 @@ export enum TYPE_LIST {
 //ul
 export type UnorderedListType = {
   /**
-   * optional Type property with default value unordered to specify unordered and ordered lists
+   * allow to specify if the list is ul (unordered) or ol (ordered), with default value unordered.
+   * To specify the type of list please pass: TYPE_LIST. UNORDERED or TYPE_LIST. ORDERED
    */
   type?: TYPE_LIST.UNORDERED;
   /**
@@ -18,15 +19,15 @@ export type UnorderedListType = {
    */
   className?: string;
   /**
-   * A CSS class for applying same styling to all the listItems
+   * A CSS class for applying  the same styling in case all the items have exactly the same look and feel
    */
   itemClassName?: string;
   /**
-   * details
+   * allow to specify a user custom content
    */
   children: ReactNode;
   /**
-   * Additional props/attributes
+   * allow to specify a user with Additional props/attributes
    */
   listProps?: React.HTMLAttributes<HTMLUListElement>;
 };
@@ -34,7 +35,8 @@ export type UnorderedListType = {
 //ol
 export type OrderedListType = {
   /**
-   * optional Type property with default value unordered to specify unordered and ordered lists
+   * allow to specify if the list is ul (unordered) or ol (ordered), with default value unordered.
+   * To specify the type of list please pass: TYPE_LIST. UNORDERED or TYPE_LIST. ORDERED
    */
   type?: TYPE_LIST.ORDERED;
   /**
@@ -42,27 +44,27 @@ export type OrderedListType = {
    */
   className?: string;
   /**
-   * A CSS class for applying same styling to all the listItems
+   * A CSS class for applying  the same styling in case all the items have exactly the same look and feel
    */
   itemClassName?: string;
   /**
-   * details
+   * allow to specify a user custom content
    */
   children: ReactNode;
   /**
-   * Additional props/attributes
+   * allow to specify a user with Additional props/attributes
    */
   listProps?: React.HTMLAttributes<HTMLOListElement>;
   /**
-   * optional reversed property that specifies the list order should be in descending order
+   * specifies the list order should be in descending order
    */
   reversed?: boolean;
   /**
-   * optional start property that specifies the start value of the first list item
+   * specifies the start value of the first list item
    */
   start?: number;
   /**
-   * optional markerType property that specifies the type of marking among "1|a|A|i|I"
+   * specifies the type of marking among "1 - a - A - i - I"
    */
   markerType?: 'a' | 'i' | '1' | 'A' | 'I';
 };
