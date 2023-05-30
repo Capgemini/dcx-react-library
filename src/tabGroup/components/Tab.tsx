@@ -71,17 +71,17 @@ export const Tab = ({
     event:
       | React.MouseEvent<HTMLAnchorElement>
       | React.TouchEvent<HTMLAnchorElement>
-  ) => changeActiveTab(event.currentTarget.id);
+  ) => changeActiveTab(event.currentTarget.dataset.tabId as string);
 
   return (
     <li role={Roles.presentation} className={classes}>
       <a
         role={Roles.tab}
-        id={eventKey}
+        data-tab-id={eventKey}
         className={linkClassName}
         aria-controls={ariaControls}
         aria-selected={selected}
-        tabIndex={!selected ? -1 : undefined}
+        tabIndex={!selected ? -1 : 0}
         onClick={!disabled ? onClickHandler : undefined}
         href={`#${eventKey}`}
       >
