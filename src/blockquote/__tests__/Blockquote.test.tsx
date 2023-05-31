@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 describe('BlockQuote', () => {
   it('should render', () => {
     const { container } = render(<Blockquote text="blockquote text"  footer="blockquote footer" />);
-    expect(container.querySelector('p')).toBeInTheDocument();
+    expect(container.querySelector('blockquote')).toBeInTheDocument();
   });
   it('should allow to pass a value', () => {
     render(<Blockquote className="blockquote" text="blockQuote text"  footer="blockquote footer" />);
