@@ -109,7 +109,7 @@ describe('List', () => {
     expect(list.getAttribute('start')).toBe((100).toString());
   });
 
-  it('should be able to render with list starting with 100 if value attribute is specified', () => {
+  it('should be able to render with list starting with 100 if value attribute is specified on ListItem', () => {
     const { getAllByRole } = render(
       <List type={TYPE_LIST.ORDERED}>
         <ListItem value={100}>List Item a</ListItem>

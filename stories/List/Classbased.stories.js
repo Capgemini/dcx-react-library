@@ -115,21 +115,83 @@ export const OrderedVal = {
   },
 };
 
-export const OrderedMarkerType = {
-  name: 'Ordered with MarkerType attribute with possible values a, i, 1, A, I',
+export const OrderedMarkerType1 = {
+  name: 'Ordered with MarkerType 1',
   render: function () {
-    const arr = ['a', 'i', '1', 'A', 'I'];
-    const renderedComponents = arr.map((element) => (
+    return (
       <List
         type={TYPE_LIST.ORDERED}
-        markerType={element}
+        markerType={'1'}
         className="govuk-list govuk-list--number"
       >
         <ListItem>Coffee</ListItem>
         <ListItem>Tea</ListItem>
         <ListItem>Ice Tea</ListItem>
       </List>
-    ));
-    return <div>{renderedComponents}</div>;
+    );
+  },
+};
+export const OrderedMarkerTypea = {
+  name: 'Ordered with MarkerType a',
+  render: function () {
+    return (
+      <List
+        type={TYPE_LIST.ORDERED}
+        markerType={'a'}
+        className="govuk-list govuk-list--number"
+      >
+        <ListItem>Coffee</ListItem>
+        <ListItem>Tea</ListItem>
+        <ListItem>Ice Tea</ListItem>
+      </List>
+    );
+  },
+};
+export const OrderedMarkerTypeA = {
+  name: 'Ordered with MarkerType A',
+  render: function () {
+    return (
+      <List
+        type={TYPE_LIST.ORDERED}
+        markerType={'A'}
+        className="govuk-list govuk-list--number"
+      >
+        <ListItem>Coffee</ListItem>
+        <ListItem>Tea</ListItem>
+        <ListItem>Ice Tea</ListItem>
+      </List>
+    );
+  },
+};
+export const OrderedMarkerTypei = {
+  name: 'Ordered with MarkerType i',
+  render: function () {
+    return (
+      <List
+        type={TYPE_LIST.ORDERED}
+        markerType={'i'}
+        className="govuk-list govuk-list--number"
+      >
+        <ListItem>Coffee</ListItem>
+        <ListItem>Tea</ListItem>
+        <ListItem>Ice Tea</ListItem>
+      </List>
+    );
+  },
+};
+export const OrderedMarkerTypeI = {
+  name: 'Ordered with MarkerType I',
+  render: function () {
+    return (
+      <List
+        type={TYPE_LIST.ORDERED}
+        markerType={'I'}
+        className="govuk-list govuk-list--number"
+      >
+        <ListItem>Coffee</ListItem>
+        <ListItem>Tea</ListItem>
+        <ListItem>Ice Tea</ListItem>
+      </List>
+    );
   },
 };
