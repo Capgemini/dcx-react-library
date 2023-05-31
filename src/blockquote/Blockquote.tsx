@@ -18,7 +18,7 @@ type BlockquoteProps = {
     /**
    * Additional props/attributes
    */
-    props?: React.HTMLAttributes<HTMLParagraphElement>;
+    props?: React.HTMLAttributes<HTMLQuoteElement>;
 };
 
 
