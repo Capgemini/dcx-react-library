@@ -105,6 +105,120 @@
   margin-bottom: 20px;
 }
 
+.app-prose-scope p + h2,
+.app-prose-scope .govuk-body-m + h2,
+.app-prose-scope .govuk-body + h2,
+.app-prose-scope p + .govuk-heading-l,
+.govuk-body-m + .govuk-heading-l,
+.govuk-body + .govuk-heading-l,
+.app-prose-scope .govuk-body-s + h2,
+.govuk-body-s + .govuk-heading-l,
+.app-prose-scope ul + h2,
+.app-prose-scope ol + h2,
+.app-prose-scope .govuk-list + h2,
+.app-prose-scope ul + .govuk-heading-l,
+.app-prose-scope ol + .govuk-heading-l,
+.govuk-list + .govuk-heading-l {
+  padding-top: 15px;
+}
+
+@media (min-width: 40.0625em) {
+  .app-prose-scope p + h2,
+  .app-prose-scope .govuk-body-m + h2,
+  .app-prose-scope .govuk-body + h2,
+  .app-prose-scope p + .govuk-heading-l,
+  .govuk-body-m + .govuk-heading-l,
+  .govuk-body + .govuk-heading-l,
+  .app-prose-scope .govuk-body-s + h2,
+  .govuk-body-s + .govuk-heading-l,
+  .app-prose-scope ul + h2,
+  .app-prose-scope ol + h2,
+  .app-prose-scope .govuk-list + h2,
+  .app-prose-scope ul + .govuk-heading-l,
+  .app-prose-scope ol + .govuk-heading-l,
+  .govuk-list + .govuk-heading-l {
+    padding-top: 20px;
+  }
+}
+
+.app-prose-scope p + h3,
+.app-prose-scope p + .app-contact-panel__heading,
+.app-prose-scope .govuk-body-m + h3,
+.govuk-body-m + .app-contact-panel__heading,
+.app-prose-scope .govuk-body + h3,
+.govuk-body + .app-contact-panel__heading,
+.app-prose-scope p + .govuk-heading-m,
+.govuk-body-m + .govuk-heading-m,
+.govuk-body + .govuk-heading-m,
+.app-prose-scope .govuk-body-s + h3,
+.govuk-body-s + .app-contact-panel__heading,
+.govuk-body-s + .govuk-heading-m,
+.app-prose-scope ul + h3,
+.app-prose-scope ol + h3,
+.app-prose-scope ul + .app-contact-panel__heading,
+.app-prose-scope ol + .app-contact-panel__heading,
+.app-prose-scope .govuk-list + h3,
+.govuk-list + .app-contact-panel__heading,
+.app-prose-scope ul + .govuk-heading-m,
+.app-prose-scope ol + .govuk-heading-m,
+.govuk-list + .govuk-heading-m,
+.app-prose-scope p + h4,
+.app-prose-scope .govuk-body-m + h4,
+.app-prose-scope .govuk-body + h4,
+.app-prose-scope p + .govuk-heading-s,
+.govuk-body-m + .govuk-heading-s,
+.govuk-body + .govuk-heading-s,
+.app-prose-scope .govuk-body-s + h4,
+.govuk-body-s + .govuk-heading-s,
+.app-prose-scope ul + h4,
+.app-prose-scope ol + h4,
+.app-prose-scope .govuk-list + h4,
+.app-prose-scope ul + .govuk-heading-s,
+.app-prose-scope ol + .govuk-heading-s,
+.govuk-list + .govuk-heading-s {
+  padding-top: 5px;
+}
+
+@media (min-width: 40.0625em) {
+  .app-prose-scope p + h3,
+  .app-prose-scope p + .app-contact-panel__heading,
+  .app-prose-scope .govuk-body-m + h3,
+  .govuk-body-m + .app-contact-panel__heading,
+  .app-prose-scope .govuk-body + h3,
+  .govuk-body + .app-contact-panel__heading,
+  .app-prose-scope p + .govuk-heading-m,
+  .govuk-body-m + .govuk-heading-m,
+  .govuk-body + .govuk-heading-m,
+  .app-prose-scope .govuk-body-s + h3,
+  .govuk-body-s + .app-contact-panel__heading,
+  .govuk-body-s + .govuk-heading-m,
+  .app-prose-scope ul + h3,
+  .app-prose-scope ol + h3,
+  .app-prose-scope ul + .app-contact-panel__heading,
+  .app-prose-scope ol + .app-contact-panel__heading,
+  .app-prose-scope .govuk-list + h3,
+  .govuk-list + .app-contact-panel__heading,
+  .app-prose-scope ul + .govuk-heading-m,
+  .app-prose-scope ol + .govuk-heading-m,
+  .govuk-list + .govuk-heading-m,
+  .app-prose-scope p + h4,
+  .app-prose-scope .govuk-body-m + h4,
+  .app-prose-scope .govuk-body + h4,
+  .app-prose-scope p + .govuk-heading-s,
+  .govuk-body-m + .govuk-heading-s,
+  .govuk-body + .govuk-heading-s,
+  .app-prose-scope .govuk-body-s + h4,
+  .govuk-body-s + .govuk-heading-s,
+  .app-prose-scope ul + h4,
+  .app-prose-scope ol + h4,
+  .app-prose-scope .govuk-list + h4,
+  .app-prose-scope ul + .govuk-heading-s,
+  .app-prose-scope ol + .govuk-heading-s,
+  .govuk-list + .govuk-heading-s {
+    padding-top: 10px;
+  }
+}
+
 .govuk-form-group:after {
   content: '';
   display: block;

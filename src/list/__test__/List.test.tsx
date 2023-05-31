@@ -84,7 +84,7 @@ describe('List', () => {
     expect(screen.getByText('abc 3')).toBeInTheDocument();
   });
 
-  it('should be able to render with itemClassName', () => {
+  it('should be able to render the same class for all the list if itemClassName is specified', () => {
     const { container } = render(
       <List itemClassName="myStyle">
         <ListItem>abc 1</ListItem>
@@ -96,7 +96,7 @@ describe('List', () => {
     expect(childComponents.length).toBe(3);
   });
 
-  it('should render with list starting with 100', () => {
+  it('should be able to render with list starting with 100 if start attribute is specified', () => {
     const { getByRole } = render(
       <List type={TYPE_LIST.ORDERED} start={100}>
         <ListItem>List Item a</ListItem>
@@ -109,7 +109,7 @@ describe('List', () => {
     expect(list.getAttribute('start')).toBe((100).toString());
   });
 
-  it('should render with list starting with 100', () => {
+  it('should be able to render with list starting with 100 if value attribute is specified', () => {
     const { getAllByRole } = render(
       <List type={TYPE_LIST.ORDERED}>
         <ListItem value={100}>List Item a</ListItem>

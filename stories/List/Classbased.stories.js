@@ -104,11 +104,11 @@ export const OrderedStart = {
 };
 
 export const OrderedVal = {
-  name: 'Ordered with value attribute given as 2',
+  name: 'Ordered with value attribute given as 3',
   render: function () {
     return (
       <List type={TYPE_LIST.ORDERED} className="govuk-list govuk-list--number">
-        <ListItem value={2}>Coffee</ListItem>
+        <ListItem value={3}>Coffee</ListItem>
         <ListItem>Tea</ListItem>
       </List>
     );

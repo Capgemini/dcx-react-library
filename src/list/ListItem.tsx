@@ -5,7 +5,7 @@ import { useList } from './UseList';
 
 export type ListItemProps = {
   /**
-   * details
+   * allow to specify a custom content
    */
   children: JSX.Element | string;
   /**
@@ -13,13 +13,13 @@ export type ListItemProps = {
    */
   className?: string;
   /**
-   * allow to specify a user with Additional props/attributes
+   * allow to specify Additional props/attributes
    */
   listItemProps?: React.HTMLProps<HTMLLIElement>;
   /**
-   * Only for ordererd lists.
    * Specifies the start value of a list item.
    * The following list items will increment from that number
+   * Only for ordererd lists.
    */
   value?: number;
 };
