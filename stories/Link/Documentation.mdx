@@ -14,7 +14,12 @@ When you import the Link component without providing any className or style asso
 A more complex example with all the possible properties is:
 
 ```js
-<Link value="Google" to={link} props={{ target: '_blank' }} />
+<Link
+  value="Google"
+  to={link}
+  className="myClass"
+  props={{ target: '_blank' }}
+/>
 ```
 
 Below a list of all the available properties:

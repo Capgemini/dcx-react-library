@@ -369,6 +369,10 @@ export const Autocomplete = ({
     }
   }, [options, onChange]);
 
+  React.useEffect(() => {
+    setUserInput(defaultValue);
+  }, [defaultValue]);
+
   const handleClick = (evt: React.FormEvent<HTMLInputElement>) => {
     setActiveOption(0);
     setFilterList([]);
