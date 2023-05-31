@@ -21,3 +21,25 @@ export const Basic = {
     footer: 'This is the footer of the blockquote.'
   },
 };
+
+const style = {
+    margin: '0',
+    padding: '15px',
+    background: '#eee',
+    borderRadius: '5px',
+    width: '500px'
+};
+
+export const Styled = {
+  name: 'with some style',
+  render: function() {
+    return (
+      <div style={style}>
+        <figure>
+          <Blockquote text='We are such stuff as dreams are made on.' cite="https://www.twinkl.co.uk/homework-help/famous-figures-homework-help/shakespeare-facts-for-kids/top-10-famous-quotes-from-shakespeares-plays"/>
+          <figcaption>—Act IV, <cite>Scene I</cite></figcaption>
+        </figure>
+      </div>
+    );
+}
+};
