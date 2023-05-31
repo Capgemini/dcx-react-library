@@ -13,15 +13,6 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Basic = {
-  name: 'Basic',
-  args: {
-    className: 'blockquote',
-    text: 'This is the content of the blockquote.',
-    footer: 'This is the footer of the blockquote.'
-  },
-};
-
 const style = {
     margin: '0',
     padding: '15px',
