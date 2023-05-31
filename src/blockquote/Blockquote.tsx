@@ -14,7 +14,7 @@ type BlockquoteProps = {
     /**
    * footer of the blockquotes
    */
-    footer: string | number;
+    footer?: string;
     /**
    * Additional props/attributes
    */
@@ -26,10 +26,8 @@ export const Blockquote = ({ className, text, footer, props }: BlockquoteProps) 
     const dynamicClassName = classNames(['dcx-blockquote', className]);
 
     return (
-        <blockquote>
-            <p className={dynamicClassName} {...props}>
+        <blockquote className={dynamicClassName} {...props}>
                 {text}
-            </p>
             <footer>{footer}</footer>
         </blockquote>
         );
