@@ -1,5 +1,6 @@
 import { ListItem } from '../../src/list';
 import { List, TYPE_LIST } from '../../src/list/List';
+import './style.css';
 
 /**
  * In this section we're using the List component providing the **GovUk style** passing the relative className.
@@ -116,7 +117,7 @@ export const OrderedVal = {
 };
 
 export const OrderedMarkerType1 = {
-  name: 'Ordered with MarkerType 1',
+  name: 'Ordered with MarkerType "1"',
   render: function () {
     return (
       <List
@@ -132,13 +133,13 @@ export const OrderedMarkerType1 = {
   },
 };
 export const OrderedMarkerTypea = {
-  name: 'Ordered with MarkerType a',
+  name: 'Ordered with MarkerType "a"',
   render: function () {
     return (
       <List
         type={TYPE_LIST.ORDERED}
         markerType={'a'}
-        className="govuk-list govuk-list--number"
+        className="govuk-list list--lower-alpha"
       >
         <ListItem>Coffee</ListItem>
         <ListItem>Tea</ListItem>
@@ -148,13 +149,13 @@ export const OrderedMarkerTypea = {
   },
 };
 export const OrderedMarkerTypeA = {
-  name: 'Ordered with MarkerType A',
+  name: 'Ordered with MarkerType "A"',
   render: function () {
     return (
       <List
         type={TYPE_LIST.ORDERED}
         markerType={'A'}
-        className="govuk-list govuk-list--number"
+        className="govuk-list list--upper-alpha"
       >
         <ListItem>Coffee</ListItem>
         <ListItem>Tea</ListItem>
@@ -164,13 +165,13 @@ export const OrderedMarkerTypeA = {
   },
 };
 export const OrderedMarkerTypei = {
-  name: 'Ordered with MarkerType i',
+  name: 'Ordered with MarkerType "i"',
   render: function () {
     return (
       <List
         type={TYPE_LIST.ORDERED}
         markerType={'i'}
-        className="govuk-list govuk-list--number"
+        className="govuk-list list--lower-roman"
       >
         <ListItem>Coffee</ListItem>
         <ListItem>Tea</ListItem>
@@ -180,13 +181,13 @@ export const OrderedMarkerTypei = {
   },
 };
 export const OrderedMarkerTypeI = {
-  name: 'Ordered with MarkerType I',
+  name: 'Ordered with MarkerType "I"',
   render: function () {
     return (
       <List
         type={TYPE_LIST.ORDERED}
         markerType={'I'}
-        className="govuk-list govuk-list--number"
+        className="govuk-list list--upper-roman"
       >
         <ListItem>Coffee</ListItem>
         <ListItem>Tea</ListItem>

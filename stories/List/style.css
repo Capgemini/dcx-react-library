@@ -1,0 +1,33 @@
+.app-prose-scope ol,
+.list--lower-alpha {
+  padding-left: 20px;
+  list-style-type: lower-alpha;
+}
+.list--upper-alpha {
+  padding-left: 20px;
+  list-style-type: upper-alpha;
+}
+.list--lower-roman {
+  padding-left: 20px;
+  list-style-type: lower-roman;
+}
+.list--upper-roman {
+  padding-left: 20px;
+  list-style-type: upper-roman;
+}
+.app-prose-scope ol > li,
+.list--lower-alpha > li,
+.list--upper-alpha > li,
+.list--lower-roman > li,
+.list--upper-roman > li {
+  margin-bottom: 0;
+}
+@media (min-width: 40.0625em) {
+  .app-prose-scope ol > li,
+  .list--lower-alpha > li,
+  .list--upper-alpha > li,
+  .list--lower-roman > li,
+  .list--upper-roman > li {
+    margin-bottom: 5px;
+  }
+}
