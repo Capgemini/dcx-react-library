@@ -92,5 +92,13 @@ export const Home = () => (
         </li>
       </ul>
     </nav>
+    <h1>List of release 0.8 DCX library components</h1>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/list">ListDemo</Link>
+        </li>
+      </ul>
+    </nav>
   </>
 );
