@@ -23,3 +23,4 @@ export * from './characterCount';
 export * from './insertText';
 export * from './link';
 export * from './keyBoard';
+export * from './list';
