@@ -91,6 +91,8 @@ export const parameters = {
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'KeyboardInput',
             ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Highlight',
+            ['Documentation', 'Live', 'Without style', 'Class based']
           ],
           'Changelog',
         ],
