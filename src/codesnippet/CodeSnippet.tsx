@@ -10,7 +10,7 @@ type CodeSnippetProps = {
     /**
    * content of the code snippet
    */
-    text: string | number;
+    value: string | number;
     /**
    * Additional props/attributes
    */
@@ -18,12 +18,12 @@ type CodeSnippetProps = {
 };
 
 
-export const CodeSnippet = ({ className, text, props }: CodeSnippetProps) => {
+export const CodeSnippet = ({ className, value, props }: CodeSnippetProps) => {
     const dynamicClassName = classNames(['dcx-code', className]);
 
     return (
         <code className={dynamicClassName} {...props}>
-                {text}
+                {value}
         </code>
         );
 };

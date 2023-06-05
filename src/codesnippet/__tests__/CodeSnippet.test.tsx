@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 describe('CodeSnippet', () => {
   it('should render', () => {
     const { container } = render(
-      <CodeSnippet text="CodeSnippet text" />
+      <CodeSnippet value="CodeSnippet value" />
     );
     expect(container.querySelector('code')).toBeInTheDocument();
   });
@@ -14,7 +14,7 @@ describe('CodeSnippet', () => {
     render(
       <CodeSnippet
         className="code"
-        text="Code snippet text"
+        value="Code snippet text"
       />
     );
     expect(screen.getByText('Code snippet text')).toBeInTheDocument();
@@ -24,16 +24,16 @@ describe('CodeSnippet', () => {
     const { container } = render(
       <CodeSnippet
         className="code"
-        text="Code snippet text"
+        value="Code snippet text"
         props={{ id: 'my-code' }}
       />
     );
-    expect(container.querySelector('#my-codesnippet')).toBeInTheDocument();
+    expect(container.querySelector('#my-code')).toBeInTheDocument();
   });
 
   it('should contains a class called dcx-code', () => {
     const { container } = render(
-      <CodeSnippet text="Code snippet text"/>
+      <CodeSnippet value="Code snippet value"/>
     );
     expect(container.querySelector('.dcx-code')).toBeInTheDocument();
   });
@@ -41,7 +41,7 @@ describe('CodeSnippet', () => {
     const { container } = render(
       <CodeSnippet
         className="my-classname"
-        text="Code snippet text"
+        value="Code snippet value"
       />
     );
     expect(container.querySelector('.dcx-code')).toBeInTheDocument();

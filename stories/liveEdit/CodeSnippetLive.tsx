@@ -10,7 +10,7 @@ function CodeSnippetDemo() {
     return (
     <CodeSnippet 
         className="code"
-        text="This is the content of the code snippet."
+        value="This is the content of the code snippet."
         props={{ id: 'my-code', style }} 
     />
     )
