@@ -93,6 +93,8 @@ export const parameters = {
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Highlight',
             ['Documentation', 'Live', 'Without style', 'Class based']
+            'List',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
           ],
           'Changelog',
         ],
