@@ -8,13 +8,9 @@ type HighlightProps = {
    */
     className?: string;
     /**
-   * content of the blockquotes
+   * content of the highlight
    */
     text: string | number;
-    /**
-   * footer of the blockquotes
-   */
-    footer?: string;
     /**
    * Additional props/attributes
    */
@@ -22,13 +18,12 @@ type HighlightProps = {
 };
 
 
-export const Highlight = ({ className, text, footer, props }: HighlightProps) => {
+export const Highlight = ({ className, text, props }: HighlightProps) => {
     const dynamicClassName = classNames(['dcx-highlight', className]);
 
     return (
         <mark className={dynamicClassName} {...props}>
-                {text}
-            <footer>{footer}</footer>
+            {text}
         </mark>
         );
 };
