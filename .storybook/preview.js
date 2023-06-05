@@ -92,7 +92,7 @@ export const parameters = {
             'KeyboardInput',
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Highlight',
-            ['Documentation', 'Live', 'Without style', 'Class based']
+            ['Documentation', 'Live', 'Without style', 'Class based'],
             'List',
             ['Documentation', 'Live', 'Without style', 'Class based'],
           ],
