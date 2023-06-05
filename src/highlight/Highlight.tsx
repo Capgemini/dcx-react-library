@@ -1,7 +1,6 @@
 import React from 'react';
 import { classNames } from '../common/utils';
 
-
 type HighlightProps = {
     /**
    * optional CSS class name
@@ -16,7 +15,6 @@ type HighlightProps = {
    */
     props?: React.HTMLAttributes<HTMLQuoteElement>;
 };
-
 
 export const Highlight = ({ className, text, props }: HighlightProps) => {
     const dynamicClassName = classNames(['dcx-highlight', className]);
