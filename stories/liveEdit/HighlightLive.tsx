@@ -9,7 +9,7 @@ function HighlightDemo() {
     }
     return (
     <Highlight 
-        className="highlight-reverse"
+        className="highlight"
         text="This is the content of the highlighted text."
         props={{ id: 'my-highlight', style }} 
     />

@@ -1,8 +1,7 @@
 import { Highlight } from '../../src/highlight/Highlight';
-import './style.css';
 /**
  * In this section we're using the Highlight component providing the relative `className and text`. Feel free to use your own css and style the Highlight as you prefer.
- */
+*/
 export default {
   title: 'DCXLibrary/Typography/Highlight/Class based',
   component: Highlight,
@@ -18,7 +17,7 @@ export const Basic = {
   name: 'Basic',
   args: {
     className: 'highlight',
-    text: 'This is the content of the Highlight.'
+    text: 'This is the content of the highlighted text.'
   },
 };
 
