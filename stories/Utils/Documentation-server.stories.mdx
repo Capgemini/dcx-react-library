@@ -1,0 +1,26 @@
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs';
+
+<Meta
+  title="DCXLibrary/Utils/clientOnly"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# `clientOnly` utility
+
+A component which takes a function returning a component as a child which will be rendered client-side only or render an optional fallback component if the JS is not yet loaded.
+This component uses the hook useHydrated internally, which simplifies to use the component only for client-side rendering.
+
+A simple example is: Render a Chat component if JS loads, renders a simple Loading component if there is no JS. The Loading can have only the UI without the behaviour or be a loading spinner or skeleton.
+
+```js
+  return (
+   <ClientOnly fallback={<Loading />}>
+     {() => <Chat />}
+   </ClientOnly>
+ );
+```
