@@ -4,56 +4,56 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 describe('Heading', () => {
-  it('h1 rendered', () => {
+  it('should rendered an H1 element', () => {
     const { container } = render(
       <Heading id="test" label="This is a Level 1 Heading" level="h1" />
     );
     expect(container.querySelector('h1')).toBeInTheDocument();
   });
 
-  it('h2 rendered', () => {
+  it('should rendered an H2 element', () => {
     const { container } = render(
       <Heading id="test" label="This is a Level 2 Heading" level="h2" />
     );
     expect(container.querySelector('h2')).toBeInTheDocument();
   });
 
-  it('h3 rendered', () => {
+  it('should rendered an H3 element', () => {
     const { container } = render(
       <Heading id="test" label="This is a Level 3 Heading" level="h3" />
     );
     expect(container.querySelector('h3')).toBeInTheDocument();
   });
 
-  it('h4 rendered', () => {
+  it('should rendered an H4 element', () => {
     const { container } = render(
       <Heading id="test" label="This is a Level 4 Heading" level="h4" />
     );
     expect(container.querySelector('h4')).toBeInTheDocument();
   });
 
-  it('h5 rendered', () => {
+  it('should rendered an H5 element', () => {
     const { container } = render(
       <Heading id="test" label="This is a Level 5 Heading" level="h5" />
     );
     expect(container.querySelector('h5')).toBeInTheDocument();
   });
 
-  it('h6 rendered', () => {
+  it('should rendered an H6 element', () => {
     const { container } = render(
       <Heading id="test" label="This is a Level 6 Heading" level="h6" />
     );
     expect(container.querySelector('h6')).toBeInTheDocument();
   });
 
-  it('id attribute rendered', () => {
+  it('should rendered an id', () => {
     const { container } = render(
       <Heading id="first" label="This is a Level 1 Heading" level="h1" />
     );
     expect(container.querySelector('#first')).toBeInTheDocument();
   });
 
-  it('dcx-heading classes are rendered', () => {
+  it('should rendered a dcx-heading class', () => {
     const { container } = render(
       <Heading id="first" label="This is a Level 1 Heading" level="h1" />
     );
@@ -62,7 +62,7 @@ describe('Heading', () => {
     ).toBeInTheDocument();
   });
 
-  it('dcx-heading class and additional classes are rendered', () => {
+  it('should rendered a dcx-heading class and a user provided className', () => {
     const { container } = render(
       <Heading
         id="first"
@@ -76,7 +76,7 @@ describe('Heading', () => {
     ).toBeInTheDocument();
   });
 
-  it('the ability to provide other heading props', () => {
+  it('should provide the ability to pass other props', () => {
     const { container } = render(
       <Heading
         id="first"
@@ -89,7 +89,7 @@ describe('Heading', () => {
     expect(container.querySelector('h1[role="heading"]')).toBeInTheDocument();
   });
 
-  it('Renders content in Header', () => {
+  it('should provid the ability to pass a label', () => {
     render(
       <Heading
         id="first"

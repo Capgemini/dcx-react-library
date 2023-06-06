@@ -19,4 +19,5 @@ export { DetailsDemo } from './DetailsDemo';
 export { CharacterCountDemo } from './CharacterCountDemo';
 export { LinkDemo } from './LinkDemo';
 export { LabelDemo } from './LabelDemo';
+export { ListDemo } from './ListDemo';
 export * from './library-candidates';

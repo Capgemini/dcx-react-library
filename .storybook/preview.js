@@ -79,9 +79,19 @@ export const parameters = {
           [
             'Heading',
             ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Paragraph',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Blockquote',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
             'Label',
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Link',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'InsertText',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'KeyboardInput',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'List',
             ['Documentation', 'Live', 'Without style', 'Class based'],
           ],
           'Changelog',
@@ -97,7 +107,7 @@ export const parameters = {
         <Subtitle />
         <Description />
         <Primary />
-        <Stories includePrimary={false}/>
+        <Stories includePrimary={false} />
       </>
     ),
   },

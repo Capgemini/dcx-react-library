@@ -241,6 +241,39 @@ describe('Autocomplete', () => {
     expect(input).toBeInTheDocument();
   });
 
+  it('When defaultValue prop is changed, Autocomplete component updates.', async () => {
+    const DummyChangeState = () => {
+      const [defaultValue, setDefaultValue] = React.useState('Apple');
+      const handleClick = (value: string) => {
+        setDefaultValue(value);
+      };
+      return (
+        <>
+          <Autocomplete
+            options={['Apple', 'Banana']}
+            defaultValue={defaultValue}
+            onSelected={value => handleClick(value)}
+          />
+          <button onClick={() => handleClick('Orange')}>Orange</button>
+        </>
+      );
+    };
+  
+    render(<DummyChangeState />);
+    await act(async () => {
+      await waitFor(() => {
+        const input: any = screen.getByRole('textbox');
+        expect(input.value).toBe('Apple');
+      });
+    });
+    const button = screen.getByRole('button');
+    userEvent.click(button);
+    await waitFor(() => {
+      const input: any = screen.getByRole('textbox');
+      expect(input.value).toBe('Orange');
+    }); 
+  });
+
   it('should display available options', async () => {
     const user = userEvent.setup();
 
@@ -882,7 +915,9 @@ describe('Autocomplete', () => {
       return options
         .filter(
           (option: any) =>
-            optionName(option).toLowerCase().indexOf(queryStr) !== -1
+            optionName(option)
+              .toLowerCase()
+              .indexOf(queryStr) !== -1
         )
         .map((option: any) => {
           const commonRank = 0;
