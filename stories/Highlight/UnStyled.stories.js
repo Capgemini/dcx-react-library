@@ -11,7 +11,7 @@ export default {
 };
 
 export const Unstyled = {
-  args: {
-    text: 'This is the content of the highlighted text.'
+  render: function() {
+    return <Highlight>This is the content of the highlighted text. </Highlight>;
   },
 };

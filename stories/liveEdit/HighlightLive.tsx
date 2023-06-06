@@ -10,24 +10,24 @@ function HighlightDemo() {
     return (
     <Highlight 
         className="highlight"
-        text="This is the content of the highlighted text."
-        props={{ id: 'my-highlight', style }} 
-    />
+        props={{ id: 'my-highlight', style }}>
+    This is the content of the highlighted text.
+    </Highlight> 
     )
 }
 `.trim();
 
 const HighlightLive = () => {
-    const scope = { Highlight };
-    return (
+  const scope = { Highlight };
+  return (
     <LiveProvider code={HighlightDemo} scope={scope}>
-        <div className="container">
-            <LiveEditor className="liveEditor" aria-label="editor" />
-            <LivePreview className="livePreview" aria-label="preview" />
-        </div>
-        <LiveError className="liveError" aria-label="error" />
+      <div className="container">
+        <LiveEditor className="liveEditor" aria-label="editor" />
+        <LivePreview className="livePreview" aria-label="preview" />
+      </div>
+      <LiveError className="liveError" aria-label="error" />
     </LiveProvider>
-    );
+  );
 };
 
 export default HighlightLive;

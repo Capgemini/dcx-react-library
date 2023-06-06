@@ -2,26 +2,29 @@ import React from 'react';
 import { classNames } from '../common/utils';
 
 type HighlightProps = {
-    /**
+  /**
    * optional CSS class name
    */
-    className?: string;
-    /**
+  className?: string;
+  /**
    * content of the highlight
    */
-    text: string | number;
-    /**
+
+  children: JSX.Element | string;
+    // text: string | number;
+
+  /**
    * Additional props/attributes
    */
-    props?: React.HTMLAttributes<HTMLQuoteElement>;
+  props?: React.HTMLAttributes<HTMLQuoteElement>;
 };
 
-export const Highlight = ({ className, text, props }: HighlightProps) => {
-    const dynamicClassName = classNames(['dcx-highlight', className]);
+export const Highlight = ({ className, children, props }: HighlightProps) => {
+  const dynamicClassName = classNames(['dcx-highlight', className]);
 
-    return (
-        <mark className={dynamicClassName} {...props}>
-            {text}
-        </mark>
-        );
+  return (
+    <mark className={dynamicClassName} {...props}>
+      {children}
+    </mark>
+  );
 };
