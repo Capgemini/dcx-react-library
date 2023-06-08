@@ -9,7 +9,7 @@ type preformattedTextProps = {
   /**
    * The value of the preformatted text
    */
-  value?: string;
+  value: string;
   /**
    * Additional props/attributes
    */

@@ -20,7 +20,7 @@ export const Basic = {
   args: {
     value:
       'Text in a pre element is displayed in a fixed-width font, and it preserves both      spaces and line breaks.',
-    className: '',
+    className: 'customPreformattedText',
     id: 'user-defined-id',
     title: 'PreformattedText',
   },

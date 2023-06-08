@@ -14,7 +14,11 @@ When you import the PreformattedText component without providing any className o
 A more complex example with all the possible properties is:
 
 ```js
-<PreformattedText class="" id="user-defined-id">
+<PreformattedText
+  class="customPreformattedText"
+  id="user-defined-id"
+  props={{ style: { color: red } }}
+>
   Text in a pre element is displayed in a fixed-width font, and it preserves
   both spaces and line breaks.
 </PreformattedText>

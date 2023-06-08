@@ -7,6 +7,12 @@
   display: block;
   clear: both;
 }
+.customPreformattedText {
+  font-family: monospace;
+  color: rgb(166, 55, 192);
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
 
 @media (min-width: 40.0625em) {
   .govuk-form-group {
