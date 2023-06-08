@@ -1,13 +1,10 @@
 {
-  "window.zoomLevel": 0,
+  "window.zoomLevel": -1,
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": true,
-  "stylelint.validate": [
-    "css",
-    "scss"
-  ],
+  "stylelint.validate": ["css", "scss"],
   "files.associations": {
     "*.css": "postcss"
   }
