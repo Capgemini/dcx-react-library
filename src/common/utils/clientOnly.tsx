@@ -1,9 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-
-type clientOnlyProps = {
-  children(): ReactNode;
-  fallback?: ReactNode;
-};
+import { useEffect, useState } from 'react';
 
 let hydrating = true;
 
@@ -34,5 +29,3 @@ export const useHydrated = () => {
 
   return hydrated;
 };
-
-export const ClientOnly = ({ children, fallback = null }: clientOnlyProps) =>  useHydrated() ? <>{children()}</> : <>{fallback}</>;
