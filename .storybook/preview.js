@@ -1,5 +1,6 @@
 // https://storybook.js.org/docs/react/writing-stories/parameters#global-parameters
-import '../stories/govUkStyle.css';
+// import '../stories/govUkStyle.css';
+import '../stories/govUkStyleOfficial.css';
 import '../stories/liveEdit/style.css';
 import {
   Title,
