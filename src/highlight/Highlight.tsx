@@ -13,7 +13,7 @@ type HighlightProps = {
   /**
    * Additional props/attributes
    */
-  props?: React.HTMLAttributes<HTMLQuoteElement>;
+  props?: React.HTMLAttributes<HTMLElement>;
 };
 
 export const Highlight = ({ className, children, props }: HighlightProps) => {
