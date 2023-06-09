@@ -1,4 +1,6 @@
 import { Highlight } from '../../src/highlight/Highlight';
+import './style.css';
+
 /**
  * In this section we're using the Highlight component providing the relative `className`. Feel free to use your own css and style the Highlight as you prefer.
  */
@@ -15,14 +17,9 @@ export default {
 
 export const Basic = {
   name: 'Basic',
-  render: function(args) {
-    return (
-      <Highlight {...args}>
-        This is the content of the highlighted text.{' '}
-      </Highlight>
-    );
-  },
   args: {
-    className: 'highlight'
-  },
-};
+    className: 'highlight',
+    children: 'This is the content of the highlighted text.'
+  }
+}
+
