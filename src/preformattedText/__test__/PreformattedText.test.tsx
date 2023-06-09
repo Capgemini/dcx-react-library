@@ -16,8 +16,7 @@ describe('PreformattedText', () => {
     render(
       <PreformattedText
         className="additional-class"
-        value="
-        Text in a pre element..."
+        value="Text in a pre element..."
       />
     );
     expect(screen.getByText('Text in a pre element...')).toHaveClass(
@@ -33,24 +32,5 @@ describe('PreformattedText', () => {
     );
     const preElement = screen.getByText('Text in a pre element...');
     expect(preElement).toHaveAttribute('style', 'color: red;');
-  });
-  it('should be able to pass an id', () => {
-    const { container } = render(
-      <PreformattedText
-        value="Text in a pre element
-      is displayed in a fixed-width
-      font, and it preserves
-      both      spaces and
-      line breaks."
-        id="user_defined_id"
-      />
-    );
-    expect(container.firstChild).toHaveAttribute('id', 'user_defined_id');
-  });
-  it('should apply the provided title attribute', () => {
-    const title = 'Preformatted Text';
-    render(<PreformattedText value="Text in a pre element..." title={title} />);
-    const preElement = screen.getByText('Text in a pre element...');
-    expect(preElement).toHaveAttribute('title', title);
   });
 });

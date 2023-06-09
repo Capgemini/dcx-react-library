@@ -1,4 +1,5 @@
 import { PreformattedText } from '../../src/preformattedText/PreformattedText';
+import './PreformattedText.css';
 
 /**
  * In this section we're using the PreformattedText component  passing the relative className.
@@ -21,7 +22,5 @@ export const Basic = {
     value:
       'Text in a pre element is displayed in a fixed-width font, and it preserves both      spaces and line breaks.',
     className: 'customPreformattedText',
-    id: 'user-defined-id',
-    title: 'PreformattedText',
   },
 };
