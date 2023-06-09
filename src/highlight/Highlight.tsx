@@ -9,10 +9,7 @@ type HighlightProps = {
   /**
    * content of the highlight
    */
-
   children: JSX.Element | string;
-    // text: string | number;
-
   /**
    * Additional props/attributes
    */
