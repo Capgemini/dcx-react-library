@@ -23,6 +23,7 @@ import {
   DetailsDemo,
   CharacterCountDemo,
   LinkDemo,
+  ListDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -64,6 +65,7 @@ const App = () => (
         <Route path="/label" element={<LabelDemo />} />
         <Route path="/keyBoard" element={<KeyboardInputDemo />} />
         <Route path="/preformattedText" element={<PreformattedTextDemo />} />
+        <Route path="/list" element={<ListDemo />} />
       </Routes>
     </BrowserRouter>
   </div>
