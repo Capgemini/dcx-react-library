@@ -3,7 +3,7 @@ import './PreformattedText.css';
 
 /**
  * In this section we're using the PreformattedText component  passing the relative className.
- * Feel free to use your own css to style the formInput as you prefer.
+ * Feel free to use your own css to style the PreformattedText as you prefer.
  */
 export default {
   title: 'DCXLibrary/Typography/PreformattedText/Class based',
