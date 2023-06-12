@@ -5,6 +5,7 @@ export type BreadcrumbContextType = {
    * A CSS class for applying same styling to all the BreadcrumbItems
    */
   itemsClassName?: string;
+  itemSelectedClassName?: string;
 };
 
 export const BreadcrumbContext =

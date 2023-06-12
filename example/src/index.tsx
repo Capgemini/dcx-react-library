@@ -33,6 +33,7 @@ import { InsertTextDemo } from './components/InsertTextDemo';
 
 import { LabelDemo } from './components/LabelDemo';
 import { KeyboardInputDemo } from './components/KeyboardInputDemo';
+import { BreadcrumbDemo } from './components/BreadcrumbDemo';
 const App = () => (
   <div>
     <BrowserRouter>
@@ -64,6 +65,7 @@ const App = () => (
         <Route path="/label" element={<LabelDemo />} />
         <Route path="/keyBoard" element={<KeyboardInputDemo />} />
         <Route path="/list" element={<ListDemo />} />
+        <Route path="/breadcrumb" element={<BreadcrumbDemo />} />
       </Routes>
     </BrowserRouter>
   </div>
