@@ -1,7 +1,6 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { CharacterCount } from '../../src/characterCount/CharacterCount';
-import './style.css';
 
 const CharacterCountDemo = `
 function CharacterCountDemo() {

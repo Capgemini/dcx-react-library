@@ -1,0 +1,41 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import { ToolTip } from '../../src/tooltip/Tooltip';
+import * as ToolTiptories from './ClassBased.stories';
+
+<Meta
+  title="DCXLibrary/Form/Tooltip/Documentation"
+  component={ToolTip}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# ToolTip
+
+ToolTip component ready to use in your UI  
+ToolTip is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+A basic example of a tooltip is the following:
+
+<Canvas of={ToolTiptories.Bottom} />
+
+## Usage
+
+Use the ToolTip component when users need to show some infomration/tips.  
+An example with all the available properties is:
+
+```js
+<ToolTip
+  content={content}
+  direction="bottom"
+  className="tooltipClass"
+  background="red"
+  color="white"
+>
+  <b> Testing Bottom </b>
+</ToolTip>
+```
+
+<ArgTypes of={ToolTiptories} />

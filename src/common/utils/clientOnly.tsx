@@ -19,7 +19,7 @@ let hydrating = true;
  * );
  * ```
  */
-const useHydrated = () => {
+export const useHydrated = () => {
   let [hydrated, setHydrated] = useState(() => !hydrating);
 
   useEffect(function hydrate() {
@@ -29,5 +29,3 @@ const useHydrated = () => {
 
   return hydrated;
 };
-
-export { useHydrated };

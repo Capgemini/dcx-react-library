@@ -1,7 +1,6 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { Progress } from '../../src/progress/Progress';
-import './style.css';
 
 const ProgressDemo = `
 function ProgressDemo() {

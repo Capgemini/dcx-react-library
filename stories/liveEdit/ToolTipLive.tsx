@@ -1,7 +1,6 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { ToolTip } from '../../src/tooltip/Tooltip';
-import './style.css';
 
 const ToolTipDemo = `
 function ToolTipDemo() {

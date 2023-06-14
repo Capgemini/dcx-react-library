@@ -1,0 +1,32 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import { Progress } from '../../src/progress/Progress';
+import * as ProgressStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/Progress/Documentation" />
+
+# Progress
+
+Progress component ready to use in your UI  
+Progress is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the button component without providing any className or style associated will looks as following:
+
+<Canvas of={ProgressStories.Unstyled} />
+
+## Usage
+
+Use the progress component when users need to feedback on the progress of an event  
+An example with all the available properties is:
+
+```js
+<Progress
+  label="Progress"
+  max={100}
+  className="my-class-name"
+  id="my-id"
+  labelClassName="label-class-name"
+  value={80}
+  tabIndex={0}
+/>
+```
+
+<ArgTypes of={ProgressStories} />

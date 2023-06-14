@@ -1,0 +1,51 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as MultiUploadStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/MultiUpload/Documentation" />
+
+# MultiUpload
+
+A multi upload component ready to use in your form.  
+MultiUpload is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the button component without providing any className or style associated will looks as following:
+
+<Canvas of={MultiUploadStories.Unstyled} />
+
+## Usage
+
+Use the multi upload component when users need to upload file(s).  
+It provides a conventional file upload with a label, hint text and error message.  
+An example with all the available properties is:
+
+```js
+<MultiUpload
+  name="file-upload"
+  acceptedFormats=".json"
+  className="some-class-name"
+  error={{
+    text: 'error message',
+    className: 'error class names',
+    id: 'error-id',
+    visuallyHiddenText: {
+      text: 'visuallyHiddenText',
+      className: 'visually hidden class',
+    },
+  }}
+  hint={{
+    text: 'hint text',
+    className: 'classes for hint',
+    id: 'hint-id',
+  }}
+  id="multiupload-id"
+  inputProperties={{
+    className: 'class-name',
+  }}
+  label="Upload Label"
+  labelProperties={{
+    className: 'class name for label',
+  }}
+  onChange={onChangeHandler}
+/>
+```
+
+<ArgTypes of={MultiUploadStories} />

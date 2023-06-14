@@ -1,0 +1,39 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs';
+import * as DetailsStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Details/Documentation" />
+
+# Details
+
+Details component ready to use in your project  
+Details is a UI/UX agnostic component so you need to provide your style to create the look and feel that you need.  
+Use the Details component to make a page easier to scan when it contains information that only some users will need.  
+When you import the button component without providing any className or style associated will looks as following:
+
+<Canvas of={DetailsStories.Unstyled} />
+
+An example with all the available properties is:
+
+```jsx
+<Details
+  summary="my-summary"
+  detailsClassName="details-class-name"
+  detailsTextClassName="details-text-class-name"
+  openClassName="custom-class-name"
+  summaryClassName="summary-class-name"
+  summaryTextClassName="summar-text-class-name"
+  summaryTextProps={{ id: 'summary-text-id' }}
+  open={true}
+  tabIndex={0}
+>
+  my-detail
+</Details>
+```
+
+# Details
+
+## Properties
+
+described below are the list of all the available properties of a Details component, the one marked with (\*) are mandatory the other instead are optional.
+
+<ArgTypes of={DetailsStories} />
