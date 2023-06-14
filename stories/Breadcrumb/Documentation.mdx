@@ -14,10 +14,22 @@ When you import the List component without providing any className or style asso
 A more complex example with all the possible properties is:
 
 ```js
-<Breadcrumb className="myclass" itemsClassName="myclass">
-  <BreadcrumbItem className="myclass"> content 1 </BreadcrumbItem>
-  <BreadcrumbItem className="myclass"> content 2 </BreadcrumbItem>
-  <BreadcrumbItem className="myclass"> content 3 </BreadcrumbItem>
+<Breadcrumb
+  className="myStyle"
+  itemsClassName="myStyle"
+  separatorItem={<span className="separator"> &gt; </span>}
+  itemSelectedClassName="myStyle"
+  breadcrumbsProps={{ style: { color: 'red' } }}
+>
+  <BreadcrumbItem
+    selectedClassName="myStyle"
+    breadcrumbItemProps={{ style: { color: 'red' } }}
+    className="myStyle"
+    selected={true}
+  >
+    content
+  </BreadcrumbItem>
+  <BreadcrumbItem5>content 2</BreadcrumbItem>
 </Breadcrumb>
 ```
 

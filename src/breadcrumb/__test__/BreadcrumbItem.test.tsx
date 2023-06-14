@@ -67,14 +67,55 @@ describe('BreadcrumbItem', () => {
     expect(breadcrumbItems[2]).not.toHaveClass('mySelectedClass');
   });
 
-  xit('selectedClassName', () => {
+  it('show selected classname on only selected breadcrumb item with itemSelectedClassName', () => {
     const { container } = render(
-      <Breadcrumb>
-        <BreadcrumbItem className="myClass"> content 1 </BreadcrumbItem>
-        <BreadcrumbItem className="myClass"> content 2 </BreadcrumbItem>
-        <BreadcrumbItem className="myClass"> content 3 </BreadcrumbItem>
+      <Breadcrumb itemSelectedClassName="mySelectedClass">
+        <BreadcrumbItem className="myClass">content 1</BreadcrumbItem>
+        <BreadcrumbItem className="myClass" selected>
+          content 2
+        </BreadcrumbItem>
+        <BreadcrumbItem className="myClass">content 3</BreadcrumbItem>
       </Breadcrumb>
     );
-    expect(container.querySelectorAll('li.myClass').length).toBe(3);
+
+    expect(container.querySelectorAll('li.mySelectedClass').length).toBe(1);
+
+    const breadcrumbItems = container.querySelectorAll('.myClass');
+    expect(breadcrumbItems[0]).not.toHaveClass('mySelectedClass');
+    expect(breadcrumbItems[1]).toHaveClass('mySelectedClass myClass');
+    expect(breadcrumbItems[2]).not.toHaveClass('mySelectedClass');
+  });
+
+  it('should be able to render seperatorItems', () => {
+    const { container } = render(
+      <Breadcrumb
+        className="govuk-breadcrumbs govuk-breadcrumbs__list"
+        separatorItem={<div className="separator"> &gt; </div>}
+      >
+        <BreadcrumbItem selected={true}>content 1</BreadcrumbItem>
+        <BreadcrumbItem>content 2</BreadcrumbItem>
+        <BreadcrumbItem>content 3</BreadcrumbItem>
+      </Breadcrumb>
+    );
+    const separators = container.getElementsByClassName('separator');
+    expect(separators.length).toBe(3);
+  });
+
+  it('should be able to pass some extra properties', () => {
+    const { container } = render(
+      <Breadcrumb>
+        <BreadcrumbItem
+          className="myStyle"
+          breadcrumbItemProps={{ style: { color: 'red' } }}
+        >
+          content 1
+        </BreadcrumbItem>
+        <BreadcrumbItem> content 2 </BreadcrumbItem>
+        <BreadcrumbItem> content 3 </BreadcrumbItem>
+      </Breadcrumb>
+    );
+    const labelElement = container.getElementsByClassName('myStyle');
+    const style = window.getComputedStyle(labelElement[0]);
+    expect(style.color).toBe('red');
   });
 });

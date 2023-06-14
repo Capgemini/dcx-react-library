@@ -83,3 +83,26 @@ export const selectedBreadcrumbItem = {
     );
   },
 };
+
+export const BreadcrumbItemSeperator = {
+  name: 'Breadcrumb Items with seperator',
+  render: function () {
+    return (
+      <Breadcrumb
+        className="govuk-breadcrumbs govuk-breadcrumbs__list"
+        itemsClassName="breadcrumbItems"
+        separatorItem={<span className="separator"> &gt; </span>}
+      >
+        <BreadcrumbItem selectedClassName="selClass">
+          <Link value="content 1" className="govuk-breadcrumbs__link" to="#" />
+        </BreadcrumbItem>
+        <BreadcrumbItem selected={true} selectedClassName="selClass">
+          <Link value="content 2" className="govuk-breadcrumbs__link" to="#" />
+        </BreadcrumbItem>
+        <BreadcrumbItem selectedClassName="selClass">
+          <Link value="content 3" className="govuk-breadcrumbs__link" to="#" />
+        </BreadcrumbItem>
+      </Breadcrumb>
+    );
+  },
+};

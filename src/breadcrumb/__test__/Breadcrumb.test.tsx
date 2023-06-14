@@ -63,4 +63,20 @@ describe('Breadcrumb', () => {
     ).toBeInTheDocument();
     expect(container.querySelectorAll('li.myClassParentA').length).toBe(3);
   });
+
+  it('should be able to pass some extra properties', () => {
+    const { container } = render(
+      <Breadcrumb
+        className="myStyle"
+        breadcrumbsProps={{ style: { color: 'red' } }}
+      >
+        <BreadcrumbItem> content 1 </BreadcrumbItem>
+        <BreadcrumbItem> content 2 </BreadcrumbItem>
+        <BreadcrumbItem> content 3 </BreadcrumbItem>
+      </Breadcrumb>
+    );
+    const labelElement = container.getElementsByClassName('myStyle');
+    const style = window.getComputedStyle(labelElement[0]);
+    expect(style.color).toBe('red');
+  });
 });

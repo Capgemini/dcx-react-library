@@ -19,6 +19,10 @@ export type BreadcrumItemProps = {
    * selecting a BreadcrumbItem
    */
   selected?: boolean;
+  /**
+   * allow to specify a user with Additional props/attributes
+   */
+  breadcrumbItemProps?: React.HTMLProps<HTMLLIElement>;
 };
 
 export const BreadcrumbItem = ({
@@ -26,8 +30,10 @@ export const BreadcrumbItem = ({
   children,
   selectedClassName,
   selected,
+  breadcrumbItemProps,
 }: BreadcrumItemProps) => {
-  const { itemsClassName, itemSelectedClassName } = useBreadcrumb();
+  const { itemsClassName, itemSelectedClassName, separatorItem } =
+    useBreadcrumb();
 
   const classes: string = classNames([
     className,
@@ -38,5 +44,12 @@ export const BreadcrumbItem = ({
     },
   ]);
 
-  return <li className={classes}>{children}</li>;
+  return (
+    <>
+      <li className={classes} {...breadcrumbItemProps}>
+        {separatorItem}
+        {children}
+      </li>
+    </>
+  );
 };

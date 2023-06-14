@@ -19,6 +19,14 @@ export type BreadcrumbProps = {
    * A CSS class for applying the same styling to all the BreadcrumbItems
    */
   itemSelectedClassName?: string;
+  /**
+   * allow to specify a user to add a separator
+   */
+  separatorItem?: JSX.Element;
+  /**
+   * allow to specify a user with Additional props/attributes
+   */
+  breadcrumbsProps?: React.HTMLAttributes<HTMLOListElement>;
 };
 
 export const Breadcrumb = ({
@@ -26,8 +34,14 @@ export const Breadcrumb = ({
   itemsClassName,
   className,
   itemSelectedClassName,
+  separatorItem,
+  breadcrumbsProps,
 }: BreadcrumbProps) => (
-  <BreadcrumbContext.Provider value={{ itemsClassName, itemSelectedClassName }}>
-    <ol className={classNames([className])}>{children}</ol>
+  <BreadcrumbContext.Provider
+    value={{ itemsClassName, itemSelectedClassName, separatorItem }}
+  >
+    <ol className={classNames([className])} {...breadcrumbsProps}>
+      {children}
+    </ol>
   </BreadcrumbContext.Provider>
 );
