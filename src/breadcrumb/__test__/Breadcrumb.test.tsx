@@ -8,15 +8,17 @@ describe('Breadcrumb', () => {
   it('should display the text of the BreadcrumbItem', () => {
     render(
       <Breadcrumb>
-        <BreadcrumbItem>content</BreadcrumbItem>
+        <BreadcrumbItem>content 1</BreadcrumbItem>
+        <BreadcrumbItem>content 2</BreadcrumbItem>
       </Breadcrumb>
     );
-    expect(screen.getByText('content')).toBeInTheDocument();
+    expect(screen.getByText('content 1')).toBeInTheDocument();
   });
 
   it('should be able to render the user specific className for Breadcrumb', () => {
     const { container } = render(
       <Breadcrumb className="myClass">
+        <BreadcrumbItem>content</BreadcrumbItem>
         <BreadcrumbItem>content</BreadcrumbItem>
       </Breadcrumb>
     );

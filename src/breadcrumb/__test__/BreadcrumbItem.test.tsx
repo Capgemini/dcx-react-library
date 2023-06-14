@@ -8,15 +8,17 @@ describe('BreadcrumbItem', () => {
   it('should display the text of the BreadcrumbItem', () => {
     render(
       <Breadcrumb>
-        <BreadcrumbItem> content </BreadcrumbItem>
+        <BreadcrumbItem> content 1 </BreadcrumbItem>
+        <BreadcrumbItem> content 2 </BreadcrumbItem>
       </Breadcrumb>
     );
-    expect(screen.getByText('content')).toBeInTheDocument();
+    expect(screen.getByText('content 1')).toBeInTheDocument();
   });
 
   it('should be able to render the user specific className for BreadcrumbItem', () => {
     const { container } = render(
       <Breadcrumb>
+        <BreadcrumbItem className="myClass"> content </BreadcrumbItem>
         <BreadcrumbItem className="myClass"> content </BreadcrumbItem>
       </Breadcrumb>
     );
@@ -90,7 +92,7 @@ describe('BreadcrumbItem', () => {
     const { container } = render(
       <Breadcrumb
         className="govuk-breadcrumbs govuk-breadcrumbs__list"
-        separatorItem={<div className="separator"> &gt; </div>}
+        separatorItem={<span className="separator"> &gt; </span>}
       >
         <BreadcrumbItem selected={true}>content 1</BreadcrumbItem>
         <BreadcrumbItem>content 2</BreadcrumbItem>
@@ -98,7 +100,7 @@ describe('BreadcrumbItem', () => {
       </Breadcrumb>
     );
     const separators = container.getElementsByClassName('separator');
-    expect(separators.length).toBe(3);
+    expect(separators.length).toBe(2);
   });
 
   it('should be able to pass some extra properties', () => {

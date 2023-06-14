@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { classNames } from '../common';
 import { BreadcrumbContext } from './UseBreadcrumb';
 
@@ -6,7 +6,7 @@ export type BreadcrumbProps = {
   /**
    * allow to specify a custom content
    */
-  children: ReactNode;
+  children: JSX.Element[];
   /**
    * A CSS class for styling Breadcrumb
    */
@@ -38,10 +38,16 @@ export const Breadcrumb = ({
   breadcrumbsProps,
 }: BreadcrumbProps) => (
   <BreadcrumbContext.Provider
-    value={{ itemsClassName, itemSelectedClassName, separatorItem }}
+    value={{
+      itemsClassName,
+      itemSelectedClassName,
+      separatorItem,
+    }}
   >
     <ol className={classNames([className])} {...breadcrumbsProps}>
-      {children}
+      {React.Children.map(children, (child: JSX.Element, index: number) =>
+        React.cloneElement(child, { isFirst: index === 0 })
+      )}
     </ol>
   </BreadcrumbContext.Provider>
 );

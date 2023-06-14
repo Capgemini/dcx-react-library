@@ -10,7 +10,7 @@ export type BreadcrumbContextType = {
    */
   itemSelectedClassName?: string;
   /**
-   *
+   * allow to specify a user to add a separator
    */
   separatorItem?: JSX.Element;
 };

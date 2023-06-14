@@ -91,16 +91,16 @@ export const BreadcrumbItemSeperator = {
       <Breadcrumb
         className="govuk-breadcrumbs govuk-breadcrumbs__list"
         itemsClassName="breadcrumbItems"
-        separatorItem={<span className="separator"> &gt; </span>}
+        separatorItem={<span className="separator"> / </span>}
       >
         <BreadcrumbItem selectedClassName="selClass">
-          <Link value="content 1" className="govuk-breadcrumbs__link" to="#" />
+          <Link value="content 1" className="link" to="#" />
         </BreadcrumbItem>
         <BreadcrumbItem selected={true} selectedClassName="selClass">
-          <Link value="content 2" className="govuk-breadcrumbs__link" to="#" />
+          <Link value="content 2" to="#" className="link" />
         </BreadcrumbItem>
         <BreadcrumbItem selectedClassName="selClass">
-          <Link value="content 3" className="govuk-breadcrumbs__link" to="#" />
+          <Link value="content 3" to="#" className="link" />
         </BreadcrumbItem>
       </Breadcrumb>
     );

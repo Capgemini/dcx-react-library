@@ -23,6 +23,10 @@ export type BreadcrumItemProps = {
    * allow to specify a user with Additional props/attributes
    */
   breadcrumbItemProps?: React.HTMLProps<HTMLLIElement>;
+  /**
+   * to check the first item among childrens for skipping the separator element
+   */
+  isFirst?: boolean;
 };
 
 export const BreadcrumbItem = ({
@@ -31,6 +35,7 @@ export const BreadcrumbItem = ({
   selectedClassName,
   selected,
   breadcrumbItemProps,
+  isFirst,
 }: BreadcrumItemProps) => {
   const { itemsClassName, itemSelectedClassName, separatorItem } =
     useBreadcrumb();
@@ -47,7 +52,7 @@ export const BreadcrumbItem = ({
   return (
     <>
       <li className={classes} {...breadcrumbItemProps}>
-        {separatorItem}
+        {!isFirst && separatorItem}
         {children}
       </li>
     </>
