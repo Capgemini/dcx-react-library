@@ -185,6 +185,7 @@ export const CharacterCount = forwardRef(
 
       setShowMessage(overThreshold || !threshold);
       if (remaining <= 0) setOverLimitBy(-remaining);
+      if (remaining > 0) setOverLimitBy(0);
       setRemainingCount(remaining);
     };
 
