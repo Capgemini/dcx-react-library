@@ -67,6 +67,8 @@ export const parameters = {
             'Tooltip',
             ['Documentation', 'Live', 'Class based'],
           ],
+          'Breadcrumb',
+          ['Documentation', 'Live', 'Without style', 'Class based'],
           'CopyToClipboard',
           ['Documentation', 'Live', 'Without style', 'Class based'],
           'Details',
