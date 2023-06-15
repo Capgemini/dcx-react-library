@@ -14,7 +14,7 @@ type CodeSnippetProps = {
     /**
    * Additional props/attributes
    */
-    props?: React.HTMLAttributes<HTMLQuoteElement>;
+    props?: React.HTMLAttributes<HTMLElement>;
 };
 
 
