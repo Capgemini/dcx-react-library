@@ -3,7 +3,7 @@ import { Link } from '../../src/link';
 import './style.css';
 
 /**
- * In this section we're using the List component providing the **GovUk style** passing the relative className.
+ * In this section we're using the Breadcrumb component providing the **GovUk style** passing the relative className.
  * Feel free to use your own css to style the formInput as you prefer.
  */
 export default {
@@ -49,13 +49,13 @@ export const selectedBreadcrumb = {
         itemSelectedClassName="selClass"
       >
         <BreadcrumbItem selected={true}>
-          <Link value="content 1" className="govuk-breadcrumbs__link" to="#" />
+          <Link value="content 1" className="breadcrumb_link" to="#" />
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <Link value="content 2" className="govuk-breadcrumbs__link" to="#" />
+          <Link value="content 2" className="breadcrumb_link" to="#" />
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <Link value="content 3" className="govuk-breadcrumbs__link" to="#" />
+          <Link value="content 3" className="breadcrumb_link" to="#" />
         </BreadcrumbItem>
       </Breadcrumb>
     );
@@ -71,13 +71,13 @@ export const selectedBreadcrumbItem = {
         itemsClassName="govuk-breadcrumbs__list-item"
       >
         <BreadcrumbItem selectedClassName="selClass">
-          <Link value="content 1" className="govuk-breadcrumbs__link" to="#" />
+          <Link value="content 1" className="breadcrumb_link" to="#" />
         </BreadcrumbItem>
         <BreadcrumbItem selected={true} selectedClassName="selClass">
-          <Link value="content 2" className="govuk-breadcrumbs__link" to="#" />
+          <Link value="content 2" className="breadcrumb_link" to="#" />
         </BreadcrumbItem>
         <BreadcrumbItem selectedClassName="selClass">
-          <Link value="content 3" className="govuk-breadcrumbs__link" to="#" />
+          <Link value="content 3" className="breadcrumb_link" to="#" />
         </BreadcrumbItem>
       </Breadcrumb>
     );
@@ -85,7 +85,7 @@ export const selectedBreadcrumbItem = {
 };
 
 export const BreadcrumbItemSeperator = {
-  name: 'Breadcrumb Items with seperator',
+  name: 'Breadcrumb Items with a custom seperator and a style not from govUk ',
   render: function () {
     return (
       <Breadcrumb
@@ -94,13 +94,13 @@ export const BreadcrumbItemSeperator = {
         separatorItem={<span className="separator"> / </span>}
       >
         <BreadcrumbItem selectedClassName="selClass">
-          <Link value="content 1" className="link" to="#" />
+          <Link value="content 1" className="breadcrumb_link" to="#" />
         </BreadcrumbItem>
         <BreadcrumbItem selected={true} selectedClassName="selClass">
-          <Link value="content 2" to="#" className="link" />
+          <Link value="content 2" to="#" className="breadcrumb_link" />
         </BreadcrumbItem>
         <BreadcrumbItem selectedClassName="selClass">
-          <Link value="content 3" to="#" className="link" />
+          <Link value="content 3" to="#" className="breadcrumb_link" />
         </BreadcrumbItem>
       </Breadcrumb>
     );

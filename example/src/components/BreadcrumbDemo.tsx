@@ -22,8 +22,11 @@ export const BreadcrumbDemo = () => {
         </BreadcrumbItem>
       </Breadcrumb>
 
-      <h1>Demo of Breadcrumb with selected and selectedClassName</h1>
-      <Breadcrumb>
+      <h2>Demo of Breadcrumb with selected and selectedClassName</h2>
+      <Breadcrumb
+        className="govuk-breadcrumbs govuk-breadcrumbs__list"
+        itemsClassName="govuk-breadcrumbs__list-item"
+      >
         <BreadcrumbItem selected selectedClassName="selClass">
           <Link value="content 1" to="#" />
         </BreadcrumbItem>
@@ -35,33 +38,38 @@ export const BreadcrumbDemo = () => {
         </BreadcrumbItem>
       </Breadcrumb>
 
-      <h1>Demo of Breadcrumb with selected and itemSelectedClassName</h1>
-      <Breadcrumb itemSelectedClassName="selClass">
+      <h2>Demo of Breadcrumb with selected and itemSelectedClassName</h2>
+      <Breadcrumb
+        itemSelectedClassName="selClass"
+        className="govuk-breadcrumbs govuk-breadcrumbs__list"
+        itemsClassName="govuk-breadcrumbs__list-item"
+      >
         <BreadcrumbItem>
-          <Link value="content 1" to="#" />
+          <Link value="content 1" to="#" className="breadcrumb_link" />
         </BreadcrumbItem>
         <BreadcrumbItem selected>
-          <Link value="content 2" to="#" />
+          <Link value="content 2" to="#" className="breadcrumb_link" />
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <Link value="content 3" to="#" />
+          <Link value="content 3" to="#" className="breadcrumb_link" />
         </BreadcrumbItem>
       </Breadcrumb>
 
-      <h1>Demo of Breadcrumb with Separator</h1>
+      <h2>Demo of Breadcrumb with Separator</h2>
       <Breadcrumb
         separatorItem={<span> / </span>}
+        className="govuk-breadcrumbs govuk-breadcrumbs__list"
         itemSelectedClassName="selClass"
         itemsClassName="breadcrumbItems"
       >
         <BreadcrumbItem>
-          <Link value="content 1" to="#" />
+          <Link value="content 1" to="#" className="breadcrumb_link" />
         </BreadcrumbItem>
         <BreadcrumbItem selected>
-          <Link value="content 2" to="#" />
+          <Link value="content 2" to="#" className="breadcrumb_link" />
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <Link value="content 3" to="#" />
+          <Link value="content 3" to="#" className="breadcrumb_link" />
         </BreadcrumbItem>
       </Breadcrumb>
     </>
