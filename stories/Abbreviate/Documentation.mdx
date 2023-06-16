@@ -1,0 +1,26 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as AbbreviateStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Typography/Abbreviate/Documentation" />
+
+# Abbreviate
+
+A abbreviate component ready to use in your Typography.  
+Abbreviate is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the abbreviate component without providing any className or style associated will looks as following:  
+
+<Canvas of={AbbreviateStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+<Abbreviate
+  title="Laugh Out Loud"
+  value="LOL"
+  className="my-classname"
+/>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={AbbreviateStories} />
