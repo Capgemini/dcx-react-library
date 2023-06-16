@@ -23,6 +23,7 @@ import {
   DetailsDemo,
   CharacterCountDemo,
   LinkDemo,
+  ListDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -32,6 +33,8 @@ import { InsertTextDemo } from './components/InsertTextDemo';
 
 import { LabelDemo } from './components/LabelDemo';
 import { KeyboardInputDemo } from './components/KeyboardInputDemo';
+import { PreformattedTextDemo } from './components/PreformattedTextDemo';
+import { BreadcrumbDemo } from './components/BreadcrumbDemo';
 const App = () => (
   <div>
     <BrowserRouter>
@@ -62,6 +65,9 @@ const App = () => (
         <Route path="/link" element={<LinkDemo />} />
         <Route path="/label" element={<LabelDemo />} />
         <Route path="/keyBoard" element={<KeyboardInputDemo />} />
+        <Route path="/preformattedText" element={<PreformattedTextDemo />} />
+        <Route path="/list" element={<ListDemo />} />
+        <Route path="/breadcrumb" element={<BreadcrumbDemo />} />
       </Routes>
     </BrowserRouter>
   </div>

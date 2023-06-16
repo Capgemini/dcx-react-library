@@ -1,5 +1,5 @@
 // https://storybook.js.org/docs/react/writing-stories/parameters#global-parameters
-import '../stories/govUkStyle.css';
+import '../stories/govUkStyleOfficial.css';
 import '../stories/liveEdit/style.css';
 import {
   Title,
@@ -67,6 +67,8 @@ export const parameters = {
             'Tooltip',
             ['Documentation', 'Live', 'Class based'],
           ],
+          'Breadcrumb',
+          ['Documentation', 'Live', 'Without style', 'Class based'],
           'CopyToClipboard',
           ['Documentation', 'Live', 'Without style', 'Class based'],
           'Details',
@@ -77,6 +79,10 @@ export const parameters = {
           ['Documentation', 'Live', 'Without style', 'Class based'],
           'Typography',
           [
+            'Abbreviate',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Blockquote',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
             'Heading',
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Paragraph',
@@ -92,6 +98,10 @@ export const parameters = {
             'InsertText',
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'KeyboardInput',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Highlight',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+            'List',
             ['Documentation', 'Live', 'Without style', 'Class based'],
           ],
           'Changelog',

@@ -1,0 +1,26 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as HighlightStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Typography/Highlight/Documentation" />
+
+# Highlight
+
+A Highlight component ready to use in your Typography.  
+Highlight is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the Highlight component without providing any className or style associated will looks as following:  
+
+<Canvas of={HighlightStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+<Highlight
+  className="my-classname"
+  props={{ id: 'my-highlight' }}>
+  This is the content of the highlighted text.
+</Highlight>  
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={HighlightStories} />
