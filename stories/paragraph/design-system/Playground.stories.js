@@ -1,9 +1,7 @@
 import { Paragraph } from '../../../src/paragraph/Paragraph';
-/**
-* Here we display the component in its natural paragraph, importing only the base Design System styles.
-*/
+
 export default {
-  title:'DCXLibrary/Typography/Paragraph/Design system/Default',
+  title:'DCXLibrary/Typography/Paragraph/Design system',
   component: Paragraph,
   decorators:[
     (getStory) => {
@@ -14,15 +12,14 @@ export default {
   parameters:{
     options: { showPanel: true },
     actions: { disable: true },
-  },
-  tags: ['autodocs'] 
+  }
 }
 
-export const Default = {  
-  name: 'Default',
+
+export const Playground = {
+  name: 'Playground',
   args: {
     className: 'govuk-body',
     value: 'This is the content of the paragraph.',
   },
 };
-

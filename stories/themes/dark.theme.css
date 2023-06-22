@@ -10,3 +10,11 @@
   --dcx-color-text-formcontrol_label: white;
   --dcx-color-text-formcontrol_label-error: #f98e86;
 }
+
+.dcx-paragraph {
+  --dcx-color-chevron-formcontrol: white;
+  --dcx-color-text-formcontrol: white;
+  --dcx-color-text-formcontrol_label: white;
+  --dcx-color-text-formcontrol_hint: #999;
+  --dcx-color-outline-formcontrol: darkorange;
+}

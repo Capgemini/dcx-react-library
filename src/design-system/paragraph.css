@@ -1,0 +1,6 @@
+.dcx-paragraph {
+    color: token('color-text-paragraph');
+    font-size: token('font-size-paragraph');
+    font-family: token('font-family-paragraph');
+    font-weight: token('font-weight-paragraph');
+}
