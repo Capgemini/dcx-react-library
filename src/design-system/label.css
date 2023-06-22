@@ -1,0 +1,9 @@
+.dcx-label {
+  color: token('color-text-formcontrol_label');
+  font-weight: token('font-weight-formcontrol_label');
+  font-size: token('font-formcontrol_label-size');
+
+  &.dcx-error-message {
+    color: token('color-text-formcontrol_label-error');
+  }
+}
