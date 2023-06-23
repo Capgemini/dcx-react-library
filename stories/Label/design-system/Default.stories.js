@@ -25,6 +25,7 @@ export const Default = {
     value: 'Default label',
   },
 };
+
 export const Error = {
   name: 'Error',
   args: {
@@ -32,6 +33,7 @@ export const Error = {
     className: 'dcx-error-message',
   },
 };
+
 export const Filled = {
   name: 'Filled',
   args: {
