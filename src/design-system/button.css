@@ -1,0 +1,101 @@
+/*
+ * Default
+ */
+
+.dcx-button {
+  border-radius: token('border-radius-action');
+  font-size: token('font-action_label-size');
+  line-height: token('font-action_label-line-height');
+  border-width: token('border-width-action');
+  border-style: token('border-style-action');
+  padding: token('spacing-y-action') token('spacing-x-action');
+  margin: 0;
+  display: inline-flex;
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  column-gap: token('spacing-x-action_label');
+  cursor: pointer;
+  box-shadow: token('box-shadow-action');
+}
+
+.dcx-button,
+.dcx-button--primary {
+  background-color: token('color-background-action-default-primary');
+  color: token('color-text-action-default-primary');
+  border-color: token('border-color-action-default-primary');
+  &:hover {
+    color: token('color-text-action-hover-primary');
+    background-color: token('color-background-action-hover-primary');
+    border-color: token('border-color-action-hover-primary');
+  }
+  &:focus {
+    color: token('color-text-action-focus-primary');
+    background-color: token('color-background-action-focus-primary');
+    border-color: token('border-color-action-focus-primary');
+  }
+  &:active {
+    color: token('color-text-action-active-primary');
+    background-color: token('color-background-action-active-primary');
+    border-color: token('border-color-action-active-primary');
+  }
+  &:disabled {
+    color: token('color-text-action-disabled-primary');
+    background-color: token('color-background-action-disabled-primary');
+    border-color: token('border-color-action-disabled-primary');
+    cursor: not-allowed;
+  }
+}
+
+.dcx-button--secondary {
+  background-color: token('color-background-action-default-secondary');
+  color: token('color-text-action-default-secondary');
+  border-color: token('border-color-action-default-secondary');
+  &:hover {
+    color: token('color-text-action-hover-secondary');
+    background-color: token('color-background-action-hover-secondary');
+    border-color: token('border-color-action-hover-secondary');
+  }
+  &:focus {
+    color: token('color-text-action-focus-secondary');
+    background-color: token('color-background-action-focus-secondary');
+    border-color: token('border-color-action-focus-secondary');
+  }
+  &:active {
+    color: token('color-text-action-active-secondary');
+    background-color: token('color-background-action-active-secondary');
+    border-color: token('border-color-action-active-secondary');
+  }
+  &:disabled {
+    color: token('color-text-action-disabled-secondary');
+    background-color: token('color-background-action-disabled-secondary');
+    border-color: token('border-color-action-disabled-secondary');
+  }
+}
+
+.dcx-button--tertiary {
+  background-color: token('color-background-action-default-tertiary');
+  color: token('color-text-action-default-tertiary');
+  border-color: token('border-color-action-default-tertiary');
+  &:hover {
+    color: token('color-text-action-hover-tertiary');
+    background-color: token('color-background-action-hover-tertiary');
+    border-color: token('border-color-action-hover-tertiary');
+  }
+  &:focus {
+    color: token('color-text-action-focus-tertiary');
+    background-color: token('color-background-action-focus-tertiary');
+    border-color: token('border-color-action-focus-tertiary');
+  }
+  &:active {
+    color: token('color-text-action-active-tertiary');
+    background-color: token('color-background-action-active-tertiary');
+    border-color: token('border-color-action-active-tertiary');
+  }
+  &:disabled {
+    color: token('color-text-action-disabled-tertiary');
+    background-color: token('color-background-action-disabled-tertiary');
+    border-color: token('border-color-action-disabled-tertiary');
+  }
+}

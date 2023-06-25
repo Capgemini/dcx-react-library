@@ -1,6 +1,11 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-  "include": ["src", "types", "bin/dcx-generate-presentational-component"],
+  "include": [
+    "src",
+    "types",
+    "bin/dcx-generate-presentational-component",
+    "stories/Utils/getRootStylesByClass.ts"
+  ],
   "compilerOptions": {
     "module": "esnext",
     "lib": ["dom", "esnext"],
