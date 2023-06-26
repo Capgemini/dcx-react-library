@@ -21,7 +21,7 @@ export default {
     actions: { disable: true },
   },
   tags: ['autodocs'] 
-}
+};
 
 
 export const ShowCase = {
@@ -44,7 +44,6 @@ export const ShowCase = {
 export const Default = {  
   name: 'Default',
   args: {
-    className: 'govuk-body',
     value: 'This is the content of the paragraph.',
   },
 };

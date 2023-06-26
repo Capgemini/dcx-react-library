@@ -21,7 +21,6 @@ export default {
 export const Default = {  
   name: 'Default',
   args: {
-    className: 'govuk-body',
     value: 'This is the content of the paragraph.',
   },
 };

@@ -20,7 +20,7 @@ export default {
     actions: { disable: true },
   },
   tags: ['autodocs'] 
-}
+};
 
 export const ShowCase = {
   parameters: {
@@ -32,17 +32,23 @@ export const ShowCase = {
       ],
     },
   },
-  render: () => (
-    <LiveProvider code={style.replace('.dcx-paragraph', ':root')} disabled={true} language="css">
-      <LiveEditor className="liveEditor" aria-label="editor" />
-    </LiveProvider>
-  )
+  render: () => {
+    const componentStyle = /\.dcx-paragraph {([\s\S]*)}/g.exec(style);
+    let themeCode = '';
+    if (componentStyle) {
+      themeCode = `:root {${componentStyle[0]}}`;
+    }
+    return (
+      <LiveProvider code={themeCode} disabled={true} language="css">
+        <LiveEditor className="liveEditor" aria-label="editor" />
+      </LiveProvider>
+    );
+  }
 };
 
 export const Default = {  
   name: 'Default',
   args: {
-    className: 'govuk-body',
     value: 'This is the content of the paragraph.',
   },
 };

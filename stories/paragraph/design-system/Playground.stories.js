@@ -19,7 +19,6 @@ export default {
 export const Playground = {
   name: 'Playground',
   args: {
-    className: 'govuk-body',
     value: 'This is the content of the paragraph.',
   },
 };

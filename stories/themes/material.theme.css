@@ -6,12 +6,3 @@
   --dcx-color-chevron-formcontrol-floating: rgba(0, 0, 0, 0.6);
   --dcx-color-chevron-formcontrol-floating-filled: rgba(0, 0, 0, 0.6);
 }
-
-.dcx-paragraph {
-  --dcx-color-text-formcontrol-filled: #000000de;
-  --dcx-color-text-formcontrol_label-floating: rgba(0, 0, 0, 0.6);
-  --dcx-color-text-formcontrol_label-floating-filled: rgba(0, 0, 0, 0.6);
-  --dcx-color-text-formcontrol_hint: #000000de;
-  --dcx-color-chevron-formcontrol-floating: rgba(0, 0, 0, 0.6);
-  --dcx-color-chevron-formcontrol-floating-filled: rgba(0, 0, 0, 0.6);
-}

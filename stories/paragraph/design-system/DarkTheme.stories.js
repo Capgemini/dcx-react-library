@@ -52,7 +52,6 @@ export const Default = {
     },
   },
   args: {
-    className: 'govuk-body',
     value: 'This is the content of the paragraph.',
   },
 };
