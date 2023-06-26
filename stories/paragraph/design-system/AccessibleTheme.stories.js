@@ -36,7 +36,7 @@ export const ShowCase = {
     const componentStyle = /\.dcx-paragraph {([\s\S]*)}/g.exec(style);
     let themeCode = '';
     if (componentStyle) {
-      themeCode = `:root {${componentStyle[0]}}`;
+      themeCode = `:root {${componentStyle[1]}}`;
     }
     return (
       <LiveProvider code={themeCode} disabled={true} language="css">
