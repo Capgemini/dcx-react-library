@@ -8,10 +8,9 @@
 }
 
 .dcx-label {
-  --dcx-border-radius-formcontrol: 0px;
-  --dcx-spacing-y-formcontrol: 30px;
-  --dcx-font-formcontrol_hint-size: 16px;
-  --dcx-font-formcontrol_hint-line-height: 20px;
-  --dcx-font-formcontrol_error-size: 16px;
-  --dcx-font-formcontrol_error-line-height: 20px;
+  --dcx-color-text-formcontrol_label: #000;
+  &.dcx-error-message {
+    --dcx-color-text-formcontrol_label-error: red;
+    --dcx-font-weight-formcontrol_label: bold;
+  }
 }
