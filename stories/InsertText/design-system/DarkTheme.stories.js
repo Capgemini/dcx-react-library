@@ -32,6 +32,8 @@ export const Default = {
     },
   },
   args: {
-    value: 'insert text',
+    className: 'dcx-insert-text-dark',
+    value:
+      'It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.',
   },
 };

@@ -1,0 +1,70 @@
+.dcx-insert-text {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: token(font-weight-body 400);
+  font-size: token('font-size-body' 16px);
+  font-size: token('font-size-body' 1rem);
+  line-height: 1.25;
+  color: token('color-text-body' #0b0c0c);
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  clear: both;
+  border-left: 10px solid #b1b4b6;
+}
+.dcx-insert-text-dark {
+  font-family: 'GDS Transport', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: token(font-weight-body 400);
+  font-size: token('font-size-body' 16px);
+  font-size: token('font-size-body' 1rem);
+  line-height: 1.25;
+  color: token(color-text-body-dark);
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  clear: both;
+  border-left: 10px solid #fff;
+}
+@media print {
+  .dcx-insert-text {
+    font-family: token(font-family-body sans-serif);
+  }
+}
+@media (min-width: 40.0625em) {
+  .dcx-insert-text {
+    font-size: token(font-size-body 19px);
+    font-size: token(font-size-body 1.1875rem);
+    line-height: 1.3157894737;
+  }
+}
+@media print {
+  .dcx-insert-text {
+    font-size: token(font-size-body 14pt);
+    line-height: 1.15;
+  }
+}
+@media print {
+  .dcx-insert-text {
+    color: token(color-text-body #000);
+  }
+}
+@media (min-width: 40.0625em) {
+  .dcx-insert-text {
+    margin-top: 30px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .dcx-insert-text {
+    margin-bottom: 30px;
+  }
+}
+.dcx-insert-text > :first-child {
+  margin-top: 0;
+}
+.dcx-insert-text > :only-child,
+.dcx-insert-text > :last-child {
+  margin-bottom: 0;
+}
