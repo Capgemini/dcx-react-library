@@ -8,9 +8,5 @@
 }
 
 .dcx-label {
-  --dcx-color-text-formcontrol_label: #000;
-  &.dcx-error-message {
-    --dcx-color-text-formcontrol_label-error: red;
-    --dcx-font-weight-formcontrol_label: bold;
-  }
+  --dcx-color-text-formcontrol_label-error: #da190b;
 }

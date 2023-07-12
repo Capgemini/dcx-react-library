@@ -8,4 +8,5 @@
 
 .dcx-label {
   --dcx-color-text-formcontrol_label: white;
+  --dcx-color-text-formcontrol_label-error: #f98e86;
 }
