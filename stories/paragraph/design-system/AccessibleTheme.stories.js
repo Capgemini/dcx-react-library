@@ -1,25 +1,26 @@
 import { Paragraph } from '../../../src/paragraph/Paragraph';
 import style from '!raw-loader!../../themes/accessible.theme.css';
-import { LiveProvider, LiveEditor} from 'react-live';
+import { LiveProvider, LiveEditor } from 'react-live';
+import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
 * This a theme aimed at easing the vizualization of the different elements of the component in order to improve the experience for people that have visual impairments.
 */
 export default {
-  title:'DCXLibrary/Typography/Paragraph/Design system/Accessible',
+  title: 'DCXLibrary/Typography/Paragraph/Design system/Accessible',
   component: Paragraph,
-  decorators:[
+  decorators: [
     (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/accessible.theme.css');
       return getStory();
     }
   ],
-  parameters:{
+  parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs'] 
+  tags: ['autodocs']
 };
 
 export const ShowCase = {
@@ -32,21 +33,15 @@ export const ShowCase = {
       ],
     },
   },
-  render: () => {
-    const componentStyle = /\.dcx-paragraph {([\s\S]*)}/g.exec(style);
-    let themeCode = '';
-    if (componentStyle) {
-      themeCode = `:root {${componentStyle[1]}}`;
-    }
-    return (
-      <LiveProvider code={themeCode} disabled={true} language="css">
-        <LiveEditor className="liveEditor" aria-label="editor" />
-      </LiveProvider>
-    );
-  }
+  render: () => (
+    <LiveProvider code={StorybookUtils.getThemeCode('dcx-paragraph', style)} disabled={true} language="css">
+      <LiveEditor className="liveEditor" aria-label="editor" />
+    </LiveProvider>
+  )
+
 };
 
-export const Default = {  
+export const Default = {
   name: 'Default',
   args: {
     value: 'This is the content of the paragraph.',
