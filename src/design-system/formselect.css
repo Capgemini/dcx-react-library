@@ -8,7 +8,9 @@
 
 .dcx-formselect {
   --label-height: token('font-formcontrol_label-line-height');
-  --input-height: calc(token('font-formcontrol-line-height') + token('spacing-y-formcontrol'));
+  --input-height: calc(
+    token('font-formcontrol-line-height') + token('spacing-y-formcontrol')
+  );
 
   box-sizing: border-box;
   display: flex;
@@ -16,10 +18,10 @@
   position: relative;
 
   &::after {
-    content: "";
+    content: '';
     display: block;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: var(--chevron-size) solid transparent;
     border-right: var(--chevron-size) solid transparent;
     border-top: var(--chevron-size) solid token('color-chevron-formcontrol');
@@ -30,7 +32,7 @@
   }
 
   & label {
-    font-size: token('font-formcontrol_label-size');
+    font-size: token('font-size-formcontrol_label');
     line-height: var(--label-height);
     background: token('color-background-formcontrol_label');
     color: token('color-text-formcontrol_label');
@@ -83,11 +85,16 @@
 
 .dcx-formselect.dcx-floating-label {
   --label-height: token('font-formcontrol_label-line-height-floating');
-  --input-height: calc(var(--label-height) + token('spacing-y-formcontrol-floating'));
+  --input-height: calc(
+    var(--label-height) + token('spacing-y-formcontrol-floating')
+  );
   padding-top: var(--label-height);
 
   &::after {
-    top: calc(var(--label-height) + (var(--input-height) / 2) - (var(--chevron-size) / 2));
+    top: calc(
+      var(--label-height) + (var(--input-height) / 2) -
+        (var(--chevron-size) / 2)
+    );
     border-top-color: token('color-chevron-formcontrol-floating');
   }
 
@@ -95,12 +102,15 @@
     position: absolute;
     line-height: var(--label-height);
     bottom: auto;
-    top: calc(var(--label-height) + (var(--input-height) / 2) - (var(--label-height) / 2));
+    top: calc(
+      var(--label-height) + (var(--input-height) / 2) -
+        (var(--label-height) / 2)
+    );
     transition: all 0.3s ease-in-out;
 
     margin-left: token('spacing-x-formcontrol-floating');
     margin-right: token('spacing-x-formcontrol-floating');
-    font-size: token('font-formcontrol_label-size-floating');
+    font-size: token('font-size-formcontrol_label-floating');
     background: token('color-background-formcontrol_label-floating');
     color: token('color-text-formcontrol_label-floating');
   }
@@ -135,7 +145,6 @@
     color: token('color-text-formcontrol_error-floating');
   }
 }
-
 
 /*
  * Floating + Filled

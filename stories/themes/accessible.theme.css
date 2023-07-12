@@ -6,3 +6,7 @@
   --dcx-font-formcontrol_error-size: 16px;
   --dcx-font-formcontrol_error-line-height: 20px;
 }
+
+.dcx-label {
+  --dcx-color-text-formcontrol_label-error: #da190b;
+}

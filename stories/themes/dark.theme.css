@@ -5,3 +5,8 @@
   --dcx-color-text-formcontrol_hint: #999;
   --dcx-color-outline-formcontrol: darkorange;
 }
+
+.dcx-label {
+  --dcx-color-text-formcontrol_label: white;
+  --dcx-color-text-formcontrol_label-error: #f98e86;
+}
