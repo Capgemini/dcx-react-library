@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 import { Tab } from '../components/Tab';
 import { TabGroup } from '../TabGroup';
 import { Button } from '../../button';
+import * as hooks from '../../common/utils/clientOnly';
 
 describe('TabGroup', () => {
   it('should not render a tab group if event keys are not unique', () => {
@@ -117,7 +118,7 @@ describe('TabGroup', () => {
     );
   });
 
-  it("should render tabs with tab id's", () => {
+  it('should render tabs with data attributes containing tab ids', () => {
     render(
       <TabGroup activeTabClassName="tab-class-active">
         <Tab label="tab 1 label" eventKey="tab-1-id">
@@ -132,10 +133,10 @@ describe('TabGroup', () => {
     const tabs: HTMLElement[] = screen.getAllByRole('tab');
 
     expect(tabs[0]).toBeInTheDocument();
-    expect(tabs[0].getAttribute('id')).toBe('tab-1-id');
+    expect(tabs[0].getAttribute('data-tab-id')).toBe('tab-1-id');
 
     expect(tabs[1]).toBeInTheDocument();
-    expect(tabs[1].getAttribute('id')).toBe('tab-2-id');
+    expect(tabs[1].getAttribute('data-tab-id')).toBe('tab-2-id');
   });
 
   it('should render tabs with ariaControls that which tab panel they control', () => {
@@ -170,7 +171,7 @@ describe('TabGroup', () => {
 
     const tabs: HTMLElement[] = screen.getAllByRole('tab');
 
-    expect(tabs[0].getAttribute('tabIndex')).toBeNull();
+    expect(tabs[0].getAttribute('tabIndex')).toBe('0');
     expect(tabs[1].getAttribute('tabIndex')).toBe('-1');
   });
 
@@ -350,7 +351,7 @@ describe('TabGroup', () => {
     const tabs: HTMLElement[] = screen.getAllByRole('tab');
     const tabItems: HTMLElement[] = screen.getAllByRole('presentation');
 
-    expect(tabs[0].getAttribute('tabIndex')).toBeNull();
+    expect(tabs[0].getAttribute('tabIndex')).toBe('0');
     expect(tabs[1].getAttribute('tabIndex')).toBe('-1');
 
     expect(tabItems[0].getAttribute('class')).toBe(
@@ -361,7 +362,7 @@ describe('TabGroup', () => {
     fireEvent.click(tabs[1]);
 
     expect(tabs[0].getAttribute('tabIndex')).toBe('-1');
-    expect(tabs[1].getAttribute('tabIndex')).toBeNull();
+    expect(tabs[1].getAttribute('tabIndex')).toBe('0');
 
     expect(tabGroupClickHandler).not.toHaveBeenCalled();
 
@@ -709,5 +710,39 @@ describe('TabGroup', () => {
     expect(tabs[2].getAttribute('class')).toBe('tab-class-active');
 
     expect(updated).toBeTruthy();
+  });
+
+  it('should render all tabpanels when JS is disabled', () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+
+    const { container } = render(
+      <TabGroup containerClassName="container-class">
+        <Tab eventKey="tab-1-id" label="tab 1 label">
+          This is the content for tab 1
+        </Tab>
+        <Tab eventKey="tab-2-id" label="tab 2 label">
+          This is the content for tab 2
+        </Tab>
+      </TabGroup>
+    );
+
+    expect(container.querySelectorAll('[role=tabpanel]').length).toBe(2);
+  });
+
+  it('should render a single tabpanel even when there are multiple tabs when JS is enabled', () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+
+    const { container } = render(
+      <TabGroup containerClassName="container-class">
+        <Tab eventKey="tab-1-id" label="tab 1 label">
+          This is the content for tab 1
+        </Tab>
+        <Tab eventKey="tab-2-id" label="tab 2 label">
+          This is the content for tab 2
+        </Tab>
+      </TabGroup>
+    );
+
+    expect(container.querySelectorAll('[role=tabpanel]').length).toBe(1);
   });
 });

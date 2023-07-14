@@ -7,7 +7,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { classNames, Roles } from '../common';
+import { classNames, Roles, useHydrated } from '../common';
 
 export type TabGroupProps = {
   /**
@@ -101,15 +101,10 @@ export const TabGroup = forwardRef(
       throw new Error('Tab event keys must be unique');
     }
 
-    const defaultActiveTab: string = children.find(
-      (child: JSX.Element) => activeKey === child.props.eventKey
-    )?.props.eventKey;
-
     const initialMount = useRef(true);
 
-    const [activeTab, setActiveTab] = useState<string>(
-      defaultActiveTab || children[0].props.eventKey
-    );
+    const defaultActiveTabKey = activeKey || children[0].props.eventKey;
+    const [activeTab, setActiveTab] = useState<string>(defaultActiveTabKey);
 
     const onClickHandler: (id: string) => void = (id: string) =>
       setActiveTab(id);
@@ -131,6 +126,14 @@ export const TabGroup = forwardRef(
       if (!initialMount.current) onSelect && onSelect(activeTab);
       else initialMount.current = false;
     }, [activeTab]);
+
+    const activeTabElement = children.find(
+      (child: JSX.Element) => activeTab === child.props.eventKey
+    );
+
+    const hydrated = useHydrated();
+
+    const tabPanels = hydrated ? [activeTabElement] : children;
 
     return (
       <div className={containerClassName}>
@@ -163,20 +166,22 @@ export const TabGroup = forwardRef(
             })}
           </TabContext.Provider>
         </ol>
-        {children.map((tab: JSX.Element, index: number) =>
-          tab.props.eventKey === activeTab ? (
-            <div
-              id={tab.props.eventKey}
-              key={index}
-              role={Roles.tabpanel}
-              className={contentClassName}
-              tabIndex={0}
-              aria-labelledby={tab.props.eventKey}
-            >
-              {tab.props.children}
-            </div>
-          ) : undefined
-        )}
+        {tabPanels.map((tabPanel, index) => (
+          <>
+            {tabPanel && (
+              <div
+                id={tabPanel.props.eventKey}
+                key={index}
+                role={Roles.tabpanel}
+                className={contentClassName}
+                tabIndex={0}
+                aria-labelledby={tabPanel.props.eventKey}
+              >
+                {tabPanel.props.children}
+              </div>
+            )}
+          </>
+        ))}
       </div>
     );
   }

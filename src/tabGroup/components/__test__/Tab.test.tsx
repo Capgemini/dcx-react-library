@@ -46,7 +46,7 @@ describe('Tab', () => {
 
     expect(screen.getByRole('tab')).toBeInTheDocument();
     expect(screen.getByRole('tab').getAttribute('href')).toBe('#tab 2');
-    expect(screen.getByRole('tab').getAttribute('id')).toBe('tab 2');
+    expect(screen.getByRole('tab').getAttribute('data-tab-id')).toBe('tab 2');
   });
 
   it('should render a tab with optional properties', () => {
@@ -70,7 +70,7 @@ describe('Tab', () => {
       </TabContext.Provider>
     );
 
-    expect(screen.getByRole('tab').getAttribute('id')).toBe('tab 2');
+    expect(screen.getByRole('tab').getAttribute('data-tab-id')).toBe('tab 2');
     expect(screen.getByRole('presentation').getAttribute('class')).toBe(
       'myClassName'
     );
@@ -106,7 +106,7 @@ describe('Tab', () => {
     expect(screen.getByRole('presentation').getAttribute('class')).toBe(
       'myClassName tabActive'
     );
-    expect(screen.getByRole('tab').getAttribute('tabIndex')).toBeNull();
+    expect(screen.getByRole('tab').getAttribute('tabIndex')).toBe('0');
   });
 
   it('should render a tab with a label', () => {
