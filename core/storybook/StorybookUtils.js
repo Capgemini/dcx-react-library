@@ -2,10 +2,9 @@ export class StorybookUtils {
   static getThemeCode(className, stylesheet) {
     const r = new RegExp(`\\.${className} {([\\s\\S]*)}`, 'g');
     const componentStyle = r.exec(stylesheet);
-    let themeCode = '';
-    if (componentStyle) {
-      themeCode = `:root {${componentStyle[1]}}`;
+    if (!componentStyle) {
+      return '/** No additional properties needed */';
     }
-    return themeCode;
+    return `:root {${componentStyle[1]}}`;
   }
 }

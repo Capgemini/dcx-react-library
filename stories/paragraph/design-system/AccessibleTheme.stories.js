@@ -28,7 +28,7 @@ export const ShowCase = {
     backgrounds: {
       default: 'dark',
       values: [
-        { name: 'dark', value: '#333131' },
+        { name: 'dark', value: '#282c34' },
         { name: 'light', value: '#fff' },
       ],
     },
