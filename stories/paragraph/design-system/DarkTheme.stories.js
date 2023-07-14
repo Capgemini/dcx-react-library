@@ -1,26 +1,27 @@
-import { Label } from '../../../src/label/Label';
+import { Paragraph } from '../../../src/paragraph/Paragraph';
+// eslint-disable-next-line import/no-webpack-loader-syntax
 import style from '!raw-loader!../../themes/dark.theme.css';
 import { LiveProvider, LiveEditor } from 'react-live';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
- * This a theme showcases how to customize the component so it can be used on dark backgrounds.
- */
+* This a theme showcases how to customize the component so it can be used on dark backgrounds.
+*/
 export default {
-  title: 'DCXLibrary/Typography/Label/Design system/Dark',
-  component: Label,
+  title: 'DCXLibrary/Typography/Paragraph/Design system/Dark',
+  component: Paragraph,
   decorators: [
     (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/dark.theme.css');
       return getStory();
-    },
+    }
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs'],
+  tags: ['autodocs']
 };
 
 export const ShowCase = {
@@ -34,11 +35,12 @@ export const ShowCase = {
     },
   },
   render: () => (
-    <LiveProvider code={StorybookUtils.getThemeCode('dcx-label', style)} disabled={true} language="css">
+    <LiveProvider code={StorybookUtils.getThemeCode('dcx-paragraph', style)} disabled={true} language="css">
       <LiveEditor className="liveEditor" aria-label="editor" />
     </LiveProvider>
-  ),
+  )
 };
+
 
 export const Default = {
   name: 'Default',
@@ -52,39 +54,7 @@ export const Default = {
     },
   },
   args: {
-    value: 'Default label',
+    value: 'This is the content of the paragraph.',
   },
 };
 
-export const Error = {
-  name: 'Error',
-  parameters: {
-    backgrounds: {
-      default: 'dark',
-      values: [
-        { name: 'dark', value: '#282c34' },
-        { name: 'light', value: '#fff' },
-      ],
-    },
-  },
-  args: {
-    value: 'Error label',
-    className: 'dcx-error-message',
-  },
-};
-
-export const Filled = {
-  name: 'Filled',
-  parameters: {
-    backgrounds: {
-      default: 'dark',
-      values: [
-        { name: 'dark', value: '#282c34' },
-        { name: 'light', value: '#fff' },
-      ],
-    },
-  },
-  args: {
-    value: 'Filled label',
-  },
-};
