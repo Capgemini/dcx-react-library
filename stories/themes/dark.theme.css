@@ -14,3 +14,7 @@
 .dcx-paragraph {
   --dcx-color-text-body: white;
 }
+
+.dcx-insert-text {
+  --dcx-color-text-body: white;
+}
