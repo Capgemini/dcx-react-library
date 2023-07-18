@@ -21,6 +21,26 @@ export default {
   },
   tags: ['autodocs'],
 };
+export const ShowCase = {
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#333131' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  render: () => (
+    <LiveProvider
+      code={style.replace('.dcx-insert-text', ':root')}
+      disabled={true}
+      language="css"
+    >
+      <LiveEditor className="liveEditor" aria-label="editor" />
+    </LiveProvider>
+  ),
+};
 
 export const Default = {
   name: 'Default',
