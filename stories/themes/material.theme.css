@@ -14,3 +14,8 @@
   --dcx-border-style-action: solid;
   --dcx-spacing-x-action: 20px;
 }
+
+.dcx-list {
+  --dcx-color-text-body: rgba(0, 0, 0, 0.6);
+  --dcx-color-marker: rgba(0, 0, 0, 0.6);
+}
