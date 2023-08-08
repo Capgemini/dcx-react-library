@@ -23,3 +23,8 @@
   --dcx-color-text-body: #000;
   --dcx-color-marker: #000;
 }
+
+.dcx-heading {
+    --dcx-color-text-heading-level: #000;
+    --dcx-font-family-heading-level: sans-serif;
+}

@@ -62,3 +62,7 @@
 .dcx-insert-text {
   --dcx-color-text-body: white;
 }
+
+.dcx-heading {
+  --dcx-color-text-body: white;
+}

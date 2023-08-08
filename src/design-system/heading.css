@@ -1,14 +1,7 @@
 .dcx-heading{
-    margin: 0; 
-    padding: 0;
-    font-weight: bold;
-    background: token('color-background-heading-level')
+    color: token('color-text-heading-level');
+    color: token('color-text-body')
 }
 
 
- 
 
-
-.dcx-heading--level_2{
-    background-color: red;
-}
