@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import {
   ErrorMessage,
   OptionGroup,
@@ -16,7 +16,34 @@ import {
 import { OptionProps } from '../common/components/Option';
 import { OptionGroupProps } from '../common/components/OptionGroup';
 
+export type iconStyle = {
+  /**
+   * icon width
+   */
+  width: string;
+  /**
+   * icon height
+   */
+  height: string;
+  /**
+   * icon border raduis
+   */
+  borderRadius: string;
+}
+
 export type FormSelectProps = {
+  /**
+   * specify total options counts hat you want to the initial size of form-select container
+   */
+  totalOptionToShow?: string;
+  /**
+   * specify a custom class name to be applied to the form-select container that it's options contain icon
+   */
+  selectWithIconClassName?: string;
+  /**
+   * specify a custom class name to be applied to the options icon
+   */
+  iconStyle?: iconStyle;
   /**
    * specify a custom class name to be applied to the form-select
    */
@@ -136,6 +163,9 @@ export type FormSelectProps = {
 };
 
 export const FormSelect = ({
+  totalOptionToShow = '1',
+  selectWithIconClassName,
+  iconStyle,
   selectClassName,
   labelClassName,
   containerClassName,
@@ -178,6 +208,35 @@ export const FormSelect = ({
   }
 
   const [selectValue, setSelectValue] = useState<string | number>(initialValue);
+  const [showOptions, setShowOptions] = useState<Boolean>(false);
+
+  const handleShowOption = () => showOptions &&  setShowOptions(false);
+
+  useEffect(() => {
+    document.addEventListener('click', handleShowOption);
+    return () => {
+      document.removeEventListener('click', handleShowOption);
+    };
+  });
+  
+
+  let theOptions: OptionProps[] | string[] = options && options.length ? options.map((option: OptionProps | string) => {
+    if (typeof option === 'object' && option.icon) {
+      return {...option, ...{iconStyle: iconStyle}};
+    }
+    return option;
+  })as OptionProps[] : [];
+
+  let theOptionGroups = optionGroups && optionGroups.length ? optionGroups.map((OptionGroup: OptionGroupProps) => { 
+    OptionGroup.options = OptionGroup.options.map((option: OptionProps | string) => {
+      if (typeof option === 'object' && option.icon) {
+        return {...option, ...{iconStyle: iconStyle}};
+      }
+      return option;
+      }) as OptionProps[];
+    return OptionGroup;
+  }) : [];
+
   const getOptions = (options: OptionProps[] | string[]): JSX.Element[] =>
     options.map((item: OptionProps | string, index: number) => {
       let convertedItem: OptionProps;
@@ -199,6 +258,7 @@ export const FormSelect = ({
     ));
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setShowOptions(curState => !curState);
     setSelectValue(event.currentTarget.value);
     if (onChange) onChange(event);
   };
@@ -214,6 +274,84 @@ export const FormSelect = ({
         selectValue && selectValue !== nullOption,
     },
   ]);
+  
+  const isIncludeIcon = () => {
+    for (const [, value] of Object.entries(theOptions)) {
+      if (typeof value === 'object' && Object.hasOwn(value, 'icon')) return true;
+    }
+    if (theOptionGroups) {
+      for (const [, value] of Object.entries(theOptionGroups)) {
+        for (const [, theValue] of Object.entries(value.options)) {
+          if (typeof theValue === 'object' && Object.hasOwn(theValue, 'icon')) return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  const totalOptions = () => {
+    let total = 0;
+    if (theOptionGroups) {
+      for (const optionGroup of theOptionGroups) {
+        total += optionGroup.options.length;
+      }
+    }
+    if(options.length > 0){
+      total += options.length;
+    }
+    return total;
+  };
+
+  const TheSelect = () => <select
+    value={defaultValue !== '' ? defaultValue : selectValue}
+    name={name || 'formSelect'}
+    id={id || 'formSelect'}
+    className={selectClassName}
+    aria-label={ariaLabel || Roles.list}
+    onChange={handleChange}
+    style={style}
+    size={isIncludeIcon() ? totalOptions() > Number(totalOptionToShow) ? Number(totalOptionToShow) >= 2 ? Number(totalOptionToShow) : 2 : totalOptions() : 1}
+    tabIndex={tabIndex}
+    disabled={disabled}
+    {...selectProps}
+  >
+    {nullOption && <Option value="" label={nullOption} />}
+    {getOptions(theOptions)}
+    {theOptionGroups && getOptionGroups(theOptionGroups)}
+  </select>;
+
+  const  Select = () => {
+    let selectedOption = theOptions.find((option: OptionProps | string) => {
+      if (typeof option === 'object') {
+        return option.value === selectValue;
+      }
+      return option === selectValue;
+    });
+
+    if (theOptionGroups?.length) {
+      theOptionGroups!.find((optionGrouo) => {
+        selectedOption = optionGrouo.options.find((option) => {
+          if (typeof option === 'object') {
+            return option.value === selectValue;
+          }
+          return option === selectValue;
+        });
+        return selectedOption;
+      });
+    }
+    
+    return <>
+      {isIncludeIcon() ? <div className={classNames([selectWithIconClassName, 'govuk-icon-select'])} onClick={() => setShowOptions(currState => !currState)}>
+        <div>
+          {selectedOption && (selectedOption as OptionProps).icon && <img src={(selectedOption as OptionProps)?.icon} width='20px' height='20px' alt='selected icon' />}
+          <span>{(selectedOption as OptionProps)?.label || nullOption}</span>
+        </div>
+          <img src={'/arrow-down.svg'} width='20px' height='20px' alt='selected icon'/>
+      </div>: null}
+      {isIncludeIcon() && showOptions ? <TheSelect /> : null}
+      {!isIncludeIcon() ? <TheSelect /> : null}
+    </>;
+  };
 
   return (
     <div className={containerClasses} {...containerProps}>
@@ -233,22 +371,7 @@ export const FormSelect = ({
           id={errorMessageId}
         />
       )}
-      <select
-        value={defaultValue !== '' ? defaultValue : selectValue}
-        name={name || 'formSelect'}
-        id={id || 'formSelect'}
-        className={selectClassName}
-        aria-label={ariaLabel || Roles.list}
-        onChange={handleChange}
-        style={style}
-        tabIndex={tabIndex}
-        disabled={disabled}
-        {...selectProps}
-      >
-        {nullOption && <Option value="" label={nullOption} />}
-        {getOptions(options)}
-        {optionGroups && getOptionGroups(optionGroups)}
-      </select>
+      <Select />
     </div>
   );
 };

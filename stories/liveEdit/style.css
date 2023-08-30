@@ -66,3 +66,14 @@
   background-color: red;
   color: white;
 }
+
+.select-with-Icon-container {
+  width: 168px;
+  padding: 8px ;
+  border-radius: 5px;
+}
+.select-with-Icon-list{
+  width: 185px;
+  padding: 8px;
+  border-radius: 5px;
+}

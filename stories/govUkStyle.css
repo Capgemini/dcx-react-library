@@ -2492,3 +2492,35 @@ input::-webkit-inner-spin-button {
   text-align: left;
   vertical-align: top;
 }
+.govuk-icon-select{
+  display: flex;
+  padding: 2px 0px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgb(118, 118, 118);
+}
+.govuk-icon-select:hover{
+  cursor: pointer;
+}
+.govuk-icon-select div{
+  gap: 6px;
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  font-family: 'GDS Transport', arial, sans-serif;
+}
+.govuk-option {
+  gap: 6px;
+  display: flex;
+  margin-right: 10px;
+  align-items: center;
+}
+.govuk-option::before {
+  content: '';
+  display: block;
+  width: var(--govuk-option-icon-width);
+  height: var(--govuk-option-icon-height);
+  background-image: var(--govuk-option-icon-url);
+  border-radius: var(--govuk-option-icon-border-radius);
+  background-size: var(--govuk-option-icon-width) var(--govuk-option-icon-height);
+}

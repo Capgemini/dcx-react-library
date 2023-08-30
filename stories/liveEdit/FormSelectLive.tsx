@@ -25,35 +25,124 @@ function FormSelectDemo() {
         },
       }}
       onChange={handleChange}
+      iconStyle={{
+        width: '20px',
+        height: '20px',
+        borderRadius: '0px'
+      }}
+      totalOptionToShow= '5'
+      selectWithIconClassName='select-with-Icon-container'
       //If you need a more advanced control of options use the following:
-      //options={[
-      //  { 
-      //    label: 'option1', 
-      //    value: 'value1', 
-      //    ariaLabel: 'option1', 
-      //    id: 'id1' 
-      //  },
-      //]},
-      options={['option1','option2', 'option3']}
-      optionGroups={[]}
-      selectClassName=""
+      // options={[
+      //   { 
+      //     label: 'Engineering', 
+      //     value: 'Engineering', 
+      //     ariaLabel: 'Engineering', 
+      //     id: 'id1',
+      //     icon: 'https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188',
+      //   },
+      //   { 
+      //     label: 'Invent', 
+      //     value: 'Invent', 
+      //     ariaLabel: 'Invent', 
+      //     id: 'id2',
+      //     icon: 'https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188',
+      //   },
+      //   { 
+      //     label: 'Frog', 
+      //     value: 'Frog', 
+      //     ariaLabel: 'Frog', 
+      //     id: 'id3',
+      //     icon: 'https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188',
+      //   },
+      //   { 
+      //     label: 'Sogeti', 
+      //     value: 'Sogeti', 
+      //     ariaLabel: 'Sogeti', 
+      //     id: 'id4',
+      //     icon: 'https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188',
+      //   },
+      // ]}
+      // options={['option1','option2', 'option3']}
+      optionGroups={[
+        {
+          label: 'Capgemini',
+          displayCount: true,
+          options: [
+            { 
+              label: 'Engineering', 
+              value: 'Engineering', 
+              ariaLabel: 'Engineering', 
+              id: 'id1',
+              icon: '/capgemini.png',
+            },{ 
+              label: 'Invent', 
+              value: 'Invent', 
+              ariaLabel: 'Invent', 
+              id: 'id2',
+              icon: '/capgemini.png',
+            },{ 
+              label: 'Frog', 
+              value: 'Frog', 
+              ariaLabel: 'Frog', 
+              id: 'id3',
+              icon: '/capgemini.png',
+            },{ 
+              label: 'Sogeti', 
+              value: 'Sogeti', 
+              ariaLabel: 'Sogeti', 
+              id: 'id3',
+              disabled: true,
+              icon: '/capgemini.png',
+            }
+          ]
+        },{
+          label: 'Services',
+          displayCount: true,
+          options: [
+            { 
+              label: 'Cloud', 
+              value: 'Cloud', 
+              ariaLabel: 'Cloud', 
+              id: 'id1',
+              icon: '/cloud.png',
+            },{ 
+              label: 'Cybersecurity', 
+              value: 'Cybersecurity', 
+              ariaLabel: 'Cybersecurity', 
+              id: 'id2',
+              icon: '/cyberSecurity.png',
+            },{ 
+              label: 'Intelligent Industry', 
+              value: 'Intelligent Industry', 
+              ariaLabel: 'Intelligent Industry', 
+              id: 'id3',
+              icon: '/ai.png',
+            },{ 
+              label: 'sustainability', 
+              value: 'sustainability', 
+              ariaLabel: 'sustainability', 
+              id: 'id4',
+              icon: '/sustainability.png',
+            }
+          ]
+        }
+      ]}
+      selectClassName="select-with-Icon-list"
       labelClassName=""
       containerClassName=""
-      style={{}}
-      
       ariaLabel=""
-      labelProps={{}}
       hint={{
-        text: "",
-        className: "",
-        id: ""
+        text: '',
+        className: '',
+        id: ''
       }}
       // you can also use the compact version of "error"
       errorMessage=""
       errorMessageClassName=""
       errorMessageVisuallyHidden={{
-        text: "",
-        className: "",
+        text: '',
+        className: '',
       }}
       errorMessageId=""
       defaultValue=""
