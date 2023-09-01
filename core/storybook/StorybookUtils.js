@@ -3,7 +3,7 @@ export class StorybookUtils {
     const r = new RegExp(`\\.${className} {([\\s\\-\\w\\:#;\\"\\'\\(\\)]*)}`, 'g');
     const componentStyle = r.exec(stylesheet);
     if (!componentStyle) {
-      return '/** No additional properties needed */';
+      return '/**' + '\n** This version of the component do not require any token to be configured.' + '\n*/';
     }
     return `:root {${componentStyle[1]}}`;
   }
