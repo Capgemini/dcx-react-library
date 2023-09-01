@@ -1,0 +1,15 @@
+.dcx-list {
+  color: token('color-text-body');
+
+  &.dcx-list ::marker {
+    color: token('color-marker');
+  }
+
+  &.dcx-list-unordered ::marker {
+    color: token('color-marker-unordered');
+  }
+
+  &.dcx-list-ordered ::marker {
+    color: token('color-marker-ordered');
+  }
+}

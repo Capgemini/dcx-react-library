@@ -18,3 +18,8 @@
 .dcx-label {
   --dcx-color-text-formcontrol_label-error: #da190b;
 }
+
+.dcx-list {
+  --dcx-color-text-body: #000;
+  --dcx-color-marker: #000;
+}
