@@ -3,8 +3,7 @@
   "include": [
     "src",
     "types",
-    "bin/dcx-generate-presentational-component",
-    "stories/Utils/getRootStylesByClass.ts"
+    "bin/dcx-generate-presentational-component"
   ],
   "compilerOptions": {
     "module": "esnext",
