@@ -1,7 +1,23 @@
-.dcx-heading{
-    color: token('color-text-heading-level');
-    color: token('color-text-body')
+.dcx-heading {
+  color: token('color-text-heading-level_1');
 }
 
+.dcx-heading.dcx-heading-2 {
+  color: token('color-text-heading-level_2');
+}
 
+.dcx-heading.dcx-heading-3 {
+  color: token('color-text-heading-level_3');
+}
 
+.dcx-heading.dcx-heading-4 {
+  color: token('color-text-heading-level_4');
+}
+
+.dcx-heading.dcx-heading-5 {
+  color: token('color-text-heading-level_5');
+}
+
+.dcx-heading.dcx-heading-6 {
+  color: token('color-text-heading-level_6');
+}
