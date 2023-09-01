@@ -1,8 +1,9 @@
+/* eslint-disable import/no-webpack-loader-syntax */
 import { Button } from '../../../src/button';
 import style from '!raw-loader!../../themes/dark.theme.css';
 import { LiveProvider, LiveEditor } from 'react-live';
-import { getRootStylesByClass } from '../../Utils/getRootStylesByClass';
 import { SVG_EXAMPLE } from '../helpers/svg.example';
+import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
  * This a theme showcases how to customize the component so it can be used on dark backgrounds.
@@ -36,7 +37,7 @@ export const ShowCase = {
   },
   render: () => (
     <LiveProvider
-      code={getRootStylesByClass(style, '.dcx-button')}
+      code={StorybookUtils.getThemeCode('dcx-button', style)}
       disabled={true}
       language="css"
     >
