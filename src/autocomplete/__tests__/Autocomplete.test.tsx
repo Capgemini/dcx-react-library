@@ -6,7 +6,7 @@ import {
   waitFor,
   act,
 } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { Autocomplete, AutoCompleteErrorPosition } from '../';
 import userEvent from '@testing-library/user-event';
 import * as hooks from '../../common/utils/clientOnly';
@@ -252,13 +252,13 @@ describe('Autocomplete', () => {
           <Autocomplete
             options={['Apple', 'Banana']}
             defaultValue={defaultValue}
-            onSelected={value => handleClick(value)}
+            onSelected={(value) => handleClick(value)}
           />
           <button onClick={() => handleClick('Orange')}>Orange</button>
         </>
       );
     };
-  
+
     render(<DummyChangeState />);
     await act(async () => {
       await waitFor(() => {
@@ -271,7 +271,7 @@ describe('Autocomplete', () => {
     await waitFor(() => {
       const input: any = screen.getByRole('textbox');
       expect(input.value).toBe('Orange');
-    }); 
+    });
   });
 
   it('should display available options', async () => {
@@ -394,28 +394,32 @@ describe('Autocomplete', () => {
   it('should display the next item when you scroll with the keyboard', async () => {
     const user = userEvent.setup();
 
-    render(<Autocomplete options={[
-      'Papaya',
-      'Persimmon',
-      'Paw Paw',
-      'Prickly Pear',
-      'Peach',
-      'Pomegranate',
-      'Pineapple 1',
-      'Pineapple 2',
-      'Pineapple 3',
-      'Pineapple 4',
-      'Pineapple 5',
-      'Pineapple 6',
-      'Pineapple 7',
-      'Pineapple 8',
-      'Pineapple 9',
-      'Pineapple 10',
-      'Pineapple 11',
-      'Pineapple 12',
-      'Pineapple 13',
-      'Pineapple 14'
-    ]} />);
+    render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple 1',
+          'Pineapple 2',
+          'Pineapple 3',
+          'Pineapple 4',
+          'Pineapple 5',
+          'Pineapple 6',
+          'Pineapple 7',
+          'Pineapple 8',
+          'Pineapple 9',
+          'Pineapple 10',
+          'Pineapple 11',
+          'Pineapple 12',
+          'Pineapple 13',
+          'Pineapple 14',
+        ]}
+      />
+    );
     const input: any = screen.getByRole('textbox');
     await user.type(input, 'p');
     fireEvent.keyDown(input, { code: 'ArrowDown' });
@@ -915,9 +919,7 @@ describe('Autocomplete', () => {
       return options
         .filter(
           (option: any) =>
-            optionName(option)
-              .toLowerCase()
-              .indexOf(queryStr) !== -1
+            optionName(option).toLowerCase().indexOf(queryStr) !== -1
         )
         .map((option: any) => {
           const commonRank = 0;
