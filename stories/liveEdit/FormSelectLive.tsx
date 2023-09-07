@@ -63,7 +63,6 @@ function FormSelectDemo() {
       //     icon: 'https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188',
       //   },
       // ]}
-      // options={['option1','option2', 'option3']}
       optionGroups={[
         {
           label: 'Capgemini',
