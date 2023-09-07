@@ -39,28 +39,28 @@ function FormSelectDemo() {
       //     value: 'Engineering', 
       //     ariaLabel: 'Engineering', 
       //     id: 'id1',
-      //     icon: 'https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188',
+      //     icon: '/capgemini.png',
       //   },
       //   { 
       //     label: 'Invent', 
       //     value: 'Invent', 
       //     ariaLabel: 'Invent', 
       //     id: 'id2',
-      //     icon: 'https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188',
+      //     icon: '/capgemini.png',
       //   },
       //   { 
       //     label: 'Frog', 
       //     value: 'Frog', 
       //     ariaLabel: 'Frog', 
       //     id: 'id3',
-      //     icon: 'https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188',
+      //     icon: '/capgemini.png',
       //   },
       //   { 
       //     label: 'Sogeti', 
       //     value: 'Sogeti', 
       //     ariaLabel: 'Sogeti', 
       //     id: 'id4',
-      //     icon: 'https://companieslogo.com/img/orig/CAP.PA-9b4110b0.png?t=1651902188',
+      //     icon: '/capgemini.png',
       //   },
       // ]}
       optionGroups={[
