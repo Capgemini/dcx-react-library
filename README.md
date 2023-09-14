@@ -73,6 +73,13 @@ Thanks goes to these wonderful people
       </a>
     </td>
     <td align="center">
+      <a href="https://github.com/cg-mmirca">
+        <img src="https://avatars.githubusercontent.com/u/92944005?v=4" width="100px;" alt="marius-mirca"/>
+        <br />
+        <sub><b>Marius Mirca</b></sub>
+      </a>
+    </td>
+    <td align="center">
       <a href="https://github.com/Ibabalola">
         <img src="https://avatars.githubusercontent.com/u/11960286?v=4" width="100px;" alt="isaac-babalola"/>
         <br />
@@ -98,13 +105,6 @@ Thanks goes to these wonderful people
         <img src="https://avatars.githubusercontent.com/u/85119492?v=4" width="100px;" alt="niku-sharma"/>
         <br />
         <sub><b>Niku Sharma</b></sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/CanerShefik">
-        <img src="https://avatars.githubusercontent.com/u/24546769?v=4" width="100px;" alt="caner-shefik"/>
-        <br />
-        <sub><b>Caner Shefik</b></sub>
       </a>
     </td>
   </tr>
@@ -172,6 +172,71 @@ Thanks goes to these wonderful people
         <img src="https://avatars.githubusercontent.com/u/128031818?v=4" width="100px;" alt="arpana-kumari"/>
         <br />
         <sub><b>Arpana Kumari</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/CanerShefik">
+        <img src="https://avatars.githubusercontent.com/u/24546769?v=4" width="100px;" alt="caner-shefik"/>
+        <br />
+        <sub><b>Caner Shefik</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/JadhavJeet">
+        <img src="https://avatars.githubusercontent.com/u/100856152?v=4" width="100px;" alt="jadhav-jeet"/>
+        <br />
+        <sub><b>Jadhav Jeet</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SOUNDAR-A">
+        <img src="https://avatars.githubusercontent.com/u/24546769?v=4" width="100px;" alt="soundar-arumugam"/>
+        <br />
+        <sub><b>Soundar Arumugam</b></sub>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/jgonza16">
+        <img src="https://avatars.githubusercontent.com/u/93665374?v=4" width="100px;" alt="j-gonzales"/>
+        <br />
+        <sub><b>j-gonzales</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/KavithaKurella">
+        <img src="https://avatars.githubusercontent.com/u/122851121?v=4" width="100px;" alt="kavitha-kurella"/>
+        <br />
+        <sub><b>Kavitha Kurella</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/yunusfirat">
+        <img src="https://avatars.githubusercontent.com/u/38798014?v=4" width="100px;" alt="yunus-firat"/>
+        <br />
+        <sub><b>Yunus Firat</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/byohannes">
+        <img src="https://avatars.githubusercontent.com/u/42332389?v=4" width="100px;" alt="yohannes-berhane"/>
+        <br />
+        <sub><b>Yohannes Berhane</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Ahmet-K">
+        <img src="https://avatars.githubusercontent.com/u/45479018?v=4" width="100px;" alt="ahmet-kucukibrahimoglu"/>
+        <br />
+        <sub><b>Ahmet Kucukibrahimoglu</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/aismaelcap">
+        <img src="https://avatars.githubusercontent.com/u/121889403?v=4" width="100px;" alt="ismael-akhtaab"/>
+        <br />
+        <sub><b>Ismael Akhtaab</b></sub>
       </a>
     </td>
   </tr>
