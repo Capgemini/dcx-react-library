@@ -201,7 +201,7 @@ Thanks goes to these wonderful people
       <a href="https://github.com/jgonza16">
         <img src="https://avatars.githubusercontent.com/u/93665374?v=4" width="100px;" alt="j-gonzales"/>
         <br />
-        <sub><b>j-gonzales</b></sub>
+        <sub><b>Javier Gonzalez Moya</b></sub>
       </a>
     </td>
     <td align="center">
