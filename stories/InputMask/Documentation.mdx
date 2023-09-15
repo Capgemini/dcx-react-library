@@ -1,0 +1,42 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as InputMaskedStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/InputMasked/Documentation" />
+
+# Input with Mask
+
+An Input component ready to use in your form with support for input mask (eg. phone,date,number,etc).  
+For the list of validation rules please refer to [imask](https://imask.js.org/)  
+FormInputMasked is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+An example with all the available properties is:When you import the InputMasked component without providing any className or style associated will looks as following:
+
+<Canvas of={InputMaskedStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+<FormInputMasked
+  options={{
+    mask: '£num',
+    blocks: {
+      num: {
+        // nested masks are available!
+        mask: Number,
+        thousandsSeparator: ' ',
+      },
+    },
+  }}
+  value={value}
+  onChange={handleChange}
+  type="text"
+  name="maskInput"
+  props={{
+    id: '123',
+  }}
+  ariaLabel="label-aria"
+/>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={InputMaskedStories} />

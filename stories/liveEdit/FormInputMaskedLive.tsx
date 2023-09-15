@@ -1,7 +1,6 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { FormInputMasked } from '../../src/formInput/FormInputMasked';
-import './style.css';
 
 const FormInputMaskedDemo = `
 function FormInputMaskedDemo() {

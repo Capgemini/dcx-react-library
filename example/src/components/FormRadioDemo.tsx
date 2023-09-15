@@ -229,7 +229,7 @@ export const FormRadioDemo = () => {
             id: 'radio-1',
             label: (
               <>
-                This is a custom label <a href="#">hello</a>
+                This is a custom label <a href="/test">hello</a>
               </>
             ),
             value: 'value-1',

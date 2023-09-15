@@ -1,7 +1,6 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { Button } from '../../src/button/Button';
-import './style.css';
 
 const ButtonDemo = `
 function ButtonDemo() {
@@ -38,6 +37,7 @@ function ButtonDemo() {
         customLoadingPostImage={<></>}
         formAction="URL"
         className=""
+        variant="primary"
         style={style}
         name=""
         value=""

@@ -1,6 +1,6 @@
 import 'react-app-polyfill/ie11';
 import reportWebVitals from './reportWebVitals';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {
   FormInputMaskedDemo,
@@ -22,11 +22,19 @@ import {
   RangeDemo,
   DetailsDemo,
   CharacterCountDemo,
+  LinkDemo,
+  ListDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
 import { Home } from './pages/HomePage';
 import { Register } from './pages/Register';
+import { InsertTextDemo } from './components/InsertTextDemo';
+
+import { LabelDemo } from './components/LabelDemo';
+import { KeyboardInputDemo } from './components/KeyboardInputDemo';
+import { PreformattedTextDemo } from './components/PreformattedTextDemo';
+import { BreadcrumbDemo } from './components/BreadcrumbDemo';
 const App = () => (
   <div>
     <BrowserRouter>
@@ -53,12 +61,21 @@ const App = () => (
         <Route path="/tooltipDemo" element={<TooltipDemo />} />
         <Route path="/details" element={<DetailsDemo />} />
         <Route path="/characterCount" element={<CharacterCountDemo />} />
+        <Route path="/insertText" element={<InsertTextDemo />} />
+        <Route path="/link" element={<LinkDemo />} />
+        <Route path="/label" element={<LabelDemo />} />
+        <Route path="/keyBoard" element={<KeyboardInputDemo />} />
+        <Route path="/preformattedText" element={<PreformattedTextDemo />} />
+        <Route path="/list" element={<ListDemo />} />
+        <Route path="/breadcrumb" element={<BreadcrumbDemo />} />
       </Routes>
     </BrowserRouter>
   </div>
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <App />
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

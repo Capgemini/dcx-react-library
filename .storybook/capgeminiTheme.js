@@ -11,7 +11,6 @@ export default create({
   appContentBg: 'white',
   appBorderColor: '#2b0a3d',
   appBorderRadius: 4,
-
   // Text colors
   textColor: '#0070ad',
   fontWeight: 'bold',

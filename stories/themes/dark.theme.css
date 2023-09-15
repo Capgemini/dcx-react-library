@@ -1,0 +1,73 @@
+.dcx-formselect {
+  --dcx-color-chevron-formcontrol: white;
+  --dcx-color-text-formcontrol: white;
+  --dcx-color-text-formcontrol_label: white;
+  --dcx-color-text-formcontrol_hint: #999;
+  --dcx-color-outline-formcontrol: darkorange;
+}
+
+.dcx-button {
+  --dcx-color-text-action-default-primary: white;
+  --dcx-color-text-action-default-secondary: #000;
+  --dcx-color-text-action-default-tertiary: white;
+  --dcx-color-text-action-active-primary: white;
+  --dcx-color-text-action-active-secondary: #000;
+  --dcx-color-text-action-active-tertiary: white;
+  --dcx-color-text-action-hover-primary: white;
+  --dcx-color-text-action-hover-secondary: white;
+  --dcx-color-text-action-hover-tertiary: white;
+  --dcx-color-text-action-focus-primary: white;
+  --dcx-color-text-action-focus-secondary: #000;
+  --dcx-color-text-action-focus-tertiary: white;
+  --dcx-border-color-action-default-primary: #000;
+  --dcx-border-color-action-default-secondary: #000;
+  --dcx-border-color-action-default-tertiary: white;
+  --dcx-border-color-action-active-primary: #000;
+  --dcx-border-color-action-active-secondary: #000;
+  --dcx-border-color-action-active-tertiary: white;
+  --dcx-border-color-action-hover-primary: #454545;
+  --dcx-border-color-action-hover-secondary: #454545;
+  --dcx-border-color-action-hover-tertiary: #000;
+  --dcx-border-color-action-focus-primary: #666;
+  --dcx-border-color-action-focus-secondary: transparent;
+  --dcx-border-color-action-focus-tertiary: white;
+  --dcx-color-background-action-default-primary: #000;
+  --dcx-color-background-action-default-secondary: white;
+  --dcx-color-background-action-default-tertiary: #000;
+  --dcx-color-background-action-active-primary: #666;
+  --dcx-color-background-action-active-secondary: #666;
+  --dcx-color-background-action-active-tertiary: #666;
+  --dcx-color-background-action-hover-primary: #454545;
+  --dcx-color-background-action-hover-secondary: #454545;
+  --dcx-color-background-action-hover-tertiary: #454545;
+  --dcx-color-background-action-focus-primary: #000;
+  --dcx-color-background-action-focus-secondary: white;
+  --dcx-color-background-action-focus-tertiary: transparent;
+}
+
+.dcx-label {
+  --dcx-color-text-formcontrol_label: white;
+  --dcx-color-text-formcontrol_label-error: #f98e86;
+}
+
+.dcx-list {
+  --dcx-color-text-body: white;
+  --dcx-color-marker: white;
+}
+
+.dcx-paragraph {
+  --dcx-color-text-body: white;
+}
+
+.dcx-insert-text {
+  --dcx-color-text-body: white;
+}
+
+.dcx-heading {
+  --dcx-color-text-heading-level_1: white;
+  --dcx-color-text-heading-level_2: white;
+  --dcx-color-text-heading-level_3: white;
+  --dcx-color-text-heading-level_4: white;
+  --dcx-color-text-heading-level_5: white;
+  --dcx-color-text-heading-level_6: white;
+}

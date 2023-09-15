@@ -1,0 +1,68 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as MultiSelectStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/MultiSelect/Documentation" />
+
+# MultiSelect
+
+A multi select component ready to use in your form.  
+MultiSelect is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the button component without providing any className or style associated will looks as following:
+
+<Canvas of={MultiSelectStories.Unstyled} />
+## Usage
+
+Use the multi select component when users need to make multiple selections.  
+It provides a conventional way to make multiple selections.  
+A more complex example with all the possible properties is:
+
+```js
+<MultiSelect
+  selectOptions={[
+    {
+      label: 'option-label',
+      value: 'option-value',
+      id: 'option-id',
+      selected: true,
+    },
+  ]}
+  className="multi-select-class-name"
+  hintClass="hint-class"
+  hintText="hint-text"
+  id="multi-select-id"
+  inputProperties={{
+    placeholder: 'input-place-holder',
+    style: {
+      border: 'none',
+      padding: '3px 8px',
+      margin: '2px 6px 2px 0px',
+    },
+  }}
+  resultUlId=""
+  resultUlStyle={{
+    color: 'blue',
+  }}
+  resultLiStyle={{
+    color: 'red',
+  }}
+  removeAllButtonClass="remove-all-button-class"
+  selectedListStyle={{
+    color: 'white',
+  }}
+  selectedListItemStyle={{
+    padding: '3px',
+  }}
+  searchContainerStyle={{
+    borderRadius: '3px',
+  }}
+  searchDebounceMs={0}
+  onFocus={onFocusHandler}
+  onRemove={onRemoveHandler}
+  onRemoveAll={onRemoveAllHandler}
+  tabIndex={0}
+/>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={MultiSelectStories} />

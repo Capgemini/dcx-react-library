@@ -167,6 +167,7 @@ export const AutocompleteDemo = () => {
         resultNoOptionClass="resultNoOptionClass"
         resultActiveClass="resultActiveClass"
         notFoundText="No fruit found"
+        search={handleSearch}
       />
     </>
   );

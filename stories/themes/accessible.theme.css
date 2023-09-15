@@ -1,0 +1,25 @@
+.dcx-formselect {
+  --dcx-border-radius-formcontrol: 0px;
+  --dcx-spacing-y-formcontrol: 30px;
+  --dcx-font-formcontrol_hint-size: 16px;
+  --dcx-font-formcontrol_hint-line-height: 20px;
+  --dcx-font-formcontrol_error-size: 16px;
+  --dcx-font-formcontrol_error-line-height: 20px;
+}
+
+.dcx-button {
+  --dcx-border-radius-action: 0px;
+  --dcx-spacing-y-action: 15px;
+  --dcx-spacing-x-action: 10px;
+  --dcx-font-action_label-size: 18px;
+  --dcx-font-action_label-line-height: 20px;
+}
+
+.dcx-label {
+  --dcx-color-text-formcontrol_label-error: #da190b;
+}
+
+.dcx-list {
+  --dcx-color-text-body: #000;
+  --dcx-color-marker: #000;
+}

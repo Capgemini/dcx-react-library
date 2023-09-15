@@ -1,0 +1,21 @@
+.dcx-formselect {
+  --dcx-color-text-formcontrol-filled: #000000de;
+  --dcx-color-text-formcontrol_label-floating: rgba(0, 0, 0, 0.6);
+  --dcx-color-text-formcontrol_label-floating-filled: rgba(0, 0, 0, 0.6);
+  --dcx-color-text-formcontrol_hint: #000000de;
+  --dcx-color-chevron-formcontrol-floating: rgba(0, 0, 0, 0.6);
+  --dcx-color-chevron-formcontrol-floating-filled: rgba(0, 0, 0, 0.6);
+}
+
+.dcx-button {
+  --dcx-box-shadow-action: 0px 8px 15px rgba(0, 0, 0, 0.6);
+  --dcx-border-radius-action: 20px;
+  --dcx-border-width-action: 1px;
+  --dcx-border-style-action: solid;
+  --dcx-spacing-x-action: 20px;
+}
+
+.dcx-list {
+  --dcx-color-text-body: rgba(0, 0, 0, 0.6);
+  --dcx-color-marker: rgba(0, 0, 0, 0.6);
+}

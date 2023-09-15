@@ -18,6 +18,7 @@ const DummyResetCharacterCountComponent = () => {
         rows={5}
         cols={50}
         ref={textRef}
+        messageErrorClassName="error-class-name"
       />
       <button onClick={() => textRef.current.reset()}>Cancel</button>
     </form>
@@ -129,6 +130,20 @@ describe('CharacterCount with character limit', () => {
 
     const error: any = container.querySelector('.error-class-name');
     expect(error).not.toBeInTheDocument();
+  });
+
+  it('should assign error class for error message and remove class if user backspaces to correct input', async () => {
+    const user = userEvent.setup();
+    const { container } = render(<DummyResetCharacterCountComponent />);
+    const textarea = screen.getByRole('textbox');
+
+    await user.type(textarea, 'more than 15 chars');
+    expect(container.querySelector('.error-class-name')).toBeInTheDocument();
+
+    await user.type(textarea, '{backspace}{backspace}{backspace}');
+    expect(
+      container.querySelector('.error-class-name')
+    ).not.toBeInTheDocument();
   });
 
   it('should display error message when displayError is true', () => {

@@ -1,0 +1,170 @@
+:root {
+  --chevron-size: 7px;
+}
+
+/*
+ * Default
+ */
+
+.dcx-formselect {
+  --label-height: token('font-formcontrol_label-line-height');
+  --input-height: calc(
+    token('font-formcontrol-line-height') + token('spacing-y-formcontrol')
+  );
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: var(--chevron-size) solid transparent;
+    border-right: var(--chevron-size) solid transparent;
+    border-top: var(--chevron-size) solid token('color-chevron-formcontrol');
+    position: absolute;
+    top: auto;
+    bottom: calc((var(--input-height) / 2) - (var(--chevron-size) / 2));
+    right: 0.75em;
+  }
+
+  & label {
+    font-size: token('font-size-formcontrol_label');
+    line-height: var(--label-height);
+    background: token('color-background-formcontrol_label');
+    color: token('color-text-formcontrol_label');
+  }
+
+  & select {
+    height: var(--input-height);
+    appearance: none;
+    border-radius: token('border-radius-formcontrol');
+    padding-left: token('spacing-x-formcontrol');
+    padding-right: token('spacing-x-formcontrol');
+    line-height: token('font-formcontrol-line-height');
+    font-size: token('font-formcontrol-size');
+    color: token('color-text-formcontrol');
+    background: token('color-background-formcontrol');
+    outline-color: token('color-outline-formcontrol');
+  }
+
+  & .dcx-hint {
+    font-size: token('font-formcontrol_hint-size');
+    line-height: token('font-formcontrol_hint-line-height');
+    color: token('color-text-formcontrol_hint');
+  }
+
+  & .dcx-error-message {
+    font-size: token('font-formcontrol_error-size');
+    line-height: token('font-formcontrol_error-line-height');
+    color: token('color-text-formcontrol_error');
+  }
+}
+
+/*
+ * Filled
+ */
+
+.dcx-formselect--filled {
+  &::after {
+    border-top-color: token('color-chevron-formcontrol-filled');
+  }
+
+  & select {
+    padding-left: token('spacing-x-formcontrol-filled');
+    padding-right: token('spacing-x-formcontrol-filled');
+  }
+}
+
+/*
+ * Floating
+ */
+
+.dcx-formselect.dcx-floating-label {
+  --label-height: token('font-formcontrol_label-line-height-floating');
+  --input-height: calc(
+    var(--label-height) + token('spacing-y-formcontrol-floating')
+  );
+  padding-top: var(--label-height);
+
+  &::after {
+    top: calc(
+      var(--label-height) + (var(--input-height) / 2) -
+        (var(--chevron-size) / 2)
+    );
+    border-top-color: token('color-chevron-formcontrol-floating');
+  }
+
+  & label {
+    position: absolute;
+    line-height: var(--label-height);
+    bottom: auto;
+    top: calc(
+      var(--label-height) + (var(--input-height) / 2) -
+        (var(--label-height) / 2)
+    );
+    transition: all 0.3s ease-in-out;
+
+    margin-left: token('spacing-x-formcontrol-floating');
+    margin-right: token('spacing-x-formcontrol-floating');
+    font-size: token('font-size-formcontrol_label-floating');
+    background: token('color-background-formcontrol_label-floating');
+    color: token('color-text-formcontrol_label-floating');
+  }
+
+  & select {
+    color: transparent;
+    height: var(--input-height);
+    transition: all 0.2s ease-in-out;
+
+    border-radius: token('border-radius-formcontrol-floating');
+    padding-left: token('spacing-x-formcontrol-floating');
+    padding-right: token('spacing-x-formcontrol-floating');
+    font-size: token('font-formcontrol-size-floating');
+    background: token('color-background-formcontrol-floating');
+    outline-color: token('color-outline-formcontrol-floating');
+  }
+
+  & .dcx-hint,
+  & .dcx-error-message {
+    order: 2;
+  }
+
+  & .dcx-hint {
+    font-size: token('font-formcontrol_hint-size-floating');
+    line-height: token('font-formcontrol_hint-line-height-floating');
+    color: token('color-text-formcontrol_hint-floating');
+  }
+
+  & .dcx-error-message {
+    font-size: token('font-formcontrol_error-size-floating');
+    line-height: token('font-formcontrol_error-line-height-floating');
+    color: token('color-text-formcontrol_error-floating');
+  }
+}
+
+/*
+ * Floating + Filled
+ */
+
+.dcx-formselect--filled.dcx-floating-label {
+  &::after {
+    border-top-color: token('color-chevron-formcontrol-floating-filled');
+  }
+
+  & select {
+    color: token('color-text-formcontrol-floating');
+  }
+
+  & label {
+    top: calc(var(--label-height) / 2);
+    padding-left: 2px;
+    padding-right: 2px;
+
+    margin-left: token('spacing-x-formcontrol-floating-filled');
+    margin-right: token('spacing-x-formcontrol-floating-filled');
+  }
+}

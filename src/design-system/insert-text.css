@@ -1,0 +1,9 @@
+.dcx-insert-text {
+  font-family: token('font-family-body');
+  font-size: token('font-size-body');
+  font-size: token('font-size-body');
+  font-weight: token('font-weight-body');
+  color: token('color-text-body');
+  padding: 1em;
+  border-left: 0.6em solid #b1b4b6;
+}

@@ -1,0 +1,25 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as PreformattedTextStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Typography/PreformattedText/Documentation" />
+
+# PreformattedText
+
+A PreformattedText component ready to use in your form.  
+PreformattedText is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the PreformattedText component without providing any className or style associated will looks as following:
+
+<Canvas of={PreformattedTextStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+<PreformattedText className="customPreformattedText">
+  Text in a pre element is displayed in a fixed-width font, and it preserves
+  both spaces and line breaks.
+</PreformattedText>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={PreformattedTextStories} />
