@@ -1,13 +1,17 @@
+/* eslint-disable import/no-webpack-loader-syntax */
+import style from '!raw-loader!../../../dist/design-system/button.css';
+import TokensDecorator from '../../../core/storybook/TokensDecorator';
 import { Button } from '../../../src/button';
 
 export default {
   title: 'DCXLibrary/Form/Button/Design system',
   component: Button,
   decorators: [
-    getStory => {
-      require('../../../dist/design-system/index.css');
-      return getStory();
-    },
+    getStory => (
+      <TokensDecorator style={style}>
+        {getStory()}
+      </TokensDecorator>
+    ),
   ],
   parameters: {
     options: { showPanel: true },
