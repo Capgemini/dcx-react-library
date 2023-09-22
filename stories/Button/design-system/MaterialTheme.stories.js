@@ -1,8 +1,9 @@
+/* eslint-disable import/no-webpack-loader-syntax */
 import { Button } from '../../../src/button';
 import { LiveProvider, LiveEditor } from 'react-live';
 import style from '!raw-loader!../../themes/material.theme.css';
-import { getRootStylesByClass } from '../../Utils/getRootStylesByClass';
 import { SVG_EXAMPLE } from '../helpers/svg.example';
+import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
  * This a theme showcases an appearance similar to Material UI can be achieved.
@@ -37,7 +38,7 @@ export const ShowCase = {
   },
   render: () => (
     <LiveProvider
-      code={getRootStylesByClass(style, '.dcx-button')}
+      code={StorybookUtils.getThemeCode('dcx-button', style)}
       disabled={true}
       language="css"
     >
