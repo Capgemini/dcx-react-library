@@ -1,6 +1,6 @@
 .dcx-highlight {
   color: token('color-text-highlight_body');
-  background: token('color-background-highlight_body');;
+  background: token('color-background-highlight_body');
   font-size: token('font-size-highlight_body');
   font-family: token('font-family-highlight_body');
   font-weight: token('font-weight-highlight_body');
