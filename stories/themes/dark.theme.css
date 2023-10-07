@@ -76,6 +76,10 @@
   --dcx-color-text-heading-level_6: white;
 }
 
+.dcx-abbreviate {
+  --dcx-color-background-highlight_body: #666;
+}
+
 .dcx-link {
   --dcx-color-text-link: darkorange;
   --dcx-color-text-link-visited: #db7a03;
