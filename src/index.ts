@@ -26,3 +26,4 @@ export * from './keyBoard';
 export * from './preformattedText';
 export * from './list';
 export * from './breadcrumb';
+export * from './accordion';
