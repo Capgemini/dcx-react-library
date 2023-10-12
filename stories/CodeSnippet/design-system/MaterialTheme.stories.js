@@ -5,9 +5,9 @@ import style from '!raw-loader!../../themes/material.theme.css';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
- * This a theme showcases an appearance similar to Material UI can be achieved.  
+ * This a theme showcases an appearance similar to Material UI can be achieved.
  * If you copy paste this snippet inside your css file you'll get a material design style
-*/
+ */
 export default {
   title: 'DCXLibrary/Typography/CodeSnippet/Design system/Material',
   component: CodeSnippet,
@@ -16,15 +16,14 @@ export default {
       require('../../../dist/design-system/index.css');
       require('../../themes/material.theme.css');
       return getStory();
-    }
+    },
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
-
 
 export const ShowCase = {
   parameters: {
@@ -37,10 +36,14 @@ export const ShowCase = {
     },
   },
   render: () => (
-    <LiveProvider code={StorybookUtils.getThemeCode('dcx-highlight', style)} disabled={true} language="css">
+    <LiveProvider
+      code={StorybookUtils.getThemeCode('dcx-code', style)}
+      disabled={true}
+      language="css"
+    >
       <LiveEditor className="liveEditor" aria-label="editor" />
     </LiveProvider>
-  )
+  ),
 };
 
 export const Default = {
