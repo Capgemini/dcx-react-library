@@ -63,6 +63,10 @@
   --dcx-color-text-body: white;
 }
 
+.dcx-keyboard-Input {
+  --dcx-color-text-pre_body: white;
+}
+
 .dcx-heading {
   --dcx-color-text-heading-level_1: white;
   --dcx-color-text-heading-level_2: white;
