@@ -1,7 +1,7 @@
 import { Details } from '../../src/details/Details';
 
 export default {
-  title: 'DCXLibrary/Details/Without style',
+  title: 'DCXLibrary/Layout/Details/Without style',
   component: Details,
   parameters: {
     options: {
