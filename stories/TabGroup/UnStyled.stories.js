@@ -1,7 +1,7 @@
 import { TabGroup, Tab } from '../../src/tabGroup';
 
 export default {
-  title: 'DCXLibrary/Tabs/Without style',
+  title: 'DCXLibrary/Layout/Tabs/Without style',
   component: TabGroup,
   parameters: {
     options: {

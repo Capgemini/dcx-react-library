@@ -2,7 +2,7 @@ import { Breadcrumb } from '../../src/breadcrumb';
 import BreadcrumbLive from '../liveEdit/BreadcrumbLive';
 
 export default {
-  title: 'DCXLibrary/Breadcrumb/Live',
+  title: 'DCXLibrary/Layout/Breadcrumb/Live',
   component: Breadcrumb,
 
   parameters: {
