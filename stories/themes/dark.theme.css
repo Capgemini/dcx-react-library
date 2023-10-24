@@ -75,3 +75,8 @@
   --dcx-color-text-heading-level_5: white;
   --dcx-color-text-heading-level_6: white;
 }
+
+.dcx-link {
+  --dcx-color-text-link: white;
+  --dcx-color-text-link-visited: #ffdd00;
+}

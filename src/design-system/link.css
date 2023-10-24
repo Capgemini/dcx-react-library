@@ -1,9 +1,14 @@
 .dcx-link {
   color: token('color-text-link');
-  font-size: token('font-action_label-size');
+  font-size: token('font-size-link');
   font-family: token('font-family-link');
 
-  &.dcx-link-visited {
+  &:visited {
     color: token('color-text-link-visited');
+  }
+
+  &:active {
+    color: token('color-text-link-active');
+    text-decoration: none;
   }
 }

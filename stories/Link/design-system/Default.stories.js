@@ -18,12 +18,14 @@ export default {
   },
   tags: ['autodocs'],
 };
+const timestamp = new Date().getTime();
+const link = `https://www.google.com?time=${timestamp}`;
 
 export const Default = {
   name: 'Default',
   args: {
     value: 'Default / Unvisited link',
-    to: 'https://www.google.com/',
+    to: link,
   },
 };
 
@@ -31,7 +33,7 @@ export const Visited = {
   name: 'Visited',
   args: {
     value: 'Visited link',
-    className: 'dcx-link-visited',
-    to: '#',
+    className: 'dcx-link',
+    to: link,
   },
 };

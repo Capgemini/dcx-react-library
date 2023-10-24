@@ -1,18 +1,19 @@
 import { Link } from '../../../src/link/Link';
-import style from '!raw-loader!../../themes/accessible.theme.css';
 import { LiveProvider, LiveEditor } from 'react-live';
+import style from '!raw-loader!../../themes/material.theme.css';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
- * This a theme aimed at easing the vizualization of the different elements of the component in order to improve the experience for people that have visual impairments.
+ * This a theme showcases an appearance similar to Material UI can be achieved.
+ * If you copy paste this snippet inside your css file you'll get a material design style
  */
 export default {
-  title: 'DCXLibrary/Typography/Link/Design system/Accessible',
+  title: 'DCXLibrary/Typography/Link/Design system/Material',
   component: Link,
   decorators: [
     (getStory) => {
       require('../../../dist/design-system/index.css');
-      require('../../themes/accessible.theme.css');
+      require('../../themes/material.theme.css');
       return getStory();
     },
   ],
@@ -43,6 +44,7 @@ export const ShowCase = {
     </LiveProvider>
   ),
 };
+
 const timestamp = new Date().getTime();
 const link = `https://www.google.com?time=${timestamp}`;
 
