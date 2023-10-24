@@ -7,7 +7,7 @@ import "./style.css";
  * Feel free to use your own css to style the formInput as you prefer.
  */
 export default {
-  title: 'DCXLibrary/Tabs/Class based',
+  title: 'DCXLibrary/Layout/Tabs/Class based',
   component: TabGroup,
   parameters: {
     options: {

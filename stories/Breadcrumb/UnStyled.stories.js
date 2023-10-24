@@ -1,7 +1,7 @@
 import { Breadcrumb, BreadcrumbItem } from '../../src/breadcrumb';
 
 export default {
-  title: 'DCXLibrary/Breadcrumb/Without style',
+  title: 'DCXLibrary/Layout/Breadcrumb/Without style',
   component: Breadcrumb,
   parameters: {
     options: {
