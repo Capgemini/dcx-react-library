@@ -7,7 +7,7 @@ export default {
   title: 'DCXLibrary/Typography/Link/Design system/Default',
   component: Link,
   decorators: [
-    (getStory) => {
+    getStory => {
       require('../../../dist/design-system/index.css');
       return getStory();
     },
@@ -19,13 +19,14 @@ export default {
   tags: ['autodocs'],
 };
 const timestamp = new Date().getTime();
-const link = `https://www.google.com?time=${timestamp}`;
+const link = `#?time=${timestamp}`;
 
 export const Default = {
   name: 'Default',
   args: {
     value: 'Default / Unvisited link',
     to: link,
+    props: { target: '_self' },
   },
 };
 
@@ -33,7 +34,7 @@ export const Visited = {
   name: 'Visited',
   args: {
     value: 'Visited link',
-    className: 'dcx-link',
     to: link,
+    props: { target: '_self' },
   },
 };

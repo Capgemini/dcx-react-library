@@ -11,4 +11,9 @@
     color: token('color-text-link-active');
     text-decoration: none;
   }
+
+  &.dcx-link-materialTheme:hover {
+    text-decoration: none;
+    font-size: 18px;
+  }
 }

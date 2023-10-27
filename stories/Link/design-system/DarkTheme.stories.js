@@ -10,7 +10,7 @@ export default {
   title: 'DCXLibrary/Typography/Link/Design system/Dark',
   component: Link,
   decorators: [
-    (getStory) => {
+    getStory => {
       require('../../../dist/design-system/index.css');
       require('../../themes/dark.theme.css');
       return getStory();
@@ -44,7 +44,7 @@ export const ShowCase = {
   ),
 };
 const timestamp = new Date().getTime();
-const link = `https://www.google.com?time=${timestamp}`;
+const link = `#?time=${timestamp}`;
 
 export const Default = {
   name: 'Default',
@@ -57,8 +57,8 @@ export const Default = {
       ],
     },
   },
-  render: function () {
-    return <Link value="Google" to={link} props={{ target: '_blank' }} />;
+  render: function() {
+    return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };
 
@@ -73,14 +73,7 @@ export const Visited = {
       ],
     },
   },
-  render: function () {
-    return (
-      <Link
-        className="dcx-link"
-        value="Google"
-        to={link}
-        props={{ target: '_blank' }}
-      />
-    );
+  render: function() {
+    return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };

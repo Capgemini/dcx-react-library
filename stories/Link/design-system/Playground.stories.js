@@ -7,7 +7,7 @@ export default {
   title: 'DCXLibrary/Typography/Link/Design system',
   component: Link,
   decorators: [
-    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
+    getStory => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
   ],
   parameters: {
     options: { showPanel: true },
@@ -16,11 +16,11 @@ export default {
 };
 
 const timestamp = new Date().getTime();
-const link = `https://www.google.com?time=${timestamp}`;
+const link = `#?time=${timestamp}`;
 
 export const Playground = {
   name: 'Playground',
-  render: function () {
-    return <Link value="Google" to={link} props={{ target: '_blank' }} />;
+  render: function() {
+    return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };

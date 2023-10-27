@@ -19,3 +19,8 @@
   --dcx-color-text-body: rgba(0, 0, 0, 0.6);
   --dcx-color-marker: rgba(0, 0, 0, 0.6);
 }
+
+.dcx-link {
+  --dcx-color-text-link: rgba(29, 112, 184, 0.8);
+  --dcx-color-text-link-visited: rgba(76, 44, 146, 0.8);
+}

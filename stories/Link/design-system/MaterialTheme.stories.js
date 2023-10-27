@@ -2,6 +2,7 @@ import { Link } from '../../../src/link/Link';
 import { LiveProvider, LiveEditor } from 'react-live';
 import style from '!raw-loader!../../themes/material.theme.css';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
+import { useState } from 'react';
 
 /**
  * This a theme showcases an appearance similar to Material UI can be achieved.
@@ -11,7 +12,7 @@ export default {
   title: 'DCXLibrary/Typography/Link/Design system/Material',
   component: Link,
   decorators: [
-    (getStory) => {
+    getStory => {
       require('../../../dist/design-system/index.css');
       require('../../themes/material.theme.css');
       return getStory();
@@ -46,24 +47,31 @@ export const ShowCase = {
 };
 
 const timestamp = new Date().getTime();
-const link = `https://www.google.com?time=${timestamp}`;
+const link = `#?time=${timestamp}`;
 
 export const Default = {
   name: 'Default',
-  render: function () {
-    return <Link value="Google" to={link} props={{ target: '_blank' }} />;
+  render: function() {
+    return (
+      <Link
+        value="Link"
+        to={link}
+        props={{ target: '_self' }}
+        className="dcx-link-materialTheme"
+      />
+    );
   },
 };
 
 export const Visited = {
   name: 'Visited',
-  render: function () {
+  render: function() {
     return (
       <Link
-        className="dcx-link"
-        value="Google"
+        className="dcx-link-materialTheme"
+        value="Link"
         to={link}
-        props={{ target: '_blank' }}
+        props={{ target: '_self' }}
       />
     );
   },
