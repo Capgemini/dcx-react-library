@@ -52,27 +52,13 @@ const link = `#?time=${timestamp}`;
 export const Default = {
   name: 'Default',
   render: function() {
-    return (
-      <Link
-        value="Link"
-        to={link}
-        props={{ target: '_self' }}
-        className="dcx-link-materialTheme"
-      />
-    );
+    return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };
 
 export const Visited = {
   name: 'Visited',
   render: function() {
-    return (
-      <Link
-        className="dcx-link-materialTheme"
-        value="Link"
-        to={link}
-        props={{ target: '_self' }}
-      />
-    );
+    return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };
