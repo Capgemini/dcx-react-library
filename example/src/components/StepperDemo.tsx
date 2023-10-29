@@ -18,18 +18,7 @@ export const StepperDemo = () => {
   };
 
   return (
-    <Stepper
-      selectedStep={activeStep}
-      separator={
-        <hr
-          style={{
-            borderColor: '#a7a8ab',
-            width: '120px',
-            margin: '11px 8px',
-          }}
-        />
-      }
-    >
+    <Stepper selectedStep={activeStep} separator={<hr className="separator" />}>
       <Step>
         <StepHeader>
           <div className="stepNumber">1</div>
