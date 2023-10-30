@@ -10,12 +10,23 @@ export type StepContentProps = {
    * will allow to style the content of each step
    */
   className?: string;
+  /**
+   * allow to show hide the content
+   */
+  visible?: boolean;
 };
 
-export const StepContent = ({ children, className }: StepContentProps) => (
+export const StepContent = ({
+  children,
+  className,
+  visible,
+}: StepContentProps) => (
   <div
     role="tabPanel"
     className={classNames(['dcx-stepper-content', className])}
+    style={{
+      display: visible ? 'inherit' : 'none',
+    }}
   >
     {children}
   </div>

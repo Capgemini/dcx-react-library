@@ -33,11 +33,6 @@ export type StepperProps = {
    */
   headerClassName?: string;
   /**
-   * define the style of all the buttons inside the stepHeader from the parent.
-   * If you want to style them independently you can use buttonClassName on the StepHeader element
-   */
-  buttonHeaderClasseName?: string;
-  /**
    * define the className of the content container
    */
   contentContainerClassNames?: string;
@@ -56,7 +51,6 @@ export const Stepper = ({
   stepperClassName,
   headerContainerClassNames,
   headerClassName,
-  buttonHeaderClasseName,
   contentContainerClassNames,
   contentClassName,
 }: StepperProps) => {
@@ -94,10 +88,10 @@ export const Stepper = ({
       child.props.children.forEach((child: JSX.Element) => {
         const { name } = child.type;
         if (child.type.name === 'StepHeader') {
-          const buttonHeaderClasses = classNames([
+          const headerClasses = classNames([
             { 'dcx-active-step': index === activeStep },
             { [`${activeStepClass}`]: index === activeStep },
-            buttonHeaderClasseName,
+            headerClassName,
           ]);
 
           childHeader.push(
@@ -105,8 +99,11 @@ export const Stepper = ({
               key={`${name}-${index}`}
               _index={index}
               separator={index !== children.length - 1 && separator}
-              headerClassName={headerClassName}
-              buttonClassName={buttonHeaderClasses}
+              headerClassName={headerClasses}
+              aria-selected={index - 1 === activeStep ? 'true' : 'false'}
+              aria-posinset={index++}
+              aria-setsize={child.props.children.length + 1}
+              tabindex={index - 1 === activeStep ? '0' : '-1'}
               {...child.props}
             />
           );
@@ -115,6 +112,7 @@ export const Stepper = ({
             <child.type
               key={`${name}-${index}`}
               className={contentClassName}
+              visible={index - 1 === activeStep}
               {...child.props}
             />
           );
@@ -132,10 +130,7 @@ export const Stepper = ({
     >
       <div className={containerClasses}>
         <div className={headerContainerClasses}>{childHeader}</div>
-
-        <div className={contentContainerClasses}>
-          {childContent[activeStep]}
-        </div>
+        <div className={contentContainerClasses}>{childContent}</div>
       </div>
     </StepperContext.Provider>
   );

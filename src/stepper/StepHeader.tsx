@@ -12,10 +12,6 @@ export type StepHeaderProps = {
    */
   headerClassName?: string;
   /**
-   * allow to style the button navigation
-   */
-  buttonClassName?: string;
-  /**
    * you can define a custom separator between each steps
    */
   separator?: JSX.Element;
@@ -32,26 +28,24 @@ export const StepHeader = ({
   separator,
   children,
   headerClassName,
-  buttonClassName,
+  ...props
 }: any) => {
   const { changeActiveStep } = useStepper();
   const headerClassNames = classNames([
     'dcx-stepper-header-content',
     headerClassName,
   ]);
-  const buttonClassNames = classNames([
-    'dcx-stepper-header-button',
-    buttonClassName,
-  ]);
   return (
-    <div role="tab" className={headerClassNames}>
+    <>
       <button
-        className={buttonClassNames}
+        role="tab"
+        className={headerClassNames}
         onClick={() => changeActiveStep(_index)}
+        {...props}
       >
         {children}
       </button>
       <>{separator}</>
-    </div>
+    </>
   );
 };

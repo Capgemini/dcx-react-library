@@ -6,9 +6,6 @@
 .dcx-stepper-header-content {
     display: flex;
     margin: 10px 10px 10px 0px;
-}
-
-.dcx-stepper-header-button {
     display: flex;
 	background: none;
 	color: inherit;
@@ -17,8 +14,8 @@
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-    
 }
+
 
 .dcx-stepper-header-container {
     display: flex;
@@ -49,10 +46,11 @@
 	color: white;
 	border-radius: 10px;
     margin-right: 5px;
+    background-color: rgba(0, 0, 0, .54);
 }
 
 .separator {
     border-color: #a7a8ab;
     width: 120px;
-    margin: 11px 8px;
+    margin: 20px 8px;
 }
