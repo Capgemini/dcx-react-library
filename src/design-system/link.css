@@ -1,7 +1,7 @@
 .dcx-link {
   color: token('color-text-link');
-  font-size: token('font-size-link');
-  font-family: token('font-family-link');
+  font-size: token('font-size-body');
+  font-family: token('font-family-body');
 
   &:visited {
     color: token('color-text-link-visited');
@@ -9,11 +9,9 @@
 
   &:active {
     color: token('color-text-link-active');
-    text-decoration: none;
   }
 
   &:hover {
-    text-decoration: none;
-    font-size: 18px;
+    color: token('color-text-link-hover');
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-webpack-loader-syntax */
 import { Link } from '../../../src/link/Link';
 import style from '!raw-loader!../../themes/dark.theme.css';
 import { LiveProvider, LiveEditor } from 'react-live';
@@ -57,7 +58,7 @@ export const Default = {
       ],
     },
   },
-  render: function() {
+  render: function () {
     return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };
@@ -73,7 +74,7 @@ export const Visited = {
       ],
     },
   },
-  render: function() {
+  render: function () {
     return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };

@@ -77,6 +77,8 @@
 }
 
 .dcx-link {
-  --dcx-color-text-link: white;
-  --dcx-color-text-link-visited: #ffdd00;
+  --dcx-color-text-link: darkorange;
+  --dcx-color-text-link-visited: #db7a03;
+  --dcx-color-text-link-active: #db7a03;
+  --dcx-color-text-link-hover: #db7a03;
 }

@@ -1,8 +1,8 @@
+/* eslint-disable import/no-webpack-loader-syntax */
 import { Link } from '../../../src/link/Link';
 import { LiveProvider, LiveEditor } from 'react-live';
 import style from '!raw-loader!../../themes/material.theme.css';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
-import { useState } from 'react';
 
 /**
  * This a theme showcases an appearance similar to Material UI can be achieved.
@@ -51,14 +51,14 @@ const link = `#?time=${timestamp}`;
 
 export const Default = {
   name: 'Default',
-  render: function() {
+  render: function () {
     return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };
 
 export const Visited = {
   name: 'Visited',
-  render: function() {
+  render: function () {
     return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };

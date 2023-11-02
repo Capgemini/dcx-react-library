@@ -1,3 +1,4 @@
+/* eslint-disable import/no-webpack-loader-syntax */
 import { Link } from '../../../src/link/Link';
 import style from '!raw-loader!../../themes/accessible.theme.css';
 import { LiveProvider, LiveEditor } from 'react-live';
@@ -48,14 +49,14 @@ const link = `#?time=${timestamp}`;
 
 export const Default = {
   name: 'Default',
-  render: function() {
+  render: function () {
     return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };
 
 export const Visited = {
   name: 'Visited',
-  render: function() {
+  render: function () {
     return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };
