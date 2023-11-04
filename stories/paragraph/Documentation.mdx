@@ -14,11 +14,21 @@ When you import the paragraph component without providing any className or style
 A more complex example with all the possible properties is:
 
 ```js
+<Paragraph className="my-classname" props={{ id: 'my-paragraph' }}>
+  This is the content of the paragraph.
+</Paragraph>
+```
+
+You can use value prop or children feature but you should not use both, If you use both together, the value property takes precedence:
+
+```js
 <Paragraph
-  value="This is the content of the paragraph."
+  value="This is the value prop of the paragraph"
   className="my-classname"
   props={{ id: 'my-paragraph' }}
-/>
+>
+  This is the content of the paragraph.
+</Paragraph>
 ```
 
 Below a list of all the available properties:

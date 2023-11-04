@@ -7,21 +7,33 @@ type ParagraphProps = {
    */
   className?: string;
   /**
-   * content of the paragraph
+   * content of the paragraph. it has precedence to children
    */
-  value: string | number;
+  value?: string | number;
+  /**
+   * allow to specify a custom content
+   */
+  children?: string | number | JSX.Element;
   /**
    * Additional props/attributes
    */
   props?: React.HTMLAttributes<HTMLParagraphElement>;
 };
 
-export const Paragraph = ({ className, value, props }: ParagraphProps) => {
+export const Paragraph = ({
+  className,
+  value,
+  props,
+  children,
+}: ParagraphProps): JSX.Element => {
   const dynamicClassName = classNames(['dcx-paragraph', className]);
-  
+  let content: typeof value | typeof children;
+  if (children) content = children;
+  if (value) content = value;
+
   return (
     <p className={dynamicClassName} {...props}>
-      {value}
+      {content}
     </p>
   );
 };
