@@ -17,7 +17,7 @@ describe('Paragraph', () => {
     render(<Paragraph className="paragraph">{expectedText}</Paragraph>);
     expect(screen.getByText(expectedText)).toBeInTheDocument();
   });
-  it('should be value prop more priority then custom content', () => {
+  it('should display the content of the value given it has precedence', () => {
     const valueText = 'a custom value';
     const customText = 'a custom content';
     render(

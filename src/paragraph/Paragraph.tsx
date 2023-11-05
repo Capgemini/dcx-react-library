@@ -1,7 +1,7 @@
 import React from 'react';
 import { classNames } from '../common/utils';
 
-type ParagraphProps = {
+type Props = {
   /**
    * optional CSS class name
    */
@@ -9,27 +9,34 @@ type ParagraphProps = {
   /**
    * content of the paragraph. it has precedence to children
    */
-  value?: string | number;
+  value: string | number;
   /**
    * allow to specify a custom content
    */
-  children?: string | number | JSX.Element;
+  children: string | number | JSX.Element;
   /**
    * Additional props/attributes
    */
   props?: React.HTMLAttributes<HTMLParagraphElement>;
 };
 
+type ParagraphValue = Omit<Props, 'children'>;
+type ParagraphChildren = Omit<Props, 'value'>;
+type ParagraphProps = ParagraphValue | ParagraphChildren;
+
+const isValueType = (p: any): p is ParagraphValue => !!p.value;
+const isChildrenType = (p: any): p is ParagraphChildren => !!p.children;
+
 export const Paragraph = ({
   className,
-  value,
   props,
-  children,
+  ...rest
 }: ParagraphProps): JSX.Element => {
   const dynamicClassName = classNames(['dcx-paragraph', className]);
-  let content: typeof value | typeof children;
-  if (children) content = children;
-  if (value) content = value;
+  let content!: string | number | JSX.Element;
+
+  if (isChildrenType(rest)) content = rest.children;
+  if (isValueType(rest)) content = rest.value;
 
   return (
     <p className={dynamicClassName} {...props}>
