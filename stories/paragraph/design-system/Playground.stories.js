@@ -7,22 +7,18 @@ export default {
   title: 'DCXLibrary/Typography/Paragraph/Design system',
   component: Paragraph,
   decorators: [
-    (getStory) => (
-      <TokensDecorator style={style}>
-        {getStory()}
-      </TokensDecorator>
-    )
+    getStory => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
-  }
+  },
 };
-
 
 export const Playground = {
   name: 'Playground',
   args: {
-    value: 'This is the content of the paragraph.',
+    value: '',
+    children: 'This is the content of the paragraph.',
   },
 };
