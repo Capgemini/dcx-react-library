@@ -8,7 +8,7 @@ import './style.css';
  * An example of 'styled' CopyToClipboard
  */
 export default {
-  title: 'DCXLibrary/CopyToClipboard/Class based',
+  title: 'DCXLibrary/Utils/CopyToClipboard/Class based',
   component: CopyToClipboard,
   parameters: {
     options: {

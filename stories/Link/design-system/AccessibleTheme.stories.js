@@ -1,4 +1,5 @@
-import { Paragraph } from '../../../src/paragraph/Paragraph';
+/* eslint-disable import/no-webpack-loader-syntax */
+import { Link } from '../../../src/link/Link';
 import style from '!raw-loader!../../themes/accessible.theme.css';
 import { LiveProvider, LiveEditor } from 'react-live';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
@@ -7,8 +8,8 @@ import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
  * This a theme aimed at easing the vizualization of the different elements of the component in order to improve the experience for people that have visual impairments.
  */
 export default {
-  title: 'DCXLibrary/Typography/Paragraph/Design system/Accessible',
-  component: Paragraph,
+  title: 'DCXLibrary/Typography/Link/Design system/Accessible',
+  component: Link,
   decorators: [
     getStory => {
       require('../../../dist/design-system/index.css');
@@ -35,7 +36,7 @@ export const ShowCase = {
   },
   render: () => (
     <LiveProvider
-      code={StorybookUtils.getThemeCode('dcx-paragraph', style)}
+      code={StorybookUtils.getThemeCode('dcx-link', style)}
       disabled={true}
       language="css"
     >
@@ -43,27 +44,19 @@ export const ShowCase = {
     </LiveProvider>
   ),
 };
+const timestamp = new Date().getTime();
+const link = `#?time=${timestamp}`;
 
 export const Default = {
   name: 'Default',
-  args: {
-    children: 'This is the content of the paragraph.',
+  render: function () {
+    return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };
 
-export const Value = {
-  name: 'Value',
-  args: {
-    value: 'This is the content of the paragraph.',
-  },
-};
-
-export const CustomContent = {
-  name: 'CustomContent',
-  args: {
-    children: [
-      'This is the simple custom-content of the ',
-      <strong>paragraph</strong>,
-    ],
+export const Visited = {
+  name: 'Visited',
+  render: function () {
+    return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };

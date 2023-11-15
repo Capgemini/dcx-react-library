@@ -1,6 +1,6 @@
-import { Paragraph } from '../../../src/paragraph/Paragraph';
+/* eslint-disable import/no-webpack-loader-syntax */
+import { Link } from '../../../src/link/Link';
 import { LiveProvider, LiveEditor } from 'react-live';
-// eslint-disable-next-line import/no-webpack-loader-syntax
 import style from '!raw-loader!../../themes/material.theme.css';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
@@ -9,8 +9,8 @@ import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
  * If you copy paste this snippet inside your css file you'll get a material design style
  */
 export default {
-  title: 'DCXLibrary/Typography/Paragraph/Design system/Material',
-  component: Paragraph,
+  title: 'DCXLibrary/Typography/Link/Design system/Material',
+  component: Link,
   decorators: [
     getStory => {
       require('../../../dist/design-system/index.css');
@@ -37,7 +37,7 @@ export const ShowCase = {
   },
   render: () => (
     <LiveProvider
-      code={StorybookUtils.getThemeCode('dcx-paragraph', style)}
+      code={StorybookUtils.getThemeCode('dcx-link', style)}
       disabled={true}
       language="css"
     >
@@ -46,26 +46,19 @@ export const ShowCase = {
   ),
 };
 
+const timestamp = new Date().getTime();
+const link = `#?time=${timestamp}`;
+
 export const Default = {
   name: 'Default',
-  args: {
-    children: 'This is the content of the paragraph.',
+  render: function () {
+    return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };
 
-export const Value = {
-  name: 'Value',
-  args: {
-    value: 'This is the content of the paragraph.',
-  },
-};
-
-export const CustomContent = {
-  name: 'CustomContent',
-  args: {
-    children: [
-      'This is the simple custom-content of the ',
-      <strong>paragraph</strong>,
-    ],
+export const Visited = {
+  name: 'Visited',
+  render: function () {
+    return <Link value="Link" to={link} props={{ target: '_self' }} />;
   },
 };
