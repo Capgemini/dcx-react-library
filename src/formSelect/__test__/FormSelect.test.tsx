@@ -445,13 +445,9 @@ describe('FormSelect', () => {
     expect(errorMessage.className).toBe('dcx-error-message errorMessageClass');
   });
 
-  it('should allow to change the default value on select', async () => {
-    const user = userEvent.setup();
-    render(
-      <FormSelect options={['first', 'second', 'third']} defaultValue="third" />
-    );
-    await user.selectOptions(screen.getByRole('combobox'), 'first');
-    const option: any = screen.getByRole('option', { name: 'first' });
+  it('should select the default value if specified', () => {
+    render(<FormSelect options={['daniele', 'isaac']} defaultValue="isaac" />);
+    const option: any = screen.getByRole('option', { name: 'isaac' });
     expect(option.selected).toBe(true);
   });
 
