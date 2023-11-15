@@ -5,16 +5,19 @@ import { FormSelect } from '../../src/formSelect/FormSelect';
 const FormSelectDemo = `
 function FormSelectDemo() {
   const [value, setValue] = React.useState('')
+
   const handleChange = event => {
     setValue(event.currentTarget.value);
   }
+
   return (
     <FormSelect
       id="select"
       nullOption="Select..."
       disabled={false}
       selectProps={{}}
-      value=""
+      value={value}
+      defaultValue="option3"
       label="Basic"
       labelProps={{
         style: {
@@ -40,7 +43,6 @@ function FormSelectDemo() {
       labelClassName=""
       containerClassName=""
       style={{}}
-      
       ariaLabel=""
       labelProps={{}}
       hint={{
@@ -56,7 +58,6 @@ function FormSelectDemo() {
         className: "",
       }}
       errorMessageId=""
-      defaultValue=""
       tabIndex={0}
       containerErrorClassName="containerErrorClassName"
       containerFilledClassName="containerFilledClassName"

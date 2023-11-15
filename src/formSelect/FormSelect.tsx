@@ -159,7 +159,7 @@ export const FormSelect = ({
   style,
   nullOption,
   containerProps,
-  defaultValue = '',
+  defaultValue,
   tabIndex = 0,
   variant = 'normal',
   disabled = false,
@@ -167,8 +167,10 @@ export const FormSelect = ({
 }: FormSelectProps) => {
   let initialValue: string | number = '';
 
-  if (value !== undefined) {
+  if (value !== undefined && !defaultValue) {
     initialValue = value;
+  } else if (defaultValue !== undefined) {
+    initialValue = defaultValue;
   } else if (nullOption !== undefined) {
     initialValue = nullOption;
   } else if (options.length > 0 && typeof options[0] === 'string') {
@@ -234,7 +236,7 @@ export const FormSelect = ({
         />
       )}
       <select
-        value={defaultValue !== '' ? defaultValue : selectValue}
+        value={selectValue}
         name={name || 'formSelect'}
         id={id || 'formSelect'}
         className={selectClassName}
