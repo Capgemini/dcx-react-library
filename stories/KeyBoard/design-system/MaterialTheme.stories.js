@@ -1,29 +1,30 @@
-import { Paragraph } from '../../../src/paragraph/Paragraph';
+import { KeyboardInput } from '../../../src/keyBoard/KeyboardInput';
 import { LiveProvider, LiveEditor } from 'react-live';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import style from '!raw-loader!../../themes/material.theme.css';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
- * This a theme showcases an appearance similar to Material UI can be achieved.
+ * This a theme showcases an appearance similar to Material UI can be achieved.  
  * If you copy paste this snippet inside your css file you'll get a material design style
- */
+*/
 export default {
-  title: 'DCXLibrary/Typography/Paragraph/Design system/Material',
-  component: Paragraph,
+  title: 'DCXLibrary/Typography/KeyboardInput/Design system/Material',
+  component: KeyboardInput,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/material.theme.css');
       return getStory();
-    },
+    }
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs'],
+  tags: ['autodocs']
 };
+
 
 export const ShowCase = {
   parameters: {
@@ -36,36 +37,15 @@ export const ShowCase = {
     },
   },
   render: () => (
-    <LiveProvider
-      code={StorybookUtils.getThemeCode('dcx-paragraph', style)}
-      disabled={true}
-      language="css"
-    >
+    <LiveProvider code={StorybookUtils.getThemeCode('dcx-keyboard-Input', style)} disabled={true} language="css">
       <LiveEditor className="liveEditor" aria-label="editor" />
     </LiveProvider>
-  ),
+  )
 };
 
 export const Default = {
   name: 'Default',
   args: {
-    children: 'This is the content of the paragraph.',
-  },
-};
-
-export const Value = {
-  name: 'Value',
-  args: {
-    value: 'This is the content of the paragraph.',
-  },
-};
-
-export const CustomContent = {
-  name: 'CustomContent',
-  args: {
-    children: [
-      'This is the simple custom-content of the ',
-      <strong>paragraph</strong>,
-    ],
+    children: 'ctrl+p',
   },
 };

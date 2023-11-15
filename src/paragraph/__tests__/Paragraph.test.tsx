@@ -4,14 +4,28 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 describe('Paragraph', () => {
-  
   it('should render', () => {
-    const { container } = render(<Paragraph value="paragraph text"/>);
+    const { container } = render(<Paragraph value="paragraph text" />);
     expect(container.querySelector('p')).toBeInTheDocument();
   });
   it('should allow to pass a value', () => {
     render(<Paragraph className="paragraph" value="paragraph text" />);
     expect(screen.getByText('paragraph text')).toBeInTheDocument();
+  });
+  it('should allow to pass a custom content', () => {
+    const expectedText = 'a custom content';
+    render(<Paragraph className="paragraph">{expectedText}</Paragraph>);
+    expect(screen.getByText(expectedText)).toBeInTheDocument();
+  });
+  it('should display the content of the value given it has precedence', () => {
+    const valueText = 'a custom value';
+    const customText = 'a custom content';
+    render(
+      <Paragraph className="paragraph" value={valueText}>
+        {customText}
+      </Paragraph>
+    );
+    expect(screen.getByText(valueText)).toBeInTheDocument();
   });
 
   it('should provide the ability to specify arbitrary props', () => {
@@ -19,7 +33,7 @@ describe('Paragraph', () => {
       <Paragraph
         className="paragraph"
         value="paragraph text"
-        props= {{ id:'my-paragraph'}}
+        props={{ id: 'my-paragraph' }}
       />
     );
     expect(container.querySelector('#my-paragraph')).toBeInTheDocument();
