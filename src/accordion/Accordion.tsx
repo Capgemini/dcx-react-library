@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
+import AccordionContext from './AccordionContext';
+import AccordionItem from './AccordionItem';
 
-type AccordionProps = {
-  /**
-   * allow to specify a class for the container
-   */
-  containerClassName?: string;
-  /**
-   * allow to display the title of the accordion
-   */
-  title: React.ReactNode;
-  /**
-   * allow to display expanding/collapsing icon of the accordion
-   */
-  expandIcon: React.ReactNode;
+
+interface AccordionProps {
   /**
    * allow to specify a class for the title of the accordion
    */
@@ -21,45 +12,36 @@ type AccordionProps = {
    * allow to specify a class for the details/content of the accordion
    */
   detailsClassName?: string;
+  multipleOpen?: boolean;
+  expanded?: string;
+  /**
+   * allow to display expanding/collapsing icon of the accordion
+   */
+  expandIcon?: React.ReactNode;
+  /**
+   * allow to display the title of the accordion
+   */
+  title: string;
   /**
    * allow to display the details/content of the accordion
    */
-  details: React.ReactNode;
+  details: string;
   /**
    * Additional props/attributes
    */
-  props?: any;
+  accordionProps?: any;
 }
 
-export const Accordion = ({
-  containerClassName,
-  title,
-  expandIcon,
-  titleClassName,
-  detailsClassName,
-  details,
-  props
-}: AccordionProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+export const Accordion = ({ title, details, titleClassName = '', detailsClassName = '', multipleOpen = false, expandIcon, expanded = '', ...accordionProps }: AccordionProps) => {
+  const [activeTitle, setActiveTitle] = useState(expanded);
 
-  const toggleAccordion = () => {
-    setIsExpanded(!isExpanded);
+  const handleClick = (title: string) => {
+    setActiveTitle(multipleOpen ? title : activeTitle === title ? '' : title);
   };
 
   return (
-    <div className={`${containerClassName || ''}`} {...props}>
-      <div
-        className={`${titleClassName || ''}`}
-        onClick={toggleAccordion}
-      >
-        {title}
-        {expandIcon}
-      </div>
-      {isExpanded && (
-        <div className={`${detailsClassName || ''}`}>{details}</div>
-      )}
-    </div>
+    <AccordionContext.Provider value={{ multipleOpen, expanded: activeTitle, onClick: handleClick }}>
+      <AccordionItem title={title} details={details} detailsClassName={detailsClassName} titleClassName={titleClassName} accordionProps={accordionProps} expandIcon={expandIcon} />
+    </AccordionContext.Provider>
   );
 };
-
-export default Accordion;

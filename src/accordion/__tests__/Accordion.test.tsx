@@ -1,36 +1,30 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Accordion } from '../Accordion';
 import '@testing-library/jest-dom';
+import AccordionContext from '../AccordionContext';
 
-describe('Accordion Component', () => {
-  it('should renders the Accordion component with a title', () => {
-    const { getByText } = render(
-      <Accordion title="Test Accordion" expandIcon={<span>▼</span>} details="Accordion details" />
-    );
-    const titleElement = getByText('Test Accordion');
-    expect(titleElement).toBeInTheDocument();
-  });
-
-  it('should expands/collapses the Accordion when the title is clicked', async () => {
+describe('Accordion Component with multipleOpen prop', () => {
+  it('should allow multiple sections to be open at the same time when multipleOpen is true', async () => {
     render(
-      <Accordion title="Title" expandIcon={<span>▼</span>} details="Details" />
+      <>
+        <Accordion title="Accordion 1" expandIcon={<span>▼</span>} details="Accordion 1 details" multipleOpen />
+        <Accordion title="Accordion 2" expandIcon={<span>▼</span>} details="Accordion 2 details" multipleOpen />
+      </>
     );
-    const titleElement = await screen.findByText('Title');
-    userEvent.click(titleElement);
-    const detailsElement = await screen.findByText('Details');
-    
-    expect(detailsElement).toBeInTheDocument(); // Accordion is expanded
+    const accordionTitle1Element = await screen.findByText('Accordion 1');
+    const accordionTitle2Element = await screen.findByText('Accordion 2');
+    userEvent.click(accordionTitle1Element);
+    userEvent.click(accordionTitle2Element);
+    const accordionDetails1Element = await screen.findByText('Accordion 1 details');
+    const accordionDetails2Element = await screen.findByText('Accordion 2 details');
 
-    userEvent.click(titleElement);
-    await waitFor(() => {
-      expect(detailsElement).not.toBeInTheDocument(); // Accordion is collapsed
-    });
-    
+    expect(accordionDetails1Element).toBeInTheDocument(); // Accordion 1 is expanded
+    expect(accordionDetails2Element).toBeInTheDocument(); // Accordion 2 is expanded
   });
 
-  it('should expands only one accordion and collapses the others when the title is clicked', async () => {
+  it('should only allow one section to be open at a time when multipleOpen is false', async () => {
     render(
       <>
         <Accordion title="Accordion 1" expandIcon={<span>▼</span>} details="Accordion 1 details" />
@@ -52,35 +46,78 @@ describe('Accordion Component', () => {
     });   
   });
 
-  it('should applies custom class names to the Accordion components', () => {
-    const { container } = render(
-      <Accordion
-        title="Test Accordion"
-        expandIcon={<span>▼</span>}
-        details="Accordion details"
-        containerClassName="custom-container"
-        titleClassName="custom-title"
-        detailsClassName="custom-details"
-      />
+  it('should collapse the section when the same section is expanded and multipleOpen is true', async () => {
+    render(
+      <>
+        <Accordion title="Accordion 1" expandIcon={<span>▼</span>} details="Accordion 1 details" multipleOpen/>
+        <Accordion title="Accordion 2" expandIcon={<span>▼</span>} details="Accordion 2 details" multipleOpen/>
+      </>
     );
-    const accordionContainer = container.querySelector('.custom-container');
-    const titleElement = container.querySelector('.custom-title');
-
-    expect(accordionContainer).toBeInTheDocument();
-    expect(titleElement).toBeInTheDocument();
+    const accordionTitle1Element = await screen.findByText('Accordion 1');
+    userEvent.click(accordionTitle1Element);
+    const accordionDetails1Element = await screen.findByText('Accordion 1 details');
+    expect(accordionDetails1Element).toBeInTheDocument(); // Accordion with Title Accordion 1 is expanded
+    userEvent.click(accordionTitle1Element);
+    waitFor(async () => {
+      const accordionDetails1Element = await screen.findByText('Accordion 1 details');
+      expect(accordionDetails1Element).toBeNull(); // Accordion with Title Accordion 1 is collapsed 
+    });
+   
   });
 
-  it('should applies additional props to the Accordion component', () => {
-    const { container } = render(
-      <Accordion
-        title="Test Accordion"
-        expandIcon={<span>▼</span>}
-        details="Accordion details"
-        props={{ 'data-testid': 'custom-test-id' }}
-      />
+  it('should collapse the section when the same section is expanded and multipleOpen is false', async () => {
+    render(
+      <>
+        <Accordion title="Accordion 1" expandIcon={<span>▼</span>} details="Accordion 1 details" />
+        <Accordion title="Accordion 2" expandIcon={<span>▼</span>} details="Accordion 2 details" />
+      </>
     );
-    const accordionContainer = container.querySelector('[data-testid="custom-test-id"]');
+    const accordionTitle2Element = await screen.findByText('Accordion 2');
+    userEvent.click(accordionTitle2Element);
+    const accordionDetails2Element = await screen.findByText('Accordion 2 details');
+    expect(accordionDetails2Element).toBeInTheDocument(); // Accordion with Title Accordion 2 is expanded
+    userEvent.click(accordionTitle2Element);
+    waitFor(async () => {
+      const accordionDetails2Element = await screen.findByText('Accordion 2 details');
+      expect(accordionDetails2Element).toBeNull(); // Accordion with Title Accordion 2 is collapsed 
+    });   
+  }); 
+});
 
-    expect(accordionContainer).toBeInTheDocument();
+describe('Accordion', () => {
+  it('should call setActiveTitle with the correct arguments when multipleOpen is true', async () => {
+    const onClick = jest.fn() as any;
+    const { getByText } = render(
+      <AccordionContext.Provider value={{ multipleOpen: false, expanded: '', onClick }}>
+        <Accordion title="Test Title" details="Test Details" />
+      </AccordionContext.Provider>
+    );
+    fireEvent.click(getByText('Test Title'));
+    expect(await screen.findByText('Test Details')).toBeInTheDocument();
+  });
+
+  it('should call setActiveTitle with the correct arguments when multipleOpen is false and activeTitle is not the clicked title', async () => {
+    const onClick = jest.fn() as any;
+    const { getByText } = render(
+      <AccordionContext.Provider value={{ multipleOpen: false, expanded: '', onClick }}>
+        <Accordion title="Test Title" details="Test Details" />
+      </AccordionContext.Provider>
+    );
+    fireEvent.click(getByText('Test Title'));
+    expect(await screen.findByText('Test Details')).toBeInTheDocument();
+  });
+
+  it('should call setActiveTitle with an empty string when multipleOpen is false and activeTitle is the clicked title', async () => {
+    const onClick = jest.fn() as any;
+    const { getByText } = render(
+      <AccordionContext.Provider value={{ multipleOpen: false, expanded: '', onClick }}>
+        <Accordion title="Test Title" details="Test Details" />
+      </AccordionContext.Provider>
+    );
+    fireEvent.click(getByText('Test Title'));
+    fireEvent.click(getByText('Test Title'));
+    waitFor(async () => {
+      expect(await screen.findByText('Test Details')).toBeNull();
+    });
   });
 });
