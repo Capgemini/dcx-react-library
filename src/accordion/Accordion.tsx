@@ -12,7 +12,13 @@ interface AccordionProps {
    * allow to specify a class for the details/content of the accordion
    */
   detailsClassName?: string;
+  /**
+   * allow to specify multiple sections to be expanded at the same time
+   */
   multipleOpen?: boolean;
+  /**
+   * allow to specify the default expanded section
+   */
   expanded?: string;
   /**
    * allow to display expanding/collapsing icon of the accordion
