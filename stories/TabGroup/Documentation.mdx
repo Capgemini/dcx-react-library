@@ -4,7 +4,7 @@ import { Tab } from '../../src/tabGroup/components/Tab';
 import * as TabGroupStories from './UnStyled.stories';
 
 <Meta
-  title="DCXLibrary/Tabs/Documentation"
+  title="DCXLibrary/Layout/Tabs/Documentation"
   component={TabGroup}
   parameters={{
     viewMode: 'docs',
@@ -32,12 +32,12 @@ An example with all the available properties is:
   activeTabClassName="tab-active-class"
   id="tab-label-id"
   activeKey="tab label"
-  disabledClassTab="disabled-class-name"
+  disabledClassName="disabled-class-name"
   className="class-name"
   containerClassName="container-class-name"
   contentClassName="content-class-name"
-  tabClassName="tab-class-name"
-  onClick={onChangeHandler}
+  tabClassName="common-tab-class"
+  onSelect={onChangeHandler}
 >
   <Tab
     label="tab label"

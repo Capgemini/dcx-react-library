@@ -2,7 +2,7 @@ import { Table } from '../../src/table/Table';
 import TableLive from '../liveEdit/TableLive';
 
 export default {
-  title: 'DCXLibrary/Table/Live',
+  title: 'DCXLibrary/Layout/Table/Live',
   component: Table,
 
   parameters: {

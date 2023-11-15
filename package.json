@@ -2,7 +2,7 @@
   "name": "@capgeminiuk/dcx-react-library",
   "author": "Capgemini UK",
   "license": "MIT",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "source": "src/index.ts",
   "main": "dist/dcx-react-library.js",
   "module": "dist/dcx-react-library.module.js",
@@ -11,6 +11,11 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=18.14.0",
+    "npm": ">=7.20.0",
+    "yarn": ">=1.22.1 <2.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Capgemini/dcx-react-library.git"

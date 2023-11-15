@@ -76,6 +76,14 @@
   --dcx-color-text-heading-level_6: white;
 }
 
+
 .dcx-code {
   --dcx-color-text-pre_body: white;
+}
+
+.dcx-link {
+  --dcx-color-text-link: darkorange;
+  --dcx-color-text-link-visited: #db7a03;
+  --dcx-color-text-link-active: #db7a03;
+  --dcx-color-text-link-hover: #db7a03;
 }

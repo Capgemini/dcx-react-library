@@ -1,7 +1,7 @@
 import { CopyToClipboard } from '../../src/copyToClipboard/CopyToClipboard';
 import React, {useState, useRef} from 'react';
 export default {
-  title: 'DCXLibrary/CopyToClipboard/Without style',
+  title: 'DCXLibrary/Utils/CopyToClipboard/Without style',
   component: CopyToClipboard,
   parameters: {
     options: {

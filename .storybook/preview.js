@@ -18,6 +18,10 @@ export const parameters = {
         [
           'Introduction',
           'Utils',
+          [
+            'CopyToClipboard',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
+          ],
           'Form',
           [
             'Autocomplete',
@@ -67,9 +71,9 @@ export const parameters = {
             'Tooltip',
             ['Documentation', 'Live', 'Class based'],
           ],
+          'Layout',
+          [
           'Breadcrumb',
-          ['Documentation', 'Live', 'Without style', 'Class based'],
-          'CopyToClipboard',
           ['Documentation', 'Live', 'Without style', 'Class based'],
           'Details',
           ['Documentation', 'Live', 'Without style', 'Class based'],
@@ -77,6 +81,7 @@ export const parameters = {
           ['Documentation', 'Live', 'Without style', 'Class based'],
           'Table',
           ['Documentation', 'Live', 'Without style', 'Class based'],
+          ],
           'Typography',
           [
             'Abbreviate',
