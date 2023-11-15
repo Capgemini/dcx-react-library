@@ -167,10 +167,10 @@ export const FormSelect = ({
 }: FormSelectProps) => {
   let initialValue: string | number = '';
 
-  if (value !== undefined && !defaultValue) {
-    initialValue = value;
-  } else if (defaultValue !== undefined) {
+  if (defaultValue !== undefined) {
     initialValue = defaultValue;
+  } else if (value !== undefined) {
+    initialValue = value;
   } else if (nullOption !== undefined) {
     initialValue = nullOption;
   } else if (options.length > 0 && typeof options[0] === 'string') {
