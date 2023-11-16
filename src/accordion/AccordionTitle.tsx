@@ -17,7 +17,7 @@ const AccordionTitle = ({ titleClassName = '', title, expandIcon }: AccordionTit
   return (
     <div className={titleClassName} onClick={handleClick}>
       {title}
-      <span>{expandIcon}</span>
+      {expandIcon}
     </div>
   );
 };

@@ -6,6 +6,20 @@ import '@testing-library/jest-dom';
 import AccordionContext from '../AccordionContext';
 
 describe('Accordion Component with multipleOpen prop', () => {
+  it('should expands by default when expanded prop is provided', () => {
+    render(
+      <>
+        <Accordion title="Test Title" expandIcon={<span>▼</span>} details="Test Details" expanded="Test Title" />
+        <Accordion title="Accordion 2" expandIcon={<span>▼</span>} details="Test 2 details" multipleOpen />
+      </>
+    );
+
+    expect(screen.getByText('Test Details')).toBeInTheDocument();
+    waitFor(async () => {
+      expect(await screen.findByText('Test 2 details')).toBeNull();
+    });
+  });
+
   it('should allow multiple sections to be open at the same time when multipleOpen is true', async () => {
     render(
       <>
