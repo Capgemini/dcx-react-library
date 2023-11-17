@@ -19,3 +19,8 @@
   --dcx-color-text-body: rgba(0, 0, 0, 0.6);
   --dcx-color-marker: rgba(0, 0, 0, 0.6);
 }
+
+
+.dcx-abbreviate {
+  --dcx-border-radius-abbreviate: 8px;
+}
