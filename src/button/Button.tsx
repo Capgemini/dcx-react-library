@@ -76,6 +76,10 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    * allows to specify a variant
    */
   variant?: 'primary' | 'secondary' | 'tertiary';
+  /**
+   * allow to specify a custom content
+   */
+  children?: string | number | JSX.Element | JSX.Element[];
 };
 
 export const Button = ({
@@ -96,6 +100,7 @@ export const Button = ({
   value,
   className,
   variant,
+  children,
   ...props
 }: ButtonProps) => {
   const [disable, setDisable] = React.useState<boolean>(disabled);
@@ -141,7 +146,7 @@ export const Button = ({
     'dcx-button',
     className,
     {
-      [`dcx-button--${variant}`]:  variant !== undefined,
+      [`dcx-button--${variant}`]: variant !== undefined,
     },
   ]);
 
@@ -159,6 +164,7 @@ export const Button = ({
     >
       {prefix}
       {isLoading && loadingLabel ? loadingLabel : label}
+      {!isLoading && children}
       {postfix}
     </button>
   );

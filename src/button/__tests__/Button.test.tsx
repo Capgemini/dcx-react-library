@@ -271,15 +271,47 @@ describe('Button', () => {
 
   it('should render the secondary variant to the className', () => {
     const handleClick = jest.fn();
-    render(<Button onClick={handleClick} variant="secondary" label="Register" />);
+    render(
+      <Button onClick={handleClick} variant="secondary" label="Register" />
+    );
     const button: any = screen.getByRole('button');
-    expect(button.getAttribute('class')).toBe('dcx-button dcx-button--secondary');
+    expect(button.getAttribute('class')).toBe(
+      'dcx-button dcx-button--secondary'
+    );
   });
 
   it('should render the default, user specified and variant className', () => {
     const handleClick = jest.fn();
-    render(<Button onClick={handleClick} className="active" variant="tertiary" label="Register" />);
+    render(
+      <Button
+        onClick={handleClick}
+        className="active"
+        variant="tertiary"
+        label="Register"
+      />
+    );
     const button: any = screen.getByRole('button');
-    expect(button.getAttribute('class')).toBe('dcx-button active dcx-button--tertiary');
+    expect(button.getAttribute('class')).toBe(
+      'dcx-button active dcx-button--tertiary'
+    );
+  });
+
+  it('renders JSX elements as children', () => {
+    const childElement = <span>Child Element</span>;
+    const { getByText } = render(<Button>{childElement}</Button>);
+    expect(getByText('Child Element')).toBeInTheDocument();
+  });
+
+  it('renders multiple JSX elements as children', () => {
+    const childElement1 = <span>Child Element 1</span>;
+    const childElement2 = <span>Child Element 2</span>;
+    const { getByText } = render(
+      <Button>
+        {childElement1}
+        {childElement2}
+      </Button>
+    );
+    expect(getByText('Child Element 1')).toBeInTheDocument();
+    expect(getByText('Child Element 2')).toBeInTheDocument();
   });
 });

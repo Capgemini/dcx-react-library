@@ -11,7 +11,7 @@ function ButtonDemo() {
     border: 0,
     padding: '6px',
     width: '80px',
-    height: '33px',
+    height: '53px',
     borderRadius: '3px',
     cursor: 'pointer'
   }
@@ -41,7 +41,7 @@ function ButtonDemo() {
         style={style}
         name=""
         value=""
-    />
+    ><span> child</span></Button>
   )
 }
 `.trim();

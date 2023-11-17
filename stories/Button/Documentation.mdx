@@ -7,6 +7,8 @@ import * as ButtonStories from './UnStyled.stories';
 
 A Button component ready to use in your form with support for delayClick and add an image before or after your label.  
 Button is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+It accepts single or multiple Jsx Elements passed as children.
+
 When you import the button component without providing any className or style associated will looks as following:
 
 <Canvas of={ButtonStories.Unstyled} />
@@ -19,7 +21,7 @@ A more complex example with all the possible properties is:
   onClick={buttonHandler}
   disableClickForMs={2000}
   disable={true}
-  isLoading={true},
+  isLoading={true}
   loadingLabel="loading..."
   customLoadingPreImage={<span>spinner</span>}
   customLoadingPostImage={<span>spinner</span>}
