@@ -23,3 +23,8 @@
   --dcx-color-text-body: #000;
   --dcx-color-marker: #000;
 }
+
+.dcx-abbreviate {
+  --dcx-spacing-y-abbreviate: 5px;
+  --dcx-spacing-x-abbreviate: 5px;
+}
