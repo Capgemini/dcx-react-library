@@ -76,6 +76,11 @@
   --dcx-color-text-heading-level_6: white;
 }
 
+
+.dcx-code {
+  --dcx-color-text-pre_body: white;
+}
+
 .dcx-abbreviate {
   --dcx-color-background-highlight_body: #666;
 }
