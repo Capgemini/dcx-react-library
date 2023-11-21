@@ -1,5 +1,5 @@
 import { DescriptionList, Detail, Term } from '../../src/descriptionList';
-import './style.css';
+
 /**
  * In this section we're using the DescriptionList component providing the **GovUk style** passing the relative className.
  * Feel free to use your own css to style the formInput as you prefer.
