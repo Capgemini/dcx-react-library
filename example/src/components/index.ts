@@ -8,6 +8,7 @@ export { ProgressDemo } from './ProgressDemo';
 export { RangeDemo } from './RangeDemo';
 export { ToggleDemo } from './ToggleDemo';
 export { FormSelectDemo } from './FormSelectDemo';
+export { FormSelectWithIconDemo } from './FormSelectWithIconDemo';
 export { MultiUploadDemo } from './MultiUploadDemo';
 export { MultiSelectDemo } from './MultiSelectDemo';
 export { FormDateDemo } from './FormDateDemo';

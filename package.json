@@ -37,7 +37,7 @@
     "test:coverage": "jest ./src --coverage",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "storybook": "yarn build:css && storybook dev -p 6006 -s ./static",
+    "storybook": "yarn build:css && storybook dev -p 6006",
     "build-storybook": "yarn build:css && storybook build",
     "publish-storybook": "npx chromatic --project-token c6317a751fef"
   },

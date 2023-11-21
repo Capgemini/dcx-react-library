@@ -578,17 +578,57 @@ describe('FormSelect', () => {
     expect(select.disabled).toBeTruthy();
   });
 
-  it('should allow to extend the properties of the select', () => {
+  it('Select container with arrow down icon should exist', () => {
     render(
       <FormSelect
         id="myId"
         containerProps={{ 'data-testid': 'containerId' }}
-        errorMessage="errorMessage"
-        errorMessageClassName="errorMessageClass"
-        selectProps={{ disabled: true }}
+        selectIconProps={{
+          itemHoverBackgroundColor: '#f5f5f5',
+          listItemsCountToShow: 2,
+          selectStyle: {
+            width: '185px',
+            border: '1px solid #747d8c',
+            fontSize: '14px',
+            fontFamily: '"GDS Transport", arial, sans-serif',
+          },
+          listStyle: {
+            width: '197px',
+            border: '1px solid #747d8c',
+          },
+          iconStyle: {
+            width: '18px',
+            height: '18px',
+            borderRadius: '0px',
+          },
+        }}
+        optionGroups={[
+          {
+            label: 'Capgemini',
+            displayCount: true,
+            options: [
+              {
+                label: 'Engineering',
+                value: 'Engineering',
+                ariaLabel: 'Engineering',
+                id: 'id1',
+                icon: '/capgemini.png',
+              },
+              {
+                label: 'Invent',
+                value: 'Invent',
+                ariaLabel: 'Invent',
+                id: 'id2',
+                icon: '/capgemini.png',
+              },
+            ],
+          },
+        ]}
       />
     );
-    const select: any = screen.getByRole('combobox');
-    expect(select.disabled).toBeTruthy();
+
+    const select = screen.getByAltText('arrow down icon');
+
+    expect(select).toBeInTheDocument();
   });
 });

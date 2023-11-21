@@ -9,7 +9,7 @@ FormSelect component ready to use in your UI
 FormSelect is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
 When you import the button component without providing any className or style associated will looks as following:
 
-<Canvas of={FormSelectStories.Unstyled} />
+<Canvas of={FormSelectStories.WithIcon} />
 ## Usage
 
 Use the FormSelect component when users need to select a value form a list  
@@ -37,14 +37,17 @@ An example with all the available properties is:
         label: 'group 1',
         displayCount: true,
         options: [
-          { label: 'option 1', value: 'group 1 option 1' },
-          { label: 'option 2', value: 'group 1 option 2' },
-          { label: 'option 3', value: 'group 1 option 3' },
-          { label: 'option 4', value: 'group 1 option 4' },
-          { label: 'option 5', value: 'group 1 option 5' },
+          { id: 'option id 1', label: 'option 1', value: 'group 1 option 1', icon: './option/icon1.svg', ariaLael: 'ariaLael 1' },
+          { id: 'option id 2', label: 'option 2', value: 'group 1 option 2', icon: './option/icon2.svg', ariaLael: 'ariaLael 2' },
+          { id: 'option id 3', label: 'option 3', value: 'group 1 option 3', icon: './option/icon3.svg', ariaLael: 'ariaLael 3' },
+          { id: 'option id 4', label: 'option 4', value: 'group 1 option 4', icon: './option/icon4.svg', ariaLael: 'ariaLael 4' },
+          { id: 'option id 5', label: 'option 5', value: 'group 1 option 5', icon: './option/icon5.svg', ariaLael: 'ariaLael 5' },
           {
+            id: 'option id 6'
             label: 'option 6',
             value: 'group 1 option 6',
+            icon: './option/icon6.svg',
+            ariaLael: 'ariaLael 6'
             disabled: true,
           },
         ],
@@ -53,23 +56,26 @@ An example with all the available properties is:
         label: 'group 2',
         displayCount: true,
         options: [
-          { label: 'option 1', value: 'group 2 option 1' },
-          { label: 'option 2', value: 'group 2 option 2' },
-          { label: 'option 3', value: 'group 2 option 3' },
+          { id: 'option id 1', label: 'option 1', value: 'group 2 option 1', icon: './option/icon1.svg', ariaLael: 'ariaLael 1' },
+          { id: 'option id 2', label: 'option 2', value: 'group 2 option 2', icon: './option/icon2.svg', ariaLael: 'ariaLael 2' },
+          { id: 'option id 3', label: 'option 3', value: 'group 2 option 3', icon: './option/icon3.svg', ariaLael: 'ariaLael 3' },
         ],
       },
       {
         label: 'group 3',
         displayCount: true,
         options: [
-          { label: 'option 1', value: 'group 3 option 1' },
-          { label: 'option 2', value: 'group 3 option 2' },
-          { label: 'option 3', value: 'group 3 option 3' },
-          { label: 'option 4', value: 'group 3 option 4' },
-          { label: 'option 5', value: 'group 3 option 5' },
+          { id: 'option id 1', label: 'option 1', value: 'group 3 option 1', icon: './option/icon1.svg', ariaLael: 'ariaLael 1' },
+          { id: 'option id 2', label: 'option 2', value: 'group 3 option 2', icon: './option/icon2.svg', ariaLael: 'ariaLael 2' },
+          { id: 'option id 3', label: 'option 3', value: 'group 3 option 3', icon: './option/icon3.svg', ariaLael: 'ariaLael 3' },
+          { id: 'option id 4', label: 'option 4', value: 'group 3 option 4', icon: './option/icon4.svg', ariaLael: 'ariaLael 4' },
+          { id: 'option id 5', label: 'option 5', value: 'group 3 option 5', icon: './option/icon5.svg', ariaLael: 'ariaLael 5' },
           {
+            id: 'option id 6'
             label: 'option 6',
             value: 'group 3 option 6',
+            icon: './option/icon6.svg',
+            ariaLael: 'ariaLael 6'
             disabled: true,
           },
         ],
@@ -78,12 +84,15 @@ An example with all the available properties is:
         label: 'group 4',
         displayCount: true,
         options: [
-          { label: 'option 1', value: 'group 4 option 1' },
-          { label: 'option 2', value: 'group 4 option 2' },
-          { label: 'option 3', value: 'group 4 option 3' },
+          { id: 'option id 1', label: 'option 1', value: 'group 4 option 1', icon: 'option icon 1', ariaLael: 'ariaLael 1' },
+          { id: 'option id 2', label: 'option 2', value: 'group 4 option 2', icon: 'option icon 2', ariaLael: 'ariaLael 2' },
+          { id: 'option id 3', label: 'option 3', value: 'group 4 option 3', icon: 'option icon 3', ariaLael: 'ariaLael 3' },
           {
+            id: 'option id 4'
             label: 'option 4',
             value: 'group 4 option 4',
+            icon: './option/icon4.svg',
+            ariaLael: 'ariaLael 4'
             disabled: true,
           },
         ],
@@ -92,11 +101,11 @@ An example with all the available properties is:
         label: 'group 5',
         displayCount: true,
         options: [
-          { label: 'option 1', value: 'group 4 option 1' },
-          { label: 'option 2', value: 'group 4 option 2' },
-          { label: 'option 3', value: 'group 4 option 3' },
-          { label: 'option 4', value: 'group 4 option 4' },
-          { label: 'option 4', value: 'group 4 option 4' },
+          { id: 'option id 1', label: 'option 1', value: 'group 4 option 1', icon: 'option icon 1', ariaLael: 'ariaLael 1' },
+          { id: 'option id 2', label: 'option 2', value: 'group 4 option 2', icon: 'option icon 2', ariaLael: 'ariaLael 2' },
+          { id: 'option id 3', label: 'option 3', value: 'group 4 option 3', icon: 'option icon 3', ariaLael: 'ariaLael 3' },
+          { id: 'option id 4', label: 'option 4', value: 'group 4 option 4', icon: 'option icon 4', ariaLael: 'ariaLael 4' },
+          { id: 'option id 5', label: 'option 4', value: 'group 4 option 4', icon: 'option icon 5', ariaLael: 'ariaLael 5' },
         ],
       },
     ]}
@@ -104,6 +113,19 @@ An example with all the available properties is:
     name="select-name"
     id="select-id"
     value="select-value"
+    selectIconProps={
+      {
+        itemHoverBackgroundColor: 'any color',
+        listItemsCountToShow: number,
+        selectStyle: 'Can be object contain any css style for select container',
+        listStyle: 'Can be object contain any css style for items list container',
+        iconStyle:{
+          width: ' icon width',
+          height: 'icon height',
+          borderRadius: 'icon border radius'
+        }
+      }
+    }
     optionProps={{
       className: "select options classes"
     }}

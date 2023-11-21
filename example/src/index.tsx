@@ -11,6 +11,7 @@ import {
   ProgressDemo,
   ToggleDemo,
   FormSelectDemo,
+  FormSelectWithIconDemo,
   MultiUploadDemo,
   MultiSelectDemo,
   FormDateDemo,
@@ -52,6 +53,7 @@ const App = () => (
         <Route path="/range" element={<RangeDemo />} />
         <Route path="/toggle" element={<ToggleDemo />} />
         <Route path="/select" element={<FormSelectDemo />} />
+        <Route path="/select-with-icon" element={<FormSelectWithIconDemo />} />
         <Route path="/multiUpload" element={<MultiUploadDemo />} />
         <Route path="/multiSelect" element={<MultiSelectDemo />} />
         <Route path="/formDate" element={<FormDateDemo />} />
