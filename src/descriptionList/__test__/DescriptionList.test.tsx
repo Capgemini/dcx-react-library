@@ -6,7 +6,7 @@ import { Term } from '../components/Term';
 import { Detail } from '../components/Detail';
 
 describe('Description List', () => {
-  it('should render with the dcx-description-list className when no className is Provided', () => {
+  it('should render with the dcx-description-list className when no className is provided', () => {
     const { container } = render(
       <DescriptionList>
         <Term>React</Term>
@@ -130,5 +130,17 @@ describe('Description List', () => {
     expect(screen.getByText('A JavaScript library.')).toBeInTheDocument();
     expect(screen.getByText('Redux')).toBeInTheDocument();
     expect(screen.getByText('A state management library.')).toBeInTheDocument();
+  });
+
+  it('should throw an error if Term is used outside DescriptionList', () => {
+    expect(() => render(<Term>abc 3</Term>)).toThrow(
+      'Term and Detail components must be used within DescriptionList component'
+    );
+  });
+
+  it('should throw an error if Detail is used outside DescriptionList', () => {
+    expect(() => render(<Detail>abc 3</Detail>)).toThrow(
+      'Term and Detail components must be used within DescriptionList component'
+    );
   });
 });

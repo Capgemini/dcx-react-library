@@ -26,31 +26,26 @@ export const Basic = {
         detailClassName="govuk-summary-list__value"
       >
         <div className="govuk-summary-list__row">
-          <Term>Coffee</Term>
-          <Detail>- black hot drink</Detail>
+          <Term>Name</Term>
+          <Detail>Sarah Philips</Detail>
         </div>
         <div className="govuk-summary-list__row">
-          <Term>Coffee</Term>
-          <Detail>- black hot drink</Detail>
+          <Term>Date of birth</Term>
+          <Detail>5 January 1978</Detail>
         </div>
-      </DescriptionList>
-    );
-  },
-};
-
-export const MultipleTermsDetails = {
-  name: 'Multiple Terms and Details',
-  render: function () {
-    return (
-      <DescriptionList
-        className="govuk-description-list"
-        termClassName="govuk-description-list__key"
-        detailClassName="govuk-description-list__value"
-      >
-        <Term>Coffee</Term>
-        <Detail>- black hot drink</Detail>
-        <Term>Milk</Term>
-        <Detail>- white cold drink</Detail>
+        <div className="govuk-summary-list__row">
+          <Term>Address</Term>
+          <Detail>
+            72 Guild Street <br /> London <br />
+            SE23 6FH8
+          </Detail>
+        </div>
+        <div className="govuk-summary-list__row">
+          <Term>Contact details</Term>
+          <Detail>
+            07700 900457 <br /> sarah.phillips@example.com
+          </Detail>
+        </div>
       </DescriptionList>
     );
   },

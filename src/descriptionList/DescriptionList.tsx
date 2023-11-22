@@ -25,17 +25,19 @@ interface DescriptionListProps {
   detailClassName?: string;
 }
 
-export const DescriptionList = (props: DescriptionListProps) => {
-  const { termClassName, detailClassName, children, className, descListProps } =
-    props;
-  return (
-    <DescriptionListContext.Provider value={{ termClassName, detailClassName }}>
-      <dl
-        className={classNames(['dcx-description-list', className])}
-        {...descListProps}
-      >
-        {children}
-      </dl>
-    </DescriptionListContext.Provider>
-  );
-};
+export const DescriptionList = ({
+  termClassName,
+  detailClassName,
+  children,
+  className,
+  descListProps,
+}: DescriptionListProps) => (
+  <DescriptionListContext.Provider value={{ termClassName, detailClassName }}>
+    <dl
+      className={classNames(['dcx-description-list', className])}
+      {...descListProps}
+    >
+      {children}
+    </dl>
+  </DescriptionListContext.Provider>
+);
