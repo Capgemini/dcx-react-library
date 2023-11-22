@@ -3,135 +3,258 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Accordion } from '../Accordion';
 import '@testing-library/jest-dom';
-import AccordionContext from '../AccordionContext';
+import { AccordionItem } from '../AccordionItem';
+import { AccordionTitle } from '../AccordionTitle';
+import { AccordionDetails } from '../AccordionDetails';
 
-describe('Accordion Component with multipleOpen prop', () => {
-  it('should expands by default when expanded prop is provided', () => {
+describe('Accordion Component', () => {
+  it('should render correctly with default props', async () => {
     render(
-      <>
-        <Accordion title="Test Title" expandIcon={<span>▼</span>} details="Test Details" expanded="Test Title" />
-        <Accordion title="Accordion 2" expandIcon={<span>▼</span>} details="Test 2 details" multipleOpen />
-      </>
+      <Accordion>
+       <AccordionItem>
+          <AccordionTitle title="Test Title" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test Details" detailsClassName="test-class" />
+        </AccordionItem>
+      </Accordion>
     );
 
-    expect(screen.getByText('Test Details')).toBeInTheDocument();
-    waitFor(async () => {
-      expect(await screen.findByText('Test 2 details')).toBeNull();
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByText('Test Details')).not.toBeVisible();
     });
   });
 
-  it('should allow multiple sections to be open at the same time when multipleOpen is true', async () => {
+  it('should render correctly with multiOpen props ', async () => {
     render(
-      <>
-        <Accordion title="Accordion 1" expandIcon={<span>▼</span>} details="Accordion 1 details" multipleOpen />
-        <Accordion title="Accordion 2" expandIcon={<span>▼</span>} details="Accordion 2 details" multipleOpen />
-      </>
+      <Accordion multipleOpen>
+       <AccordionItem>
+          <AccordionTitle title="Test Title" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test Details" detailsClassName="test-class" />
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionTitle title="Test Title 1" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test 1 Details" detailsClassName="test-class" />
+        </AccordionItem>
+      </Accordion>
     );
-    const accordionTitle1Element = await screen.findByText('Accordion 1');
-    const accordionTitle2Element = await screen.findByText('Accordion 2');
-    userEvent.click(accordionTitle1Element);
-    userEvent.click(accordionTitle2Element);
-    const accordionDetails1Element = await screen.findByText('Accordion 1 details');
-    const accordionDetails2Element = await screen.findByText('Accordion 2 details');
 
-    expect(accordionDetails1Element).toBeInTheDocument(); // Accordion 1 is expanded
-    expect(accordionDetails2Element).toBeInTheDocument(); // Accordion 2 is expanded
-  });
-
-  it('should only allow one section to be open at a time when multipleOpen is false', async () => {
-    render(
-      <>
-        <Accordion title="Accordion 1" expandIcon={<span>▼</span>} details="Accordion 1 details" />
-        <Accordion title="Accordion 2" expandIcon={<span>▼</span>} details="Accordion 2 details" />
-        <Accordion title="Accordion 3" expandIcon={<span>▼</span>} details="Accordion 3 details" />
-      </>
-    );
-    const accordionTitle3Element = await screen.findByText('Accordion 3');
-    userEvent.click(accordionTitle3Element);
-    const accordionDetails3Element = await screen.findByText('Accordion 3 details');
-    expect(accordionDetails3Element).toBeInTheDocument(); // Accordion with Title Accordion 3 is expanded
-
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
     waitFor(async () => {
-      const accordionDetails1Element = await screen.findByText('Accordion 1 details');
-      const accordionDetails2Element = await screen.findByText('Accordion 2 details');
-
-      expect(accordionDetails1Element).toBeNull(); // Accordion with Title Accordion 1 is collapsed
-      expect(accordionDetails2Element).toBeNull(); // Accordion with Title Accordion 2 is collapsed 
-    });   
-  });
-
-  it('should collapse the section when the same section is expanded and multipleOpen is true', async () => {
-    render(
-      <>
-        <Accordion title="Accordion 1" expandIcon={<span>▼</span>} details="Accordion 1 details" multipleOpen/>
-        <Accordion title="Accordion 2" expandIcon={<span>▼</span>} details="Accordion 2 details" multipleOpen/>
-      </>
-    );
-    const accordionTitle1Element = await screen.findByText('Accordion 1');
-    userEvent.click(accordionTitle1Element);
-    const accordionDetails1Element = await screen.findByText('Accordion 1 details');
-    expect(accordionDetails1Element).toBeInTheDocument(); // Accordion with Title Accordion 1 is expanded
-    userEvent.click(accordionTitle1Element);
-    waitFor(async () => {
-      const accordionDetails1Element = await screen.findByText('Accordion 1 details');
-      expect(accordionDetails1Element).toBeNull(); // Accordion with Title Accordion 1 is collapsed 
+      expect(await screen.findByText('Test Details')).not.toBeVisible();
     });
-   
+    userEvent.click(screen.getByText('Test Title 1'));
+
+    expect(await screen.findByText('Test 1 Details')).toBeInTheDocument();
   });
 
-  it('should collapse the section when the same section is expanded and multipleOpen is false', async () => {
+  it('should expand the item when its title is clicked', async () => {
     render(
-      <>
-        <Accordion title="Accordion 1" expandIcon={<span>▼</span>} details="Accordion 1 details" />
-        <Accordion title="Accordion 2" expandIcon={<span>▼</span>} details="Accordion 2 details" />
-      </>
+      <Accordion>
+        <AccordionItem>
+          <AccordionTitle title="Test Title" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test Details" detailsClassName="test-class" />
+        </AccordionItem>
+      </Accordion>
     );
-    const accordionTitle2Element = await screen.findByText('Accordion 2');
-    userEvent.click(accordionTitle2Element);
-    const accordionDetails2Element = await screen.findByText('Accordion 2 details');
-    expect(accordionDetails2Element).toBeInTheDocument(); // Accordion with Title Accordion 2 is expanded
-    userEvent.click(accordionTitle2Element);
-    waitFor(async () => {
-      const accordionDetails2Element = await screen.findByText('Accordion 2 details');
-      expect(accordionDetails2Element).toBeNull(); // Accordion with Title Accordion 2 is collapsed 
-    });   
-  }); 
+
+    userEvent.click(screen.getByText('Test Title'));
+
+    expect(await screen.findByText('Test Details')).toBeInTheDocument();
+  });
+
+  it('should collapse the item when its title is clicked while it is expanded when multiOpen is false', async () => {
+    render(
+      <Accordion>
+        <AccordionItem>
+          <AccordionTitle title="Test Title" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test Details" detailsClassName="test-class" />
+        </AccordionItem>
+      </Accordion>
+    );
+
+    userEvent.click(screen.getByText('Test Title'));
+    userEvent.click(screen.getByText('Test Title'));
+    await waitFor(() => {
+      expect(screen.queryByText('Test Details')).not.toBeVisible();
+    });
+  });
+
+  it('should collapse the item when its title is clicked while it is expanded when multiOpen is true', async () => {
+    render(
+      <Accordion multipleOpen>
+        <AccordionItem>
+          <AccordionTitle title="Test Title" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test Details" detailsClassName="test-class" />
+        </AccordionItem>
+      </Accordion>
+    );
+
+    userEvent.click(screen.getByText('Test Title'));
+    userEvent.click(screen.getByText('Test Title'));
+    await waitFor(() => {
+      expect(screen.queryByText('Test Details')).not.toBeVisible();
+    });
+  });
+
+  it('should only allow one item to be expanded at a time by default or when multipleOpen is false', async () => {
+    render(
+      <Accordion multipleOpen={false}>
+        <AccordionItem>
+          <AccordionTitle title="Test Title 1" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test Details 1" detailsClassName="test-class" />
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionTitle title="Test Title 2" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test Details 2" detailsClassName="test-class" />
+        </AccordionItem>
+      </Accordion>
+    );
+
+    userEvent.click(screen.getByText('Test Title 1'));
+    userEvent.click(screen.getByText('Test Title 2'));
+    await waitFor(() => {
+      expect(screen.queryByText('Test Details 1')).not.toBeVisible();
+      expect(screen.queryByText('Test Details 2')).toBeInTheDocument();
+    });
+  });
+
+  it('should allow multiple items to be expanded at the same time when multipleOpen is true', async () => {
+    render(
+      <Accordion multipleOpen={true}>
+        <AccordionItem>
+          <AccordionTitle title="Test Title 1" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test Details 1" detailsClassName="test-class" />
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionTitle title="Test Title 2" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test Details 2" detailsClassName="test-class" />
+        </AccordionItem>
+      </Accordion>
+    );
+
+    userEvent.click(screen.getByText('Test Title 1'));
+    userEvent.click(screen.getByText('Test Title 2'));
+
+    expect(await screen.findByText('Test Details 1')).toBeInTheDocument();
+    expect(await screen.findByText('Test Details 2')).toBeInTheDocument();
+  });
+
+  it('should not allow multiple items to be expanded at the same time when multipleOpen is false', async () => {
+    render(
+      <Accordion multipleOpen={false}>
+        <AccordionItem>
+          <AccordionTitle title="Test Title 1" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test Details 1" detailsClassName="test-class" />
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionTitle title="Test Title 2" expandIcon={<span>▼</span>}/>
+          <AccordionDetails details="Test Details 2" detailsClassName="test-class" />
+        </AccordionItem>
+      </Accordion>
+    );
+  
+    userEvent.click(screen.getByText('Test Title 1'));
+    userEvent.click(screen.getByText('Test Title 2'));
+  
+    await waitFor(async () => {
+      expect(screen.queryByText('Test Details 1')).not.toBeVisible();
+      expect(screen.getByText('Test Details 2')).toBeInTheDocument();
+    });
+  });
 });
 
 describe('Accordion', () => {
-  it('should call setActiveTitle with the correct arguments when multipleOpen is true', async () => {
-    const onClick = jest.fn() as any;
-    const { getByText } = render(
-      <AccordionContext.Provider value={{ multipleOpen: false, expanded: '', onClick }}>
-        <Accordion title="Test Title" details="Test Details" />
-      </AccordionContext.Provider>
+  it('should handle click when multipleOpen is false', async () => {
+    render(
+      <Accordion multipleOpen={false}>
+        <AccordionItem>
+          <AccordionTitle title="Test Title" expandIcon={<span>▼</span>} />
+          <AccordionDetails details="Test Details" detailsClassName="test-class" />
+        </AccordionItem>
+      </Accordion>
     );
-    fireEvent.click(getByText('Test Title'));
+
+    userEvent.click(screen.getByText('Test Title'));
+
     expect(await screen.findByText('Test Details')).toBeInTheDocument();
   });
 
-  it('should call setActiveTitle with the correct arguments when multipleOpen is false and activeTitle is not the clicked title', async () => {
-    const onClick = jest.fn() as any;
-    const { getByText } = render(
-      <AccordionContext.Provider value={{ multipleOpen: false, expanded: '', onClick }}>
-        <Accordion title="Test Title" details="Test Details" />
-      </AccordionContext.Provider>
+  it('should handle click when multipleOpen is false and activeTitle matches title', async () => {
+    render(
+      <Accordion multipleOpen={false} expanded="Test Title">
+        <AccordionItem>
+          <AccordionTitle title="Test Title" expandIcon={<span>▼</span>} />
+          <AccordionDetails details="Test Details" detailsClassName="test-class" />
+        </AccordionItem>
+      </Accordion>
     );
-    fireEvent.click(getByText('Test Title'));
-    expect(await screen.findByText('Test Details')).toBeInTheDocument();
-  });
 
-  it('should call setActiveTitle with an empty string when multipleOpen is false and activeTitle is the clicked title', async () => {
-    const onClick = jest.fn() as any;
-    const { getByText } = render(
-      <AccordionContext.Provider value={{ multipleOpen: false, expanded: '', onClick }}>
-        <Accordion title="Test Title" details="Test Details" />
-      </AccordionContext.Provider>
-    );
-    fireEvent.click(getByText('Test Title'));
-    fireEvent.click(getByText('Test Title'));
-    waitFor(async () => {
-      expect(await screen.findByText('Test Details')).toBeNull();
+    userEvent.click(screen.getByText('Test Title'));
+
+    await waitFor(() => {
+      expect(screen.queryByText('Test Details')).not.toBeVisible();
     });
+  });
+
+  it('should handle click when multipleOpen is false and activeTitle does not match title', async () => {
+    render(
+      <Accordion multipleOpen={false} expanded="Another Title">
+        <AccordionItem>
+          <AccordionTitle title="Test Title" expandIcon={<span>▼</span>} />
+          <AccordionDetails details="Test Details" detailsClassName="test-class" />
+        </AccordionItem>
+      </Accordion>
+    );
+
+    userEvent.click(screen.getByText('Test Title'));
+
+    expect(await screen.findByText('Test Details')).toBeInTheDocument();
+  });
+
+  it('should set active title when multipleOpen is true', () => {
+    const { getByText } = render(
+      <Accordion multipleOpen={true} expanded="Test Title 1">
+        <AccordionItem>
+          <AccordionTitle title="Test Title 1" />
+          <AccordionDetails details="Test Details 1" />
+        </AccordionItem>
+      </Accordion>
+    );
+  
+    userEvent.click(screen.getByText('Test Title 1'));
+    expect(getByText('Test Details 1')).toBeInTheDocument();
+  });
+  
+  it('should clear active title when multipleOpen is false and activeTitle equals title', () => {
+    render(
+      <Accordion multipleOpen={false} expanded="Test Title 1">
+        <AccordionItem>
+          <AccordionTitle title="Test Title 1" />
+          <AccordionDetails details="Test Details 1" />
+        </AccordionItem>
+      </Accordion>
+    );
+  
+    userEvent.click(screen.getByText('Test Title 1'));
+    waitFor( async () => {
+      expect( await screen.getByText('Test Details 1')).not.toBeVisible();
+    });
+  });
+  
+  it('should set active title when multipleOpen is false and activeTitle does not equal title', async () => {
+    const { getByText } = render(
+      <Accordion multipleOpen={false} expanded="Test Title 1">
+        <AccordionItem>
+          <AccordionTitle title="Test Title 1" />
+          <AccordionDetails details="Test Details 1" />
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionTitle title="Test Title 2" />
+          <AccordionDetails details="Test Details 2" />
+        </AccordionItem>
+      </Accordion>
+    );
+    fireEvent.click(getByText('Test Title 2'));
+    expect(await screen.findByText('Test Details 2')).toBeInTheDocument();
   });
 });

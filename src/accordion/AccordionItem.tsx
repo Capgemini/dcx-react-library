@@ -1,22 +1,15 @@
 import React from 'react';
-import AccordionTitle from './AccordionTitle';
-import AccordionDetails from './AccordionDetails';
+import { AccordionTitleProps } from './AccordionTitle';
+import { AccordionDetailsProps } from './AccordionDetails';
 
-interface AccordionItemProps {
-  title: string;
-  details: string;
-  titleClassName: string;
-  detailsClassName: string;
-  disable?: boolean;
-  expandIcon?: React.ReactNode;
-  accordionProps?: any;
+export interface AccordionItemProps {
+  children: [React.ReactElement<AccordionTitleProps>, React.ReactElement<AccordionDetailsProps>];
 }
 
-const AccordionItem = ({ title, details, accordionProps, detailsClassName, titleClassName, expandIcon }: AccordionItemProps) => (
-    <div {...accordionProps}>
-      <AccordionTitle title={title} titleClassName={titleClassName} expandIcon={expandIcon}/>
-      <AccordionDetails details={details} detailsClassName={detailsClassName} />
-    </div>
-  );
-
-export default AccordionItem;
+export const AccordionItem = ({ children }: AccordionItemProps) => (
+  <div>
+    {React.Children.map(children, (child: React.ReactElement<AccordionTitleProps | AccordionDetailsProps>, index: number) => 
+      React.cloneElement(child, { key: index })
+    )}
+  </div>
+);

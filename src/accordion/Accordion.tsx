@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
 import AccordionContext from './AccordionContext';
-import AccordionItem from './AccordionItem';
+import { AccordionItemProps } from './AccordionItem';
 
 
 interface AccordionProps {
-  /**
-   * allow to specify a class for the title of the accordion
-   */
-  titleClassName?: string;
-  /**
-   * allow to specify a class for the details/content of the accordion
-   */
-  detailsClassName?: string;
   /**
    * allow to specify multiple sections to be expanded at the same time
    */
@@ -27,18 +19,10 @@ interface AccordionProps {
   /**
    * allow to display the title of the accordion
    */
-  title: string;
-  /**
-   * allow to display the details/content of the accordion
-   */
-  details: string;
-  /**
-   * Additional props/attributes
-   */
-  accordionProps?: any;
+  children: React.ReactElement<AccordionItemProps> | React.ReactElement<AccordionItemProps>[];
 }
 
-export const Accordion = ({ title, details, titleClassName = '', detailsClassName = '', multipleOpen = false, expandIcon, expanded = '', ...accordionProps }: AccordionProps) => {
+export const Accordion = ({   multipleOpen = false, expanded = '', children }: AccordionProps) => {
   const [activeTitle, setActiveTitle] = useState(expanded);
 
   const handleClick = (title: string) => {
@@ -46,8 +30,10 @@ export const Accordion = ({ title, details, titleClassName = '', detailsClassNam
   };
 
   return (
-    <AccordionContext.Provider value={{ multipleOpen, expanded: activeTitle, onClick: handleClick }}>
-      <AccordionItem title={title} details={details} detailsClassName={detailsClassName} titleClassName={titleClassName} accordionProps={accordionProps} expandIcon={expandIcon} />
+    <AccordionContext.Provider value={{ expanded: activeTitle, onClick: handleClick, multipleOpen }}>
+      {Array.isArray(children)
+        ? children.map((child, index) => React.cloneElement(child, { key: index }))
+        : React.cloneElement(children, { key: 'single-child' })}
     </AccordionContext.Provider>
   );
 };

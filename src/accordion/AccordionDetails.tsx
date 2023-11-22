@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import AccordionContext from './AccordionContext';
 
-interface AccordionDetailsProps {
-  detailsClassName?: any;
+export interface AccordionDetailsProps {
+  detailsClassName?: string;
   details: string;
 }
 
-const AccordionDetails = ({ detailsClassName, details }: AccordionDetailsProps) => {
+export const AccordionDetails = ({ detailsClassName, details }: AccordionDetailsProps) => {
   const { expanded } = useContext(AccordionContext);
 
   return (
@@ -15,5 +15,3 @@ const AccordionDetails = ({ detailsClassName, details }: AccordionDetailsProps) 
     </div>
   );
 };
-
-export default AccordionDetails;
