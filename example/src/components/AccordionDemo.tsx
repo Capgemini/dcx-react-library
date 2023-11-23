@@ -20,3 +20,17 @@ export const AccordionDemo = () => {
     </Accordion>
   );
 };
+
+//it will be better if we instead do like this:
+{
+  /* <Accordion>
+<AccordionItem>
+  <AccordionTitle>Title1</<AccordionTitle>
+  <AccordionDetails>Content1</AccordionDetails>
+</AccordionItem>
+<AccordionItem>
+  <AccordionTitle>Title2</AccordionTitle>
+  <AccordionDetails>Content2</AccordionDetails>
+</AccordionItem>
+</Accordion> */
+}
