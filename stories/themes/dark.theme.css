@@ -59,6 +59,11 @@
   --dcx-color-text-body: white;
 }
 
+.dcx-pre {
+  --dcx-color-text-pre_body: white;
+  --dcx-color-background-pre_box: transparent;
+}
+
 .dcx-insert-text {
   --dcx-color-text-body: white;
 }
