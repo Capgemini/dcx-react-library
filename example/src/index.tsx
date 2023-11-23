@@ -24,6 +24,7 @@ import {
   CharacterCountDemo,
   LinkDemo,
   ListDemo,
+  AccordionDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -68,6 +69,7 @@ const App = () => (
         <Route path="/preformattedText" element={<PreformattedTextDemo />} />
         <Route path="/list" element={<ListDemo />} />
         <Route path="/breadcrumb" element={<BreadcrumbDemo />} />
+        <Route path="/accordion" element={<AccordionDemo />} />
       </Routes>
     </BrowserRouter>
   </div>
