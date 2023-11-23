@@ -1,0 +1,7 @@
+.dcx-pre {
+  color: token('color-text-pre_body');
+  background-color: token('color-background-pre_box');
+  font-size: token('font-size-pre_body');
+  font-family: token('font-family-pre_body');
+  font-weight: token('font-weight-pre_body');
+}
