@@ -150,6 +150,12 @@ export const Button = ({
     },
   ]);
 
+  if (value !== undefined && children !== undefined) {
+    throw new Error(
+      'You can use value or children but not both at the same time'
+    );
+  }
+
   return (
     <button
       onClick={handleClick}

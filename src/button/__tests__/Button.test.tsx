@@ -314,4 +314,13 @@ describe('Button', () => {
     expect(getByText('Child Element 1')).toBeInTheDocument();
     expect(getByText('Child Element 2')).toBeInTheDocument();
   });
+
+  it('it throws an error when both value and children are provided', () => {
+    const props = {
+      value: 'someValue',
+      children: <div>Some children</div>,
+    };
+
+    expect(() => render(<Button {...props} />)).toThrowError();
+  });
 });
