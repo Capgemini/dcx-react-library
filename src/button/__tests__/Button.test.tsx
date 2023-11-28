@@ -315,12 +315,9 @@ describe('Button', () => {
     expect(getByText('Child Element 2')).toBeInTheDocument();
   });
 
-  it('it throws an error when both value and children are provided', () => {
-    const props = {
-      value: 'someValue',
-      children: <div>Some children</div>,
-    };
-
-    expect(() => render(<Button {...props} />)).toThrowError();
+  it('should throws an error when both value and children are provided', () => {
+    expect(() => render(<Button value="test">Children test</Button>)).toThrow(
+      'You can use value or children but not both at the same time'
+    );
   });
 });
