@@ -13,7 +13,7 @@ export default {
   title: 'DCXLibrary/Form/Button/Design system/Material',
   component: Button,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/material.theme.css');
       return getStory();
@@ -173,5 +173,12 @@ export const TertiaryDisabled = {
     label: 'My Button',
     variant: 'tertiary',
     disabled: true,
+  },
+};
+
+export const CustomContent = {
+  name: 'Custom Content',
+  args: {
+    children: [<strong>My Button</strong>],
   },
 };

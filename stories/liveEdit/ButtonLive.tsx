@@ -11,7 +11,7 @@ function ButtonDemo() {
     border: 0,
     padding: '6px',
     width: '80px',
-    height: '33px',
+    height: '53px',
     borderRadius: '3px',
     cursor: 'pointer'
   }
@@ -23,8 +23,7 @@ function ButtonDemo() {
   }
 
   return (
-    <Button 
-        label="submit"
+    <Button
         disabled={false} 
         onClick={handleClick}
         ariaLabel='submitButton' 
@@ -41,7 +40,10 @@ function ButtonDemo() {
         style={style}
         name=""
         value=""
-    />
+    >
+    /* here you can pass a children element */
+      <strong>child</strong>
+    </Button>
   )
 }
 `.trim();
