@@ -7,11 +7,7 @@ export default {
   title: 'DCXLibrary/Form/Button/Design system',
   component: Button,
   decorators: [
-    getStory => (
-      <TokensDecorator style={style}>
-        {getStory()}
-      </TokensDecorator>
-    ),
+    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
   ],
   parameters: {
     options: { showPanel: true },
