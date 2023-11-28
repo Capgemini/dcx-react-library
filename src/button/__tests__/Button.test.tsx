@@ -316,8 +316,8 @@ describe('Button', () => {
   });
 
   it('should throws an error when both value and children are provided', () => {
-    expect(() => render(<Button value="test">Children test</Button>)).toThrow(
-      'You can use value or children but not both at the same time'
+    expect(() => render(<Button label="test">Children test</Button>)).toThrow(
+      'You can use label or children but not both at the same time'
     );
   });
 });

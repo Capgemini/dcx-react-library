@@ -23,8 +23,7 @@ function ButtonDemo() {
   }
 
   return (
-    <Button 
-        label="submit"
+    <Button
         disabled={false} 
         onClick={handleClick}
         ariaLabel='submitButton' 
@@ -41,7 +40,9 @@ function ButtonDemo() {
         style={style}
         name=""
         value=""
-    ><span> child</span></Button>
+    >
+      <strong>child</strong>
+    </Button>
   )
 }
 `.trim();

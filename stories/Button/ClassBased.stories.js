@@ -85,7 +85,7 @@ export const Loading = {
  */
 export const CustomContent = {
   args: {
-    label: 'Button',
-    children: [<strong>login</strong>],
+    className: 'govuk-button',
+    children: [<strong>Login</strong>],
   },
 };

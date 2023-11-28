@@ -150,9 +150,9 @@ export const Button = ({
     },
   ]);
 
-  if (value !== undefined && children !== undefined) {
+  if (label !== undefined && children !== undefined) {
     throw new Error(
-      'You can use value or children but not both at the same time'
+      'You can use label or children but not both at the same time'
     );
   }
 

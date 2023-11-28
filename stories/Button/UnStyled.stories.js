@@ -17,7 +17,6 @@ export default {
 
 export const Unstyled = {
   args: {
-    label: 'Button',
     children: [
       'This is the simple custom-content of the ',
       <strong>button</strong>,

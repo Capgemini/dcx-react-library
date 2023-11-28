@@ -174,3 +174,14 @@ export const TertiaryDisabled = {
     disabled: true,
   },
 };
+
+/**
+ * Button allows to pass a simple value or if needed a custom one as children property
+ */
+export const CustomContent = {
+  name: 'Custom content',
+  args: {
+    children: [<strong>Login</strong>],
+    variant: 'primary',
+  },
+};
