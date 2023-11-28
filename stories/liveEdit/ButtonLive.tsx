@@ -41,6 +41,7 @@ function ButtonDemo() {
         name=""
         value=""
     >
+    /* here you can pass a children element */
       <strong>child</strong>
     </Button>
   )

@@ -12,7 +12,7 @@ export default {
   title: 'DCXLibrary/Form/Button/Design system/Accessible',
   component: Button,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/accessible.theme.css');
       return getStory();
@@ -175,9 +175,6 @@ export const TertiaryDisabled = {
   },
 };
 
-/**
- * Button allows to pass a simple value or if needed a custom one as children property
- */
 export const CustomContent = {
   name: 'Custom content',
   args: {
