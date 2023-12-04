@@ -24,6 +24,7 @@ import {
   CharacterCountDemo,
   LinkDemo,
   ListDemo,
+  StepperDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -70,6 +71,7 @@ const App = () => (
         <Route path="/list" element={<ListDemo />} />
         <Route path="/descriptionList" element={<DescriptionListDemo />} />
         <Route path="/breadcrumb" element={<BreadcrumbDemo />} />
+        <Route path="/stepper" element={<StepperDemo />} />
       </Routes>
     </BrowserRouter>
   </div>

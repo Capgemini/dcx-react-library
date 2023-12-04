@@ -132,6 +132,7 @@
   },
   "dependencies": {
     "@cesium133/forgjs": "1.1.10",
+    "caniuse-lite": "^1.0.30001554",
     "imask": "^6.4.3"
   }
 }

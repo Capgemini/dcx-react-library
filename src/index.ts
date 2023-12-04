@@ -33,3 +33,4 @@ export * from './heading';
 export * from './paragraph';
 export * from './codesnippet';
 export * from './highlight';
+export * from './stepper';
