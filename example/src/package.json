@@ -8,7 +8,9 @@
     "bin"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=18.14.0",
+    "npm": ">=7.20.0",
+    "yarn": ">=1.22.1 <2.0.0"
   },
   "scripts": {
     "start": "tsdx watch",

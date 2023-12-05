@@ -1,13 +1,17 @@
+/* eslint-disable import/no-webpack-loader-syntax */
 import { InsertText } from '../../../src/insertText/InsertText';
+import style from '!raw-loader!../../../dist/design-system/insert-text.css';
+import TokensDecorator from '../../../core/storybook/TokensDecorator';
 
 export default {
   title: 'DCXLibrary/Typography/InsertText/Design system',
   component: InsertText,
   decorators: [
-    (getStory) => {
-      require('../../../dist/design-system/index.css');
-      return getStory();
-    },
+    (getStory) => (
+      <TokensDecorator style={style}>
+        {getStory()}
+      </TokensDecorator>
+    )
   ],
   parameters: {
     options: { showPanel: true },

@@ -1,8 +1,9 @@
+/* eslint-disable import/no-webpack-loader-syntax */
 import { Button } from '../../../src/button';
 import style from '!raw-loader!../../themes/dark.theme.css';
 import { LiveProvider, LiveEditor } from 'react-live';
-import { getRootStylesByClass } from '../../Utils/getRootStylesByClass';
 import { SVG_EXAMPLE } from '../helpers/svg.example';
+import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
  * This a theme showcases how to customize the component so it can be used on dark backgrounds.
@@ -11,7 +12,7 @@ export default {
   title: 'DCXLibrary/Form/Button/Design system/Dark',
   component: Button,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/dark.theme.css');
       return getStory();
@@ -36,7 +37,7 @@ export const ShowCase = {
   },
   render: () => (
     <LiveProvider
-      code={getRootStylesByClass(style, '.dcx-button')}
+      code={StorybookUtils.getThemeCode('dcx-button', style)}
       disabled={true}
       language="css"
     >
@@ -306,5 +307,22 @@ export const TertiaryDisabled = {
     label: 'My Button',
     variant: 'tertiary',
     disabled: true,
+  },
+};
+
+export const CustomContent = {
+  name: 'Custom content',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#333131' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  args: {
+    children: [<strong>My Button</strong>],
+    variant: 'primary',
   },
 };

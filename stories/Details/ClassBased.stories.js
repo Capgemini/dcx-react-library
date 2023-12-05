@@ -4,7 +4,7 @@ import { Details } from '../../src/details/Details';
  * In this section the Details component is used with styling from GOV.UK. Feel free to use your own css and style the Details component as you prefer
  */
 export default {
-  title: 'DCXLibrary/Details/Class based',
+  title: 'DCXLibrary/Layout/Details/Class based',
   component: Details,
   parameters: {
     options: {

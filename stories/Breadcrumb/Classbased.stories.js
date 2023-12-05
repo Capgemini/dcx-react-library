@@ -7,7 +7,7 @@ import './style.css';
  * Feel free to use your own css to style the formInput as you prefer.
  */
 export default {
-  title: 'DCXLibrary/Breadcrumb/Class based',
+  title: 'DCXLibrary/Layout/Breadcrumb/Class based',
   component: Breadcrumb,
   parameters: {
     options: {

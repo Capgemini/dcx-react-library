@@ -451,6 +451,16 @@ describe('FormSelect', () => {
     expect(option.selected).toBe(true);
   });
 
+  it('should allow to change the default value on select', async () => {
+    const user = userEvent.setup();
+    render(
+      <FormSelect options={['first', 'second', 'third']} defaultValue="third" />
+    );
+    await user.selectOptions(screen.getByRole('combobox'), 'first');
+    const option: any = screen.getByRole('option', { name: 'first' });
+    expect(option.selected).toBe(true);
+  });
+
   it('should read the containerProps', () => {
     render(
       <FormSelect

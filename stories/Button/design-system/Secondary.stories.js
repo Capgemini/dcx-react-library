@@ -8,7 +8,7 @@ export default {
   title: 'DCXLibrary/Form/Button/Design system/Secondary',
   component: Button,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       return getStory();
     },
@@ -60,5 +60,13 @@ export const SecondaryDisabled = {
     label: 'My Button',
     variant: 'secondary',
     disabled: true,
+  },
+};
+
+export const CustomContent = {
+  name: 'Custom Content',
+  args: {
+    variant: 'secondary',
+    children: [<strong>My Button</strong>],
   },
 };
