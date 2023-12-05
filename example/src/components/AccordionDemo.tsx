@@ -10,13 +10,13 @@ import './accordion.scss';
 export const AccordionDemo = () => {
   return (
     <>
-      <h1>Accordion with multiple open false</h1>
+      <h1>Accordion with single open - default</h1>
       <Accordion>
-        <AccordionItem>
-          <AccordionTitle id="1" className="accordion">
+        <AccordionItem title="1">
+          <AccordionTitle className="accordion">
             <>Section 1</>
           </AccordionTitle>
-          <AccordionDetails id="1" className="panel">
+          <AccordionDetails className="panel">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -25,11 +25,11 @@ export const AccordionDemo = () => {
             </p>
           </AccordionDetails>
         </AccordionItem>
-        <AccordionItem>
-          <AccordionTitle id="2" className="accordion">
+        <AccordionItem title="2">
+          <AccordionTitle className="accordion">
             <>Section 2</>
           </AccordionTitle>
-          <AccordionDetails id="2" className="panel">
+          <AccordionDetails className="panel">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -38,40 +38,44 @@ export const AccordionDemo = () => {
           </AccordionDetails>
         </AccordionItem>
       </Accordion>
-      <h1>Accordion with multiple open true</h1>
+
+      <h1>Accordion with multiple open - multipleOpen</h1>
       <Accordion multipleOpen>
-        <AccordionItem>
-          <AccordionTitle id="1" className="accordion">
+        <AccordionItem title="1">
+          <AccordionTitle className="accordion">
             <>Title 1</>
           </AccordionTitle>
-          <AccordionDetails id="1" className="panel">
+          <AccordionDetails className="panel">
             <p>Panel 1 Details</p>
           </AccordionDetails>
         </AccordionItem>
-        <AccordionItem>
-          <AccordionTitle id="2" className="accordion">
+        <AccordionItem title="2">
+          <AccordionTitle className="accordion">
             <>Title 2</>
           </AccordionTitle>
-          <AccordionDetails id="2" className="panel">
+          <AccordionDetails className="panel">
             <p>Panel 2 Details</p>
           </AccordionDetails>
         </AccordionItem>
       </Accordion>
-      <h1>Accordion with the second accordion item expanded by default</h1>
+
+      <h1>
+        Accordion with the second accordion item expanded by defaul - expanded
+      </h1>
       <Accordion expanded={['2']}>
-        <AccordionItem>
-          <AccordionTitle id="1" className="accordion">
+        <AccordionItem title="1">
+          <AccordionTitle className="accordion">
             <>Section 1</>
           </AccordionTitle>
-          <AccordionDetails id="1" className="panel">
+          <AccordionDetails className="panel">
             <p>Section 1 Details</p>
           </AccordionDetails>
         </AccordionItem>
-        <AccordionItem>
-          <AccordionTitle id="2" className="accordion">
+        <AccordionItem title="2">
+          <AccordionTitle className="accordion">
             <>Section 2</>
           </AccordionTitle>
-          <AccordionDetails id="2" className="panel">
+          <AccordionDetails className="panel">
             <p>Section 2 Details</p>
           </AccordionDetails>
         </AccordionItem>

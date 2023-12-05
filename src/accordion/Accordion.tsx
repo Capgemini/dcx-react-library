@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import AccordionContext from './AccordionContext';
 import { AccordionItemProps } from './AccordionItem';
 
-
 interface AccordionProps {
   /**
-   * allow to specify multiple sections to be expanded at the same time
+   * allow to expand multiple at the same time
    */
   multipleOpen?: boolean;
   /**
@@ -19,27 +18,40 @@ interface AccordionProps {
   /**
    * allow to display the title of the accordion
    */
-  children: React.ReactElement<AccordionItemProps> | React.ReactElement<AccordionItemProps>[];
+  children:
+    | React.ReactElement<AccordionItemProps>
+    | React.ReactElement<AccordionItemProps>[];
 }
 
-export const Accordion = ({ multipleOpen = false, expanded = [], children }: AccordionProps) => {
-  let expandedItems: string[] = expanded;
-  // only one item can be open at a time if multipleOpen is false and multiple items are expanded by default
-  if (expanded.length > 1 && !multipleOpen) {
-    expandedItems = [expanded[0]];
-  }
-  const [activeTitles, setActiveTitles] = useState<string[]>(expandedItems);
+export const Accordion = ({
+  multipleOpen = false,
+  expanded = [],
+  children,
+}: AccordionProps) => {
+  const [expandedItems, setExpandedItems] = useState<string[]>(
+    expanded.length > 1 && !multipleOpen ? [expanded[0]] : expanded
+  );
 
-  const handleClick = (id: string) => {
+  const handleClick = (title: string) => {
     if (multipleOpen) {
-      setActiveTitles(activeTitles.includes(id) ? activeTitles.filter(t => t !== id) : [...activeTitles, id]);
+      setExpandedItems(
+        expandedItems.includes(title)
+          ? expandedItems.filter((t) => t !== title)
+          : [...expandedItems, title]
+      );
     } else {
-      setActiveTitles(activeTitles.includes(id) ? [] : [id]);
+      setExpandedItems(expandedItems.includes(title) ? [] : [title]);
     }
   };
 
   return (
-    <AccordionContext.Provider value={{ expanded: activeTitles, onClick: handleClick, multipleOpen }}>
+    <AccordionContext.Provider
+      value={{
+        expanded: expandedItems,
+        onClick: handleClick,
+        multipleOpen,
+      }}
+    >
       {children}
     </AccordionContext.Provider>
   );
