@@ -2,21 +2,22 @@ import React, { useContext } from 'react';
 import AccordionContext from './AccordionContext';
 
 export interface AccordionTitleProps {
-  title: string;
-  titleClassName?: string;
+  id: string;
+  children: JSX.Element;
+  className?: string;
   expandIcon?: React.ReactNode;
 }
 
-export const AccordionTitle = ({ titleClassName = '', title, expandIcon }: AccordionTitleProps) => {
+export const AccordionTitle = ({ id, className = '', children, expandIcon }: AccordionTitleProps) => {
   const { onClick } = useContext(AccordionContext);
 
   const handleClick = () => {
-    onClick && onClick(title);
+    onClick && onClick(id);
   };
 
   return (
-    <div className={titleClassName} onClick={handleClick}>
-      {title}
+    <div className={className} onClick={handleClick}>
+      {children}
       {expandIcon}
     </div>
   );

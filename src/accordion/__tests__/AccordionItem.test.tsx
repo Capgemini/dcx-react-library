@@ -10,11 +10,15 @@ describe('AccordionItem', () => {
   it('should render the title and details', () => {
     const { getByText } = render(
       <AccordionItem>
-        <AccordionTitle title="Test Title" expandIcon={<span>▼</span>} />
+        <AccordionTitle id='1' expandIcon={<span>▼</span>}>
+          <>Test Title</>
+        </AccordionTitle>
         <AccordionDetails
-          details="Test Details"
-          detailsClassName="test-class"
-        />
+          id='1'
+          className="test-class"
+        >
+          <>Test Details</>
+        </AccordionDetails>
       </AccordionItem>
     );
     expect(getByText('Test Title')).toBeInTheDocument();
@@ -24,11 +28,15 @@ describe('AccordionItem', () => {
   it('should render the expandIcon when provided', () => {
     render(
       <AccordionItem>
-        <AccordionTitle title="Test Title" expandIcon={<span>▼</span>} />
+        <AccordionTitle id='1' expandIcon={<span>▼</span>}>
+          <>Test Title</>
+        </AccordionTitle>
         <AccordionDetails
-          details="Test Details"
-          detailsClassName="test-class"
-        />
+          id='1'
+          className="test-class"
+        >
+          <>Test Details</>
+        </AccordionDetails>
       </AccordionItem>
     );
     const spanElement = screen.getByText('▼');
@@ -39,14 +47,18 @@ describe('AccordionItem', () => {
     const onClick = jest.fn() as any;
     const { getByText } = render(
       <AccordionContext.Provider
-        value={{ expanded: '', onClick, multipleOpen: false }}
+        value={{ expanded: [''], onClick, multipleOpen: false }}
       >
         <AccordionItem>
-          <AccordionTitle title="Test Title" expandIcon={<span>▼</span>} />
+          <AccordionTitle id='1' expandIcon={<span>▼</span>}>
+            <>Test Title</>
+          </AccordionTitle>
           <AccordionDetails
-            details="Test Details"
-            detailsClassName="test-class"
-          />
+            id='1'
+            className="test-class"
+          >
+            <>Test Details</>
+          </AccordionDetails>          
         </AccordionItem>
       </AccordionContext.Provider>
     );
@@ -59,17 +71,21 @@ describe('AccordionItem', () => {
     const { getByText } = render(
       <AccordionContext.Provider
         value={{
-          expanded: 'Test Title',
+          expanded: ['1'],
           onClick: () => {},
           multipleOpen: false,
         }}
       >
         <AccordionItem>
-          <AccordionTitle title="Test Title" expandIcon={<span>▼</span>} />
+          <AccordionTitle id='1' expandIcon={<span>▼</span>}>
+            <>Test Title</>
+          </AccordionTitle>
           <AccordionDetails
-            details="Test Details"
-            detailsClassName="test-class"
-          />
+            id='1'
+            className="test-class"
+          >
+            <>Test Details</>
+          </AccordionDetails>
         </AccordionItem>
       </AccordionContext.Provider>
     );
@@ -81,17 +97,21 @@ describe('AccordionItem', () => {
     render(
       <AccordionContext.Provider
         value={{
-          expanded: 'Another Title',
+          expanded: ['Another Title'],
           onClick: () => {},
           multipleOpen: false,
         }}
       >
         <AccordionItem>
-          <AccordionTitle title="Test Title" expandIcon={<span>▼</span>} />
+          <AccordionTitle id='1' expandIcon={<span>▼</span>}>
+            <>Test Title</>
+          </AccordionTitle>
           <AccordionDetails
-            details="Test Details"
-            detailsClassName="test-class"
-          />
+            id='1'
+            className="test-class"
+          >
+            <>Test Details</>
+          </AccordionDetails>
         </AccordionItem>
       </AccordionContext.Provider>
     );

@@ -5,32 +5,36 @@ import {
   AccordionTitle,
   AccordionDetails,
 } from '@capgeminiuk/dcx-react-library';
+import './accordion.css';
 
 export const AccordionDemo = () => {
   return (
     <Accordion>
       <AccordionItem>
-        <AccordionTitle title="test" />
-        <AccordionDetails details="test2"></AccordionDetails>
+        <AccordionTitle id='1' className="accordion">
+          <>Section 1</>
+        </AccordionTitle>
+        <AccordionDetails id='1' className="panel">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+        </AccordionDetails>
       </AccordionItem>
       <AccordionItem>
-        <AccordionTitle title="test3" />
-        <AccordionDetails details="test4"></AccordionDetails>
+        <AccordionTitle id='2' className="accordion">
+          <>Section 2</>
+        </AccordionTitle>
+        <AccordionDetails id='2' className="panel">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </p>
+        </AccordionDetails>
       </AccordionItem>
     </Accordion>
   );
 };
-
-//it will be better if we instead do like this:
-{
-  /* <Accordion>
-<AccordionItem>
-  <AccordionTitle>Title1</<AccordionTitle>
-  <AccordionDetails>Content1</AccordionDetails>
-</AccordionItem>
-<AccordionItem>
-  <AccordionTitle>Title2</AccordionTitle>
-  <AccordionDetails>Content2</AccordionDetails>
-</AccordionItem>
-</Accordion> */
-}

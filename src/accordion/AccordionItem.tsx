@@ -8,8 +8,6 @@ export interface AccordionItemProps {
 
 export const AccordionItem = ({ children }: AccordionItemProps) => (
   <div>
-    {React.Children.map(children, (child: React.ReactElement<AccordionTitleProps | AccordionDetailsProps>, index: number) => 
-      React.cloneElement(child, { key: index })
-    )}
+    {children}
   </div>
 );

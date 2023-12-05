@@ -2,16 +2,17 @@ import React, { useContext } from 'react';
 import AccordionContext from './AccordionContext';
 
 export interface AccordionDetailsProps {
-  detailsClassName?: string;
-  details: string;
+  id: string;
+  className?: string;
+  children: JSX.Element;
 }
 
-export const AccordionDetails = ({ detailsClassName, details }: AccordionDetailsProps) => {
+export const AccordionDetails = ({ id, className, children }: AccordionDetailsProps) => {
   const { expanded } = useContext(AccordionContext);
 
   return (
-    <div className={detailsClassName} style={{ display: expanded ? 'block' : 'none' }}>
-      {details}
+    <div className={className} style={{ display: expanded.includes(id) ? 'block' : 'none' }}>
+      {children}
     </div>
   );
 };
