@@ -442,7 +442,7 @@ export const Register = () => {
             onChange={(evt) => {
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_LANGUAGE,
-                value: evt.currentTarget.value,
+                value: (evt as React.ChangeEvent<HTMLSelectElement>).currentTarget.value,
               });
             }}
           />

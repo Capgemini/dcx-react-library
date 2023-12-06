@@ -1,11 +1,13 @@
 import { FormSelect } from '@capgeminiuk/dcx-react-library';
+import { ChangeEvent } from 'react';
 
 export const FormSelectWithIconDemo = () => {
-  //@ts-ignore
-  const handleSelectedValue = (evt) => {
+  const handleSelectedValue = (
+    evt: ChangeEvent<HTMLSelectElement> | string
+  ) => {
     document.getElementsByTagName(
       'label'
-    )[0].innerText = `The selected option is: ${evt.target.value}`;
+    )[0].innerText = `The selected option is: ${evt}`;
   };
 
   return (
@@ -17,20 +19,20 @@ export const FormSelectWithIconDemo = () => {
       <br />
       <FormSelect
         nullOption="Select..."
+        onChange={handleSelectedValue}
         selectIconProps={{
-          itemHoverBackgroundColor: '#f5f5f5',
-          listItemsCountToShow: 4,
-          selectStyle: {
-            width: '185px',
-            border: '1px solid #747d8c',
-            fontSize: '14px',
-            fontFamily: '"GDS Transport", arial, sans-serif',
-          },
-          listStyle: {
-            width: '185px',
-            border: '1px solid #747d8c',
-            fontFamily: '"GDS Transport", arial, sans-serif',
-          },
+          fontSize: '14px',
+          selectWidth: '185px',
+          listItemsCountToShow: 7,
+          itemTextColor: '#000000',
+          border: '1px solid #747d8c',
+          itemBackgroundColor: '#ffffff',
+          itemDisabledTextColor: '#747d8c',
+          groupTilteBackgroundColor: '#0000000D',
+          itemHoverBackgroundColor: '#0000000D',
+          fontFamily: '"GDS Transport", arial, sans-serif',
+          // selectStyle: {{}},
+          // listStyle: {{}},
           iconStyle: {
             width: '18px',
             height: '18px',
@@ -61,7 +63,7 @@ export const FormSelectWithIconDemo = () => {
                 value: 'Frog',
                 ariaLabel: 'Frog',
                 id: 'id3',
-                icon: '/capgemini.png',
+                //icon: '/capgemini.png',
               },
               {
                 label: 'Sogeti',
@@ -96,6 +98,7 @@ export const FormSelectWithIconDemo = () => {
                 value: 'Intelligent Industry',
                 ariaLabel: 'Intelligent Industry',
                 id: 'id3',
+                disabled: true,
                 icon: '/ai.png',
               },
               {
@@ -113,7 +116,6 @@ export const FormSelectWithIconDemo = () => {
           fontFamily: 'Verdana',
           fontWeight: 'bold',
         }}
-        onChange={handleSelectedValue}
       />
     </div>
   );

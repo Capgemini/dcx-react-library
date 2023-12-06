@@ -1,5 +1,6 @@
 import React from 'react';
 import { Option, OptionProps } from './Option';
+import { OptionWithIconProps } from './OptionWithIcon';
 
 export type OptionGroupProps = {
   /**
@@ -9,7 +10,7 @@ export type OptionGroupProps = {
   /**
    * option group options
    */
-  options: OptionProps[];
+  options: OptionWithIconProps[];
   /**
    * show options count
    */

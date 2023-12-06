@@ -19,8 +19,12 @@ import {
   HintProps,
   VisuallyHidden,
 } from '../common/components/commonTypes';
-import { OptionProps } from '../common/components/Option';
 import { OptionGroupProps } from '../common/components/OptionGroup';
+import { OptionProps } from '../common/components/Option';
+import {
+  OptionWithIcon,
+  OptionWithIconProps,
+} from '../common/components/OptionWithIcon';
 
 export type iconStyle = {
   /**
@@ -39,6 +43,26 @@ export type iconStyle = {
 
 export type selectIconProps = {
   /**
+   * specify border style for select and list
+   */
+  border?: string;
+  /**
+   * option items text color
+   */
+  itemTextColor?: string;
+  /**
+   * option disabled item text  color
+   */
+  itemDisabledTextColor?: string;
+  /**
+   * option group tile background color
+   */
+  groupTilteBackgroundColor?: string;
+  /**
+   * option items background color
+   */
+  itemBackgroundColor?: string;
+  /**
    * specify option items hover background color
    */
   itemHoverBackgroundColor?: string;
@@ -47,11 +71,23 @@ export type selectIconProps = {
    */
   listItemsCountToShow?: number;
   /**
-   * specify style for select contain icon
+   * sepecify font family for select.
+   */
+  fontFamily?: string;
+  /**
+   * sepecify font size for select.
+   */
+  fontSize?: string;
+  /**
+   * specify width for select.
+   */
+  selectWidth?: string;
+  /**
+   * specify style for select contain icon.
    */
   selectStyle?: any;
   /**
-   * specify style for list contain icon
+   * specify style for list contain icon.
    */
   listStyle?: any;
   /**
@@ -69,6 +105,14 @@ export type FormSelectProps = {
    * selectStyle properties: any
    * listItemsCountToShow properties: number
    * itemHoverBackgroundColor properties: string
+   * itemBackgroundColor properties: string
+   * groupTilteBackgroundColor properties: string
+   * itemDisabledTextColor properties: string
+   * itemTextColor properties: string
+   * border properties: string
+   * fontFamily properties: string
+   * fontSize properties: string
+   * selectWidth properties: string
    */
   selectIconProps?: selectIconProps;
   /**
@@ -96,7 +140,7 @@ export type FormSelectProps = {
    * an array of strings,
    * an array of objects with: `label` (mandatory), `value` (mandatory), `ariaLabel`, `className`, `disabled`, `id`, `labelClassName`
    */
-  options?: OptionProps[] | string[];
+  options?: OptionWithIconProps[] | string[];
   /**
    * select groups
    */
@@ -104,7 +148,7 @@ export type FormSelectProps = {
   /**
    * handle the change when the user select the option
    */
-  onChange?: (evt: ChangeEvent<HTMLSelectElement>) => void;
+  onChange?: (evt: string | ChangeEvent<HTMLSelectElement>) => void;
   /**
    * select name
    */
@@ -222,9 +266,7 @@ export const FormSelect = ({
 }: FormSelectProps) => {
   let initialValue: string | number = '';
 
-  if (defaultValue !== undefined) {
-    initialValue = defaultValue;
-  } else if (value !== undefined) {
+  if (value !== undefined) {
     initialValue = value;
   } else if (nullOption !== undefined) {
     initialValue = nullOption;
@@ -235,47 +277,62 @@ export const FormSelect = ({
   }
 
   const [selectValue, setSelectValue] = useState<string | number>(initialValue);
-  const [showOptions, setShowOptions] = useState<Boolean>(false);
+  const [showOptions, setShowOptions] = useState<boolean>(false);
   const menuRef = useRef(null);
+  const getUniqueId = () => Math.floor(Math.random() * 1000000000);
+  const optionItemStyle = {
+    itemTextColor: selectIconProps?.itemTextColor,
+    itemBackgroundColor: selectIconProps?.itemBackgroundColor,
+    itemDisabledTextColor: selectIconProps?.itemDisabledTextColor,
+    itemHoverBackgroundColor: selectIconProps?.itemHoverBackgroundColor,
+    groupTilteBackgroundColor: selectIconProps?.groupTilteBackgroundColor,
+  };
+
   useOutsideClick(menuRef, () => setShowOptions(false));
 
-  let theOptions: OptionProps[] | string[] =
-    options && options.length
-      ? (options.map((option: OptionProps | string) => {
+  let theOptions =
+    (options?.map((option: OptionWithIconProps | string) => {
+      if (typeof option === 'object' && option.icon) {
+        return {
+          ...option,
+          iconStyle: selectIconProps?.iconStyle,
+          ...optionItemStyle,
+        };
+      }
+      if (typeof option === 'object' && !option.icon) {
+        return {
+          ...option,
+          ...optionItemStyle,
+        };
+      }
+      return option;
+    }) as OptionProps[]) ?? [];
+
+  let theOptionGroups =
+    optionGroups?.map((OptionGroup: OptionGroupProps) => {
+      OptionGroup.options = OptionGroup.options.map(
+        (option: OptionWithIconProps | string) => {
           if (typeof option === 'object' && option.icon) {
             return {
               ...option,
-              ...{ iconStyle: selectIconProps?.iconStyle },
-              itemHoverBackgroundColor:
-                selectIconProps?.itemHoverBackgroundColor,
+              iconStyle: selectIconProps?.iconStyle,
+              ...optionItemStyle,
+            };
+          }
+          if (typeof option === 'object' && !option.icon) {
+            return {
+              ...option,
+              ...optionItemStyle,
             };
           }
           return option;
-        }) as OptionProps[])
-      : [];
-
-  let theOptionGroups =
-    optionGroups && optionGroups.length
-      ? optionGroups.map((OptionGroup: OptionGroupProps) => {
-          OptionGroup.options = OptionGroup.options.map(
-            (option: OptionProps | string) => {
-              if (typeof option === 'object' && option.icon) {
-                return {
-                  ...option,
-                  ...{ iconStyle: selectIconProps?.iconStyle },
-                  itemHoverBackgroundColor:
-                    selectIconProps?.itemHoverBackgroundColor,
-                };
-              }
-              return option;
-            }
-          ) as OptionProps[];
-          return OptionGroup;
-        })
-      : [];
+        }
+      ) as OptionProps[];
+      return OptionGroup;
+    }) ?? [];
 
   const getOptions = (options: OptionProps[] | string[]): JSX.Element[] =>
-    options.map((item: OptionProps | string, index: number) => {
+    options.map((item: OptionProps | string) => {
       let convertedItem: OptionProps;
       // in case item is a string we need to convert it to an option
       if (typeof item === 'string') {
@@ -286,67 +343,78 @@ export const FormSelect = ({
       } else {
         convertedItem = { ...item };
       }
-      return <Option key={index} {...convertedItem} />;
+      return <Option key={getUniqueId()} {...convertedItem} />;
     });
 
   const getOptionGroups = (optionGroups: OptionGroupProps[]): JSX.Element[] =>
-    optionGroups.map((groupOption: OptionGroupProps, index: number) => (
-      <OptionGroup key={index} {...groupOption} />
+    optionGroups.map((groupOption: OptionGroupProps) => (
+      <OptionGroup key={getUniqueId()} {...groupOption} />
     ));
 
+  const getOptionsWithIcon = (options: OptionProps[]): JSX.Element[] =>
+    options.map((item: OptionWithIconProps) => (
+      <OptionWithIcon
+        key={getUniqueId()}
+        {...item}
+        itemTextColor={selectIconProps?.itemTextColor}
+        itemBackgroundColor={selectIconProps?.itemBackgroundColor}
+        itemDisabledTextColor={selectIconProps?.itemDisabledTextColor}
+        itemHoverBackgroundColor={selectIconProps?.itemHoverBackgroundColor}
+        groupTilteBackgroundColor={selectIconProps?.groupTilteBackgroundColor}
+      />
+    ));
+
+  const getOptionGroupsWithIcon = (
+    optionGroups: OptionGroupProps[]
+  ): JSX.Element[] =>
+    optionGroups.flatMap((groupOption: OptionGroupProps, index: number) => [
+      <OptionWithIcon
+        id={`groupTitle${index}`}
+        key={getUniqueId()}
+        value={
+          groupOption.displayCount
+            ? `${groupOption.label} (${groupOption.options.length})`
+            : groupOption.label
+        }
+        itemTextColor={selectIconProps?.itemTextColor}
+        itemBackgroundColor={selectIconProps?.itemBackgroundColor}
+        itemDisabledTextColor={selectIconProps?.itemDisabledTextColor}
+        itemHoverBackgroundColor={selectIconProps?.itemHoverBackgroundColor}
+        groupTilteBackgroundColor={selectIconProps?.groupTilteBackgroundColor}
+        isGroupTitle
+      />,
+      ...groupOption.options.map((item: OptionWithIconProps) => (
+        <OptionWithIcon key={getUniqueId()} {...item} />
+      )),
+    ]);
+
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setShowOptions((curState) => !curState);
     setSelectValue(event.currentTarget.value);
     if (onChange) onChange(event);
   };
 
-  const isIncludeIcon = () => {
-    for (const [, value] of Object.entries(theOptions)) {
-      if (typeof value === 'object' && Object.hasOwn(value, 'icon'))
-        return true;
-    }
-    if (theOptionGroups) {
-      for (const [, value] of Object.entries(theOptionGroups)) {
-        for (const [, theValue] of Object.entries(value.options)) {
-          if (typeof theValue === 'object' && Object.hasOwn(theValue, 'icon'))
-            return true;
-        }
-      }
-    }
-    return false;
-  };
-
-  const totalOptions = () => {
-    let total = 0;
-    if (theOptionGroups) {
-      for (const optionGroup of theOptionGroups) {
-        total += optionGroup.options.length;
-      }
-    }
-    if (options.length > 0) {
-      total += options.length;
-    }
-    return total;
-  };
+  const isIncludeIcon = () =>
+    theOptions.some(
+      (value) => typeof value === 'object' && Object.hasOwn(value, 'icon')
+    ) ||
+    theOptionGroups?.some((value) =>
+      value.options.some(
+        (theValue) =>
+          typeof theValue === 'object' && Object.hasOwn(theValue, 'icon')
+      )
+    );
 
   const TheSelect = () => (
     <select
-      value={defaultValue !== '' ? defaultValue : selectValue}
+      defaultValue={
+        defaultValue && defaultValue !== '' ? defaultValue : selectValue
+      }
       name={name || 'formSelect'}
       id={id || 'formSelect'}
       className={selectClassName}
       aria-label={ariaLabel || Roles.list}
       onChange={handleChange}
       style={{ ...style, ...selectIconProps?.listStyle }}
-      size={
-        isIncludeIcon()
-          ? totalOptions() > Number(selectIconProps?.listItemsCountToShow)
-            ? Number(selectIconProps?.listItemsCountToShow) >= 2
-              ? Number(selectIconProps?.listItemsCountToShow)
-              : 2
-            : totalOptions()
-          : 1
-      }
       tabIndex={tabIndex}
       disabled={disabled}
       ref={menuRef}
@@ -367,8 +435,8 @@ export const FormSelect = ({
     });
 
     if (theOptionGroups?.length) {
-      theOptionGroups!.find((optionGrouo) => {
-        selectedOption = optionGrouo.options.find((option) => {
+      theOptionGroups!.find((optionGroup) => {
+        selectedOption = optionGroup.options.find((option) => {
           if (typeof option === 'object') {
             return option.value === selectValue;
           }
@@ -381,40 +449,108 @@ export const FormSelect = ({
     return (
       <>
         {isIncludeIcon() ? (
-          <div
-            onClick={() => setShowOptions((currState) => !currState)}
-            style={{
-              display: 'flex',
-              padding: '4px 0px 4px 10px',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              ...selectIconProps?.selectStyle,
-            }}
-            ref={menuRef}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              {selectedOption && (selectedOption as OptionProps).icon && (
-                <img
-                  src={(selectedOption as OptionProps)?.icon}
-                  width={selectIconProps?.iconStyle?.width}
-                  height={selectIconProps?.iconStyle?.height}
-                  alt="selected icon"
+          <div style={{ width: selectIconProps?.selectWidth }}>
+            <div
+              onClick={() => setShowOptions((currState: boolean) => !currState)}
+              style={{
+                width: '100%',
+                display: 'flex',
+                cursor: 'pointer',
+                padding: '4px 0px',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                color: selectIconProps?.itemTextColor || 'black',
+                backgroundColor:
+                  selectIconProps?.itemBackgroundColor || 'white',
+                fontSize: `${selectIconProps?.fontSize}`,
+                fontFamily: `${selectIconProps?.fontFamily}`,
+                border: `${selectIconProps?.border || '1px solid #747d8c'}`,
+                ...selectIconProps?.selectStyle,
+              }}
+              ref={menuRef}
+            >
+              <div
+                style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+              >
+                {selectedOption &&
+                  (selectedOption as OptionWithIconProps).icon && (
+                    <img
+                      alt="selected icon"
+                      height={selectIconProps?.iconStyle?.height}
+                      src={(selectedOption as OptionWithIconProps)?.icon}
+                      width={`calc(${selectIconProps?.iconStyle?.width} + 10px)`}
+                      style={{
+                        paddingLeft: '10px',
+                      }}
+                    />
+                  )}
+                <span
+                  style={{
+                    ...(!(selectedOption as OptionWithIconProps)?.icon && {
+                      paddingLeft: '10px',
+                    }),
+                  }}
+                >
+                  {(selectedOption as OptionProps)?.value || nullOption}
+                </span>
+              </div>
+              <svg
+                width="20px"
+                height="20px"
+                viewBox="0 0 1024 1024"
+                data-testid="arrow down icon"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M705.6 376.2L512 569.8 318.5 376.2 266.7 428 512 673.2 757.3 428z"
+                  fill={`${selectIconProps?.itemTextColor || 'black'}`}
                 />
-              )}
-              <span>
-                {(selectedOption as OptionProps)?.label || nullOption}
-              </span>
+              </svg>
             </div>
-            <img
-              src={'/arrow-down.svg'}
-              width="20px"
-              height="20px"
-              alt="arrow down icon"
-            />
+            {showOptions && (
+              <div
+                style={{
+                  width: '100%',
+                  overflowY: 'auto',
+                  fontSize: `${selectIconProps?.fontSize}`,
+                  fontFamily: `${selectIconProps?.fontFamily}`,
+                  ...(selectIconProps?.listItemsCountToShow && {
+                    height: `calc(${selectIconProps?.listItemsCountToShow} * 24px)`,
+                  }),
+                  border: `${selectIconProps?.border || '1px solid #747d8c'}`,
+                }}
+                ref={menuRef}
+                onClick={(e) => {
+                  const target = e.target as
+                    | HTMLImageElement
+                    | HTMLParagraphElement;
+                  const isDisabled = target.dataset.disable;
+                  const isGroupTitle = target.dataset.isGroupTitle;
+                  const value =
+                    (target as HTMLImageElement).alt || target.innerHTML;
+
+                  if (isDisabled === 'true' || isGroupTitle === 'true') return;
+                  if (onChange) onChange(value);
+
+                  setSelectValue(value);
+                  setShowOptions((currState) => !currState);
+                }}
+              >
+                {theOptions &&
+                  !theOptionGroups.length &&
+                  getOptionsWithIcon(theOptions as OptionProps[])}
+                {theOptionGroups &&
+                  !theOptions.length &&
+                  getOptionGroupsWithIcon(
+                    theOptionGroups as OptionGroupProps[]
+                  )}
+              </div>
+            )}
           </div>
-        ) : null}
-        {isIncludeIcon() && showOptions ? <TheSelect /> : null}
-        {!isIncludeIcon() ? <TheSelect /> : null}
+        ) : (
+          <TheSelect />
+        )}
       </>
     );
   };
@@ -454,7 +590,7 @@ export const FormSelect = ({
   );
 };
 
-function useOutsideClick(
+export function useOutsideClick(
   ref: MutableRefObject<null | HTMLElement>,
   callback: () => void
 ) {

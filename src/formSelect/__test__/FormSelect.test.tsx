@@ -1,5 +1,11 @@
 import React from 'react';
-import { render, screen, within } from '@testing-library/react';
+import {
+  render,
+  screen,
+  within,
+  fireEvent,
+  waitFor,
+} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { FormSelect, FormSelectProps } from '../FormSelect';
 import { OptionProps } from '../../common/components/Option';
@@ -316,13 +322,7 @@ describe('FormSelect', () => {
     ];
 
     render(
-      <DummySelect
-        id="myId"
-        name="the name"
-        options={options}
-        nullOption="Select..."
-        value="value4"
-      />
+      <DummySelect id="myId" name="the name" options={options} value="value4" />
     );
 
     const formSelect = screen.getByRole('combobox');
@@ -588,7 +588,7 @@ describe('FormSelect', () => {
     expect(select.disabled).toBeTruthy();
   });
 
-  it('Select container with arrow down icon should exist', () => {
+  it('Select container with option groups should exist after click on arrow down icon', async () => {
     render(
       <FormSelect
         id="myId"
@@ -596,14 +596,13 @@ describe('FormSelect', () => {
         selectIconProps={{
           itemHoverBackgroundColor: '#f5f5f5',
           listItemsCountToShow: 2,
+          fontSize: '14px',
+          fontFamily: '"GDS Transport", arial, sans-serif',
+          selectWidth: '185px',
           selectStyle: {
-            width: '185px',
             border: '1px solid #747d8c',
-            fontSize: '14px',
-            fontFamily: '"GDS Transport", arial, sans-serif',
           },
           listStyle: {
-            width: '197px',
             border: '1px solid #747d8c',
           },
           iconStyle: {
@@ -629,7 +628,6 @@ describe('FormSelect', () => {
                 value: 'Invent',
                 ariaLabel: 'Invent',
                 id: 'id2',
-                icon: '/capgemini.png',
               },
             ],
           },
@@ -637,8 +635,94 @@ describe('FormSelect', () => {
       />
     );
 
-    const select = screen.getByAltText('arrow down icon');
+    const select = screen.getByTestId('arrow down icon');
 
     expect(select).toBeInTheDocument();
+
+    fireEvent.click(select);
+
+    await waitFor(() => select);
+
+    const option = screen.getByTestId('groupTitle0-value');
+    const option1 = screen.getByTestId('id1-value');
+    const option2 = screen.getByTestId('id2-value');
+
+    expect(option).toBeInTheDocument();
+    expect(option1).toBeInTheDocument();
+    expect(option2).toBeInTheDocument();
+
+    fireEvent.click(option);
+    await waitFor(() => option);
+
+    fireEvent.click(option1);
+    await waitFor(() => option1);
+
+    fireEvent.click(option2);
+    await waitFor(() => option2);
+  });
+
+  it('Select container with options should exist after click on arrow down icon', async () => {
+    let selectValue = '';
+
+    render(
+      <FormSelect
+        id="myId"
+        containerProps={{ 'data-testid': 'containerId' }}
+        selectIconProps={{
+          itemHoverBackgroundColor: '#f5f5f5',
+          listItemsCountToShow: 2,
+          fontSize: '14px',
+          fontFamily: '"GDS Transport", arial, sans-serif',
+          selectWidth: '185px',
+          selectStyle: {
+            border: '1px solid #747d8c',
+          },
+          listStyle: {
+            border: '1px solid #747d8c',
+          },
+          iconStyle: {
+            width: '18px',
+            height: '18px',
+            borderRadius: '0px',
+          },
+        }}
+        onChange={(value) => {
+          selectValue = value as string;
+        }}
+        options={[
+          {
+            label: 'Engineering',
+            value: 'Engineering',
+            ariaLabel: 'Engineering',
+            id: 'id1',
+            icon: '/capgemini.png',
+          },
+          {
+            label: 'Invent',
+            value: 'Invent',
+            ariaLabel: 'Invent',
+            id: 'id2',
+          },
+        ]}
+      />
+    );
+    const select = screen.getByTestId('arrow down icon');
+
+    expect(select).toBeInTheDocument();
+
+    fireEvent.click(select);
+
+    await waitFor(() => select);
+
+    const option1 = screen.getByTestId('id1-value');
+    const option2 = screen.getByTestId('id2-value');
+
+    expect(option1).toBeInTheDocument();
+    expect(option2).toBeInTheDocument();
+
+    fireEvent.click(option1);
+    await waitFor(() => option1);
+
+    expect(selectValue).toBe('Engineering');
   });
 });

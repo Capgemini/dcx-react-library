@@ -12,8 +12,8 @@ export default {
 
 export const Unstyled = {
   args: {
-    label:'Unstyled',
-    labelProps:{
+    label: 'Unstyled',
+    labelProps: {
       style: {
         display: 'block',
         marginBottom: '5px',
@@ -21,7 +21,7 @@ export const Unstyled = {
         fontWeight: 'bold',
       },
     },
-    options:['value1', 'value2']
+    options: ['value1', 'value2']
   },
 };
 
@@ -39,18 +39,18 @@ export const WithIcon = {
       },
     },
     selectIconProps: {
-      itemHoverBackgroundColor: '#f5f5f5',
-      listItemsCountToShow: 6,
-      selectStyle: {
-        width: '185px',
-        border: '1px solid #747d8c',
-        fontSize: '14px',
-        fontFamily: '"GDS Transport", arial, sans-serif',
-      },
-      listStyle: {
-        width: '197px',
-        border: '1px solid #747d8c',
-      },
+      fontSize: '14px',
+      selectWidth: '185px',
+      listItemsCountToShow: 7,
+      itemTextColor: '#000000',
+      border: '1px solid #747d8c',
+      itemBackgroundColor: '#ffffff',
+      itemDisabledTextColor: '#747d8c',
+      groupTilteBackgroundColor: '#0000000D',
+      itemHoverBackgroundColor: '#0000000D',
+      fontFamily: '"GDS Transport", arial, sans-serif',
+      // selectStyle: {{}},
+      // listStyle: {{}},
       iconStyle: {
         width: '18px',
         height: '18px',
@@ -74,7 +74,7 @@ export const WithIcon = {
             value: 'Invent',
             ariaLabel: 'Invent',
             id: 'id2',
-            icon: '/capgemini.png',
+            // icon: '/capgemini.png',
           },
           {
             label: 'Frog',

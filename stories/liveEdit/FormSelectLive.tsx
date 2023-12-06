@@ -7,16 +7,20 @@ function FormSelectDemo() {
   const [value, setValue] = React.useState('')
 
   const handleChange = event => {
-    setValue(event.currentTarget.value);
+    if(typeof event === 'string'){
+      setValue(event);
+    }else{
+      setValue(event.currentTarget.value);
+    }
   }
 
   return (
     <FormSelect
       id="select"
       nullOption="Select..."
+      value=""
       disabled={false}
       selectProps={{}}
-      value=""
       label="Select with icon"
       labelProps={{
         style: {
@@ -29,18 +33,18 @@ function FormSelectDemo() {
       onChange={handleChange}
       selectIconProps={
         {
-          itemHoverBackgroundColor: '#f5f5f5',
-          listItemsCountToShow: 6,
-          selectStyle:{
-            width: '185px',
-            border: '1px solid #747d8c',
-            fontSize: '14px',
-            fontFamily: '"GDS Transport", arial, sans-serif',
-          },
-          listStyle: {
-            width: '197px',
-            border: '1px solid #747d8c',
-          },
+          fontSize: '14px',
+          selectWidth: '185px',
+          listItemsCountToShow: 7,
+          itemTextColor: '#000000',
+          border: '1px solid #747d8c',
+          itemBackgroundColor: '#ffffff',
+          itemDisabledTextColor: '#747d8c',
+          groupTilteBackgroundColor: '#0000000D',
+          itemHoverBackgroundColor: '#0000000D',
+          fontFamily: '"GDS Transport", arial, sans-serif',
+          // selectStyle: {{}},
+          // listStyle: {{}},
           iconStyle:{
             width: '18px',
             height: '18px',
@@ -48,6 +52,7 @@ function FormSelectDemo() {
           }
         }
       }
+      // options={['Capgemini', 'Cybersecurity', 'Intelligent Industry', 'Sustainability', 'Cloud']}
       // options= {[
       //   { 
       //     label: 'Cloud', 
@@ -60,16 +65,17 @@ function FormSelectDemo() {
       //     value: 'Cybersecurity', 
       //     ariaLabel: 'Cybersecurity', 
       //     id: 'id2',
-      //     icon: '/cyberSecurity.png',
+      //     // icon: '/cyberSecurity.png',
       //   },{ 
       //     label: 'Intelligent Industry', 
       //     value: 'Intelligent Industry', 
       //     ariaLabel: 'Intelligent Industry', 
+      //     disabled: true,
       //     id: 'id3',
       //     icon: '/ai.png',
       //   },{ 
-      //     label: 'sustainability', 
-      //     value: 'sustainability', 
+      //     label: 'Sustainability', 
+      //     value: 'Sustainability', 
       //     ariaLabel: 'sustainability', 
       //     id: 'id4',
       //     icon: '/sustainability.png',
@@ -79,7 +85,7 @@ function FormSelectDemo() {
       optionGroups={[
         {
           label: 'Capgemini',
-          displayCount: true,
+          displayCount: false,
           options: [
             { 
               label: 'Engineering', 
@@ -92,7 +98,7 @@ function FormSelectDemo() {
               value: 'Invent', 
               ariaLabel: 'Invent', 
               id: 'id2',
-              icon: '/capgemini.png',
+              //icon: '/capgemini.png',
             },{ 
               label: 'Frog', 
               value: 'Frog', 
@@ -129,10 +135,11 @@ function FormSelectDemo() {
               value: 'Intelligent Industry', 
               ariaLabel: 'Intelligent Industry', 
               id: 'id3',
+              disabled: true,
               icon: '/ai.png',
             },{ 
-              label: 'sustainability', 
-              value: 'sustainability', 
+              label: 'Sustainability', 
+              value: 'Sustainability', 
               ariaLabel: 'sustainability', 
               id: 'id4',
               icon: '/sustainability.png',
