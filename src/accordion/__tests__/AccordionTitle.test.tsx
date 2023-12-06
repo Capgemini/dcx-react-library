@@ -6,13 +6,17 @@ import AccordionContext from '../AccordionContext';
 
 describe('AccordionTitle', () => {
   it('should render the title', () => {
-    const { getByText } = render(<AccordionTitle id ='2'><>Test Title</></AccordionTitle>);
+    const { getByText } = render(
+      <AccordionTitle id="2">
+        <>Test Title</>
+      </AccordionTitle>
+    );
     expect(getByText('Test Title')).toBeInTheDocument();
   });
 
   it('should apply the className', () => {
     const { getByText } = render(
-      <AccordionTitle id ='2' className="test-class">
+      <AccordionTitle id="2" className="test-class">
         <>Test Title</>
       </AccordionTitle>
     );
@@ -21,7 +25,7 @@ describe('AccordionTitle', () => {
 
   it('should render the expandIcon', () => {
     const { container } = render(
-      <AccordionTitle id ='2' expandIcon={<span>▼</span>}>
+      <AccordionTitle id="2" expandIcon={<span>▼</span>}>
         <>Test Title</>
       </AccordionTitle>
     );
@@ -34,12 +38,28 @@ describe('AccordionTitle', () => {
       <AccordionContext.Provider
         value={{ multipleOpen: false, expanded: [], onClick }}
       >
-        <AccordionTitle id ='2'><>Test Title</></AccordionTitle>
+        <AccordionTitle id="2">
+          <>Test Title</>
+        </AccordionTitle>
       </AccordionContext.Provider>
     );
 
     fireEvent.click(getByText('Test Title'));
 
     expect(onClick).toHaveBeenCalledWith('2');
+  });
+
+  //test to implement
+  it('should allow to pass extra properties', () => {
+    const onClick = jest.fn() as any;
+    render(
+      <AccordionContext.Provider
+        value={{ multipleOpen: false, expanded: [], onClick }}
+      >
+        <AccordionTitle props={{ id: '2' }}>
+          <>Test Title</>
+        </AccordionTitle>
+      </AccordionContext.Provider>
+    );
   });
 });

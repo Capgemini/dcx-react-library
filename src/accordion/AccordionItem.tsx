@@ -5,14 +5,28 @@ import AccordionContext from './AccordionContext';
 import AccordionItemContext from './AccordionItemContext';
 
 export interface AccordionItemProps {
+  /**
+   *
+   */
   title: string;
+  /**
+   *
+   */
   children: [
     React.ReactElement<AccordionTitleProps>,
     React.ReactElement<AccordionDetailsProps>
   ];
+  /**
+   * you can define your own properties
+   */
+  props?: any;
 }
 
-export const AccordionItem = ({ title, children }: AccordionItemProps) => {
+export const AccordionItem = ({
+  title,
+  children,
+  ...props
+}: AccordionItemProps) => {
   const { onClick } = useContext(AccordionContext);
   const [selected, setSelected] = React.useState(title);
 
@@ -22,7 +36,7 @@ export const AccordionItem = ({ title, children }: AccordionItemProps) => {
   };
   return (
     <AccordionItemContext.Provider value={{ title: selected }}>
-      <div title={title} onClick={handleClick}>
+      <div title={title} onClick={handleClick} {...props}>
         {children}
       </div>
     </AccordionItemContext.Provider>

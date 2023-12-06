@@ -80,6 +80,103 @@ export const AccordionDemo = () => {
           </AccordionDetails>
         </AccordionItem>
       </Accordion>
+
+      <h1>Accordion with common title classes - titleClassName</h1>
+      <Accordion expanded={['2']} titleClassName="accordion">
+        <AccordionItem title="1">
+          <AccordionTitle>
+            <>Section 1</>
+          </AccordionTitle>
+          <AccordionDetails className="panel">
+            <p>Section 1 Details</p>
+          </AccordionDetails>
+        </AccordionItem>
+        <AccordionItem title="2">
+          <AccordionTitle>
+            <>Section 2</>
+          </AccordionTitle>
+          <AccordionDetails className="panel">
+            <p>Section 2 Details</p>
+          </AccordionDetails>
+        </AccordionItem>
+      </Accordion>
+
+      <h1>
+        Accordion with common title and details classes - titleClassName &
+        detailsClassName
+      </h1>
+      <Accordion
+        expanded={['2']}
+        titleClassName="accordion"
+        detailsClassName="panel"
+      >
+        <AccordionItem title="1">
+          <AccordionTitle>
+            <>Section 1</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <p>Section 1 Details</p>
+          </AccordionDetails>
+        </AccordionItem>
+        <AccordionItem title="2">
+          <AccordionTitle>
+            <>Section 2</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <p>Section 2 Details</p>
+          </AccordionDetails>
+        </AccordionItem>
+      </Accordion>
+
+      <h1>Accordion with common expand icon - expandIcon</h1>
+      <Accordion
+        expanded={['2']}
+        titleClassName="accordion"
+        detailsClassName="panel"
+        expandIcon={<span>&#94;</span>}
+      >
+        <AccordionItem title="1">
+          <AccordionTitle>
+            <>Section 1</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <p>Section 1 Details</p>
+          </AccordionDetails>
+        </AccordionItem>
+        <AccordionItem title="2">
+          <AccordionTitle>
+            <>Section 2</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <p>Section 2 Details</p>
+          </AccordionDetails>
+        </AccordionItem>
+      </Accordion>
+
+      <h1>Accordion with extra props</h1>
+      <Accordion
+        expanded={['2']}
+        titleClassName="accordion"
+        detailsClassName="panel"
+        expandIcon={<span>&#94;</span>}
+      >
+        <AccordionItem title="1" props={{ testId: 1 }}>
+          <AccordionTitle props={{ testId: 2 }}>
+            <>Section 1</>
+          </AccordionTitle>
+          <AccordionDetails props={{ testId: 3 }}>
+            <p>Section 1 Details</p>
+          </AccordionDetails>
+        </AccordionItem>
+        <AccordionItem title="2">
+          <AccordionTitle>
+            <>Section 2</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <p>Section 2 Details</p>
+          </AccordionDetails>
+        </AccordionItem>
+      </Accordion>
     </>
   );
 };

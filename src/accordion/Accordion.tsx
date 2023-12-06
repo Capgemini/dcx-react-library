@@ -12,21 +12,32 @@ interface AccordionProps {
    */
   expanded?: string[];
   /**
-   * allow to display expanding/collapsing icon of the accordion
+   * allow to display expanding/collapsing icon of the accordion at the root level instead of every element of the accordion
    */
-  expandIcon?: React.ReactNode;
+  expandIcon?: JSX.Element;
   /**
    * allow to display the title of the accordion
    */
   children:
     | React.ReactElement<AccordionItemProps>
     | React.ReactElement<AccordionItemProps>[];
+  /**
+   * instad of styling separately every single title in the accordion you can perform it once at the root level
+   */
+  titleClassName?: string;
+  /**
+   * instad of styling separately every single details in the accordion you can perform it once at the root level
+   */
+  detailsClassName?: string;
 }
 
 export const Accordion = ({
   multipleOpen = false,
   expanded = [],
   children,
+  expandIcon,
+  titleClassName,
+  detailsClassName,
 }: AccordionProps) => {
   const [expandedItems, setExpandedItems] = useState<string[]>(
     expanded.length > 1 && !multipleOpen ? [expanded[0]] : expanded
@@ -50,6 +61,9 @@ export const Accordion = ({
         expanded: expandedItems,
         onClick: handleClick,
         multipleOpen,
+        expandIcon: expandIcon,
+        titleClassName: titleClassName,
+        detailsClassName: detailsClassName,
       }}
     >
       {children}

@@ -10,13 +10,10 @@ describe('AccordionItem', () => {
   it('should render the title and details', () => {
     const { getByText } = render(
       <AccordionItem>
-        <AccordionTitle id='1' expandIcon={<span>▼</span>}>
+        <AccordionTitle id="1" expandIcon={<span>▼</span>}>
           <>Test Title</>
         </AccordionTitle>
-        <AccordionDetails
-          id='1'
-          className="test-class"
-        >
+        <AccordionDetails id="1" className="test-class">
           <>Test Details</>
         </AccordionDetails>
       </AccordionItem>
@@ -28,13 +25,10 @@ describe('AccordionItem', () => {
   it('should render the expandIcon when provided', () => {
     render(
       <AccordionItem>
-        <AccordionTitle id='1' expandIcon={<span>▼</span>}>
+        <AccordionTitle id="1" expandIcon={<span>▼</span>}>
           <>Test Title</>
         </AccordionTitle>
-        <AccordionDetails
-          id='1'
-          className="test-class"
-        >
+        <AccordionDetails id="1" className="test-class">
           <>Test Details</>
         </AccordionDetails>
       </AccordionItem>
@@ -50,15 +44,12 @@ describe('AccordionItem', () => {
         value={{ expanded: [''], onClick, multipleOpen: false }}
       >
         <AccordionItem>
-          <AccordionTitle id='1' expandIcon={<span>▼</span>}>
+          <AccordionTitle id="1" expandIcon={<span>▼</span>}>
             <>Test Title</>
           </AccordionTitle>
-          <AccordionDetails
-            id='1'
-            className="test-class"
-          >
+          <AccordionDetails id="1" className="test-class">
             <>Test Details</>
-          </AccordionDetails>          
+          </AccordionDetails>
         </AccordionItem>
       </AccordionContext.Provider>
     );
@@ -77,13 +68,10 @@ describe('AccordionItem', () => {
         }}
       >
         <AccordionItem>
-          <AccordionTitle id='1' expandIcon={<span>▼</span>}>
+          <AccordionTitle id="1" expandIcon={<span>▼</span>}>
             <>Test Title</>
           </AccordionTitle>
-          <AccordionDetails
-            id='1'
-            className="test-class"
-          >
+          <AccordionDetails id="1" className="test-class">
             <>Test Details</>
           </AccordionDetails>
         </AccordionItem>
@@ -103,13 +91,10 @@ describe('AccordionItem', () => {
         }}
       >
         <AccordionItem>
-          <AccordionTitle id='1' expandIcon={<span>▼</span>}>
+          <AccordionTitle id="1" expandIcon={<span>▼</span>}>
             <>Test Title</>
           </AccordionTitle>
-          <AccordionDetails
-            id='1'
-            className="test-class"
-          >
+          <AccordionDetails id="1" className="test-class">
             <>Test Details</>
           </AccordionDetails>
         </AccordionItem>
@@ -119,5 +104,27 @@ describe('AccordionItem', () => {
     waitFor(async () => {
       expect(await screen.findByText('Test Details')).toBeNull();
     });
+  });
+
+  //test to implement
+  it('should allow to pass extra properties', () => {
+    render(
+      <AccordionContext.Provider
+        value={{
+          expanded: ['Another Title'],
+          onClick: () => {},
+          multipleOpen: false,
+        }}
+      >
+        <AccordionItem title="title" props={{ id: 1 }}>
+          <AccordionTitle id="1" expandIcon={<span>▼</span>}>
+            <>Test Title</>
+          </AccordionTitle>
+          <AccordionDetails id="1" className="test-class">
+            <>Test Details</>
+          </AccordionDetails>
+        </AccordionItem>
+      </AccordionContext.Provider>
+    );
   });
 });
