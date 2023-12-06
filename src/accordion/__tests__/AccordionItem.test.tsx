@@ -9,7 +9,7 @@ import AccordionItemContext from '../AccordionItemContext';
 
 describe('AccordionItem', () => {
   const defaultProps: AccordionItemProps = {
-    title: 'Test Title',
+    title: '1',
     children: [
       <AccordionTitle>
         <>Test Title</>
@@ -34,7 +34,7 @@ describe('AccordionItem', () => {
       </AccordionContext.Provider>
     );
     fireEvent.click(screen.getByText('Test Title'));
-    expect(onClick).toHaveBeenCalledWith('Test Title');
+    expect(onClick).toHaveBeenCalledWith('1');
   });
 
   it('should update the selected state when clicked', () => {

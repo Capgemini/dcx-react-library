@@ -20,7 +20,7 @@ describe('AccordionItemContext', () => {
   it('provides the correct context value when it is set', () => {
     let contextValue;
     render(
-      <AccordionItemContext.Provider value={{ title: 'Section 1' }}>
+      <AccordionItemContext.Provider value={{ title: '1' }}>
         <AccordionItemContext.Consumer>
           {value => {
             contextValue = value;
@@ -29,6 +29,6 @@ describe('AccordionItemContext', () => {
         </AccordionItemContext.Consumer>
       </AccordionItemContext.Provider>
     );
-    expect(contextValue).toEqual({ title: 'Section 1' });
+    expect(contextValue).toEqual({ title: '1' });
   });
 });

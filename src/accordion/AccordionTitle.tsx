@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import AccordionContext from './AccordionContext';
 import { classNames } from '../common';
+import AccordionItemContext from './AccordionItemContext';
 
 export interface AccordionTitleProps {
   /**
@@ -22,12 +23,13 @@ export const AccordionTitle = ({
   children,
   props,
 }: AccordionTitleProps) => {
-  const { titleClassName, expandIcon } = useContext(AccordionContext);
+  const { expanded, titleClassName, expandIcon, collapsedIcon } = useContext(AccordionContext);
+  const { title } = useContext(AccordionItemContext);
   const titleClasses = classNames([className, titleClassName]);
   return (
     <div className={titleClasses} {...props}>
       {children}
-      {expandIcon}
+      {expanded.includes(title) ? (expandIcon && expandIcon) : (collapsedIcon && collapsedIcon)}
     </div>
   );
 };

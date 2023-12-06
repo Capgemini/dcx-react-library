@@ -46,9 +46,9 @@ describe('AccordionDetails', () => {
   it('should be visible when title is in the expanded array', () => {
     const { getByText } = render(
       <AccordionContext.Provider
-        value={{ multipleOpen: false, onClick: jest.fn(), expanded: ['Section 1'] }}
+        value={{ multipleOpen: false, onClick: jest.fn(), expanded: ['1'] }}
       >
-        <AccordionItemContext.Provider value={{ title: 'Section 1' }}>
+        <AccordionItemContext.Provider value={{ title: '1' }}>
           <AccordionDetails>
             <>Test Details</>
           </AccordionDetails>
@@ -61,9 +61,9 @@ describe('AccordionDetails', () => {
   it('should not be visible when title is not in the expanded array', () => {
     const { getByText } = render(
       <AccordionContext.Provider
-        value={{ multipleOpen: false, onClick: jest.fn(), expanded: ['Section 2'] }}
+        value={{ multipleOpen: false, onClick: jest.fn(), expanded: ['2'] }}
       >
-        <AccordionItemContext.Provider value={{ title: 'Section 1' }}>
+        <AccordionItemContext.Provider value={{ title: '1' }}>
           <AccordionDetails>
             <>Test Details</>
           </AccordionDetails>

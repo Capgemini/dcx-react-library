@@ -50,4 +50,14 @@ describe('AccordionContext', () => {
     const { result } = renderHook(() => useContext(AccordionContext));
     expect(result.current.detailsClassName).toBeUndefined();
   });
+
+  it('provides default collapsedIcon value', () => {
+    const { result } = renderHook(() => useContext(AccordionContext));
+    expect(result.current.collapsedIcon).toBeUndefined();
+  });
+  
+  it('provides default expandIcon value', () => {
+    const { result } = renderHook(() => useContext(AccordionContext));
+    expect(result.current.expandIcon).toBeUndefined();
+  });
 });

@@ -177,6 +177,32 @@ export const AccordionDemo = () => {
           </AccordionDetails>
         </AccordionItem>
       </Accordion>
+
+      <h1>Accordion with expanding and collapsing icons</h1>
+      <Accordion
+        expanded={['1']}
+        titleClassName="accordion"
+        detailsClassName="panel"
+        expandIcon={<span>&#x25B2;</span>}
+        collapsedIcon={<span>&#x25BC;</span>}
+      >
+        <AccordionItem title="1">
+          <AccordionTitle props={{ testId: 2 }}>
+            <>Section 1</>
+          </AccordionTitle>
+          <AccordionDetails props={{ testId: 3 }}>
+            <p>Section 1 Details</p>
+          </AccordionDetails>
+        </AccordionItem>
+        <AccordionItem title="2">
+          <AccordionTitle>
+            <>Section 2</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <p>Section 2 Details</p>
+          </AccordionDetails>
+        </AccordionItem>
+      </Accordion>
     </>
   );
 };

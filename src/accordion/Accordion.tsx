@@ -12,9 +12,13 @@ interface AccordionProps {
    */
   expanded?: string[];
   /**
-   * allow to display expanding/collapsing icon of the accordion at the root level instead of every element of the accordion
+   * allow to display expanding icon of the accordion at the root level instead of every element of the accordion
    */
   expandIcon?: JSX.Element;
+  /**
+   * allow to display collapsing icon of the accordion at the root level instead of every element of the accordion
+   */
+  collapsedIcon?: JSX.Element;
   /**
    * allow to display the title of the accordion
    */
@@ -36,6 +40,7 @@ export const Accordion = ({
   expanded = [],
   children,
   expandIcon,
+  collapsedIcon,
   titleClassName,
   detailsClassName,
 }: AccordionProps) => {
@@ -62,6 +67,7 @@ export const Accordion = ({
         onClick: handleClick,
         multipleOpen,
         expandIcon: expandIcon,
+        collapsedIcon: collapsedIcon,
         titleClassName: titleClassName,
         detailsClassName: detailsClassName,
       }}
