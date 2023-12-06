@@ -6,23 +6,24 @@
 
 `dcx-react-library` is a React library with a set of components ready to use in your project.
 
-There are plenty of libraries available in React that can help to increase your productivity however most of them contain lots of css and are hard to style based on your project's requirements.
+Numerous React libraries are accessible to enhance productivity, yet many of them come with extensive CSS styles that can be challenging to customize according to your project's specific requirements.
 
-dcx-react-library is **UI/UX agnostic** so you need to provide styling to match the look and feel of your application. This allows the dcx-react-library to be easily integrated into any project.
+The dcx-react-library is designed to be **UI/UX agnostic**, requiring you to supply styling to align with the visual aesthetics of your application. This flexibility enables seamless integration of the dcx-react-library into any project.
 
 ## Components
 
-To see the full list of components built in dcx-react-library, and how to use it, have a look on our [storybook-showcase](https://main--6069a6f47f4b9f002171f8e1.chromatic.com)
-In Storybook, each component is presented with 4 main sections:
+To explore the complete array of components within the dcx-react-library and learn how to implement them, check out our [storybook-showcase](https://main--6069a6f47f4b9f002171f8e1.chromatic.com). In Storybook, each component is presented with four main sections:
 
-- **documentation**: describes the list of properties available, optional and mandatory;
-- **live**: you can play directly with all the properties and see the component's behaviour;
-- **unstyled**: the bare component without any styling applied;
-- **styled**: an example (mainly based on GDS) of how to style the component and the final result.
+- **documentation:** provides details on available properties, highlighting optional and mandatory ones.
+- **live:** allows direct interaction with all properties to observe the component's behavior.
+- **unstyled:** showcases the bare component without any applied styling.
+- **styled:** presents an example (primarily based on GDS) of how to style the component and the expected final result.
+
+Utilizing the dcx-react-library should be straightforward without requiring any specific setup. Simply import the desired component and incorporate it into your project.
 
 ## How to use it
 
-Using dcx-react-library should not require any particular setup. You only need to import the component and use it :smiley:
+Incorporating the dcx-react-library into your project is hassle-free and doesn't demand any specific setup. Simply import the desired component, and you're good to go! 😃
 
 Steps:
 
@@ -39,7 +40,7 @@ const App = () => {
 
 ## Styling
 
-We don't ship `dcx-react-library` with any included CSS. However, some stylesheet is required to use some components (for example, `toggle` and `tooltip`).
+`dcx-react-library` doesn't come bundled with any predefined CSS. Nevertheless, certain components, such as `toggle` and `tooltip`, necessitate the inclusion of stylesheets for proper functionality.
 
 ```js
 /* The following line can be included in your src/index.js or App.js file */
@@ -48,20 +49,20 @@ import '@capgeminiuk/dcx-react-library/dist/dcx-react-library.css';
 
 ## Contributing
 
-If you'd like to contribute, please follow our [CONTRIBUTING section](https://github.com/Capgemini/dcx-react-library/blob/main/CONTRIBUTING.md).
+If you're interested in contributing, kindly adhere to the guidelines outlined in our [CONTRIBUTING section](https://github.com/Capgemini/dcx-react-library/blob/main/CONTRIBUTING.md).
 
 ## Blog posts
 
-For an introduction to the DCX React Library please read our [Introducing the DCX React Library blog post](https://capgemini.github.io/development/dcx-react-library/).
-For tips on how you can contribute to the DCX React Library please read our [Contributing to the DCX React Library blog post](https://capgemini.github.io/development/contributing-to-dcx-react-library/).
+For an introduction to the DCX React Library, please refer to our [Introducing the DCX React Library blog post](https://capgemini.github.io/development/dcx-react-library/).
+To discover tips on contributing to the DCX React Library, explore our [Contributing to the DCX React Library blog post](https://capgemini.github.io/development/contributing-to-dcx-react-library/).
 
 ## Raise a bug or enhancement
 
-If you find a bug or you would like to recommend an improvement, please raise an _issue_ and use the appropriate template. We will be more than happy to improve the library, smashing all the bugs found and improve the functionality.
+If you come across a bug or wish to suggest an improvement, kindly open an _issue_ and make use of the relevant template. We are enthusiastic about enhancing the library, addressing any identified bugs, and improving its functionality.
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people
+Special thanks to these wonderful individuals:
 
 <table>
   <tr>
