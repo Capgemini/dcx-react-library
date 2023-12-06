@@ -2,7 +2,7 @@ import React from 'react';
 
 interface AccordionItemContextProps {
   /**
-   * define the title of each item. It will allow to understand wich item we want to toggle
+   * define the title of each item. It will allow to understand which item we want to toggle
    */
   title: string;
 }

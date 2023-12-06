@@ -35,4 +35,19 @@ describe('AccordionContext', () => {
     const { result } = renderHook(() => useContext(AccordionContext));
     expect(() => result.current.onClick('test')).not.toThrow();
   });
+
+  it('provides default expandIcon value', () => {
+    const { result } = renderHook(() => useContext(AccordionContext));
+    expect(result.current.expandIcon).toBeUndefined();
+  });
+  
+  it('provides default titleClassName value', () => {
+    const { result } = renderHook(() => useContext(AccordionContext));
+    expect(result.current.titleClassName).toBeUndefined();
+  });
+  
+  it('provides default detailsClassName value', () => {
+    const { result } = renderHook(() => useContext(AccordionContext));
+    expect(result.current.detailsClassName).toBeUndefined();
+  });
 });

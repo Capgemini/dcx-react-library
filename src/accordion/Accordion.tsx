@@ -22,11 +22,11 @@ interface AccordionProps {
     | React.ReactElement<AccordionItemProps>
     | React.ReactElement<AccordionItemProps>[];
   /**
-   * instad of styling separately every single title in the accordion you can perform it once at the root level
+   * instead of styling separately every single title in the accordion you can perform it once at the root level
    */
   titleClassName?: string;
   /**
-   * instad of styling separately every single details in the accordion you can perform it once at the root level
+   * instead of styling separately every single details in the accordion you can perform it once at the root level
    */
   detailsClassName?: string;
 }
@@ -40,7 +40,7 @@ export const Accordion = ({
   detailsClassName,
 }: AccordionProps) => {
   const [expandedItems, setExpandedItems] = useState<string[]>(
-    expanded.length > 1 && !multipleOpen ? [expanded[0]] : expanded
+    expanded.length > 1 && !multipleOpen ? [expanded[0]] : expanded as string[]
   );
 
   const handleClick = (title: string) => {

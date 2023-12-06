@@ -9,7 +9,7 @@ export interface AccordionDetailsProps {
    */
   className?: string;
   /**
-   * will allow to pass whaterver element you prefer
+   * will allow to pass whatever element you prefer
    */
   children: JSX.Element;
   /**

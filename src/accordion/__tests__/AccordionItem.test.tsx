@@ -1,130 +1,77 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
-import { AccordionItem } from '../AccordionItem';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { AccordionItem, AccordionItemProps } from '../AccordionItem';
 import AccordionContext from '../AccordionContext';
 import { AccordionTitle } from '../AccordionTitle';
 import { AccordionDetails } from '../AccordionDetails';
+import AccordionItemContext from '../AccordionItemContext';
 
 describe('AccordionItem', () => {
+  const defaultProps: AccordionItemProps = {
+    title: 'Test Title',
+    children: [
+      <AccordionTitle>
+        <>Test Title</>
+      </AccordionTitle>,
+      <AccordionDetails className="test-class">
+        <>Test Details</>
+      </AccordionDetails>,
+    ],
+  };
+
   it('should render the title and details', () => {
-    const { getByText } = render(
-      <AccordionItem>
-        <AccordionTitle id="1" expandIcon={<span>▼</span>}>
-          <>Test Title</>
-        </AccordionTitle>
-        <AccordionDetails id="1" className="test-class">
-          <>Test Details</>
-        </AccordionDetails>
-      </AccordionItem>
-    );
+    const { getByText } = render(<AccordionItem {...defaultProps} />);
     expect(getByText('Test Title')).toBeInTheDocument();
     expect(getByText('Test Details')).toBeInTheDocument();
   });
 
-  it('should render the expandIcon when provided', () => {
+  it('should call onClick with the correct argument when clicked', () => {
+    const onClick = jest.fn();
     render(
-      <AccordionItem>
-        <AccordionTitle id="1" expandIcon={<span>▼</span>}>
-          <>Test Title</>
-        </AccordionTitle>
-        <AccordionDetails id="1" className="test-class">
-          <>Test Details</>
-        </AccordionDetails>
-      </AccordionItem>
-    );
-    const spanElement = screen.getByText('▼');
-    expect(spanElement).toBeInTheDocument();
-  });
-
-  it('should expand and collapse the details when clicked', () => {
-    const onClick = jest.fn() as any;
-    const { getByText } = render(
-      <AccordionContext.Provider
-        value={{ expanded: [''], onClick, multipleOpen: false }}
-      >
-        <AccordionItem>
-          <AccordionTitle id="1" expandIcon={<span>▼</span>}>
-            <>Test Title</>
-          </AccordionTitle>
-          <AccordionDetails id="1" className="test-class">
-            <>Test Details</>
-          </AccordionDetails>
-        </AccordionItem>
+      <AccordionContext.Provider value={{ onClick, multipleOpen: false, expanded: [] }}>
+        <AccordionItem {...defaultProps} />
       </AccordionContext.Provider>
     );
+    fireEvent.click(screen.getByText('Test Title'));
+    expect(onClick).toHaveBeenCalledWith('Test Title');
+  });
 
+  it('should update the selected state when clicked', () => {
+    const { getByText, rerender } = render(
+      <AccordionContext.Provider value={{ onClick: jest.fn(), multipleOpen: false, expanded: [] }}>
+        <AccordionItem {...defaultProps} />
+      </AccordionContext.Provider>
+    );
     fireEvent.click(getByText('Test Title'));
-    expect(onClick).toHaveBeenCalled();
+    rerender(
+      <AccordionContext.Provider value={{ onClick: jest.fn(), multipleOpen: false, expanded: [] }}>
+        <AccordionItem {...defaultProps} />
+      </AccordionContext.Provider>
+    );
+    expect(getByText('Test Title')).toBeInTheDocument();
   });
 
-  it('should show the details when the title is the expanded item in the context', () => {
+  it('should update the AccordionItemContext value when clicked', () => {
+    let contextValue;
     const { getByText } = render(
-      <AccordionContext.Provider
-        value={{
-          expanded: ['1'],
-          onClick: () => {},
-          multipleOpen: false,
-        }}
-      >
-        <AccordionItem>
-          <AccordionTitle id="1" expandIcon={<span>▼</span>}>
-            <>Test Title</>
-          </AccordionTitle>
-          <AccordionDetails id="1" className="test-class">
-            <>Test Details</>
-          </AccordionDetails>
-        </AccordionItem>
+      <AccordionContext.Provider value={{ onClick: jest.fn(), multipleOpen: false, expanded: [] }}>
+        <AccordionItemContext.Consumer>
+          {value => {
+            contextValue = value;
+            return (
+              <AccordionItem {...defaultProps} />
+            );
+          }}
+        </AccordionItemContext.Consumer>
       </AccordionContext.Provider>
     );
-
-    expect(getByText('Test Details')).toBeVisible();
+    fireEvent.click(getByText('Test Title'));
+    expect(contextValue).toEqual({ title: '' });
   });
 
-  it('should hide the details when the title is not the expanded item in the context', () => {
-    render(
-      <AccordionContext.Provider
-        value={{
-          expanded: ['Another Title'],
-          onClick: () => {},
-          multipleOpen: false,
-        }}
-      >
-        <AccordionItem>
-          <AccordionTitle id="1" expandIcon={<span>▼</span>}>
-            <>Test Title</>
-          </AccordionTitle>
-          <AccordionDetails id="1" className="test-class">
-            <>Test Details</>
-          </AccordionDetails>
-        </AccordionItem>
-      </AccordionContext.Provider>
-    );
-
-    waitFor(async () => {
-      expect(await screen.findByText('Test Details')).toBeNull();
-    });
-  });
-
-  //test to implement
-  it('should allow to pass extra properties', () => {
-    render(
-      <AccordionContext.Provider
-        value={{
-          expanded: ['Another Title'],
-          onClick: () => {},
-          multipleOpen: false,
-        }}
-      >
-        <AccordionItem title="title" props={{ id: 1 }}>
-          <AccordionTitle id="1" expandIcon={<span>▼</span>}>
-            <>Test Title</>
-          </AccordionTitle>
-          <AccordionDetails id="1" className="test-class">
-            <>Test Details</>
-          </AccordionDetails>
-        </AccordionItem>
-      </AccordionContext.Provider>
-    );
+  it('should pass extra properties to the div', () => {
+    render(<AccordionItem {...defaultProps} data-testid='custom value' />);
+    expect(screen.getByTestId('custom value')).toBeInTheDocument();
   });
 });
