@@ -41,11 +41,11 @@ interface AccordionProps {
    */
   detailsClassName?: string;
   /**
-   * will define the className fro the Accordion
+   * Applies custom CSS classes to the Accordion
    */
   className?: string;
   /**
-   * will allow to extend with other properties
+   * Allows for defining custom properties
    */
   props?: any;
 }

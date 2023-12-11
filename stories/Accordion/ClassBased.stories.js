@@ -15,7 +15,7 @@ export default {
 };
 
 /**
- * One section at the time will be expanded
+ * This component is designed such that only one section will be expanded at a time.
  */
 export const BasicAccordion = {
   name: 'Basic',
@@ -23,7 +23,7 @@ export const BasicAccordion = {
     return (
       <Accordion className='govuk-accordion' {...args}>
       <AccordionItem className='govuk-accordion__section' title="1">
-        <AccordionTitle>
+        <AccordionTitle className='govuk-accordion__section-header'>
           <h2 className="govuk-accordion__section-heading">
             <button 
               type="button" 
@@ -37,12 +37,12 @@ export const BasicAccordion = {
             </button>
           </h2>
         </AccordionTitle>
-        <AccordionDetails>
+        <AccordionDetails className='govuk-accordion__section-content'>
           <p class="govuk-body">This is the content for Writing well for the web.</p>
         </AccordionDetails>
       </AccordionItem>
       <AccordionItem className='govuk-accordion__section' title="2">
-        <AccordionTitle>
+        <AccordionTitle className='govuk-accordion__section-header'>
           <h2 className="govuk-accordion__section-heading">
             <button 
               type="button" 
@@ -56,12 +56,12 @@ export const BasicAccordion = {
             </button>
           </h2>
         </AccordionTitle>
-        <AccordionDetails>
+        <AccordionDetails className='govuk-accordion__section-content'>
           <p class="govuk-body">This is the content for writing well for specialists.</p>
         </AccordionDetails>
       </AccordionItem>
       <AccordionItem className='govuk-accordion__section' title="3">
-        <AccordionTitle>
+        <AccordionTitle className='govuk-accordion__section-header'>
           <h2 className="govuk-accordion__section-heading">
             <button 
               type="button" 
@@ -75,7 +75,7 @@ export const BasicAccordion = {
             </button>
           </h2>
         </AccordionTitle>
-        <AccordionDetails>
+        <AccordionDetails className='govuk-accordion__section-content'>
           <p class="govuk-body">This is the content for Know your audience.</p>
         </AccordionDetails>
       </AccordionItem>
@@ -83,9 +83,6 @@ export const BasicAccordion = {
     );
   },
   args: {
-    multipleOpen: true,
-    titleClassName: 'govuk-accordion__section-header',
-    detailsClassName: 'govuk-accordion__section-content',
     expandIcon:
     <span className="govuk-accordion__section-toggle">
       <span className="govuk-accordion__section-toggle-focus">
@@ -104,10 +101,272 @@ export const BasicAccordion = {
 };
 
 /**
- * It will keep all the section expanded when you click on them
+ * This component is designed to keep all sections expanded upon clicking on them.
  */
 export const multipleOpen = {
   name: 'Multiple sections expanded',
+  render: function (args) {
+    return (
+      <Accordion className='govuk-accordion' {...args}>
+      <AccordionItem className='govuk-accordion__section' title="1">
+        <AccordionTitle className='govuk-accordion__section-header'>
+          <h2 className="govuk-accordion__section-heading">
+            <button 
+              type="button" 
+              className="govuk-accordion__section-button" 
+            >
+              <span className="govuk-accordion__section-heading-text">
+                <span className="govuk-accordion__section-heading-text-focus">
+                  Writing well for the web
+                </span>
+              </span>
+            </button>
+          </h2>
+        </AccordionTitle>
+        <AccordionDetails className='govuk-accordion__section-content'>
+          <p class="govuk-body">This is the content for Writing well for the web.</p>
+        </AccordionDetails>
+      </AccordionItem>
+      <AccordionItem className='govuk-accordion__section' title="2">
+        <AccordionTitle className='govuk-accordion__section-header'>
+          <h2 className="govuk-accordion__section-heading">
+            <button 
+              type="button" 
+              className="govuk-accordion__section-button" 
+            >
+              <span className="govuk-accordion__section-heading-text">
+                <span className="govuk-accordion__section-heading-text-focus">
+                  Writing well for specialists
+                </span>
+              </span>
+            </button>
+          </h2>
+        </AccordionTitle>
+        <AccordionDetails className='govuk-accordion__section-content'>
+          <p class="govuk-body">This is the content for writing well for specialists.</p>
+        </AccordionDetails>
+      </AccordionItem>
+      <AccordionItem className='govuk-accordion__section' title="3">
+        <AccordionTitle className='govuk-accordion__section-header'>
+          <h2 className="govuk-accordion__section-heading">
+            <button 
+              type="button" 
+              className="govuk-accordion__section-button" 
+            >
+              <span className="govuk-accordion__section-heading-text">
+                <span className="govuk-accordion__section-heading-text-focus">
+                  Know your audience
+                </span>
+              </span>
+            </button>
+          </h2>
+        </AccordionTitle>
+        <AccordionDetails className='govuk-accordion__section-content'>
+          <p class="govuk-body">This is the content for Know your audience.</p>
+        </AccordionDetails>
+      </AccordionItem>
+    </Accordion>
+    );
+  },
+  args: {
+    multipleOpen: true,
+    expandIcon:
+    <span className="govuk-accordion__section-toggle">
+      <span className="govuk-accordion__section-toggle-focus">
+      <span className="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+      <span className="govuk-accordion__section-toggle-text">Hide</span>
+    </span>
+  </span>,
+  collapsedIcon:
+  <span className="govuk-accordion__section-toggle">
+  <span className="govuk-accordion__section-toggle-focus">
+    <span className="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--up"></span>
+    <span className="govuk-accordion__section-toggle-text">Show</span>
+  </span>
+</span>
+  },
+};
+
+/**
+ * This component is configured to have one section expanded by default upon initialization. Additionally, it allows only one section to be expanded at any given time.
+ */
+export const defaultExpandedAccordion = {
+  name: 'A single section expanded y default',
+  render: function (args) {
+    return (
+      <Accordion className='govuk-accordion' {...args}>
+      <AccordionItem className='govuk-accordion__section' title="1">
+        <AccordionTitle className='govuk-accordion__section-header'>
+          <h2 className="govuk-accordion__section-heading">
+            <button 
+              type="button" 
+              className="govuk-accordion__section-button" 
+            >
+              <span className="govuk-accordion__section-heading-text">
+                <span className="govuk-accordion__section-heading-text-focus">
+                  Writing well for the web
+                </span>
+              </span>
+            </button>
+          </h2>
+        </AccordionTitle>
+        <AccordionDetails className='govuk-accordion__section-content'>
+          <p class="govuk-body">This is the content for Writing well for the web.</p>
+        </AccordionDetails>
+      </AccordionItem>
+      <AccordionItem className='govuk-accordion__section' title="2">
+        <AccordionTitle className='govuk-accordion__section-header'>
+          <h2 className="govuk-accordion__section-heading">
+            <button 
+              type="button" 
+              className="govuk-accordion__section-button" 
+            >
+              <span className="govuk-accordion__section-heading-text">
+                <span className="govuk-accordion__section-heading-text-focus">
+                  Writing well for specialists
+                </span>
+              </span>
+            </button>
+          </h2>
+        </AccordionTitle>
+        <AccordionDetails className='govuk-accordion__section-content'>
+          <p class="govuk-body">This is the content for writing well for specialists.</p>
+        </AccordionDetails>
+      </AccordionItem>
+      <AccordionItem className='govuk-accordion__section' title="3">
+        <AccordionTitle className='govuk-accordion__section-header'>
+          <h2 className="govuk-accordion__section-heading">
+            <button 
+              type="button" 
+              className="govuk-accordion__section-button" 
+            >
+              <span className="govuk-accordion__section-heading-text">
+                <span className="govuk-accordion__section-heading-text-focus">
+                  Know your audience
+                </span>
+              </span>
+            </button>
+          </h2>
+        </AccordionTitle>
+        <AccordionDetails className='govuk-accordion__section-content'>
+          <p class="govuk-body">This is the content for Know your audience.</p>
+        </AccordionDetails>
+      </AccordionItem>
+    </Accordion>
+    );
+  },
+  args: {
+    expanded: ['1'],
+    expandIcon:
+    <span className="govuk-accordion__section-toggle">
+      <span className="govuk-accordion__section-toggle-focus">
+      <span className="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+      <span className="govuk-accordion__section-toggle-text">Hide</span>
+    </span>
+  </span>,
+  collapsedIcon:
+  <span className="govuk-accordion__section-toggle">
+  <span className="govuk-accordion__section-toggle-focus">
+    <span className="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--up"></span>
+    <span className="govuk-accordion__section-toggle-text">Show</span>
+  </span>
+</span>
+  },
+};
+
+/**
+ * This component is designed to have one section expanded by default upon initialization, with the capability to expand multiple sections simultaneously.
+ */
+export const defaultExpandedAccordionMultipleSectionsAllowed = {
+  name: 'A single section expanded y default',
+  render: function (args) {
+    return (
+      <Accordion className='govuk-accordion' {...args}>
+      <AccordionItem className='govuk-accordion__section' title="1">
+        <AccordionTitle className='govuk-accordion__section-header'>
+          <h2 className="govuk-accordion__section-heading">
+            <button 
+              type="button" 
+              className="govuk-accordion__section-button" 
+            >
+              <span className="govuk-accordion__section-heading-text">
+                <span className="govuk-accordion__section-heading-text-focus">
+                  Writing well for the web
+                </span>
+              </span>
+            </button>
+          </h2>
+        </AccordionTitle>
+        <AccordionDetails className='govuk-accordion__section-content'>
+          <p class="govuk-body">This is the content for Writing well for the web.</p>
+        </AccordionDetails>
+      </AccordionItem>
+      <AccordionItem className='govuk-accordion__section' title="2">
+        <AccordionTitle className='govuk-accordion__section-header'>
+          <h2 className="govuk-accordion__section-heading">
+            <button 
+              type="button" 
+              className="govuk-accordion__section-button" 
+            >
+              <span className="govuk-accordion__section-heading-text">
+                <span className="govuk-accordion__section-heading-text-focus">
+                  Writing well for specialists
+                </span>
+              </span>
+            </button>
+          </h2>
+        </AccordionTitle>
+        <AccordionDetails className='govuk-accordion__section-content'>
+          <p class="govuk-body">This is the content for writing well for specialists.</p>
+        </AccordionDetails>
+      </AccordionItem>
+      <AccordionItem className='govuk-accordion__section' title="3">
+        <AccordionTitle className='govuk-accordion__section-header'>
+          <h2 className="govuk-accordion__section-heading">
+            <button 
+              type="button" 
+              className="govuk-accordion__section-button" 
+            >
+              <span className="govuk-accordion__section-heading-text">
+                <span className="govuk-accordion__section-heading-text-focus">
+                  Know your audience
+                </span>
+              </span>
+            </button>
+          </h2>
+        </AccordionTitle>
+        <AccordionDetails className='govuk-accordion__section-content'>
+          <p class="govuk-body">This is the content for Know your audience.</p>
+        </AccordionDetails>
+      </AccordionItem>
+    </Accordion>
+    );
+  },
+  args: {
+    multipleOpen: true,
+    expanded: ['1'],
+    expandIcon:
+    <span className="govuk-accordion__section-toggle">
+      <span className="govuk-accordion__section-toggle-focus">
+      <span className="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+      <span className="govuk-accordion__section-toggle-text">Hide</span>
+    </span>
+  </span>,
+  collapsedIcon:
+  <span className="govuk-accordion__section-toggle">
+  <span className="govuk-accordion__section-toggle-focus">
+    <span className="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--up"></span>
+    <span className="govuk-accordion__section-toggle-text">Show</span>
+  </span>
+</span>
+  },
+};
+
+/**
+ * This component accepts 'titleClassName' and 'detailsClassName' as props at the root level. These props allow for custom styling of the title and details sections of the accordion.
+ */
+export const definedTitleAndDetailsClassNames = {
+  name: 'A single section expanded y default',
   render: function (args) {
     return (
       <Accordion className='govuk-accordion' {...args}>
@@ -172,7 +431,6 @@ export const multipleOpen = {
     );
   },
   args: {
-    multipleOpen: true,
     titleClassName: 'govuk-accordion__section-header',
     detailsClassName: 'govuk-accordion__section-content',
     expandIcon:
