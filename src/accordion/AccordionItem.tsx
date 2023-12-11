@@ -6,18 +6,20 @@ import AccordionItemContext from './AccordionItemContext';
 
 export interface AccordionItemProps {
   /**
-   *
+   * The title of the accordion item
    */
   title: string;
+
   /**
-   *
+   * The children of the accordion item, which should be an array containing an AccordionTitle and AccordionDetails element
    */
   children: [
     React.ReactElement<AccordionTitleProps>,
     React.ReactElement<AccordionDetailsProps>
   ];
+
   /**
-   * you can define your own properties
+   * Allows for defining custom properties
    */
   props?: any;
 }
