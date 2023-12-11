@@ -277,7 +277,7 @@ export const defaultExpandedAccordion = {
 /**
  * This component is designed to have one section expanded by default upon initialization, with the capability to expand multiple sections simultaneously.
  */
-export const defaultExpandedAccordionMultipleSectionsAllowed = {
+export const defaultExpandedWithMultipleSectionsAllowed = {
   name: 'A single section expanded y default',
   render: function (args) {
     return (

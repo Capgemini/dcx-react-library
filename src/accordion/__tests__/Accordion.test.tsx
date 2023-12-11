@@ -141,6 +141,38 @@ describe('Accordion Component', () => {
       expect(screen.queryByText('Test Details 3')).not.toBeVisible();
     });
   });
+
+  it('expands the correct item when the expanded prop changes', () => {
+    const { rerender, getByText } = render(
+      <Accordion expanded={['1']}>
+        <AccordionItem title="1">
+          <AccordionTitle><>Section 1</></AccordionTitle>
+          <AccordionDetails><>Section 1 Details</></AccordionDetails>
+        </AccordionItem>
+        <AccordionItem title="2">
+          <AccordionTitle><>Section 2</></AccordionTitle>
+          <AccordionDetails><>Section 2 Details</></AccordionDetails>
+        </AccordionItem>
+      </Accordion>
+    );
+
+    expect(getByText('Section 1 Details')).toBeVisible();
+
+    rerender(
+      <Accordion expanded={['2']}>
+        <AccordionItem title="1">
+          <AccordionTitle><>Section 1</></AccordionTitle>
+          <AccordionDetails><>Section 1 Details</></AccordionDetails>
+        </AccordionItem>
+        <AccordionItem title="2">
+          <AccordionTitle><>Section 2</></AccordionTitle>
+          <AccordionDetails><>Section 2 Details</></AccordionDetails>
+        </AccordionItem>
+      </Accordion>
+    );
+
+    expect(getByText('Section 2 Details')).toBeVisible();
+  });
 });
 
 describe('Accordion Component', () => {
