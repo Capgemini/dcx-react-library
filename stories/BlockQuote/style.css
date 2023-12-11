@@ -1,9 +1,9 @@
 .blockquote {
-    color:black;
-    margin: 0;
-    padding: 15px;
-    background: #eee;
-    borderRadius: 5px;
-    width: 500px;
-    border-radius: 3px;
+  color: black;
+  margin: 0;
+  padding: 15px;
+  background: #eee;
+  borderradius: 5px;
+  width: 500px;
+  border-radius: 3px;
 }

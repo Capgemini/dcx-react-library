@@ -59,6 +59,11 @@
   --dcx-color-text-body: white;
 }
 
+.dcx-pre {
+  --dcx-color-text-pre_body: white;
+  --dcx-color-background-pre_box: transparent;
+}
+
 .dcx-insert-text {
   --dcx-color-text-body: white;
 }
@@ -76,9 +81,22 @@
   --dcx-color-text-heading-level_6: white;
 }
 
+
+.dcx-code {
+  --dcx-color-text-pre_body: white;
+}
+
+.dcx-abbreviate {
+  --dcx-color-background-highlight_body: #666;
+}
+
 .dcx-link {
   --dcx-color-text-link: darkorange;
   --dcx-color-text-link-visited: #db7a03;
   --dcx-color-text-link-active: #db7a03;
   --dcx-color-text-link-hover: #db7a03;
+}
+
+.dcx-blockquote {
+  --dcx-color-text-body: white;
 }

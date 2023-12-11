@@ -1,0 +1,10 @@
+.dcx-code {
+    color: token('color-text-pre_body');
+    font-size: token('font-size-pre_body');
+    font-family: token('font-family-pre_body');
+    font-weight: token('font-weight-pre_body');
+    background: token('color-background-pre_box');
+    padding: token('spacing-pre_box');
+  }
+
+

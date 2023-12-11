@@ -18,6 +18,7 @@ export { TooltipDemo } from './TooltipDemo';
 export { DetailsDemo } from './DetailsDemo';
 export { CharacterCountDemo } from './CharacterCountDemo';
 export { LinkDemo } from './LinkDemo';
+export { DescriptionListDemo } from './DescriptionListDemo';
 export { LabelDemo } from './LabelDemo';
 export { ListDemo } from './ListDemo';
 export { BreadcrumbDemo } from './BreadcrumbDemo';
