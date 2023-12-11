@@ -14,8 +14,11 @@ export default {
   tags: ['autodocs'] 
 };
 
+/**
+ * One section at the time will be expanded
+ */
 export const BasicAccordion = {
-  name: 'Accordion component that does not allows multiple sections to be open at the same time.',
+  name: 'Basic',
   render: function (args) {
     return (
       <Accordion className='govuk-accordion' {...args}>
@@ -100,8 +103,11 @@ export const BasicAccordion = {
   },
 };
 
+/**
+ * It will keep all the section expanded when you click on them
+ */
 export const multipleOpen = {
-  name: 'Accordion component that allows multiple sections to be open at the same time.',
+  name: 'Multiple sections expanded',
   render: function (args) {
     return (
       <Accordion className='govuk-accordion' {...args}>
