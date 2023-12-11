@@ -73,6 +73,8 @@ export const parameters = {
           ],
           'Layout',
           [
+          'Accordion',
+          ['Documentation', 'Live', 'Without style', 'Class based'],
           'Breadcrumb',
           ['Documentation', 'Live', 'Without style', 'Class based'],
           'Details',
@@ -81,6 +83,7 @@ export const parameters = {
           ['Documentation', 'Live', 'Without style', 'Class based'],
           'Table',
           ['Documentation', 'Live', 'Without style', 'Class based'],
+          
           ],
           'Typography',
           [

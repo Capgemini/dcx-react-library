@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AccordionContext from './AccordionContext';
 import { AccordionItemProps } from './AccordionItem';
+import { classNames } from '../common';
 
 interface AccordionProps {
   /**
@@ -39,6 +40,14 @@ interface AccordionProps {
    * Applies custom CSS classes to the details of the accordion sections
    */
   detailsClassName?: string;
+  /**
+   * will define the className fro the Accordion
+   */
+  className?: string;
+  /**
+   * will allow to extend with other properties
+   */
+  props?: any;
 }
 
 export const Accordion = ({
@@ -49,9 +58,13 @@ export const Accordion = ({
   collapsedIcon,
   titleClassName,
   detailsClassName,
+  className,
+  ...props
 }: AccordionProps) => {
   const [expandedItems, setExpandedItems] = useState<string[]>(
-    expanded.length > 1 && !multipleOpen ? [expanded[0]] : expanded as string[]
+    expanded.length > 1 && !multipleOpen
+      ? [expanded[0]]
+      : (expanded as string[])
   );
 
   const handleClick = (title: string) => {
@@ -78,7 +91,9 @@ export const Accordion = ({
         detailsClassName: detailsClassName,
       }}
     >
-      {children}
+      <div className={classNames(['dcx-accordion', className])} {...props}>
+        {children}
+      </div>
     </AccordionContext.Provider>
   );
 };
