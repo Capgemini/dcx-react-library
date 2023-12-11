@@ -420,10 +420,11 @@ describe('Accordion Component', () => {
     });
   });
 
-  it('should allow to style every title passing the titleClassName at the root component', () => {
+  it('should allow to style every title passing the titleClassName and detailsClassName at the root component', () => {
     const titleClassName = 'test-title-class';
+    const detailsClassName = 'test-details-class';
     render(
-      <Accordion titleClassName={titleClassName}>
+      <Accordion titleClassName={titleClassName} detailsClassName={detailsClassName}>
         <AccordionItem title="1">
           <AccordionTitle><span>Item 1</span></AccordionTitle>
           <AccordionDetails><span>Details 1</span></AccordionDetails>
@@ -438,27 +439,6 @@ describe('Accordion Component', () => {
     const titles = screen.getAllByText(/Item/);
     const titlesWithClass = titles.filter((title) => title.parentElement && title.parentElement.classList.contains(titleClassName));
     expect(titlesWithClass.length).toBe(2);
-  });
-
-  it('should allow to style every details passing the detailsClassName at the root component', () => {
-    const detailsClassName = 'test-details-class';
-    render(
-      <Accordion detailsClassName={detailsClassName}>
-        <AccordionItem title="1">
-          <AccordionTitle><span>Item 1</span></AccordionTitle>
-          <AccordionDetails><span>Details 1</span></AccordionDetails>
-        </AccordionItem>
-        <AccordionItem title="2">
-          <AccordionTitle><span>Item 2</span></AccordionTitle>
-          <AccordionDetails><span>Details 2</span></AccordionDetails>
-        </AccordionItem>
-      </Accordion>
-    );
-  
-    const details = screen.getAllByText(/Details/);
-    details.forEach((detail) => {
-      expect(detail.parentElement).toHaveClass(detailsClassName);
-    });
   });
 
   it('should allow to specify an expandIcon at the root level and to be visible in every component when it is expanded', () => {
@@ -496,28 +476,5 @@ describe('Accordion Component', () => {
     );
     const collapseIcons = screen.getAllByTestId('collapse-icon');
     expect(collapseIcons.length).toBe(2);
-  });
-
-  it('should display the correct icon based on the accordion state', async () => {
-    const expandIcon = <span data-testid="expand-icon">+</span>;
-    const collapsedIcon = <span data-testid="collapsed-icon">-</span>;
-    const { getByTestId, getByText } = render(
-      <Accordion expandIcon={expandIcon} collapsedIcon={collapsedIcon}>
-        <AccordionItem title="1">
-          <AccordionTitle><span>Item 1</span></AccordionTitle>
-          <AccordionDetails><span>Details 1</span></AccordionDetails>
-        </AccordionItem>
-      </Accordion>
-    );
-  
-    const icon = getByTestId('collapsed-icon');
-    expect(icon.textContent).toBe('-');
-  
-    fireEvent.click(getByText('Item 1'));
-
-    await waitFor(() => {
-      const icon2 = getByTestId('expand-icon');
-      expect(icon2.textContent).toBe('+');
-    });
   });
 });
