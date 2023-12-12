@@ -15,7 +15,7 @@ export default {
 };
 
 /**
- * This component is designed such that only one section will be expanded at a time.
+ * By default Accordion is designed to have only one section expanded at the time
  */
 export const BasicAccordion = {
   name: 'Basic',
@@ -103,7 +103,7 @@ export const BasicAccordion = {
 };
 
 /**
- * This component is designed to keep all sections expanded upon clicking on them.
+ * Passing the property *multipleOpen* we can keep all sections expanded upon clicking on them.
  */
 export const multipleOpen = {
   name: 'Multiple sections expanded',
@@ -191,10 +191,10 @@ export const multipleOpen = {
 };
 
 /**
- * This component is configured to have one section expanded by default upon initialization. Additionally, it allows only one section to be expanded at any given time.
+ * Passing the property *expanded: [title]* and *multipleOpen: false* we have one section expanded by default upon initialization. Additionally, it allows only one section to be expanded at any given time.
  */
 export const defaultExpandedAccordion = {
-  name: 'A single section expanded by default and only one section expanded at a time',
+  name: 'Expanded by default one at a time',
   render: function (args) {
     return (
       <Accordion className='govuk-accordion' {...args}>
@@ -279,10 +279,10 @@ export const defaultExpandedAccordion = {
 };
 
 /**
- * This component is designed to have one section expanded by default upon initialization, with the capability to expand multiple sections simultaneously.
+ * Passing the property *expanded: [title]* and *multipleOpen: false* we have one section expanded by default with the capability to expand multiple sections simultaneously.
  */
 export const defaultExpandedWithMultipleSectionsAllowed = {
-  name: 'A single section expanded by default and will expand multiple sections upon clicking',
+  name: 'Expanded by default multiple sections open',
   render: function (args) {
     return (
       <Accordion className='govuk-accordion' {...args}>
@@ -367,10 +367,10 @@ export const defaultExpandedWithMultipleSectionsAllowed = {
 };
 
 /**
- * This component accepts 'titleClassName' and 'detailsClassName' as props at the root level. These props allow for custom styling of the title and details sections of the accordion.
+ * Passinf *titleClassName* and *detailsClassName* as props at the root level will allow for custom styling of the title and details sections of the accordion.
  */
 export const definedTitleAndDetailsClassNames = {
-  name: 'Defined title and details classNames',
+  name: 'Global classNames',
   render: function (args) {
     return (
       <Accordion className='govuk-accordion' {...args}>
