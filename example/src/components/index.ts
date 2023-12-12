@@ -22,4 +22,5 @@ export { DescriptionListDemo } from './DescriptionListDemo';
 export { LabelDemo } from './LabelDemo';
 export { ListDemo } from './ListDemo';
 export { BreadcrumbDemo } from './BreadcrumbDemo';
+export { AccordionDemo } from './AccordionDemo';
 export * from './library-candidates';
