@@ -27,6 +27,7 @@ export * from './keyBoard';
 export * from './preformattedText';
 export * from './list';
 export * from './breadcrumb';
+export * from './accordion';
 export * from './abbreviate';
 export * from './blockquote';
 export * from './heading';
