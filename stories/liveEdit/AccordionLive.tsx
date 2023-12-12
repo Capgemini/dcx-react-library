@@ -26,6 +26,7 @@ function AccordionDemo() {
   }
 
   return (<Accordion
+    multipleOpen={true}
     expanded={['1']}
     titleClassName="accordion"
     detailsClassName="panel"

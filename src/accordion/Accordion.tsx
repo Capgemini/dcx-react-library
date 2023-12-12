@@ -7,12 +7,12 @@ interface AccordionProps {
   /**
    * Allows multiple sections of the accordion to be open at the same time
    */
-  multipleOpen?: boolean;
+  multipleOpen: boolean;
 
   /**
    * Specifies which sections of the accordion should be expanded by default
    */
-  expanded?: string[];
+  expanded: string[];
 
   /**
    * Customizes the icons displayed when the accordion sections are expanded
@@ -51,8 +51,8 @@ interface AccordionProps {
 }
 
 export const Accordion = ({
-  multipleOpen = false,
-  expanded = [],
+  multipleOpen,
+  expanded,
   children,
   expandIcon,
   collapsedIcon,

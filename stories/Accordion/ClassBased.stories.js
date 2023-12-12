@@ -83,6 +83,8 @@ export const BasicAccordion = {
     );
   },
   args: {
+    multipleOpen: false,
+    expanded: [],
     expandIcon:
     <span className="govuk-accordion__section-toggle">
       <span className="govuk-accordion__section-toggle-focus">
@@ -170,6 +172,7 @@ export const multipleOpen = {
   },
   args: {
     multipleOpen: true,
+    expanded: [],
     expandIcon:
     <span className="govuk-accordion__section-toggle">
       <span className="govuk-accordion__section-toggle-focus">
@@ -191,7 +194,7 @@ export const multipleOpen = {
  * This component is configured to have one section expanded by default upon initialization. Additionally, it allows only one section to be expanded at any given time.
  */
 export const defaultExpandedAccordion = {
-  name: 'A single section expanded y default',
+  name: 'A single section expanded by default and only one section expanded at a time',
   render: function (args) {
     return (
       <Accordion className='govuk-accordion' {...args}>
@@ -256,6 +259,7 @@ export const defaultExpandedAccordion = {
     );
   },
   args: {
+    multipleOpen: false,
     expanded: ['1'],
     expandIcon:
     <span className="govuk-accordion__section-toggle">
@@ -278,7 +282,7 @@ export const defaultExpandedAccordion = {
  * This component is designed to have one section expanded by default upon initialization, with the capability to expand multiple sections simultaneously.
  */
 export const defaultExpandedWithMultipleSectionsAllowed = {
-  name: 'A single section expanded y default',
+  name: 'A single section expanded by default and will expand multiple sections upon clicking',
   render: function (args) {
     return (
       <Accordion className='govuk-accordion' {...args}>
@@ -366,7 +370,7 @@ export const defaultExpandedWithMultipleSectionsAllowed = {
  * This component accepts 'titleClassName' and 'detailsClassName' as props at the root level. These props allow for custom styling of the title and details sections of the accordion.
  */
 export const definedTitleAndDetailsClassNames = {
-  name: 'A single section expanded y default',
+  name: 'Defined title and details classNames',
   render: function (args) {
     return (
       <Accordion className='govuk-accordion' {...args}>
@@ -431,6 +435,8 @@ export const definedTitleAndDetailsClassNames = {
     );
   },
   args: {
+    multipleOpen: false,
+    expanded: [],
     titleClassName: 'govuk-accordion__section-header',
     detailsClassName: 'govuk-accordion__section-content',
     expandIcon:
