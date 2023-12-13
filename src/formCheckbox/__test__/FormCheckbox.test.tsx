@@ -514,11 +514,7 @@ describe('FormCheckbox', () => {
     const checkbox = container.querySelector('.dcx-checkbox-checkbox--error');
     const label = container.querySelector('.dcx-checkbox-label--error');
     
-    console.log("Checkbox Container", checkboxContainer);
-    console.log("Checkbox", checkbox);
-    console.log("Label", label);
-    
-    expect(checkboxContainer).not.toBeNull();
+    expect(checkboxContainer).toBeInTheDocument();
     expect(checkbox).toBeInTheDocument();
     expect(label).toBeInTheDocument();
     
