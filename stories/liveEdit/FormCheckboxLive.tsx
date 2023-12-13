@@ -7,6 +7,7 @@ function FormCheckboxDemo() {
    
   const [value, setValue] = React.useState('');
   const [checked, setChecked] = React.useState(false);
+  const [isError, setIsError] = React.useState(false)
   const handleChange = (event, conditional) => {
     if (conditional) {
       console.log(conditional);
@@ -14,6 +15,9 @@ function FormCheckboxDemo() {
     }
     setValue(event.currentTarget.value);
     setChecked(event.currentTarget.checked);
+
+    setIsError(event.currentTarget.checked && event.currentTarget.value === '');
+
   };
   return (
     <FormCheckbox
@@ -53,6 +57,7 @@ function FormCheckboxDemo() {
       }}
       selected={checked}
       nested={false}
+      isError={isError}
       inputClassName="inputClassName"
       labelClassName="labelClassName"
       itemClassName="itemClassName"

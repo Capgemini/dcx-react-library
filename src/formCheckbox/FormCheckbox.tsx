@@ -23,10 +23,22 @@ export const FormCheckbox = ({
   inputClassName,
   labelClassName,
   itemClassName,
+  isError
 }: FormRadioCheckboxProps & {
   onChange?: (event: React.ChangeEvent, conditional?: string) => void;
-}) => (
-  <CheckboxRadioBase
+  isError?: boolean;
+}) => {
+  const errorClasses = isError ? {
+    container: 'dcx-checkbox-container--error',
+    checkbox: 'dcx-checkbox-checkbox--error',
+    label: 'dcx-checkbox-label--error'
+  } : {
+    container: '',
+    checkbox: '',
+    label: ''
+  };
+   return (
+      <CheckboxRadioBase
     type="checkbox"
     id={id}
     role={Roles.formCheckbox}
@@ -46,8 +58,9 @@ export const FormCheckbox = ({
     selected={selected}
     hint={hint}
     nested={nested}
-    inputClassName={inputClassName}
-    labelClassName={labelClassName}
-    itemClassName={itemClassName}
-  />
-);
+    itemClassName={`${itemClassName} ${errorClasses.container}`}
+    inputClassName={`${inputClassName} ${errorClasses.checkbox}`}
+    labelClassName={`${labelClassName} ${errorClasses.label}`}
+      />
+    )
+  }
