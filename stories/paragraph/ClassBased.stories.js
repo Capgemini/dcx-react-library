@@ -18,6 +18,25 @@ export const Basic = {
   name: 'Basic',
   args: {
     className: 'govuk-body',
+    children: 'This is the content of the paragraph.',
+  },
+};
+
+export const BasicValue = {
+  name: 'BasicValue',
+  args: {
+    className: 'govuk-body',
     value: 'This is the content of the paragraph.',
+  },
+};
+
+export const Complex = {
+  name: 'CustomContent',
+  args: {
+    className: 'govuk-body',
+    children: [
+      'This is the simple custom-content of the ',
+      <strong>paragraph</strong>,
+    ],
   },
 };

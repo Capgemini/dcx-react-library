@@ -1,7 +1,7 @@
 import { Table } from '../../src/table/Table';
 
 export default {
-  title: 'DCXLibrary/Table/Without style',
+  title: 'DCXLibrary/Layout/Table/Without style',
   component: Table,
   parameters: {
     options: {

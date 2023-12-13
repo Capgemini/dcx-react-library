@@ -8,7 +8,7 @@ export default {
   title: 'DCXLibrary/Form/Button/Design system/Default',
   component: Button,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       return getStory();
     },
@@ -55,5 +55,12 @@ export const DefaultDisabled = {
   args: {
     label: 'My Button',
     disabled: true,
+  },
+};
+
+export const CustomContent = {
+  name: 'Custom Content',
+  args: {
+    children: [<strong>My Button</strong>],
   },
 };

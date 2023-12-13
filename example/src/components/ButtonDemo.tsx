@@ -61,6 +61,13 @@ export const ButtonDemo = () => {
           />
         }
       />
+      <h1>Button with children element</h1>
+      <Button isLoading={isLoading} onClick={() => {}} label="">
+        <span>
+          this is the content
+          <strong> passed as children</strong>
+        </span>
+      </Button>
     </>
   );
 };

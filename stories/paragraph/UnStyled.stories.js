@@ -12,6 +12,6 @@ export default {
 
 export const Unstyled = {
   args: {
-    value: 'This is the content of the paragraph.'
+    children: 'This is the content of the paragraph.',
   },
 };
