@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormRadioCheckboxProps } from '../common/components/commonTypes';
 import { CheckboxRadioBase, Roles } from '../common';
+import { classNames } from '../common/utils';
 
 export const FormCheckbox = ({
   id,
@@ -37,6 +38,11 @@ export const FormCheckbox = ({
     checkbox: '',
     label: ''
   };
+
+  const containerClasses = classNames([itemClassName, errorClasses.container]);
+  const checkboxClasses = classNames([inputClassName, errorClasses.checkbox]);
+  const labelClasses = classNames([labelClassName, errorClasses.label]);
+  
    return (
       <CheckboxRadioBase
     type="checkbox"
@@ -58,9 +64,9 @@ export const FormCheckbox = ({
     selected={selected}
     hint={hint}
     nested={nested}
-    itemClassName={`${itemClassName} ${errorClasses.container}`}
-    inputClassName={`${inputClassName} ${errorClasses.checkbox}`}
-    labelClassName={`${labelClassName} ${errorClasses.label}`}
+    itemClassName={containerClasses}
+    inputClassName={checkboxClasses}
+    labelClassName={labelClasses}
       />
     )
   }

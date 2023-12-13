@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
 import * as hooks from '../../common/utils/clientOnly';
 
-describe.only('FormCheckbox', () => {
+describe('FormCheckbox', () => {
   it('should render a checkbox', () => {
     const handleChange = jest.fn();
     render(
@@ -509,8 +509,6 @@ describe.only('FormCheckbox', () => {
         isError={true}
       />
     );
-
-    console.log("OUTPUT", container.innerHTML); 
 
     const checkboxContainer = container.querySelector('.dcx-checkbox-container--error');
     const checkbox = container.querySelector('.dcx-checkbox-checkbox--error');
