@@ -31,8 +31,8 @@ export const FormSelectWithIconDemo = () => {
           groupTilteBackgroundColor: '#0000000D',
           itemHoverBackgroundColor: '#0000000D',
           fontFamily: '"GDS Transport", arial, sans-serif',
-          // selectStyle: {{}},
-          // listStyle: {{}},
+          selectStyle: {},
+          listStyle: {},
           iconStyle: {
             width: '18px',
             height: '18px',
@@ -63,7 +63,6 @@ export const FormSelectWithIconDemo = () => {
                 value: 'Frog',
                 ariaLabel: 'Frog',
                 id: 'id3',
-                //icon: '/capgemini.png',
               },
               {
                 label: 'Sogeti',

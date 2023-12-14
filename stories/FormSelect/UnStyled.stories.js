@@ -49,8 +49,8 @@ export const WithIcon = {
       groupTilteBackgroundColor: '#0000000D',
       itemHoverBackgroundColor: '#0000000D',
       fontFamily: '"GDS Transport", arial, sans-serif',
-      // selectStyle: {{}},
-      // listStyle: {{}},
+      selectStyle: {},
+      listStyle: {},
       iconStyle: {
         width: '18px',
         height: '18px',
@@ -74,7 +74,6 @@ export const WithIcon = {
             value: 'Invent',
             ariaLabel: 'Invent',
             id: 'id2',
-            // icon: '/capgemini.png',
           },
           {
             label: 'Frog',

@@ -631,6 +631,25 @@ describe('FormSelect', () => {
               },
             ],
           },
+          {
+            label: 'Capgemini',
+            displayCount: false,
+            options: [
+              {
+                label: 'Engineering',
+                value: 'Engineering',
+                ariaLabel: 'Engineering',
+                id: 'id3',
+                icon: '/capgemini.png',
+              },
+              {
+                label: 'Invent',
+                value: 'Invent',
+                ariaLabel: 'Invent',
+                id: 'id4',
+              },
+            ],
+          },
         ]}
       />
     );
@@ -663,6 +682,7 @@ describe('FormSelect', () => {
 
   it('Select container with options should exist after click on arrow down icon', async () => {
     let selectValue = '';
+    const user = userEvent.setup();
 
     render(
       <FormSelect
@@ -706,12 +726,12 @@ describe('FormSelect', () => {
         ]}
       />
     );
+
     const select = screen.getByTestId('arrow down icon');
 
     expect(select).toBeInTheDocument();
 
     fireEvent.click(select);
-
     await waitFor(() => select);
 
     const option1 = screen.getByTestId('id1-value');
@@ -724,5 +744,7 @@ describe('FormSelect', () => {
     await waitFor(() => option1);
 
     expect(selectValue).toBe('Engineering');
+
+    await user.click(document.body);
   });
 });

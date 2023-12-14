@@ -43,8 +43,8 @@ function FormSelectDemo() {
           groupTilteBackgroundColor: '#0000000D',
           itemHoverBackgroundColor: '#0000000D',
           fontFamily: '"GDS Transport", arial, sans-serif',
-          // selectStyle: {{}},
-          // listStyle: {{}},
+          selectStyle: {},
+          listStyle: {},
           iconStyle:{
             width: '18px',
             height: '18px',
@@ -65,7 +65,6 @@ function FormSelectDemo() {
       //     value: 'Cybersecurity', 
       //     ariaLabel: 'Cybersecurity', 
       //     id: 'id2',
-      //     // icon: '/cyberSecurity.png',
       //   },{ 
       //     label: 'Intelligent Industry', 
       //     value: 'Intelligent Industry', 
@@ -98,7 +97,6 @@ function FormSelectDemo() {
               value: 'Invent', 
               ariaLabel: 'Invent', 
               id: 'id2',
-              //icon: '/capgemini.png',
             },{ 
               label: 'Frog', 
               value: 'Frog', 

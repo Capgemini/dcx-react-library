@@ -1,10 +1,5 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  ChangeEvent,
-  MutableRefObject,
-} from 'react';
+/* eslint-disable no-console */
+import React, { useState, useEffect, useRef, ChangeEvent } from 'react';
 import {
   ErrorMessage,
   OptionGroup,
@@ -242,7 +237,7 @@ export const FormSelect = ({
   containerFilledClassName,
   name,
   optionGroups,
-  options = [],
+  options,
   onChange,
   value,
   id,
@@ -264,72 +259,86 @@ export const FormSelect = ({
   disabled = false,
   selectProps,
 }: FormSelectProps) => {
-  let initialValue: string | number = '';
-
-  if (value !== undefined) {
-    initialValue = value;
-  } else if (nullOption !== undefined) {
-    initialValue = nullOption;
-  } else if (options.length > 0 && typeof options[0] === 'string') {
-    initialValue = options[0];
-  } else if (options.length > 0) {
-    initialValue = (options[0] as OptionProps).value;
-  }
-
+  const initialValue: string | number =
+    value ||
+    nullOption ||
+    (options &&
+      options.length > 0 &&
+      (typeof options[0] === 'string'
+        ? options[0]
+        : (options[0] as OptionProps).value)) ||
+    '';
   const [selectValue, setSelectValue] = useState<string | number>(initialValue);
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const menuRef = useRef(null);
   const getUniqueId = () => Math.floor(Math.random() * 1000000000);
   const optionItemStyle = {
-    itemTextColor: selectIconProps?.itemTextColor,
-    itemBackgroundColor: selectIconProps?.itemBackgroundColor,
-    itemDisabledTextColor: selectIconProps?.itemDisabledTextColor,
-    itemHoverBackgroundColor: selectIconProps?.itemHoverBackgroundColor,
-    groupTilteBackgroundColor: selectIconProps?.groupTilteBackgroundColor,
+    itemTextColor: selectIconProps && selectIconProps.itemTextColor,
+    itemBackgroundColor: selectIconProps && selectIconProps.itemBackgroundColor,
+    itemDisabledTextColor:
+      selectIconProps && selectIconProps.itemDisabledTextColor,
+    itemHoverBackgroundColor:
+      selectIconProps && selectIconProps.itemHoverBackgroundColor,
+    groupTilteBackgroundColor:
+      selectIconProps && selectIconProps.groupTilteBackgroundColor,
   };
 
-  useOutsideClick(menuRef, () => setShowOptions(false));
-
-  let theOptions =
-    (options?.map((option: OptionWithIconProps | string) => {
-      if (typeof option === 'object' && option.icon) {
-        return {
-          ...option,
-          iconStyle: selectIconProps?.iconStyle,
-          ...optionItemStyle,
-        };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !(menuRef.current as HTMLElement).contains(event.target as Node)
+      ) {
+        setShowOptions(false);
       }
-      if (typeof option === 'object' && !option.icon) {
-        return {
-          ...option,
-          ...optionItemStyle,
-        };
-      }
-      return option;
-    }) as OptionProps[]) ?? [];
+    };
 
-  let theOptionGroups =
-    optionGroups?.map((OptionGroup: OptionGroupProps) => {
-      OptionGroup.options = OptionGroup.options.map(
-        (option: OptionWithIconProps | string) => {
-          if (typeof option === 'object' && option.icon) {
-            return {
-              ...option,
-              iconStyle: selectIconProps?.iconStyle,
-              ...optionItemStyle,
-            };
-          }
-          if (typeof option === 'object' && !option.icon) {
-            return {
-              ...option,
-              ...optionItemStyle,
-            };
-          }
-          return option;
+    document.addEventListener('mouseup', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mouseup', handleClickOutside);
+    };
+  }, [menuRef]);
+
+  let theOptions = options
+    ? (options.map((option: OptionWithIconProps | string) => {
+        if (typeof option === 'object' && option.icon) {
+          return {
+            ...option,
+            iconStyle: selectIconProps && selectIconProps.iconStyle,
+            ...optionItemStyle,
+          };
         }
-      ) as OptionProps[];
-      return OptionGroup;
-    }) ?? [];
+        if (typeof option === 'object' && !option.icon) {
+          return {
+            ...option,
+            ...optionItemStyle,
+          };
+        }
+        return option;
+      }) as OptionProps[])
+    : [];
+
+  let theOptionGroups = optionGroups
+    ? optionGroups.map((OptionGroup: OptionGroupProps) => {
+        OptionGroup.options = OptionGroup.options.map(
+          (option: OptionWithIconProps | string) => {
+            if (typeof option === 'object' && option.icon) {
+              return {
+                ...option,
+                iconStyle: selectIconProps && selectIconProps.iconStyle,
+                ...optionItemStyle,
+              };
+            }
+            return {
+              ...(option as OptionProps),
+              ...optionItemStyle,
+            };
+          }
+        ) as OptionProps[];
+        return OptionGroup;
+      })
+    : [];
 
   const getOptions = (options: OptionProps[] | string[]): JSX.Element[] =>
     options.map((item: OptionProps | string) => {
@@ -356,11 +365,19 @@ export const FormSelect = ({
       <OptionWithIcon
         key={getUniqueId()}
         {...item}
-        itemTextColor={selectIconProps?.itemTextColor}
-        itemBackgroundColor={selectIconProps?.itemBackgroundColor}
-        itemDisabledTextColor={selectIconProps?.itemDisabledTextColor}
-        itemHoverBackgroundColor={selectIconProps?.itemHoverBackgroundColor}
-        groupTilteBackgroundColor={selectIconProps?.groupTilteBackgroundColor}
+        itemTextColor={selectIconProps && selectIconProps.itemTextColor}
+        itemBackgroundColor={
+          selectIconProps && selectIconProps.itemBackgroundColor
+        }
+        itemDisabledTextColor={
+          selectIconProps && selectIconProps.itemDisabledTextColor
+        }
+        itemHoverBackgroundColor={
+          selectIconProps && selectIconProps.itemHoverBackgroundColor
+        }
+        groupTilteBackgroundColor={
+          selectIconProps && selectIconProps.groupTilteBackgroundColor
+        }
       />
     ));
 
@@ -376,11 +393,19 @@ export const FormSelect = ({
             ? `${groupOption.label} (${groupOption.options.length})`
             : groupOption.label
         }
-        itemTextColor={selectIconProps?.itemTextColor}
-        itemBackgroundColor={selectIconProps?.itemBackgroundColor}
-        itemDisabledTextColor={selectIconProps?.itemDisabledTextColor}
-        itemHoverBackgroundColor={selectIconProps?.itemHoverBackgroundColor}
-        groupTilteBackgroundColor={selectIconProps?.groupTilteBackgroundColor}
+        itemTextColor={selectIconProps && selectIconProps.itemTextColor}
+        itemBackgroundColor={
+          selectIconProps && selectIconProps.itemBackgroundColor
+        }
+        itemDisabledTextColor={
+          selectIconProps && selectIconProps.itemDisabledTextColor
+        }
+        itemHoverBackgroundColor={
+          selectIconProps && selectIconProps.itemHoverBackgroundColor
+        }
+        groupTilteBackgroundColor={
+          selectIconProps && selectIconProps.groupTilteBackgroundColor
+        }
         isGroupTitle
       />,
       ...groupOption.options.map((item: OptionWithIconProps) => (
@@ -397,12 +422,13 @@ export const FormSelect = ({
     theOptions.some(
       (value) => typeof value === 'object' && Object.hasOwn(value, 'icon')
     ) ||
-    theOptionGroups?.some((value) =>
-      value.options.some(
-        (theValue) =>
-          typeof theValue === 'object' && Object.hasOwn(theValue, 'icon')
-      )
-    );
+    (theOptionGroups &&
+      theOptionGroups.some((value) =>
+        value.options.some(
+          (theValue) =>
+            typeof theValue === 'object' && Object.hasOwn(theValue, 'icon')
+        )
+      ));
 
   const TheSelect = () => (
     <select
@@ -414,7 +440,7 @@ export const FormSelect = ({
       className={selectClassName}
       aria-label={ariaLabel || Roles.list}
       onChange={handleChange}
-      style={{ ...style, ...selectIconProps?.listStyle }}
+      style={style}
       tabIndex={tabIndex}
       disabled={disabled}
       ref={menuRef}
@@ -434,14 +460,11 @@ export const FormSelect = ({
       return option === selectValue;
     });
 
-    if (theOptionGroups?.length) {
-      theOptionGroups!.find((optionGroup) => {
-        selectedOption = optionGroup.options.find((option) => {
-          if (typeof option === 'object') {
-            return option.value === selectValue;
-          }
-          return option === selectValue;
-        });
+    if (theOptionGroups && theOptionGroups.length) {
+      theOptionGroups.find((optionGroup) => {
+        selectedOption = optionGroup.options.find(
+          (option) => option.value === selectValue
+        );
         return selectedOption;
       });
     }
@@ -449,23 +472,33 @@ export const FormSelect = ({
     return (
       <>
         {isIncludeIcon() ? (
-          <div style={{ width: selectIconProps?.selectWidth }}>
+          <div
+            style={{ width: selectIconProps && selectIconProps.selectWidth }}
+          >
             <div
-              onClick={() => setShowOptions((currState: boolean) => !currState)}
+              onClick={() =>
+                !disabled && setShowOptions((currState: boolean) => !currState)
+              }
               style={{
                 width: '100%',
                 display: 'flex',
-                cursor: 'pointer',
+                cursor: `${disabled ? 'not-allowed' : 'pointer'}`,
+                opacity: `${disabled ? '0.5' : '1'}`,
                 padding: '4px 0px',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                color: selectIconProps?.itemTextColor || 'black',
+                color:
+                  (selectIconProps && selectIconProps.itemTextColor) || 'black',
                 backgroundColor:
-                  selectIconProps?.itemBackgroundColor || 'white',
-                fontSize: `${selectIconProps?.fontSize}`,
-                fontFamily: `${selectIconProps?.fontFamily}`,
-                border: `${selectIconProps?.border || '1px solid #747d8c'}`,
-                ...selectIconProps?.selectStyle,
+                  (selectIconProps && selectIconProps.itemBackgroundColor) ||
+                  'white',
+                fontSize: `${selectIconProps && selectIconProps.fontSize}`,
+                fontFamily: `${selectIconProps && selectIconProps.fontFamily}`,
+                border: `${
+                  (selectIconProps && selectIconProps.border) ||
+                  '1px solid #747d8c'
+                }`,
+                ...(selectIconProps && selectIconProps.selectStyle),
               }}
               ref={menuRef}
             >
@@ -476,9 +509,20 @@ export const FormSelect = ({
                   (selectedOption as OptionWithIconProps).icon && (
                     <img
                       alt="selected icon"
-                      height={selectIconProps?.iconStyle?.height}
-                      src={(selectedOption as OptionWithIconProps)?.icon}
-                      width={`calc(${selectIconProps?.iconStyle?.width} + 10px)`}
+                      height={
+                        selectIconProps &&
+                        selectIconProps.iconStyle &&
+                        selectIconProps.iconStyle.height
+                      }
+                      src={
+                        selectedOption &&
+                        (selectedOption as OptionWithIconProps).icon
+                      }
+                      width={`calc(${
+                        selectIconProps &&
+                        selectIconProps.iconStyle &&
+                        selectIconProps.iconStyle.width
+                      } + 10px)`}
                       style={{
                         paddingLeft: '10px',
                       }}
@@ -504,7 +548,10 @@ export const FormSelect = ({
               >
                 <path
                   d="M705.6 376.2L512 569.8 318.5 376.2 266.7 428 512 673.2 757.3 428z"
-                  fill={`${selectIconProps?.itemTextColor || 'black'}`}
+                  fill={`${
+                    (selectIconProps && selectIconProps.itemTextColor) ||
+                    'black'
+                  }`}
                 />
               </svg>
             </div>
@@ -513,12 +560,21 @@ export const FormSelect = ({
                 style={{
                   width: '100%',
                   overflowY: 'auto',
-                  fontSize: `${selectIconProps?.fontSize}`,
-                  fontFamily: `${selectIconProps?.fontFamily}`,
-                  ...(selectIconProps?.listItemsCountToShow && {
-                    height: `calc(${selectIconProps?.listItemsCountToShow} * 24px)`,
-                  }),
-                  border: `${selectIconProps?.border || '1px solid #747d8c'}`,
+                  fontSize: `${selectIconProps && selectIconProps.fontSize}`,
+                  fontFamily: `${
+                    selectIconProps && selectIconProps.fontFamily
+                  }`,
+                  ...(selectIconProps &&
+                    selectIconProps.listItemsCountToShow && {
+                      height: `calc(${
+                        selectIconProps && selectIconProps.listItemsCountToShow
+                      } * 24px)`,
+                    }),
+                  border: `${
+                    (selectIconProps && selectIconProps.border) ||
+                    '1px solid #747d8c'
+                  }`,
+                  ...(selectIconProps && selectIconProps.listStyle),
                 }}
                 ref={menuRef}
                 onClick={(e) => {
@@ -589,26 +645,3 @@ export const FormSelect = ({
     </div>
   );
 };
-
-export function useOutsideClick(
-  ref: MutableRefObject<null | HTMLElement>,
-  callback: () => void
-) {
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        ref.current &&
-        !(ref.current as HTMLElement).contains(event.target as Node)
-      ) {
-        // eslint-disable-next-line callback-return
-        callback();
-      }
-    };
-
-    document.addEventListener('mouseup', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mouseup', handleClickOutside);
-    };
-  }, [ref, callback]);
-}
