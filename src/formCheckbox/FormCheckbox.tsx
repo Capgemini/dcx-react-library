@@ -29,19 +29,20 @@ export const FormCheckbox = ({
   onChange?: (event: React.ChangeEvent, conditional?: string) => void;
   isError?: boolean;
 }) => {
-  const errorClasses = isError ? {
-    container: 'dcx-checkbox-container--error',
-    checkbox: 'dcx-checkbox-checkbox--error',
-    label: 'dcx-checkbox-label--error'
-  } : {
-    container: '',
-    checkbox: '',
-    label: ''
-  };
-
-  const containerClasses = classNames([itemClassName, errorClasses.container]);
-  const checkboxClasses = classNames([inputClassName, errorClasses.checkbox]);
-  const labelClasses = classNames([labelClassName, errorClasses.label]);
+  const containerClasses = classNames([
+    itemClassName,
+    { 'dcx-checkbox-container--error': isError },
+  ]);
+  
+  const checkboxClasses = classNames([
+    inputClassName,
+    { 'dcx-checkbox-checkbox--error': isError },
+  ]);
+  
+  const labelClasses = classNames([
+    labelClassName,
+    { 'dcx-checkbox-label--error': isError },
+  ]);
   
    return (
       <CheckboxRadioBase
