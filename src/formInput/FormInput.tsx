@@ -197,7 +197,12 @@ export const FormInput = ({
   };
 
   const ErrorMessage = () => (
-    <div {...errorProps}>
+    <div
+      {...{
+        ...errorProps,
+        className: classNames(['dcx-error-message', errorProps?.className]),
+      }}
+    >
       {staticErrorMessage !== undefined ? (
         <div role={Roles.error} {...errorMessage}>
           {staticErrorMessage}
@@ -233,8 +238,14 @@ export const FormInput = ({
   return (
     <div
       className={classNames([
+        'dcx-form-input',
         containerClassName,
-        { [`${containerClassNameError}`]: isStaticOrDynamicError() },
+        {
+          'dcx-form-input--filled': !!value,
+          'dcx-error-bottom': errorPosition === ErrorPosition.BOTTOM,
+          'dcx-hint-bottom': hint?.position && hint?.position !== 'above',
+          [`dcx-form-input--error' ${containerClassNameError}`]: isStaticOrDynamicError(),
+        },
       ])}
     >
       {errorPosition && errorPosition === ErrorPosition.BEFORE_LABEL && (
@@ -256,11 +267,31 @@ export const FormInput = ({
       {prefix || suffix ? (
         <div {...inputDivProps}>
           {prefix && !isEmpty(prefix) && (
-            <div {...prefix.properties}>{prefix.content}</div>
+            <div
+              {...{
+                ...prefix.properties,
+                className: classNames([
+                  'dcx-form-input__prefix',
+                  prefix.properties?.className,
+                ]),
+              }}
+            >
+              {prefix.content}
+            </div>
           )}
           {inputEl}
           {suffix && !isEmpty(suffix) && (
-            <div {...suffix.properties}>{suffix.content}</div>
+            <div
+              {...{
+                ...suffix.properties,
+                className: classNames([
+                  'dcx-form-input__suffix',
+                  suffix.properties?.className,
+                ]),
+              }}
+            >
+              {suffix.content}
+            </div>
           )}
         </div>
       ) : (
