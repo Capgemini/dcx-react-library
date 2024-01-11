@@ -15,6 +15,10 @@
   --dcx-spacing-x-action: 20px;
 }
 
+.dcx-button-group .dcx-button {
+  --dcx-box-shadow-action: 10px 8px 15px rgba(0, 0, 0, 0.6);
+}
+
 .dcx-list {
   --dcx-color-text-body: rgba(0, 0, 0, 0.6);
   --dcx-color-marker: rgba(0, 0, 0, 0.6);

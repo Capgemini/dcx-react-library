@@ -24,3 +24,4 @@ export { ListDemo } from './ListDemo';
 export { BreadcrumbDemo } from './BreadcrumbDemo';
 export { AccordionDemo } from './AccordionDemo';
 export * from './library-candidates';
+export { ButtonGroupDemo } from './ButtonGroupDemo';

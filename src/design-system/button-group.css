@@ -1,0 +1,35 @@
+.dcx-button-group {
+    display: inline-flex;
+}
+
+.dcx-button-group.dcx-button-group-layout--horizontal {
+    flex-direction: row;
+}
+
+.dcx-button-group.dcx-button-group-layout--vertical {
+    flex-direction: column;
+}
+
+.dcx-button-group.dcx-button-group-layout--horizontal button:first-child {
+    border-top-right-radius: token(border-radius-button-group-first-child-horizontal);
+    border-bottom-right-radius: token(border-radius-button-group-first-child-horizontal);
+}
+
+.dcx-button-group button:not(:first-child):not(:last-child) {
+    border-radius: token(border-radius-button-group-middle-buttons);
+}
+
+.dcx-button-group.dcx-button-group-layout--horizontal button:last-child {
+    border-top-left-radius: token(border-radius-button-group-last-child-horizontal);
+    border-bottom-left-radius: token(border-radius-button-group-last-child-horizontal);
+}
+
+.dcx-button-group.dcx-button-group-layout--vertical button:first-child {
+    border-bottom-left-radius: token(border-radius-button-group-first-child-vertical);
+    border-bottom-right-radius: token(border-radius-button-group-first-child-vertical);
+}
+
+.dcx-button-group.dcx-button-group-layout--vertical button:last-child {
+    border-top-left-radius: token(border-radius-button-group-last-child-vertical);
+    border-top-right-radius: token(border-radius-button-group-last-child-vertical);
+}

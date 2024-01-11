@@ -1,0 +1,25 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as ButtonGroupStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/ButtonGroup/Documentation" />
+
+# Button group
+
+Display a list of buttons grouped together into one element allowing you to style the whole group and any buttons within it.
+Documentation for the button component can be found here: <a href="/?path=/docs/dcxlibrary-form-button-documentation--docs">Button Component Docs</a>
+
+<Canvas of={ButtonGroupStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```js
+  <ButtonGroup buttonVariant="primary" layout="horizontal" disabled>
+    <Button label="Button 1" />
+    <Button label="Button 2" />
+    <Button label="Button 3" />
+  </ButtonGroup>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={ButtonGroupStories} />
