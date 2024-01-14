@@ -7,7 +7,7 @@ type ButtonGroupProps = React.HTMLAttributes<HTMLDivElement> & {
    */
   className?: string;
   /**
-   *
+   * A CSS class for applying the same styling to all the Buttons
    */
   buttonClassName?: string;
   /**
@@ -27,9 +27,13 @@ type ButtonGroupProps = React.HTMLAttributes<HTMLDivElement> & {
    */
   layout?: 'vertical' | 'horizontal';
   /**
-   *
+   * allows you to specify between single toggle or multiple toggle
    */
   type?: 'single' | 'multiple';
+  /**
+   * handler to get the indices of the selected button
+   */
+  onClick?: (selectedIndices: number[]) => void;
 };
 
 export const ButtonGroup = ({
@@ -40,6 +44,7 @@ export const ButtonGroup = ({
   layout = 'horizontal',
   buttonClassName,
   type = 'single',
+  onClick,
   ...props
 }: ButtonGroupProps) => {
   const [activeButtons, setActiveButtons] = useState<number[]>([]);
@@ -51,13 +56,13 @@ export const ButtonGroup = ({
   ]);
 
   const handleButtonClick = (index: number) => {
-    if (type === 'single') {
-      setActiveButtons((prevActiveButtons) =>
-        prevActiveButtons.includes(index) ? [] : [index]
-      );
-    } else if (type === 'multiple') {
-      setActiveButtons((prevActiveButtons) => {
-        const newActiveButtons = [...prevActiveButtons];
+    setActiveButtons((prevActiveButtons) => {
+      let newActiveButtons: number[] = [];
+
+      if (type === 'single') {
+        newActiveButtons = prevActiveButtons.includes(index) ? [] : [index];
+      } else if (type === 'multiple') {
+        newActiveButtons = [...prevActiveButtons];
         const indexPosition = newActiveButtons.indexOf(index);
 
         if (indexPosition !== -1) {
@@ -65,10 +70,12 @@ export const ButtonGroup = ({
         } else {
           newActiveButtons.push(index);
         }
+      }
 
-        return newActiveButtons;
-      });
-    }
+      onClick && onClick(newActiveButtons);
+
+      return newActiveButtons;
+    });
   };
 
   return (
