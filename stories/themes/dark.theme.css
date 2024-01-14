@@ -6,6 +6,16 @@
   --dcx-color-outline-formcontrol: darkorange;
 }
 
+.dcx-form-input {
+  --dcx-color-text-formcontrol: white;
+  --dcx-color-text-formcontrol_label: white;
+  --dcx-border-color-formcontrol: white;
+  --dcx-color-text-formcontrol_hint: #999;
+  --dcx-color-outline-formcontrol: darkorange;
+  --dcx-color-background-formcontrol_prefix: #999;
+  --dcx-color-background-formcontrol_suffix: #999;
+}
+
 .dcx-button {
   --dcx-color-text-action-default-primary: white;
   --dcx-color-text-action-default-secondary: #000;

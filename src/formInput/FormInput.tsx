@@ -129,7 +129,13 @@ type FormInputProps = {
    * tab index value
    */
   tabIndex?: number;
+  /**
+   * if a variant floating is specified it will add a class 'dcx-floating-label' for supporting a floating label feature
+   */
+  variant?: 'floating' | 'floating-filled' | 'normal';
 };
+
+const floatVariants = ['floating', 'floating-filled'];
 
 export enum ErrorPosition {
   BEFORE_LABEL = 'before-label',
@@ -165,6 +171,7 @@ export const FormInput = ({
   labelClassName,
   required,
   hint,
+  variant = 'normal',
   inputDivProps = { style: { display: 'flex' } },
   tabIndex = 0,
 }: FormInputProps) => {
@@ -235,28 +242,34 @@ export const FormInput = ({
     />
   );
 
+  const labelEl: JSX.Element = (
+    <Label
+      label={label}
+      labelProperties={labelProps}
+      htmlFor={inputProps?.id}
+      className={labelClassName}
+    />
+  );
+
+  const containerClasses = classNames([
+    'dcx-form-input',
+    containerClassName,
+    {
+      'dcx-form-input--filled': !!value,
+      'dcx-error-bottom': errorPosition === ErrorPosition.BOTTOM,
+      'dcx-hint-bottom': hint?.position && hint?.position !== 'above',
+      'dcx-floating-label': floatVariants.includes(variant),
+      'dcx-floating-label-filled': variant === 'floating-filled',
+      [`dcx-form-input--error ${containerClassNameError}`]: isStaticOrDynamicError(),
+    },
+  ]);
+
   return (
-    <div
-      className={classNames([
-        'dcx-form-input',
-        containerClassName,
-        {
-          'dcx-form-input--filled': !!value,
-          'dcx-error-bottom': errorPosition === ErrorPosition.BOTTOM,
-          'dcx-hint-bottom': hint?.position && hint?.position !== 'above',
-          [`dcx-form-input--error' ${containerClassNameError}`]: isStaticOrDynamicError(),
-        },
-      ])}
-    >
+    <div className={containerClasses}>
       {errorPosition && errorPosition === ErrorPosition.BEFORE_LABEL && (
         <ErrorMessage />
       )}
-      <Label
-        label={label}
-        labelProperties={labelProps}
-        htmlFor={inputProps?.id}
-        className={labelClassName}
-      />
+      {!floatVariants.includes(variant) && labelEl}
       {errorPosition && errorPosition === ErrorPosition.AFTER_LABEL && (
         <ErrorMessage />
       )}
@@ -279,7 +292,14 @@ export const FormInput = ({
               {prefix.content}
             </div>
           )}
-          {inputEl}
+          {floatVariants.includes(variant) ? (
+            <div className="dcx-wrapper-label">
+              {labelEl}
+              {inputEl}
+            </div>
+          ) : (
+            inputEl
+          )}
           {suffix && !isEmpty(suffix) && (
             <div
               {...{
@@ -293,6 +313,11 @@ export const FormInput = ({
               {suffix.content}
             </div>
           )}
+        </div>
+      ) : floatVariants.includes(variant) ? (
+        <div className="dcx-wrapper-label">
+          {labelEl}
+          {inputEl}
         </div>
       ) : (
         inputEl

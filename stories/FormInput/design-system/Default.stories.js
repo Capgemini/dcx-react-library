@@ -1,5 +1,13 @@
-import { useArgs } from '@storybook/addons';
+import { useArgs } from '@storybook/preview-api';
 import { FormInput } from '../../../src/formInput';
+
+const InputStory = args => {
+  const [, setArgs] = useArgs();
+  const handleChange = event => {
+    setArgs({ value: event.currentTarget.value });
+  };
+  return <FormInput {...args} onChange={handleChange} />;
+};
 
 /**
  * Here we display the component in its natural form, importing only the base Design System styles.
@@ -22,14 +30,7 @@ export default {
 
 export const Basic = {
   name: 'Basic',
-  render: function({ onChange, ...args }) {
-    const [args_, setArgs] = useArgs();
-    const handleChange = event => {
-      onChange(event);
-      setArgs({ value: event.currentTarget.value });
-    };
-    return <FormInput {...args} onChange={handleChange} />;
-  },
+  render: InputStory,
   args: {
     name: 'text',
     type: 'text',
@@ -42,14 +43,7 @@ export const Basic = {
 
 export const Label = {
   name: 'Label',
-  render: function({ onChange, ...args }) {
-    const [args_, setArgs] = useArgs();
-    const handleChange = event => {
-      onChange(event);
-      setArgs({ value: event.currentTarget.value });
-    };
-    return <FormInput {...args} onChange={handleChange} />;
-  },
+  render: InputStory,
   args: {
     name: 'text',
     type: 'text',
@@ -67,16 +61,30 @@ export const Label = {
   argTypes: { onChange: { action: 'onChange' } },
 };
 
+export const Disabled = {
+  name: 'Disabled',
+  render: InputStory,
+  args: {
+    name: 'text',
+    type: 'text',
+    label: 'User Reference (Optional)',
+    inputProps: {
+      id: 'user-reference',
+      disabled: true,
+    },
+    labelProps: {
+      htmlFor: 'user-reference',
+    },
+    value: '',
+    ariaLabel: 'standard-input',
+    ariaRequired: 'true',
+  },
+  argTypes: { onChange: { action: 'onChange' } },
+};
+
 export const Suffix = {
   name: 'Suffix',
-  render: function({ onChange, ...args }) {
-    const [args_, setArgs] = useArgs();
-    const handleChange = event => {
-      onChange(event);
-      setArgs({ value: event.currentTarget.value });
-    };
-    return <FormInput {...args} onChange={handleChange} />;
-  },
+  render: InputStory,
   args: {
     name: 'text0',
     type: 'text',
@@ -95,14 +103,7 @@ export const Suffix = {
 
 export const Prefix = {
   name: 'Prefix',
-  render: function({ onChange, ...args }) {
-    const [args_, setArgs] = useArgs();
-    const handleChange = event => {
-      onChange(event);
-      setArgs({ value: event.currentTarget.value });
-    };
-    return <FormInput {...args} onChange={handleChange} />;
-  },
+  render: InputStory,
   args: {
     name: 'text0',
     type: 'text',
@@ -121,14 +122,7 @@ export const Prefix = {
 
 export const PrefixAndSuffix = {
   name: 'Prefix and suffix',
-  render: function({ onChange, ...args }) {
-    const [args_, setArgs] = useArgs();
-    const handleChange = event => {
-      onChange(event);
-      setArgs({ value: event.currentTarget.value });
-    };
-    return <FormInput {...args} onChange={handleChange} />;
-  },
+  render: InputStory,
   args: {
     name: 'text0',
     type: 'text',
@@ -153,14 +147,7 @@ export const PrefixAndSuffix = {
 
 export const Hint = {
   name: 'Hint',
-  render: function({ onChange, ...args }) {
-    const [args_, setArgs] = useArgs();
-    const handleChange = event => {
-      onChange(event);
-      setArgs({ value: event.currentTarget.value });
-    };
-    return <FormInput {...args} onChange={handleChange} />;
-  },
+  render: InputStory,
   args: {
     name: 'text3',
     type: 'text',
@@ -176,7 +163,7 @@ export const Hint = {
 };
 
 export const StaticError = {
-  name: 'Static error',
+  name: 'Static error after hint',
   args: {
     label: 'this is a label',
     name: 'id',
@@ -193,10 +180,11 @@ export const StaticError = {
     staticErrorMessage: 'some error appened here',
     errorPosition: 'after-hint',
   },
+  argTypes: { onChange: { action: 'onChange' } },
 };
 
 export const StaticErrorBottom = {
-  name: 'Static error',
+  name: 'Static error bottom',
   args: {
     label: 'this is a label',
     name: 'id',
@@ -210,13 +198,33 @@ export const StaticErrorBottom = {
       text: 'My hint',
       id: 'id_hint',
     },
-    // staticErrorMessage: 'some error appened here',
+    staticErrorMessage: 'some error appened here',
     errorPosition: 'bottom',
   },
 };
 
 export const StaticErrorBottomHint = {
-  name: 'Static error',
+  name: 'Static error bottom',
+  args: {
+    label: 'this is a label',
+    name: 'id',
+    inputProps: { id: 'id' },
+    type: 'text',
+    value: 'value',
+    ariaLabel: 'input-with-error',
+    ariaRequired: 'true',
+    hint: {
+      position: 'bottom',
+      text: 'My hint',
+      id: 'id_hint',
+    },
+    staticErrorMessage: 'some error appened here',
+    errorPosition: 'bottom',
+  },
+};
+
+export const StaticErrorBottomHintAbove = {
+  name: 'Static error after-label',
   args: {
     label: 'this is a label',
     name: 'id',
@@ -237,11 +245,11 @@ export const StaticErrorBottomHint = {
       },
       content: '£',
     },
-    // hint: {
-    //   position: 'bottom',
-    //   text: 'My hint',
-    //   id: 'id_hint',
-    // },
+    hint: {
+      position: 'bottom',
+      text: 'My hint',
+      id: 'id_hint',
+    },
     staticErrorMessage: 'some error appened here',
     errorPosition: 'after-label',
   },
@@ -252,12 +260,13 @@ export const StaticErrorBottomHint = {
  */
 export const Error = {
   name: 'Error',
-  render: function({ onChange, ...args }) {
-    const [args_, setArgs] = useArgs();
+  render: args => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [, setArgs] = useArgs();
     const handleChange = event => {
-      onChange(event);
       setArgs({ value: event.currentTarget.value });
     };
+    // eslint-disable-next-line no-console
     const handleValidity = valid => console.log(valid);
     return (
       <FormInput {...args} onChange={handleChange} isValid={handleValidity} />
