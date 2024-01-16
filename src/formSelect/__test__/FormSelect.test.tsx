@@ -747,4 +747,47 @@ describe('FormSelect', () => {
 
     await user.click(document.body);
   });
+  
+  it('Select with icon should be disabeled', async () => {
+    render(
+      <FormSelect
+        id="myId"
+        containerProps={{ 'data-testid': 'containerId' }}
+        selectIconProps={{
+          itemHoverBackgroundColor: '#f5f5f5',
+          listItemsCountToShow: 2,
+          fontSize: '14px',
+          fontFamily: '"GDS Transport", arial, sans-serif',
+          selectWidth: '185px',
+          selectStyle: {
+            border: '1px solid #747d8c',
+          },
+          listStyle: {
+            border: '1px solid #747d8c',
+          },
+          iconStyle: {
+            width: '18px',
+            height: '18px',
+            borderRadius: '0px',
+          },
+        }}
+        options={[
+          {
+            label: 'Engineering',
+            value: 'Engineering',
+            ariaLabel: 'Engineering',
+            id: 'id1',
+            icon: '/capgemini.png',
+          },
+          {
+            label: 'Invent',
+            value: 'Invent',
+            ariaLabel: 'Invent',
+            id: 'id2',
+          },
+        ]}
+        disabled={true}
+      />
+    );
+  });
 });
