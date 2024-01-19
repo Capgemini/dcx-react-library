@@ -16,8 +16,7 @@ const config = {
       docs: {
         autodocs: "tag",
       },
-    },
-    '@storybook/addon-mdx-gfm'
+    }
   ],
   framework: {
     name: '@storybook/react-webpack5',
