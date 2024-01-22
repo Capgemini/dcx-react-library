@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, Children, cloneElement, memo } from 'react';
 import { StepperContext } from './UseStepper';
 import { classNames } from '../common';
 
@@ -43,7 +43,7 @@ export type StepperProps = {
   contentClassName?: string;
 };
 
-export const Stepper = ({
+export const Stepper = memo(({
   children,
   separator,
   selectedStep = 0,
@@ -54,10 +54,47 @@ export const Stepper = ({
   contentContainerClassNames,
   contentClassName,
 }: StepperProps) => {
+  const [activeStep, setActiveStep] = useState(selectedStep);
+
+  useEffect(() => {
+    setActiveStep(selectedStep);
+  }, [selectedStep]);
+
+  const onClickHandler = (index: number) => setActiveStep(index);
+
   const childHeader: any[] = [];
   const childContent: any[] = [];
 
-  const [activeStep, setActiveStep] = React.useState(selectedStep);
+  Children.forEach(children, (child, index) => {
+    if (child.type.name === 'Step') {
+      Children.forEach(child.props.children, (child) => {
+        if (child.type.name === 'StepHeader') {
+          const headerClasses = classNames([
+            { 'dcx-active-step': index === activeStep },
+            { [`${activeStepClass}`]: index === activeStep },
+            headerClassName,
+          ]);
+
+          childHeader.push(cloneElement(child, {
+            key: `header-${index}`,
+            _index: index,
+            separator: index !== children.length - 1 && separator,
+            headerClassName: headerClasses,
+            'aria-selected': index - 1 === activeStep ? 'true' : 'false',
+            'aria-posinset': index + 1,
+            'aria-setsize': child.props.children.length + 1,
+            tabIndex: index - 1 === activeStep ? '0' : '-1',
+          }));
+        } else if (child.type.name === 'StepContent') {
+          childContent.push(cloneElement(child, {
+            key: `content-${index}`,
+            className: contentClassName,
+            visible: index - 1 === activeStep,
+          }));
+        }
+      });
+    }
+  });
 
   const containerClasses = classNames([
     'dcx-stepper',
@@ -75,52 +112,6 @@ export const Stepper = ({
     contentContainerClassNames,
   ]);
 
-  const onClickHandler: (index: number) => void = (index: number) =>
-    setActiveStep(index);
-
-  // it will refresh the selected step if someone change the value from outside
-  React.useEffect(() => {
-    setActiveStep(selectedStep);
-  }, [selectedStep]);
-
-  children.forEach((child: JSX.Element, index: number) => {
-    if (child.type.name === 'Step') {
-      child.props.children.forEach((child: JSX.Element) => {
-        const { name } = child.type;
-        if (child.type.name === 'StepHeader') {
-          const headerClasses = classNames([
-            { 'dcx-active-step': index === activeStep },
-            { [`${activeStepClass}`]: index === activeStep },
-            headerClassName,
-          ]);
-
-          childHeader.push(
-            <child.type
-              key={`${name}-${index}`}
-              _index={index}
-              separator={index !== children.length - 1 && separator}
-              headerClassName={headerClasses}
-              aria-selected={index - 1 === activeStep ? 'true' : 'false'}
-              aria-posinset={index++}
-              aria-setsize={child.props.children.length + 1}
-              tabindex={index - 1 === activeStep ? '0' : '-1'}
-              {...child.props}
-            />
-          );
-        } else if (child.type.name === 'StepContent') {
-          childContent.push(
-            <child.type
-              key={`${name}-${index}`}
-              className={contentClassName}
-              visible={index - 1 === activeStep}
-              {...child.props}
-            />
-          );
-        }
-      });
-    }
-  });
-
   return (
     <StepperContext.Provider
       value={{
@@ -134,4 +125,4 @@ export const Stepper = ({
       </div>
     </StepperContext.Provider>
   );
-};
+});

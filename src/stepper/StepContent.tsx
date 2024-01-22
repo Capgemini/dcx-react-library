@@ -22,7 +22,7 @@ export const StepContent = ({
   visible,
 }: StepContentProps) => (
   <div
-    role="tabPanel"
+    role="tabpanel"
     className={classNames(['dcx-stepper-content', className])}
     style={{
       display: visible ? 'inherit' : 'none',
