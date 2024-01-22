@@ -26,6 +26,7 @@ describe('Button Group', () => {
         <Button label="Button 3" />
       </ButtonGroup>
     );
+
     const btnGroupElm: HTMLElement = screen.getByRole('group');
     expect(btnGroupElm.classList.contains('button-group-test')).toBeTruthy();
     expect(btnGroupElm.classList.contains('dcx-button-group')).toBeTruthy();
@@ -34,27 +35,40 @@ describe('Button Group', () => {
     ).toBeTruthy();
   });
 
-  it('should be able to render active-class', () => {
-    const { getByText, container } = render(
-      <ButtonGroup buttonClassName="abc">
-        <Button label="Button 1" className="button-group-test" />
+  it('should be able to render buttonsClassName in all the child buttons', () => {
+    const { container } = render(
+      <ButtonGroup buttonsClassName="abc">
+        <Button label="Button 1" />
         <Button label="Button 2" />
         <Button label="Button 3" />
       </ButtonGroup>
     );
-    fireEvent.click(getByText('Button 1'));
-    expect(getByText('Button 1')).toHaveClass('active-class');
-    fireEvent.click(getByText('Button 3'));
-    expect(getByText('Button 3')).toHaveClass('active-class');
-    expect(getByText('Button 1')).not.toHaveClass('active-class');
-    expect(getByText('Button 2')).not.toHaveClass('active-class');
+
     expect(container.querySelectorAll('.abc').length).toBe(3);
   });
 
+  it('should be able to render active-class when value and id are given', () => {
+    const { getByText } = render(
+      <ButtonGroup buttonsClassName="abc">
+        <Button label="Button 1" value={'abc'} />
+        <Button label="Button 2" />
+        <Button label="Button 3" id="123" />
+      </ButtonGroup>
+    );
+    fireEvent.click(getByText('Button 1'));
+    expect(getByText('Button 1')).toHaveClass('active-class');
+    fireEvent.click(getByText('Button 2'));
+    expect(getByText('Button 2')).toHaveClass('active-class');
+    fireEvent.click(getByText('Button 3'));
+    expect(getByText('Button 3')).toHaveClass('active-class');
+    expect(getByText('Button 2')).not.toHaveClass('active-class');
+    expect(getByText('Button 1')).not.toHaveClass('active-class');
+  });
+
   it('should be able to render multiple active-class', () => {
-    const { getByText, container } = render(
-      <ButtonGroup buttonClassName="abc" type="multiple">
-        <Button label="Button 1" className="button-group-test" />
+    const { getByText } = render(
+      <ButtonGroup type="multiple">
+        <Button label="Button 1" />
         <Button label="Button 2" />
         <Button label="Button 3" />
       </ButtonGroup>
@@ -65,7 +79,40 @@ describe('Button Group', () => {
     expect(getByText('Button 1')).toHaveClass('active-class');
     expect(getByText('Button 2')).not.toHaveClass('active-class');
     expect(getByText('Button 3')).toHaveClass('active-class');
-    expect(container.querySelectorAll('.abc').length).toBe(3);
+  });
+
+  it('should be able to remove active-class if the same button is clicked twice when the type is single', () => {
+    const { getByText } = render(
+      <ButtonGroup type="single">
+        <Button label="Button 1" />
+        <Button label="Button 2" />
+        <Button label="Button 3" />
+      </ButtonGroup>
+    );
+
+    fireEvent.click(getByText('Button 1'));
+    expect(getByText('Button 1')).toHaveClass('active-class');
+
+    fireEvent.click(getByText('Button 1'));
+    expect(getByText('Button 1')).not.toHaveClass('active-class');
+  });
+
+  it('should be able to remove active-class if the selected button is clicked twice when the type is multiple', () => {
+    const { getByText } = render(
+      <ButtonGroup type="multiple">
+        <Button label="Button 1" />
+        <Button label="Button 2" />
+        <Button label="Button 3" />
+      </ButtonGroup>
+    );
+
+    fireEvent.click(getByText('Button 1'));
+    expect(getByText('Button 1')).toHaveClass('active-class');
+    fireEvent.click(getByText('Button 3'));
+    expect(getByText('Button 3')).toHaveClass('active-class');
+    expect(getByText('Button 2')).not.toHaveClass('active-class');
+    fireEvent.click(getByText('Button 1'));
+    expect(getByText('Button 1')).not.toHaveClass('active-class');
   });
 
   it('should render a button group with correct layout class for vertical', () => {
@@ -98,7 +145,7 @@ describe('Button Group', () => {
 
   it('should render the button variants correctly primary', () => {
     render(
-      <ButtonGroup buttonVariant="primary">
+      <ButtonGroup buttonsVariant="primary">
         <Button label="Button 1" />
         <Button label="Button 2" />
         <Button label="Button 3" />
@@ -110,7 +157,7 @@ describe('Button Group', () => {
 
   it('should render the button variants correctly secondary', () => {
     render(
-      <ButtonGroup buttonVariant="secondary">
+      <ButtonGroup buttonsVariant="secondary">
         <Button label="Button 1" />
         <Button label="Button 2" />
         <Button label="Button 3" />
@@ -122,7 +169,7 @@ describe('Button Group', () => {
 
   it('should render the button variants correctly tertiary', () => {
     render(
-      <ButtonGroup buttonVariant="tertiary">
+      <ButtonGroup buttonsVariant="tertiary">
         <Button label="Button 1" />
         <Button label="Button 2" />
         <Button label="Button 3" />
@@ -135,7 +182,7 @@ describe('Button Group', () => {
   it('should be able to trigger click event when type is single', () => {
     const mockOnClick = jest.fn();
     const { getByText } = render(
-      <ButtonGroup buttonClassName="abc" type="single" onClick={mockOnClick}>
+      <ButtonGroup buttonsClassName="abc" type="single" onClick={mockOnClick}>
         <Button label="Button 1" />
         <Button label="Button 2" />
         <Button label="Button 3" />
@@ -149,7 +196,7 @@ describe('Button Group', () => {
   it('should be able to trigger click event when type is multiple', () => {
     const mockOnClick = jest.fn();
     const { getByText } = render(
-      <ButtonGroup buttonClassName="abc" type="multiple" onClick={mockOnClick}>
+      <ButtonGroup buttonsClassName="abc" type="multiple" onClick={mockOnClick}>
         <Button label="Button 1" />
         <Button label="Button 2" />
         <Button label="Button 3" />
@@ -160,5 +207,29 @@ describe('Button Group', () => {
     fireEvent.click(button1);
     fireEvent.click(button2);
     expect(mockOnClick).toHaveBeenCalledTimes(2);
+  });
+
+  it('should be able to pre select the buttons which are given in selected prop', () => {
+    const mockOnClick = jest.fn();
+    const { getByText } = render(
+      <ButtonGroup
+        buttonsClassName="abc"
+        type="multiple"
+        onClick={mockOnClick}
+        selected={['abc', '123', 0]}
+      >
+        <Button label="Button 1" />
+        <Button label="Button 2" value={'abc'} />
+        <Button label="Button 3" id="123" />
+      </ButtonGroup>
+    );
+    const button1 = getByText('Button 1');
+
+    expect(getByText('Button 1')).toHaveClass('active-class');
+    expect(getByText('Button 2')).toHaveClass('active-class');
+    expect(getByText('Button 3')).toHaveClass('active-class');
+    fireEvent.click(button1);
+    expect(getByText('Button 1')).not.toHaveClass('active-class');
+    expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
 });

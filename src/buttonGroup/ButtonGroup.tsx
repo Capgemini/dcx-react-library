@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { classNames } from '../common';
 
 type ButtonGroupProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -9,7 +9,7 @@ type ButtonGroupProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
    * A CSS class for applying the same styling to all the Buttons
    */
-  buttonClassName?: string;
+  buttonsClassName?: string;
   /**
    * allows you to enable disable the button group
    */
@@ -17,7 +17,7 @@ type ButtonGroupProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
    * allows you to specify a variant for the buttons inside the button group
    */
-  buttonVariant?: 'primary' | 'secondary' | 'tertiary';
+  buttonsVariant?: 'primary' | 'secondary' | 'tertiary';
   /**
    * Button Group children
    */
@@ -31,23 +31,37 @@ type ButtonGroupProps = React.HTMLAttributes<HTMLDivElement> & {
    */
   type?: 'single' | 'multiple';
   /**
-   * handler to get the indices of the selected button
+   * handler to get the indices of the selected button. The current method will provide the current event
+   * and the selected items.
+   * if the button contains the attribute 'value' then will take that one
+   * if the button contains the attribute 'id' will take that one
+   * otherwise will contain the index of the button as you already did
    */
-  onClick?: (selectedIndices: number[]) => void;
+  onClick?: (
+    evt: React.MouseEvent<HTMLButtonElement>,
+    selected: (number | string)[]
+  ) => void;
+  /**
+   * It will allow to pass the selected button or buttons.
+   * if the button contains the attribute 'value' then will take that one
+   * if the button contains the attribute 'id' will take that one
+   * otherwise will contain the index of the button
+   */ selected?: (number | string)[];
 };
 
 export const ButtonGroup = ({
   className,
   disabled = false,
-  buttonVariant = 'primary',
+  buttonsVariant = 'primary',
   children,
   layout = 'horizontal',
-  buttonClassName,
+  buttonsClassName,
   type = 'single',
   onClick,
+  selected,
   ...props
 }: ButtonGroupProps) => {
-  const [activeButtons, setActiveButtons] = useState<number[]>([]);
+  const [activeButtons, setActiveButtons] = useState<(number | string)[]>([]);
 
   const groupClassName = classNames([
     'dcx-button-group',
@@ -55,47 +69,65 @@ export const ButtonGroup = ({
     `dcx-button-group-layout--${layout}`,
   ]);
 
-  const handleButtonClick = (index: number) => {
+  const handleButtonClick = (
+    evt: React.MouseEvent<HTMLButtonElement>,
+    selButton: number | string
+  ) => {
     setActiveButtons((prevActiveButtons) => {
-      let newActiveButtons: number[] = [];
+      let newActiveButtons: (number | string)[] = [];
 
       if (type === 'single') {
-        newActiveButtons = prevActiveButtons.includes(index) ? [] : [index];
+        newActiveButtons = prevActiveButtons.includes(selButton)
+          ? []
+          : [selButton];
       } else if (type === 'multiple') {
         newActiveButtons = [...prevActiveButtons];
-        const indexPosition = newActiveButtons.indexOf(index);
+        const indexPosition = newActiveButtons.indexOf(selButton);
 
         if (indexPosition !== -1) {
           newActiveButtons.splice(indexPosition, 1);
         } else {
-          newActiveButtons.push(index);
+          newActiveButtons.push(selButton);
         }
       }
 
-      onClick && onClick(newActiveButtons);
+      onClick && onClick(evt, newActiveButtons);
 
       return newActiveButtons;
     });
   };
 
+  useEffect(() => {
+    if (selected != undefined) setActiveButtons(selected);
+  }, []);
+
   return (
     <div role="group" className={groupClassName} {...props}>
       {children &&
-        React.Children.map(children, (child: any, index: number) => {
-          const isActive = activeButtons.includes(index);
+        React.Children.map(children, (child: JSX.Element, index: number) => {
+          const value = child.props.value;
+          const id = child.props.id;
+          let selButton: string | number = index;
+
+          if (value) selButton = value;
+          else if (id) selButton = id;
+          else selButton = index;
+
+          const isActive = activeButtons.includes(selButton);
 
           const childClassName = classNames([
-            buttonClassName,
+            buttonsClassName,
             { 'active-class': isActive },
           ]);
 
           return React.cloneElement(child, {
             key: index,
             disabled,
-            variant: buttonVariant,
+            variant: buttonsVariant,
             isActive,
             className: childClassName,
-            onClick: () => handleButtonClick(index),
+            onClick: (evt: React.MouseEvent<HTMLButtonElement>) =>
+              handleButtonClick(evt, selButton),
           });
         })}
     </div>
