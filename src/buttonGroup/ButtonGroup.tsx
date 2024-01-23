@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { classNames } from '../common';
 
-type ButtonGroupProps = React.HTMLAttributes<HTMLDivElement> & {
+type ButtonGroupProps = {
   /**
    * allows you to define a class name
    */
@@ -35,12 +35,13 @@ type ButtonGroupProps = React.HTMLAttributes<HTMLDivElement> & {
    * and the selected items.
    * if the button contains the attribute 'value' then will take that one
    * if the button contains the attribute 'id' will take that one
-   * otherwise will contain the index of the button as you already did
+   * otherwise will contain the index of the button
    */
   onClick?: (
     evt: React.MouseEvent<HTMLButtonElement>,
-    selected: (number | string)[]
+    selected: (string | number)[]
   ) => void;
+
   /**
    * It will allow to pass the selected button or buttons.
    * if the button contains the attribute 'value' then will take that one

@@ -3,17 +3,13 @@ import { ButtonGroup, Button } from '@capgeminiuk/dcx-react-library';
 import './range.scss';
 
 export const ButtonGroupDemo = () => {
-  const handleClick = (evt: any, y: any) => {
-    console.log('Event:', evt, y);
+  const handleClick = (
+    evt: React.MouseEvent<HTMLButtonElement>,
+    selected: (string | number)[]
+  ) => {
+    console.log('Event:', evt);
+    console.log('Selected:', selected);
   };
-
-  // const handleClick = (
-  //   evt: React.MouseEvent<HTMLDivElement>,
-  //   selected: (string | number)[]
-  // ) => {
-  //   console.log('Event:', evt);
-  //   console.log('Selected:', selected);
-  // };
 
   return (
     <>
