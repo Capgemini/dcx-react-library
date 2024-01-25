@@ -8,9 +8,19 @@ function ButtonGroupDemo() {
 
   return (
     <>
-        <ButtonGroup buttonVariant="primary" layout="horizontal">
-            <Button label="Button 1" />
-            <Button label="Button 2" />
+        <ButtonGroup
+          buttonsVariant="secondary"
+          onClick={handleClick}
+          buttonsClassName=""
+          className=""
+          layout="horizontal"
+          selected={[2, 0, 1]}
+          type="multiple"
+          disabled
+          buttonGroupProps={{ style: { color: 'red' } }}
+        >
+            <Button label="Button 1" id="123" />
+            <Button label="Button 2" value={'abc'} />
             <Button label="Button 3" />
         </ButtonGroup>
     </>

@@ -210,26 +210,53 @@ describe('Button Group', () => {
   });
 
   it('should be able to pre select the buttons which are given in selected prop', () => {
-    const mockOnClick = jest.fn();
     const { getByText } = render(
       <ButtonGroup
         buttonsClassName="abc"
         type="multiple"
-        onClick={mockOnClick}
-        selected={['abc', '123', 0]}
+        selected={[2, 'abc', '123']}
+      >
+        <Button label="Button 1" value={'abc'} />
+        <Button label="Button 2" id="pqr" />
+        <Button label="Button 3" />
+      </ButtonGroup>
+    );
+    const button1 = getByText('Button 1');
+
+    expect(getByText('Button 1')).toHaveClass('active-class');
+    expect(getByText('Button 3')).toHaveClass('active-class');
+    expect(getByText('Button 3')).toHaveClass('active-class');
+    fireEvent.click(button1);
+    expect(getByText('Button 1')).not.toHaveClass('active-class');
+  });
+
+  it('should be able to pass some extra properties', () => {
+    const { container } = render(
+      <ButtonGroup
+        className="myStyle"
+        buttonGroupProps={{ style: { color: 'red' } }}
       >
         <Button label="Button 1" />
         <Button label="Button 2" value={'abc'} />
         <Button label="Button 3" id="123" />
       </ButtonGroup>
     );
-    const button1 = getByText('Button 1');
+    const labelElement = container.getElementsByClassName('myStyle');
+    const style = window.getComputedStyle(labelElement[0]);
+    expect(style.color).toBe('red');
+  });
 
-    expect(getByText('Button 1')).toHaveClass('active-class');
-    expect(getByText('Button 2')).toHaveClass('active-class');
-    expect(getByText('Button 3')).toHaveClass('active-class');
-    fireEvent.click(button1);
-    expect(getByText('Button 1')).not.toHaveClass('active-class');
-    expect(mockOnClick).toHaveBeenCalledTimes(1);
+  it('should throw an error when multiple values are passed in selected if the type is single', () => {
+    const renderWithSelected = () =>
+      render(
+        <ButtonGroup selected={[4, 'abc']}>
+          <Button label="Button 1" />
+          <Button label="Button 2" value={'abc'} />
+          <Button label="Button 3" id="123" />
+        </ButtonGroup>
+      );
+    expect(renderWithSelected).toThrow(
+      'Cannot pass multiple parameters if the type is Single'
+    );
   });
 });

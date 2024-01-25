@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonGroup, Button } from '@capgeminiuk/dcx-react-library';
-import './range.scss';
+import './ButtonGroupDemo.scss';
 
 export const ButtonGroupDemo = () => {
   const handleClick = (
@@ -14,7 +14,7 @@ export const ButtonGroupDemo = () => {
   return (
     <>
       <h2>ButtonGroup example when no type provided</h2>
-      <ButtonGroup buttonsVariant="secondary" onClick={handleClick}>
+      <ButtonGroup buttonsVariant="primary" onClick={handleClick}>
         <Button label="Button 1" id="123" />
         <Button label="Button 2" value={'abc'} />
         <Button label="Button 3" />
@@ -28,28 +28,27 @@ export const ButtonGroupDemo = () => {
       </ButtonGroup>
 
       <h2>ButtonGroup example when type is Multiple toggle</h2>
-      <ButtonGroup
-        buttonsVariant="secondary"
-        type="multiple"
-        onClick={(e: any, y: any) => {
-          console.log('-=-=->', y, e);
-        }}
-      >
+      <ButtonGroup type="multiple">
         <Button label="Button 1" />
         <Button label="Button 2" />
         <Button label="Button 3" />
       </ButtonGroup>
 
+      <h2>ButtonGroup example when layout is vertical</h2>
+      <ButtonGroup layout="vertical">
+        <Button label="Button 1" id="123" />
+        <Button label="Button 2" value={'abc'} />
+        <Button label="Button 3" />
+      </ButtonGroup>
+
       <h2>
-        ButtonGroup example with multiple toggle when Id and value attribute are
-        provided
+        ButtonGroup example with multiple toggle when Id and value attributes
+        are provided
       </h2>
       <ButtonGroup
         buttonsVariant="secondary"
         type="multiple"
-        onClick={(e: any, y: any) => {
-          console.log('-=-=->', y, e);
-        }}
+        onClick={handleClick}
       >
         <Button label="Button 1" id="123" />
         <Button label="Button 2" value={'abc'} />
@@ -60,7 +59,7 @@ export const ButtonGroupDemo = () => {
       <ButtonGroup
         buttonsVariant="secondary"
         type="multiple"
-        buttonsClassName="myStyle"
+        buttonsClassName="test"
       >
         <Button label="Button 1" id="123" />
         <Button label="Button 2" value={'abc'} />
@@ -68,11 +67,7 @@ export const ButtonGroupDemo = () => {
       </ButtonGroup>
 
       <h2>ButtonGroup example with selected prop</h2>
-      <ButtonGroup
-        buttonsVariant="secondary"
-        type="multiple"
-        selected={['abc', '123', 2]}
-      >
+      <ButtonGroup type="multiple" selected={[2, 'abc', '123']}>
         <Button label="Button 1" id="123" />
         <Button label="Button 2" value={'abc'} />
         <Button label="Button 3" />
@@ -85,12 +80,14 @@ export const ButtonGroupDemo = () => {
         <Button label="Button 3" />
       </ButtonGroup>
 
-      <h2>ButtonGroup example with layout prop</h2>
-      <ButtonGroup buttonsVariant="secondary" type="multiple" layout="vertical">
+      <h2>ButtonGroup example with buttonGroupProps prop</h2>
+      <ButtonGroup buttonGroupProps={{ style: { color: 'red' } }}>
         <Button label="Button 1" id="123" />
         <Button label="Button 2" value={'abc'} />
         <Button label="Button 3" />
       </ButtonGroup>
+
+      <div style={{ marginBottom: 50 }}></div>
     </>
   );
 };

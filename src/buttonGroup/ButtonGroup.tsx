@@ -47,7 +47,12 @@ type ButtonGroupProps = {
    * if the button contains the attribute 'value' then will take that one
    * if the button contains the attribute 'id' will take that one
    * otherwise will contain the index of the button
-   */ selected?: (number | string)[];
+   */
+  selected?: (number | string)[];
+  /**
+   * allow to specify a user with Additional props/attributes
+   */
+  buttonGroupProps?: React.HTMLAttributes<HTMLDivElement>;
 };
 
 export const ButtonGroup = ({
@@ -60,7 +65,7 @@ export const ButtonGroup = ({
   type = 'single',
   onClick,
   selected,
-  ...props
+  buttonGroupProps,
 }: ButtonGroupProps) => {
   const [activeButtons, setActiveButtons] = useState<(number | string)[]>([]);
 
@@ -69,6 +74,10 @@ export const ButtonGroup = ({
     className,
     `dcx-button-group-layout--${layout}`,
   ]);
+
+  if (selected && type === 'single' && selected.length > 1) {
+    throw new Error(`Cannot pass multiple parameters if the type is Single`);
+  }
 
   const handleButtonClick = (
     evt: React.MouseEvent<HTMLButtonElement>,
@@ -100,19 +109,17 @@ export const ButtonGroup = ({
 
   useEffect(() => {
     if (selected != undefined) setActiveButtons(selected);
-  }, []);
+  }, [selected]);
 
   return (
-    <div role="group" className={groupClassName} {...props}>
+    <div role="group" className={groupClassName} {...buttonGroupProps}>
       {children &&
         React.Children.map(children, (child: JSX.Element, index: number) => {
           const value = child.props.value;
           const id = child.props.id;
           let selButton: string | number = index;
 
-          if (value) selButton = value;
-          else if (id) selButton = id;
-          else selButton = index;
+          selButton = value || id || index;
 
           const isActive = activeButtons.includes(selButton);
 
