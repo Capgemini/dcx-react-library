@@ -70,7 +70,7 @@ export const ButtonGroup = ({
   const [activeButtons, setActiveButtons] = useState<(number | string)[]>([]);
 
   if (selected && type === 'single' && selected.length > 1) {
-    throw new Error(`Cannot pass multiple parameters if the type is Single`);
+    throw new Error('Cannot pass multiple parameters if the type is Single');
   }
 
   const allButtons: (number | string | [string | number, number])[] =
@@ -86,7 +86,7 @@ export const ButtonGroup = ({
 
   if (missingElements && missingElements.length > 0) {
     throw new Error(
-      `Element in the selected array do not match with any buttons.`
+      'Element in the selected array do not match with any buttons.'
     );
   }
 
@@ -125,7 +125,7 @@ export const ButtonGroup = ({
   };
 
   useEffect(() => {
-    if (selected != undefined) setActiveButtons(selected);
+    selected && setActiveButtons(selected);
   }, [selected]);
 
   return (
