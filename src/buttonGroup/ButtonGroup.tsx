@@ -69,15 +69,32 @@ export const ButtonGroup = ({
 }: ButtonGroupProps) => {
   const [activeButtons, setActiveButtons] = useState<(number | string)[]>([]);
 
+  if (selected && type === 'single' && selected.length > 1) {
+    throw new Error(`Cannot pass multiple parameters if the type is Single`);
+  }
+
+  const allButtons: (number | string | [string | number, number])[] =
+    React.Children.map(children, (child: JSX.Element, index: number) => {
+      const value = child.props.value;
+      const id = child.props.id;
+
+      return value ? [value, index] : id ? [id, index] : index;
+    });
+
+  let missingElements =
+    selected && selected.filter((element) => !allButtons.includes(element));
+
+  if (missingElements && missingElements.length > 0) {
+    throw new Error(
+      `Element in the selected array do not match with any buttons.`
+    );
+  }
+
   const groupClassName = classNames([
     'dcx-button-group',
     className,
     `dcx-button-group-layout--${layout}`,
   ]);
-
-  if (selected && type === 'single' && selected.length > 1) {
-    throw new Error(`Cannot pass multiple parameters if the type is Single`);
-  }
 
   const handleButtonClick = (
     evt: React.MouseEvent<HTMLButtonElement>,

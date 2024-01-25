@@ -214,7 +214,7 @@ describe('Button Group', () => {
       <ButtonGroup
         buttonsClassName="abc"
         type="multiple"
-        selected={[2, 'abc', '123']}
+        selected={[2, 'abc', 'pqr']}
       >
         <Button label="Button 1" value={'abc'} />
         <Button label="Button 2" id="pqr" />
@@ -224,7 +224,7 @@ describe('Button Group', () => {
     const button1 = getByText('Button 1');
 
     expect(getByText('Button 1')).toHaveClass('active-class');
-    expect(getByText('Button 3')).toHaveClass('active-class');
+    expect(getByText('Button 2')).toHaveClass('active-class');
     expect(getByText('Button 3')).toHaveClass('active-class');
     fireEvent.click(button1);
     expect(getByText('Button 1')).not.toHaveClass('active-class');
@@ -257,6 +257,24 @@ describe('Button Group', () => {
       );
     expect(renderWithSelected).toThrow(
       'Cannot pass multiple parameters if the type is Single'
+    );
+  });
+
+  it('should be able to pre select the buttons when only index values are passed', () => {
+    const renderWithSelected = () =>
+      render(
+        <ButtonGroup
+          buttonsClassName="abc"
+          type="multiple"
+          selected={[0, 1, 2, '123', 'gh']}
+        >
+          <Button label="Button 1" value={'abc'} />
+          <Button label="Button 2" id="pqr" />
+          <Button label="Button 3" />
+        </ButtonGroup>
+      );
+    expect(renderWithSelected).toThrow(
+      'Element in the selected array do not match with any buttons.'
     );
   });
 });
