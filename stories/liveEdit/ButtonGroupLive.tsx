@@ -6,18 +6,25 @@ import { ButtonGroup } from '../../src/buttonGroup/ButtonGroup';
 const ButtonGroupDemo = `
 function ButtonGroupDemo() {
 
+  const handleClick = (
+    evt: React.MouseEvent<HTMLButtonElement>,
+    selected: (string | number)[]
+  ) => {
+    console.log('Event:', evt);
+    console.log('Selected:', selected);
+  };
+  
   return (
     <>
         <ButtonGroup
           buttonsVariant="secondary"
           onClick={handleClick}
-          buttonsClassName=""
-          className=""
+          buttonsClassName="myStyle"
+          className="myStyle"
           layout="horizontal"
-          selected={[2, 0, 1]}
+          selected={["123", 2, "abc"]}
           type="multiple"
-          disabled
-          buttonGroupProps={{ style: { color: 'red' } }}
+          buttonGroupProps={{ style: { backgroundColor: 'red',padding: 5 } }}
         >
             <Button label="Button 1" id="123" />
             <Button label="Button 2" value={'abc'} />
