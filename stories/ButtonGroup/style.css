@@ -11,3 +11,100 @@
 .myStyle {
   color: red;
 }
+
+.mat-button-toggle-group:not([class*='mat-elevation-z']) {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.mat-button-toggle-group-appearance-standard:not([class*='mat-elevation-z']) {
+  box-shadow: none;
+}
+
+.mat-button-toggle-group {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transform: translateZ(0);
+  border-radius: 2px;
+}
+
+.mat-button-toggle-group-appearance-standard {
+  border-radius: 4px;
+  border: solid 1px #e0e0e0;
+}
+
+// Button
+
+.mat-focus-indicator {
+  position: relative;
+}
+
+.mat-button-toggle-button {
+  border: 0;
+  background: none;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.mat-button-toggle {
+  white-space: nowrap;
+  position: relative;
+  color: rgba(0, 0, 0, 0.38);
+  font-family: Roboto, sans-serif;
+}
+
+.mat-button-toggle-appearance-standard {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: white;
+  font-family: Roboto, sans-serif;
+}
+
+.mat-button-toggle-appearance-standard
+  + .mat-button-toggle-appearance-standard {
+  border-left: solid 1px #e0e0e0;
+}
+
+// span label
+
+.mat-button-toggle-label-content {
+  -webkit-user-select: none;
+  user-select: none;
+  display: inline-block;
+  padding: 0 16px;
+  line-height: 36px;
+  position: relative;
+}
+
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  padding: 0 12px;
+  line-height: 48px;
+}
+
+// active class
+
+.active-class {
+  color: rgba(0, 0, 0, 0.54);
+  background-color: #e0e0e0;
+}
+
+.mat-button-toggle-appearance-standard.active-class {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #e0e0e0;
+}
+
+.mat-button-toggle:hover {
+  background-color: #f5f5f5;
+}
+
+.mat-button-toggle.active-class:hover {
+  background-color: rgba(0, 0, 0, 0.26);
+}

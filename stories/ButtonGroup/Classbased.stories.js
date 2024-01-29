@@ -53,10 +53,21 @@ export const MultipleType = {
   name: 'When the type is Multiple',
   render: function () {
     return (
-      <ButtonGroup type="multiple" onClick={action('on-click')}>
-        <Button label="Button 1" />
-        <Button label="Button 2" />
-        <Button label="Button 3" />
+      <ButtonGroup
+        type="multiple"
+        onClick={action('on-click')}
+        className="mat-button-toggle-group mat-button-toggle-group-appearance-standard "
+        buttonsClassName="mat-button-toggle-button mat-focus-indicator mat-button-toggle mat-button-toggle-appearance-standard"
+      >
+        <Button>
+          <span className="content mat-button-toggle-label-content ">Bold</span>
+        </Button>
+        <Button>
+          <span className="mat-button-toggle-label-content ">Itallic</span>
+        </Button>
+        <Button>
+          <span className="mat-button-toggle-label-content ">Underline</span>
+        </Button>
       </ButtonGroup>
     );
   },
