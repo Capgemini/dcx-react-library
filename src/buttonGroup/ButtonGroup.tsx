@@ -136,7 +136,15 @@ export const ButtonGroup = ({
           const id = child.props.id;
           let selButton: string | number = index;
 
-          selButton = value || id || index;
+          if (selected) {
+            selButton = selected.includes(value)
+              ? value
+              : selected.includes(id)
+              ? id
+              : index;
+          } else {
+            selButton = value || id || index;
+          }
 
           const isActive = activeButtons.includes(selButton);
 

@@ -246,6 +246,23 @@ describe('Button Group', () => {
     expect(style.color).toBe('red');
   });
 
+  it('should be able to pre-select buttons based on indices passed in the selected array, even if the buttons have value and id attributes', () => {
+    const { getByText } = render(
+      <ButtonGroup buttonsClassName="abc" type="multiple" selected={[0, 1, 2]}>
+        <Button label="Button 1" value={'abc'} />
+        <Button label="Button 2" id="pqr" />
+        <Button label="Button 3" />
+      </ButtonGroup>
+    );
+    const button1 = getByText('Button 1');
+
+    expect(getByText('Button 1')).toHaveClass('active-class');
+    expect(getByText('Button 2')).toHaveClass('active-class');
+    expect(getByText('Button 3')).toHaveClass('active-class');
+    fireEvent.click(button1);
+    expect(getByText('Button 1')).not.toHaveClass('active-class');
+  });
+
   it('should throw an error when multiple values are passed in selected if the type is single', () => {
     const renderWithSelected = () =>
       render(
