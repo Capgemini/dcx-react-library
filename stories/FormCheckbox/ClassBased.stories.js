@@ -291,8 +291,8 @@ export const SmallCheckbox = {
   argTypes: { onChange: { action: 'changed' } },
 };
 
-export const RedStyledCheckbox = {  
-  name: 'Red Styled Checkbox',
+export const RedStyledCheckboxWithError = {  
+  name: 'Red Styled Checkbox with Error',
   render: function ({ onChange, ...args }) {
     const [args_, setArgs] = useArgs();
     const checkboxHandler = (evt) => {
@@ -304,30 +304,15 @@ export const RedStyledCheckbox = {
       <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="">
             <div class="govuk-checkboxes">
-              <FormCheckbox {...args} onChange={checkboxHandler} />
+              <FormCheckbox {...args} isError={true} onChange={checkboxHandler} />
             </div>
           </fieldset>
       </div>
     );
   },
   args: {
-    name: "terms",
-    label: "I accept the Terms and Conditions",
-    value: "termsAccepted",
-    id: "terms-checkbox",
-    inputClassName: 'govuk-checkboxes__input red-checkbox',
-    labelClassName: "govuk-label govuk-checkboxes__label red-label",
-    itemClassName: 'govuk-checkboxes__item',
-    inputProps: {
-      className: 'govuk-checkboxes__input',
-    },
-    itemProps: {
-      className: 'govuk-checkboxes__item',
-    },
-    labelProps: {
-      className: 'govuk-label govuk-checkboxes__label',
-    },
-    defaultChecked: false
+    ...RedStyledCheckbox.args,
+    isError: true,
   },
   argTypes: { onChange: { action: 'changed' } },
 };
