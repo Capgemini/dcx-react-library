@@ -290,3 +290,44 @@ export const SmallCheckbox = {
   },
   argTypes: { onChange: { action: 'changed' } },
 };
+
+export const RedStyledCheckbox = {  
+  name: 'Red Styled Checkbox',
+  render: function ({ onChange, ...args }) {
+    const [args_, setArgs] = useArgs();
+    const checkboxHandler = (evt) => {
+      onChange(evt);
+      setArgs({value: evt.currentTarget.value, defaultChecked: !args.defaultChecked });
+      setChecked(!checked);
+    };
+    return (
+      <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="">
+            <div class="govuk-checkboxes">
+              <FormCheckbox {...args} onChange={checkboxHandler} />
+            </div>
+          </fieldset>
+      </div>
+    );
+  },
+  args: {
+    name: "terms",
+    label: "I accept the Terms and Conditions",
+    value: "termsAccepted",
+    id: "terms-checkbox",
+    inputClassName: 'govuk-checkboxes__input red-checkbox',
+    labelClassName: "govuk-label govuk-checkboxes__label red-label",
+    itemClassName: 'govuk-checkboxes__item',
+    inputProps: {
+      className: 'govuk-checkboxes__input',
+    },
+    itemProps: {
+      className: 'govuk-checkboxes__item',
+    },
+    labelProps: {
+      className: 'govuk-label govuk-checkboxes__label',
+    },
+    defaultChecked: false
+  },
+  argTypes: { onChange: { action: 'changed' } },
+};
