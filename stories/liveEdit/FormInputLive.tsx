@@ -55,6 +55,7 @@ function FormInputDemo() {
           content: <></>
         }}
         tabIndex={0}
+        variant="floating"
     />
   )
 }
