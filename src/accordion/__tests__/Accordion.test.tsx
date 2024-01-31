@@ -10,7 +10,7 @@ import { AccordionDetails } from '../AccordionDetails';
 describe('Accordion Component', () => {
   it('should handle click when multipleOpen is true and title is not active', async () => {
     render(
-      <Accordion  multipleOpen={true} expanded={[]}>
+      <Accordion multipleOpen={true} expanded={[]}>
         <AccordionItem title="1">
           <AccordionTitle>
             <>Test Title</>
@@ -146,12 +146,20 @@ describe('Accordion Component', () => {
     const { rerender, getByText } = render(
       <Accordion expanded={['1']} multipleOpen={false}>
         <AccordionItem title="1">
-          <AccordionTitle><>Section 1</></AccordionTitle>
-          <AccordionDetails><>Section 1 Details</></AccordionDetails>
+          <AccordionTitle>
+            <>Section 1</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <>Section 1 Details</>
+          </AccordionDetails>
         </AccordionItem>
         <AccordionItem title="2">
-          <AccordionTitle><>Section 2</></AccordionTitle>
-          <AccordionDetails><>Section 2 Details</></AccordionDetails>
+          <AccordionTitle>
+            <>Section 2</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <>Section 2 Details</>
+          </AccordionDetails>
         </AccordionItem>
       </Accordion>
     );
@@ -161,12 +169,20 @@ describe('Accordion Component', () => {
     rerender(
       <Accordion multipleOpen={false} expanded={['2']}>
         <AccordionItem title="1">
-          <AccordionTitle><>Section 1</></AccordionTitle>
-          <AccordionDetails><>Section 1 Details</></AccordionDetails>
+          <AccordionTitle>
+            <>Section 1</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <>Section 1 Details</>
+          </AccordionDetails>
         </AccordionItem>
         <AccordionItem title="2">
-          <AccordionTitle><>Section 2</></AccordionTitle>
-          <AccordionDetails><>Section 2 Details</></AccordionDetails>
+          <AccordionTitle>
+            <>Section 2</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <>Section 2 Details</>
+          </AccordionDetails>
         </AccordionItem>
       </Accordion>
     );
@@ -178,12 +194,20 @@ describe('Accordion Component', () => {
     const { rerender, getByText } = render(
       <Accordion expanded={['1']} multipleOpen={false}>
         <AccordionItem title="1">
-          <AccordionTitle><>Section 1</></AccordionTitle>
-          <AccordionDetails><>Section 1 Details</></AccordionDetails>
+          <AccordionTitle>
+            <>Section 1</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <>Section 1 Details</>
+          </AccordionDetails>
         </AccordionItem>
         <AccordionItem title="2">
-          <AccordionTitle><>Section 2</></AccordionTitle>
-          <AccordionDetails><>Section 2 Details</></AccordionDetails>
+          <AccordionTitle>
+            <>Section 2</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <>Section 2 Details</>
+          </AccordionDetails>
         </AccordionItem>
       </Accordion>
     );
@@ -193,12 +217,20 @@ describe('Accordion Component', () => {
     rerender(
       <Accordion multipleOpen={true} expanded={['1', '2']}>
         <AccordionItem title="1">
-          <AccordionTitle><>Section 1</></AccordionTitle>
-          <AccordionDetails><>Section 1 Details</></AccordionDetails>
+          <AccordionTitle>
+            <>Section 1</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <>Section 1 Details</>
+          </AccordionDetails>
         </AccordionItem>
         <AccordionItem title="2">
-          <AccordionTitle><>Section 2</></AccordionTitle>
-          <AccordionDetails><>Section 2 Details</></AccordionDetails>
+          <AccordionTitle>
+            <>Section 2</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <>Section 2 Details</>
+          </AccordionDetails>
         </AccordionItem>
       </Accordion>
     );
@@ -212,7 +244,7 @@ describe('Accordion Component', () => {
   it('should collapse the item when multipleOpen is true and the item is clicked again', async () => {
     render(
       <Accordion multipleOpen={true} expanded={['1']}>
-        <AccordionItem title='1'>
+        <AccordionItem title="1">
           <AccordionTitle>
             <>Item 1</>
           </AccordionTitle>
@@ -220,7 +252,7 @@ describe('Accordion Component', () => {
             <>Details 1</>
           </AccordionDetails>
         </AccordionItem>
-        <AccordionItem title='2'>
+        <AccordionItem title="2">
           <AccordionTitle>
             <>Item 2</>
           </AccordionTitle>
@@ -457,20 +489,37 @@ describe('Accordion Component', () => {
     const titleClassName = 'test-title-class';
     const detailsClassName = 'test-details-class';
     render(
-      <Accordion multipleOpen={false} expanded={[]} titleClassName={titleClassName} detailsClassName={detailsClassName}>
+      <Accordion
+        multipleOpen={false}
+        expanded={[]}
+        titleClassName={titleClassName}
+        detailsClassName={detailsClassName}
+      >
         <AccordionItem title="1">
-          <AccordionTitle><span>Item 1</span></AccordionTitle>
-          <AccordionDetails><span>Details 1</span></AccordionDetails>
+          <AccordionTitle>
+            <span>Item 1</span>
+          </AccordionTitle>
+          <AccordionDetails>
+            <span>Details 1</span>
+          </AccordionDetails>
         </AccordionItem>
         <AccordionItem title="2">
-          <AccordionTitle><span>Item 2</span></AccordionTitle>
-          <AccordionDetails><span>Details 2</span></AccordionDetails>
+          <AccordionTitle>
+            <span>Item 2</span>
+          </AccordionTitle>
+          <AccordionDetails>
+            <span>Details 2</span>
+          </AccordionDetails>
         </AccordionItem>
       </Accordion>
     );
-  
+
     const titles = screen.getAllByText(/Item/);
-    const titlesWithClass = titles.filter((title) => title.parentElement && title.parentElement.classList.contains(titleClassName));
+    const titlesWithClass = titles.filter(
+      (title) =>
+        title.parentElement &&
+        title.parentElement.classList.contains(titleClassName)
+    );
     expect(titlesWithClass.length).toBe(2);
   });
 
@@ -479,16 +528,24 @@ describe('Accordion Component', () => {
     render(
       <Accordion multipleOpen expandIcon={expandIcon} expanded={['1', '2']}>
         <AccordionItem title="1">
-          <AccordionTitle><span>Item 1</span></AccordionTitle>
-          <AccordionDetails><span>Details 1</span></AccordionDetails>
+          <AccordionTitle>
+            <span>Item 1</span>
+          </AccordionTitle>
+          <AccordionDetails>
+            <span>Details 1</span>
+          </AccordionDetails>
         </AccordionItem>
         <AccordionItem title="2">
-          <AccordionTitle><span>Item 2</span></AccordionTitle>
-          <AccordionDetails><span>Details 2</span></AccordionDetails>
+          <AccordionTitle>
+            <span>Item 2</span>
+          </AccordionTitle>
+          <AccordionDetails>
+            <span>Details 2</span>
+          </AccordionDetails>
         </AccordionItem>
       </Accordion>
     );
-  
+
     const expandIcons = screen.getAllByTestId('expand-icon');
     expect(expandIcons.length).toBe(2);
   });
@@ -496,14 +553,22 @@ describe('Accordion Component', () => {
   it('should allow to specify a collapseIcon at the root level and to be visible in every component when it is collapsed', () => {
     const collapseIcon = <span data-testid="collapse-icon">-</span>;
     render(
-      <Accordion multipleOpen collapsedIcon={collapseIcon} expanded={[]}>
+      <Accordion collapsedIcon={collapseIcon}>
         <AccordionItem title="1">
-          <AccordionTitle><span>Item 1</span></AccordionTitle>
-          <AccordionDetails><span>Details 1</span></AccordionDetails>
+          <AccordionTitle>
+            <span>Item 1</span>
+          </AccordionTitle>
+          <AccordionDetails>
+            <span>Details 1</span>
+          </AccordionDetails>
         </AccordionItem>
         <AccordionItem title="2">
-          <AccordionTitle><span>Item 2</span></AccordionTitle>
-          <AccordionDetails><span>Details 2</span></AccordionDetails>
+          <AccordionTitle>
+            <span>Item 2</span>
+          </AccordionTitle>
+          <AccordionDetails>
+            <span>Details 2</span>
+          </AccordionDetails>
         </AccordionItem>
       </Accordion>
     );
