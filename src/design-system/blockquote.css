@@ -1,0 +1,10 @@
+.dcx-blockquote {
+  margin: 0;
+  background-color: token('color-background-action-active-secondary');
+  border-radius: token('border-radius-action');
+  color: token('color-text-body');
+  font-family: token('font-family-body');
+  font-weight: token('font-weight-body');
+  font-size: token('font-size-body');
+  padding: token('spacing-y-action') token('spacing-x-action');
+}

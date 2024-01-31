@@ -5,7 +5,7 @@ import './tableStyle.css';
  * In this section we're using the Table component providing the **material style** passing the relative `className`. Feel free to use your own css and style the Table as you prefer
  */
 export default {
-  title: 'DCXLibrary/Table/Class based',
+  title: 'DCXLibrary/Layout/Table/Class based',
   component: Table,
   parameters: {
     options: {
