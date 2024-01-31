@@ -1,5 +1,6 @@
 import { FormCheckbox } from '../../src/formCheckbox/FormCheckbox';
 import { useArgs } from '@storybook/preview-api';
+import '../govUkStyle.css'
 
 /**
  * In this section we're using the checkbox component providing the **GovUk style** passing the relative `className.      
@@ -291,28 +292,56 @@ export const SmallCheckbox = {
   argTypes: { onChange: { action: 'changed' } },
 };
 
-export const RedStyledCheckboxWithError = {  
-  name: 'Red Styled Checkbox with Error',
+export const ErrorStyledCheckbox = {
   render: function ({ onChange, ...args }) {
     const [args_, setArgs] = useArgs();
     const checkboxHandler = (evt) => {
       onChange(evt);
-      setArgs({value: evt.currentTarget.value, defaultChecked: !args.defaultChecked });
-      setChecked(!checked);
+      setArgs({ value: evt.currentTarget.value, defaultChecked: !args.defaultChecked });
     };
+
+    const errorStyles = {
+      container: {
+        borderColor: '#d4351c', 
+        borderWidth: '2px',
+        borderStyle: 'solid',
+        padding: '5px',
+      },
+      checkbox: {
+        outline: '2px solid #d4351c', 
+      },
+      label: {
+        color: '#d4351c',
+      },
+      errorMessage: {
+        color: '#d4351c', 
+        fontSize: '0.8rem',
+        marginTop: '5px',
+      },
+    };
+
     return (
-      <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="">
-            <div class="govuk-checkboxes">
-              <FormCheckbox {...args} isError={true} onChange={checkboxHandler} />
+      <div className="govuk-form-group" style={args.isError ? errorStyles.container : {}}>
+        <fieldset className="govuk-fieldset" aria-describedby="">
+          <div className="govuk-checkboxes">
+            <div className="govuk-checkboxes__item">
+              <FormCheckbox {...args} onChange={checkboxHandler} isError={args.isError} />
+              {args.isError && <span style={errorStyles.errorMessage}>Please accept the Terms and Conditions</span>}
             </div>
-          </fieldset>
+          </div>
+        </fieldset>
       </div>
     );
   },
+
   args: {
-    ...RedStyledCheckbox.args,
-    isError: true,
+    id: 'terms-checkbox-error',
+    name: 'termsError',
+    label: 'I accept the Terms and Conditions',
+    isError: true, 
+    defaultChecked: false,
   },
-  argTypes: { onChange: { action: 'changed' } },
+  argTypes: {
+    onChange: { action: 'changed' },
+  },
 };
