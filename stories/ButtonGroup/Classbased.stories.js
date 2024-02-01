@@ -24,13 +24,27 @@ export const Basic = {
   render: function () {
     return (
       <ButtonGroup
-        buttonVariant="primary"
-        layout="horizontal"
+        type="single"
         onClick={action('on-click')}
+        className="dcx-button-toggle-group dcx-button-toggle-group-appearance-standard "
+        buttonsClassName="ripple-button dcx-button-toggle-button dcx-focus-indicator"
       >
-        <Button label="Button 1" />
-        <Button label="Button 2" />
-        <Button label="Button 3" />
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button>
+            <span className="dcx-button-toggle-label-content">Bold</span>
+          </Button>
+        </div>
+
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button>
+            <span className="dcx-button-toggle-label-content">Itallic</span>
+          </Button>
+        </div>
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button>
+            <span className="dcx-button-toggle-label-content">Underline</span>
+          </Button>
+        </div>
       </ButtonGroup>
     );
   },
@@ -40,10 +54,28 @@ export const VerticalLayout = {
   name: 'When the layout is vertical',
   render: function () {
     return (
-      <ButtonGroup layout="vertical" onClick={action('on-click')}>
-        <Button label="Button 1" />
-        <Button label="Button 2" />
-        <Button label="Button 3" />
+      <ButtonGroup
+        layout="vertical"
+        onClick={action('on-click')}
+        className="dcx-button-toggle-group dcx-button-toggle-group-appearance-standard "
+        buttonsClassName="ripple-button dcx-button-toggle-button dcx-focus-indicator"
+      >
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button>
+            <span className="dcx-button-toggle-label-content">Bold</span>
+          </Button>
+        </div>
+
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button>
+            <span className="dcx-button-toggle-label-content">Itallic</span>
+          </Button>
+        </div>
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button>
+            <span className="dcx-button-toggle-label-content">Underline</span>
+          </Button>
+        </div>
       </ButtonGroup>
     );
   },
@@ -56,18 +88,25 @@ export const MultipleType = {
       <ButtonGroup
         type="multiple"
         onClick={action('on-click')}
-        className="mat-button-toggle-group mat-button-toggle-group-appearance-standard "
-        buttonsClassName="mat-button-toggle-button mat-focus-indicator mat-button-toggle mat-button-toggle-appearance-standard"
+        className="dcx-button-toggle-group dcx-button-toggle-group-appearance-standard "
+        buttonsClassName="ripple-button dcx-button-toggle-button dcx-focus-indicator"
       >
-        <Button>
-          <span className="content mat-button-toggle-label-content ">Bold</span>
-        </Button>
-        <Button>
-          <span className="mat-button-toggle-label-content ">Itallic</span>
-        </Button>
-        <Button>
-          <span className="mat-button-toggle-label-content ">Underline</span>
-        </Button>
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button>
+            <span className="dcx-button-toggle-label-content">Bold</span>
+          </Button>
+        </div>
+
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button>
+            <span className="dcx-button-toggle-label-content">Itallic</span>
+          </Button>
+        </div>
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button>
+            <span className="dcx-button-toggle-label-content">Underline</span>
+          </Button>
+        </div>
       </ButtonGroup>
     );
   },
@@ -78,13 +117,28 @@ export const SelectedButtons = {
   render: function () {
     return (
       <ButtonGroup
-        selected={['id', 0, 'value']}
+        selected={['value', 'id', 1]}
         type="multiple"
         onClick={action('on-click')}
+        className="dcx-button-toggle-group dcx-button-toggle-group-appearance-standard "
+        buttonsClassName="ripple-button dcx-button-toggle-button dcx-focus-indicator"
       >
-        <Button label="Button 1" />
-        <Button label="Button 2" id="id" />
-        <Button label="Button 3" value={'value'} />
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button value={'value'}>
+            <span className="dcx-button-toggle-label-content">Bold</span>
+          </Button>
+        </div>
+
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button>
+            <span className="dcx-button-toggle-label-content">Itallic</span>
+          </Button>
+        </div>
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button id="id">
+            <span className="dcx-button-toggle-label-content">Underline</span>
+          </Button>
+        </div>
       </ButtonGroup>
     );
   },
@@ -94,23 +148,28 @@ export const Disabled = {
   name: 'When disabled prop is used',
   render: function () {
     return (
-      <ButtonGroup disabled>
-        <Button label="Button 1" />
-        <Button label="Button 2" id="id" />
-        <Button label="Button 3" value={'value'} />
-      </ButtonGroup>
-    );
-  },
-};
+      <ButtonGroup
+        disabled
+        onClick={action('on-click')}
+        className="dcx-button-toggle-group dcx-button-toggle-group-appearance-standard "
+        buttonsClassName="ripple-button dcx-button-toggle-button dcx-focus-indicator"
+      >
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button value={'value'}>
+            <span className="dcx-button-toggle-label-content">Bold</span>
+          </Button>
+        </div>
 
-export const ButtonsClassname = {
-  name: 'When ButtonsClassname is vertical',
-  render: function () {
-    return (
-      <ButtonGroup buttonsClassName="myStyle" onClick={action('on-click')}>
-        <Button label="Button 1" />
-        <Button label="Button 2" />
-        <Button label="Button 3" />
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button>
+            <span className="dcx-button-toggle-label-content">Itallic</span>
+          </Button>
+        </div>
+        <div className="dcx-button-toggle dcx-button-toggle-appearance-standard">
+          <Button id="id">
+            <span className="dcx-button-toggle-label-content">Underline</span>
+          </Button>
+        </div>
       </ButtonGroup>
     );
   },

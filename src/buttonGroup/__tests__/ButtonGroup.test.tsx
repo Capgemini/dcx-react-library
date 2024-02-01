@@ -37,22 +37,22 @@ describe('Button Group', () => {
 
   it('should be able to render buttonsClassName in all the child buttons', () => {
     const { container } = render(
-      <ButtonGroup buttonsClassName="abc">
+      <ButtonGroup buttonsClassName="btnClass">
         <Button label="Button 1" />
         <Button label="Button 2" />
         <Button label="Button 3" />
       </ButtonGroup>
     );
 
-    expect(container.querySelectorAll('.abc').length).toBe(3);
+    expect(container.querySelectorAll('.btnClass').length).toBe(3);
   });
 
-  it('should be able to render active-class when value and id are given', () => {
+  it('should be able to render active-class when button is clicked', () => {
     const { getByText } = render(
-      <ButtonGroup buttonsClassName="abc">
-        <Button label="Button 1" value={'abc'} />
+      <ButtonGroup buttonsClassName="btnClass">
+        <Button label="Button 1" value="value" />
         <Button label="Button 2" />
-        <Button label="Button 3" id="123" />
+        <Button label="Button 3" id="id" />
       </ButtonGroup>
     );
     fireEvent.click(getByText('Button 1'));
@@ -182,7 +182,11 @@ describe('Button Group', () => {
   it('should be able to trigger click event when type is single', () => {
     const mockOnClick = jest.fn();
     const { getByText } = render(
-      <ButtonGroup buttonsClassName="abc" type="single" onClick={mockOnClick}>
+      <ButtonGroup
+        buttonsClassName="btnClass"
+        type="single"
+        onClick={mockOnClick}
+      >
         <Button label="Button 1" />
         <Button label="Button 2" />
         <Button label="Button 3" />
@@ -196,7 +200,11 @@ describe('Button Group', () => {
   it('should be able to trigger click event when type is multiple', () => {
     const mockOnClick = jest.fn();
     const { getByText } = render(
-      <ButtonGroup buttonsClassName="abc" type="multiple" onClick={mockOnClick}>
+      <ButtonGroup
+        buttonsClassName="btnClass"
+        type="multiple"
+        onClick={mockOnClick}
+      >
         <Button label="Button 1" />
         <Button label="Button 2" />
         <Button label="Button 3" />
@@ -209,15 +217,41 @@ describe('Button Group', () => {
     expect(mockOnClick).toHaveBeenCalledTimes(2);
   });
 
+  it('should be able to get value and id attribute if used', () => {
+    const mockOnClick = jest.fn();
+    const { getByText } = render(
+      <ButtonGroup
+        buttonsClassName="btnClass"
+        type="multiple"
+        onClick={mockOnClick}
+      >
+        <Button label="Button 1" value="value" />
+        <Button label="Button 2" id="id" />
+        <Button label="Button 3" />
+      </ButtonGroup>
+    );
+    const button1 = getByText('Button 1');
+    const button2 = getByText('Button 2');
+    fireEvent.click(button1);
+    expect(mockOnClick).toHaveBeenCalledWith(expect.any(Object), ['value']);
+    fireEvent.click(button2);
+    expect(mockOnClick).toHaveBeenCalledWith(expect.any(Object), [
+      'value',
+      'id',
+    ]);
+    fireEvent.click(button1);
+    expect(mockOnClick).toHaveBeenCalledWith(expect.any(Object), ['id']);
+  });
+
   it('should be able to pre select the buttons which are given in selected prop', () => {
     const { getByText } = render(
       <ButtonGroup
-        buttonsClassName="abc"
+        buttonsClassName="btnClass"
         type="multiple"
-        selected={[2, 'abc', 'pqr']}
+        selected={[2, 'value', 'id']}
       >
-        <Button label="Button 1" value={'abc'} />
-        <Button label="Button 2" id="pqr" />
+        <Button label="Button 1" value="value" />
+        <Button label="Button 2" id="id" />
         <Button label="Button 3" />
       </ButtonGroup>
     );
@@ -237,8 +271,8 @@ describe('Button Group', () => {
         buttonGroupProps={{ style: { color: 'red' } }}
       >
         <Button label="Button 1" />
-        <Button label="Button 2" value={'abc'} />
-        <Button label="Button 3" id="123" />
+        <Button label="Button 2" value="value" />
+        <Button label="Button 3" id="id" />
       </ButtonGroup>
     );
     const labelElement = container.getElementsByClassName('myStyle');
@@ -248,10 +282,22 @@ describe('Button Group', () => {
 
   it('should be able to pre-select buttons based on indices passed in the selected array, even if the buttons have value and id attributes', () => {
     const { getByText } = render(
-      <ButtonGroup buttonsClassName="abc" type="multiple" selected={[0, 1, 2]}>
-        <Button label="Button 1" value={'abc'} />
-        <Button label="Button 2" id="pqr" />
-        <Button label="Button 3" />
+      <ButtonGroup
+        buttonsClassName="btnClass"
+        type="multiple"
+        selected={[1, 2, 'value', 0, 'id']}
+      >
+        <div>
+          <Button label="Button 1" />
+        </div>
+
+        <div>
+          <div>
+            <Button label="Button 2" id="id" />
+          </div>
+        </div>
+
+        <Button label="Button 3" value="value" />
       </ButtonGroup>
     );
     const button1 = getByText('Button 1');
@@ -263,13 +309,50 @@ describe('Button Group', () => {
     expect(getByText('Button 1')).not.toHaveClass('active-class');
   });
 
-  it('should throw an error when multiple values are passed in selected if the type is single', () => {
+  it('should be able to apply buttonsClassName class to all and only Button commponents even if ther are nested', () => {
+    const { getByText } = render(
+      <ButtonGroup
+        buttonsClassName="myStyle"
+        selected={[0, 2, 'id', 'value']}
+        type="multiple"
+      >
+        <div>
+          <Button label="Button 1" />
+        </div>
+
+        <div>
+          <div>
+            <Button label="Button 2" id="id" />
+          </div>
+        </div>
+        <div>
+          <Button label="Button 4" />
+        </div>
+
+        <Button label="Button 3" value="value" />
+      </ButtonGroup>
+    );
+
+    expect(getByText('Button 1')).toHaveClass('active-class');
+    expect(getByText('Button 2')).toHaveClass('active-class');
+    expect(getByText('Button 3')).toHaveClass('active-class');
+    expect(getByText('Button 4')).toHaveClass('active-class');
+    const numberOfMyStyles = document.querySelectorAll('.myStyle').length;
+    expect(numberOfMyStyles).toEqual(4);
+
+    const buttons = screen.getAllByRole('button');
+    buttons.forEach((button) => {
+      expect(button).toHaveClass('myStyle');
+    });
+  });
+
+  it('should throw an error when the type is single and  multiple values are passed in selected prop', () => {
     const renderWithSelected = () =>
       render(
-        <ButtonGroup selected={[4, 'abc']}>
+        <ButtonGroup selected={[4, 'value']}>
           <Button label="Button 1" />
-          <Button label="Button 2" value={'abc'} />
-          <Button label="Button 3" id="123" />
+          <Button label="Button 2" value="value" />
+          <Button label="Button 3" id="id" />
         </ButtonGroup>
       );
     expect(renderWithSelected).toThrow(
@@ -277,21 +360,47 @@ describe('Button Group', () => {
     );
   });
 
-  it('should be able to pre select the buttons when only index values are passed', () => {
+  it('should throw an error when the elements present in the selected prop dont match with any Buttons', () => {
     const renderWithSelected = () =>
       render(
         <ButtonGroup
-          buttonsClassName="abc"
+          buttonsClassName="btnClass"
           type="multiple"
           selected={[0, 1, 2, '123', 'gh']}
         >
-          <Button label="Button 1" value={'abc'} />
-          <Button label="Button 2" id="pqr" />
+          <Button label="Button 1" value="value" />
+          <Button label="Button 2" id="id" />
           <Button label="Button 3" />
         </ButtonGroup>
       );
     expect(renderWithSelected).toThrow(
       'Element in the selected array do not match with any buttons.'
     );
+  });
+
+  it('should throw an error when a child is neither a Button comonent nor it has children as a Button component', () => {
+    const renderWithSelected = () =>
+      render(
+        <ButtonGroup
+          buttonsClassName="btnClass"
+          type="multiple"
+          selected={[0, 1, 2]}
+        >
+          <div></div>
+          <div>
+            <Button label="Button 1" />
+          </div>
+
+          <div>
+            <div>
+              <Button label="Button 2" id="id" />
+            </div>
+          </div>
+          <div>
+            <Button label="Button 4" />
+          </div>
+        </ButtonGroup>
+      );
+    expect(renderWithSelected).toThrow('Child dont have Button component');
   });
 });

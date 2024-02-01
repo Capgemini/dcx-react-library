@@ -69,25 +69,44 @@ export const ButtonGroup = ({
 }: ButtonGroupProps) => {
   const [activeButtons, setActiveButtons] = useState<(number | string)[]>([]);
 
-  if (selected && type === 'single' && selected.length > 1) {
-    throw new Error('Cannot pass multiple parameters if the type is Single');
-  }
+  // This is to get the value || id || index values from each nested button
+  // Also throw error if any child is neither a Button comonent nor it has children as a Button component
+  const extractButtonData = (
+    child: JSX.Element,
+    index: number
+  ): number | string | [string | number, number] | null => {
+    if (typeof child.type === 'function' && child.type.name === 'Button') {
+      const value = child.props.value;
+      const id = child.props.id;
+      return value ? [value, index] : id ? [id, index] : index;
+    } else {
+      if (child.props.children) {
+        const result = extractButtonData(child.props.children, index);
+        return result;
+      }
+      throw new Error('Child dont have Button component');
+    }
+  };
 
   const allButtons: (number | string | [string | number, number])[] =
     React.Children.map(children, (child: JSX.Element, index: number) => {
-      const value = child.props.value;
-      const id = child.props.id;
-
-      return value ? [value, index] : id ? [id, index] : index;
+      return extractButtonData(child, index);
     });
 
-  let missingElements =
-    selected && selected.filter((element) => !allButtons.includes(element));
+  if (selected) {
+    if (type === 'single' && selected.length > 1) {
+      throw new Error('Cannot pass multiple parameters if the type is Single');
+    }
 
-  if (missingElements && missingElements.length > 0) {
-    throw new Error(
-      'Element in the selected array do not match with any buttons.'
-    );
+    // To see if the elements provided in the selected array does not match with any of the buttons
+    let missingElements =
+      selected && selected.filter((element) => !allButtons.includes(element));
+
+    if (missingElements && missingElements.length > 0) {
+      throw new Error(
+        'Element in the selected array do not match with any buttons.'
+      );
+    }
   }
 
   const groupClassName = classNames([
@@ -128,40 +147,63 @@ export const ButtonGroup = ({
     selected && setActiveButtons(selected);
   }, [selected]);
 
+  //check if child is Button component if yes then cloneElement
+  //else it will have children so loop them and find the nested Button and then cloneElement
+
   return (
     <div role="group" className={groupClassName} {...buttonGroupProps}>
       {children &&
         React.Children.map(children, (child: JSX.Element, index: number) => {
-          const value = child.props.value;
-          const id = child.props.id;
-          let selButton: string | number = index;
+          const isButtonComponent = (child: JSX.Element): JSX.Element => {
+            const children = (child as { props: { children: JSX.Element } })
+              .props.children;
 
-          if (selected) {
-            selButton = selected.includes(value)
-              ? value
-              : selected.includes(id)
-              ? id
-              : index;
-          } else {
+            const value = child.props.value;
+            const id = child.props.id;
+            let selButton: string | number = index;
+
             selButton = value || id || index;
-          }
 
-          const isActive = activeButtons.includes(selButton);
+            if (selected) {
+              selButton = selected.includes(value)
+                ? value
+                : selected.includes(id)
+                ? id
+                : index;
+            } else {
+              selButton = value || id || index;
+            }
 
-          const childClassName = classNames([
-            buttonsClassName,
-            { 'active-class': isActive },
-          ]);
+            if (
+              typeof child.type === 'function' &&
+              child.type.name === 'Button'
+            ) {
+              const isActive = activeButtons.includes(selButton);
 
-          return React.cloneElement(child, {
-            key: index,
-            disabled,
-            variant: buttonsVariant,
-            isActive,
-            className: childClassName,
-            onClick: (evt: React.MouseEvent<HTMLButtonElement>) =>
-              handleButtonClick(evt, selButton),
-          });
+              const childClassName = classNames([
+                buttonsClassName,
+                { 'active-class': isActive },
+              ]);
+
+              return React.cloneElement(child, {
+                key: index,
+                disabled,
+                variant: buttonsVariant,
+                isActive,
+                className: childClassName,
+                onClick: (evt: React.MouseEvent<HTMLButtonElement>) =>
+                  handleButtonClick(evt, selButton),
+              });
+            } else {
+              const updatedChildren = React.Children.map(
+                children,
+                isButtonComponent
+              );
+              return React.cloneElement(child, { key: index }, updatedChildren);
+            }
+          };
+
+          return isButtonComponent(child);
         })}
     </div>
   );
