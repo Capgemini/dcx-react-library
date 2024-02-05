@@ -88,8 +88,7 @@ export const ButtonGroup = ({
     }
   };
 
-  const allButtons: (number | string | [string | number, number])[] =
-    React.Children.map(children, (child: JSX.Element, index: number) => {
+  const allButtons: (number | string | [string | number, number])[] = React.Children.map(children, (child: JSX.Element, index: number) => {
       return extractButtonData(child, index);
     });
 
