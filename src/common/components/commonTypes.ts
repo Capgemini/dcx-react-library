@@ -274,6 +274,10 @@ export type FormRadioCheckboxProps = {
    * specifies an optional className for the item
    */
   itemClassName?: string;
+  /**
+   * specifies whether there is an error with the input.
+   */
+  isError?: boolean;
 };
 
 export type HintProps = {

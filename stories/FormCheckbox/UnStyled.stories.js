@@ -20,7 +20,11 @@ export const Unstyled = {
         console.log(conditional);
         return;
       }
-      setArgs({ value: evt.currentTarget.value, selected:  evt.currentTarget.checked});
+      setArgs({ 
+        value: evt.currentTarget.value, 
+        selected:  evt.currentTarget.checked,
+        isError: true
+      });
       setTimeout(() => setArgs({ isLoading: false }), 2000);
     };
     return <FormCheckbox {...args} onChange={checkboxHandler} />;
@@ -40,7 +44,8 @@ export const Unstyled = {
       type: 'text',
       id: 'checkbox-6',
       inputId: 'input-6',
-    }
+    },
+    isError: false
   },
   argTypes: { onChange: { action: 'changed' } },
 };

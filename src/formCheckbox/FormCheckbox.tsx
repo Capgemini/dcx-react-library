@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormRadioCheckboxProps } from '../common/components/commonTypes';
 import { CheckboxRadioBase, Roles } from '../common';
+import { classNames } from '../common/utils';
 
 export const FormCheckbox = ({
   id,
@@ -23,10 +24,28 @@ export const FormCheckbox = ({
   inputClassName,
   labelClassName,
   itemClassName,
+  isError
 }: FormRadioCheckboxProps & {
   onChange?: (event: React.ChangeEvent, conditional?: string) => void;
-}) => (
-  <CheckboxRadioBase
+  isError?: boolean;
+}) => {
+  const containerClasses = classNames([
+    itemClassName,
+    { 'dcx-checkbox-container--error': isError },
+  ]);
+  
+  const checkboxClasses = classNames([
+    inputClassName,
+    { 'dcx-checkbox-checkbox--error': isError },
+  ]);
+  
+  const labelClasses = classNames([
+    labelClassName,
+    { 'dcx-checkbox-label--error': isError },
+  ]);
+  
+   return (
+      <CheckboxRadioBase
     type="checkbox"
     id={id}
     role={Roles.formCheckbox}
@@ -46,8 +65,9 @@ export const FormCheckbox = ({
     selected={selected}
     hint={hint}
     nested={nested}
-    inputClassName={inputClassName}
-    labelClassName={labelClassName}
-    itemClassName={itemClassName}
-  />
-);
+    itemClassName={containerClasses}
+    inputClassName={checkboxClasses}
+    labelClassName={labelClasses}
+      />
+    )
+  }
