@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import './style.css';
 
 /**
- * In this section we're using the ButtonGroup component providing the **GovUk style** passing the relative className.
+ * In this section we're using the ButtonGroup component providing a **Generic style** passing the relative className.
  * Feel free to use your own css to style the formInput as you prefer.
  */
 export default {
