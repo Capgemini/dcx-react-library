@@ -88,9 +88,10 @@ export const ButtonGroup = ({
     }
   };
 
-  const allButtons: (number | string | [string | number, number])[] = React.Children.map(children, (child: JSX.Element, index: number) => {
-      return extractButtonData(child, index);
-    });
+  const allButtons: (number | string | [string | number, number])[] =
+    React.Children.map(children, (child: JSX.Element, index: number) =>
+      extractButtonData(child, index)
+    );
 
   if (selected) {
     if (type === 'single' && selected.length > 1) {
