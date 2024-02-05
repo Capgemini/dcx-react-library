@@ -51,7 +51,7 @@ export const Basic = {
 };
 
 export const VerticalLayout = {
-  name: 'When the layout is vertical',
+  name: 'Vertical Layout',
   render: function () {
     return (
       <ButtonGroup
@@ -82,7 +82,7 @@ export const VerticalLayout = {
 };
 
 export const MultipleType = {
-  name: 'When the type is Multiple',
+  name: 'Select Multiple',
   render: function () {
     return (
       <ButtonGroup
@@ -113,7 +113,7 @@ export const MultipleType = {
 };
 
 export const SelectedButtons = {
-  name: 'When Selected prop is used',
+  name: 'Pre Selected items',
   render: function () {
     return (
       <ButtonGroup
@@ -145,7 +145,7 @@ export const SelectedButtons = {
 };
 
 export const Disabled = {
-  name: 'When disabled prop is used',
+  name: 'Disabled',
   render: function () {
     return (
       <ButtonGroup
