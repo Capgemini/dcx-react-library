@@ -25,6 +25,7 @@ import {
   LinkDemo,
   ListDemo,
   AccordionDemo,
+  ButtonGroupDemo,
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -72,6 +73,7 @@ const App = () => (
         <Route path="/descriptionList" element={<DescriptionListDemo />} />
         <Route path="/breadcrumb" element={<BreadcrumbDemo />} />
         <Route path="/accordion" element={<AccordionDemo />} />
+        <Route path="/buttonGroup" element={<ButtonGroupDemo />} />
       </Routes>
     </BrowserRouter>
   </div>

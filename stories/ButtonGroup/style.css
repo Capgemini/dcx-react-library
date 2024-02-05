@@ -1,0 +1,118 @@
+.dcx-button-toggle-group:not([class*='dcx-elevation-z']) {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.dcx-button-toggle-group-appearance-standard:not([class*='dcx-elevation-z']) {
+  box-shadow: none;
+}
+
+.dcx-button-toggle-group {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transform: translateZ(0);
+  border-radius: 2px;
+}
+
+.dcx-button-toggle-group-appearance-standard {
+  border-radius: 4px;
+  border: solid 1px #e0e0e0;
+}
+
+// Button
+
+.dcx-focus-indicator {
+  position: relative;
+}
+
+.dcx-button-toggle-button {
+  border: 0;
+  background: none;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dcx-button-toggle {
+  white-space: nowrap;
+  position: relative;
+  color: rgba(0, 0, 0, 0.38);
+  font-family: Roboto, sans-serif;
+}
+
+.dcx-button-toggle-appearance-standard {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: white;
+  font-family: Roboto, sans-serif;
+}
+
+.dcx-button-toggle-appearance-standard
+  + .dcx-button-toggle-appearance-standard {
+  border-left: solid 1px #e0e0e0;
+}
+
+// span label
+
+.dcx-button-toggle-label-content {
+  -webkit-user-select: none;
+  user-select: none;
+  display: inline-block;
+  padding: 0 16px;
+  line-height: 36px;
+  position: relative;
+}
+
+.dcx-button-toggle-appearance-standard .dcx-button-toggle-label-content {
+  padding: 0 12px;
+  line-height: 48px;
+}
+
+// active class
+
+.active-class {
+  color: rgba(0, 0, 0, 0.54);
+  background-color: #e0e0e0;
+}
+
+.dcx-button-toggle-button.active-class {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #e0e0e0;
+}
+
+.dcx-button-toggle:hover {
+  background-color: #f5f5f5;
+}
+
+.dcx-button-toggle-button.active-class:hover {
+  background-color: rgba(0, 0, 0, 0.26);
+}
+
+.dcx-button-toggle-button:disabled {
+  background-color: #f5f5f5;
+}
+
+.dcx-button-group-layout--vertical {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: flex-start;
+}
+
+.dcx-button-group-layout--vertical
+  .dcx-button-toggle-appearance-standard
+  + .dcx-button-toggle-appearance-standard {
+  border-top: solid 1px #e0e0e0;
+  border-left: 0;
+}
+
+.dcx-button-group-layout--vertical .dcx-button-toggle-appearance-standard {
+  width: 100%;
+}
