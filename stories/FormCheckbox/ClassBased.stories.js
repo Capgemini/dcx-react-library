@@ -1,5 +1,6 @@
 import { FormCheckbox } from '../../src/formCheckbox/FormCheckbox';
 import { useArgs } from '@storybook/preview-api';
+import '../govUkStyle.css'
 
 /**
  * In this section we're using the checkbox component providing the **GovUk style** passing the relative `className.      
@@ -290,3 +291,4 @@ export const SmallCheckbox = {
   },
   argTypes: { onChange: { action: 'changed' } },
 };
+

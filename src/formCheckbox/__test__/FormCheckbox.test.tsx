@@ -429,7 +429,7 @@ describe('FormCheckbox', () => {
 
     const label: any = container.querySelector('#my-label');
 
-    expect(label.className).toBe('my-label-class');
+    expect(label.className.trim()).toBe('my-label-class');
   });
 
   it('should style the checkbox item', () => {
@@ -450,7 +450,7 @@ describe('FormCheckbox', () => {
 
     const checkbox: any = container.querySelector('#checkbox-item');
 
-    expect(checkbox.className).toBe('my-checkbox-class');
+    expect(checkbox.className.trim()).toBe('my-checkbox-class');
   });
 
   it('should style the checkbox input', () => {
@@ -471,7 +471,7 @@ describe('FormCheckbox', () => {
 
     const input: any = container.querySelector('#input-item');
 
-    expect(input.className).toBe('my-input-class');
+    expect(input.className.trim()).toBe('my-input-class');
   });
 
 
@@ -495,4 +495,66 @@ describe('FormCheckbox', () => {
     const firstItemEl: any = screen.getByRole('link');
     expect(firstItemEl.href).toBe('http://localhost/link');
   });
+
+  it('should apply error styling when isError is true', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label="my label"
+        onChange={handleChange}
+        isError={true}
+      />
+    );
+
+    const checkboxContainer = container.querySelector('.dcx-checkbox-container--error');
+    const checkbox = container.querySelector('.dcx-checkbox-checkbox--error');
+    const label = container.querySelector('.dcx-checkbox-label--error');
+    
+    expect(checkboxContainer).toBeInTheDocument();
+    expect(checkbox).toBeInTheDocument();
+    expect(label).toBeInTheDocument();
+    
+  });
+
+  it('should not apply error styling when isError is false', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label="my label"
+        onChange={handleChange}
+        isError={false}
+      />
+    );
+
+    expect(container.querySelector('.dcx-checkbox-container--error')).toBeNull();
+    expect(container.querySelector('.dcx-checkbox-checkbox--error')).toBeNull();
+    expect(container.querySelector('.dcx-checkbox-label--error')).toBeNull();
+  });
+
+  it('should not apply error styling when isError is not provided', () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <FormCheckbox
+        id="myId"
+        name="group1"
+        value="choice 1"
+        label="my label"
+        onChange={handleChange}
+      />
+    );
+
+    expect(container.querySelector('.dcx-checkbox-container--error')).toBeNull();
+    expect(container.querySelector('.dcx-checkbox-checkbox--error')).toBeNull();
+    expect(container.querySelector('.dcx-checkbox-label--error')).toBeNull();
+  });
+
 });
