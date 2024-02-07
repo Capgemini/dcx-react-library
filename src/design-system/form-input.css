@@ -118,7 +118,7 @@
     border-top-right-radius: token('border-radius-formcontrol');
     border-bottom-right-radius: token('border-radius-formcontrol');
     flex: 0 0 auto;
-    border-left: token('border-width-formcontrol') solid
+    border-left: token('border-width-formcontrol_suffix') solid
       token('border-color-formcontrol');
   }
 
@@ -136,7 +136,7 @@
     border-top-left-radius: token('border-radius-formcontrol');
     border-bottom-left-radius: token('border-radius-formcontrol');
     flex: 0 0 auto;
-    border-right: token('border-width-formcontrol') solid
+    border-right: token('border-width-formcontrol_prefix') solid
       token('border-color-formcontrol');
   }
 
@@ -379,11 +379,16 @@
     box-sizing: border-box;
     border: none;
     border-bottom-style: solid;
-    border-bottom-width: token('border-width-formcontrol');
     border-bottom-color: token('border-color-formcontrol');
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     z-index: 4;
+  }
+  & .dcx-form-input__prefix {
+    border-bottom-width: token('border-width-formcontrol_prefix');
+  }
+  & .dcx-form-input__suffix {
+    border-bottom-width: token('border-width-formcontrol_suffix');
   }
 }
 
@@ -422,7 +427,12 @@
       content: '';
       width: 100%;
       background-color: token('color-outline-formcontrol');
-      height: token('border-width-formcontrol-floating');
     }
+  }
+  & .dcx-form-input__suffix::after {
+    height: token('border-width-formcontrol_suffix');
+  }
+  & .dcx-form-input__prefix::after {
+    height: token('border-width-formcontrol_prefix');
   }
 }
