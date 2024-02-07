@@ -2,6 +2,9 @@ import React from 'react';
 import { classNames } from '../common';
 
 type CardHeaderProps = {
+  /**
+   * allows to pass a child or children to the component
+   */
   children: JSX.Element | JSX.Element[];
   /**
    * Relevant classes for shared / reusable styling
