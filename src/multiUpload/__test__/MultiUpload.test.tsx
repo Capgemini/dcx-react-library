@@ -121,7 +121,7 @@ describe('MultiUpload', () => {
   it('should render a multi upload file data when file selected', async () => {
     const file: File = new File(['some file'], 'isaac.png', {
       type: 'image/png',
-      lastModified: 1485903600000,
+      lastModified: new Date('2/1/2017').getTime(),
     });
     const onChangeHandler = jest.fn();
 
@@ -143,6 +143,6 @@ describe('MultiUpload', () => {
 
     expect(screen.getByText('File Name: isaac.png')).toBeInTheDocument();
     expect(screen.getByText('File Type: image/png')).toBeInTheDocument();
-    expect(screen.getByText('Last Modified: 1/31/2017')).toBeInTheDocument();
+    expect(screen.getByText('Last Modified: 2/1/2017')).toBeInTheDocument();
   });
 });
