@@ -19,8 +19,8 @@ export const CardContent = ({
   ...props
 }: CardContentProps) => {
   return (
-    <p className={classNames(['dcx-card-content', className])} {...props}>
+    <div className={classNames(['dcx-card-content', className])} {...props}>
       {children}
-    </p>
+    </div>
   );
 };

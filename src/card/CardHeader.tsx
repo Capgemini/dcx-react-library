@@ -2,7 +2,7 @@ import React from 'react';
 import { classNames } from '../common';
 
 type CardHeaderProps = {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
   /**
    * Relevant classes for shared / reusable styling
    */
@@ -19,8 +19,8 @@ export const CardHeader = ({
   ...props
 }: CardHeaderProps) => {
   return (
-    <h4 className={classNames(['dcx-card-header', className])} {...props}>
+    <div className={classNames(['dcx-card-header', className])} {...props}>
       {children}
-    </h4>
+    </div>
   );
 };

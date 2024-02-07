@@ -2,7 +2,7 @@ import React from 'react';
 import { classNames } from '../common';
 
 type CardProps = {
-  children: JSX.Element[];
+  children: JSX.Element | JSX.Element[];
   /**
    * Relevant classes for shared / reusable styling
    */
