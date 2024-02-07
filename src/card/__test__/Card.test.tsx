@@ -17,7 +17,7 @@ describe('Card Component', () => {
     expect(getByText('dummy card child')).toBeInTheDocument();
   });
 
-  it('should apply the passed className', () => {
+  it('should allow to pass a custom className', () => {
     const { getByText } = render(
       <Card className="my-card-class">
         <>dummy text</>
@@ -25,10 +25,21 @@ describe('Card Component', () => {
     );
 
     expect(getByText('dummy text')).toBeInTheDocument();
-    expect(getByText('dummy text')).toHaveClass('my-card-class');
+    expect(getByText('dummy text')).toHaveClass('dcx-card my-card-class');
   });
 
-  it('should pass props', () => {
+  it('should have the default className if not other classes are specified', () => {
+    const { getByText } = render(
+      <Card>
+        <>dummy text</>
+      </Card>
+    );
+
+    expect(getByText('dummy text')).toBeInTheDocument();
+    expect(getByText('dummy text')).toHaveClass('dcx-card');
+  });
+
+  it('should allow to pass extra props', () => {
     render(
       <Card data-testid="extra-prop">
         <>dummy text</>
