@@ -257,10 +257,11 @@ export const FormInput = ({
     {
       'dcx-form-input--filled': !!value,
       'dcx-error-bottom': errorPosition === ErrorPosition.BOTTOM,
-      'dcx-hint-bottom': hint?.position && hint?.position !== 'above',
+      'dcx-hint-bottom': hint && hint.position !== 'above',
       'dcx-floating-label': floatVariants.includes(variant),
       'dcx-floating-label-filled': variant === 'floating-filled',
-      [`dcx-form-input--error ${containerClassNameError}`]: isStaticOrDynamicError(),
+      [`dcx-form-input--error ${containerClassNameError}`]:
+        isStaticOrDynamicError(),
     },
   ]);
 
@@ -285,7 +286,7 @@ export const FormInput = ({
                 ...prefix.properties,
                 className: classNames([
                   'dcx-form-input__prefix',
-                  prefix.properties?.className,
+                  prefix.properties.className,
                 ]),
               }}
             >
@@ -306,7 +307,7 @@ export const FormInput = ({
                 ...suffix.properties,
                 className: classNames([
                   'dcx-form-input__suffix',
-                  suffix.properties?.className,
+                  suffix.properties.className,
                 ]),
               }}
             >

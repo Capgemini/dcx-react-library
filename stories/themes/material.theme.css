@@ -9,12 +9,14 @@
 
 .dcx-form-input {
   --dcx-color-text-formcontrol-filled: #000000de;
-  --dcx-color-text-formcontrol_label-floating: rgba(0, 0, 0, 0.6);
-  --dcx-color-text-formcontrol_label-floating-filled: rgba(0, 0, 0, 0.6);
   --dcx-color-text-formcontrol_hint: #000000de;
-  --dcx-color-text-formcontrol_hint: #000000de;
+  --dcx-border-color-formcontrol: #00000099;
   --dcx-border-radius-formcontrol-floating: 6px;
- 
+  --dcx-color-background-formcontrol_label-floating-filled: #f5f5f5;
+  --dcx-color-text-formcontrol: #00000099;
+  --dcx-color-textformcontrol_label--floating: #00000099;
+  --dcx-border-width-formcontrol_prefix: 0;
+  --dcx-border-width-formcontrol_suffix: 0;
 }
 
 .dcx-button {

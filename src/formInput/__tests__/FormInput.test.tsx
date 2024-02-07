@@ -1,10 +1,16 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ErrorPosition, FormInput } from '../FormInput';
 import userEvent from '@testing-library/user-event';
 
-const DummyComponent = ({ pos, displayError = false }: any) => {
+const DummyComponent = ({
+  pos,
+  displayError = false,
+  variant = 'normal',
+  suffix,
+  prefix,
+}: any) => {
   const [value, setValue] = React.useState('');
   const [isValid, setValid] = React.useState<boolean | string>('');
   const handleInputChange = (evt: any) => setValue(evt.currentTarget.value);
@@ -26,6 +32,9 @@ const DummyComponent = ({ pos, displayError = false }: any) => {
         errorProps={{
           'data-testid': 'error-container',
         }}
+        variant={variant}
+        suffix={suffix}
+        prefix={prefix}
         validation={{
           rule: {
             type: 'password',
@@ -196,8 +205,9 @@ describe('FormInput', () => {
         }}
       />
     );
-    const inputContainer: Element | null =
-      container.querySelector('.myClassName');
+    const inputContainer: Element | null = container.querySelector(
+      '.myClassName'
+    );
     expect(inputContainer).not.toBeNull();
   });
 
@@ -265,6 +275,7 @@ describe('FormInput', () => {
         suffix={{
           properties: {
             id: 'suffix',
+            className: 'suffix-classname',
           },
           content: 'suffix',
         }}
@@ -352,6 +363,40 @@ describe('FormInput', () => {
     expect(screen.getByRole('error')).toContainHTML('is invalid');
   });
 
+  it('should display wrapper label container in floating variant', () => {
+    const { container } = render(<DummyComponent variant="floating" />);
+    const wrapper = container.querySelector('.dcx-wrapper-label');
+    expect(wrapper).toBeDefined();
+  });
+
+  it('should display wrapper label and extra class with prefix and suffix', () => {
+    const { container } = render(
+      <DummyComponent
+        variant="floating"
+        prefix={{
+          content: '£',
+          properties: {
+            id: 'prefix',
+            className: 'prefix-class',
+          },
+        }}
+        suffix={{
+          content: 'per item',
+          properties: {
+            id: 'suffix',
+            className: 'suffix-class',
+          },
+        }}
+      />
+    );
+    const wrapper = container.querySelector('.dcx-wrapper-label');
+    const prefix = container.querySelector('#prefix');
+    const suffix = container.querySelector('#suffix');
+    expect(wrapper).toBeDefined();
+    expect(prefix).toHaveClass('prefix-class');
+    expect(suffix).toHaveClass('suffix-class');
+  });
+
   it('should display the error message without interact with the component', async () => {
     const user = userEvent.setup();
     render(<DummyComponentTriggerError />);
@@ -369,13 +414,23 @@ describe('FormInput', () => {
     expect(error.textContent).toBe('static error message');
   });
 
-  it('should add an extra class if the static error is displayed', () => {
+  it('should add an extra class if the static error is displayed and error position afterLabel', () => {
     const { container } = render(
       <DummyStaticComponent pos={ErrorPosition.AFTER_LABEL} />
     );
     const inputContainer: Element | null = container.querySelector('div');
     expect(inputContainer?.getAttribute('class')).toBe(
-      'container-class container-error'
+      'dcx-form-input container-class dcx-form-input--filled dcx-form-input--error container-error'
+    );
+  });
+
+  it('should add an extra class if the static error is displayed and error position bottom', () => {
+    const { container } = render(
+      <DummyStaticComponent pos={ErrorPosition.BOTTOM} />
+    );
+    const inputContainer: Element | null = container.querySelector('div');
+    expect(inputContainer?.getAttribute('class')).toBe(
+      'dcx-form-input container-class dcx-form-input--filled dcx-error-bottom dcx-form-input--error container-error'
     );
   });
 
@@ -384,8 +439,9 @@ describe('FormInput', () => {
     const { container } = render(<DummyComponentTriggerError />);
     const button = screen.getByRole('button');
     await user.click(button);
-    const inputContainer: Element | null =
-      container.querySelector('.error-container');
+    const inputContainer: Element | null = container.querySelector(
+      '.error-container'
+    );
     expect(inputContainer).not.toBeNull();
   });
 
@@ -416,6 +472,38 @@ describe('FormInput', () => {
     );
     const hint: any = container.querySelector('#my-hint');
     expect(hint.innerHTML).toBe('my hint');
+  });
+
+  it('should display a hint message not position hint', () => {
+    const { container } = render(
+      <DummyStaticComponent
+        pos={ErrorPosition.AFTER_LABEL}
+        hint={{
+          id: 'my-hint',
+          text: 'my hint',
+          position: 'above',
+        }}
+      />
+    );
+    const input: any = container.querySelector('.dcx-form-input');
+    expect(input).not.toHaveClass('dcx-hint-bottom');
+  });
+
+  it('should display a hint message above', async () => {
+    const { container } = render(
+      <DummyStaticComponent
+        pos={ErrorPosition.AFTER_LABEL}
+        hint={{
+          id: 'my-hint',
+          text: 'my hint',
+          position: 'top',
+        }}
+      />
+    );
+    const input: any = container.querySelector('.dcx-form-input');
+    await waitFor(() => {
+      expect(input).toHaveClass('dcx-hint-bottom');
+    });
   });
 
   it('should display the formInput error message after the hint', async () => {
