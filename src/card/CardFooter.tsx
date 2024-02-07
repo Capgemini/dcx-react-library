@@ -1,7 +1,7 @@
 import React from 'react';
 import { classNames } from '../common';
 
-interface CardContentProps {
+interface CardFooterProps {
   children: JSX.Element;
   /**
    * Relevant classes for shared / reusable styling
@@ -13,14 +13,14 @@ interface CardContentProps {
   props?: React.HTMLAttributes<HTMLElement>;
 }
 
-export const CardContent = ({
+export const CardFooter = ({
   className,
   children,
   ...props
-}: CardContentProps) => {
+}: CardFooterProps) => {
   return (
-    <p className={classNames(['dcx-card-content', className])} {...props}>
+    <div className={classNames(['dcx-card-footer', className])} {...props}>
       {children}
-    </p>
+    </div>
   );
 };

@@ -22,9 +22,9 @@ type CardImageProps = {
 
 export const CardImage: React.FC<CardImageProps> = ({
   className = '',
-  props,
   src,
   alt,
+  ...props
 }: CardImageProps) => (
   <img
     className={classNames(['dcx-card-image', className])}

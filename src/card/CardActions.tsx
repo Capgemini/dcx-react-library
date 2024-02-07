@@ -1,7 +1,7 @@
 import React from 'react';
 import { classNames } from '../common';
 
-interface CardContentProps {
+interface CardActionsProps {
   children: JSX.Element;
   /**
    * Relevant classes for shared / reusable styling
@@ -13,14 +13,14 @@ interface CardContentProps {
   props?: React.HTMLAttributes<HTMLElement>;
 }
 
-export const CardContent = ({
+export const CardActions = ({
   className,
   children,
   ...props
-}: CardContentProps) => {
+}: CardActionsProps) => {
   return (
-    <p className={classNames(['dcx-card-content', className])} {...props}>
+    <div className={classNames(['dcx-card-actions', className])} {...props}>
       {children}
-    </p>
+    </div>
   );
 };
