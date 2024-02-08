@@ -17,7 +17,7 @@ interface CardFooterProps {
 }
 
 export const CardFooter = ({
-  className,
+  className = '',
   children,
   ...props
 }: CardFooterProps) => {

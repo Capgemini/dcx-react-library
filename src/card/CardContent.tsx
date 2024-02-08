@@ -17,7 +17,7 @@ interface CardContentProps {
 }
 
 export const CardContent = ({
-  className,
+  className = '',
   children,
   ...props
 }: CardContentProps) => {
