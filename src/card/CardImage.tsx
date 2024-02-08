@@ -21,7 +21,7 @@ type CardImageProps = {
 };
 
 export const CardImage: React.FC<CardImageProps> = ({
-  className = '',
+  className,
   src,
   alt,
   ...props

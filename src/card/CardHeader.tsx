@@ -17,7 +17,7 @@ type CardHeaderProps = {
 };
 
 export const CardHeader = ({
-  className = '',
+  className,
   children,
   ...props
 }: CardHeaderProps) => {

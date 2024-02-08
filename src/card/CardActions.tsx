@@ -17,7 +17,7 @@ interface CardActionsProps {
 }
 
 export const CardActions = ({
-  className = '',
+  className,
   children,
   ...props
 }: CardActionsProps) => {
