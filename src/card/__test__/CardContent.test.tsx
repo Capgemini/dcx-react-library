@@ -14,10 +14,10 @@ describe('CardContent', () => {
 
   it('should have the default className if not other classes are specified', () => {
     const { getByTestId } = render(
-      <CardContent data-testid="header-testid">{dummyChild}</CardContent>
+      <CardContent data-testid="content-testid">{dummyChild}</CardContent>
     );
-    expect(getByTestId('header-testid')).toBeInTheDocument();
-    expect(getByTestId('header-testid')).toHaveClass('dcx-card-content');
+    expect(getByTestId('content-testid')).toBeInTheDocument();
+    expect(getByTestId('content-testid')).toHaveClass('dcx-card-content');
   });
 
   it('should allow to pass a custom className', () => {
