@@ -43,3 +43,7 @@
 .dcx-abbreviate {
   --dcx-border-radius-abbreviate: 8px;
 }
+
+.dcx-description-list {
+  --dcx-color-text-body: rgba(0, 0, 0, 0.6);
+}

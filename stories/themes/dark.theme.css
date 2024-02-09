@@ -91,7 +91,6 @@
   --dcx-color-text-heading-level_6: white;
 }
 
-
 .dcx-code {
   --dcx-color-text-pre_body: white;
 }
@@ -108,5 +107,8 @@
 }
 
 .dcx-blockquote {
+  --dcx-color-text-body: white;
+}
+.dcx-description-list {
   --dcx-color-text-body: white;
 }
