@@ -10,6 +10,7 @@ import {
   Button,
   BUTTON_TYPE,
   ListItem,
+  Paragraph,
 } from '@capgeminiuk/dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -28,7 +29,7 @@ export const CardDemo = () => {
         <div className="text-wrapper">
           <CardHeader className="horizontal-card_header">
             <Heading
-              className="horizontal-card_heading"
+              className="horizontal-card_heading-text"
               level="h4"
               label="Order ID"
             />
@@ -60,7 +61,7 @@ export const CardDemo = () => {
         <div className="text-wrapper">
           <CardHeader className="vertical-card_header">
             <Heading
-              className="vertical-card_heading"
+              className="vertical-card_heading-text"
               level="h4"
               label="Order ID"
             />
@@ -81,6 +82,36 @@ export const CardDemo = () => {
             </Button>
           </CardActions>
         </div>
+      </Card>
+      <h1>Vertical card example, social-like post</h1>
+      <Card layout="vertical" className="vertical-social-card-demo">
+        <CardHeader className="card-user-info">
+          <CardImage
+            className="card-user_image"
+            src="https://placehold.co/40"
+            alt="card demo image"
+          />
+          <div className="card-user_heading">
+            <Heading level="h4" label="Shiba Inu" />
+            <Heading level="h6" label="Dog breed" />
+          </div>
+        </CardHeader>
+        <CardImage
+          className="post-image"
+          src="https://placehold.co/200x160"
+          alt="post image"
+        />
+        <CardContent className="social-card_content">
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa. Morbi luctus
+            consequat felis, eget sagittis nisi vestibulum sed.
+          </Paragraph>
+        </CardContent>
+        <CardActions className="social-card_actions">
+          <Button type={BUTTON_TYPE.BUTTON} label="LIKE"></Button>
+          <Button type={BUTTON_TYPE.BUTTON} label="SHARE"></Button>
+        </CardActions>
       </Card>
     </div>
   );

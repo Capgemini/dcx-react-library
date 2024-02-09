@@ -25,7 +25,7 @@
     flex-direction: column;
 
     .horizontal-card_header {
-      .horizontal-card_heading {
+      .horizontal-card_heading-text {
         font-weight: 600;
       }
     }
@@ -78,7 +78,7 @@
     margin-top: 30px;
 
     .vertical-card_header {
-      .vertical-card_heading {
+      .vertical-card_heading-text {
         font-weight: 600;
       }
     }
@@ -107,6 +107,63 @@
     button {
       border: none;
       background: none;
+    }
+  }
+}
+
+.vertical-social-card-demo {
+  width: 300px;
+  max-height: 550px;
+  padding: 15px 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  &.vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-user-info {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+
+    .card-user_heading {
+      margin-left: 20px;
+      flex-grow: 3;
+      h4 {
+        font-weight: 600;
+        margin: 0;
+      }
+      h6 {
+        margin-bottom: 0;
+        margin-top: 5px;
+      }
+    }
+
+    .card-user_image {
+      border-radius: 50%;
+    }
+  }
+
+  .post-image {
+    margin-top: 20px;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .social-card_content {
+    padding: 0 15px;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+
+  .social-card_actions {
+    padding: 0 15px;
+    button {
+      border: none;
+      background: none;
+      font-weight: 600;
     }
   }
 }
