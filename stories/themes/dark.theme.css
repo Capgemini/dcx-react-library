@@ -86,3 +86,7 @@
   --dcx-color-text-link-active: #db7a03;
   --dcx-color-text-link-hover: #db7a03;
 }
+
+.dcx-description-list {
+  --dcx-color-text-body: white;
+}
