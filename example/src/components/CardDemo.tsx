@@ -4,7 +4,12 @@ import {
   CardContent,
   CardActions,
   CardImage,
-  CardFooter,
+  Heading,
+  List,
+  TYPE_LIST,
+  Button,
+  BUTTON_TYPE,
+  ListItem,
 } from '@capgeminiuk/dcx-react-library';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -14,29 +19,50 @@ export const CardDemo = () => {
   return (
     <Card layout="horizontal" className="card-demo">
       <CardImage
-        className="card-demo-image"
+        className="card-demo_image"
         src="https://placehold.co/200"
         alt="card demo image"
       />
       <div className="text-wrapper">
-        <CardHeader className="card-demo-header">
-          <h4>Order ID</h4>
+        <CardHeader className="card-demo_header">
+          <Heading className="card-demo_heading" level="h4" label="Order ID" />
         </CardHeader>
-        <CardContent className="card-demo-content">
-          <li>
-            <ul>Customer Number</ul>
-            <ul>Date of Sales</ul>
-            <ul>Department</ul>
-            <ul>Sale Cost {'(£)'}</ul>
-            <ul>Status</ul>
-          </li>
+        <CardContent className="card-demo_content">
+          <List type={TYPE_LIST.UNORDERED} className="card-demo_content-list">
+            {lisItems.map((i) => (
+              <ListItem key={i.id}>{i.name}</ListItem>
+            ))}
+          </List>
         </CardContent>
-        <CardActions className="card-demo-actions">
-          <button>
+        <CardActions className="card-demo_actions">
+          <Button type={BUTTON_TYPE.BUTTON}>
             <FontAwesomeIcon icon={faAngleRight} />
-          </button>
+          </Button>
         </CardActions>
       </div>
     </Card>
   );
 };
+
+const lisItems = [
+  {
+    id: 1,
+    name: 'Customer Number',
+  },
+  {
+    id: 2,
+    name: 'Dates of Sales',
+  },
+  {
+    id: 3,
+    name: 'Department',
+  },
+  {
+    id: 4,
+    name: 'Sale Cost (£)',
+  },
+  {
+    id: 5,
+    name: 'Status',
+  },
+];
