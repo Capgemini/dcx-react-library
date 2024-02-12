@@ -1,0 +1,40 @@
+.vertical-card.vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.vertical-card {
+  width: 300px;
+  max-height: 550px;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.vertical-card__image {
+  max-width: 100%;
+}
+
+.vertical-card__header {
+  font-weight: 600;
+  font-size: 22px;
+}
+.vertical-content {
+  font-size: 20px;
+}
+
+.vertical-card__footer {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.vertical-card__actions {
+  button {
+    padding: 6px 15px;
+    background: none;
+    border-radius: 4px;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+}
