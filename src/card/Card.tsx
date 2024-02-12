@@ -42,7 +42,8 @@ export const Card = ({
       className={classNames([
         'dcx-card',
         className,
-        layout,
+        { 'dcx-card-horizontal': layout === 'horizontal' },
+        { 'dcx-card-vertical': layout === 'vertical' },
         { 'dcx-card--selected': selected },
       ])}
       {...props}
