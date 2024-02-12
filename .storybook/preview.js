@@ -85,6 +85,8 @@ export const parameters = {
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Table',
             ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Card',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
           ],
           'Typography',
           [
