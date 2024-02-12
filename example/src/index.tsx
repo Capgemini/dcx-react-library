@@ -1,4 +1,3 @@
-import 'react-app-polyfill/ie11';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
