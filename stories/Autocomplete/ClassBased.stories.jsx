@@ -29,7 +29,6 @@ export const Basic = {
     resultUlClass:"autocomplete__menu",
     resultlLiClass:"autocomplete__option",
     resultNoOptionClass:"resultNoOptionClass",
-    resultActiveClass:"autocomplete__option",
     notFoundText:"No fruit found",
     resultActiveClass:"autocomplete__option--focused"
   },
@@ -47,7 +46,6 @@ export const Hint = {
     resultUlClass:"autocomplete__menu",
     resultlLiClass:"autocomplete__option",
     resultNoOptionClass:"resultNoOptionClass",
-    resultActiveClass:"autocomplete__option",
     notFoundText:"No fruit found",
     resultActiveClass:"autocomplete__option--focused"
   },
@@ -68,7 +66,6 @@ export const MinChars = {
     resultUlClass:"autocomplete__menu",
     resultlLiClass:"autocomplete__option",
     resultNoOptionClass:"resultNoOptionClass",
-    resultActiveClass:"autocomplete__option",
     notFoundText:"No fruit found",
     resultActiveClass:"autocomplete__option--focused"
   },
@@ -86,7 +83,6 @@ export const Defaultvalue = {
     resultUlClass:"autocomplete__menu",
     resultlLiClass:"autocomplete__option",
     resultNoOptionClass:"resultNoOptionClass",
-    resultActiveClass:"autocomplete__option",
     notFoundText:"No fruit found",
     defaultValue:"Papaya",
     resultActiveClass:"autocomplete__option--focused"
@@ -106,7 +102,6 @@ export const NoResult = {
     resultUlClass:"autocomplete__menu",
     resultlLiClass:"autocomplete__option",
     resultNoOptionClass:"resultNoOptionClass",
-    resultActiveClass:"autocomplete__option",
     notFoundText:"No fruit found",
     resultActiveClass:"autocomplete__option--focused"
   },
@@ -127,7 +122,6 @@ export const Placeholder = {
     resultUlClass:"autocomplete__menu",
     resultlLiClass:"autocomplete__option",
     resultNoOptionClass:"resultNoOptionClass",
-    resultActiveClass:"autocomplete__option",
     notFoundText:"No fruit found",
     resultActiveClass:"autocomplete__option--focused"
   },
@@ -144,7 +138,6 @@ export const WithLabel = {
     resultUlClass:"autocomplete__menu",
     resultlLiClass:"autocomplete__option",
     resultNoOptionClass:"resultNoOptionClass",
-    resultActiveClass:"autocomplete__option",
     notFoundText:"No fruit found",
     labelText:"Search for a fruit",
     resultActiveClass:"autocomplete__option--focused"
@@ -169,7 +162,6 @@ export const WithError = {
     resultUlClass:"autocomplete__menu",
     resultlLiClas:"autocomplete__option",
     resultNoOptionClass:"resultNoOptionClass",
-    resultActiveClass:"autocomplete__option",
     notFoundText:"No fruit found",
     errorPostion:"after-hint",
     errorMessageText:"an error occured",
@@ -217,7 +209,6 @@ export const WithCustomSearch = {
     resultUlClass:"autocomplete__menu",
     resultlLiClas:"autocomplete__option",
     resultNoOptionClass:"resultNoOptionClass",
-    resultActiveClass:"autocomplete__option",
     notFoundText:"No fruit found",
     errorPostion:"after-hint",
     errorMessageText:"an error occured",
