@@ -1,4 +1,4 @@
-import { KeyboardInput } from '../../src/label/Label';
+import { KeyboardInput } from '../../src/keyBoard/KeyboardInput.ts';
 import KeyboardInputLive from '../liveEdit/KeyboardInputLive';
 
 export default {
