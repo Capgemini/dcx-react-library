@@ -8,7 +8,7 @@ export default {
   component: InsertText,
   decorators: [
     (getStory) => {
-      '../../../dist/design-system/index.css';
+      '../../themes/design-system/index.css';
       return getStory();
     },
   ],

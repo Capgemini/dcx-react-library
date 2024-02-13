@@ -8,7 +8,7 @@ export default {
   component: Link,
   decorators: [
     getStory => {
-      import('../../../dist/design-system/index.css');
+      import('../../themes/design-system/index.css');
       return getStory();
     },
   ],

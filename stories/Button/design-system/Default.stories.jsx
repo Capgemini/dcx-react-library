@@ -9,7 +9,7 @@ export default {
   component: Button,
   decorators: [
     (getStory) => {
-      import('../../../dist/design-system/index.css');
+      import('../../themes/design-system/index.css');
       return getStory();
     },
   ],

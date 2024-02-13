@@ -11,7 +11,7 @@ import path from 'path';
 
 const INPUT_FOLDER = 'src/design-system';
 const OUTPUT_FOLDER = 'dist/design-system';
-
+const STORYBOOK_FOLDER = 'stories/themes/design-system';
 /**
  * Cleanup dist folder
  */
@@ -19,7 +19,9 @@ const distPath = path.join(__dirname, OUTPUT_FOLDER);
 if (fs.existsSync(distPath)) {
   fs.rmSync(distPath, { recursive: true });
 }
-
+if (fs.existsSync(path.join(__dirname, STORYBOOK_FOLDER), { recursive: true })) {
+  fs.rmSync(path.join(__dirname, STORYBOOK_FOLDER), { recursive: true });
+}
 function generateTokens() {
   const presenters = {
     color: 'Color'
@@ -113,6 +115,13 @@ const config = glob.sync(`${INPUT_FOLDER}/*.css`).reduce((acc, file) => {
     input: file,
     output: {
       file: file.replace(`${INPUT_FOLDER}/`, `${OUTPUT_FOLDER}/`),
+      format: 'es'
+    }
+  },{
+    ...getBaseConfig(),
+    input: file,
+    output: {
+      file: file.replace(`${INPUT_FOLDER}/`, `${STORYBOOK_FOLDER}/`),
       format: 'es'
     }
   });

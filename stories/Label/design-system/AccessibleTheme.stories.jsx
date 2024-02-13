@@ -11,7 +11,7 @@ export default {
   component: Label,
   decorators: [
     (getStory) => {
-      '../../../dist/design-system/index.css';
+      '../../themes/design-system/index.css';
       '../../themes/accessible.theme.css';
       return getStory();
     },

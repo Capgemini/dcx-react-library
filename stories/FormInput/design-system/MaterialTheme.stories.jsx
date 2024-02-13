@@ -58,7 +58,7 @@ export default {
   component: FormInput,
   decorators: [
     getStory => {
-      import('../../../dist/design-system/index.css');
+      import('../../themes/design-system/index.css');
       import('../../themes/material.theme.css');
       return getStory();
     },

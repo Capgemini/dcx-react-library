@@ -11,7 +11,7 @@ export default {
   component: Highlight,
   decorators: [
     (getStory) => {
-      '../../../dist/design-system/index.css';
+      '../../themes/design-system/index.css';
       '../../themes/dark.theme.css';
       return getStory();
     }

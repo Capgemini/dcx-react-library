@@ -11,7 +11,7 @@ export default {
   component: PreformattedText,
   decorators: [
     getStory => {
-      import('../../../dist/design-system/index.css');
+      import('../../themes/design-system/index.css');
       import('../../themes/accessible.theme.css');
       return getStory();
     },

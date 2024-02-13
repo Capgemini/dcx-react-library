@@ -9,4 +9,6 @@ coverage
 example/.parcel-cache/*
 example/build
 storybook-static
+stories/themes/design-system/
+stories/themes/design-system/*
 package-lock.json

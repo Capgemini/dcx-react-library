@@ -11,7 +11,7 @@ export default {
   component: Paragraph,
   decorators: [
     getStory => {
-      import('../../../dist/design-system/index.css');
+      import('../../themes/design-system/index.css');
       import('../../themes/dark.theme.css');
       return getStory();
     },
