@@ -44,7 +44,7 @@
     "lint:fix": "eslint src --fix",
     "storybook": "yarn build:css && storybook dev -p 6006",
     "build-storybook": "yarn build:css && storybook build --test",
-    "publish-storybook": "npx chromatic --project-token c6317a751fef"
+    "publish-storybook": "yarn build:css && npx chromatic --project-token c6317a751fef"
   },
   "peerDependencies": {
     "react": ">=16"
