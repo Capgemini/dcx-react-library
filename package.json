@@ -42,9 +42,9 @@
     "test:coverage": "jest ./src --coverage",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build --test",
-    "publish-storybook": "npx chromatic --project-token c6317a751fef"
+    "storybook": "yarn build && storybook dev -p 6006",
+    "build-storybook": "yarn build && storybook build --test",
+    "publish-storybook": "yarn build && npx chromatic --project-token c6317a751fef"
   },
   "peerDependencies": {
     "react": ">=16"
