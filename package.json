@@ -42,9 +42,8 @@
     "test:coverage": "jest ./src --coverage",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "storybook": "yarn build:css && storybook dev -p 6006",
-    "build-storybook": "yarn build:css && storybook build",
-    "publish-storybook": "npx chromatic --project-token c6317a751fef"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -67,17 +66,14 @@
     "@babel/preset-typescript": "7.22.11",
     "@commitlint/config-conventional": "17.7.0",
     "@storybook/addon-a11y": "^7.6.14",
-    "@storybook/addon-actions": "^7.6.14",
-    "@storybook/addon-controls": "^7.6.14",
-    "@storybook/addon-docs": "^7.6.14",
     "@storybook/addon-essentials": "^7.6.14",
+    "@storybook/addon-interactions": "^7.6.14",
     "@storybook/addon-links": "^7.6.14",
-    "@storybook/addon-mdx-gfm": "^7.6.14",
-    "@storybook/addons": "^7.6.14",
+    "@storybook/addon-onboarding": "^1.0.11",
     "@storybook/blocks": "^7.6.14",
-    "@storybook/preset-typescript": "3.0.0",
     "@storybook/react": "^7.6.14",
-    "@storybook/react-webpack5": "^7.6.14",
+    "@storybook/react-vite": "^7.6.14",
+    "@storybook/test": "^7.6.14",
     "@storybook/theming": "^7.6.14",
     "@testing-library/jest-dom": "6.1.2",
     "@testing-library/react": "14.0.0",
@@ -102,7 +98,7 @@
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "eslint-plugin-storybook": "0.6.13",
+    "eslint-plugin-storybook": "^0.6.15",
     "husky": "8.0.3",
     "identity-obj-proxy": "3.0.0",
     "jest": "29.6.4",
@@ -124,11 +120,12 @@
     "sass": "1.66.1",
     "sourcemap-codec": "^1.4.8",
     "storybook": "^7.6.14",
-    "storybook-css-modules-preset": "1.1.1",
-    "storybook-design-token": "2.10.0",
+    "storybook-design-token": "^3.0.0",
     "ts-jest": "29.1.1",
     "ts-node": "10.9.1",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "vite": "^5.1.1",
+    "vite-plugin-commonjs": "^0.10.1"
   },
   "dependencies": {
     "@cesium133/forgjs": "1.1.10",
