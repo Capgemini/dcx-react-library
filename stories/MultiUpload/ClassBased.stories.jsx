@@ -85,7 +85,6 @@ export const Error = {
       className: 'govuk-file-upload govuk-file-upload--error',
       'aria-describedby': 'govuk-file-upload govuk-file-upload--error',
     },
-    label:"Upload a file",
     labelProperties:{
       className: 'govuk-label',
     },

@@ -51,9 +51,6 @@ export const Checkbox = {
     itemProps:{
       className: 'govuk-checkboxes__item',
     },
-    labelProps:{
-      className: 'govuk-label govuk-checkboxes__label',
-    },
     defaultChecked:false
   },
   argTypes: { onChange: { action: 'changed' } },
@@ -93,9 +90,6 @@ export const Preselcted = {
     itemProps:{
       className: 'govuk-checkboxes__item',
     },
-    labelProps:{
-      className: 'govuk-label govuk-checkboxes__label',
-    },
     selected:true
   },
   argTypes: { onChange: { action: 'changed' } },
@@ -134,9 +128,6 @@ export const Hint = {
     },
     itemProps:{
       className: 'govuk-checkboxes__item',
-    },
-    labelProps:{
-      className: 'govuk-label govuk-checkboxes__label',
     },
     defaultChecked:false,
     hint:{
@@ -182,9 +173,6 @@ export const AboveHint = {
     itemProps:{
       className: 'govuk-checkboxes__item',
     },
-    labelProps:{
-      className: 'govuk-label govuk-checkboxes__label',
-    },
     defaultChecked:false,
     hint:{
       position: 'above',
@@ -215,9 +203,6 @@ export const Conditional = {
     label:"checkbox label",
     value:'',
     id:"checkbox-6",
-    inputProps:{
-      name: 'checkbox-6',
-    },
     selected:false,
     name:"contact",
     ariaDataControls:"conditional-contact",
@@ -229,9 +214,6 @@ export const Conditional = {
     },
     itemProps:{
       className: 'govuk-checkboxes__item',
-    },
-    labelProps:{
-      className: 'govuk-label govuk-checkboxes__label',
     },
     conditional:{
       value: '',
@@ -283,9 +265,6 @@ export const SmallCheckbox = {
     },
     itemProps:{
       className: 'govuk-checkboxes__item',
-    },
-    labelProps:{
-      className: 'govuk-label govuk-checkboxes__label',
     },
     defaultChecked:false,
   },

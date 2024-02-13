@@ -1898,7 +1898,6 @@ export const Hint = {
       borderRadius: '3px',
     },
     searchDebounceMs:0,
-    hintText:"Enter your search term to add a selection"
   },
 };
 
@@ -1906,7 +1905,6 @@ export const Placeholder = {
   name: 'Placeholder',
   args: {
     id:"demo-multi-select",
-    hintText:"Enter your search term to add a selection",
     inputProperties:{
       placeholder: 'Select...',
       style: {
