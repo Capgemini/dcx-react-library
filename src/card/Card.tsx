@@ -33,7 +33,7 @@ export const Card = ({
   children,
   className,
   variant = 'default',
-  layout,
+  layout = 'vertical',
   selected,
   ...props
 }: CardProps) => {
