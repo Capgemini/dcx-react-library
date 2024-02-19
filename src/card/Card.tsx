@@ -1,5 +1,6 @@
 import React from 'react';
 import { classNames } from '../common';
+import CardContext from './CardContext';
 
 export interface CardProps {
   /**
@@ -38,17 +39,24 @@ export const Card = ({
   ...props
 }: CardProps) => {
   return (
-    <article
-      className={classNames([
-        'dcx-card',
-        className,
-        { 'dcx-card-horizontal': layout === 'horizontal' },
-        { 'dcx-card-vertical': layout === 'vertical' },
-        { 'dcx-card--selected': selected },
-      ])}
-      {...props}
+    <CardContext.Provider
+      value={{
+        layout,
+        variant,
+      }}
     >
-      {children}
-    </article>
+      <article
+        className={classNames([
+          'dcx-card',
+          className,
+          `dcx-card-${layout}`,
+          `dcx-card-${variant}`,
+          { 'dcx-card--selected': selected },
+        ])}
+        {...props}
+      >
+        {children}
+      </article>
+    </CardContext.Provider>
   );
 };

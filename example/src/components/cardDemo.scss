@@ -8,30 +8,27 @@
   }
 }
 
-.horizontal-card-demo {
+.dcx-card-horizontal {
+  display: flex;
+  justify-content: space-between;
   width: 550px;
   max-height: 300px;
   padding: 15px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-  &.horizontal {
-    display: flex;
-    justify-content: space-between;
-  }
 
   .text-wrapper {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 
-    .horizontal-card_header {
-      .horizontal-card_heading-text {
+    .dcx-card-horizontal {
+      .card-heading-text {
         font-weight: 600;
       }
     }
 
-    .horizontal-card_content {
-      .horizontal-card_content-list {
+    .dcx-card-content-horizontal {
+      .card-content-list {
         margin: 0;
         padding: 0;
         list-style: none;
@@ -43,13 +40,13 @@
     }
   }
 
-  .horizontal-card_image {
+  .dcx-card-image-horizontal {
     max-width: 100%;
     max-height: 100%;
     margin-right: 50px;
   }
 
-  .horizontal-card_actions {
+  .dcx-card-actions-horizontal {
     align-self: flex-end;
 
     button {
@@ -59,17 +56,14 @@
   }
 }
 
-.vertical-card-demo {
+.dcx-card-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 300px;
   max-height: 550px;
   padding: 25px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-  &.vertical {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
 
   .text-wrapper {
     flex-grow: 1;
@@ -77,14 +71,14 @@
     flex-direction: column;
     margin-top: 30px;
 
-    .vertical-card_header {
-      .vertical-card_heading-text {
+    .dcx-card-header-vertical {
+      .heading-text {
         font-weight: 600;
       }
     }
 
-    .vertical-card_content {
-      .vertical-card_content-list {
+    .dcx-card-content-vertical {
+      .content-list {
         margin: 0;
         padding: 0;
         list-style: none;
@@ -96,12 +90,12 @@
     }
   }
 
-  .vertical-card_image {
+  .dcx-card-image-vertical {
     max-width: 100%;
     max-height: 100%;
   }
 
-  .vertical-card_actions {
+  .dcx-card-actions-vertical {
     align-self: flex-end;
 
     button {
@@ -111,13 +105,13 @@
   }
 }
 
-.vertical-social-card-demo {
+.social-card-demo {
   width: 300px;
   max-height: 550px;
   padding: 15px 0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-  &.vertical {
+  &.dcx-card-vertical {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

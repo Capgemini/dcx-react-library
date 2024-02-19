@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { classNames } from '../common';
+import CardContext from './CardContext';
 
 interface CardFooterProps {
   /**
@@ -21,8 +22,17 @@ export const CardFooter = ({
   children,
   ...props
 }: CardFooterProps) => {
+  const { layout, variant } = useContext(CardContext);
   return (
-    <div className={classNames(['dcx-card-footer', className])} {...props}>
+    <div
+      className={classNames([
+        'dcx-card-footer',
+        `dcx-card-footer-${layout}`,
+        `dcx-card-footer-${variant}`,
+        className,
+      ])}
+      {...props}
+    >
       {children}
     </div>
   );

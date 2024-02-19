@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { classNames } from '../common';
+import CardContext from './CardContext';
 
 interface CardContentProps {
   /**
@@ -21,8 +22,17 @@ export const CardContent = ({
   children,
   ...props
 }: CardContentProps) => {
+  const { layout, variant } = useContext(CardContext);
   return (
-    <div className={classNames(['dcx-card-content', className])} {...props}>
+    <div
+      className={classNames([
+        'dcx-card-content',
+        `dcx-card-content-${layout}`,
+        `dcx-card-content-${variant}`,
+        className,
+      ])}
+      {...props}
+    >
       {children}
     </div>
   );

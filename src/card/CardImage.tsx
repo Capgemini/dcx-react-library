@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { classNames } from '../common';
+import CardContext from './CardContext';
 
 type CardImageProps = {
   /**
@@ -25,11 +26,20 @@ export const CardImage: React.FC<CardImageProps> = ({
   src,
   alt,
   ...props
-}: CardImageProps) => (
-  <img
-    className={classNames(['dcx-card-image', className])}
-    src={src}
-    alt={alt}
-    {...props}
-  />
-);
+}: CardImageProps) => {
+  const { layout, variant } = useContext(CardContext);
+
+  return (
+    <img
+      className={classNames([
+        'dcx-card-image',
+        `dcx-card-image-${layout}`,
+        `dcx-card-image-${variant}`,
+        className,
+      ])}
+      src={src}
+      alt={alt}
+      {...props}
+    />
+  );
+};

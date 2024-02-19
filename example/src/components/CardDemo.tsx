@@ -20,31 +20,24 @@ export const CardDemo = () => {
   return (
     <div className="demo-cards-container">
       <h1>Horizontal card example</h1>
-      <Card layout="horizontal" className="horizontal-card-demo">
-        <CardImage
-          className="horizontal-card_image"
-          src="https://placehold.co/200"
-          alt="card demo image"
-        />
+      <Card layout="horizontal">
+        <CardImage src="https://placehold.co/200" alt="card demo image" />
         <div className="text-wrapper">
-          <CardHeader className="horizontal-card_header">
+          <CardHeader>
             <Heading
-              className="horizontal-card_heading-text"
+              className="card-heading-text"
               level="h4"
               label="Order ID"
             />
           </CardHeader>
-          <CardContent className="horizontal-card_content">
-            <List
-              type={TYPE_LIST.UNORDERED}
-              className="horizontal-card_content-list"
-            >
+          <CardContent>
+            <List type={TYPE_LIST.UNORDERED} className="card-content-list">
               {lisItems.map((i) => (
                 <ListItem key={i.id}>{i.name}</ListItem>
               ))}
             </List>
           </CardContent>
-          <CardActions className="horizontal-card_actions">
+          <CardActions>
             <Button type={BUTTON_TYPE.BUTTON}>
               <FontAwesomeIcon icon={faAngleRight} />
             </Button>
@@ -52,31 +45,20 @@ export const CardDemo = () => {
         </div>
       </Card>
       <h1>Vertical card example</h1>
-      <Card layout="vertical" className="vertical-card-demo">
-        <CardImage
-          className="vertical-card_image"
-          src="https://placehold.co/200"
-          alt="card demo image"
-        />
+      <Card layout="vertical">
+        <CardImage src="https://placehold.co/200" alt="card demo image" />
         <div className="text-wrapper">
-          <CardHeader className="vertical-card_header">
-            <Heading
-              className="vertical-card_heading-text"
-              level="h4"
-              label="Order ID"
-            />
+          <CardHeader>
+            <Heading className="heading-text" level="h4" label="Order ID" />
           </CardHeader>
-          <CardContent className="vertical-card_content">
-            <List
-              type={TYPE_LIST.UNORDERED}
-              className="vertical-card_content-list"
-            >
+          <CardContent>
+            <List type={TYPE_LIST.UNORDERED} className="content-list">
               {lisItems.map((i) => (
                 <ListItem key={i.id}>{i.name}</ListItem>
               ))}
             </List>
           </CardContent>
-          <CardActions className="vertical-card_actions">
+          <CardActions>
             <Button type={BUTTON_TYPE.BUTTON}>
               <FontAwesomeIcon icon={faAngleRight} />
             </Button>
@@ -84,7 +66,7 @@ export const CardDemo = () => {
         </div>
       </Card>
       <h1>Vertical card example, social-like post</h1>
-      <Card layout="vertical" className="vertical-social-card-demo">
+      <Card layout="vertical" className="social-card-demo">
         <CardHeader className="card-user-info">
           <CardImage
             className="card-user_image"

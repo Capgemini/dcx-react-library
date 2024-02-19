@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { classNames } from '../common';
+import CardContext from './CardContext';
 
 type CardHeaderProps = {
   /**
@@ -21,8 +22,18 @@ export const CardHeader = ({
   children,
   ...props
 }: CardHeaderProps) => {
+  const { layout, variant } = useContext(CardContext);
+
   return (
-    <div className={classNames(['dcx-card-header', className])} {...props}>
+    <div
+      className={classNames([
+        'dcx-card-header',
+        className,
+        `dcx-card-header-${layout}`,
+        `dcx-card-header-${variant}`,
+      ])}
+      {...props}
+    >
       {children}
     </div>
   );
