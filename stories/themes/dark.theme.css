@@ -109,6 +109,8 @@
 .dcx-blockquote {
   --dcx-color-text-body: white;
 }
+
 .dcx-description-list {
   --dcx-color-text-body: white;
+  --dcx-color-text-paragraph: white;
 }
