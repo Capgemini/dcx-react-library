@@ -95,6 +95,19 @@ export const CardDemo = () => {
           <Button type={BUTTON_TYPE.BUTTON} label="SHARE"></Button>
         </CardActions>
       </Card>
+      <h1>Interactive card variant</h1>
+      <Card variant="interact">
+        <CardHeader>
+          <Heading className="heading-text" level="h4" label="Article title" />
+        </CardHeader>
+        <CardImage src="https://placehold.co/200" alt="card demo image" />
+        <CardContent>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quam
+            placeat in...
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 };

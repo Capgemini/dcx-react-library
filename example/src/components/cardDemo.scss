@@ -161,3 +161,17 @@
     }
   }
 }
+
+.dcx-card-interact {
+  &:hover {
+    box-shadow: rgba(0, 0, 255, 0.24) 0px 6px 12px;
+  }
+
+  .heading-text {
+    font-weight: 600;
+  }
+
+  .dcx-card-content {
+    margin-top: 15px;
+  }
+}
