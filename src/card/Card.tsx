@@ -37,26 +37,24 @@ export const Card = ({
   layout = 'vertical',
   selected,
   ...props
-}: CardProps) => {
-  return (
-    <CardContext.Provider
-      value={{
-        layout,
-        variant,
-      }}
+}: CardProps) => (
+  <CardContext.Provider
+    value={{
+      layout,
+      variant,
+    }}
+  >
+    <article
+      className={classNames([
+        'dcx-card',
+        className,
+        `dcx-card-${layout}`,
+        `dcx-card-${variant}`,
+        { 'dcx-card--selected': selected },
+      ])}
+      {...props}
     >
-      <article
-        className={classNames([
-          'dcx-card',
-          className,
-          `dcx-card-${layout}`,
-          `dcx-card-${variant}`,
-          { 'dcx-card--selected': selected },
-        ])}
-        {...props}
-      >
-        {children}
-      </article>
-    </CardContext.Provider>
-  );
-};
+      {children}
+    </article>
+  </CardContext.Provider>
+);
