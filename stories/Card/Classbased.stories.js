@@ -8,6 +8,10 @@ import {
 } from '../../src/card';
 import './style.css';
 
+/**
+ * In this section we're using the Card component passing a custom css.
+ * Feel free to use your own css to style the formInput as you prefer.
+ */
 export default {
   title: 'DCXLibrary/Layout/Card/Class based',
   component: Card,
@@ -19,13 +23,8 @@ export default {
   tags: ['autodocs'],
 };
 
-/**
- * In this section we're using the Card component passing the relative custom `className.
- * Feel free to use your own css to style the formInput as you prefer.
- */
-
-export const VerticalLayout = {
-  name: 'Vertical Layout',
+export const Basic = {
+  name: 'Basic',
   render: function () {
     return (
       <Card className="card" layout="vertical">
@@ -48,6 +47,9 @@ export const VerticalLayout = {
   },
 };
 
+/**
+ * In the following example we passing the property `layout` passing the value `horizontal`
+ */
 export const HorizontalLayout = {
   name: 'Horizontal Layout',
   render: function () {
@@ -73,11 +75,14 @@ export const HorizontalLayout = {
   },
 };
 
+/**
+ * In the following example we using the default layout
+ */
 export const InteractVariation = {
   name: 'Interact Variation',
   render: function () {
     return (
-      <Card className="card" variant="interact">
+      <Card className="card">
         <CardImage
           className="card__image"
           src="https://placehold.co/200x200"
