@@ -24,49 +24,71 @@ export default {
  * Feel free to use your own css to style the formInput as you prefer.
  */
 
-export const VerticalVariation = {
-  name: 'Vertical Variation',
+export const VerticalLayout = {
+  name: 'Vertical Layout',
   render: function () {
     return (
-      <Card className="vertical-card" layout="vertical">
-        <CardHeader className="vertical-card__header">John Doe</CardHeader>
+      <Card className="card" layout="vertical">
+        <CardHeader className="card__header">John Doe</CardHeader>
         <CardImage
-          className="vertical-card__image"
+          className="card__image"
           src="https://placehold.co/100"
           alt=""
         />
-        <CardContent className="vertical-card__content">
+        <CardContent className="card__content">
           Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
           nisl, egestas et elit et, interdum cursus massa.
         </CardContent>
-        <CardActions className="vertical-card__actions">
+        <CardActions className="card__actions">
           <button>Share</button>
         </CardActions>
-        <CardFooter className="vertical-card__footer">12/02/2024</CardFooter>
+        <CardFooter className="card__footer">12/02/2024</CardFooter>
       </Card>
     );
   },
 };
 
-export const HorizontalVariation = {
-  name: 'Horizontal Variation',
+export const HorizontalLayout = {
+  name: 'Horizontal Layout',
   render: function () {
     return (
-      <Card className="horizontal-card" layout="horizontal">
+      <Card className="card" layout="horizontal">
         <CardImage
-          className="horizontal-card__image"
+          className="card__image"
           src="https://placehold.co/200x200"
           alt="alt card image"
         />
         <div className="text-wrapper">
-          <CardHeader className="horizontal-card__header">John Doe</CardHeader>
-          <CardContent className="horizontal-card__content">
+          <CardHeader className="card__header">John Doe</CardHeader>
+          <CardContent className="card__content">
             Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
             nisl, egestas et elit et, interdum cursus massa.
           </CardContent>
-          <CardActions className="horizontal-card__actions">
+          <CardActions className="card__actions">
             <button>See more</button>
           </CardActions>
+        </div>
+      </Card>
+    );
+  },
+};
+
+export const InteractVariation = {
+  name: 'Interact Variation',
+  render: function () {
+    return (
+      <Card className="card" variant="interact">
+        <CardImage
+          className="card__image"
+          src="https://placehold.co/200x200"
+          alt="alt card image"
+        />
+        <div className="text-wrapper">
+          <CardHeader className="card__header">John Doe</CardHeader>
+          <CardContent className="card__content">
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </CardContent>
         </div>
       </Card>
     );
