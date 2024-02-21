@@ -2,7 +2,7 @@ import React from 'react';
 import { classNames } from '../common';
 import CardContext from './CardContext';
 
-export interface CardProps {
+export type CardProps = {
   /**
    * allows to pass a child or children to the component
    */
@@ -11,10 +11,6 @@ export interface CardProps {
    * Relevant classes for shared / reusable styling
    */
   className?: string;
-  /**
-   * additional properties to support something else that we didn't plan
-   */
-  props?: React.HTMLAttributes<HTMLElement>;
   /**
    * allows to align the card horizontally or vertically
    */
@@ -28,7 +24,7 @@ export interface CardProps {
    * allows to control the current selected card
    */
   selected?: boolean;
-}
+} & React.HTMLAttributes<HTMLElement>;
 
 export const Card = ({
   children,

@@ -8,10 +8,6 @@ type CardImageProps = {
    */
   className?: string;
   /**
-   * additional properties to support something else that we didn't plan
-   */
-  props?: React.HTMLAttributes<HTMLElement>;
-  /**
    * src of the image to add
    */
   src: string;
@@ -19,7 +15,7 @@ type CardImageProps = {
    * alternative text of the image
    */
   alt: string;
-};
+} & React.HTMLAttributes<HTMLElement>;
 
 export const CardImage: React.FC<CardImageProps> = ({
   className,

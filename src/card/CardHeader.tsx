@@ -11,11 +11,7 @@ type CardHeaderProps = {
    * Relevant classes for shared / reusable styling
    */
   className?: string;
-  /**
-   * additional properties to support something else that we didn't plan
-   */
-  props?: React.HTMLAttributes<HTMLElement>;
-};
+} & React.HTMLAttributes<HTMLElement>;
 
 export const CardHeader = ({
   className,

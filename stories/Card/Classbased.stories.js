@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Card,
   CardActions,
@@ -78,11 +79,19 @@ export const HorizontalLayout = {
 /**
  * In the following example we using the default layout
  */
-export const InteractVariation = {
+export const InteractVariationSelectedEffect = {
   name: 'Interact Variation',
-  render: function () {
+  render: function MyCard() {
+    const [selected, setSelected] = React.useState(false);
     return (
-      <Card className="card">
+      <Card
+        selected={selected}
+        className="card"
+        variant="interact"
+        onClick={() => setSelected(!selected)}
+        tabIndex="1"
+        aria-selected={selected}
+      >
         <CardImage
           className="card__image"
           src="https://placehold.co/200x200"
