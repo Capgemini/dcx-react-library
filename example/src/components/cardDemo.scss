@@ -1,0 +1,177 @@
+.demo-cards-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 30px 30px;
+
+  h1:not(:first-child) {
+    margin-top: 100px;
+  }
+}
+
+.dcx-card-horizontal {
+  display: flex;
+  justify-content: space-between;
+  width: 550px;
+  max-height: 300px;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  .text-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .dcx-card-horizontal {
+      .card-heading-text {
+        font-weight: 600;
+      }
+    }
+
+    .dcx-card-content-horizontal {
+      .card-content-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li:not(:first-child) {
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+
+  .dcx-card-image-horizontal {
+    max-width: 100%;
+    max-height: 100%;
+    margin-right: 50px;
+  }
+
+  .dcx-card-actions-horizontal {
+    align-self: flex-end;
+
+    button {
+      border: none;
+      background: none;
+    }
+  }
+}
+
+.dcx-card-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  max-height: 550px;
+  padding: 25px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  .text-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+    .dcx-card-header-vertical {
+      .heading-text {
+        font-weight: 600;
+      }
+    }
+
+    .dcx-card-content-vertical {
+      .content-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li:not(:first-child) {
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+
+  .dcx-card-image-vertical {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .dcx-card-actions-vertical {
+    align-self: flex-end;
+
+    button {
+      border: none;
+      background: none;
+    }
+  }
+}
+
+.social-card-demo {
+  width: 300px;
+  max-height: 550px;
+  padding: 15px 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  &.dcx-card-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-user-info {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+
+    .card-user_heading {
+      margin-left: 20px;
+      flex-grow: 3;
+      h4 {
+        font-weight: 600;
+        margin: 0;
+      }
+      h6 {
+        margin-bottom: 0;
+        margin-top: 5px;
+      }
+    }
+
+    .card-user_image {
+      border-radius: 50%;
+    }
+  }
+
+  .post-image {
+    margin-top: 20px;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .social-card_content {
+    padding: 0 15px;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+
+  .social-card_actions {
+    padding: 0 15px;
+    button {
+      border: none;
+      background: none;
+      font-weight: 600;
+    }
+  }
+}
+
+.dcx-card-interact {
+  &:hover {
+    box-shadow: rgba(0, 0, 255, 0.24) 0px 6px 12px;
+  }
+
+  .heading-text {
+    font-weight: 600;
+  }
+
+  .dcx-card-content {
+    margin-top: 15px;
+  }
+}
