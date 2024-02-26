@@ -9,13 +9,16 @@
     font-size: token('font-size-pre_body');
     font-weight: token('font-weight-paragraph');
     line-height: token('font-formcontrol-line-height');
+    padding-top: token('spacing-y-action');
+    padding-bottom: token('spacing-y-action');
   }
 
   .dcx-card-content {
     font-size: token('font-size-paragraph');
     font-weight: token('font-weight-body');
     line-height: token('font-formcontrol_label-line-height-floating');
-    padding: token('spacing-x-formcontrol') token('spacing-y-formcontrol');
+    padding-top: token('spacing-y-formcontrol');
+    padding-bottom: token('spacing-y-formcontrol');
   }
 
   .dcx-card-actions {
@@ -24,6 +27,7 @@
       font-size: token('font-size-formcontrol_label');
       border: token('border-style-action') token('border-width-action')
         token('border-color-action-default-secondary');
+      cursor: pointer;
     }
   }
 
@@ -34,6 +38,11 @@
   }
 
   .dcx-card-footer {
-    padding: token('spacing-x-action') token('spacing-y-action');
+    padding-top: token('spacing-y-action');
+    padding-bottom: token('spacing-y-action');
   }
+
+  /*
+ * Vertical
+ */
 }
