@@ -24,10 +24,6 @@
   .dcx-card-actions {
     button {
       padding: token('spacing-x-action') token('spacing-y-action');
-      font-size: token('font-size-formcontrol_label');
-      border: token('border-style-action') token('border-width-action')
-        token('border-color-action-default-secondary');
-      cursor: pointer;
     }
   }
 
