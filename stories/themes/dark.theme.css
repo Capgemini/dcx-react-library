@@ -115,6 +115,10 @@
   --dcx-color-text-paragraph: white;
 }
 
+.dcx-card {
+  --dcx-color-background-card_box: white;
+}
+
 .dcx-checkbox {
   --dcx-color-text-formcontrol: white;
   --dcx-color-text-formcontrol_label: white;
