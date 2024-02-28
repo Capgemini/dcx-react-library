@@ -3,28 +3,27 @@
  * Default
  */
 
-  padding: token('spacing-x-formcontrol') token('spacing-y-formcontrol');
+  background: token('color-background-card_box');
+  padding: token('spacing-x-card_box') token('spacing-y-card_box');
 
   .dcx-card-header {
     font-size: token('font-size-pre_body');
     font-weight: token('font-weight-paragraph');
-    line-height: token('font-formcontrol-line-height');
-    padding-top: token('spacing-y-action');
-    padding-bottom: token('spacing-y-action');
+    line-height: token('line-height-header-card_box');
+    padding-top: token('spacing-x-card_box');
+    padding-bottom: token('spacing-x-card_box');
   }
 
   .dcx-card-content {
     font-size: token('font-size-paragraph');
     font-weight: token('font-weight-body');
-    line-height: token('font-formcontrol_label-line-height-floating');
-    padding-top: token('spacing-y-formcontrol');
-    padding-bottom: token('spacing-y-formcontrol');
+    line-height: token('line-height-content-card_box');
+    padding-top: token('spacing-x-card_box');
+    padding-bottom: token('spacing-x-card_box');
   }
 
   .dcx-card-actions {
-    button {
-      padding: token('spacing-x-action') token('spacing-y-action');
-    }
+    display: flex;
   }
 
   .dcx-card-image {
@@ -34,8 +33,8 @@
   }
 
   .dcx-card-footer {
-    padding-top: token('spacing-y-action');
-    padding-bottom: token('spacing-y-action');
+    padding-top: token('spacing-x-card_box');
+    padding-bottom: token('spacing-x-card_box');
   }
 
   /*

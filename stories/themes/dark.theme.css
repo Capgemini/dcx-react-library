@@ -114,3 +114,7 @@
   --dcx-color-text-body: white;
   --dcx-color-text-paragraph: white;
 }
+
+.dcx-card {
+  --dcx-color-background-card_box: white;
+}
