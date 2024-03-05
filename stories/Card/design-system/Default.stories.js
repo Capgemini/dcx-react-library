@@ -6,6 +6,9 @@ import {
   CardImage,
 } from '../../../src/card';
 import { Card } from '../../../src/card/Card';
+import { Heading } from '../../../src/heading/Heading';
+import { Button } from '../../../src/button/Button';
+import { Paragraph } from '../../../src/paragraph/Paragraph';
 
 /**
  * Here we display the component in its natural form, importing only the base Design System styles.
@@ -32,16 +35,20 @@ export const Default = {
     variant: 'default',
     children: [
       <>
-        <CardHeader>John Doe</CardHeader>
+        <CardHeader></CardHeader>
         <CardImage src="https://placehold.co/100" alt="" />
         <CardContent>
-          Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
-          nisl, egestas et elit et, interdum cursus massa.
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
         </CardContent>
         <CardActions>
-          <button>Share</button>
+          <Button>Share</Button>
         </CardActions>
-        <CardFooter>12/02/2024</CardFooter>
+        <CardFooter>
+          <Paragraph>12/02/2024</Paragraph>
+        </CardFooter>
       </>,
     ],
   },
@@ -54,20 +61,22 @@ export const DefaultHorizontal = {
     layout: 'horizontal',
     children: [
       <>
-        <div>
-          <CardHeader>Article title</CardHeader>
-          <CardImage src="https://placehold.co/100" alt="" />
-        </div>
-        <div>
-          <CardContent>
+        <CardHeader>
+          <Heading level="h3" label="John Doe" />
+        </CardHeader>
+        <CardImage src="https://placehold.co/200" alt="" />
+        <CardContent>
+          <Paragraph>
             Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
             nisl, egestas et elit et, interdum cursus massa.
-          </CardContent>
-          <CardActions>
-            <button>Share</button>
-          </CardActions>
-          <CardFooter>12/02/2024</CardFooter>
-        </div>
+          </Paragraph>
+        </CardContent>
+        <CardActions>
+          <Button label="Read more" />
+        </CardActions>
+        <CardFooter>
+          <Paragraph>12/02/2024</Paragraph>
+        </CardFooter>
       </>,
     ],
   },
