@@ -30,6 +30,7 @@ export const FormCheckbox = ({
   isError?: boolean;
 }) => {
   const containerClasses = classNames([
+    'dcx-checkbox',
     itemClassName,
     { 'dcx-checkbox-container--error': isError },
   ]);

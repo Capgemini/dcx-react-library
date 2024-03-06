@@ -115,6 +115,10 @@
   --dcx-color-text-paragraph: white;
 }
 
+.dcx-checkbox {
+  --dcx-color-text-formcontrol_label: white;
+}
+
 .dcx-radio-button-group {
   --dcx-color-text-formcontrol: white;
   --dcx-color-text-formcontrol_label: white;

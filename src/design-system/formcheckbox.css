@@ -1,0 +1,21 @@
+.dcx-checkbox {
+  color: token('color-text-formcontrol_label');
+  font-weight: token('font-weight-formcontrol_label');
+  font-size: token('font-size-formcontrol_label');
+
+  & .dcx-checkbox-container--error {
+    color: token('color-text-formcontrol_label-error');
+  }
+
+  & .dcx-checkbox-checkbox--error {
+    color: token('color-text-formcontrol_label-error');
+  }
+
+  & .dcx-checkbox-label--error {
+    color: token('color-text-formcontrol_label-error');
+  }
+
+  & .focusCheckBox:focus {
+    box-shadow: 0 0 5px #007bff;
+  }
+}

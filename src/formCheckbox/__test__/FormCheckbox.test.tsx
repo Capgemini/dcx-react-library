@@ -450,7 +450,7 @@ describe('FormCheckbox', () => {
 
     const checkbox: any = container.querySelector('#checkbox-item');
 
-    expect(checkbox.className.trim()).toBe('my-checkbox-class');
+    expect(checkbox.className.trim()).toBe('dcx-checkbox my-checkbox-class');
   });
 
   it('should style the checkbox input', () => {

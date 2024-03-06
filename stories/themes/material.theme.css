@@ -48,6 +48,10 @@
   --dcx-color-text-body: #00000099;
 }
 
+.dcx-checkbox {
+  --dcx-color-text-formcontrol_label-error: #da190b;
+}
+
 .dcx-radio-button-group {
   --dcx-color-text-formcontrol: #000000de;
   --dcx-color-text-formcontrol_hint: #000000de;

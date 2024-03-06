@@ -38,6 +38,10 @@
   --dcx-spacing-x-abbreviate: 5px;
 }
 
+.dcx-checkbox {
+  --dcx-color-text-formcontrol_label-error: #da190b;
+}
+
 .dcx-radio-button-group {
   --dcx-border-radius-formcontrol: 0px;
   --dcx-font-formcontrol_hint-size: 20px;
