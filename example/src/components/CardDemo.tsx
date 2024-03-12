@@ -17,7 +17,6 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import './cardDemo.scss';
 
 export const CardDemo = () => {
-  console.log('HELLO');
   return (
     <div className="demo-cards-container">
       <h1>Horizontal card example</h1>

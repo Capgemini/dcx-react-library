@@ -116,7 +116,15 @@
 }
 
 .dcx-card {
-  --dcx-color-background-card_box: white;
+  --dcx-color-background-card_box-default: #666;
+  --dcx-color-background-card_box-hover: #454545;
+  --dcx-color-text-body: white;
+  --dcx-color-text-heading-level_1: white;
+  --dcx-color-text-heading-level_2: white;
+  --dcx-color-text-heading-level_3: white;
+  --dcx-color-text-heading-level_4: white;
+  --dcx-color-text-heading-level_5: white;
+  --dcx-color-text-heading-level_6: white;
 }
 
 .dcx-checkbox {
