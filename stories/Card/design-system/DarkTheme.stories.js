@@ -9,6 +9,10 @@ import { Card } from '../../../src/card/Card';
 import { LiveProvider, LiveEditor } from 'react-live';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 import style from '!raw-loader!../../themes/dark.theme.css';
+import { Paragraph } from '../../../src/paragraph/Paragraph';
+import { Heading } from '../../../src/heading/Heading';
+import { Button } from '../../../src/button';
+import React from 'react';
 
 /**
  * This a theme showcases how to customize the component so it can be used on dark backgrounds.
@@ -63,18 +67,263 @@ export const Default = {
     },
   },
   args: {
+    variant: 'default',
     children: [
       <>
-        <CardHeader>John Doe</CardHeader>
+        <CardHeader>
+          <Heading level="h3" label="John Doe" />
+        </CardHeader>
         <CardImage src="https://placehold.co/100" alt="" />
+        <CardContent>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </CardContent>
+        <CardActions>
+          <Button>Share</Button>
+        </CardActions>
+        <CardFooter>
+          <Paragraph>12/02/2024</Paragraph>
+        </CardFooter>
+      </>,
+    ],
+  },
+};
+
+export const InteractVariationSelectedEffect = {
+  name: 'Interact Variation',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#333131' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  render: function MyCard() {
+    const [selected, setSelected] = React.useState(false);
+    return (
+      <Card
+        selected={selected}
+        variant="interact"
+        onClick={() => setSelected(!selected)}
+        tabIndex="1"
+        aria-selected={selected}
+      >
+        <CardImage src="https://placehold.co/200x200" alt="alt card image" />
+        <CardHeader>
+          <Heading level="h3" label="John Doe" />
+        </CardHeader>
         <CardContent>
           Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
           nisl, egestas et elit et, interdum cursus massa.
         </CardContent>
+      </Card>
+    );
+  },
+};
+
+export const FullHorizontal = {
+  name: 'Full horizontal',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#333131' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  args: {
+    variant: 'default',
+    layout: 'horizontal',
+    children: [
+      <>
+        <CardHeader>
+          <Heading level="h3" label="John Doe" />
+        </CardHeader>
+        <CardImage src="https://placehold.co/200" alt="" />
+        <CardContent>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </CardContent>
         <CardActions>
-          <button>Share</button>
+          <Button label="Read more" />
         </CardActions>
-        <CardFooter>12/02/2024</CardFooter>
+        <CardFooter>
+          <Paragraph>12/02/2024</Paragraph>
+        </CardFooter>
+      </>,
+    ],
+  },
+};
+
+export const HorizontalNoFooter = {
+  name: 'Horizontal No Footer',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#333131' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  args: {
+    variant: 'default',
+    layout: 'horizontal',
+    children: [
+      <>
+        <CardHeader>
+          <Heading level="h3" label="John Doe" />
+        </CardHeader>
+        <CardImage src="https://placehold.co/200" alt="" />
+        <CardContent>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </CardContent>
+        <CardActions>
+          <Button label="Read more" />
+        </CardActions>
+      </>,
+    ],
+  },
+};
+
+export const HorizontalNoFooterNoActions = {
+  name: 'Horizontal without Footer and Actions',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#333131' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  args: {
+    variant: 'default',
+    layout: 'horizontal',
+    children: [
+      <>
+        <CardHeader>
+          <Heading level="h3" label="John Doe" />
+        </CardHeader>
+        <CardImage src="https://placehold.co/200" alt="" />
+        <CardContent>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </CardContent>
+      </>,
+    ],
+  },
+};
+
+export const HorizontalNoHeader = {
+  name: 'Horizontal No Header',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#333131' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  args: {
+    variant: 'default',
+    layout: 'horizontal',
+    children: [
+      <>
+        <CardImage src="https://placehold.co/200" alt="" />
+        <CardContent>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </CardContent>
+        <CardActions>
+          <Button label="Read more" />
+        </CardActions>
+        <CardFooter>
+          <Paragraph>12/02/2024</Paragraph>
+        </CardFooter>
+      </>,
+    ],
+  },
+};
+
+export const HorizontalImageAndCOntent = {
+  name: 'Horizontal with fee content',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#333131' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  args: {
+    variant: 'default',
+    layout: 'horizontal',
+    children: [
+      <>
+        <CardImage src="https://placehold.co/200" alt="" />
+        <CardContent>
+          <Heading level="h3" label="John Doe" />
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </CardContent>
+        <CardFooter>
+          <Paragraph>12/02/2024</Paragraph>
+        </CardFooter>
+      </>,
+    ],
+  },
+};
+
+export const HorizontalNoImage = {
+  name: 'Horizontal No Imagel',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#333131' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  args: {
+    variant: 'default',
+    layout: 'horizontal',
+    children: [
+      <>
+        <CardHeader>
+          <Heading level="h3" label="John Doe" />
+        </CardHeader>
+        <CardContent>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </CardContent>
+        <CardActions>
+          <Button label="Read more" />
+        </CardActions>
+        <CardFooter>
+          <Paragraph>12/02/2024</Paragraph>
+        </CardFooter>
       </>,
     ],
   },
