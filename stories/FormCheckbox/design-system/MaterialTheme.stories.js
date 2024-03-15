@@ -52,8 +52,17 @@ export const Default = {
     label: 'Lorem ipsum',
     value: 'lorem',
     id: 'lorem',
+    //itemClassName: 'circle',
+    // inputClassName: 'circle',
   },
 };
+
+// export const Default = {
+//   name: 'Default',
+//   render: function () {
+//     return <FormCheckbox label={'abc'} value="abc" />;
+//   },
+// };
 
 export const Disabled = {
   name: 'Disabled',

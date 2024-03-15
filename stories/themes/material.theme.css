@@ -52,6 +52,84 @@
   --dcx-color-text-formcontrol_label-error: #da190b;
 }
 
+/* Hide the default checkbox */
+.dcx-checkbox input[type='checkbox'] {
+  display: none;
+}
+
+/* Cursor pointer for the label */
+.dcx-checkbox label {
+  cursor: pointer;
+  position: relative; /* Add relative positioning for the label */
+}
+
+/* Styling for the checkbox */
+.dcx-checkbox input[type='checkbox'] + label:before {
+  position: relative; /* Add position relative for pseudo-element positioning */
+  content: ''; /* Add empty content for pseudo-element */
+  display: inline-block;
+  font: 16px/1em sans-serif;
+  height: 16px;
+  width: 16px;
+  margin: 0 0.5em 0 0;
+  padding: 0;
+  vertical-align: top;
+  border: 2px solid grey;
+  border-radius: 2px;
+}
+
+/* Circular background effect */
+
+/* Circular background effect when hovered */
+.dcx-checkbox input[type='checkbox']:hover + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  /* left: 50%; */
+  transform: translate(-25%, -50%);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+/* Styling when checkbox is hovered */
+.dcx-checkbox input[type='checkbox']:hover + label:before {
+  border: 2px solid black; /* Add border to checkbox square */
+}
+
+/* Styling when checkbox is checked */
+.dcx-checkbox input[type='checkbox']:checked + label:before {
+  background: red;
+  color: white;
+  content: '\2713';
+  text-align: center;
+  border: 2px solid red;
+  box-shadow: 0 0 5px red;
+}
+
+/* Circular background effect when hovered */
+.dcx-checkbox input[type='checkbox']:checked:hover + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  /* left: 50%; */
+  transform: translate(-25%, -50%);
+  background-color: #ff000091;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+/* Styling when checkbox is hovered */
+.dcx-checkbox input[type='checkbox']:checked:hover + label:before {
+  border: 2px solid black; /* Add border to checkbox square */
+}
+
 .dcx-radio-button-group {
   --dcx-color-text-formcontrol: #000000de;
   --dcx-color-text-formcontrol_hint: #000000de;
