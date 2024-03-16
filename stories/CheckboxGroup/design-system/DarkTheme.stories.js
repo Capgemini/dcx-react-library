@@ -1,20 +1,20 @@
-import { RadioGroup } from '../../../src/radioGroup/RadioGroup';
-import { LiveProvider, LiveEditor } from 'react-live';
+import { CheckboxGroup } from '../../../src/checkboxGroup/CheckboxGroup';
 // eslint-disable-next-line import/no-webpack-loader-syntax
-import style from '!raw-loader!../../themes/material.theme.css';
+import style from '!raw-loader!../../themes/dark.theme.css';
+import { LiveProvider, LiveEditor } from 'react-live';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
- * This is a theme that showcases an appearance similar to Material UI can be achieved.
+ * This is a theme that showcases how to customize the component so it can be used on dark backgrounds.
  * If you copy paste this snippet inside your css file you'll get a material design style
  */
 export default {
-  title: 'DCXLibrary/Form/RadioGroup/Design system/Material',
-  component: RadioGroup,
+  title: 'DCXLibrary/Form/CheckboxGroup/Design system/Dark',
+  component: CheckboxGroup,
   decorators: [
     (getStory) => {
       require('../../../dist/design-system/index.css');
-      require('../../themes/material.theme.css');
+      require('../../themes/dark.theme.css');
       return getStory();
     },
   ],
@@ -37,7 +37,7 @@ export const ShowCase = {
   },
   render: () => (
     <LiveProvider
-      code={StorybookUtils.getThemeCode('dcx-radio-button-group', style)}
+      code={StorybookUtils.getThemeCode('dcx-checkbox-group', style)}
       disabled={true}
       language="css"
     >
@@ -48,6 +48,15 @@ export const ShowCase = {
 
 export const Default = {
   name: 'Default',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#282c34' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
   args: {
     name: 'waste',
     items: [
@@ -80,6 +89,15 @@ export const Default = {
 
 export const Titled = {
   name: 'Titled',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#282c34' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
   args: {
     name: 'waste-2',
     items: [
@@ -111,6 +129,15 @@ export const Titled = {
 
 export const Hint = {
   name: 'With hints',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#282c34' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
   args: {
     name: 'nationality',
     items: [
@@ -154,6 +181,15 @@ export const Hint = {
 
 export const Disabled = {
   name: 'Disabled item',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#282c34' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
   args: {
     name: 'live-error',
     items: [
@@ -161,7 +197,7 @@ export const Disabled = {
         label: 'England',
         value: 'england',
         id: 'live-england-error',
-        disabled: true,
+        disabled: true
       },
       {
         label: 'Ireland',
@@ -192,6 +228,15 @@ export const Disabled = {
 
 export const Error = {
   name: 'Error message',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#282c34' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
   args: {
     name: 'live-error',
     items: [
@@ -236,6 +281,15 @@ export const Error = {
 
 export const TextDivider = {
   name: 'Text divider',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#282c34' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
   args: {
     name: 'where-do-you-live-divider',
     items: [
@@ -277,6 +331,15 @@ export const TextDivider = {
 
 export const ConditionalRevealing = {
   name: 'Conditionally revealing content',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#282c34' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
   args: {
     name: 'contact',
     items: [

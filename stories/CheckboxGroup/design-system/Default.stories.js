@@ -1,20 +1,13 @@
-import { RadioGroup } from '../../../src/radioGroup/RadioGroup';
-import { LiveProvider, LiveEditor } from 'react-live';
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import style from '!raw-loader!../../themes/material.theme.css';
-import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
-
+import { CheckboxGroup } from '../../../src/checkboxGroup/CheckboxGroup';
 /**
- * This is a theme that showcases an appearance similar to Material UI can be achieved.
- * If you copy paste this snippet inside your css file you'll get a material design style
+ * Here we display the component in its natural default state, importing only the base Design System styles.
  */
 export default {
-  title: 'DCXLibrary/Form/RadioGroup/Design system/Material',
-  component: RadioGroup,
+  title: 'DCXLibrary/Form/CheckboxGroup/Design system/Default',
+  component: CheckboxGroup,
   decorators: [
     (getStory) => {
       require('../../../dist/design-system/index.css');
-      require('../../themes/material.theme.css');
       return getStory();
     },
   ],
@@ -23,27 +16,6 @@ export default {
     actions: { disable: true },
   },
   tags: ['autodocs'],
-};
-
-export const ShowCase = {
-  parameters: {
-    backgrounds: {
-      default: 'dark',
-      values: [
-        { name: 'dark', value: '#282c34' },
-        { name: 'light', value: '#fff' },
-      ],
-    },
-  },
-  render: () => (
-    <LiveProvider
-      code={StorybookUtils.getThemeCode('dcx-radio-button-group', style)}
-      disabled={true}
-      language="css"
-    >
-      <LiveEditor className="liveEditor" aria-label="editor" />
-    </LiveProvider>
-  ),
 };
 
 export const Default = {
@@ -152,36 +124,24 @@ export const Hint = {
   argTypes: { onClick: { action: 'clicked' } },
 };
 
-export const Disabled = {
-  name: 'Disabled item',
+export const SmallCheckbox = {
+  name: 'Small checkboxes',
   args: {
-    name: 'live-error',
+    name: 'filter-change',
     items: [
       {
-        label: 'England',
-        value: 'england',
-        id: 'live-england-error',
-        disabled: true,
+        label: 'Monthly',
+        value: 'month',
+        id: 'changed-name-month',
       },
       {
-        label: 'Ireland',
-        value: 'ireland',
-        id: 'live-ireland-error',
-      },
-      {
-        label: 'Scotland',
-        value: 'scotland',
-        id: 'live-scotland-error',
-      },
-      {
-        label: 'Wales',
-        value: 'wales',
-        id: 'live-wales-error',
+        label: 'Yearly',
+        value: 'year',
+        id: 'changed-name-year',
       },
     ],
-    ariaDescribedBy: 'changed-name-hint changed-name-error',
     legend: {
-      text: 'Where do you live?',
+      text: 'Filter',
       heading: {
         priority: 1,
       },
@@ -260,6 +220,7 @@ export const TextDivider = {
         id: 'where-do-you-live-divider-4',
       },
       {
+        className: 'govuk-checkboxes__divider',
         text: 'or',
       },
       {

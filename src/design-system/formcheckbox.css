@@ -22,7 +22,7 @@
     color: token('color-text-formcontrol_label');
   }
 
-  & input {
+  & input[type='checkbox'] {
     appearance: none;
     background-color: token('color-background-formcontrol');
     margin: 0;
@@ -107,5 +107,36 @@
   &:has(input:disabled) {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  & .dcx-conditional-input {
+    flex-basis: 100%;
+    & div {
+      display: flex;
+      flex-direction: column;
+      padding-left: calc(
+        token('font-formcontrol_label-line-height') +
+          token('spacing-y-formcontrol') * 2
+      );
+      & label {
+        font-size: token('font-size-formcontrol_label');
+        line-height: token('font-formcontrol_label-line-height');
+        background: token('color-background-formcontrol_label');
+        color: token('color-text-formcontrol_label');
+      }
+
+      & input {
+        background: token('color-background-formcontrol');
+        box-sizing: border-box;
+        color: token('color-text-formcontrol');
+        font-size: token('font-formcontrol-size');
+        line-height: token('font-formcontrol-line-height');
+        margin: token('color-outline-formcontrol');
+        padding-left: token('spacing-x-formcontrol');
+        padding-right: token('spacing-x-formcontrol');
+        border-radius: token('border-radius-formcontrol');
+        max-width: 400px;
+      }
+    }
   }
 }

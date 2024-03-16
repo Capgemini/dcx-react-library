@@ -1,20 +1,17 @@
-import { RadioGroup } from '../../../src/radioGroup/RadioGroup';
+import { CheckboxGroup } from '../../../src/checkboxGroup/CheckboxGroup';
+import style from '!raw-loader!../../themes/accessible.theme.css';
 import { LiveProvider, LiveEditor } from 'react-live';
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import style from '!raw-loader!../../themes/material.theme.css';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
-
 /**
- * This is a theme that showcases an appearance similar to Material UI can be achieved.
- * If you copy paste this snippet inside your css file you'll get a material design style
+ * This a theme aimed at easing the vizualization of the different elements of the component in order to improve the experience for people that have visual impairments.
  */
 export default {
-  title: 'DCXLibrary/Form/RadioGroup/Design system/Material',
-  component: RadioGroup,
+  title: 'DCXLibrary/Form/CheckboxGroup/Design system/Accessible',
+  component: CheckboxGroup,
   decorators: [
     (getStory) => {
       require('../../../dist/design-system/index.css');
-      require('../../themes/material.theme.css');
+      require('../../themes/accessible.theme.css');
       return getStory();
     },
   ],
@@ -37,7 +34,7 @@ export const ShowCase = {
   },
   render: () => (
     <LiveProvider
-      code={StorybookUtils.getThemeCode('dcx-radio-button-group', style)}
+      code={StorybookUtils.getThemeCode('dcx-checkbox-group', style)}
       disabled={true}
       language="css"
     >
@@ -161,7 +158,7 @@ export const Disabled = {
         label: 'England',
         value: 'england',
         id: 'live-england-error',
-        disabled: true,
+        disabled: true
       },
       {
         label: 'Ireland',

@@ -6,6 +6,7 @@ import {
   HintProps,
   LegendProps,
 } from '../components/commonTypes';
+import { FormCheckbox } from '../../formCheckbox';
 
 type DividerProps = {
   /**
@@ -222,10 +223,38 @@ export const FormRadioCheckboxBase = ({
       );
     }
 
-    if (type === 'radio' || type === 'checkbox') {
+    if (type === 'radio') {
       return (
         <CheckboxRadioBase
           type={type}
+          key={`${id}_${index.toString()}`}
+          {...item}
+          name={name}
+          inputProps={{ ...inputProps, ...item.inputProps }}
+          itemProps={{ ...itemProps, ...item.itemProps }}
+          labelProps={{ ...labelProps, ...item.labelProps }}
+          inputClassName={inputClassName}
+          labelClassName={labelClassName}
+          itemClassName={itemClassName}
+          selected={isSelected(item)}
+          onChange={(
+            event: React.ChangeEvent<HTMLInputElement>,
+            conditionalInput?: string
+          ) => {
+            if (conditionalInput && onChange) {
+              onChange(event, conditionalInput);
+              return;
+            }
+
+            handleChange(item, event);
+          }}
+        />
+      );
+    }
+
+    if (type === 'checkbox') {
+      return (
+        <FormCheckbox
           key={`${id}_${index.toString()}`}
           {...item}
           name={name}
