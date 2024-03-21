@@ -1,0 +1,104 @@
+.dcx-card {
+  /*
+ * Default
+ */
+  box-sizing: border-box;
+  background: token('color-background-card_box-default');
+  padding: token('spacing-x-card_box') token('spacing-y-card_box');
+  height: 100%;
+  box-shadow: token('box-shadow-card_box');
+  border-radius: token('border-radius-card_box');
+  border: token('border-width-card_box') token('border-style-card_box')
+    token('border-color-card_box-default');
+
+  &.dcx-card-interact {
+    &.dcx-card--selected {
+      border-color: token('border-color-card_box-selected');
+      background: token('color-background-card_box-selected');
+    }
+    &:hover {
+      border-color: token('border-color-card_box-hover');
+      background: token('color-background-card_box-hover');
+    }
+  }
+
+  .dcx-card-actions {
+    display: flex;
+  }
+
+  .dcx-card-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  /*
+ * horizontal
+ */
+
+  &.dcx-card-horizontal {
+    display: grid;
+    column-gap: token('spacing-y-card_box');
+    &:has(.dcx-card-image):has(.dcx-card-header):has(.dcx-card-content):has(.dcx-card-actions):has(.dcx-card-footer) {
+      grid-template-areas:
+        'card-image card-header'
+        'card-image card-content'
+        'card-image card-actions'
+        'card-image card-footer';
+    }
+    &:has(.dcx-card-image):has(.dcx-card-header):has(.dcx-card-content):has(.dcx-card-footer) {
+      grid-template-areas:
+        'card-image card-header'
+        'card-image card-content'
+        'card-image card-footer';
+    }
+    &:has(.dcx-card-image):has(.dcx-card-header):has(.dcx-card-content):has(.dcx-card-actions) {
+      grid-template-areas:
+        'card-image card-header'
+        'card-image card-content'
+        'card-image card-actions';
+    }
+    &:has(.dcx-card-image):has(.dcx-card-header):has(.dcx-card-content) {
+      grid-template-areas:
+        'card-image card-header'
+        'card-image card-content';
+    }
+    &:has(.dcx-card-image):has(.dcx-card-content) {
+      grid-template-areas: 'card-image card-content';
+    }
+    &:has(.dcx-card-image):has(.dcx-card-content):has(.dcx-card-actions):has(.dcx-card-footer) {
+      grid-template-areas:
+        'card-image card-content'
+        'card-image card-actions'
+        'card-image card-footer';
+    }
+    &:has(.dcx-card-image):has(.dcx-card-content):has(.dcx-card-footer) {
+      grid-template-areas:
+        'card-image card-content'
+        'card-image card-footer';
+    }
+    &:has(.dcx-card-image):has(.dcx-card-content):has(.dcx-card-actions) {
+      grid-template-areas:
+        'card-image card-content'
+        'card-image card-actions';
+    }
+    &:not(:has(.dcx-card-image)) {
+      display: flex;
+      flex-direction: column;
+    }
+    .dcx-card-header {
+      grid-area: card-header;
+    }
+    .dcx-card-image {
+      grid-area: card-image;
+    }
+    .dcx-card-content {
+      grid-area: card-content;
+    }
+    .dcx-card-actions {
+      grid-area: card-actions;
+    }
+    .dcx-card-footer {
+      grid-area: card-footer;
+    }
+  }
+}
