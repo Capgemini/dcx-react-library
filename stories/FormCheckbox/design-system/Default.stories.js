@@ -54,7 +54,7 @@ export const Focus = {
     label: 'Focused checkbox',
     value: 'focus',
     id: 'focus',
-    inputClassName: 'focusCheckBox',
+    inputClassName: 'focus-checkBox',
   },
 };
 
