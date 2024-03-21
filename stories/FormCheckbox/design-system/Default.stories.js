@@ -1,3 +1,4 @@
+import { useArgs } from '@storybook/addons';
 import { FormCheckbox } from '../../../src/formCheckbox/FormCheckbox';
 
 /**
@@ -56,6 +57,63 @@ export const Focus = {
     id: 'focus',
     inputClassName: 'focus-checkBox',
   },
+};
+
+export const Hint = {
+  name: 'with Hint',
+  render: function ({ onChange, ...args }) {
+    const [args_, setArgs] = useArgs();
+    const checkboxHandler = (evt) => {
+      onChange(evt);
+      setArgs({
+        value: evt.currentTarget.value,
+        defaultChecked: !args.defaultChecked,
+      });
+      setChecked(!checked);
+    };
+    return <FormCheckbox {...args} onChange={checkboxHandler} />;
+  },
+  args: {
+    name: 'lorem-2',
+    label: 'Lorem ipsum',
+    value: 'lorem ipsum',
+    id: 'lorem-2',
+    defaultChecked: false,
+    hint: {
+      text: 'Lorem ipsum hint text',
+      id: 'nationality-item-hint',
+    },
+  },
+  argTypes: { onChange: { action: 'changed' } },
+};
+
+export const HintAbove = {
+  name: 'with Hint avobe',
+  render: function ({ onChange, ...args }) {
+    const [args_, setArgs] = useArgs();
+    const checkboxHandler = (evt) => {
+      onChange(evt);
+      setArgs({
+        value: evt.currentTarget.value,
+        defaultChecked: !args.defaultChecked,
+      });
+      setChecked(!checked);
+    };
+    return <FormCheckbox {...args} onChange={checkboxHandler} />;
+  },
+  args: {
+    name: 'lorem-2',
+    label: 'Lorem ipsum',
+    value: 'lorem ipsum',
+    id: 'lorem-2',
+    defaultChecked: false,
+    hint: {
+      text: 'Lorem ipsum hint text',
+      id: 'nationality-item-hint',
+      position: 'above',
+    },
+  },
+  argTypes: { onChange: { action: 'changed' } },
 };
 
 export const Error = {

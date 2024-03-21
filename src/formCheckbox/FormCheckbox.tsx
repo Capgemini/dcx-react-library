@@ -30,19 +30,9 @@ export const FormCheckbox = ({
   isError?: boolean;
 }) => {
   const containerClasses = classNames([
-    'dcx-checkbox',
     itemClassName,
-    { 'dcx-checkbox-container--error': isError },
-  ]);
-
-  const checkboxClasses = classNames([
-    inputClassName,
-    { 'dcx-checkbox-checkbox--error': isError },
-  ]);
-
-  const labelClasses = classNames([
-    labelClassName,
-    { 'dcx-checkbox-label--error': isError },
+    'dcx-checkbox',
+    { 'dcx-checkbox--error': isError },
   ]);
 
   return (
@@ -67,8 +57,8 @@ export const FormCheckbox = ({
       hint={hint}
       nested={nested}
       itemClassName={containerClasses}
-      inputClassName={checkboxClasses}
-      labelClassName={labelClasses}
+      inputClassName={inputClassName}
+      labelClassName={labelClassName}
     />
   );
 };

@@ -39,7 +39,12 @@
 }
 
 .dcx-checkbox {
-  --dcx-color-text-formcontrol_label-error: #da190b;
+  --dcx-border-radius-formcontrol: 0px;
+  --dcx-font-formcontrol_hint-size: 16px;
+  --dcx-font-formcontrol_hint-line-height: 20px;
+  --dcx-font-formcontrol_error-size: 16px;
+  --dcx-font-size-formcontrol_label: 18px;
+  --dcx-font-formcontrol_label-line-height: 22px;
 }
 
 .dcx-radio-button-group {

@@ -450,7 +450,7 @@ describe('FormCheckbox', () => {
 
     const checkbox: any = container.querySelector('#checkbox-item');
 
-    expect(checkbox.className.trim()).toBe('dcx-checkbox my-checkbox-class');
+    expect(checkbox.className.trim()).toBe('my-checkbox-class dcx-checkbox');
   });
 
   it('should style the checkbox input', () => {
@@ -510,13 +510,9 @@ describe('FormCheckbox', () => {
       />
     );
 
-    const checkboxContainer = container.querySelector('.dcx-checkbox-container--error');
-    const checkbox = container.querySelector('.dcx-checkbox-checkbox--error');
-    const label = container.querySelector('.dcx-checkbox-label--error');
+    const checkboxContainer = container.querySelector('.dcx-checkbox--error');
     
     expect(checkboxContainer).toBeInTheDocument();
-    expect(checkbox).toBeInTheDocument();
-    expect(label).toBeInTheDocument();
     
   });
 
@@ -534,9 +530,7 @@ describe('FormCheckbox', () => {
       />
     );
 
-    expect(container.querySelector('.dcx-checkbox-container--error')).toBeNull();
-    expect(container.querySelector('.dcx-checkbox-checkbox--error')).toBeNull();
-    expect(container.querySelector('.dcx-checkbox-label--error')).toBeNull();
+    expect(container.querySelector('.dcx-checkbox--error')).toBeNull();
   });
 
   it('should not apply error styling when isError is not provided', () => {
@@ -552,9 +546,7 @@ describe('FormCheckbox', () => {
       />
     );
 
-    expect(container.querySelector('.dcx-checkbox-container--error')).toBeNull();
-    expect(container.querySelector('.dcx-checkbox-checkbox--error')).toBeNull();
-    expect(container.querySelector('.dcx-checkbox-label--error')).toBeNull();
+    expect(container.querySelector('.dcx-checkbox--error')).toBeNull();
   });
 
 });

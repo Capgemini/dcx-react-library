@@ -2,6 +2,7 @@ import style from '!raw-loader!../../themes/accessible.theme.css';
 import { LiveProvider, LiveEditor } from 'react-live';
 import { FormCheckbox } from '../../../src/formCheckbox/FormCheckbox';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
+import { useArgs } from '@storybook/addons';
 
 /**
  * This a theme aimed at easing the vizualization of the different elements of the component in order to improve the experience for people that have visual impairments.
@@ -81,6 +82,34 @@ export const Focus = {
     id: 'focus',
     inputClassName: 'focusCheckBox',
   },
+};
+
+export const Hint = {
+  name: 'with Hint',
+  render: function ({ onChange, ...args }) {
+    const [args_, setArgs] = useArgs();
+    const checkboxHandler = (evt) => {
+      onChange(evt);
+      setArgs({
+        value: evt.currentTarget.value,
+        defaultChecked: !args.defaultChecked,
+      });
+      setChecked(!checked);
+    };
+    return <FormCheckbox {...args} onChange={checkboxHandler} />;
+  },
+  args: {
+    name: 'lorem-2',
+    label: 'Lorem ipsum',
+    value: 'lorem ipsum',
+    id: 'lorem-2',
+    defaultChecked: false,
+    hint: {
+      text: 'Lorem ipsum hint text',
+      id: 'nationality-item-hint',
+    },
+  },
+  argTypes: { onChange: { action: 'changed' } },
 };
 
 export const Error = {
