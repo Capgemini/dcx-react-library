@@ -1,0 +1,85 @@
+
+
+
+.dcx-radio-button-group {
+  &.dcx-radio-button-group--error {
+    & .dcx-error-message {
+      color: token('color-text-formcontrol_error');
+      line-height: token('font-formcontrol_error-line-height');
+      font-size: token('font-formcontrol_error-size');
+    }
+  }
+
+  & .dcx-hint {
+    font-size: token('font-formcontrol_hint-size');
+    line-height: token('font-formcontrol_hint-line-height');
+    color: token('color-text-formcontrol_hint');
+  }
+
+  & fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: token('spacing-x-formcontrol');
+
+    & legend {
+      padding: token('spacing-x-formcontrol') 0;
+      h1 {
+        color: token('color-text-heading-level_1');
+        padding: 0;
+        margin: 0;
+      }
+
+      h2 {
+        color: token('color-text-heading-level_2');
+        padding: 0;
+        margin: 0;
+      }
+
+      h3 {
+        color: token('color-text-heading-level_3');
+        padding: 0;
+        margin: 0;
+      }
+
+      h4 {
+        color: token('color-text-heading-level_4');
+        padding: 0;
+        margin: 0;
+      }
+
+      h5 {
+        color: token('color-text-heading-level_5');
+        padding: 0;
+        margin: 0;
+      }
+
+      h6 {
+        color: token('color-text-heading-level_6');
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    & .dcx-radio-button-group-radios {
+      display: flex;
+      flex-direction: column;
+      row-gap: token('spacing-x-formcontrol');
+      & div {
+        display: flex;
+        column-gap: token('spacing-y-formcontrol');
+        & label {
+          font-size: token('font-size-formcontrol_label');
+          line-height: token('font-formcontrol_label-line-height');
+          background: token('color-background-formcontrol_label');
+          color: token('color-text-formcontrol_label');
+        }
+        & .dcx-hint {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
