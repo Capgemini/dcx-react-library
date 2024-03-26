@@ -101,7 +101,8 @@
           place-content: center;
           cursor: pointer;
 
-          &:focus {
+          &:focus,
+          &:checked {
             border-color: token('color-outline-formcontrol');
             border-width: calc(token('border-width-formcontrol') * 2);
           }

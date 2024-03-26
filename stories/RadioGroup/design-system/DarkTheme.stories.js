@@ -37,7 +37,7 @@ export const ShowCase = {
   },
   render: () => (
     <LiveProvider
-      code={StorybookUtils.getThemeCode('dcx-blockquote', style)}
+      code={StorybookUtils.getThemeCode('dcx-radio-button-group', style)}
       disabled={true}
       language="css"
     >

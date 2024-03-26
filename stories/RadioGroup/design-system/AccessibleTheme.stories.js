@@ -1,4 +1,5 @@
 import { RadioGroup } from '../../../src/radioGroup/RadioGroup';
+// eslint-disable-next-line import/no-webpack-loader-syntax
 import style from '!raw-loader!../../themes/accessible.theme.css';
 import { LiveProvider, LiveEditor } from 'react-live';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
@@ -34,7 +35,7 @@ export const ShowCase = {
   },
   render: () => (
     <LiveProvider
-      code={StorybookUtils.getThemeCode('dcx-blockquote', style)}
+      code={StorybookUtils.getThemeCode('dcx-radio-button-group', style)}
       disabled={true}
       language="css"
     >
