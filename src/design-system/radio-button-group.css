@@ -23,6 +23,7 @@
 
     & legend {
       padding: token('spacing-x-formcontrol') 0;
+      color: token('color-text-body');
       h1 {
         color: token('color-text-heading-level_1');
         padding: 0;
