@@ -4,10 +4,14 @@ import { MultiUpload } from '../../src/multiUpload/MultiUpload';
 
 const MultiUploadDemo = `
 function MultiUploadDemo() {
-  const onChangeHandler = (file) => {
-    if (file) {
-      const date = new Date(file.lastModified).toLocaleDateString("en-us");
-      alert(file.name + 'was uploaded, it was last modified at' + date);
+  const onChangeHandler: (files) => void = (
+    files: FileList
+  ) => {
+    if (files) {
+      Array.from(files).forEach((file: File) => {
+        const date = new Date(file.lastModified).toLocaleDateString("en-us");
+        console.log(file.name + ' was uploaded, it was last modified at ' + date);
+      });
     }
   };
   return (

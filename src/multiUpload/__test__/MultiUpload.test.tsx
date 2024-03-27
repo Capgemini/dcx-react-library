@@ -94,7 +94,7 @@ describe('MultiUpload', () => {
     );
 
     expect(onChangeHandler).toHaveBeenCalled();
-    expect(onChangeHandler).toHaveBeenCalledWith(file);
+    expect(onChangeHandler).toHaveBeenCalledWith([file]);
   });
 
   it('should render a multi upload with an onChange handler but not call it', async () => {
