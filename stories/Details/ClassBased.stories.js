@@ -11,7 +11,7 @@ export default {
       showPanel: true,
     },
   },
-  tags: ['autodocs'] 
+  tags: ['autodocs'],
 };
 
 export const Basic = {
@@ -19,18 +19,18 @@ export const Basic = {
   render: function (args) {
     return (
       <Details {...args}>
-          We need to know your nationality so we can work out which elections
-          you’re entitled to vote in. If you cannot provide your nationality,
-          you’ll have to send copies of identity documents through the post.
+        We need to know your nationality so we can work out which elections
+        you’re entitled to vote in. If you cannot provide your nationality,
+        you’ll have to send copies of identity documents through the post.
       </Details>
-    )
+    );
   },
   args: {
-    summary:"Help with nationality",
-    detailsClassName:"govuk-details",
-    summaryClassName:"govuk-details__summary",
-    summaryTextClassName:"govuk-details__summary-text",
-    detailsTextClassName:"govuk-details__text"
+    summary: 'Help with nationality',
+    detailsClassName: 'govuk-details',
+    summaryClassName: 'govuk-details__summary',
+    summaryTextClassName: 'govuk-details__summary-text',
+    detailsTextClassName: 'govuk-details__text',
   },
 };
 
@@ -39,18 +39,18 @@ export const Open = {
   render: function (args) {
     return (
       <Details {...args}>
-          We need to know your nationality so we can work out which elections
-          you’re entitled to vote in. If you cannot provide your nationality,
-          you’ll have to send copies of identity documents through the post.
+        We need to know your nationality so we can work out which elections
+        you’re entitled to vote in. If you cannot provide your nationality,
+        you’ll have to send copies of identity documents through the post.
       </Details>
-    )
+    );
   },
   args: {
-    summary:"Help with nationality",
-    detailsClassName:"govuk-details",
-    summaryClassName:"govuk-details__summary",
-    summaryTextClassName:"govuk-details__summary-text",
-    detailsTextClassName:"govuk-details__text",
-    open: true
+    summary: 'Help with nationality',
+    detailsClassName: 'govuk-details',
+    summaryClassName: 'govuk-details__summary',
+    summaryTextClassName: 'govuk-details__summary-text',
+    detailsTextClassName: 'govuk-details__text',
+    open: true,
   },
-}
+};

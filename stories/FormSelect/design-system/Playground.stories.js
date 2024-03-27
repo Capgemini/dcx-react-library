@@ -7,24 +7,19 @@ export default {
   title: 'DCXLibrary/Form/Select/Design system',
   component: FormSelect,
   decorators: [
-    (getStory) => (
-      <TokensDecorator style={style}>
-        {getStory()}
-      </TokensDecorator>
-    )
+    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
-  }
+  },
 };
-
 
 export const Playground = {
   name: 'Playground',
   args: {
     label: 'My label',
     options: ['Option 1', 'Option 2'],
-    nullOption: 'Select an option...'
+    nullOption: 'Select an option...',
   },
 };

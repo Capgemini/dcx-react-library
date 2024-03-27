@@ -12,7 +12,7 @@ export default {
   title: 'DCXLibrary/Typography/Abbreviate/Design system/Dark',
   component: Abbreviate,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/dark.theme.css');
       return getStory();

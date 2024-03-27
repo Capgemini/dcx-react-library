@@ -7,7 +7,7 @@ export default {
   title: 'DCXLibrary/Typography/Link/Design system/Default',
   component: Link,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       return getStory();
     },

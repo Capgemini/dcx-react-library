@@ -7,11 +7,7 @@ export default {
   title: 'DCXLibrary/Typography/InsertText/Design system',
   component: InsertText,
   decorators: [
-    (getStory) => (
-      <TokensDecorator style={style}>
-        {getStory()}
-      </TokensDecorator>
-    )
+    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
   ],
   parameters: {
     options: { showPanel: true },

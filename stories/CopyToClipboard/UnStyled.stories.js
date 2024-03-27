@@ -1,5 +1,5 @@
 import { CopyToClipboard } from '../../src/copyToClipboard/CopyToClipboard';
-import React, {useState, useRef} from 'react';
+import React, { useState, useRef } from 'react';
 export default {
   title: 'DCXLibrary/Utils/CopyToClipboard/Without style',
   component: CopyToClipboard,
@@ -11,26 +11,24 @@ export default {
 };
 
 export const Unstyled = {
-  render: function() {
+  render: function () {
     const [value, setValue] = useState('');
     const inputRef = useRef(null);
     return (
       <>
-       <input
+        <input
           value={value}
           ref={inputRef}
-          onChange={evt => setValue(evt.currentTarget.value)}
+          onChange={(evt) => setValue(evt.currentTarget.value)}
         />
         <CopyToClipboard
-            ref={inputRef}
-            onCopy={value => {
-              alert(value);
-            }}
+          ref={inputRef}
+          onCopy={(value) => {
+            alert(value);
+          }}
         />
       </>
     );
   },
-  args: {
-    
-  },
+  args: {},
 };

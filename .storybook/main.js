@@ -17,12 +17,17 @@ const config = {
         autodocs: "tag",
       },
     },
-    '@storybook/addon-mdx-gfm'
+    '@storybook/addon-mdx-gfm',
+    '@storybook/addon-webpack5-compiler-babel'
   ],
   framework: {
     name: '@storybook/react-webpack5',
     options: {}
   },
+  docs: {
+    autodocs: true
+  },
+  staticDirs: ["../static"],
 };
 
 export default config;

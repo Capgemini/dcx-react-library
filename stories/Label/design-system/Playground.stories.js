@@ -7,11 +7,7 @@ export default {
   title: 'DCXLibrary/Typography/Label/Design system',
   component: Label,
   decorators: [
-    (getStory) => (
-      <TokensDecorator style={style}>
-        {getStory()}
-      </TokensDecorator>
-    )
+    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
   ],
   parameters: {
     options: { showPanel: true },

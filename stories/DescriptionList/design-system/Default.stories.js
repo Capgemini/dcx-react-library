@@ -1,4 +1,3 @@
-
 import { DescriptionList, Term, Detail } from '../../../src/descriptionList';
 
 /**
@@ -8,7 +7,7 @@ export default {
   title: 'DCXLibrary/Typography/DescriptionList/Design system/Default',
   component: DescriptionList,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       return getStory();
     },

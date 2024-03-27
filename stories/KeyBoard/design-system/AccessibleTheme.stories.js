@@ -5,8 +5,8 @@ import { LiveProvider, LiveEditor } from 'react-live';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
-* This a theme aimed at easing the vizualization of the different elements of the component in order to improve the experience for people that have visual impairments.
-*/
+ * This a theme aimed at easing the vizualization of the different elements of the component in order to improve the experience for people that have visual impairments.
+ */
 export default {
   title: 'DCXLibrary/Typography/KeyboardInput/Design system/Accessible',
   component: KeyboardInput,
@@ -15,13 +15,13 @@ export default {
       require('../../../dist/design-system/index.css');
       require('../../themes/accessible.theme.css');
       return getStory();
-    }
+    },
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export const ShowCase = {
@@ -35,14 +35,17 @@ export const ShowCase = {
     },
   },
   render: () => (
-    <LiveProvider code={StorybookUtils.getThemeCode('dcx-keyboard-Input', style)} disabled={true} language="css">
+    <LiveProvider
+      code={StorybookUtils.getThemeCode('dcx-keyboard-Input', style)}
+      disabled={true}
+      language="css"
+    >
       <LiveEditor className="liveEditor" aria-label="editor" />
     </LiveProvider>
-  )
-
+  ),
 };
 
-export const Default = {  
+export const Default = {
   name: 'Default',
   args: {
     children: 'ctrl+p',

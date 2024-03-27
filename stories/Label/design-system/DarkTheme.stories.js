@@ -34,7 +34,11 @@ export const ShowCase = {
     },
   },
   render: () => (
-    <LiveProvider code={StorybookUtils.getThemeCode('dcx-label', style)} disabled={true} language="css">
+    <LiveProvider
+      code={StorybookUtils.getThemeCode('dcx-label', style)}
+      disabled={true}
+      language="css"
+    >
       <LiveEditor className="liveEditor" aria-label="editor" />
     </LiveProvider>
   ),

@@ -19,6 +19,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <ToolTipLive />
-}
-
+  render: () => <ToolTipLive />,
+};

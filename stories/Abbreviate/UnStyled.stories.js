@@ -13,6 +13,6 @@ export default {
 export const Unstyled = {
   args: {
     title: 'Laugh Out Loud',
-    value: 'LOL'
+    value: 'LOL',
   },
 };

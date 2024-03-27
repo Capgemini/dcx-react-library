@@ -12,7 +12,7 @@ export default {
   title: 'DCXLibrary/Typography/Paragraph/Design system/Material',
   component: Paragraph,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/material.theme.css');
       return getStory();

@@ -8,7 +8,7 @@ export default {
   title: 'DCXLibrary/Typography/Abbreviate/Design system',
   component: Abbreviate,
   decorators: [
-    getStory => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
+    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
   ],
   parameters: {
     options: { showPanel: true },

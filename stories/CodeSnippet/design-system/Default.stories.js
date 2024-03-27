@@ -1,27 +1,26 @@
 import { CodeSnippet } from '../../../src/codesnippet/CodeSnippet';
 /**
-* Here we display the code snippet, importing only the base Design System styles.
-*/
+ * Here we display the code snippet, importing only the base Design System styles.
+ */
 export default {
-  title:'DCXLibrary/Typography/CodeSnippet/Design system/Default',
+  title: 'DCXLibrary/Typography/CodeSnippet/Design system/Default',
   component: CodeSnippet,
-  decorators:[
+  decorators: [
     (getStory) => {
       require('../../../dist/design-system/index.css');
       return getStory();
-    }
+    },
   ],
-  parameters:{
+  parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs'] 
+  tags: ['autodocs'],
 };
 
-export const Default = {  
+export const Default = {
   name: 'Default',
   args: {
     value: 'This is the content of the code snippet.',
   },
 };
-

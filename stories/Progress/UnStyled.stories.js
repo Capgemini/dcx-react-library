@@ -13,7 +13,7 @@ export default {
 export const Unstyled = {
   args: {
     label: 'Progress',
-    max:100,
-    value:80
+    max: 100,
+    value: 80,
   },
 };

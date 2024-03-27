@@ -23,7 +23,5 @@ export const Unstyled = {
       </TabGroup>
     );
   },
-  args: {
-    
-  },
+  args: {},
 };

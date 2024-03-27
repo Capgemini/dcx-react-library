@@ -19,5 +19,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <CharacterCountLive />
+  render: () => <CharacterCountLive />,
 };
