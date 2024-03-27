@@ -12,7 +12,7 @@ export default {
 
 export const Unstyled = {
   args: {
-    dataSource:[
+    dataSource: [
       {
         id: 1,
         position: 1,
@@ -34,6 +34,6 @@ export const Unstyled = {
         weight: 6.941,
         symbol: 'Li',
       },
-    ]
+    ],
   },
 };

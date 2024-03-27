@@ -12,8 +12,8 @@ export default {
 
 export const Unstyled = {
   args: {
-    label:"Unstyled",
-    labelProps:{
+    label: 'Unstyled',
+    labelProps: {
       style: {
         display: 'block',
         marginBottom: '5px',
@@ -21,6 +21,6 @@ export const Unstyled = {
         fontWeight: 'bold',
       },
     },
-    options:['value1', 'value2']
+    options: ['value1', 'value2'],
   },
 };

@@ -5,23 +5,23 @@ import { LiveProvider, LiveEditor } from 'react-live';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
-* This a theme showcases how to customize the component so it can be used on dark backgrounds.
-*/
+ * This a theme showcases how to customize the component so it can be used on dark backgrounds.
+ */
 export default {
   title: 'DCXLibrary/Typography/KeyboardInput/Design system/Dark',
-  component:  KeyboardInput,
+  component: KeyboardInput,
   decorators: [
     (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/dark.theme.css');
       return getStory();
-    }
+    },
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export const ShowCase = {
@@ -35,12 +35,15 @@ export const ShowCase = {
     },
   },
   render: () => (
-    <LiveProvider code={StorybookUtils.getThemeCode('dcx-keyboard-Input', style)} disabled={true} language="css">
+    <LiveProvider
+      code={StorybookUtils.getThemeCode('dcx-keyboard-Input', style)}
+      disabled={true}
+      language="css"
+    >
       <LiveEditor className="liveEditor" aria-label="editor" />
     </LiveProvider>
-  )
+  ),
 };
-
 
 export const Default = {
   name: 'Default',
@@ -57,4 +60,3 @@ export const Default = {
     children: 'ctrl+p',
   },
 };
-

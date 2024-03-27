@@ -8,11 +8,7 @@ export default {
   title: 'DCXLibrary/Typography/List/Design system',
   component: List,
   decorators: [
-    (getStory) => (
-      <TokensDecorator style={style}>
-        {getStory()}
-      </TokensDecorator>
-    ),
+    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
   ],
   parameters: {
     options: { showPanel: true },

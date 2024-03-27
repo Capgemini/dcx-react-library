@@ -6,8 +6,8 @@ import { LiveProvider, LiveEditor } from 'react-live';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
-* This is a theme aimed at easing the vizualization of the different elements of the component in order to improve the experience for people that have visual impairments.
-*/
+ * This is a theme aimed at easing the vizualization of the different elements of the component in order to improve the experience for people that have visual impairments.
+ */
 export default {
   title: 'DCXLibrary/Typography/Heading/Design system/Accessible',
   component: Heading,
@@ -16,13 +16,13 @@ export default {
       require('../../../dist/design-system/index.css');
       require('../../themes/accessible.theme.css');
       return getStory();
-    }
+    },
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export const ShowCase = {
@@ -36,10 +36,14 @@ export const ShowCase = {
     },
   },
   render: () => (
-    <LiveProvider code={StorybookUtils.getThemeCode('dcx-heading', style)} disabled={true} language="css">
+    <LiveProvider
+      code={StorybookUtils.getThemeCode('dcx-heading', style)}
+      disabled={true}
+      language="css"
+    >
       <LiveEditor className="liveEditor" aria-label="editor" />
     </LiveProvider>
-  )
+  ),
 };
 
 export const Default = {
@@ -47,7 +51,7 @@ export const Default = {
   args: {
     label: 'This is the content of the heading',
     level: 'h1',
-  }
+  },
 };
 
 export const level2 = {
@@ -56,7 +60,7 @@ export const level2 = {
     label: 'This is the content of the heading',
     level: 'h2',
     variant: 'level_2',
-  }
+  },
 };
 
 export const level3 = {
@@ -65,7 +69,7 @@ export const level3 = {
     label: 'This is the content of the heading',
     level: 'h3',
     variant: 'level_3',
-  }
+  },
 };
 
 export const level4 = {
@@ -74,7 +78,7 @@ export const level4 = {
     label: 'This is the content of the heading',
     level: 'h4',
     variant: 'level_4',
-  }
+  },
 };
 
 export const level5 = {
@@ -83,7 +87,7 @@ export const level5 = {
     label: 'This is the content of the heading',
     level: 'h5',
     variant: 'level_5',
-  }
+  },
 };
 
 export const level6 = {
@@ -92,5 +96,5 @@ export const level6 = {
     label: 'This is the content of the heading',
     level: 'h6',
     variant: 'level_6',
-  }
+  },
 };

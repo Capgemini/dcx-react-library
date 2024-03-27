@@ -1815,20 +1815,20 @@ export default {
       showPanel: true,
     },
   },
-  tags: ['autodocs'] 
+  tags: ['autodocs'],
 };
 
-export const Basic = {  
+export const Basic = {
   name: 'Basic',
   args: {
-    id:"demo-multi-select",
-    inputProperties:{
+    id: 'demo-multi-select',
+    inputProperties: {
       style: {
         padding: '3px 8px',
         margin: '12px 0px 2px 0px',
       },
     },
-    resultUlStyle:{
+    resultUlStyle: {
       maxHeight: '400px',
       overflow: 'scroll',
       width: '100%',
@@ -1837,41 +1837,39 @@ export const Basic = {
       border: 'solid 1px #aaa',
       margin: 0,
     },
-    resultLiStyle:{
+    resultLiStyle: {
       padding: '0 15px',
       postion: 'absolute',
     },
     selectOptions: options,
-    selectedListItemStyle:{
+    selectedListItemStyle: {
       backgroundColorColor: '#F5F7F8',
       border: '1px solid #C1C7CF',
       borderRadius: '3px',
       padding: '3px 8px',
       margin: '2px 6px 2px 0px',
     },
-    searchContainerStyle:{
+    searchContainerStyle: {
       border: '1px solid #A6A6A6',
       padding: '4px 6px',
       borderRadius: '3px',
     },
-    searchDebounceMs:0,
+    searchDebounceMs: 0,
   },
 };
 
-export const Hint = {  
+export const Hint = {
   name: 'Hint',
   args: {
-    id:"demo-multi-select",
-    hintText:"Enter your search term to add a selection",
-    inputProperties:{
+    id: 'demo-multi-select',
+    hintText: 'Enter your search term to add a selection',
+    inputProperties: {
       style: {
         padding: '3px 8px',
         margin: '12px 0px 2px 0px',
-       
-      
       },
     },
-    resultUlStyle:{
+    resultUlStyle: {
       maxHeight: '400px',
       overflow: 'scroll',
       width: '100%',
@@ -1880,43 +1878,41 @@ export const Hint = {
       border: 'solid 1px #aaa',
       margin: 0,
     },
-    resultLiStyle:{
+    resultLiStyle: {
       padding: '0 15px',
       postion: 'absolute',
     },
     selectOptions: options,
-    selectedListItemStyle:{
+    selectedListItemStyle: {
       backgroundColorColor: '#F5F7F8',
       border: '1px solid #C1C7CF',
       borderRadius: '3px',
       padding: '3px 8px',
       margin: '2px 6px 2px 0px',
     },
-    searchContainerStyle:{
+    searchContainerStyle: {
       border: '1px solid #A6A6A6',
       padding: '4px 6px',
       borderRadius: '3px',
     },
-    searchDebounceMs:0,
-    hintText:"Enter your search term to add a selection"
+    searchDebounceMs: 0,
+    hintText: 'Enter your search term to add a selection',
   },
 };
 
-export const Placeholder = {  
+export const Placeholder = {
   name: 'Placeholder',
   args: {
-    id:"demo-multi-select",
-    hintText:"Enter your search term to add a selection",
-    inputProperties:{
+    id: 'demo-multi-select',
+    hintText: 'Enter your search term to add a selection',
+    inputProperties: {
       placeholder: 'Select...',
       style: {
         padding: '3px 8px',
         margin: '12px 0px 2px 0px',
-       
-      
       },
     },
-    resultUlStyle:{
+    resultUlStyle: {
       maxHeight: '400px',
       overflow: 'scroll',
       width: '100%',
@@ -1925,24 +1921,24 @@ export const Placeholder = {
       border: 'solid 1px #aaa',
       margin: 0,
     },
-    resultLiStyle:{
+    resultLiStyle: {
       padding: '0 15px',
       postion: 'absolute',
     },
     selectOptions: options,
-    selectedListItemStyle:{
+    selectedListItemStyle: {
       backgroundColorColor: '#F5F7F8',
       border: '1px solid #C1C7CF',
       borderRadius: '3px',
       padding: '3px 8px',
       margin: '2px 6px 2px 0px',
     },
-    searchContainerStyle:{
+    searchContainerStyle: {
       border: '1px solid #A6A6A6',
       padding: '4px 6px',
       borderRadius: '3px',
     },
-    searchDebounceMs:0,
-    hintText:"Enter your search term to add a selection"
+    searchDebounceMs: 0,
+    hintText: 'Enter your search term to add a selection',
   },
 };

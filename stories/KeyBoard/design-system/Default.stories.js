@@ -1,27 +1,26 @@
 import { KeyboardInput } from '../../../src/keyBoard/KeyboardInput';
 /**
-* Here we display the keyboard input, importing only the base Design System styles.
-*/
+ * Here we display the keyboard input, importing only the base Design System styles.
+ */
 export default {
-  title:'DCXLibrary/Typography/KeyboardInput/Design system/Default',
+  title: 'DCXLibrary/Typography/KeyboardInput/Design system/Default',
   component: KeyboardInput,
-  decorators:[
+  decorators: [
     (getStory) => {
       require('../../../dist/design-system/index.css');
       return getStory();
-    }
+    },
   ],
-  parameters:{
+  parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs'] 
+  tags: ['autodocs'],
 };
 
-export const Default = {  
+export const Default = {
   name: 'Default',
   args: {
     children: 'ctrl+p',
   },
 };
-

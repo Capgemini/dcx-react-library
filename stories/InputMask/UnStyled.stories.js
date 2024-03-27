@@ -14,15 +14,15 @@ export default {
 export const Unstyled = {
   render: function ({ onChange, ...args }) {
     const [args_, setArgs] = useArgs();
-    const handleChange = event => {
+    const handleChange = (event) => {
       onChange(evt);
       setArgs({ value: event.currentTarget.value });
     };
     return <FormInputMasked {...args} onChange={handleChange} />;
   },
   args: {
-    name:"maskInput",
-    options:{
+    name: 'maskInput',
+    options: {
       mask: '£num',
       blocks: {
         num: {
@@ -31,8 +31,8 @@ export const Unstyled = {
         },
       },
     },
-    value:"",
-    type:"text"
+    value: '',
+    type: 'text',
   },
   argTypes: { onChange: { action: 'onChange' } },
 };

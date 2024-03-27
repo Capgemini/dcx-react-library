@@ -15,13 +15,13 @@ export default {
  */
 export const Unstyled = {
   args: {
-    legend:{
+    legend: {
       text: 'Heading text customisable by a given priority of type number between 1 to 6 (inclusive)',
       heading: {
         priority: 2,
       },
     },
-    items:[
+    items: [
       {
         label: 'item-label',
         value: 'yes',
