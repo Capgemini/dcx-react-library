@@ -115,8 +115,17 @@
   --dcx-color-text-paragraph: white;
 }
 
+.dcx-checkbox {
+  --dcx-color-text-formcontrol: white;
+  --dcx-color-text-formcontrol_label: white;
+  --dcx-border-color-formcontrol: white;
+  --dcx-color-text-formcontrol_hint: #999;
+  --dcx-color-outline-formcontrol: darkorange;
+}
+
 .dcx-radio-button-group {
   --dcx-color-text-formcontrol: white;
+  --dcx-color-text-body: white;
   --dcx-color-text-formcontrol_label: white;
   --dcx-border-color-formcontrol: white;
   --dcx-color-text-formcontrol_hint: #999;
