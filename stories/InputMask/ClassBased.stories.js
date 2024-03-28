@@ -2,7 +2,7 @@ import { useArgs } from '@storybook/preview-api';
 import { FormInputMasked } from '../../src/formInput/FormInputMasked';
 
 /**
- * In this section we're using the button component providing the **GovUk style** passing the relative `className.   
+ * In this section we're using the button component providing the **GovUk style** passing the relative `className.
  * Feel free to use your own css to style the formInput as you prefer.
  */
 export default {
@@ -13,24 +13,24 @@ export default {
       showPanel: true,
     },
   },
-  tags: ['autodocs'] 
+  tags: ['autodocs'],
 };
 
 /**
  * The following example will accept numeric values and put a £ symbol
  */
-export const PoundSymbol = {  
+export const PoundSymbol = {
   name: 'Pound symbol',
   render: function ({ onChange, ...args }) {
     const [args_, setArgs] = useArgs();
-    const handleChange = event => {
+    const handleChange = (event) => {
       onChange(evt);
       setArgs({ value: event.currentTarget.value });
     };
     return <FormInputMasked {...args} onChange={handleChange} />;
   },
   args: {
-    options:{
+    options: {
       mask: '£num',
       blocks: {
         num: {
@@ -40,10 +40,10 @@ export const PoundSymbol = {
         },
       },
     },
-    value:"",
-    type:"text",
-    name:"maskInput",
-    className:"govuk-input"
+    value: '',
+    type: 'text',
+    name: 'maskInput',
+    className: 'govuk-input',
   },
   argTypes: { onChange: { action: 'onChange' } },
 };
@@ -53,26 +53,26 @@ export const PoundSymbol = {
  * min: 1990, 0, 1,
  * max: 2020, 0, 1,
  */
-export const DateMask = {  
+export const DateMask = {
   name: 'Date',
   render: function ({ onChange, ...args }) {
     const [args_, setArgs] = useArgs();
-    const handleChange = event => {
+    const handleChange = (event) => {
       onChange(event);
     };
     return <FormInputMasked {...args} onChange={handleChange} />;
   },
   args: {
     options: {
-    		mask: Date,
-    		min: new Date(1990, 0, 1),
-    		max: new Date(2020, 0, 1),
-    		lazy: false
-  		},
-    value: "",
-    type:"text",
-    name:"maskInput",
-    className:"govuk-input"
+      mask: Date,
+      min: new Date(1990, 0, 1),
+      max: new Date(2020, 0, 1),
+      lazy: false,
+    },
+    value: '',
+    type: 'text',
+    name: 'maskInput',
+    className: 'govuk-input',
   },
   argTypes: { onChange: { action: 'onChange' } },
 };

@@ -8,81 +8,85 @@ export default {
       showPanel: true,
     },
   },
-  tags: ['autodocs'] 
+  tags: ['autodocs'],
 };
 
-
-
 export const Bottom = {
-  name: "Bottom",
-  render: function (args ) {
-    return(<div style={{padding: '250px'}}>
-    <ToolTip {...args}>
-      <b> Testing tooltip for bottom position </b>
-    </ToolTip>
-  </div>)
-    
+  name: 'Bottom',
+  render: function (args) {
+    return (
+      <div style={{ padding: '250px' }}>
+        <ToolTip {...args}>
+          <b> Testing tooltip for bottom position </b>
+        </ToolTip>
+      </div>
+    );
   },
   args: {
-    content:"Here is tooltip for bottom.",
-    width:"250px",
-    background:"#706666",
-    color:"white",
-    direction:"bottom",
+    content: 'Here is tooltip for bottom.',
+    width: '250px',
+    background: '#706666',
+    color: 'white',
+    direction: 'bottom',
   },
-}
-
+};
 
 export const Top = {
-  name: "Top",
+  name: 'Top',
   render: function (args) {
-    return(<div style={{padding: '250px'}}>
-      <ToolTip {...args}>
-        <b> Testing tooltip for top position </b>
-      </ToolTip>
-    </div>)
+    return (
+      <div style={{ padding: '250px' }}>
+        <ToolTip {...args}>
+          <b> Testing tooltip for top position </b>
+        </ToolTip>
+      </div>
+    );
   },
   args: {
-    content:"Here is tooltip for top.",
-    width:"250px",
-    background:"#706666",
-    color:"white",
-    direction:"top",
+    content: 'Here is tooltip for top.',
+    width: '250px',
+    background: '#706666',
+    color: 'white',
+    direction: 'top',
   },
-}
+};
 
 export const Right = {
-  name: "Right",
+  name: 'Right',
   render: function (args) {
-    return(<div style={{padding: '250px'}}>
-      <ToolTip {...args}>
-        <b> Testing tooltip for right position </b>
-      </ToolTip>
-    </div>)
+    return (
+      <div style={{ padding: '250px' }}>
+        <ToolTip {...args}>
+          <b> Testing tooltip for right position </b>
+        </ToolTip>
+      </div>
+    );
   },
   args: {
-    content:"Here is tooltip for right.",
-    width:"250px",
-    background:"#706666",
-    color:"white",
-    direction:"right",
+    content: 'Here is tooltip for right.',
+    width: '250px',
+    background: '#706666',
+    color: 'white',
+    direction: 'right',
   },
-}
+};
 
 export const Left = {
-  name: "Left",
+  name: 'Left',
   render: function (args) {
-    return(<div style={{padding: '250px'}}>
-      <ToolTip {...args}>
-        <b> Testing tooltip for left position </b>
-      </ToolTip>
-    </div>)
+    return (
+      <div style={{ padding: '250px' }}>
+        <ToolTip {...args}>
+          <b> Testing tooltip for left position </b>
+        </ToolTip>
+      </div>
+    );
   },
   args: {
-    content:"Here is tooltip for left.",
-    width:"250px",
-    background:"#706666",
-    color:"white",
-    direction:"left",
+    content: 'Here is tooltip for left.',
+    width: '250px',
+    background: '#706666',
+    color: 'white',
+    direction: 'left',
   },
-}
+};

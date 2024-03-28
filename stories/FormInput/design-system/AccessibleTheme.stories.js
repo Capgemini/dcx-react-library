@@ -5,9 +5,9 @@ import { useArgs } from '@storybook/preview-api';
 import { LiveProvider, LiveEditor } from 'react-live';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
-const InputStory = args => {
+const InputStory = (args) => {
   const [, setArgs] = useArgs();
-  const handleChange = event => {
+  const handleChange = (event) => {
     setArgs({ value: event.currentTarget.value });
   };
   return <FormInput {...args} onChange={handleChange} />;
@@ -20,7 +20,7 @@ export default {
   title: 'DCXLibrary/Form/Input/Design system/Accessible',
   component: FormInput,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/accessible.theme.css');
       return getStory();
@@ -291,14 +291,14 @@ export const StaticErrorBottomHintAbove = {
  */
 export const Error = {
   name: 'Error',
-  render: args => {
+  render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [, setArgs] = useArgs();
-    const handleChange = event => {
+    const handleChange = (event) => {
       setArgs({ value: event.currentTarget.value });
     };
     // eslint-disable-next-line no-console
-    const handleValidity = valid => console.log(valid);
+    const handleValidity = (valid) => console.log(valid);
     return (
       <FormInput {...args} onChange={handleChange} isValid={handleValidity} />
     );

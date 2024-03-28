@@ -2,7 +2,7 @@ import { FormInput } from '../../src/formInput/FormInput';
 import { useArgs } from '@storybook/preview-api';
 
 /**
- * In this section we're using the button component providing the **GovUk style** passing the relative `className.   
+ * In this section we're using the button component providing the **GovUk style** passing the relative `className.
  * Feel free to use your own css to style the formInput as you prefer.
  */
 export default {
@@ -13,7 +13,7 @@ export default {
       showPanel: true,
     },
   },
-  tags: ['autodocs'] 
+  tags: ['autodocs'],
 };
 
 export const Basic = {
@@ -27,12 +27,12 @@ export const Basic = {
     return <FormInput {...args} onChange={handleChange} />;
   },
   args: {
-    name:"text",
-    type:"text",
-    inputProps:{ className: 'govuk-input' },
-    value:"",
-    ariaLabel:"standard-input",
-    ariaRequired:"true"
+    name: 'text',
+    type: 'text',
+    inputProps: { className: 'govuk-input' },
+    value: '',
+    ariaLabel: 'standard-input',
+    ariaRequired: 'true',
   },
   argTypes: { onChange: { action: 'onChange' } },
 };
@@ -48,21 +48,21 @@ export const Label = {
     return <FormInput {...args} onChange={handleChange} />;
   },
   args: {
-    name:"text",
-    type:"text",
-    label:"User Reference (Optional)",
-    containerClassName:"govuk-label",
-    inputProps:{ 
-      id: 'user-reference', 
-      className: 'govuk-input' 
+    name: 'text',
+    type: 'text',
+    label: 'User Reference (Optional)',
+    containerClassName: 'govuk-label',
+    inputProps: {
+      id: 'user-reference',
+      className: 'govuk-input',
     },
-    labelProps:{ 
-      htmlFor: 'user-reference', 
-      className: 'govuk-label' 
+    labelProps: {
+      htmlFor: 'user-reference',
+      className: 'govuk-label',
     },
-    value:"",
-    ariaLabel:"standard-input",
-    ariaRequired:"true"
+    value: '',
+    ariaLabel: 'standard-input',
+    ariaRequired: 'true',
   },
   argTypes: { onChange: { action: 'onChange' } },
 };
@@ -78,19 +78,19 @@ export const Suffix = {
     return <FormInput {...args} onChange={handleChange} />;
   },
   args: {
-    name:"text0",
-    type:"text",
-    inputClassName:"govuk-input",
-    value:"",
-    suffix:{
+    name: 'text0',
+    type: 'text',
+    inputClassName: 'govuk-input',
+    value: '',
+    suffix: {
       properties: {
         className: 'govuk-input__suffix',
         'aria-hidden': 'true',
       },
       content: 'kg',
     },
-    ariaLabel:"standard-input-suffix",
-    ariaRequired:"true"
+    ariaLabel: 'standard-input-suffix',
+    ariaRequired: 'true',
   },
   argTypes: { onChange: { action: 'onChange' } },
 };
@@ -106,19 +106,19 @@ export const Prefix = {
     return <FormInput {...args} onChange={handleChange} />;
   },
   args: {
-    name:"text0",
-    type:"text",
-    inputClassName:"govuk-input",
-    value:"",
-    prefix:{
+    name: 'text0',
+    type: 'text',
+    inputClassName: 'govuk-input',
+    value: '',
+    prefix: {
       properties: {
         className: 'govuk-input__prefix',
         'aria-hidden': 'true',
       },
       content: '£',
     },
-    ariaLabel:"standard-input-suffix",
-    ariaRequired:"true"
+    ariaLabel: 'standard-input-suffix',
+    ariaRequired: 'true',
   },
   argTypes: { onChange: { action: 'onChange' } },
 };
@@ -134,26 +134,26 @@ export const PrefixAndSuffix = {
     return <FormInput {...args} onChange={handleChange} />;
   },
   args: {
-    name:"text0",
-    type:"text",
-    inputClassName:"govuk-input",
-    value:"",
-    suffix:{
+    name: 'text0',
+    type: 'text',
+    inputClassName: 'govuk-input',
+    value: '',
+    suffix: {
       properties: {
         className: 'govuk-input__suffix',
         'aria-hidden': 'true',
       },
       content: 'per item',
     },
-    prefix:{
+    prefix: {
       properties: {
         className: 'govuk-input__prefix',
         'aria-hidden': 'true',
       },
       content: '£',
     },
-    ariaLabel:"standard-input-suffix",
-    ariaRequired:"true"
+    ariaLabel: 'standard-input-suffix',
+    ariaRequired: 'true',
   },
   argTypes: { onChange: { action: 'onChange' } },
 };
@@ -169,17 +169,17 @@ export const Hint = {
     return <FormInput {...args} onChange={handleChange} />;
   },
   args: {
-    name:"text3",
-    type:"text",
-    value:"",
-    inputClassName:"govuk-input",
-    hint:{
+    name: 'text3',
+    type: 'text',
+    value: '',
+    inputClassName: 'govuk-input',
+    hint: {
       position: 'above',
       text: 'this is an example hint',
       className: 'govuk-hint',
     },
-    ariaLabel:"standard-input-validation",
-    ariaRequired:"true",
+    ariaLabel: 'standard-input-validation',
+    ariaRequired: 'true',
   },
   argTypes: { onChange: { action: 'onChange' } },
 };
@@ -187,29 +187,29 @@ export const Hint = {
 export const StaticError = {
   name: 'Static error',
   args: {
-    label:"this is a label",
-    containerClassName:"govuk-form-group",
-    inputClassName:"govuk-input",
-    labelClassName:"govuk-label",
-    name:"id",
-    inputProps:{ id: 'id' },
-    type:"text",
-    value:"value",
-    ariaLabel:"input-with-error",
-    ariaRequired:"true",
-    hint:{
+    label: 'this is a label',
+    containerClassName: 'govuk-form-group',
+    inputClassName: 'govuk-input',
+    labelClassName: 'govuk-label',
+    name: 'id',
+    inputProps: { id: 'id' },
+    type: 'text',
+    value: 'value',
+    ariaLabel: 'input-with-error',
+    ariaRequired: 'true',
+    hint: {
       position: 'above',
       text: 'My hint',
       id: 'id_hint',
       className: 'govuk-hint',
     },
-    errorProps:{ 
-      className: 'govuk-error-message' 
+    errorProps: {
+      className: 'govuk-error-message',
     },
-    staticErrorMessage:"some error appened here",
-    errorPosition:"after-hint",
-    containerClassNameError:"govuk-form-group--error",
-  }
+    staticErrorMessage: 'some error appened here',
+    errorPosition: 'after-hint',
+    containerClassNameError: 'govuk-form-group--error',
+  },
 };
 
 /**
@@ -224,29 +224,31 @@ export const Error = {
       setArgs({ value: event.currentTarget.value });
     };
     const handleValidity = (valid) => console.log(valid);
-    return <FormInput {...args} onChange={handleChange} isValid={handleValidity} />;
+    return (
+      <FormInput {...args} onChange={handleChange} isValid={handleValidity} />
+    );
   },
   args: {
-    name: "text3",
-    type: "text",
-    value: "",
-    inputClassName:"govuk-input",
-    errorProps:{
+    name: 'text3',
+    type: 'text',
+    value: '',
+    inputClassName: 'govuk-input',
+    errorProps: {
       className: 'govuk-error-message',
     },
-    validation:{
+    validation: {
       rule: {
         type: 'string',
         minLength: 1,
       },
       message: 'Enter an event name',
     },
-    errorMessage:{
+    errorMessage: {
       className: 'govuk-error-message',
     },
-    errorPosition:"before-label",
-    ariaLabel:"standard-input-validation",
-    ariaRequired:"true"
+    errorPosition: 'before-label',
+    ariaLabel: 'standard-input-validation',
+    ariaRequired: 'true',
   },
   argTypes: { onChange: { action: 'onChange' } },
 };

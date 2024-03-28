@@ -5,9 +5,9 @@ import { useArgs } from '@storybook/preview-api';
 import { LiveProvider, LiveEditor } from 'react-live';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
-const InputStory = args => {
+const InputStory = (args) => {
   const [, setArgs] = useArgs();
-  const handleChange = event => {
+  const handleChange = (event) => {
     setArgs({ value: event.currentTarget.value });
   };
   return <FormInput {...args} onChange={handleChange} />;
@@ -20,7 +20,7 @@ export default {
   title: 'DCXLibrary/Form/Input/Design system/Dark',
   component: FormInput,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/dark.theme.css');
       return getStory();

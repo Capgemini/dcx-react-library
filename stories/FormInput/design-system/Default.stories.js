@@ -1,9 +1,9 @@
 import { useArgs } from '@storybook/preview-api';
 import { FormInput } from '../../../src/formInput';
 
-const InputStory = args => {
+const InputStory = (args) => {
   const [, setArgs] = useArgs();
-  const handleChange = event => {
+  const handleChange = (event) => {
     setArgs({ value: event.currentTarget.value });
   };
   return <FormInput {...args} onChange={handleChange} />;
@@ -16,7 +16,7 @@ export default {
   title: 'DCXLibrary/Form/Input/Design system/Default',
   component: FormInput,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       return getStory();
     },
@@ -260,14 +260,14 @@ export const StaticErrorBottomHintAbove = {
  */
 export const Error = {
   name: 'Error',
-  render: args => {
+  render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [, setArgs] = useArgs();
-    const handleChange = event => {
+    const handleChange = (event) => {
       setArgs({ value: event.currentTarget.value });
     };
     // eslint-disable-next-line no-console
-    const handleValidity = valid => console.log(valid);
+    const handleValidity = (valid) => console.log(valid);
     return (
       <FormInput {...args} onChange={handleChange} isValid={handleValidity} />
     );

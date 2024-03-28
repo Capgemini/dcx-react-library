@@ -19,7 +19,6 @@ export const Basic = {
   name: 'Basic',
   args: {
     className: 'highlight',
-    children: 'This is the content of the highlighted text.'
-  }
-}
-
+    children: 'This is the content of the highlighted text.',
+  },
+};

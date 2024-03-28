@@ -19,5 +19,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <AutocompleteLive />
+  render: () => <AutocompleteLive />,
 };

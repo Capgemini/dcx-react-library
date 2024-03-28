@@ -20,10 +20,10 @@ const stylesButtonActive = {
   borderBottom: '2px solid #3f51b5',
 };
 
-const InputStory = args => {
+const InputStory = (args) => {
   const [, setArgs] = useArgs();
   const [variant, setVariant] = React.useState('floating');
-  const handleChange = event => {
+  const handleChange = (event) => {
     setArgs({ value: event.currentTarget.value });
   };
   return (
@@ -59,7 +59,7 @@ export default {
   title: 'DCXLibrary/Form/Input/Design system/Material',
   component: FormInput,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/material.theme.css');
       return getStory();

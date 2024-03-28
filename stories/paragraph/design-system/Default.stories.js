@@ -6,7 +6,7 @@ export default {
   title: 'DCXLibrary/Typography/Paragraph/Design system/Default',
   component: Paragraph,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       return getStory();
     },

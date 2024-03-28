@@ -2,7 +2,7 @@ import style from '!raw-loader!../../themes/accessible.theme.css';
 import { LiveProvider, LiveEditor } from 'react-live';
 import { FormCheckbox } from '../../../src/formCheckbox/FormCheckbox';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
-import { useArgs } from '@storybook/addons';
+import { useArgs } from '@storybook/preview-api';
 
 /**
  * This a theme aimed at easing the vizualization of the different elements of the component in order to improve the experience for people that have visual impairments.

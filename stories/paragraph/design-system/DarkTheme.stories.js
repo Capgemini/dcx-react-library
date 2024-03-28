@@ -11,7 +11,7 @@ export default {
   title: 'DCXLibrary/Typography/Paragraph/Design system/Dark',
   component: Paragraph,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/dark.theme.css');
       return getStory();

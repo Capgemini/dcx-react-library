@@ -7,19 +7,15 @@ export default {
   title: 'DCXLibrary/Typography/Highlight/Design system',
   component: Highlight,
   decorators: [
-    (getStory) => (
-      <TokensDecorator style={style}>
-        {getStory()}
-      </TokensDecorator>
-    )
+    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
-  }
+  },
 };
 
-export const Default = {  
+export const Default = {
   name: 'Playground',
   args: {
     children: 'This is the content of the highlighted text.',

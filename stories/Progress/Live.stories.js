@@ -19,5 +19,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <ProgressLive />
+  render: () => <ProgressLive />,
 };

@@ -12,13 +12,9 @@ export default {
 
 export const Unstyled = {
   render: function (args) {
-    return (
-      <Details {...args}>
-        some detail information
-      </Details>
-    )
+    return <Details {...args}>some detail information</Details>;
   },
   args: {
-    summary:"some headline summary"
+    summary: 'some headline summary',
   },
 };

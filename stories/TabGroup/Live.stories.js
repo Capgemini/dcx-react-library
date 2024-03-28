@@ -18,5 +18,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <TabGroupLive />
-}
+  render: () => <TabGroupLive />,
+};
