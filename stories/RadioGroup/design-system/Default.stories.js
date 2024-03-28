@@ -124,32 +124,6 @@ export const Hint = {
   argTypes: { onClick: { action: 'clicked' } },
 };
 
-export const SmallCheckbox = {
-  name: 'Small checkboxes',
-  args: {
-    name: 'filter-change',
-    items: [
-      {
-        label: 'Monthly',
-        value: 'month',
-        id: 'changed-name-month',
-      },
-      {
-        label: 'Yearly',
-        value: 'year',
-        id: 'changed-name-year',
-      },
-    ],
-    legend: {
-      text: 'Filter',
-      heading: {
-        priority: 1,
-      },
-    },
-  },
-  argTypes: { onClick: { action: 'clicked' } },
-};
-
 export const Error = {
   name: 'Error message',
   args: {
@@ -194,6 +168,44 @@ export const Error = {
   argTypes: { onClick: { action: 'clicked' } },
 };
 
+export const Disabled = {
+  name: 'Disabled item',
+  args: {
+    name: 'live-error',
+    items: [
+      {
+        label: 'England',
+        value: 'england',
+        id: 'live-england-error',
+        disabled: true,
+      },
+      {
+        label: 'Ireland',
+        value: 'ireland',
+        id: 'live-ireland-error',
+      },
+      {
+        label: 'Scotland',
+        value: 'scotland',
+        id: 'live-scotland-error',
+      },
+      {
+        label: 'Wales',
+        value: 'wales',
+        id: 'live-wales-error',
+      },
+    ],
+    ariaDescribedBy: 'changed-name-hint changed-name-error',
+    legend: {
+      text: 'Where do you live?',
+      heading: {
+        priority: 1,
+      },
+    },
+  },
+  argTypes: { onClick: { action: 'clicked' } },
+};
+
 export const TextDivider = {
   name: 'Text divider',
   args: {
@@ -220,7 +232,6 @@ export const TextDivider = {
         id: 'where-do-you-live-divider-4',
       },
       {
-        className: 'govuk-checkboxes__divider',
         text: 'or',
       },
       {
