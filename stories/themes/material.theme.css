@@ -55,6 +55,7 @@
   --dcx-border-radius-formcontrol: 6px;
   --dcx-color-text-formcontrol: #00000099;
   --dcx-color-text-formcontrol_label: #00000099;
+  --dcx-clip-path-formcontrol_checkmark: inset(4px 1px);
 }
 
 .dcx-radio-button-group {
