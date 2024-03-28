@@ -56,3 +56,13 @@
   --dcx-font-size-formcontrol_label: 20px;
   --dcx-font-formcontrol_label-line-height: 24px;
 }
+
+.dcx-checkbox-group {
+  --dcx-border-radius-formcontrol: 0px;
+  --dcx-font-formcontrol_hint-size: 20px;
+  --dcx-font-formcontrol_hint-line-height: 20px;
+  --dcx-font-formcontrol_error-size: 18px;
+  --dcx-font-formcontrol_error-line-height: 20px;
+  --dcx-font-size-formcontrol_label: 20px;
+  --dcx-font-formcontrol_label-line-height: 24px;
+}

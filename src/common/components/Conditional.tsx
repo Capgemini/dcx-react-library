@@ -1,5 +1,6 @@
 import React from 'react';
 import { ConditionalInputProps } from './commonTypes';
+import { classNames } from '../utils';
 
 export const Conditional = ({
   name,
@@ -19,8 +20,10 @@ export const Conditional = ({
       if (onChange) onChange(event);
     };
 
+  const containerClasses = classNames([className, 'dcx-conditional-input']);
+
   return (
-    <div className={className} id={id}>
+    <div className={containerClasses} id={id}>
       <div className={groupClassName}>
         <label className={labelClassName} htmlFor={inputId}>
           {label}

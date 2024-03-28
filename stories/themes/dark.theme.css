@@ -137,3 +137,18 @@
   --dcx-color-text-heading-level_5: white;
   --dcx-color-text-heading-level_6: white;
 }
+
+.dcx-checkbox-group {
+  --dcx-color-text-formcontrol: white;
+  --dcx-color-text-body: white;
+  --dcx-color-text-formcontrol_label: white;
+  --dcx-border-color-formcontrol: white;
+  --dcx-color-text-formcontrol_hint: #999;
+  --dcx-color-outline-formcontrol: darkorange;
+  --dcx-color-text-heading-level_1: white;
+  --dcx-color-text-heading-level_2: white;
+  --dcx-color-text-heading-level_3: white;
+  --dcx-color-text-heading-level_4: white;
+  --dcx-color-text-heading-level_5: white;
+  --dcx-color-text-heading-level_6: white;
+}

@@ -1,4 +1,4 @@
-import { RadioGroup } from '../../../src/radioGroup/RadioGroup';
+import { CheckboxGroup } from '../../../src/checkboxGroup/CheckboxGroup';
 import { LiveProvider, LiveEditor } from 'react-live';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import style from '!raw-loader!../../themes/material.theme.css';
@@ -9,8 +9,8 @@ import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
  * If you copy paste this snippet inside your css file you'll get a material design style
  */
 export default {
-  title: 'DCXLibrary/Form/RadioGroup/Design system/Material',
-  component: RadioGroup,
+  title: 'DCXLibrary/Form/CheckboxGroup/Design system/Material',
+  component: CheckboxGroup,
   decorators: [
     (getStory) => {
       require('../../../dist/design-system/index.css');
@@ -37,7 +37,7 @@ export const ShowCase = {
   },
   render: () => (
     <LiveProvider
-      code={StorybookUtils.getThemeCode('dcx-radio-button-group', style)}
+      code={StorybookUtils.getThemeCode('dcx-checkbox-group', style)}
       disabled={true}
       language="css"
     >
@@ -161,7 +161,7 @@ export const Disabled = {
         label: 'England',
         value: 'england',
         id: 'live-england-error',
-        disabled: true,
+        disabled: true
       },
       {
         label: 'Ireland',

@@ -827,12 +827,72 @@ describe('FormRadioCheckboxBase', () => {
     expect(screen.getAllByRole('checkbox')[1]).not.toBeChecked();
   });
 
-  it('should call on change of an item if a conditional input has changed', async () => {
+  it('should call on change of an item if a conditional input type radio has changed', async () => {
     const handleChange = jest.fn();
     const user = userEvent.setup();
     render(
       <FormRadioCheckboxBase
         type="radio"
+        groupClasses=""
+        id=""
+        name="group1"
+        legend={{
+          text: 'Have you changed your name?',
+          heading: {
+            priority: 1,
+          },
+        }}
+        items={[
+          {
+            value: 'yes',
+            label: 'Yes',
+            id: 'first',
+            selected: true,
+            conditional: {
+              value: '',
+              name: '',
+              label: '',
+              type: 'text',
+              className: '',
+              groupClassName: '',
+              id: 'conditional-1',
+              inputClassName: '',
+              inputId: '',
+              labelClassName: '',
+            },
+          },
+          {
+            value: 'no',
+            label: 'No',
+            id: 'second',
+            conditional: {
+              value: '',
+              name: '',
+              label: '',
+              type: 'text',
+              className: '',
+              groupClassName: '',
+              id: 'conditional-2',
+              inputClassName: '',
+              inputId: '',
+              labelClassName: '',
+            },
+          },
+        ]}
+        onChange={handleChange}
+      />
+    );
+    const input: Element = screen.getByRole('textbox');
+    await user.type(input, 'mo');
+
+    expect(handleChange).toHaveBeenCalledTimes(2);
+  });
+  it('should call on change of an item if a conditional input type checkbox has changed', async () => {
+    const handleChange = jest.fn();
+    const user = userEvent.setup();
+    render(
+      <FormRadioCheckboxBase
+        type="checkbox"
         groupClasses=""
         id=""
         name="group1"

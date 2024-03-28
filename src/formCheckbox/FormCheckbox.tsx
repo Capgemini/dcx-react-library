@@ -26,7 +26,10 @@ export const FormCheckbox = ({
   itemClassName,
   isError,
 }: FormRadioCheckboxProps & {
-  onChange?: (event: React.ChangeEvent, conditional?: string) => void;
+  onChange?: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    conditional?: string
+  ) => void;
   isError?: boolean;
 }) => {
   const containerClasses = classNames([

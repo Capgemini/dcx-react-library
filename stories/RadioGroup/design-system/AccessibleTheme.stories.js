@@ -150,24 +150,36 @@ export const Hint = {
   argTypes: { onClick: { action: 'clicked' } },
 };
 
-export const SmallCheckbox = {
-  name: 'Small checkboxes',
+export const Disabled = {
+  name: 'Disabled item',
   args: {
-    name: 'filter-change',
+    name: 'live-error',
     items: [
       {
-        label: 'Monthly',
-        value: 'month',
-        id: 'changed-name-month',
+        label: 'England',
+        value: 'england',
+        id: 'live-england-error',
+        disabled: true,
       },
       {
-        label: 'Yearly',
-        value: 'year',
-        id: 'changed-name-year',
+        label: 'Ireland',
+        value: 'ireland',
+        id: 'live-ireland-error',
+      },
+      {
+        label: 'Scotland',
+        value: 'scotland',
+        id: 'live-scotland-error',
+      },
+      {
+        label: 'Wales',
+        value: 'wales',
+        id: 'live-wales-error',
       },
     ],
+    ariaDescribedBy: 'changed-name-hint changed-name-error',
     legend: {
-      text: 'Filter',
+      text: 'Where do you live?',
       heading: {
         priority: 1,
       },
@@ -246,7 +258,6 @@ export const TextDivider = {
         id: 'where-do-you-live-divider-4',
       },
       {
-        className: 'govuk-checkboxes__divider',
         text: 'or',
       },
       {
