@@ -6,7 +6,9 @@ import { Link } from '../../../src/link/Link';
 export default {
   title: 'DCXLibrary/Typography/Link/Design system',
   component: Link,
-  decorators: [getStory => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,],
+  decorators: [
+    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
+  ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },

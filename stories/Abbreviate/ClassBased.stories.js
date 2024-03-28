@@ -19,6 +19,6 @@ export const Basic = {
   args: {
     className: 'abbreviate',
     title: 'Laugh Out Loud',
-    value: 'LOL'
+    value: 'LOL',
   },
 };

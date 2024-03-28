@@ -1,4 +1,9 @@
-import { Accordion, AccordionDetails, AccordionItem, AccordionTitle } from '../../src/accordion';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionItem,
+  AccordionTitle,
+} from '../../src/accordion';
 
 export default {
   title: 'DCXLibrary/Layout/Accordion/Without style',
@@ -14,23 +19,29 @@ export const Unstyled = {
   render: function (args) {
     return (
       <Accordion {...args}>
-    <AccordionItem title="1">
-      <AccordionTitle>
-        <>Frequently Asked Questions</>
-      </AccordionTitle>
-      <AccordionDetails>
-        <p>Here you can find answers to the most commonly asked questions about our product.</p>
-      </AccordionDetails>
-    </AccordionItem>
-    <AccordionItem title="2">
-      <AccordionTitle>
-        <>Contact Information</>
-      </AccordionTitle>
-      <AccordionDetails>
-        <p>Here you can find various ways to get in touch with our support team.</p>
-      </AccordionDetails>
-    </AccordionItem>
-  </Accordion>
+        <AccordionItem title="1">
+          <AccordionTitle>
+            <>Frequently Asked Questions</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <p>
+              Here you can find answers to the most commonly asked questions
+              about our product.
+            </p>
+          </AccordionDetails>
+        </AccordionItem>
+        <AccordionItem title="2">
+          <AccordionTitle>
+            <>Contact Information</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <p>
+              Here you can find various ways to get in touch with our support
+              team.
+            </p>
+          </AccordionDetails>
+        </AccordionItem>
+      </Accordion>
     );
   },
   args: {

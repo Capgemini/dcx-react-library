@@ -17,8 +17,8 @@ export const Unstyled = {
   args: {
     label: 'Label for text area',
     hint: { text: 'Optional hint' },
-    maxLength:10,
-    cols:30,
-    rows:5
+    maxLength: 10,
+    cols: 30,
+    rows: 5,
   },
 };

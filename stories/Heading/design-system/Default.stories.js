@@ -1,8 +1,8 @@
 import { Heading } from '../../../src/heading/Heading';
 
 /**
-* Here we display the component in its natural form, importing only the base Design System styles.
-*/
+ * Here we display the component in its natural form, importing only the base Design System styles.
+ */
 export default {
   title: 'DCXLibrary/Typography/Heading/Design system/Default',
   component: Heading,
@@ -10,13 +10,13 @@ export default {
     (getStory) => {
       require('../../../dist/design-system/index.css');
       return getStory();
-    }
+    },
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export const Default = {
@@ -24,7 +24,7 @@ export const Default = {
   args: {
     label: 'This is the content of the heading',
     level: 'h1',
-  }
+  },
 };
 
 export const level2 = {
@@ -33,7 +33,7 @@ export const level2 = {
     label: 'This is the content of the heading',
     level: 'h2',
     variant: 'level_2',
-  }
+  },
 };
 
 export const level3 = {
@@ -42,7 +42,7 @@ export const level3 = {
     label: 'This is the content of the heading',
     level: 'h3',
     variant: 'level_3',
-  }
+  },
 };
 
 export const level4 = {
@@ -51,7 +51,7 @@ export const level4 = {
     label: 'This is the content of the heading',
     level: 'h4',
     variant: 'level_4',
-  }
+  },
 };
 
 export const level5 = {
@@ -60,7 +60,7 @@ export const level5 = {
     label: 'This is the content of the heading',
     level: 'h5',
     variant: 'level_5',
-  }
+  },
 };
 
 export const level6 = {
@@ -69,5 +69,5 @@ export const level6 = {
     label: 'This is the content of the heading',
     level: 'h6',
     variant: 'level_6',
-  }
+  },
 };

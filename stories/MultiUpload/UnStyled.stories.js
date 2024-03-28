@@ -10,17 +10,18 @@ export default {
   },
 };
 export const Unstyled = {
-  render: function ({onChange,...args}) {
-    const handleChange = file => {
+  render: function ({ onChange, ...args }) {
+    const handleChange = (file) => {
       onChange(file);
-      alert(`${file.name} was uploaded, it was last modified at ${new Date(file.lastModified).toLocaleDateString("en-us")}`);
-    }
-    return (<MultiUpload {...args} onChange={handleChange}/>);
+      alert(
+        `${file.name} was uploaded, it was last modified at ${new Date(file.lastModified).toLocaleDateString('en-us')}`
+      );
+    };
+    return <MultiUpload {...args} onChange={handleChange} />;
   },
   args: {
-    name:"file-upload", 
-    label:"Upload File" 
+    name: 'file-upload',
+    label: 'Upload File',
   },
   argTypes: { onChange: { action: 'onChange' } },
-
 };

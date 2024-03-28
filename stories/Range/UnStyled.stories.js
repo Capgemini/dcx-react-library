@@ -15,8 +15,8 @@ export default {
  */
 export const Unstyled = {
   args: {
-    min:0, 
-    max:100, 
-    ariaLabel:"Range"
+    min: 0,
+    max: 100,
+    ariaLabel: 'Range',
   },
 };

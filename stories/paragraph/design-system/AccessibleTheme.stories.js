@@ -10,7 +10,7 @@ export default {
   title: 'DCXLibrary/Typography/Paragraph/Design system/Accessible',
   component: Paragraph,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/accessible.theme.css');
       return getStory();

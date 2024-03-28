@@ -1,7 +1,7 @@
 import { CheckboxGroup } from '../../src/checkboxGroup/CheckboxGroup';
 
 /**
- * In this section we're using the CheckboxGroup component providing the **GovUk style** passing the relative `className.   
+ * In this section we're using the CheckboxGroup component providing the **GovUk style** passing the relative `className.
  * Feel free to use your own css to style the formInput as you prefer.
  */
 export default {
@@ -12,17 +12,17 @@ export default {
       showPanel: true,
     },
   },
-  tags: ['autodocs'] 
+  tags: ['autodocs'],
 };
 
-export const SharedStyle = {  
+export const SharedStyle = {
   name: 'shared styles',
   args: {
     name: 'waste',
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
-    items:[
+    inputClassName: 'govuk-checkboxes__input',
+    itemClassName: 'govuk-checkboxes__item',
+    labelClassName: 'govuk-label govuk-checkboxes__label',
+    items: [
       {
         label: 'Waste from animal carcasses',
         value: 'carcasses',
@@ -39,30 +39,30 @@ export const SharedStyle = {
         id: 'waste-3',
       },
     ],
-    ariaDescribedBy:"changed-name-hint",
-    groupClasses:"govuk-form-group",
-    fieldsetClasses:"govuk-fieldset",
-    itemsClasses:"govuk-checkboxes",
-    legend:{
+    ariaDescribedBy: 'changed-name-hint',
+    groupClasses: 'govuk-form-group',
+    fieldsetClasses: 'govuk-fieldset',
+    itemsClasses: 'govuk-checkboxes',
+    legend: {
       text: 'Which types of waste do you transport?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
       heading: {
         priority: 1,
         className: 'govuk-fieldset__heading',
       },
-    }
+    },
   },
   argTypes: { onClick: { action: 'clicked' } },
 };
 
-export const Titled = {  
+export const Titled = {
   name: 'Titled',
   args: {
-    name:"waste-2",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
-    items:[
+    name: 'waste-2',
+    inputClassName: 'govuk-checkboxes__input',
+    itemClassName: 'govuk-checkboxes__item',
+    labelClassName: 'govuk-label govuk-checkboxes__label',
+    items: [
       {
         label: 'Waste from animal carcasses',
         value: 'carcasses',
@@ -79,29 +79,29 @@ export const Titled = {
         id: 'waste-3',
       },
     ],
-    groupClasses:"govuk-form-group",
-    fieldsetClasses:"govuk-fieldset",
-    itemsClasses:"govuk-checkboxes",
-    legend:{
+    groupClasses: 'govuk-form-group',
+    fieldsetClasses: 'govuk-fieldset',
+    itemsClasses: 'govuk-checkboxes',
+    legend: {
       text: 'Which types of waste do you transport?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend',
       heading: {
         priority: 1,
         className: 'govuk-fieldset__heading',
       },
-    }
+    },
   },
   argTypes: { onClick: { action: 'clicked' } },
 };
 
-export const Hint = {  
+export const Hint = {
   name: 'With hints',
   args: {
-    name:"nationality",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
-    items:[
+    name: 'nationality',
+    inputClassName: 'govuk-checkboxes__input',
+    itemClassName: 'govuk-checkboxes__item',
+    labelClassName: 'govuk-label govuk-checkboxes__label',
+    items: [
       {
         label: 'British',
         value: 'british',
@@ -125,36 +125,35 @@ export const Hint = {
         id: 'nationality-3',
       },
     ],
-    ariaDescribedBy:"nationality-hint",
-    groupClasses:"govuk-form-group",
-    fieldsetClasses:"govuk-fieldset",
-    hint:{
+    ariaDescribedBy: 'nationality-hint',
+    groupClasses: 'govuk-form-group',
+    fieldsetClasses: 'govuk-fieldset',
+    hint: {
       id: 'nationality-hint',
       text: 'If you have dual nationality, select all options that are relevant to you.',
       className: 'govuk-hint',
     },
-    itemsClasses:"govuk-checkboxes",
-    legend:{
+    itemsClasses: 'govuk-checkboxes',
+    legend: {
       text: 'What is your nationality?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
       heading: {
         priority: 1,
         className: 'govuk-fieldset__heading',
       },
-    }
+    },
   },
   argTypes: { onClick: { action: 'clicked' } },
 };
 
-
-export const SmallCheckbox = {  
+export const SmallCheckbox = {
   name: 'Small checkboxes',
   args: {
-    name:"filter-change",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
-    items:[
+    name: 'filter-change',
+    inputClassName: 'govuk-checkboxes__input',
+    itemClassName: 'govuk-checkboxes__item',
+    labelClassName: 'govuk-label govuk-checkboxes__label',
+    items: [
       {
         label: 'Monthly',
         value: 'month',
@@ -166,10 +165,10 @@ export const SmallCheckbox = {
         id: 'changed-name-year',
       },
     ],
-    groupClasses:"govuk-checkboxes govuk-checkboxes--small",
-    fieldsetClasses:"govuk-fieldset",
-    itemsClasses:"govuk-checkboxes govuk-checkboxes--small",
-    legend:{
+    groupClasses: 'govuk-checkboxes govuk-checkboxes--small',
+    fieldsetClasses: 'govuk-fieldset',
+    itemsClasses: 'govuk-checkboxes govuk-checkboxes--small',
+    legend: {
       text: 'Filter',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--m',
       heading: {
@@ -181,14 +180,14 @@ export const SmallCheckbox = {
   argTypes: { onClick: { action: 'clicked' } },
 };
 
-export const Error = {  
+export const Error = {
   name: 'Error message',
   args: {
-    name:"live-error",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
-    items:[
+    name: 'live-error',
+    inputClassName: 'govuk-checkboxes__input',
+    itemClassName: 'govuk-checkboxes__item',
+    labelClassName: 'govuk-label govuk-checkboxes__label',
+    items: [
       {
         label: 'England',
         value: 'england',
@@ -210,10 +209,10 @@ export const Error = {
         id: 'live-wales-error',
       },
     ],
-    ariaDescribedBy:"changed-name-hint changed-name-error",
-    groupClasses:"govuk-form-group govuk-form-group--error",
-    fieldsetClasses:"govuk-fieldset",
-    error:{
+    ariaDescribedBy: 'changed-name-hint changed-name-error',
+    groupClasses: 'govuk-form-group govuk-form-group--error',
+    fieldsetClasses: 'govuk-fieldset',
+    error: {
       text: 'Please confirm where you live',
       className: 'govuk-error-message',
       id: 'changed-name-error',
@@ -222,8 +221,8 @@ export const Error = {
         className: 'govuk-visually-hidden',
       },
     },
-    itemsClasses:"govuk-checkboxes",
-    legend:{
+    itemsClasses: 'govuk-checkboxes',
+    legend: {
       text: 'Where do you live?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
       heading: {
@@ -233,17 +232,16 @@ export const Error = {
     },
   },
   argTypes: { onClick: { action: 'clicked' } },
-}
+};
 
-
-export const TextDivider = {  
+export const TextDivider = {
   name: 'Text divider',
   args: {
-    name:"where-do-you-live-divider",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
-    items:[
+    name: 'where-do-you-live-divider',
+    inputClassName: 'govuk-checkboxes__input',
+    itemClassName: 'govuk-checkboxes__item',
+    labelClassName: 'govuk-label govuk-checkboxes__label',
+    items: [
       {
         label: 'England',
         value: 'england',
@@ -274,25 +272,25 @@ export const TextDivider = {
         id: 'where-do-you-live-divider-5',
       },
     ],
-    groupClasses:"govuk-form-group",
-    fieldsetClasses:"govuk-fieldset",
-    itemsClasses:"govuk-checkboxes",
-    legend:{
+    groupClasses: 'govuk-form-group',
+    fieldsetClasses: 'govuk-fieldset',
+    itemsClasses: 'govuk-checkboxes',
+    legend: {
       text: 'Where do you live?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
-    }
+    },
   },
   argTypes: { onClick: { action: 'clicked' } },
-}
+};
 
-export const ConditionalRevealing = {  
+export const ConditionalRevealing = {
   name: 'Conditionally revealing content',
   args: {
-    name:"contact",
-    inputClassName:"govuk-checkboxes__input",
-    itemClassName:"govuk-checkboxes__item",
-    labelClassName:"govuk-label govuk-checkboxes__label",
-    items:[
+    name: 'contact',
+    inputClassName: 'govuk-checkboxes__input',
+    itemClassName: 'govuk-checkboxes__item',
+    labelClassName: 'govuk-label govuk-checkboxes__label',
+    items: [
       {
         label: 'Email',
         value: 'email',
@@ -351,16 +349,16 @@ export const ConditionalRevealing = {
         },
       },
     ],
-    ariaDescribedBy:"contact-hint",
-    groupClasses:"govuk-form-group",
-    fieldsetClasses:"govuk-fieldset",
-    hint:{
+    ariaDescribedBy: 'contact-hint',
+    groupClasses: 'govuk-form-group',
+    fieldsetClasses: 'govuk-fieldset',
+    hint: {
       id: 'contact-hint',
       text: 'Select all options that are relevant to you.',
       className: 'govuk-hint',
     },
-    itemsClasses:"govuk-checkboxes govuk-checkboxes--conditional",
-    legend:{
+    itemsClasses: 'govuk-checkboxes govuk-checkboxes--conditional',
+    legend: {
       text: 'How would you prefer to be contacted?',
       className: 'govuk-fieldset__legend govuk-fieldset__legend--l',
       heading: {
@@ -370,4 +368,4 @@ export const ConditionalRevealing = {
     },
   },
   argTypes: { onClick: { action: 'clicked' } },
-}
+};

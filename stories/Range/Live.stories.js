@@ -19,5 +19,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <RangeLive />
-}
+  render: () => <RangeLive />,
+};

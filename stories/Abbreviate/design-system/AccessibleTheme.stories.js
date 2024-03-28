@@ -11,7 +11,7 @@ export default {
   title: 'DCXLibrary/Typography/Abbreviate/Design system/Accessible',
   component: Abbreviate,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/accessible.theme.css');
       return getStory();

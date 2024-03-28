@@ -18,7 +18,6 @@ export const Basic = {
   name: 'Basic',
   args: {
     className: 'codesnippet',
-    value: 'This is the content of the code snippet.'
+    value: 'This is the content of the code snippet.',
   },
 };
-

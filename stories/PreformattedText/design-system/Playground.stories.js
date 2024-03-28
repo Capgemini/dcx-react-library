@@ -7,7 +7,7 @@ export default {
   title: 'DCXLibrary/Typography/PreformattedText/Design system',
   component: PreformattedText,
   decorators: [
-    getStory => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
+    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
   ],
   parameters: {
     options: { showPanel: true },

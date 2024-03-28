@@ -6,8 +6,10 @@ import { DescriptionList, Term, Detail } from '../../../src/descriptionList';
 export default {
   title: 'DCXLibrary/Typography/DescriptionList/Design system',
   component: DescriptionList,
-  decorators: [getStory => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,],
-  
+  decorators: [
+    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
+  ],
+
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
@@ -20,7 +22,7 @@ export const Playground = {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  render:function () {
+  render: function () {
     return (
       <DescriptionList>
         <Term className="myStyle">Coffee</Term>

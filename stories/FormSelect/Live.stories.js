@@ -19,5 +19,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <FormSelectLive />
+  render: () => <FormSelectLive />,
 };

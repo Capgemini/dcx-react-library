@@ -23,21 +23,23 @@ export const Unstyled = {
     const handleValidity = (valid) => {
       console.log(valid);
     };
-    return <FormInput {...args}  onChange={handleChange} isValid={handleValidity}/>
+    return (
+      <FormInput {...args} onChange={handleChange} isValid={handleValidity} />
+    );
   },
   args: {
-    name:"password",
-    type:"text",
-    value:"",
-    ariaLabel:"unstyled-input",
-    ariaRequired:"true",
-    inputProps:{
+    name: 'password',
+    type: 'text',
+    value: '',
+    ariaLabel: 'unstyled-input',
+    ariaRequired: 'true',
+    inputProps: {
       placeholder: 'enter your password',
     },
-    errorProps:{
+    errorProps: {
       style: { fontSize: '10px', color: 'red', fontWeight: 'bold' },
     },
-    validation:{
+    validation: {
       rule: {
         type: 'password',
         minLength: 8,
@@ -48,8 +50,8 @@ export const Unstyled = {
       message:
         'your password need to be min 8 chars 1 Uppercase, 1 Number and one special character',
     },
-    errorPosition:"bottom",
-    prefix:{
+    errorPosition: 'bottom',
+    prefix: {
       properties: {
         style: {
           border: '1px solid #d2d2d2',
@@ -58,7 +60,7 @@ export const Unstyled = {
       },
       content: 'Pre',
     },
-    suffix:{
+    suffix: {
       properties: {
         style: {
           border: '1px solid #d2d2d2',

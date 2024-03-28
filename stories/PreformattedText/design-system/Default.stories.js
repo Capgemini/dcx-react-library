@@ -6,7 +6,7 @@ export default {
   title: 'DCXLibrary/Typography/PreformattedText/Design system/Default',
   component: PreformattedText,
   decorators: [
-    getStory => {
+    (getStory) => {
       require('../../../dist/design-system/index.css');
       return getStory();
     },

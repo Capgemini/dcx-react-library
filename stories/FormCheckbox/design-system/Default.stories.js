@@ -1,4 +1,4 @@
-import { useArgs } from '@storybook/addons';
+import { useArgs } from '@storybook/preview-api';
 import { FormCheckbox } from '../../../src/formCheckbox/FormCheckbox';
 
 /**
