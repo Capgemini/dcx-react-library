@@ -7,6 +7,7 @@ const config = {
     '@storybook/addon-docs',
     '@storybook/addon-controls',
     'storybook-css-modules-preset',
+    '@storybook/preview-api',
     '@storybook/addon-a11y',
     {
         name: "storybook-design-token",
