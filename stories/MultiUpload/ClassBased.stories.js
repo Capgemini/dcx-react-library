@@ -17,12 +17,16 @@ export default {
 export const Basic = {
   name: 'Basic',
   render: function ({ onChange, ...args }) {
-    const handleChange = (file) => {
-      onChange(file);
-      alert(
-        `${file.name} was uploaded, it was last modified at ${new Date(file.lastModified).toLocaleDateString('en-us')}`
-      );
+    const handleChange = (files) => {
+      onChange(files);
+      Array.from(files).forEach((file) => {
+        const date = new Date(file.lastModified).toLocaleDateString('en-us');
+        console.log(
+          file.name + 'was uploaded, it was last modified at ' + date
+        );
+      });
     };
+
     return <MultiUpload {...args} onChange={handleChange} />;
   },
   args: {
@@ -43,12 +47,16 @@ export const Basic = {
 export const Hint = {
   name: 'Hint',
   render: function ({ onChange, ...args }) {
-    const handleChange = (file) => {
-      onChange(file);
-      alert(
-        `${file.name} was uploaded, it was last modified at ${new Date(file.lastModified).toLocaleDateString('en-us')}`
-      );
+    const handleChange = (files) => {
+      onChange(files);
+      Array.from(files).forEach((file) => {
+        const date = new Date(file.lastModified).toLocaleDateString('en-us');
+        console.log(
+          file.name + 'was uploaded, it was last modified at ' + date
+        );
+      });
     };
+
     return <MultiUpload {...args} onChange={handleChange} />;
   },
   args: {
@@ -73,12 +81,16 @@ export const Hint = {
 export const Error = {
   name: 'Error',
   render: function ({ onChange, ...args }) {
-    const handleChange = (file) => {
-      onChange(file);
-      alert(
-        `${file.name} was uploaded, it was last modified at ${new Date(file.lastModified).toLocaleDateString('en-us')}`
-      );
+    const handleChange = (files) => {
+      onChange(files);
+      Array.from(files).forEach((file) => {
+        const date = new Date(file.lastModified).toLocaleDateString('en-us');
+        console.log(
+          file.name + 'was uploaded, it was last modified at ' + date
+        );
+      });
     };
+
     return <MultiUpload {...args} onChange={handleChange} />;
   },
   args: {
@@ -91,7 +103,6 @@ export const Error = {
       className: 'govuk-file-upload govuk-file-upload--error',
       'aria-describedby': 'govuk-file-upload govuk-file-upload--error',
     },
-    label: 'Upload a file',
     labelProperties: {
       className: 'govuk-label',
     },
