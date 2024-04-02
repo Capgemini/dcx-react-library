@@ -48,9 +48,9 @@ type MultiUploadProps = {
    */
   fileData?: boolean;
   /**
-   * multi upload onChangeEvent
+   * multi upload onChangeEvent fileList of uploaded files
    */
-  onChange?: (file: File | null) => void;
+  onChange?: (file: FileList | null) => void;
 };
 
 export const MultiUpload = ({
@@ -67,34 +67,34 @@ export const MultiUpload = ({
   fileData,
   onChange,
 }: MultiUploadProps) => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFiles, setSelectedFile] = useState<FileList | null>(null);
 
   useEffect(() => {
-    if (selectedFile) {
-      onChange && onChange(selectedFile);
+    if (selectedFiles) {
+      onChange && onChange(selectedFiles);
     }
-  }, [selectedFile]);
+  }, [selectedFiles]);
 
-  const onChangeHandler: (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => void = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.target;
-    if (files) {
-      setSelectedFile(files[0]);
-    }
-  };
+  const onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void =
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { files } = event.target;
+
+      if (files) {
+        setSelectedFile(files);
+      }
+    };
 
   const renderFileData = () =>
-    selectedFile && (
-      <div>
-        <p>{`File Name: ${selectedFile.name}`}</p>
-        <p>{`File Type: ${selectedFile.type}`}</p>
-        <p>{`Last Modified: ${new Date(
-          selectedFile.lastModified
-        ).toLocaleDateString('en-us')}`}</p>
+    selectedFiles &&
+    Array.from(selectedFiles).map((file: File, index: number) => (
+      <div key={index}>
+        <p>{`File Name: ${file.name}`}</p>
+        <p>{`File Type: ${file.type}`}</p>
+        <p>{`Last Modified: ${new Date(file.lastModified).toLocaleDateString(
+          'en-us'
+        )}`}</p>
       </div>
-    );
-
+    ));
   return (
     <div className={className}>
       <label {...labelProperties} aria-controls={id} htmlFor={id}>
