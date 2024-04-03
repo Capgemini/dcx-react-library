@@ -6,7 +6,7 @@ interface DescriptionListProps {
   /**
    * allow to specify a user custom content
    */
-  children: JSX.Element[] | JSX.Element;
+  children?: JSX.Element[] | JSX.Element;
   /**
    * A CSS class for styling list
    */
