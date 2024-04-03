@@ -27,9 +27,7 @@
     "no-unused-expressions": "error",
     "no-unused-labels": "error",
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "error"
-    ],
+    "@typescript-eslint/no-unused-vars": "error",
     "no-use-before-define": "off",
     "no-useless-call": "error",
     "no-useless-catch": "error",

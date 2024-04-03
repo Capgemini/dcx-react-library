@@ -1,0 +1,56 @@
+module.exports = {
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'react-app'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  root: true,
+  'rules': {
+    'import/no-anonymous-default-export': 0,
+    'no-console': 'error',
+    'no-debugger': 'error',
+    'array-bracket-newline': 'error',
+    'array-bracket-spacing': 'error',
+    'array-callback-return': 'error',
+    'arrow-body-style': 'error',
+    'arrow-spacing': 'error',
+    'block-scoped-var': 'error',
+    'block-spacing': 'error',
+    'brace-style': 'error',
+    'callback-return': 'error',
+    'camelcase': 'error',
+    'no-dupe-else-if': 'error',
+    'no-dupe-keys': 'error',
+    'no-duplicate-case': 'error',
+    'no-duplicate-imports': 'error',
+    'no-unneeded-ternary': 'error',
+    'no-unreachable': 'error',
+    'no-unsafe-finally': 'error',
+    'no-unsafe-negation': 'error',
+    'no-unused-expressions': 'error',
+    'no-unused-labels': 'error',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
+    'no-use-before-define': 'off',
+    'no-useless-call': 'error',
+    'no-useless-catch': 'error',
+    'no-useless-computed-key': 'error',
+    'no-useless-concat': 'error',
+    'no-useless-constructor': 'error',
+    'no-useless-escape': 'error',
+    'no-useless-rename': 'error',
+    'no-useless-return': 'error',
+    'no-var': 'error',
+    'quotes': [
+      2,
+      'single',
+      {
+        'avoidEscape': true
+      }
+    ],
+    'semi': [
+      2,
+      'always'
+    ],
+    // turning off the following
+    'react-hooks/exhaustive-deps': 'off'
+  }
+};
