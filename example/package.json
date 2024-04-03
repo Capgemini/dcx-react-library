@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "6.5.1",
-    "@fortawesome/free-solid-svg-icons": "6.5.1",
+    "@fortawesome/fontawesome-svg-core": "6.5.2",
+    "@fortawesome/free-solid-svg-icons": "6.5.2",
     "@fortawesome/react-fontawesome": "0.2.0",
     "react-router-dom": "6.22.3"
   },
@@ -27,17 +27,17 @@
     ]
   },
   "devDependencies": {
-    "@types/node": "20.11.30",
+    "@types/node": "20.12.3",
     "@types/react-router-dom": "5.3.3",
-    "@typescript-eslint/eslint-plugin": "7.4.0",
-    "@typescript-eslint/parser": "7.4.0",
+    "@typescript-eslint/eslint-plugin": "7.5.0",
+    "@typescript-eslint/parser": "7.5.0",
     "@vitejs/plugin-react": "4.2.1",
     "eslint": "8.57.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-refresh": "0.4.6",
     "node-sass": "9.0.0",
     "typescript": "5.4.3",
-    "vite": "5.2.6",
+    "vite": "5.2.7",
     "web-vitals": "3.5.2"
   }
 }
