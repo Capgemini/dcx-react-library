@@ -231,23 +231,6 @@ describe('Button', () => {
     expect(button.getAttribute('value')).toBe('buttonValue');
   });
 
-  it('should not render aria-label if label omitted', () => {
-    render(
-      <>
-        <Button label="buttonValue" />
-        <Button type={BUTTON_TYPE.BUTTON} />
-        <Button type={BUTTON_TYPE.SUBMIT} />
-        <Button type={BUTTON_TYPE.RESET} />
-      </>
-    );
-    const buttons: any = screen.getAllByRole('button');
-
-    expect(buttons[0].getAttribute('aria-label')).toBeNull();
-    expect(buttons[1].getAttribute('aria-label')).toBe('button-button');
-    expect(buttons[2].getAttribute('aria-label')).toBe('submit-button');
-    expect(buttons[3].getAttribute('aria-label')).toBe('reset-button');
-  });
-
   it('should render the default className dcx-button', () => {
     const handleClick = jest.fn();
     render(<Button onClick={handleClick} label="Register" />);
@@ -319,5 +302,14 @@ describe('Button', () => {
     expect(() => render(<Button label="test">Children test</Button>)).toThrow(
       'You can use label or children but not both at the same time'
     );
+  });
+  
+  it('should accept ariaLabel as attribute', () => {
+    const handleClick = jest.fn();
+    render(
+      <Button onClick={handleClick} ariaLabel="Register" label="Register" />
+    );
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('aria-label')).toBe('Register');
   });
 });

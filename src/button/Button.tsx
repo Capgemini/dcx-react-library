@@ -87,7 +87,7 @@ export const Button = ({
   onClick,
   type = BUTTON_TYPE.BUTTON,
   disabled = false,
-  ariaLabel = `${type}-button`,
+  ariaLabel = `${label}`,
   disableClickForMs,
   customPrefixImg,
   customPostfixImg,
@@ -161,7 +161,7 @@ export const Button = ({
       onClick={handleClick}
       disabled={disable}
       type={type}
-      {...(label ? {} : { 'aria-label': ariaLabel })}
+      aria-label={ariaLabel}
       formAction={formAction}
       name={name}
       className={btnClassName}
