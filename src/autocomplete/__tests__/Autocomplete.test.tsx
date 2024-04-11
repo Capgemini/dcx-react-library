@@ -53,7 +53,7 @@ describe('Autocomplete', () => {
   });
 
   it('should display multiselect if progresive enhancement and multiselect is true', () => {
-    //@ts-ignore
+    // @ts-expect-error
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
     render(
       <Autocomplete
@@ -72,7 +72,7 @@ describe('Autocomplete', () => {
   });
 
   it('should select the default value if progressive enhancement is enable', () => {
-    //@ts-ignore
+    // @ts-expect-error
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
     render(
       <Autocomplete options={['daniele', 'isaac']} defaultValue="isaac" />
@@ -191,7 +191,7 @@ describe('Autocomplete', () => {
   });
 
   it('should allow to specify an id for the select in case of progressive enhnancment', () => {
-    //@ts-ignore
+    // @ts-expect-error
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
     render(<Autocomplete options={['daniele', 'isaac']} id="myId" />);
     const select: any = screen.getByRole('combobox');
@@ -199,7 +199,7 @@ describe('Autocomplete', () => {
   });
 
   it('should display select if progresive enhancement', () => {
-    //@ts-ignore
+    // @ts-expect-error
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
 
     render(
@@ -218,7 +218,7 @@ describe('Autocomplete', () => {
   });
 
   it('should display the formInput content', () => {
-    //@ts-ignore
+    // @ts-expect-error
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
     render(<Autocomplete options={['daniele', 'isaac']} />);
 
@@ -620,7 +620,7 @@ describe('Autocomplete', () => {
   });
 
   it('should contains the select name if specified and progressive enhancment', () => {
-    //@ts-ignore
+    // @ts-expect-error
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
     render(
       <Autocomplete

@@ -145,9 +145,9 @@ export const Table = ({
           ? Object.keys(dataSource[0])[customHeaderEl]
           : (customHeaderEl as CustomHeaderLabel).data;
 
-      //@ts-ignore
+      // @ts-expect-error
       requestSort(key);
-      //@ts-ignore
+      // @ts-expect-error
       setSelectedHeader(key);
     } else {
       requestSort(value);

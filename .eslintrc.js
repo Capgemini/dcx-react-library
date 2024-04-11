@@ -51,6 +51,8 @@ module.exports = {
       'always'
     ],
     // turning off the following
-    'react-hooks/exhaustive-deps': 'off'
+    'react-hooks/exhaustive-deps': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off'
   }
 };

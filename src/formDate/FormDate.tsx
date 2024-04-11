@@ -182,7 +182,7 @@ export const FormDate = ({
   const handleChange = (evt: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = evt.currentTarget;
     if (isNaN(Number(value))) return;
-    //@ts-ignore
+    // @ts-expect-error
     dispatch({ type: `set${upperFirst(name)}`, value });
   };
 

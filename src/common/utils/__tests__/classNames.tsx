@@ -10,7 +10,7 @@ describe('ClassNames', () => {
   });
 
   it('should skip non string parameters', () => {
-    //@ts-ignore
+    // @ts-expect-error
     expect(classNames(['a', undefined, 'c', null])).toBe('a c');
   });
 
@@ -23,7 +23,7 @@ describe('ClassNames', () => {
   });
 
   it('should skip non string parameters in the concatenates function', () => {
-    //@ts-ignore
+    // @ts-expect-error
     expect(classNames(['a', undefined, 'c', null])).toBe('a c');
   });
 

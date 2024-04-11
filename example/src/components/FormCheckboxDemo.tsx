@@ -34,7 +34,7 @@ export const FormCheckboxDemo = () => {
         value={value}
         label="Checkbox 2 label text"
         onChange={handleChange}
-        //@ts-ignore
+        // @ts-expect-error
         defaultChecked={checked}
       />
       <h2 id="disabled-checkbox-tag">Disabled Checkbox</h2>
@@ -120,7 +120,7 @@ export const FormCheckboxDemo = () => {
           text: '',
           className: '',
           id: '',
-          //@ts-ignore
+          // @ts-expect-error
           visuallyHiddenText: '',
         }}
         fieldsetClasses=""
@@ -140,7 +140,7 @@ export const FormCheckboxDemo = () => {
           className: '',
           heading: {
             id: 'heading-text',
-            //@ts-ignore
+            // @ts-expect-error
             priority: '2',
             className: '',
           },

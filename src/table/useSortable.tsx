@@ -4,7 +4,7 @@ export const useSortableData = (items: any[], config = null) => {
   const [sortConfig, setSortConfig] = React.useState<any>(config);
 
   const sortedItems = React.useMemo(() => {
-    let sortableItems = [...items];
+    const sortableItems = [...items];
     if (sortConfig !== null) {
       sortableItems.sort((a, b) => {
         if (a[sortConfig.key] < b[sortConfig.key]) {

@@ -99,7 +99,7 @@ export const ButtonGroup = ({
     }
 
     // To see if the elements provided in the selected array does not match with any of the buttons
-    let missingElements =
+    const missingElements =
       selected && selected.filter((element) => !allButtons.includes(element));
 
     if (missingElements && missingElements.length > 0) {

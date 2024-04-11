@@ -33,7 +33,7 @@ export const CheckboxRadioBase = ({
     conditionalInput?: string
   ) => void;
 }) => {
-  let hydrated = useHydrated();
+  const hydrated = useHydrated();
   const conditionalReveal = (): boolean =>
     !isEmpty(conditional) && selected === true;
 

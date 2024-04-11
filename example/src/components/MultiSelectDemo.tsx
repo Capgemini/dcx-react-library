@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//@ts-ignore
+// @ts-expect-error
 import { MultiSelect, MultiSelectOption } from '@capgeminiuk/dcx-react-library';
 
 const multiSelectOptions: MultiSelectOption[] = [

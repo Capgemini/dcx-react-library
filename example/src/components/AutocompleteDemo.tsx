@@ -82,7 +82,7 @@ export const AutocompleteDemo = () => {
       selected: {selected}
       <h2>Server fetch</h2>
       <Autocomplete
-        //@ts-ignore
+        // @ts-expect-error
         options={serverOptions}
         minCharsBeforeSearch={1}
         debounceMs={1000}

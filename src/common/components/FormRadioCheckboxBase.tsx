@@ -159,7 +159,7 @@ export const FormRadioCheckboxBase = ({
     e: React.FormEvent<HTMLInputElement>
   ) => {
     if (type === 'radio') {
-      let newSelection: { [key: string]: boolean } = {};
+      const newSelection: { [key: string]: boolean } = {};
 
       items.forEach((item) => {
         newSelection[(item as FormRadioCheckboxProps).id] =

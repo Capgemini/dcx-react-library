@@ -1,7 +1,7 @@
 import { MultiUpload } from '@capgeminiuk/dcx-react-library';
 
 export const MultiUploadDemo = () => {
-  //@ts-ignore
+  // @ts-expect-error
   const onChangeHandler: (files: FileList | null) => void = (
     files: FileList
   ) => {

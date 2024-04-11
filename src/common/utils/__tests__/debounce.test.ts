@@ -4,7 +4,7 @@ jest.useFakeTimers();
 
 describe('debounce', () => {
   const func: jest.Mock = jest.fn();
-  const debouncedFunc: Function = debounce(func, 1000);
+  const debouncedFunc = debounce(func, 1000);
 
   it('should call the passed in function once', () => {
     // call debounce for the first time

@@ -18,9 +18,9 @@ export const FormDateDemo = () => {
         Basic no label date
       </label>
       <FormDate
-        //@ts-ignore
+        // @ts-expect-error
         id="basicNoLabelDate"
-        //@ts-ignore
+        // @ts-expect-error
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
       />
@@ -29,9 +29,9 @@ export const FormDateDemo = () => {
         Pre set no label date
       </label>
       <FormDate
-        //@ts-ignore
+       // @ts-expect-error
         id="preSetNoLabelDate"
-        //@ts-ignore
+       // @ts-expect-error
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
         day="29"
@@ -43,9 +43,9 @@ export const FormDateDemo = () => {
         Disabled no label date
       </label>
       <FormDate
-        //@ts-ignore
+       // @ts-expect-error
         id="disabledNoLabelDate"
-        //@ts-ignore
+        // @ts-expect-error
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
         day="29"
@@ -55,7 +55,7 @@ export const FormDateDemo = () => {
       />
       <h1>With Label</h1>
       <FormDate
-        //@ts-ignore
+        // @ts-expect-error
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
         yearProps={{ label: 'Year' }}
@@ -64,7 +64,7 @@ export const FormDateDemo = () => {
       />
       <h1>Styled</h1>
       <FormDate
-        //@ts-ignore
+        // @ts-expect-error
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
         inputClass="input"
@@ -86,7 +86,7 @@ export const FormDateDemo = () => {
       />
       <h1>Custom Label</h1>
       <FormDate
-        //@ts-ignore
+        // @ts-expect-error
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
         inputClass="input"
@@ -105,7 +105,7 @@ export const FormDateDemo = () => {
       />
       <h1>With error message</h1>
       <FormDate
-        //@ts-ignore
+        // @ts-expect-error
         handleValidity={(v, d) => handleValidity(v, d)}
         inputContainerClass={showError ? 'errorContainer' : ''}
         displayError={showError}

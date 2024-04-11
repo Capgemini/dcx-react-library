@@ -364,7 +364,7 @@ describe('FormCheckbox', () => {
 
   it('should render conditional input field when progressive enhancement is ture', () => {
     const handleChange = jest.fn();
-    //@ts-ignore
+    // @ts-expect-error
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
     const { container } = render(
       <FormCheckbox
@@ -394,7 +394,7 @@ describe('FormCheckbox', () => {
 
   it('should not render conditional input field when progressive enhancement is ture but no conditional data', () => {
     const handleChange = jest.fn();
-    //@ts-ignore
+    // @ts-expect-error
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
     const { container } = render(
       <FormCheckbox

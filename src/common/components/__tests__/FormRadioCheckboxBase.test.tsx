@@ -106,7 +106,7 @@ describe('FormRadioCheckboxBase', () => {
 
     const { container } = render(
       <FormRadioCheckboxBase
-        //@ts-ignore
+        // @ts-expect-error
         type={type}
         groupClasses=""
         id=""
@@ -146,7 +146,7 @@ describe('FormRadioCheckboxBase', () => {
 
     const { container } = render(
       <FormRadioCheckboxBase
-        //@ts-ignore
+        // @ts-expect-error
         type={type}
         groupClasses=""
         id=""

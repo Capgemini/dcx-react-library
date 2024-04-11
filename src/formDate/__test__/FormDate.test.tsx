@@ -154,7 +154,7 @@ describe('FormInput', () => {
   });
 
   it('should render an invalid format if the the format is not valid', () => {
-    //@ts-ignore
+    // @ts-expect-error
     render(<FormDate dateFormat="ssss/mm/dd" handleValidity={jest.fn()} />);
     const invalidValue: any = screen.getByText('invalid format');
     expect(invalidValue).toBeInTheDocument();
@@ -263,7 +263,7 @@ describe('FormInput', () => {
     const action = {
       type: 'setSomething',
     };
-    //@ts-ignore
+    // @ts-expect-error
     const state = reducer(initialState, action);
     expect(JSON.stringify(state)).toContain(JSON.stringify(initialState));
   });
@@ -273,7 +273,7 @@ describe('FormInput', () => {
       type: 'setYear',
       value: '1990',
     };
-    //@ts-ignore
+    // @ts-expect-error
     const state = reducer(null, action);
     expect(JSON.stringify(state)).toContain(
       JSON.stringify({

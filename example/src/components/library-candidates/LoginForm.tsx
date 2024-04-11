@@ -25,7 +25,7 @@ enum LOGIN_ACTIONS {
   SET_DISPLAY_USERNAME_ERROR = 'setDisplayUsernameError',
   SET_DISPLAY_PASSWORD_ERROR = 'setDisplayPasswordError',
 }
-//@ts-ignore
+// @ts-expect-error
 function reducer(state, action) {
   switch (action.type) {
     case LOGIN_ACTIONS.UPDATE_USERNAME:
@@ -156,14 +156,14 @@ export const LoginForm = ({
   } = buttonProps;
 
   const [state, dispatch] = React.useReducer(reducer, initialState);
-  //@ts-ignore
+  // @ts-expect-error
   const handleInputChange = (event) => {
     const { name, value } = event.currentTarget;
-    //@ts-ignore
+    // @ts-expect-error
     dispatch({ type: LOGIN_ACTIONS[`UPDATE_${name.toUpperCase()}`], value });
   };
 
-  //@ts-ignore
+  // @ts-expect-error
   const handleUserNameValidity = (valid, isErrorMessageVisible) => {
     dispatch({ type: LOGIN_ACTIONS.SET_ISUSERNAME_VALID, value: valid });
     setUsernameErrorState(isErrorMessageVisible);
@@ -172,7 +172,7 @@ export const LoginForm = ({
       password: state.validation.passwordValid,
     });
   };
-  //@ts-ignore
+  // @ts-expect-error
   const handlePasswordValidity = (valid, isErrorMessageVisible) => {
     dispatch({ type: LOGIN_ACTIONS.SET_ISPASSWORD_VALID, value: valid });
     setPasswordErrorState(isErrorMessageVisible);
@@ -189,7 +189,7 @@ export const LoginForm = ({
         if (!state.validation[`${field}valid`]) {
           errorCount++;
           dispatch({
-            //@ts-ignore
+            // @ts-expect-error
             type: LOGIN_ACTIONS[`SET_DISPLAY_${field.toUpperCase()}_ERROR`],
             value: true,
           });
@@ -205,7 +205,7 @@ export const LoginForm = ({
       password: state.password,
     });
   };
-  //@ts-ignore
+  // @ts-expect-error
   const checkFormValidity = (formValidObj) => {
     const { username, password } = formValidObj;
     dispatch({
@@ -244,7 +244,7 @@ export const LoginForm = ({
             className: 'help-block',
           }}
           validation={usernameValidation}
-          //@ts-ignore
+          // @ts-expect-error
           errorPosition="bottom"
         />
       </div>
@@ -274,7 +274,7 @@ export const LoginForm = ({
             className: 'help-block',
           }}
           validation={passwordValidation}
-          //@ts-ignore
+          // @ts-expect-error
           errorPosition="bottom"
         />
       </div>
@@ -295,7 +295,7 @@ export const LoginForm = ({
           'btn btn-primary',
           { 'btn-loading': isLoading },
         ])}
-        //@ts-ignore
+        // @ts-expect-error
         type="submit"
       />
     </form>

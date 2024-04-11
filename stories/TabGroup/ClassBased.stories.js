@@ -159,7 +159,7 @@ export const Programmatic = {
         <br />
         <Button
           onClick={() => {
-            //@ts-ignore
+            // @ts-expect-error
             const changed = tabRef.current.updateActiveTab('tab-pane-5-id');
           }}
           label="Click to change to Tab 5"

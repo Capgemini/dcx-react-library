@@ -63,7 +63,7 @@ const DummyCopyToClipboardRefText = () => {
       <div ref={inputRef}>this is a test ref text</div>
       <CopyToClipboard
         ref={inputRef}
-        //@ts-ignore
+        // @ts-expect-error
         onCopy={(value: string) => setCopy(value)}
       />
       <div data-testid="copied">{copy}</div>

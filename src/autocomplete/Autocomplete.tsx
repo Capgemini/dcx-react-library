@@ -284,7 +284,7 @@ export const Autocomplete = ({
   const resultRef = useRef<HTMLLIElement[]>(null) as React.MutableRefObject<
     HTMLLIElement[]
   >;
-  let hydrated = useHydrated();
+  const hydrated = useHydrated();
 
   const showPromptMessage = (inputValue = userInput): boolean =>
     inputValue.trim().length === 0 &&
@@ -335,7 +335,7 @@ export const Autocomplete = ({
     () =>
       debounce(
         (value) =>
-          //@ts-ignore
+          // @ts-expect-error
           onChange(value),
         debounceMs
       ),

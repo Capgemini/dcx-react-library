@@ -578,7 +578,7 @@ describe('TabGroup', () => {
         </TabGroup>
         <Button
           onClick={() => {
-            //@ts-ignore
+            // @ts-expect-error
             ref.current.updateActiveTab('tab-3-id');
           }}
           label="test label"
@@ -634,7 +634,7 @@ describe('TabGroup', () => {
         </TabGroup>
         <Button
           onClick={() => {
-            //@ts-ignore
+            // @ts-expect-error
             updated = ref.current.updateActiveTab('unknown-tab-key');
           }}
           label="test label"
@@ -687,7 +687,7 @@ describe('TabGroup', () => {
         </TabGroup>
         <Button
           onClick={() => {
-            //@ts-ignore
+            // @ts-expect-error
             updated = ref.current.updateActiveTab('tab-3-id');
           }}
           label="test label"

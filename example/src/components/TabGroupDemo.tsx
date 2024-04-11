@@ -6,7 +6,7 @@ import './tabGroup.scss';
 
 export const TabGroupDemo = () => {
   const tabRef = useRef();
-  //@ts-ignore
+  // @ts-expect-error
   const handleSelectedTab = (id) => {
     document.getElementsByTagName(
       'label'
@@ -59,7 +59,7 @@ export const TabGroupDemo = () => {
       <br />
       <Button
         onClick={() => {
-          //@ts-ignore
+          // @ts-expect-error
           const changed = tabRef.current.updateActiveTab('tab-pane-5-id');
           if (changed) {
             alert('Tab 5 updated');

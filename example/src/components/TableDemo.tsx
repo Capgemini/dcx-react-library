@@ -257,7 +257,7 @@ export const TableDemo = () => {
 
   const [populateData, setPopulatedData] = React.useState<any[]>([]);
 
-  //@ts-ignore
+  // @ts-expect-error
   const handleSelect = (row) => {
     alert(row);
   };

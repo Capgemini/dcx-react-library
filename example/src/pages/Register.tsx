@@ -58,7 +58,7 @@ enum LOGIN_ACTIONS {
   SET_ISPASSWORD_VALID = 'setPasswordValid',
   SET_DISPLAY_PASSWORD_ERROR = 'setDisplayPasswordError',
 }
-//@ts-ignore
+// @ts-expect-error
 function reducer(state, action) {
   switch (action.type) {
     case LOGIN_ACTIONS.UPDATE_USERNAME:
@@ -156,7 +156,7 @@ export const Register = () => {
   const [passwordInputType, setPasswordInputType] = React.useState(false);
   const [displayDobError, setDobError] = React.useState(false);
 
-  //@ts-ignore
+  // @ts-expect-error
   React.useEffect(() => {
     checkFormValidity();
   }, [
@@ -169,12 +169,12 @@ export const Register = () => {
     state.terms,
     state.language,
   ]);
-  //@ts-ignore
+  // @ts-expect-error
   const handleUserNameValidity = (valid, isErrorMessageVisible) => {
     dispatch({ type: LOGIN_ACTIONS.SET_ISUSERNAME_VALID, value: valid });
     setUsernameErrorState(isErrorMessageVisible);
   };
-  //@ts-ignore
+  // @ts-expect-error
   const handlePasswordValidity = (valid, isErrorMessageVisible) => {
     dispatch({ type: LOGIN_ACTIONS.SET_ISPASSWORD_VALID, value: valid });
     setPasswordErrorState(isErrorMessageVisible);
@@ -346,7 +346,7 @@ export const Register = () => {
             onChange={(evt) => {
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_GENDER,
-                //@ts-ignore
+                // @ts-expect-error
                 value: evt.currentTarget.value,
               });
             }}
@@ -368,7 +368,7 @@ export const Register = () => {
             onChange={(evt) => {
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_GENDER,
-                //@ts-ignore
+                // @ts-expect-error
                 value: evt.currentTarget.value,
               });
             }}
@@ -390,7 +390,7 @@ export const Register = () => {
             onChange={(evt) => {
               dispatch({
                 type: LOGIN_ACTIONS.UPDATE_GENDER,
-                //@ts-ignore
+                // @ts-expect-error
                 value: evt.currentTarget.value,
               });
             }}
@@ -483,7 +483,7 @@ export const Register = () => {
                 label: 'Online',
                 value: 'online',
                 id: 'heard-about',
-                //@ts-ignore
+                // @ts-expect-error
                 onChange: (evt) => {
                   dispatch({
                     type: LOGIN_ACTIONS.UPDATE_HEARD_ABOUT,
@@ -495,7 +495,7 @@ export const Register = () => {
                 label: 'Magazine',
                 value: 'magazine',
                 id: 'heard-about-2',
-                //@ts-ignore
+                // @ts-expect-error
                 onChange: (evt) => {
                   dispatch({
                     type: LOGIN_ACTIONS.UPDATE_HEARD_ABOUT,
@@ -507,7 +507,7 @@ export const Register = () => {
                 label: 'Radio',
                 value: 'radio',
                 id: 'heard-about-3',
-                //@ts-ignore
+                // @ts-expect-error
                 onChange: (evt) => {
                   dispatch({
                     type: LOGIN_ACTIONS.UPDATE_HEARD_ABOUT,

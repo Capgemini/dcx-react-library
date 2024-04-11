@@ -2,7 +2,7 @@ import React from 'react';
 import { FormSelect } from '@capgeminiuk/dcx-react-library';
 
 export const FormSelectDemo = () => {
-  //@ts-ignore
+  // @ts-expect-error
   const handleSelectedValue = (evt) => {
     document.getElementsByTagName(
       'label'
