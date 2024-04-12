@@ -71,7 +71,7 @@ export const Tab = ({
     event:
       | React.MouseEvent<HTMLAnchorElement>
       | React.TouchEvent<HTMLAnchorElement>
-  ) => changeActiveTab(event.currentTarget.dataset.tabId as string);
+    ) => changeActiveTab(event.currentTarget.dataset.tabId as string);
 
   return (
     <li role={Roles.presentation} className={classes}>
@@ -84,6 +84,7 @@ export const Tab = ({
         tabIndex={!selected ? -1 : 0}
         onClick={!disabled ? onClickHandler : undefined}
         href={`#${eventKey}`}
+        target='_self'
       >
         {label}
       </a>
