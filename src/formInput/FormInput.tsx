@@ -58,13 +58,14 @@ type FormInputProps = {
   /**
    * allow to customise the input with all the properites needed
    **/
-  inputProps?: React.HTMLAttributes<HTMLInputElement> & {
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement> & {
     ref?: React.RefObject<HTMLInputElement>;
   };
   /**
    * allow to customise the label with all the properites needed
    */
-  labelProps?: React.HTMLAttributes<HTMLLabelElement>;
+  //labelProps?: React.HTMLAttributes<HTMLLabelElement> & { htmlFor?: string };
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
   /**
    * generic parameter to pass whatever element before the input
    **/

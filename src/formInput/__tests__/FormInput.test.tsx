@@ -205,9 +205,8 @@ describe('FormInput', () => {
         }}
       />
     );
-    const inputContainer: Element | null = container.querySelector(
-      '.myClassName'
-    );
+    const inputContainer: Element | null =
+      container.querySelector('.myClassName');
     expect(inputContainer).not.toBeNull();
   });
 
@@ -284,9 +283,9 @@ describe('FormInput', () => {
     expect(container.querySelector('#suffix')).toBeInTheDocument();
   });
 
-  it('should display the formInput with a label', () => {
+  it('should display the formInput with a label ans placeholder', () => {
     const handleChange = jest.fn();
-    render(
+    const { container } = render(
       <FormInput
         name="password"
         type="text"
@@ -305,7 +304,9 @@ describe('FormInput', () => {
         }}
       />
     );
+    const placeholder = container.querySelector('.dcx-form-input--placeholder');
     expect(screen.getByLabelText('this is a label')).toBeInTheDocument();
+    expect(placeholder).toBeTruthy();
   });
 
   it('should display the formInput error', async () => {
@@ -439,9 +440,8 @@ describe('FormInput', () => {
     const { container } = render(<DummyComponentTriggerError />);
     const button = screen.getByRole('button');
     await user.click(button);
-    const inputContainer: Element | null = container.querySelector(
-      '.error-container'
-    );
+    const inputContainer: Element | null =
+      container.querySelector('.error-container');
     expect(inputContainer).not.toBeNull();
   });
 
