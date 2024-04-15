@@ -281,6 +281,8 @@ export const Autocomplete = ({
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [showPrompt, setShowPrompt] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<string>(defaultValue);
+  const [currentAutocompleteStatus, setCurrentAutocompleteStatus] =
+    useState<boolean>(true);
   const resultRef = useRef<HTMLLIElement[]>(null) as React.MutableRefObject<
     HTMLLIElement[]
   >;
@@ -325,8 +327,9 @@ export const Autocomplete = ({
         setActiveOption(0);
         setFilterList(filtered);
         setShowOptions(true);
+        setAccessibilityStatus(filtered.length, filtered[0], 1);
       }, debounceMs),
-    [debounceMs, options]
+    [debounceMs, options, currentAutocompleteStatus]
   );
 
   const delayedFilterResults = React.useCallback(delayResult, [delayResult]);
@@ -373,12 +376,12 @@ export const Autocomplete = ({
     setUserInput(defaultValue);
   }, [defaultValue]);
 
-  const handleClick = (evt: React.FormEvent<HTMLInputElement>) => {
-    setActiveOption(0);
+  const handleClick = (optionName: string, index: number) => {
+    setActiveOption(index);
     setFilterList([]);
     setShowOptions(false);
-    setUserInput(multiSelect ? '' : evt.currentTarget.innerHTML);
-    if (onSelected) onSelected(evt.currentTarget.innerHTML);
+    setUserInput(multiSelect ? '' : optionName);
+    if (onSelected) onSelected(optionName);
   };
 
   const onKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
@@ -399,18 +402,30 @@ export const Autocomplete = ({
       if (activeOption === 0) {
         return;
       }
-      setActiveOption(activeOption - 1);
-      const prevItem = resultRef.current && resultRef.current[activeOption - 1];
+      const newActiveOption = activeOption - 1;
+      setActiveOption(newActiveOption);
+      const prevItem = resultRef.current && resultRef.current[newActiveOption];
       prevItem &&
         prevItem.scrollIntoView({ block: 'nearest', inline: 'start' });
+      setAccessibilityStatus(
+        filterList.length,
+        filterList[newActiveOption],
+        newActiveOption + 1
+      );
     } else if (evt.code === 'ArrowDown') {
       if (activeOption === filterList.length - 1) {
         return;
       }
-      const nextItem = resultRef.current && resultRef.current[activeOption + 1];
+      const newActiveOption = activeOption + 1;
+      setActiveOption(newActiveOption);
+      const nextItem = resultRef.current && resultRef.current[newActiveOption];
       nextItem &&
         nextItem.scrollIntoView({ block: 'nearest', inline: 'start' });
-      setActiveOption(activeOption + 1);
+      setAccessibilityStatus(
+        filterList.length,
+        filterList[newActiveOption],
+        newActiveOption + 1
+      );
     } else if (evt.code === 'Escape') {
       setShowOptions(false);
     }
@@ -420,6 +435,42 @@ export const Autocomplete = ({
     setShowPrompt(false);
   };
 
+  const setAccessibilityStatus = (
+    length: number,
+    nameOfOption: string,
+    position: number
+  ) => {
+    const currentStatusElement = document.getElementById(
+      `autocomplete-status-${id}-${currentAutocompleteStatus ? 'A' : 'B'}`
+    );
+    if (currentStatusElement) {
+      currentStatusElement.innerText = '';
+    }
+    // Alternates between the two status elements to make sure the change is seen for screen readers
+    setCurrentAutocompleteStatus(!currentAutocompleteStatus);
+    const statusElement = document.getElementById(
+      `autocomplete-status-${id}-${!currentAutocompleteStatus ? 'A' : 'B'}`
+    );
+    if (statusElement) {
+      let newText = '';
+      if (length === 0) {
+        newText = 'No search results';
+      } else {
+        newText = `${length} result${length > 1 ? 's are' : ' is'} available. ${nameOfOption} ${position} of ${length} is highlighted`;
+      }
+      statusElement.innerText = newText;
+    }
+  };
+
+  const getActivedescendantId = () => {
+    if (resultRef.current === null && showOptions) {
+      return `${optionsId}--1`;
+    } else if (resultRef.current && resultRef.current[activeOption]) {
+      return resultRef.current[activeOption].id;
+    } else {
+      return null;
+    }
+  };
   const formInput: JSX.Element = (
     <>
       <FormInput
@@ -438,6 +489,10 @@ export const Autocomplete = ({
           id,
           ...inputProps,
           ...(showPrompt && { 'aria-describedby': promptId }),
+          'aria-expanded': showOptions,
+          'aria-owns': optionsId,
+          role: 'combobox',
+          'aria-activedescendant': getActivedescendantId(),
         }}
         tabIndex={tabIndex}
       />
@@ -570,6 +625,33 @@ export const Autocomplete = ({
         />
       )}
       <div className={containerClassName} style={{ ...searchContainerStyle }}>
+        <div
+          style={{
+            border: '0px',
+            clip: 'rect(0px, 0px, 0px, 0px)',
+            height: '1px',
+            marginBottom: '-1px',
+            marginRight: '-1px',
+            overflow: 'hidden',
+            padding: '0px',
+            position: 'absolute',
+            whiteSpace: 'nowrap',
+            width: '1px',
+          }}
+        >
+          <div
+            id={`autocomplete-status-${id}-A`}
+            role="status"
+            aria-atomic="true"
+            aria-live="polite"
+          ></div>
+          <div
+            id={`autocomplete-status-${id}-B`}
+            role="status"
+            aria-atomic="true"
+            aria-live="polite"
+          ></div>
+        </div>
         {searchEl}
         {displayResultList() && (
           <ResultList
@@ -587,8 +669,17 @@ export const Autocomplete = ({
             liContainerClass={resultlLiClass}
             liContainerStyle={resultLiStyle}
             noOptionClass={resultNoOptionClass}
+            ariaLabeledBy={id}
           />
         )}
+        <span
+          id={`autocomplete-${id}-assistiveHint`}
+          style={{ display: 'none' }}
+        >
+          When autocomplete results are available use up and down arrows to
+          review and enter to select. Touch device users, explore by touch or
+          with swipe gestures.
+        </span>
       </div>
     </>
   );

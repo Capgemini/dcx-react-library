@@ -16,6 +16,7 @@ type ResultListProps = {
   activeClass?: string;
   noElFoundText?: string;
   onClick: any;
+  ariaLabeledBy?: string;
 };
 
 export const ResultList = ({
@@ -33,12 +34,14 @@ export const ResultList = ({
   noOptionClass,
   noElFoundText,
   onClick,
+  ariaLabeledBy,
 }: ResultListProps) => (
   <ul
     id={ulContainerId}
     className={ulContainerClass}
     style={ulContainerStyle}
-    aria-live="polite"
+    aria-labelledby={ariaLabeledBy}
+    role="listbox"
   >
     {userInput && list.length > 0
       ? list.map((optionName: string, index: number) => (
@@ -55,11 +58,15 @@ export const ResultList = ({
               },
             ])}
             key={optionName}
-            onClick={onClick}
+            onClick={() => onClick(optionName, index)}
             style={liContainerStyle}
             ref={(ref: HTMLLIElement) => {
               resultLiRef.current = { ...resultLiRef.current, [index]: ref };
             }}
+            role="option"
+            aria-selected={index === activeOption}
+            aria-setsize={list.length}
+            aria-posinset={index + 1}
           >
             {optionName}
           </li>

@@ -65,19 +65,14 @@ export const AutocompleteDemo = () => {
           'Pomegranate',
           'Pineapple',
         ]}
-        suffix={{
-          content: <FontAwesomeIcon icon={faAt} title="at-button" />,
-          properties: {},
-        }}
-        prefix={{
-          content: <FontAwesomeIcon icon={faAt} title="at-button" />,
-          properties: {},
-        }}
-        defaultValue="Papaya"
+        id="fruitTest"
         minCharsBeforeSearch={1}
         debounceMs={2000}
         onSelected={handleSelected}
-        hintText="search the list of fruits"
+        labelText="search the list of fruits"
+        containerClassName="test"
+        notFoundText="No fruit found"
+        optionsId="fruit-option"
       />
       selected: {selected}
       <h2>Server fetch</h2>
