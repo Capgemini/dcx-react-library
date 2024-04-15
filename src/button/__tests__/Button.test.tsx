@@ -5,7 +5,6 @@ import {
   render,
   screen,
   waitFor,
-  cleanup,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Button } from '../Button';
@@ -305,16 +304,19 @@ describe('Button', () => {
     );
   });
 
-  it('should have the correct aria-label', () => {
+  it('should default the aria-label to the label attribute if not defined', () => {
     const handleClick = jest.fn();
     render(<Button onClick={handleClick} label="Register" />);
-    let button: any = screen.getByRole('button');
+    const button: any = screen.getByRole('button');
     expect(button.getAttribute('aria-label')).toBe('Register');
-    cleanup();
+  });
+
+  it('should render the correct aria-;abel if the attribute is defined', () => {
+    const handleClick = jest.fn();
     render(
       <Button onClick={handleClick} ariaLabel="Registers" label="Register" />
     );
-    button = screen.getByRole('button');
+    const button: any = screen.getByRole('button');
     expect(button.getAttribute('aria-label')).toBe('Registers');
   });
 });
