@@ -53,16 +53,18 @@ type FormInputProps = {
   /**
    * allow to customise the input with all the properites needed
    **/
-  inputDivProps?: React.AllHTMLAttributes<HTMLDivElement>;
+  inputDivProps?: React.HTMLAttributes<HTMLDivElement>;
   /**
   /**
    * allow to customise the input with all the properites needed
    **/
-  inputProps?: React.AllHTMLAttributes<HTMLInputElement>;
+  inputProps?: React.HTMLAttributes<HTMLInputElement> & {
+    ref?: React.RefObject<HTMLInputElement>;
+  };
   /**
    * allow to customise the label with all the properites needed
    */
-  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
+  labelProps?: React.HTMLAttributes<HTMLLabelElement>;
   /**
    * generic parameter to pass whatever element before the input
    **/
@@ -256,6 +258,7 @@ export const FormInput = ({
     containerClassName,
     {
       'dcx-form-input--filled': !!value,
+      'dcx-form-input--placeholder': !!inputProps?.placeholder,
       'dcx-error-bottom': errorPosition === ErrorPosition.BOTTOM,
       'dcx-hint-bottom': hint && hint.position !== 'above',
       'dcx-floating-label': floatVariants.includes(variant),
