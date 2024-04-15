@@ -311,7 +311,7 @@ describe('Button', () => {
     expect(button.getAttribute('aria-label')).toBe('Register');
   });
 
-  it('should render the correct aria-;abel if the attribute is defined', () => {
+  it('should render the provided aria-label if the attribute is defined', () => {
     const handleClick = jest.fn();
     render(
       <Button onClick={handleClick} ariaLabel="Registers" label="Register" />
