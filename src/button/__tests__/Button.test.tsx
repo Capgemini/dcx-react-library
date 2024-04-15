@@ -5,6 +5,7 @@ import {
   render,
   screen,
   waitFor,
+  cleanup,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Button } from '../Button';
@@ -303,13 +304,17 @@ describe('Button', () => {
       'You can use label or children but not both at the same time'
     );
   });
-  
-  it('should accept ariaLabel as attribute', () => {
+
+  it('should have the correct aria-label', () => {
     const handleClick = jest.fn();
-    render(
-      <Button onClick={handleClick} ariaLabel="Register" label="Register" />
-    );
-    const button: any = screen.getByRole('button');
+    render(<Button onClick={handleClick} label="Register" />);
+    let button: any = screen.getByRole('button');
     expect(button.getAttribute('aria-label')).toBe('Register');
+    cleanup();
+    render(
+      <Button onClick={handleClick} ariaLabel="Registers" label="Register" />
+    );
+    button = screen.getByRole('button');
+    expect(button.getAttribute('aria-label')).toBe('Registers');
   });
 });
