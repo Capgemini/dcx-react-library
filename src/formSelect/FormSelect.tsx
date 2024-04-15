@@ -132,7 +132,9 @@ export type FormSelectProps = {
   /**
    * will allow to extend the select
    */
-  selectProps?: React.AllHTMLAttributes<HTMLSelectElement>;
+  selectProps?: React.SelectHTMLAttributes<HTMLSelectElement> & {
+    ref?: React.RefObject<HTMLSelectElement>;
+  };
 };
 
 export const FormSelect = ({
