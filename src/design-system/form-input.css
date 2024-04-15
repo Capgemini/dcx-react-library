@@ -42,6 +42,11 @@
       -webkit-box-shadow: var(--input-shadow);
       transition: background-color 5000s ease-in-out 0s;
     }
+    &::placeholder {
+      color: token('color-text-formcontrol_placeholder');
+      font-size: token('font-size-formcontrol_placeholder');
+      font-weight: token('font-weight-formcontrol_placeholder');
+    }
   }
 
   &:has(.dcx-form-input__suffix) {
@@ -313,7 +318,10 @@
  */
 
 .dcx-form-input--filled.dcx-floating-label,
-.dcx-floating-label:has(input:focus) {
+.dcx-floating-label:has(input:focus),
+.dcx-floating-label.dcx-form-input--placeholder:has(
+    input:not(:placeholder-shown)
+  ) {
   & input {
     color: token('color-text-formcontrol-floating');
   }
@@ -393,7 +401,10 @@
 }
 
 .dcx-form-input--filled.dcx-floating-label-filled,
-.dcx-floating-label.dcx-floating-label-filled:has(input:focus) {
+.dcx-floating-label.dcx-floating-label-filled:has(input:focus),
+.dcx-floating-label.dcx-form-input--placeholder.dcx-floating-label-filled:has(
+    input:not(:placeholder-shown)
+  ) {
   & label {
     top: 0;
     margin-left: calc(token('spacing-x-formcontrol-floating') / 2);
