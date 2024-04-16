@@ -192,4 +192,33 @@ describe('ResultList', () => {
     const el: any = container.querySelector('li');
     expect(el.id).toBe('');
   });
+
+  it('should render the accessibility properties correctly', () => {
+    const handleClick = jest.fn();
+    render(
+      <ResultList
+        resultLiRef={resultRef}
+        list={['daniele', 'isaac']}
+        userInput="d"
+        activeOption={1}
+        onClick={handleClick}
+        ariaLabeledBy="autocomplete-id"
+      />
+    );
+    const ulElement = screen.getByRole('listbox');
+    expect(ulElement.getAttribute('aria-labelledby')).toEqual(
+      'autocomplete-id'
+    );
+
+    const listItems: any = screen.getAllByRole('option');
+    expect(listItems[0].innerHTML).toBe('daniele');
+    expect(listItems[0].getAttribute('aria-selected')).toBe('false');
+    expect(listItems[0].getAttribute('aria-setsize')).toBe('2');
+    expect(listItems[0].getAttribute('aria-posinset')).toBe('1');
+
+    expect(listItems[1].innerHTML).toBe('isaac');
+    expect(listItems[1].getAttribute('aria-selected')).toBe('true');
+    expect(listItems[1].getAttribute('aria-setsize')).toBe('2');
+    expect(listItems[1].getAttribute('aria-posinset')).toBe('2');
+  });
 });
