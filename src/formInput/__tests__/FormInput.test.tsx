@@ -317,7 +317,6 @@ describe('FormInput', () => {
         inputClassName="inputClass"
         inputProps={{
           defaultValue: 'default value',
-          id: 'userReference',
         }}
         hint={{
           position: 'above',
@@ -348,7 +347,6 @@ describe('FormInput', () => {
         inputClassName="inputClass"
         inputProps={{
           defaultValue: 'default value',
-          id: 'userReference',
         }}
         hint={{
           position: 'above',
