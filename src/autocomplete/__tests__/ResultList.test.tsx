@@ -19,7 +19,7 @@ describe('ResultList', () => {
         onClick={handleClick}
       />
     );
-    const listItems: any = screen.getAllByRole('listitem');
+    const listItems: any = screen.getAllByRole('option');
     expect(listItems[0].innerHTML).toBe('daniele');
     expect(listItems[1].innerHTML).toBe('isaac');
   });
@@ -61,7 +61,7 @@ describe('ResultList', () => {
         noOptionClass="noOptionClass"
       />
     );
-    const listItems: any = screen.getAllByRole('listitem');
+    const listItems: any = screen.getAllByRole('option');
     expect(listItems[1].className).toBe(
       'liContainerClass liContainerClass--odd'
     );
@@ -81,7 +81,7 @@ describe('ResultList', () => {
         noOptionClass="noOptionClass"
       />
     );
-    const listItems: any = screen.getAllByRole('listitem');
+    const listItems: any = screen.getAllByRole('option');
     expect(listItems[0].className).toBe(
       'liContainerClass liContainerClass--even'
     );

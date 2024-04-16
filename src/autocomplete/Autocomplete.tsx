@@ -216,6 +216,22 @@ type autocompleteProps = {
    * search function to decide how the autocomplete component finds results
    */
   search?: (value: string, options: any) => string[];
+  /**
+   * A value to display to the users the current state of the autocomplete
+   */
+  accessibilityStatus?: string;
+  /**
+   * Text that is only visible to screen readers to give a hint on how to use the component
+   */
+  accessibilityHintText?: string;
+  /**
+   * this method is useful if you want to provide the options dynamically
+   */
+  statusUpdate?: (
+    length: number,
+    propertyName: string,
+    position: number
+  ) => void;
 };
 
 export enum AutoCompleteErrorPosition {
@@ -275,6 +291,9 @@ export const Autocomplete = ({
   suffix,
   tabIndex = 0,
   search,
+  accessibilityStatus = '',
+  accessibilityHintText = '',
+  statusUpdate,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
@@ -286,6 +305,8 @@ export const Autocomplete = ({
   const resultRef = useRef<HTMLLIElement[]>(null) as React.MutableRefObject<
     HTMLLIElement[]
   >;
+  const [accessibilityStatusA, setAccessibilityStatusA] = useState<string>('');
+  const [accessibilityStatusB, setAccessibilityStatusB] = useState<string>('');
   let hydrated = useHydrated();
 
   const showPromptMessage = (inputValue = userInput): boolean =>
@@ -327,7 +348,7 @@ export const Autocomplete = ({
         setActiveOption(0);
         setFilterList(filtered);
         setShowOptions(true);
-        setAccessibilityStatus(filtered.length, filtered[0], 1);
+        statusUpdate && statusUpdate(filtered.length, filtered[0], 1);
       }, debounceMs),
     [debounceMs, options, currentAutocompleteStatus]
   );
@@ -356,8 +377,11 @@ export const Autocomplete = ({
     const { value } = evt.currentTarget;
     setUserInput(value);
     handlePrompt(evt, value);
-
-    if (onChange) {
+    // if the user input is blank, close the options list and set the accessibility status to blank
+    if (value === '') {
+      setShowOptions(false);
+      statusUpdate && statusUpdate(-1, '', 0);
+    } else if (onChange) {
       debounceSearch(value);
     } else {
       delayedFilterResults(value);
@@ -373,14 +397,20 @@ export const Autocomplete = ({
   }, [options, onChange]);
 
   React.useEffect(() => {
+    setAccessibilityStatus(accessibilityStatus);
+  }, [accessibilityStatus]);
+
+  React.useEffect(() => {
     setUserInput(defaultValue);
   }, [defaultValue]);
 
-  const handleClick = (optionName: string, index: number) => {
-    setActiveOption(index);
+  const handleClick = (evt: React.FormEvent<HTMLInputElement>) => {
+    const optionName = evt.currentTarget.innerHTML;
+    setActiveOption(0);
     setFilterList([]);
     setShowOptions(false);
     setUserInput(multiSelect ? '' : optionName);
+    statusUpdate && statusUpdate(-1, '', 0);
     if (onSelected) onSelected(optionName);
   };
 
@@ -396,6 +426,7 @@ export const Autocomplete = ({
 
       if (filterList.length > 0) {
         setUserInput(filterList[activeOption]);
+        statusUpdate && statusUpdate(-1, '', 0);
         if (onSelected) onSelected(filterList[activeOption]);
       }
     } else if (evt.code === 'ArrowUp') {
@@ -407,11 +438,12 @@ export const Autocomplete = ({
       const prevItem = resultRef.current && resultRef.current[newActiveOption];
       prevItem &&
         prevItem.scrollIntoView({ block: 'nearest', inline: 'start' });
-      setAccessibilityStatus(
-        filterList.length,
-        filterList[newActiveOption],
-        newActiveOption + 1
-      );
+      statusUpdate &&
+        statusUpdate(
+          filterList.length,
+          filterList[newActiveOption],
+          newActiveOption + 1
+        );
     } else if (evt.code === 'ArrowDown') {
       if (activeOption === filterList.length - 1) {
         return;
@@ -421,11 +453,12 @@ export const Autocomplete = ({
       const nextItem = resultRef.current && resultRef.current[newActiveOption];
       nextItem &&
         nextItem.scrollIntoView({ block: 'nearest', inline: 'start' });
-      setAccessibilityStatus(
-        filterList.length,
-        filterList[newActiveOption],
-        newActiveOption + 1
-      );
+      statusUpdate &&
+        statusUpdate(
+          filterList.length,
+          filterList[newActiveOption],
+          newActiveOption + 1
+        );
     } else if (evt.code === 'Escape') {
       setShowOptions(false);
     }
@@ -435,31 +468,16 @@ export const Autocomplete = ({
     setShowPrompt(false);
   };
 
-  const setAccessibilityStatus = (
-    length: number,
-    nameOfOption: string,
-    position: number
-  ) => {
-    const currentStatusElement = document.getElementById(
-      `autocomplete-status-${id}-${currentAutocompleteStatus ? 'A' : 'B'}`
-    );
-    if (currentStatusElement) {
-      currentStatusElement.innerText = '';
+  const setAccessibilityStatus = (newStatus: string) => {
+    if (currentAutocompleteStatus) {
+      setAccessibilityStatusA('');
+      setAccessibilityStatusB(newStatus);
+    } else {
+      setAccessibilityStatusA(newStatus);
+      setAccessibilityStatusB('');
     }
     // Alternates between the two status elements to make sure the change is seen for screen readers
     setCurrentAutocompleteStatus(!currentAutocompleteStatus);
-    const statusElement = document.getElementById(
-      `autocomplete-status-${id}-${!currentAutocompleteStatus ? 'A' : 'B'}`
-    );
-    if (statusElement) {
-      let newText = '';
-      if (length === 0) {
-        newText = 'No search results';
-      } else {
-        newText = `${length} result${length > 1 ? 's are' : ' is'} available. ${nameOfOption} ${position} of ${length} is highlighted`;
-      }
-      statusElement.innerText = newText;
-    }
   };
 
   const getActivedescendantId = () => {
@@ -644,13 +662,17 @@ export const Autocomplete = ({
             role="status"
             aria-atomic="true"
             aria-live="polite"
-          ></div>
+          >
+            {accessibilityStatusA}
+          </div>
           <div
             id={`autocomplete-status-${id}-B`}
             role="status"
             aria-atomic="true"
             aria-live="polite"
-          ></div>
+          >
+            {accessibilityStatusB}
+          </div>
         </div>
         {searchEl}
         {displayResultList() && (
@@ -676,9 +698,7 @@ export const Autocomplete = ({
           id={`autocomplete-${id}-assistiveHint`}
           style={{ display: 'none' }}
         >
-          When autocomplete results are available use up and down arrows to
-          review and enter to select. Touch device users, explore by touch or
-          with swipe gestures.
+          {accessibilityHintText}
         </span>
       </div>
     </>

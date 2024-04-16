@@ -58,7 +58,7 @@ export const ResultList = ({
               },
             ])}
             key={optionName}
-            onClick={() => onClick(optionName, index)}
+            onClick={onClick}
             style={liContainerStyle}
             ref={(ref: HTMLLIElement) => {
               resultLiRef.current = { ...resultLiRef.current, [index]: ref };
