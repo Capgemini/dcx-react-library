@@ -86,7 +86,7 @@ describe('FormRadio', () => {
     );
   });
 
-  it('should render a radio with aria label match name if unspecified', () => {
+  it('should not render a radio with aria label match name if unspecified', () => {
     const handleChange = jest.fn();
 
     render(
@@ -99,9 +99,7 @@ describe('FormRadio', () => {
       />
     );
 
-    expect(screen.getByLabelText('my label').getAttribute('aria-label')).toBe(
-      'group1'
-    );
+    expect(screen.getByLabelText('my label').getAttribute('aria-label')).toBeNull();
   });
 
   it('should render a radio with an id', () => {

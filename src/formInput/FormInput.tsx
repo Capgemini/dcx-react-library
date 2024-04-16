@@ -235,7 +235,7 @@ export const FormInput = ({
       onBlur={handleBlur}
       required={required}
       className={inputClassName}
-      aria-label={ariaLabel || name}
+      aria-label={ariaLabel}
       aria-required={ariaRequired}
       tabIndex={tabIndex}
       {...inputProps}

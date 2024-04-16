@@ -205,9 +205,8 @@ describe('FormInput', () => {
         }}
       />
     );
-    const inputContainer: Element | null = container.querySelector(
-      '.myClassName'
-    );
+    const inputContainer: Element | null =
+      container.querySelector('.myClassName');
     expect(inputContainer).not.toBeNull();
   });
 
@@ -439,9 +438,8 @@ describe('FormInput', () => {
     const { container } = render(<DummyComponentTriggerError />);
     const button = screen.getByRole('button');
     await user.click(button);
-    const inputContainer: Element | null = container.querySelector(
-      '.error-container'
-    );
+    const inputContainer: Element | null =
+      container.querySelector('.error-container');
     expect(inputContainer).not.toBeNull();
   });
 
@@ -521,7 +519,7 @@ describe('FormInput', () => {
     expect(error.innerHTML).toContain('static error message');
   });
 
-  it('should display the aria-label name if the aria-label attribute is not passed', () => {
+  it('should not display the aria-label name if the aria-label attribute is not passed', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
@@ -538,7 +536,7 @@ describe('FormInput', () => {
       />
     );
     const input = screen.getByRole('textbox');
-    expect(input.getAttribute('aria-label')).toBe('password');
+    expect(input.getAttribute('aria-label')).toBeNull();
   });
 
   it('should have a 0 tabIndex value by default', () => {
