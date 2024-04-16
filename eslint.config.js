@@ -1,5 +1,4 @@
 import globals from "globals";
-import tseslint from "typescript-eslint";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 
 import path from "path";
@@ -15,6 +14,5 @@ const compat = new FlatCompat({baseDirectory: __dirname, recommendedConfig: plug
 export default [
   {languageOptions: { globals: globals.browser }},
   ...compat.extends("standard-with-typescript"),
-  ...tseslint.configs.recommended,
   pluginReactConfig,
 ];
