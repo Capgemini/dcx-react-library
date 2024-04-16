@@ -1,4 +1,5 @@
 export const Roles = {
+  alert: 'alert',
   button: 'button',
   combobox: 'combobox',
   error: 'error',
