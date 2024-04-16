@@ -323,7 +323,6 @@ describe('FormInput', () => {
           text: 'hint',
           className: 'hint-class',
         }}
-        aria-label="standard-input-validation"
         errorProps={{
           className: '',
         }}
@@ -353,7 +352,6 @@ describe('FormInput', () => {
           text: 'hint',
           className: 'hint-class',
         }}
-        aria-label="standard-input-validation"
         errorProps={{
           className: '',
         }}
