@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Tab } from '../Tab';
 import { TabContext } from '../../TabGroup';
+import * as hooks from '../../../common/utils/clientOnly';
 
 describe('Tab', () => {
   it('should not render a tab with out a context', () => {
@@ -233,5 +234,25 @@ describe('Tab', () => {
 
     expect(onClickHandler).toBeCalled();
     expect(onClickHandler).toBeCalledWith('tab 1');
+  });
+
+  it('should not have the tabIndex property if js is disabled', () => {
+    //@ts-ignore
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+
+    const onClickHandler = jest.fn();
+
+    render(
+      <TabContext.Provider
+        value={{
+          activeTab: 'tab 1',
+          changeActiveTab: onClickHandler,
+        }}
+      >
+        <Tab eventKey="tab 2" label="tab 2" activeTabClassName="tabActive" />
+      </TabContext.Provider>
+    );
+
+    expect(screen.getByRole('tab').getAttribute('tabIndex')).toBeNull();
   });
 });
