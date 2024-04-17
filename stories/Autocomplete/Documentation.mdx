@@ -134,7 +134,7 @@ The properties are:
 - accessibilityHintText - Gives the user a generic view of how to use the component
 - statusUpdate - When the user types or makes an action, it returns information abuot the autocomplete so the accessibilityStatus attribute can be updated with updated information.
   After this function is called you can update the accessibilityStatus attribute for example,
-  "${length} result${length > 1 ? 's are' : ' is'} available. ${option} ${position} of ${length} is highlighted"
+  `"${length} result${length > 1 ? 's are' : ' is'} available. ${option} ${position} of ${length} is highlighted"`
   Which to the user would look something like "7 Results are available. Papaya 1 of 7 is highlighted"
 
 An example of how to handle the statusUpdate function would be:

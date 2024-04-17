@@ -19,6 +19,17 @@ function AutocompleteDemo() {
       });
   }
 
+  const [status, setStatus] = React.useState('');
+  const change = (length: number, property: string, position: number) => {
+    let newText = '';
+    if (length === 0) {
+      newText = 'No search results';
+    } else if (length > 0) {
+      newText = \`\${length} result\${length > 1 ? 's are' : ' is'} available. \${property} \${position} of \${length} is highlighted\`;
+    }
+    setStatus(newText);
+  };
+
   return (
     <Autocomplete
       options={[
@@ -37,19 +48,25 @@ function AutocompleteDemo() {
       hintText="search the list of fruits"
       hintClass=""
       hintId="hintid"
-      prefix={<></>}
-      suffix={<></>}
+      prefix={{
+        properties: {},
+        content: <></>
+      }}
+      suffix={{
+        properties: {},
+        content: <></>
+      }}
       resultUlClass=""
       resultlLiClass=""
       resultNoOptionClass=""
       resultActiveClass=""
       notFoundText="No fruit found"
       onSelected={handleSelected} 
-      containerClassName=""
+      containerClassName="fruit"
       labelText=""
       labelClassName=""
       labelProps={{id:'labelid'}}
-      id=""
+      id="fruitTest"
       errorPosition='below'
       errorMessageText=""
       errorMessageClassName=""
@@ -63,6 +80,13 @@ function AutocompleteDemo() {
       selectProps={{}}
       tabIndex={0}
       search={handleSearch}
+      statusUpdate={(length, property, position) =>
+        change(length, property, position)
+      }
+      accessibilityStatus={status}
+      accessibilityHintText="When autocomplete results are available use up and down arrows to
+      review and enter to select. Touch device users, explore by touch or
+      with swipe gestures."
     />
   )
 }
