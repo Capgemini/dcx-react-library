@@ -225,7 +225,7 @@ type autocompleteProps = {
    */
   accessibilityHintText?: string;
   /**
-   * this method is useful if you want to provide the options dynamically
+   * Used for accessibility when the user mtypes or makes an action
    */
   statusUpdate?: (
     length: number,
