@@ -966,4 +966,285 @@ describe('Autocomplete', () => {
       expect(listItems).toHaveLength(2);
     });
   });
+
+  it('should render the autocomplete with all of the accessible elements', () => {
+    const status = '';
+    const change = jest.fn();
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) =>
+          change(length, property, position)
+        }
+        accessibilityStatus={status}
+        accessibilityHintText={hint}
+      />
+    );
+    const statusElements = screen.getAllByRole('status');
+    expect(statusElements.length).toBe(2);
+    expect(statusElements[0].id).toBe('autocomplete-status-fruitTest-A');
+    expect(statusElements[1].id).toBe('autocomplete-status-fruitTest-B');
+    const hiddenHintElm = document.getElementById(
+      'autocomplete-fruitTest-assistiveHint'
+    );
+    expect(hiddenHintElm?.innerHTML).toBe(hint);
+    const inputElm = screen.getByRole('combobox');
+    expect(inputElm.getAttribute('aria-expanded')).toBe('false');
+    expect(inputElm.getAttribute('aria-owns')).toBe('fruit-options-container');
+    expect(inputElm.getAttribute('aria-activedescendant')).toBeNull();
+  });
+
+  it('should update the accessibility status and alternate between the two options', async () => {
+    let status = '';
+    const change = (length: number, property: string, position: number) => {
+      status = `${length} result${length > 1 ? 's are' : ' is'} available. ${property} ${position} of ${length} is highlighted`;
+    };
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    const user = userEvent.setup();
+    const component = (statusText: string) => (
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) => {
+          change(length, property, position);
+        }}
+        accessibilityStatus={statusText}
+        accessibilityHintText={hint}
+      />
+    );
+
+    const { rerender } = render(component(status));
+
+    let statusElements = screen.getAllByRole('status');
+    expect(statusElements.length).toBe(2);
+    expect(statusElements[0].innerHTML).toBe('');
+    expect(statusElements[1].innerHTML).toBe('');
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'p');
+
+    rerender(component(status));
+
+    statusElements = screen.getAllByRole('status');
+    expect(statusElements[0].innerHTML).toBe(
+      '7 results are available. Papaya 1 of 7 is highlighted'
+    );
+    expect(statusElements[1].innerHTML).toBe('');
+
+    await user.type(inputElm, 'a');
+
+    rerender(component(status));
+    statusElements = screen.getAllByRole('status');
+    expect(statusElements[0].innerHTML).toBe('');
+    expect(statusElements[1].innerHTML).toBe(
+      '2 results are available. Papaya 1 of 2 is highlighted'
+    );
+  });
+
+  it('should call status update when using the arrow up or down keys', async () => {
+    const status = 'status message';
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    const user = userEvent.setup();
+    const change = jest.fn();
+    render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) => {
+          change(length, property, position);
+        }}
+        accessibilityStatus={status}
+        accessibilityHintText={hint}
+      />
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'p');
+    fireEvent.keyDown(inputElm, { code: 'ArrowDown' });
+    expect(change.mock.calls[1][0]).toBe(7);
+    expect(change.mock.calls[1][1]).toBe('Persimmon');
+    expect(change.mock.calls[1][2]).toBe(2);
+
+    fireEvent.keyDown(inputElm, { code: 'ArrowDown' });
+    expect(change.mock.calls[2][0]).toBe(7);
+    expect(change.mock.calls[2][1]).toBe('Paw Paw');
+    expect(change.mock.calls[2][2]).toBe(3);
+
+    fireEvent.keyDown(inputElm, { code: 'ArrowDown' });
+    expect(change.mock.calls[3][0]).toBe(7);
+    expect(change.mock.calls[3][1]).toBe('Prickly Pear');
+    expect(change.mock.calls[3][2]).toBe(4);
+
+    fireEvent.keyDown(inputElm, { code: 'ArrowUp' });
+    expect(change.mock.calls[4][0]).toBe(7);
+    expect(change.mock.calls[4][1]).toBe('Paw Paw');
+    expect(change.mock.calls[4][2]).toBe(3);
+
+    fireEvent.keyDown(inputElm, { code: 'ArrowUp' });
+    expect(change.mock.calls[5][0]).toBe(7);
+    expect(change.mock.calls[5][1]).toBe('Persimmon');
+    expect(change.mock.calls[5][2]).toBe(2);
+  });
+
+  it('should call status update when the user hits enter on an option', async () => {
+    const status = 'status message';
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    const user = userEvent.setup();
+    const change = jest.fn();
+    render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) => {
+          change(length, property, position);
+        }}
+        accessibilityStatus={status}
+        accessibilityHintText={hint}
+      />
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'p');
+
+    fireEvent.keyDown(inputElm, { code: 'Enter', keycode: 13 });
+    expect(change.mock.calls[1][0]).toBe(-1);
+    expect(change.mock.calls[1][1]).toBe('');
+    expect(change.mock.calls[1][2]).toBe(0);
+  });
+
+  it('should call status update when the user clicks on an option', async () => {
+    const status = 'status message';
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    const user = userEvent.setup();
+    const change = jest.fn();
+    render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) => {
+          change(length, property, position);
+        }}
+        accessibilityStatus={status}
+        accessibilityHintText={hint}
+      />
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'p');
+
+    fireEvent.keyDown(inputElm, { code: 'ArrowDown' });
+    const listItems = screen.getAllByRole('option');
+    fireEvent.click(listItems[0]);
+    expect(change.mock.calls[2][0]).toBe(-1);
+    expect(change.mock.calls[2][1]).toBe('');
+    expect(change.mock.calls[2][2]).toBe(0);
+  });
+
+  it('should call status update when the user clears what they have been typing', async () => {
+    const status = 'status message';
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    const user = userEvent.setup();
+    const change = jest.fn();
+    render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) => {
+          change(length, property, position);
+        }}
+        accessibilityStatus={status}
+        accessibilityHintText={hint}
+      />
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'pap');
+    expect(change.mock.calls[2][0]).toBe(1);
+    expect(change.mock.calls[2][1]).toBe('Papaya');
+    expect(change.mock.calls[2][2]).toBe(1);
+
+    await user.clear(inputElm);
+    expect(change.mock.calls[3][0]).toBe(-1);
+    expect(change.mock.calls[3][1]).toBe('');
+    expect(change.mock.calls[3][2]).toBe(0);
+  });
 });

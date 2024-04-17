@@ -508,7 +508,7 @@ export const Autocomplete = ({
           ...inputProps,
           ...(showPrompt && { 'aria-describedby': promptId }),
           'aria-expanded': showOptions,
-          'aria-owns': optionsId,
+          'aria-owns': resultId,
           role: 'combobox',
           'aria-activedescendant': getActivedescendantId(),
         }}
