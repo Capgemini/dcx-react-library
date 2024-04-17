@@ -149,7 +149,7 @@ describe('FormInput', () => {
     expect(input).toBeInTheDocument();
   });
 
-  it('should have the ariarequrired attribute', () => {
+  it('should have the required aria attribute', () => {
     render(
       <FormInput
         name="password"
@@ -205,9 +205,8 @@ describe('FormInput', () => {
         }}
       />
     );
-    const inputContainer: Element | null = container.querySelector(
-      '.myClassName'
-    );
+    const inputContainer: Element | null =
+      container.querySelector('.myClassName');
     expect(inputContainer).not.toBeNull();
   });
 
@@ -308,12 +307,69 @@ describe('FormInput', () => {
     expect(screen.getByLabelText('this is a label')).toBeInTheDocument();
   });
 
+  it('should not render the formInput with an alert', () => {
+    const { container } = render(
+      <FormInput
+        containerClassName="container"
+        label="label"
+        name="name"
+        type="text"
+        inputClassName="inputClass"
+        inputProps={{
+          defaultValue: 'default value',
+        }}
+        hint={{
+          position: 'above',
+          text: 'hint',
+          className: 'hint-class',
+        }}
+        errorProps={{
+          className: '',
+        }}
+        //@ts-ignore
+        staticErrorMessage={}
+        errorPosition={ErrorPosition.AFTER_LABEL}
+        containerClassNameError=""
+      />
+    );
+
+    expect(container.querySelector('[role=alert]')).not.toBeInTheDocument();
+  });
+
+  it('should not render the formInput with an alert for an empty staticErrorMessage', () => {
+    const { container } = render(
+      <FormInput
+        containerClassName="container"
+        label="label"
+        name="name"
+        type="text"
+        inputClassName="inputClass"
+        inputProps={{
+          defaultValue: 'default value',
+        }}
+        hint={{
+          position: 'above',
+          text: 'hint',
+          className: 'hint-class',
+        }}
+        errorProps={{
+          className: '',
+        }}
+        staticErrorMessage=""
+        errorPosition={ErrorPosition.AFTER_LABEL}
+        containerClassNameError=""
+      />
+    );
+
+    expect(container.querySelector('[role=alert]')).not.toBeInTheDocument();
+  });
+
   it('should display the formInput error', async () => {
     const user = userEvent.setup();
     render(<DummyComponent pos={ErrorPosition.BOTTOM} />);
     const input = screen.getByRole('textbox');
     await user.type(input, 'TEST VALUE');
-    expect(screen.getByRole('error')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
   });
 
   it('should display the formInput error message', async () => {
@@ -321,7 +377,7 @@ describe('FormInput', () => {
     render(<DummyComponent pos={ErrorPosition.BOTTOM} />);
     const input = screen.getByRole('textbox');
     await user.type(input, 'TEST VALUE');
-    expect(screen.getByRole('error')).toContainHTML('is invalid');
+    expect(screen.getByRole('alert')).toContainHTML('is invalid');
   });
 
   it('should display the formInput error message on top', async () => {
@@ -360,7 +416,7 @@ describe('FormInput', () => {
 
   it('should display the error message on load', () => {
     render(<DummyComponent pos={ErrorPosition.BOTTOM} displayError={true} />);
-    expect(screen.getByRole('error')).toContainHTML('is invalid');
+    expect(screen.getByRole('alert')).toContainHTML('is invalid');
   });
 
   it('should display wrapper label container in floating variant', () => {
@@ -405,12 +461,12 @@ describe('FormInput', () => {
     );
     const button = screen.getByRole('button');
     await user.click(button);
-    expect(screen.getByRole('error')).toContainHTML('is invalid');
+    expect(screen.getByRole('alert')).toContainHTML('is invalid');
   });
 
   it('should display a static error message', () => {
     render(<DummyStaticComponent pos={ErrorPosition.AFTER_LABEL} />);
-    const error = screen.getByRole('error');
+    const error = screen.getByRole('alert');
     expect(error.textContent).toBe('static error message');
   });
 
@@ -439,9 +495,8 @@ describe('FormInput', () => {
     const { container } = render(<DummyComponentTriggerError />);
     const button = screen.getByRole('button');
     await user.click(button);
-    const inputContainer: Element | null = container.querySelector(
-      '.error-container'
-    );
+    const inputContainer: Element | null =
+      container.querySelector('.error-container');
     expect(inputContainer).not.toBeNull();
   });
 
@@ -517,11 +572,11 @@ describe('FormInput', () => {
       />
     );
 
-    const error: any = container.querySelector('[role=error]');
+    const error: any = container.querySelector('[role=alert]');
     expect(error.innerHTML).toContain('static error message');
   });
 
-  it('should display the aria-label name if the aria-label attribute is not passed', () => {
+  it('should not display the aria-label name if the aria-label attribute is not passed', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
@@ -538,7 +593,7 @@ describe('FormInput', () => {
       />
     );
     const input = screen.getByRole('textbox');
-    expect(input.getAttribute('aria-label')).toBe('password');
+    expect(input.getAttribute('aria-label')).toBeNull();
   });
 
   it('should have a 0 tabIndex value by default', () => {
