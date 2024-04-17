@@ -212,7 +212,7 @@ export const MultiSelect = ({
     const option: MultiSelectOption | undefined = selectOptions.find(
       (option: MultiSelectOption) => option.label === label
     );
-    console.log('OPTION FOUDN', option);
+
     if (option) {
       dispatch({
         type: 'add',
