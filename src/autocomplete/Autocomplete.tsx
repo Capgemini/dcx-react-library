@@ -222,18 +222,16 @@ type autocompleteProps = {
    */
   accessibilityStatus?: string;
   /**
-   * Text that is only visible to screen readers to give a hint on how to use the component
+   * Text visible only to screen readers to give a hint on how to use the component
    */
   accessibilityHintText?: string;
   /**
-   * Used for accessibility when the user types or makes an action, it returns information abuot the autocomplete so the accessibilityStatus attribute can be updated
+   * Returns the current value of length, optionText and position when the user types or interact with the keyboard (keyUp, KeyDown).
    * length: The length of the results shown after the user has started typing
    * optionText: The currently highlighted text in the result list, this will return the value the user is shown
    * position: The position of the currently highlighted option in the results list
-   *
-   * After this function is called you can update the accessibilityStatus attribute for example
-   * "${length} result${length > 1 ? 's are' : ' is'} available. ${option} ${position} of ${length} is highlighted"
-   * Which to the user would look something like "7 Results are available. Papaya 1 of 7 is highlighted"
+   * @example
+   * One usage of this method could be to update the value of the accessibilityStatus
    */
   statusUpdate?: (length: number, optionText: string, position: number) => void;
 };
