@@ -217,7 +217,8 @@ type autocompleteProps = {
    */
   search?: (value: string, options: any) => string[];
   /**
-   * A value to display to the users the current state of the autocomplete
+   * A value to display to the users the current state of the autocomplete, this is used for accessibility and is displayed in a hidden element above the input.
+   * This should be used to display information such as how may results are being shown on screen, which element has been highlighted and what position it is in the reuslt list
    */
   accessibilityStatus?: string;
   /**
@@ -225,13 +226,16 @@ type autocompleteProps = {
    */
   accessibilityHintText?: string;
   /**
-   * Used for accessibility when the user mtypes or makes an action
+   * Used for accessibility when the user types or makes an action, it returns information abuot the autocomplete so the accessibilityStatus attribute can be updated
+   * length: The length of the results shown after the user has started typing
+   * optionText: The currently highlighted text in the result list, this will return the value the user is shown
+   * position: The position of the currently highlighted option in the results list
+   *
+   * After this function is called you can update the accessibilityStatus attribute for example
+   * "${length} result${length > 1 ? 's are' : ' is'} available. ${option} ${position} of ${length} is highlighted"
+   * Which to the user would look something like "7 Results are available. Papaya 1 of 7 is highlighted"
    */
-  statusUpdate?: (
-    length: number,
-    propertyName: string,
-    position: number
-  ) => void;
+  statusUpdate?: (length: number, optionText: string, position: number) => void;
 };
 
 export enum AutoCompleteErrorPosition {
