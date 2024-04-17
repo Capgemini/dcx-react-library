@@ -186,7 +186,7 @@ describe('Autocomplete', () => {
   it('should allow to specify an id for the input', () => {
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
     render(<Autocomplete options={['daniele', 'isaac']} id="myId" />);
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     expect(input.id).toBe('myId');
   });
 
@@ -222,7 +222,7 @@ describe('Autocomplete', () => {
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
     render(<Autocomplete options={['daniele', 'isaac']} />);
 
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     expect(input.name).toBe('autocompleteSearch');
     expect(input.type).toBe('text');
     expect(input.value).toBe('');
@@ -234,7 +234,7 @@ describe('Autocomplete', () => {
       <Autocomplete options={['daniele', 'isaac']} defaultValue="daniele" />
     );
 
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     expect(input.name).toBe('autocompleteSearch');
     expect(input.type).toBe('text');
     expect(input.value).toBe('daniele');
@@ -262,14 +262,14 @@ describe('Autocomplete', () => {
     render(<DummyChangeState />);
     await act(async () => {
       await waitFor(() => {
-        const input: any = screen.getByRole('textbox');
+        const input: any = screen.getByRole('combobox');
         expect(input.value).toBe('Apple');
       });
     });
     const button = screen.getByRole('button');
     userEvent.click(button);
     await waitFor(() => {
-      const input: any = screen.getByRole('textbox');
+      const input: any = screen.getByRole('combobox');
       expect(input.value).toBe('Orange');
     });
   });
@@ -278,9 +278,9 @@ describe('Autocomplete', () => {
     const user = userEvent.setup();
 
     render(<Autocomplete options={['daniele', 'isaac']} />);
-    const input = screen.getByRole('textbox');
+    const input = screen.getByRole('combobox');
     await user.type(input, 'da');
-    const listItems: any = screen.getAllByRole('listitem');
+    const listItems: any = screen.getAllByRole('option');
     await waitFor(() => {
       expect(listItems[0].innerHTML).toBe('daniele');
     });
@@ -289,7 +289,7 @@ describe('Autocomplete', () => {
   it('should not display available options', async () => {
     const user = userEvent.setup();
     const { container } = render(<Autocomplete options={['first', 'isaac']} />);
-    const input = screen.getByRole('textbox');
+    const input = screen.getByRole('combobox');
     await user.type(input, 'test value');
 
     const el: any = container.querySelector('li');
@@ -299,11 +299,11 @@ describe('Autocomplete', () => {
   it('should allow to select the first item', async () => {
     const user = userEvent.setup();
     render(<Autocomplete options={['daniele', 'destiny', 'isaac']} />);
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'd');
     await waitFor(() => {
       const item: any = screen
-        .getAllByRole('listitem')
+        .getAllByRole('option')
         .filter((listitem: any) => listitem.textContent === 'daniele');
       fireEvent.click(item[0]);
       expect(input.value).toBe('daniele');
@@ -314,11 +314,11 @@ describe('Autocomplete', () => {
     const user = userEvent.setup();
 
     render(<Autocomplete options={['daniele', 'destiny', 'isaac']} />);
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'D');
     await waitFor(() => {
       const item: any = screen
-        .getAllByRole('listitem')
+        .getAllByRole('option')
         .filter((listitem: any) => listitem.textContent === 'daniele');
       fireEvent.click(item[0]);
       expect(input.value).toBe('daniele');
@@ -328,11 +328,11 @@ describe('Autocomplete', () => {
   it('should allow to select the first item even if the list of choices is uppercase', async () => {
     const user = userEvent.setup();
     render(<Autocomplete options={['Daniele', 'destiny', 'isaac']} />);
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'd');
     await waitFor(() => {
       const item: any = screen
-        .getAllByRole('listitem')
+        .getAllByRole('option')
         .filter((listitem: any) => listitem.textContent === 'Daniele');
       fireEvent.click(item[0]);
       expect(input.value).toBe('Daniele');
@@ -348,11 +348,11 @@ describe('Autocomplete', () => {
         onSelected={handleOnSelected}
       />
     );
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'd');
     await waitFor(() => {
       const item: any = screen
-        .getAllByRole('listitem')
+        .getAllByRole('option')
         .filter((listitem: any) => listitem.textContent === 'daniele');
       fireEvent.click(item[0]);
       expect(handleOnSelected).toBeCalled();
@@ -362,7 +362,7 @@ describe('Autocomplete', () => {
   it('should set the input to an empty string when there is no text in the input and on pressing Enter', async () => {
     render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
 
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
 
     fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
 
@@ -372,7 +372,7 @@ describe('Autocomplete', () => {
   it('should highlight the selected option(s) on keyDown', async () => {
     const user = userEvent.setup();
     render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'da');
     fireEvent.keyDown(input, { code: 'ArrowDown' });
     fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
@@ -383,7 +383,7 @@ describe('Autocomplete', () => {
     const user = userEvent.setup();
 
     render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'da');
     fireEvent.keyDown(input, { code: 'ArrowDown' });
     fireEvent.keyDown(input, { code: 'ArrowUp' });
@@ -420,7 +420,7 @@ describe('Autocomplete', () => {
         ]}
       />
     );
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'p');
     fireEvent.keyDown(input, { code: 'ArrowDown' });
     fireEvent.keyDown(input, { code: 'ArrowDown' });
@@ -435,7 +435,7 @@ describe('Autocomplete', () => {
     fireEvent.keyDown(input, { code: 'ArrowDown' });
     fireEvent.keyDown(input, { code: 'ArrowDown' });
 
-    const listItems: HTMLLIElement[] = screen.getAllByRole('listitem');
+    const listItems: HTMLLIElement[] = screen.getAllByRole('option');
     const exactItem = screen.queryByText(/Pineapple 5/i);
 
     expect(listItems[10]).toBeVisible();
@@ -450,11 +450,11 @@ describe('Autocomplete', () => {
         resultActiveClass="activeClass"
       />
     );
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'da');
     fireEvent.keyDown(input, { code: 'ArrowUp' });
 
-    const listItems: any = screen.getAllByRole('listitem');
+    const listItems: any = screen.getAllByRole('option');
     expect(listItems[0].className).toBe('activeClass');
   });
 
@@ -466,14 +466,14 @@ describe('Autocomplete', () => {
         resultActiveClass="activeClass"
       />
     );
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'da');
 
     fireEvent.keyDown(input, { code: 'ArrowDown' });
     fireEvent.keyDown(input, { code: 'ArrowDown' });
     fireEvent.keyDown(input, { code: 'ArrowDown' });
 
-    const listItems: any = screen.getAllByRole('listitem');
+    const listItems: any = screen.getAllByRole('option');
     expect(listItems[1].className).toBe('activeClass');
   });
 
@@ -486,7 +486,7 @@ describe('Autocomplete', () => {
         onSelected={handleSelected}
       />
     );
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'da');
 
     fireEvent.keyDown(input, { code: 'ArrowDown' });
@@ -547,30 +547,30 @@ describe('Autocomplete', () => {
         minCharsBeforeSearch={2}
       />
     );
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'd');
 
     const ulEl: any = container.querySelector('ul');
     expect(ulEl).toBeNull();
     await user.type(input, 'a');
 
-    const listItems: any = screen.getAllByRole('listitem');
+    const listItems: any = screen.getAllByRole('option');
     expect(listItems.length).toBe(2);
   });
 
   it('should populate the list dynamically - i.e. fetch from the server', async () => {
     const user = userEvent.setup();
     render(<DummyAutoComplete />);
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     await user.type(input, 'p');
     await waitFor(() => {
-      const listItemsFirst: any = screen.getAllByRole('listitem');
+      const listItemsFirst: any = screen.getAllByRole('option');
 
       expect(listItemsFirst.length).toBe(7);
     });
     await user.type(input, 'e');
     await waitFor(() => {
-      const listItemsSecond: any = screen.getAllByRole('listitem');
+      const listItemsSecond: any = screen.getAllByRole('option');
       expect(listItemsSecond.length).toBe(2);
     });
   });
@@ -603,19 +603,19 @@ describe('Autocomplete', () => {
 
   it('should check that required attribute is defaulted to false', () => {
     render(<Autocomplete options={[]} />);
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     expect(input.required).toBe(false);
   });
 
   it('should check that if required is set to true, input child is rendered with the attribute', () => {
     render(<Autocomplete options={[]} required />);
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     expect(input.required).toBe(true);
   });
 
   it('should contains the input name if specified', () => {
     render(<Autocomplete options={[]} name="inputName" />);
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     expect(input.name).toBe('inputName');
   });
 
@@ -644,21 +644,21 @@ describe('Autocomplete', () => {
 
     render(<Autocomplete options={['daniele', 'darren', 'isaac']} />);
 
-    const input = screen.getByRole('textbox');
+    const input = screen.getByRole('combobox');
 
     await act(() => user.click(input));
 
-    let resultList = screen.queryByRole('list');
+    let resultList = screen.queryByRole('listbox');
     expect(resultList).toBe(null);
 
     await act(() => user.type(input, 'da'));
 
-    resultList = screen.queryByRole('list');
+    resultList = screen.queryByRole('listbox');
     expect(resultList).not.toBeNull();
 
     fireEvent.keyDown(input, { code: 'Escape' });
 
-    resultList = screen.queryByRole('list');
+    resultList = screen.queryByRole('listbox');
     expect(resultList).toBe(null);
   });
 
@@ -681,7 +681,7 @@ describe('Autocomplete', () => {
       />
     );
 
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
 
     expect(input).not.toHaveAttribute('aria-describedby');
 
@@ -723,7 +723,7 @@ describe('Autocomplete', () => {
       />
     );
 
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
 
     expect(input).not.toHaveAttribute('aria-describedby');
 
@@ -762,7 +762,7 @@ describe('Autocomplete', () => {
       />
     );
 
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
 
     expect(input).not.toHaveAttribute('aria-describedby');
 
@@ -819,7 +819,7 @@ describe('Autocomplete', () => {
       />
     );
 
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
 
     expect(input).not.toHaveAttribute('aria-describedby');
 
@@ -847,7 +847,7 @@ describe('Autocomplete', () => {
         }}
       />
     );
-    const input = screen.getByRole('textbox');
+    const input = screen.getByRole('combobox');
     await user.type(input, 'da');
     await waitFor(() => {
       const el: any = container.querySelector('li');
@@ -869,7 +869,7 @@ describe('Autocomplete', () => {
         }}
       />
     );
-    const input = screen.getByRole('textbox');
+    const input = screen.getByRole('combobox');
     await user.type(input, 'da');
     await waitFor(() => {
       const el: any = container.querySelector('li');
@@ -880,14 +880,14 @@ describe('Autocomplete', () => {
   it('should have a 0 tabIndex value by default', () => {
     render(<Autocomplete options={['daniele', 'isaac']} />);
 
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     expect(input.getAttribute('tabindex')).toBe('0');
   });
 
   it('should accept tabIndex attribute', () => {
     render(<Autocomplete options={['daniele', 'isaac']} tabIndex={1} />);
 
-    const input: any = screen.getByRole('textbox');
+    const input: any = screen.getByRole('combobox');
     expect(input.getAttribute('tabindex')).toBe('1');
   });
 
@@ -955,9 +955,9 @@ describe('Autocomplete', () => {
     };
 
     render(<Autocomplete options={options} search={quickSearch} />);
-    const input = screen.getByRole('textbox');
+    const input = screen.getByRole('combobox');
     await user.type(input, 'he');
-    const listItems: any = screen.getAllByRole('listitem');
+    const listItems: any = screen.getAllByRole('option');
     await waitFor(() => {
       expect(listItems[0].innerHTML).toBe(
         'Daniele Zurico (Head of Full Stack Development)'
@@ -965,5 +965,286 @@ describe('Autocomplete', () => {
       expect(listItems[1].innerHTML).toBe('Healy Ingenious (Project Manager)');
       expect(listItems).toHaveLength(2);
     });
+  });
+
+  it('should render the autocomplete with all of the accessible elements', () => {
+    const status = '';
+    const change = jest.fn();
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) =>
+          change(length, property, position)
+        }
+        accessibilityStatus={status}
+        accessibilityHintText={hint}
+      />
+    );
+    const statusElements = screen.getAllByRole('status');
+    expect(statusElements.length).toBe(2);
+    expect(statusElements[0].id).toBe('autocomplete-status-fruitTest-A');
+    expect(statusElements[1].id).toBe('autocomplete-status-fruitTest-B');
+    const hiddenHintElm = document.getElementById(
+      'autocomplete-fruitTest-assistiveHint'
+    );
+    expect(hiddenHintElm?.innerHTML).toBe(hint);
+    const inputElm = screen.getByRole('combobox');
+    expect(inputElm.getAttribute('aria-expanded')).toBe('false');
+    expect(inputElm.getAttribute('aria-owns')).toBe('fruit-options-container');
+    expect(inputElm.getAttribute('aria-activedescendant')).toBeNull();
+  });
+
+  it('should update the accessibility status and alternate between the two options', async () => {
+    let status = '';
+    const change = (length: number, property: string, position: number) => {
+      status = `${length} result${length > 1 ? 's are' : ' is'} available. ${property} ${position} of ${length} is highlighted`;
+    };
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    const user = userEvent.setup();
+    const component = (statusText: string) => (
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) => {
+          change(length, property, position);
+        }}
+        accessibilityStatus={statusText}
+        accessibilityHintText={hint}
+      />
+    );
+
+    const { rerender } = render(component(status));
+
+    let statusElements = screen.getAllByRole('status');
+    expect(statusElements.length).toBe(2);
+    expect(statusElements[0].innerHTML).toBe('');
+    expect(statusElements[1].innerHTML).toBe('');
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'p');
+
+    rerender(component(status));
+
+    statusElements = screen.getAllByRole('status');
+    expect(statusElements[0].innerHTML).toBe(
+      '7 results are available. Papaya 1 of 7 is highlighted'
+    );
+    expect(statusElements[1].innerHTML).toBe('');
+
+    await user.type(inputElm, 'a');
+
+    rerender(component(status));
+    statusElements = screen.getAllByRole('status');
+    expect(statusElements[0].innerHTML).toBe('');
+    expect(statusElements[1].innerHTML).toBe(
+      '2 results are available. Papaya 1 of 2 is highlighted'
+    );
+  });
+
+  it('should call status update when using the arrow up or down keys', async () => {
+    const status = 'status message';
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    const user = userEvent.setup();
+    const change = jest.fn();
+    render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) => {
+          change(length, property, position);
+        }}
+        accessibilityStatus={status}
+        accessibilityHintText={hint}
+      />
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'p');
+    fireEvent.keyDown(inputElm, { code: 'ArrowDown' });
+    expect(change.mock.calls[1][0]).toBe(7);
+    expect(change.mock.calls[1][1]).toBe('Persimmon');
+    expect(change.mock.calls[1][2]).toBe(2);
+
+    fireEvent.keyDown(inputElm, { code: 'ArrowDown' });
+    expect(change.mock.calls[2][0]).toBe(7);
+    expect(change.mock.calls[2][1]).toBe('Paw Paw');
+    expect(change.mock.calls[2][2]).toBe(3);
+
+    fireEvent.keyDown(inputElm, { code: 'ArrowDown' });
+    expect(change.mock.calls[3][0]).toBe(7);
+    expect(change.mock.calls[3][1]).toBe('Prickly Pear');
+    expect(change.mock.calls[3][2]).toBe(4);
+
+    fireEvent.keyDown(inputElm, { code: 'ArrowUp' });
+    expect(change.mock.calls[4][0]).toBe(7);
+    expect(change.mock.calls[4][1]).toBe('Paw Paw');
+    expect(change.mock.calls[4][2]).toBe(3);
+
+    fireEvent.keyDown(inputElm, { code: 'ArrowUp' });
+    expect(change.mock.calls[5][0]).toBe(7);
+    expect(change.mock.calls[5][1]).toBe('Persimmon');
+    expect(change.mock.calls[5][2]).toBe(2);
+  });
+
+  it('should call status update when the user hits enter on an option', async () => {
+    const status = 'status message';
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    const user = userEvent.setup();
+    const change = jest.fn();
+    render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) => {
+          change(length, property, position);
+        }}
+        accessibilityStatus={status}
+        accessibilityHintText={hint}
+      />
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'p');
+
+    fireEvent.keyDown(inputElm, { code: 'Enter', keycode: 13 });
+    expect(change.mock.calls[1][0]).toBe(-1);
+    expect(change.mock.calls[1][1]).toBe('');
+    expect(change.mock.calls[1][2]).toBe(0);
+  });
+
+  it('should call status update when the user clicks on an option', async () => {
+    const status = 'status message';
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    const user = userEvent.setup();
+    const change = jest.fn();
+    render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) => {
+          change(length, property, position);
+        }}
+        accessibilityStatus={status}
+        accessibilityHintText={hint}
+      />
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'p');
+
+    fireEvent.keyDown(inputElm, { code: 'ArrowDown' });
+    const listItems = screen.getAllByRole('option');
+    fireEvent.click(listItems[0]);
+    expect(change.mock.calls[2][0]).toBe(-1);
+    expect(change.mock.calls[2][1]).toBe('');
+    expect(change.mock.calls[2][2]).toBe(0);
+  });
+
+  it('should call status update when the user clears what they have been typing', async () => {
+    const status = 'status message';
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    const user = userEvent.setup();
+    const change = jest.fn();
+    render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) => {
+          change(length, property, position);
+        }}
+        accessibilityStatus={status}
+        accessibilityHintText={hint}
+      />
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'pap');
+    expect(change.mock.calls[2][0]).toBe(1);
+    expect(change.mock.calls[2][1]).toBe('Papaya');
+    expect(change.mock.calls[2][2]).toBe(1);
+
+    await user.clear(inputElm);
+    expect(change.mock.calls[3][0]).toBe(-1);
+    expect(change.mock.calls[3][1]).toBe('');
+    expect(change.mock.calls[3][2]).toBe(0);
   });
 });
