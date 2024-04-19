@@ -52,6 +52,16 @@ export const AutocompleteDemo = () => {
         setServerOptions(['no results']);
     }
   };
+  const [status, setStatus] = React.useState('');
+  const change = (length: number, property: string, position: number) => {
+    let newText = '';
+    if (length === 0) {
+      newText = 'No search results';
+    } else if (length > 0) {
+      newText = `${length} result${length > 1 ? 's are' : ' is'} available. ${property} ${position} of ${length} is highlighted`;
+    }
+    setStatus(newText);
+  };
 
   return (
     <>
@@ -65,19 +75,21 @@ export const AutocompleteDemo = () => {
           'Pomegranate',
           'Pineapple',
         ]}
-        suffix={{
-          content: <FontAwesomeIcon icon={faAt} title="at-button" />,
-          properties: {},
-        }}
-        prefix={{
-          content: <FontAwesomeIcon icon={faAt} title="at-button" />,
-          properties: {},
-        }}
-        defaultValue="Papaya"
+        id="fruitTest"
         minCharsBeforeSearch={1}
         debounceMs={2000}
         onSelected={handleSelected}
-        hintText="search the list of fruits"
+        labelText="search the list of fruits"
+        containerClassName="test"
+        notFoundText="No fruit found"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) =>
+          change(length, property, position)
+        }
+        accessibilityStatus={status}
+        accessibilityHintText="When autocomplete results are available use up and down arrows to
+        review and enter to select. Touch device users, explore by touch or
+        with swipe gestures."
       />
       selected: {selected}
       <h2>Server fetch</h2>
