@@ -220,7 +220,6 @@ export const FormInput = ({
         <p
           {...{
             ...errorProps,
-            className: classNames(['dcx-error-message', errorProps?.className]),
             role: Roles.alert,
           }}
         >
@@ -228,7 +227,7 @@ export const FormInput = ({
           {staticErrorMessage}
         </p>
       ) : (
-        <p
+        <div
           {...{
             ...errorProps,
             className: classNames(['dcx-error-message', errorProps?.className]),
@@ -236,13 +235,13 @@ export const FormInput = ({
           }}
         >
           {staticErrorMessage}
-        </p>
+        </div>
       );
     }
 
     if (validity && !validity.valid && showError) {
       return (
-        <p
+        <div
           {...{
             ...errorProps,
             className: classNames(['dcx-error-message', errorProps?.className]),
@@ -250,7 +249,7 @@ export const FormInput = ({
           }}
         >
           {validity.message}
-        </p>
+        </div>
       );
     }
 
