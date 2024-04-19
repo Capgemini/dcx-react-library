@@ -49,7 +49,7 @@ type FormInputProps = {
   /**
    * allow to customise the error message with all the properites needed
    **/
-  errorProps?: any;
+  errorProps?: React.AllHTMLAttributes<HTMLDivElement>;
   /**
    * allow to customise the input with all the properites needed
    **/
@@ -93,10 +93,6 @@ type FormInputProps = {
    * function that will check if is vald or not based on the validation rules
    **/
   isValid?: (valid: boolean, errorMessageVisible?: boolean) => void;
-  /**
-   * error message
-   **/
-  errorMessage?: any;
   /**
    * allow to specify an error message coming from another source
    */
@@ -159,7 +155,6 @@ export const FormInput = ({
   onFocus,
   onBlur,
   isValid,
-  errorMessage,
   staticErrorMessage,
   errorPosition,
   ariaLabel,
@@ -206,24 +201,37 @@ export const FormInput = ({
   const isStaticMessageValid = (): boolean =>
     typeof staticErrorMessage === 'string' && !isEmpty(staticErrorMessage);
 
-  const ErrorMessage = () => (
-    <div
-      {...{
-        ...errorProps,
-        className: classNames(['dcx-error-message', errorProps?.className]),
-      }}
-    >
-      {isStaticMessageValid() ? (
-        <div role={Roles.alert} {...errorMessage}>
+  const ErrorMessage = () => {
+    if (isStaticMessageValid()) {
+      return (
+        <div
+          {...{
+            ...errorProps,
+            className: classNames(['dcx-error-message', errorProps?.className]),
+            role: Roles.alert,
+          }}
+        >
           {staticErrorMessage}
         </div>
-      ) : validity && !validity.valid && showError ? (
-        <div role={Roles.alert} {...errorMessage}>
+      );
+    }
+
+    if (validity && !validity.valid && showError) {
+      return (
+        <div
+          {...{
+            ...errorProps,
+            className: classNames(['dcx-error-message', errorProps?.className]),
+            role: Roles.alert,
+          }}
+        >
           {validity.message}
         </div>
-      ) : null}
-    </div>
-  );
+      );
+    }
+
+    return null;
+  };
 
   const isStaticOrDynamicError = (): boolean =>
     isStaticMessageValid() || (validity && !validity.valid) || false;

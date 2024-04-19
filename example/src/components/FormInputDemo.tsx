@@ -39,7 +39,6 @@ export const FormInputDemo = () => {
         onChange={handleChange}
         inputProps={{
           placeholder: 'enter your email',
-          htmlFor: 'input-id',
         }}
         label="this is a label"
         labelProps={{
