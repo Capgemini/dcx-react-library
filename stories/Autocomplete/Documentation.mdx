@@ -57,6 +57,11 @@ An example with all the available properties is:
   selectProps={{}}
   tabIndex={0}
   search={handleSearch}
+  statusUpdate={(length, option, position) => change(length, option, position)}
+  accessibilityStatus={status}
+  accessibilityHintText="When autocomplete results are available use up and down arrows to
+  review and enter to select. Touch device users, explore by touch or
+  with swipe gestures."
 />
 ```
 
@@ -118,5 +123,37 @@ export const AutocompleteDemo = () => {
   );
 };
 ```
+
+# Accessible Autocomplete
+
+To make the autocomplete fully accessible you will need to add 3 properties and a function to handle the changes.
+The properties are:
+
+- accessibilityStatus - A value to display to the users the current state of the autocomplete, this is used for accessibility and is displayed in a hidden element above the input.
+  This should be used to display information such as how may results are being shown on screen, which element has been highlighted and what position it is in the reuslt list
+- accessibilityHintText - Gives the user a generic view of how to use the component
+- statusUpdate - When the user types or makes an action, it returns information abuot the autocomplete so the accessibilityStatus attribute can be updated with updated information.
+  After this function is called you can update the accessibilityStatus attribute for example,
+  `"${length} result${length > 1 ? 's are' : ' is'} available. ${option} ${position} of ${length} is highlighted"`
+  Which to the user would look something like "7 Results are available. Papaya 1 of 7 is highlighted"
+
+An example of how to handle the statusUpdate function would be:
+
+```js
+const [status, setStatus] = React.useState('');
+const change = (length: number, option: string, position: number) => {
+  let newText = '';
+  if (length === 0) {
+    newText = 'No search results';
+  } else if (length > 0) {
+    newText = `${length} result${length > 1 ? 's are' : ' is'} available. ${option} ${position} of ${length} is highlighted`;
+  }
+  setStatus(newText);
+};
+```
+
+By default the status has to be blank, this is to avoid confusion when the user either selects an item, deletes their previously typed text or when the component first loads.
+Each propery coming back gives an insight into the state of the autocomplete. Length is how many results are available for the user to see after typing and any filtering has been done,
+property is the currently highlighted property in the autocomplete. The user can change this by using the up or down arrow keys and position is where the currently highlighted property is located in the reslt list.
 
 <ArgTypes of={AutocompleteStories} />

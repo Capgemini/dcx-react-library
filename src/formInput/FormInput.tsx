@@ -206,6 +206,9 @@ export const FormInput = ({
     if (onBlur) onBlur(event);
   };
 
+  const isStaticMessageValid = (): boolean =>
+    typeof staticErrorMessage === 'string' && !isEmpty(staticErrorMessage);
+
   const ErrorMessage = () => (
     <div
       {...{
@@ -213,12 +216,12 @@ export const FormInput = ({
         className: classNames(['dcx-error-message', errorProps?.className]),
       }}
     >
-      {staticErrorMessage !== undefined ? (
-        <div role={Roles.error} {...errorMessage}>
+      {isStaticMessageValid() ? (
+        <div role={Roles.alert} {...errorMessage}>
           {staticErrorMessage}
         </div>
       ) : validity && !validity.valid && showError ? (
-        <div role={Roles.error} {...errorMessage}>
+        <div role={Roles.alert} {...errorMessage}>
           {validity.message}
         </div>
       ) : null}
@@ -226,7 +229,7 @@ export const FormInput = ({
   );
 
   const isStaticOrDynamicError = (): boolean =>
-    staticErrorMessage !== undefined || (validity && !validity.valid) || false;
+    isStaticMessageValid() || (validity && !validity.valid) || false;
 
   const inputEl: JSX.Element = (
     <input
@@ -238,7 +241,7 @@ export const FormInput = ({
       onBlur={handleBlur}
       required={required}
       className={inputClassName}
-      aria-label={ariaLabel || name}
+      aria-label={ariaLabel}
       aria-required={ariaRequired}
       tabIndex={tabIndex}
       {...inputProps}
