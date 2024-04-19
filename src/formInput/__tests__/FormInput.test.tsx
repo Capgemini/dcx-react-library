@@ -341,6 +341,38 @@ describe('FormInput', () => {
     );
   });
 
+  it('should display the formInput error static message with a visually hidden', async () => {
+    const { container } = render(
+      <FormInput
+        containerClassName="container"
+        label="label"
+        name="name"
+        type="text"
+        inputClassName="inputClass"
+        inputProps={{
+          defaultValue: 'default value',
+        }}
+        hint={{
+          position: 'above',
+          text: 'hint',
+          className: 'hint-class',
+        }}
+        errorProps={{
+          className: '',
+        }}
+        hiddenErrorText="Error:"
+        hiddenErrorTextProps={{ className: 'visually-hidden' }}
+        staticErrorMessage="we have a problem"
+        errorPosition={ErrorPosition.AFTER_LABEL}
+        containerClassNameError=""
+      />
+    );
+
+    expect(container.querySelector('[role=alert]')?.innerHTML).toBe(
+      '<span class="visually-hidden">Error:</span> we have a problem'
+    );
+  });
+
   it('should not render the formInput with an alert', () => {
     const { container } = render(
       <FormInput

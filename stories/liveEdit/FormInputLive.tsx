@@ -62,6 +62,8 @@ function FormInputDemo() {
         }}
         tabIndex={0}
         variant="floating"
+        hiddenErrorText="Error:"
+        hiddenErrorTextProps={{ className: 'visually-hidden' }}
     />
   )
 }

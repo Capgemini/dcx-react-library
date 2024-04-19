@@ -132,6 +132,14 @@ type FormInputProps = {
    * if a variant floating is specified it will add a class 'dcx-floating-label' for supporting a floating label feature
    */
   variant?: 'floating' | 'floating-filled' | 'normal';
+  /**
+   * visually hidden text for screen readers
+   */
+  hiddenErrorText?: string;
+  /**
+   * visually hidden span attributes
+   */
+  hiddenErrorTextProps?: React.HTMLAttributes<HTMLSpanElement>;
 };
 
 const floatVariants = ['floating', 'floating-filled'];
@@ -172,6 +180,8 @@ export const FormInput = ({
   variant = 'normal',
   inputDivProps = { style: { display: 'flex' } },
   tabIndex = 0,
+  hiddenErrorText,
+  hiddenErrorTextProps,
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
 
@@ -206,8 +216,19 @@ export const FormInput = ({
 
   const ErrorMessage = () => {
     if (isStaticMessageValid()) {
-      return (
-        <div
+      return hiddenErrorText ? (
+        <p
+          {...{
+            ...errorProps,
+            className: classNames(['dcx-error-message', errorProps?.className]),
+            role: Roles.alert,
+          }}
+        >
+          <span {...hiddenErrorTextProps}>{hiddenErrorText}</span>{' '}
+          {staticErrorMessage}
+        </p>
+      ) : (
+        <p
           {...{
             ...errorProps,
             className: classNames(['dcx-error-message', errorProps?.className]),
@@ -215,13 +236,13 @@ export const FormInput = ({
           }}
         >
           {staticErrorMessage}
-        </div>
+        </p>
       );
     }
 
     if (validity && !validity.valid && showError) {
       return (
-        <div
+        <p
           {...{
             ...errorProps,
             className: classNames(['dcx-error-message', errorProps?.className]),
@@ -229,7 +250,7 @@ export const FormInput = ({
           }}
         >
           {validity.message}
-        </div>
+        </p>
       );
     }
 

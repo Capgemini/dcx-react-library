@@ -209,6 +209,8 @@ export const StaticError = {
     staticErrorMessage: 'some error appened here',
     errorPosition: 'after-hint',
     containerClassNameError: 'govuk-form-group--error',
+    hiddenErrorText: 'Error:',
+    hiddenErrorTextProps: { className: 'govuk-visually-hidden' },
   },
 };
 
