@@ -1,4 +1,4 @@
-import { TabGroup, Tab } from '../../../src/tabGroup'
+import { Details } from '../../../src/details'
 import tokens from '../../../src/design-system/tokens.json'
 
 const TokensList = () => {
@@ -13,34 +13,28 @@ const TokensList = () => {
   }, {})
 
   return (
-    <TabGroup activeTabClassName="tab-list-active" disabledClassName="tab-list-disabled" tabClassName="tab-list-item" className="tab-list">
-      {Object.entries(tokensByScope).map(entry => (
-        <Tab eventKey={entry[0]} label={entry[0]} key={entry[0]}>
-          <div style={{ height: '400px', overflow: 'auto' }}>
-            <table style={{ margin: '0px', width: '100%' }}>
-              <thead>
-                <tr>
-                  <td>Token</td>
-                  <td>Default value</td>
+    Object.entries(tokensByScope).map(entry => (
+      <Details summary={entry[0]}>
+        <div style={{ maxHeight: '400px', overflow: 'auto' }}>
+          <table style={{ margin: '0px', width: '100%' }}>
+            <thead>
+              <tr>
+                <td>Token</td>
+                <td>Default value</td>
+              </tr>
+            </thead>
+            <tbody>
+              {entry[1].map(tokenEntry => (
+                <tr key={tokenEntry[0]}>
+                  <td>--dcx-{tokenEntry[0]}</td>
+                  <td>{tokenEntry[1]}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {entry[1].map(tokenEntry => (
-                  <tr key={tokenEntry[0]}>
-                    <td>--dcx-{tokenEntry[0]}</td>
-                    <td>{tokenEntry[1]}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-          </div>
-          <ul>
-
-          </ul>
-        </Tab>
-      ))}
-    </TabGroup>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Details>
+    ))
   )
 }
 
