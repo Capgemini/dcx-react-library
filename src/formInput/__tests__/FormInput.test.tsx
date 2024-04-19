@@ -10,6 +10,9 @@ const DummyComponent = ({
   variant = 'normal',
   suffix,
   prefix,
+  errProp = {
+    'data-testid': 'error-container',
+  },
 }: any) => {
   const [value, setValue] = React.useState('');
   const [isValid, setValid] = React.useState<boolean | string>('');
@@ -29,9 +32,7 @@ const DummyComponent = ({
         onChange={handleInputChange}
         isValid={handleValidity}
         displayError={displayError}
-        errorProps={{
-          'data-testid': 'error-container',
-        }}
+        errorProps={errProp}
         variant={variant}
         suffix={suffix}
         prefix={prefix}
@@ -45,6 +46,7 @@ const DummyComponent = ({
           },
           message: 'is invalid',
         }}
+        staticErrorMessage={undefined}
       />
       <label data-testid="check-validity">{isValid.toString()}</label>
     </>
@@ -71,7 +73,7 @@ const DummyComponentTriggerError = () => {
         displayError={displayError}
         errorPosition={ErrorPosition.BOTTOM}
         errorProps={{
-          'data-testid': 'error-container',
+          id: 'error-container',
         }}
         validation={{
           rule: {
@@ -309,6 +311,36 @@ describe('FormInput', () => {
     expect(placeholder).toBeTruthy();
   });
 
+  it('should display the formInput error static message', async () => {
+    const { container } = render(
+      <FormInput
+        containerClassName="container"
+        label="label"
+        name="name"
+        type="text"
+        inputClassName="inputClass"
+        inputProps={{
+          defaultValue: 'default value',
+        }}
+        hint={{
+          position: 'above',
+          text: 'hint',
+          className: 'hint-class',
+        }}
+        errorProps={{
+          className: '',
+        }}
+        staticErrorMessage="we have a problem"
+        errorPosition={ErrorPosition.AFTER_LABEL}
+        containerClassNameError=""
+      />
+    );
+
+    expect(container.querySelector('[role=alert]')?.innerHTML).toBe(
+      'we have a problem'
+    );
+  });
+
   it('should not render the formInput with an alert', () => {
     const { container } = render(
       <FormInput
@@ -390,19 +422,19 @@ describe('FormInput', () => {
     const input = screen.getByRole('textbox');
     await user.type(input, 'TEST VALUE');
     let error: any;
-    if (container.firstChild && container.firstChild.firstChild)
-      error = container.firstChild.firstChild.childNodes[0];
+    if (container.firstChild) error = container.firstChild.childNodes[0];
     expect(error.innerHTML).toBe('is invalid');
   });
 
   it('should display the formInput error message on the bottom', async () => {
     const user = userEvent.setup();
-    const { container } = render(<DummyComponent pos={ErrorPosition.BOTTOM} />);
+    const { container } = render(
+      <DummyComponent pos={ErrorPosition.BOTTOM} errProp={null} />
+    );
     const input = screen.getByRole('textbox');
     await user.type(input, 'TEST VALUE');
     let error: any;
-    if (container.firstChild && container.firstChild.lastChild)
-      error = container.firstChild.lastChild.childNodes[0];
+    if (container.firstChild) error = container.firstChild.lastChild;
     expect(error.innerHTML).toBe('is invalid');
   });
 

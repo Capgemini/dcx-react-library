@@ -243,9 +243,6 @@ export const Error = {
       },
       message: 'Enter an event name',
     },
-    errorMessage: {
-      className: 'govuk-error-message',
-    },
     errorPosition: 'before-label',
     ariaLabel: 'standard-input-validation',
     ariaRequired: 'true',

@@ -46,13 +46,19 @@ function FormInputDemo() {
             message:
             'your password need to be min 8 chars 1 Uppercase, 1 Number and one special character',
         }}
-        errorMessage={{}}
+        staticErrorMessage='this is a static error message'
         errorPosition="bottom"
         prefix={{
-          content: <></>
+          properties: {
+            id: 'prefix',
+          },
+          content: 'prefix',
         }}
         suffix={{
-          content: <></>
+          properties: {
+            id: 'suffix',
+          },
+          content: 'suffix',
         }}
         tabIndex={0}
         variant="floating"
