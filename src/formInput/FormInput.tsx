@@ -135,7 +135,7 @@ type FormInputProps = {
   /**
    * visually hidden text for screen readers
    */
-  hiddenErrorText?: string;
+  hiddenErrorText: string;
   /**
    * visually hidden span attributes
    */
@@ -180,7 +180,7 @@ export const FormInput = ({
   variant = 'normal',
   inputDivProps = { style: { display: 'flex' } },
   tabIndex = 0,
-  hiddenErrorText,
+  hiddenErrorText = '',
   hiddenErrorTextProps,
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
@@ -216,40 +216,36 @@ export const FormInput = ({
 
   const ErrorMessage = () => {
     if (isStaticMessageValid()) {
-      return hiddenErrorText ? (
+      return (
         <p
-          {...{
-            ...errorProps,
-            role: Roles.alert,
-          }}
-        >
-          <span {...hiddenErrorTextProps}>{hiddenErrorText}</span>{' '}
-          {staticErrorMessage}
-        </p>
-      ) : (
-        <div
           {...{
             ...errorProps,
             className: classNames(['dcx-error-message', errorProps?.className]),
             role: Roles.alert,
           }}
         >
+          {!isEmpty(hiddenErrorText) && (
+            <span {...hiddenErrorTextProps}>{hiddenErrorText + ' '}</span>
+          )}
           {staticErrorMessage}
-        </div>
+        </p>
       );
     }
 
     if (validity && !validity.valid && showError) {
       return (
-        <div
+        <p
           {...{
             ...errorProps,
             className: classNames(['dcx-error-message', errorProps?.className]),
             role: Roles.alert,
           }}
         >
+          {!isEmpty(hiddenErrorText) && (
+            <span {...hiddenErrorTextProps}>{hiddenErrorText + ' '}</span>
+          )}
           {validity.message}
-        </div>
+        </p>
       );
     }
 

@@ -13,6 +13,7 @@ const DummyComponent = ({
   errProp = {
     'data-testid': 'error-container',
   },
+  hiddenErrorText,
 }: any) => {
   const [value, setValue] = React.useState('');
   const [isValid, setValid] = React.useState<boolean | string>('');
@@ -47,6 +48,7 @@ const DummyComponent = ({
           message: 'is invalid',
         }}
         staticErrorMessage={undefined}
+        hiddenErrorText={hiddenErrorText}
       />
       <label data-testid="check-validity">{isValid.toString()}</label>
     </>
@@ -86,6 +88,7 @@ const DummyComponentTriggerError = () => {
           message: 'is invalid',
         }}
         containerClassNameError="error-container"
+        hiddenErrorText=""
       />
       <button onClick={handleClick}>submit</button>
     </>
@@ -105,6 +108,7 @@ const DummyStaticComponent = ({ pos, hint }: any) => (
       containerClassName="container-class"
       containerClassNameError="container-error"
       hint={hint}
+      hiddenErrorText=""
     />
   </>
 );
@@ -121,6 +125,7 @@ describe('FormInput', () => {
         inputProps={{
           placeholder: 'enter your email',
         }}
+        hiddenErrorText=""
       />
     );
     expect(screen.getByRole('textbox')).toBeInTheDocument();
@@ -142,6 +147,7 @@ describe('FormInput', () => {
           },
           content: 'prefix',
         }}
+        hiddenErrorText=""
       />
     );
     const input: any = screen.getByRole('textbox');
@@ -159,6 +165,7 @@ describe('FormInput', () => {
         value="@_-bddcd6A"
         ariaLabel="input-label"
         ariaRequired={true}
+        hiddenErrorText=""
       />
     );
     const input: any = screen.getByRole('textbox');
@@ -182,6 +189,7 @@ describe('FormInput', () => {
           },
           content: 'prefix',
         }}
+        hiddenErrorText=""
       />
     );
     const input: any = screen.getByRole('textbox');
@@ -205,6 +213,7 @@ describe('FormInput', () => {
           },
           content: 'prefix',
         }}
+        hiddenErrorText=""
       />
     );
     const inputContainer: Element | null =
@@ -236,6 +245,7 @@ describe('FormInput', () => {
         inputProps={{
           id: 'password',
         }}
+        hiddenErrorText=""
       />
     );
 
@@ -258,6 +268,7 @@ describe('FormInput', () => {
           },
           content: 'prefix',
         }}
+        hiddenErrorText=""
       />
     );
     expect(container.querySelector('#prefix')).toBeInTheDocument();
@@ -280,6 +291,7 @@ describe('FormInput', () => {
           },
           content: 'suffix',
         }}
+        hiddenErrorText=""
       />
     );
     expect(container.querySelector('#suffix')).toBeInTheDocument();
@@ -304,6 +316,7 @@ describe('FormInput', () => {
           className: 'label-class-name',
           htmlFor: 'input-id',
         }}
+        hiddenErrorText=""
       />
     );
     const placeholder = container.querySelector('.dcx-form-input--placeholder');
@@ -333,6 +346,7 @@ describe('FormInput', () => {
         staticErrorMessage="we have a problem"
         errorPosition={ErrorPosition.AFTER_LABEL}
         containerClassNameError=""
+        hiddenErrorText=""
       />
     );
 
@@ -369,7 +383,7 @@ describe('FormInput', () => {
     );
 
     expect(container.querySelector('[role=alert]')?.innerHTML).toBe(
-      '<span class="visually-hidden">Error:</span> we have a problem'
+      '<span class="visually-hidden">Error: </span>we have a problem'
     );
   });
 
@@ -398,7 +412,7 @@ describe('FormInput', () => {
     );
 
     expect(container.querySelector('[role=alert]')?.innerHTML).toBe(
-      '<span class="visually-hidden">Error:</span> we have a problem'
+      '<span class="visually-hidden">Error: </span>we have a problem'
     );
   });
 
@@ -425,6 +439,7 @@ describe('FormInput', () => {
         staticErrorMessage={}
         errorPosition={ErrorPosition.AFTER_LABEL}
         containerClassNameError=""
+        hiddenErrorText=""
       />
     );
 
@@ -453,6 +468,7 @@ describe('FormInput', () => {
         staticErrorMessage=""
         errorPosition={ErrorPosition.AFTER_LABEL}
         containerClassNameError=""
+        hiddenErrorText=""
       />
     );
 
@@ -478,25 +494,48 @@ describe('FormInput', () => {
   it('should display the formInput error message on top', async () => {
     const user = userEvent.setup();
     const { container } = render(
-      <DummyComponent pos={ErrorPosition.BEFORE_LABEL} />
+      <DummyComponent
+        pos={ErrorPosition.BEFORE_LABEL}
+        hiddenErrorText="Error:"
+      />
     );
     const input = screen.getByRole('textbox');
     await user.type(input, 'TEST VALUE');
     let error: any;
     if (container.firstChild) error = container.firstChild.childNodes[0];
-    expect(error.innerHTML).toBe('is invalid');
+    expect(error.innerHTML).toBe('<span>Error: </span>is invalid');
   });
 
   it('should display the formInput error message on the bottom', async () => {
     const user = userEvent.setup();
     const { container } = render(
-      <DummyComponent pos={ErrorPosition.BOTTOM} errProp={null} />
+      <DummyComponent
+        pos={ErrorPosition.BOTTOM}
+        errProp={null}
+        hiddenErrorText="Error:"
+      />
     );
     const input = screen.getByRole('textbox');
     await user.type(input, 'TEST VALUE');
     let error: any;
     if (container.firstChild) error = container.firstChild.lastChild;
-    expect(error.innerHTML).toBe('is invalid');
+    expect(error.innerHTML).toBe('<span>Error: </span>is invalid');
+  });
+
+  it('should display the formInput error message on the bottom with a span', async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <DummyComponent
+        pos={ErrorPosition.BOTTOM}
+        errProp={null}
+        hiddenErrorText={'Error:'}
+      />
+    );
+    const input = screen.getByRole('textbox');
+    await user.type(input, 'TEST VALUE');
+    let error: any;
+    if (container.firstChild) error = container.firstChild.lastChild;
+    expect(error.innerHTML).toBe('<span>Error: </span>is invalid');
   });
 
   it('should return validation false on startup if the validation rules are not met', async () => {
@@ -685,6 +724,7 @@ describe('FormInput', () => {
           },
           content: 'prefix',
         }}
+        hiddenErrorText=""
       />
     );
     const input = screen.getByRole('textbox');
@@ -692,14 +732,24 @@ describe('FormInput', () => {
   });
 
   it('should have a 0 tabIndex value by default', () => {
-    render(<FormInput name="password" type="text" value="test" />);
+    render(
+      <FormInput name="password" type="text" value="test" hiddenErrorText="" />
+    );
 
     const input: any = screen.getByRole('textbox');
     expect(input.getAttribute('tabindex')).toBe('0');
   });
 
   it('should accept tabIndex attribute', () => {
-    render(<FormInput name="password" type="text" value="test" tabIndex={1} />);
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="test"
+        tabIndex={1}
+        hiddenErrorText=""
+      />
+    );
 
     const input: any = screen.getByRole('textbox');
     expect(input.getAttribute('tabindex')).toBe('1');

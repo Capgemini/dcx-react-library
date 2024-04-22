@@ -107,6 +107,8 @@
     font-size: token('font-formcontrol_error-size');
     line-height: token('font-formcontrol_error-line-height');
     color: token('color-text-formcontrol_error');
+    margin-block-start: 0;
+    margin-block-end: 0;
   }
 
   & .dcx-form-input__suffix {

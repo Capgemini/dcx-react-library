@@ -30,6 +30,7 @@ export const FormInputDemo = () => {
         inputProps={{
           placeholder: 'enter your email',
         }}
+        hiddenErrorText=""
       />
       <h1>Label</h1>
       <FormInput
@@ -44,6 +45,7 @@ export const FormInputDemo = () => {
         labelProps={{
           htmlFor: 'input-id',
         }}
+        hiddenErrorText=""
       />
       <h1>Prefix</h1>
       <FormInput
@@ -63,6 +65,7 @@ export const FormInputDemo = () => {
           },
           content: <FontAwesomeIcon icon={faAt} />,
         }}
+        hiddenErrorText=""
       />
       <h1>Prefix Label</h1>
       <FormInput
@@ -87,6 +90,7 @@ export const FormInputDemo = () => {
           },
           content: <FontAwesomeIcon icon={faAt} />,
         }}
+        hiddenErrorText=""
       />
       <h1>Suffix</h1>
       <FormInput
@@ -106,6 +110,7 @@ export const FormInputDemo = () => {
           },
           content: <FontAwesomeIcon icon={faAt} />,
         }}
+        hiddenErrorText=""
       />
       <h1>Prefix and suffix</h1>
       <FormInput
@@ -134,6 +139,7 @@ export const FormInputDemo = () => {
           },
           content: <FontAwesomeIcon icon={faAt} />,
         }}
+        hiddenErrorText=""
       />
       <h1>Prefix and suffix with label</h1>
       <FormInput
@@ -166,6 +172,7 @@ export const FormInputDemo = () => {
         labelProps={{
           htmlFor: 'input-id',
         }}
+        hiddenErrorText=""
       />
       <h1>Validation</h1>
       <FormInput
@@ -210,6 +217,7 @@ export const FormInputDemo = () => {
           },
           content: <FontAwesomeIcon icon={faAt} />,
         }}
+        hiddenErrorText=""
       />
       <div>isValid:{showValid.toString()}</div>
     </>
