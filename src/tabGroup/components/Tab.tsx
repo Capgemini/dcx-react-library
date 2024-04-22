@@ -71,7 +71,7 @@ export const Tab = ({
     event:
       | React.MouseEvent<HTMLAnchorElement>
       | React.TouchEvent<HTMLAnchorElement>
-  ) => changeActiveTab(event.currentTarget.dataset.tabId as string);
+    ) => changeActiveTab(event.currentTarget.dataset.tabId as string);
 
   const hydrated = useHydrated();
   let tabIndex;
@@ -92,6 +92,7 @@ export const Tab = ({
         tabIndex={tabIndex}
         onClick={!disabled ? onClickHandler : undefined}
         href={`#${eventKey}`}
+        target='_self'
       >
         {label}
       </a>

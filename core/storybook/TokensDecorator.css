@@ -20,14 +20,56 @@
   background: white;
   text-align: left;
   overflow: auto;
+  transition: opacity 0.35s ease-in-out;
+  transition-delay: 0.35s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+._tokens-table--visible {
+  opacity: 1;
+  pointer-events: all;
+  transition-delay: 0.15s;
+}
+
+._tokens-table ._active {
+  font-weight: bold;
+}
+
+._tokens-table table {
+  width: 100%;
+  padding-bottom: 70px;
+  max-width: 825px;
+  margin: 0 auto;
 }
 
 ._tokens-table td,
 ._tokens-table th {
   box-sizing: border-box;
-  padding: 0.3rem 0.7rem;
+  padding: 0.6rem 0.7rem;
 }
 
 ._tokens-table td {
   border-top: 1px solid #e2e2e2;
+  /* letter-spacing: 0.05em; */
+  font-family: monospace;
+}
+
+._tokens-table td[colspan="2"] {
+  padding: 1.8rem 0.7rem 0.6rem;
+}
+
+._token-table__token-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+._token-table__token-cell button {
+  background-color: #f2f2f2;
+  border: none;
+  color: #666;
+  font-size: 12px;
+  padding: 4px 6px;
+  cursor: pointer;
 }
