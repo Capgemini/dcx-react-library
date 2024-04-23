@@ -25,7 +25,8 @@ In Storybook, each component is presented with 4 main sections:
 
 ## How to use it
 
-Using dcx-react-library should not require any particular setup. You only need to import the component and use it :smiley:
+Using dcx-react-library should not require any particular setup.  
+You only need to import the component and use it :smiley:
 
 Steps:
 
