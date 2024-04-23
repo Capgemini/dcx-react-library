@@ -4,12 +4,9 @@
 
 ## Motivation
 
-`dcx-react-library` is a React library with a set of components ready to use in your project.
-
+`dcx-react-library` is a React library with a set of components ready to use in your project.\n
 There are plenty of libraries available in React that can help to increase your productivity however most of them contain lots of css and are hard to style based on your project's requirements.
-
 dcx-react-library is **UI/UX agnostic**, this allows the dcx-react-library to be easily integrated into any project.
-
 You have few options to make your components good looking (:lipstick:):
 
 1. You provide the styling to match the look and feel of your application passing the class to every component (boring)
