@@ -291,7 +291,7 @@ export const Autocomplete = ({
   selectProps,
   prefix,
   suffix,
-  tabIndex = 0,
+  tabIndex,
   search,
   accessibilityStatus = '',
   accessibilityHintText = '',

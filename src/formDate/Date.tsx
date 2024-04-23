@@ -23,7 +23,7 @@ export const DateComponent = ({
   classNameInput,
   disabled,
   maxLength = 2,
-  tabIndex = 0,
+  tabIndex,
 }: DateProps) => (
   <label
     style={{ display: 'flex', flexDirection: 'column' }}

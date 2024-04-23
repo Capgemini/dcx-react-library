@@ -471,10 +471,10 @@ describe('FormSelect', () => {
     expect(container).toBeInTheDocument();
   });
 
-  it('should have a 0 tabIndex value by default', () => {
+  it('should have a null tabIndex value by default', () => {
     const { container } = render(<FormSelect id="select" />);
     const select: any = container.querySelector('#select');
-    expect(select.getAttribute('tabindex')).toBe('0');
+    expect(select.getAttribute('tabindex')).toBeNull();
   });
 
   it('should take tabIndex attribute', () => {

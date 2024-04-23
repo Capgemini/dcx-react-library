@@ -179,7 +179,7 @@ export const FormInput = ({
   hint,
   variant = 'normal',
   inputDivProps = { style: { display: 'flex' } },
-  tabIndex = 0,
+  tabIndex,
   hiddenErrorText = '',
   hiddenErrorTextProps,
 }: FormInputProps) => {

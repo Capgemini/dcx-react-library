@@ -877,11 +877,11 @@ describe('Autocomplete', () => {
     });
   });
 
-  it('should have a 0 tabIndex value by default', () => {
+  it('should have a null tabIndex value by default', () => {
     render(<Autocomplete options={['daniele', 'isaac']} />);
 
     const input: any = screen.getByRole('combobox');
-    expect(input.getAttribute('tabindex')).toBe('0');
+    expect(input.getAttribute('tabindex')).toBeNull();
   });
 
   it('should accept tabIndex attribute', () => {

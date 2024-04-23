@@ -55,7 +55,7 @@ export const Details = ({
   openClassName,
   summaryClassName,
   summaryTextClassName,
-  tabIndex = 0,
+  tabIndex,
   summaryTextProps,
 }: DetailsProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(open);

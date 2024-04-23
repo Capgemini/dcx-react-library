@@ -289,11 +289,11 @@ describe('Table', () => {
     expect(row.innerHTML).not.toContain('<span>1</span>');
   });
 
-  it('should have 0 tabIndex value by default', () => {
+  it('should have null tabIndex value by default', () => {
     render(<Table dataSource={values} />);
 
     const container = screen.getByTestId('table-container');
-    expect(container.getAttribute('tabindex')).toBe('0');
+    expect(container.getAttribute('tabindex')).toBeNull();
   });
 
   it('should accept tabIndex attribute', () => {
