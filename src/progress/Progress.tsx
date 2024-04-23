@@ -38,7 +38,7 @@ export const Progress = ({
   id,
   labelClassName,
   value,
-  tabIndex = 0,
+  tabIndex,
 }: ProgressProps) => (
   <div tabIndex={tabIndex} data-testid={id}>
     <label className={labelClassName} htmlFor={id}>{`${label}: `}</label>

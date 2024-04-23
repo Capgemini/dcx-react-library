@@ -160,7 +160,7 @@ describe('Details', () => {
     expect(container.querySelector('.details-text-class-name.open')).toBeNull();
   });
 
-  it('should have 0 tabIndex value by default', () => {
+  it('should have null tabIndex value by default', () => {
     const { container } = render(
       <Details summary="my summary" summaryClassName="summary-class-name">
         my details
@@ -169,7 +169,7 @@ describe('Details', () => {
 
     const summary: any = container.querySelector('.summary-class-name');
 
-    expect(summary.getAttribute('tabindex')).toBe('0');
+    expect(summary.getAttribute('tabindex')).toBeNull();
   });
 
   it('should accept tabIndex attribute', () => {

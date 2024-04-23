@@ -731,13 +731,13 @@ describe('FormInput', () => {
     expect(input.getAttribute('aria-label')).toBeNull();
   });
 
-  it('should have a 0 tabIndex value by default', () => {
+  it('should have a null tabIndex value by default', () => {
     render(
       <FormInput name="password" type="text" value="test" hiddenErrorText="" />
     );
 
     const input: any = screen.getByRole('textbox');
-    expect(input.getAttribute('tabindex')).toBe('0');
+    expect(input.getAttribute('tabindex')).toBeNull();
   });
 
   it('should accept tabIndex attribute', () => {

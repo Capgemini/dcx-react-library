@@ -47,11 +47,11 @@ describe('Progress', () => {
     expect(container.querySelector('progress>div')?.className).toBe('my-class');
   });
 
-  it('should have 0 tabIndex value by default', () => {
+  it('should have null tabIndex value by default', () => {
     render(<Progress id="progress-id" label="Progress" max={100} value={80} />);
 
     const container = screen.getByTestId('progress-id');
-    expect(container.getAttribute('tabindex')).toBe('0');
+    expect(container.getAttribute('tabindex')).toBeNull();
   });
 
   it('should accept tabIndex attribute', () => {

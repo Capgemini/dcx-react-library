@@ -91,13 +91,13 @@ describe('MultiSelect', () => {
       );
     });
 
-    it('should have a 0 tabindex value by default', () => {
+    it('should have a null tabindex value by default', () => {
       const options: MultiSelectOption[] = [];
 
       render(<MultiSelect selectOptions={options} />);
 
       const input = screen.getByRole('combobox');
-      expect(input.getAttribute('tabindex')).toBe('0');
+      expect(input.getAttribute('tabindex')).toBeNull();
     });
 
     it('should accept tabIndex attribute', () => {

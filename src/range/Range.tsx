@@ -71,7 +71,7 @@ export const Range = ({
   onChangeMin,
   inputClass,
   showTooltip = false,
-  tabIndex = 0,
+  tabIndex,
   ...props
 }: RangeProps) => {
   const [defaultValue, setDefaultValue] = React.useState<number>(value);

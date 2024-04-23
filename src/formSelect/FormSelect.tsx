@@ -162,7 +162,7 @@ export const FormSelect = ({
   nullOption,
   containerProps,
   defaultValue,
-  tabIndex = 0,
+  tabIndex,
   variant = 'normal',
   disabled = false,
   selectProps,

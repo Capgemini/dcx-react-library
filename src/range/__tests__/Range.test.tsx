@@ -139,11 +139,11 @@ describe('Range', () => {
     expect(handleChange).not.toHaveBeenCalled();
   });
 
-  it('should have a 0 tabIndex value by default', () => {
+  it('should have a null tabIndex value by default', () => {
     render(<Range min={0} max={100} value={50} />);
 
     const slider = screen.getByRole('slider');
-    expect(slider.getAttribute('tabindex')).toBe('0');
+    expect(slider.getAttribute('tabindex')).toBeNull();
   });
 
   it('should accept tabIndex attribute', () => {
