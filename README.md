@@ -10,9 +10,7 @@ dcx-react-library is **UI/UX agnostic**, this allows the dcx-react-library to be
 You have few options to make your components good looking :lipstick::
 
 1. You provide the styling to match the look and feel of your application passing the class to every component :construction_worker:
-2. :fire: :fire:You use the design system tokens that we built for you :fire: :fire:
-
-However if
+2. :fire: :fire:You use the design system tokens that we built for you (from version 1.0.0) :fire: :fire:
 
 ## Components
 
@@ -49,6 +47,34 @@ We don't ship `dcx-react-library` with any included CSS. However, some styleshee
 /* The following line can be included in your src/index.js or App.js file */
 import '@capgeminiuk/dcx-react-library/dist/dcx-react-library.css';
 ```
+
+## Design System
+
+The `dcx-react-library` supports opt-in styling customizable via [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
+
+To keep the library **UI/UX agnostic** the styles are not shipped by default. In order to include them in your project you can import them as follows:
+
+```jsx
+/* main.jsx */
+
+import '@capgeminiuk/dcx-react-library/design-system/index.css';
+```
+
+Note that this will setup the styling for all the components in the library. You may want to fine-tune the imports if performance is critical for your application.
+
+All the components have their own stylesheet and can be imported individually when needed:
+
+```jsx
+/* Needed for core styles */
+import '@capgeminiuk/dcx-react-library/design-system/base.css';
+
+/* Individual imports, works well with tree-shaking */
+import '@capgeminiuk/dcx-react-library/design-system/form-control.css';
+import '@capgeminiuk/dcx-react-library/design-system/button.css';
+// ...
+```
+
+Don't forget to add the `base.css` import before loading the individual stylesheets. It contains the core definitions used for the design system to work.
 
 ## Contributing
 
