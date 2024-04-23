@@ -91,7 +91,7 @@ If you'd like to contribute, please follow our [CONTRIBUTING section](https://gi
 
 If you find a bug or you would like to recommend an improvement, please raise an _issue_ and use the appropriate template. We will be more than happy to improve the library, smashing all the bugs found and improve the functionality.
 
-## Contributors ✨
+## Contributors ✨ ✨
 
 Thanks goes to these wonderful people
 
