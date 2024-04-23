@@ -240,4 +240,41 @@ Thanks goes to these wonderful people
       </a>
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/ybayraktutan">
+        <img src="https://avatars.githubusercontent.com/u/74928622?v=4" width="100px;" alt="ybayraktutan"/>
+        <br />
+        <sub><b>Bayraktutan Yasemin</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/shivammuttoo">
+        <img src="https://avatars.githubusercontent.com/u/5648449?v=4" width="100px;" alt="shivammuttoo"/>
+        <br />
+        <sub><b>Muttoo Shivam</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/josepholdfield">
+        <img src="https://avatars.githubusercontent.com/u/48091537?v=4" width="100px;" alt="Joseph-Oldfield"/>
+        <br />
+        <sub><b>Joseph Oldfield</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/byohannes">
+        <img src="https://avatars.githubusercontent.com/u/42332389?v=4" width="100px;" alt="yohannes-berhane"/>
+        <br />
+        <sub><b>Aranzazu Vázquez Moreno</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/AranzazuVM">
+        <img src="https://avatars.githubusercontent.com/u/148540415?v=4" width="100px;" alt="AranzazuVM"/>
+        <br />
+        <sub><b>Aranzazu Vázquez Moreno</b></sub>
+      </a>
+    </td>
+  </tr>
 </table>
