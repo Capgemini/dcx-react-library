@@ -21,6 +21,7 @@ In Storybook, each component is presented with 4 main sections:
 - **live**: you can play directly with all the properties and see the component's behaviour;
 - **unstyled**: the bare component without any styling applied;
 - **styled**: an example (mainly based on GDS) of how to style the component and the final result.
+- **design system**: an example of how to style the component using the tokens exposed by the design system.
 
 ## How to use it
 
