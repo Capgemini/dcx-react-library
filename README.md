@@ -86,7 +86,7 @@ If you'd like to contribute, please follow our [CONTRIBUTING section](https://gi
 
 - For an introduction to the DCX React Library please read our [Introducing the DCX React Library blog post](https://capgemini.github.io/development/dcx-react-library/).
 - For tips on how you can contribute to the DCX React Library please read our [Contributing to the DCX React Library blog post](https://capgemini.github.io/development/contributing-to-dcx-react-library/).
-- If you want to know more about our DCX React Library 1.0.0 release please read our [DCX React Library 1.0.0 is here](https://capgemini.github.io/development/dcx-react-library-v1-is-here)
+- If you want to know more about our DCX React Library 1.0.0 release please read our [1.0.0 release update blog post](https://capgemini.github.io/development/dcx-react-library-v1-is-here)
 
 ## Raise a bug or enhancement
 
