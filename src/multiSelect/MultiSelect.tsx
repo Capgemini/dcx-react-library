@@ -160,7 +160,7 @@ export const MultiSelect = ({
   onRemove,
   onRemoveAll,
   onSelect,
-  tabIndex = 0,
+  tabIndex,
 }: MultiSelectProps) => {
   const [state, dispatch] = useReducer(multiSelectReducer, {
     selected: selectOptions

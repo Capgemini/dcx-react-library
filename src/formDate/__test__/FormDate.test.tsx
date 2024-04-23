@@ -329,7 +329,7 @@ describe('FormInput', () => {
     expect(inputField[2].getAttribute('tabindex')).toBe('0');
   });
 
-  it('should have 0 tabIndex value for the inputs by default', () => {
+  it('should not have 0 tabIndex value for the inputs by default', () => {
     const { container } = render(
       <FormDate
         dateFormat="dd/mm/yyyy"
@@ -341,8 +341,8 @@ describe('FormInput', () => {
     );
 
     const inputField: any = container.querySelectorAll('input');
-    expect(inputField[0].getAttribute('tabindex')).toBe('0');
-    expect(inputField[1].getAttribute('tabindex')).toBe('0');
-    expect(inputField[2].getAttribute('tabindex')).toBe('0');
+    expect(inputField[0].getAttribute('tabindex')).toBeNull();
+    expect(inputField[1].getAttribute('tabindex')).toBeNull();
+    expect(inputField[2].getAttribute('tabindex')).toBeNull();
   });
 });

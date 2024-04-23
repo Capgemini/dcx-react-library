@@ -115,7 +115,7 @@ export const Table = ({
   searchProps,
   customHeaderLabels,
   trProps,
-  tabIndex = 0,
+  tabIndex,
 }: TableProps) => {
   const { items, requestSort, sortConfig } = useSortableData(dataSource);
   const [selectedHeader, setSelectedHeader] = React.useState('');
