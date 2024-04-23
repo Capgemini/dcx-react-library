@@ -263,13 +263,6 @@ Thanks goes to these wonderful people
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/byohannes">
-        <img src="https://avatars.githubusercontent.com/u/42332389?v=4" width="100px;" alt="yohannes-berhane"/>
-        <br />
-        <sub><b>Aranzazu Vázquez Moreno</b></sub>
-      </a>
-    </td>
-    <td align="center">
       <a href="https://github.com/AranzazuVM">
         <img src="https://avatars.githubusercontent.com/u/148540415?v=4" width="100px;" alt="AranzazuVM"/>
         <br />
