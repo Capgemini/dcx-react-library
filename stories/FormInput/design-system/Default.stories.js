@@ -179,6 +179,7 @@ export const StaticError = {
     },
     staticErrorMessage: 'some error appened here',
     errorPosition: 'after-hint',
+    hiddenErrorText: 'Error:',
   },
   argTypes: { onChange: { action: 'onChange' } },
 };
@@ -200,6 +201,7 @@ export const StaticErrorBottom = {
     },
     staticErrorMessage: 'some error appened here',
     errorPosition: 'bottom',
+    hiddenErrorText: 'Error:',
   },
 };
 
@@ -220,6 +222,7 @@ export const StaticErrorBottomHint = {
     },
     staticErrorMessage: 'some error appened here',
     errorPosition: 'bottom',
+    hiddenErrorText: 'Error:',
   },
 };
 
@@ -252,6 +255,7 @@ export const StaticErrorBottomHintAbove = {
     },
     staticErrorMessage: 'some error appened here',
     errorPosition: 'after-label',
+    hiddenErrorText: 'Error:',
   },
 };
 

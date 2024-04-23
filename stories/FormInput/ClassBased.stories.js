@@ -209,6 +209,8 @@ export const StaticError = {
     staticErrorMessage: 'some error appened here',
     errorPosition: 'after-hint',
     containerClassNameError: 'govuk-form-group--error',
+    hiddenErrorText: 'Error:',
+    hiddenErrorTextProps: { className: 'govuk-visually-hidden' },
   },
 };
 
@@ -242,9 +244,6 @@ export const Error = {
         minLength: 1,
       },
       message: 'Enter an event name',
-    },
-    errorMessage: {
-      className: 'govuk-error-message',
     },
     errorPosition: 'before-label',
     ariaLabel: 'standard-input-validation',
