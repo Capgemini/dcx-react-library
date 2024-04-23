@@ -9,7 +9,7 @@ There are plenty of libraries available in React that can help to increase your 
 dcx-react-library is **UI/UX agnostic**, this allows the dcx-react-library to be easily integrated into any project.  
 You have few options to make your components good looking (:lipstick:):
 
-1. You provide the styling to match the look and feel of your application passing the class to every component (:construction_worker:)
+1. You provide the styling to match the look and feel of your application passing the class to every component :construction_worker:
 2. :fire: :fire:You use the design system tokens that we built for you :fire: :fire:
 
 However if
