@@ -209,6 +209,7 @@ export const StaticError = {
     ariaLabel: 'input-with-error',
     ariaRequired: 'true',
     staticErrorMessage: 'some error appened here',
+    hiddenErrorText: 'Error:',
     errorPosition: 'bottom',
   },
   argTypes: { onChange: { action: 'onChange' } },
@@ -232,6 +233,7 @@ export const StaticErrorHint = {
       id: 'id_hint',
     },
     staticErrorMessage: 'some error appened here',
+    hiddenErrorText: 'Error:',
     errorPosition: 'bottom',
   },
 };
@@ -254,6 +256,7 @@ export const StaticErrorBottomHint = {
       id: 'id_hint',
     },
     staticErrorMessage: 'some error appened here',
+    hiddenErrorText: 'Error:',
     errorPosition: 'bottom',
   },
 };
@@ -288,6 +291,7 @@ export const StaticErrorBottomHintAbove = {
       id: 'id_hint',
     },
     staticErrorMessage: 'some error appened here',
+    hiddenErrorText: 'Error:',
     errorPosition: 'after-label',
   },
 };

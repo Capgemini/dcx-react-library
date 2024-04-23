@@ -515,6 +515,7 @@ export const Autocomplete = ({
           'aria-activedescendant': getActivedescendantId(),
         }}
         tabIndex={tabIndex}
+        hiddenErrorText=""
       />
       {showPrompt && (
         <div className={promptClassName} id={promptId}>

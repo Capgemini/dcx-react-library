@@ -10,6 +10,10 @@ const DummyComponent = ({
   variant = 'normal',
   suffix,
   prefix,
+  errProp = {
+    'data-testid': 'error-container',
+  },
+  hiddenErrorText,
 }: any) => {
   const [value, setValue] = React.useState('');
   const [isValid, setValid] = React.useState<boolean | string>('');
@@ -29,9 +33,7 @@ const DummyComponent = ({
         onChange={handleInputChange}
         isValid={handleValidity}
         displayError={displayError}
-        errorProps={{
-          'data-testid': 'error-container',
-        }}
+        errorProps={errProp}
         variant={variant}
         suffix={suffix}
         prefix={prefix}
@@ -45,6 +47,8 @@ const DummyComponent = ({
           },
           message: 'is invalid',
         }}
+        staticErrorMessage={undefined}
+        hiddenErrorText={hiddenErrorText}
       />
       <label data-testid="check-validity">{isValid.toString()}</label>
     </>
@@ -71,7 +75,7 @@ const DummyComponentTriggerError = () => {
         displayError={displayError}
         errorPosition={ErrorPosition.BOTTOM}
         errorProps={{
-          'data-testid': 'error-container',
+          id: 'error-container',
         }}
         validation={{
           rule: {
@@ -84,6 +88,7 @@ const DummyComponentTriggerError = () => {
           message: 'is invalid',
         }}
         containerClassNameError="error-container"
+        hiddenErrorText=""
       />
       <button onClick={handleClick}>submit</button>
     </>
@@ -103,6 +108,7 @@ const DummyStaticComponent = ({ pos, hint }: any) => (
       containerClassName="container-class"
       containerClassNameError="container-error"
       hint={hint}
+      hiddenErrorText=""
     />
   </>
 );
@@ -119,6 +125,7 @@ describe('FormInput', () => {
         inputProps={{
           placeholder: 'enter your email',
         }}
+        hiddenErrorText=""
       />
     );
     expect(screen.getByRole('textbox')).toBeInTheDocument();
@@ -140,6 +147,7 @@ describe('FormInput', () => {
           },
           content: 'prefix',
         }}
+        hiddenErrorText=""
       />
     );
     const input: any = screen.getByRole('textbox');
@@ -157,6 +165,7 @@ describe('FormInput', () => {
         value="@_-bddcd6A"
         ariaLabel="input-label"
         ariaRequired={true}
+        hiddenErrorText=""
       />
     );
     const input: any = screen.getByRole('textbox');
@@ -180,6 +189,7 @@ describe('FormInput', () => {
           },
           content: 'prefix',
         }}
+        hiddenErrorText=""
       />
     );
     const input: any = screen.getByRole('textbox');
@@ -203,6 +213,7 @@ describe('FormInput', () => {
           },
           content: 'prefix',
         }}
+        hiddenErrorText=""
       />
     );
     const inputContainer: Element | null =
@@ -234,6 +245,7 @@ describe('FormInput', () => {
         inputProps={{
           id: 'password',
         }}
+        hiddenErrorText=""
       />
     );
 
@@ -256,6 +268,7 @@ describe('FormInput', () => {
           },
           content: 'prefix',
         }}
+        hiddenErrorText=""
       />
     );
     expect(container.querySelector('#prefix')).toBeInTheDocument();
@@ -278,6 +291,7 @@ describe('FormInput', () => {
           },
           content: 'suffix',
         }}
+        hiddenErrorText=""
       />
     );
     expect(container.querySelector('#suffix')).toBeInTheDocument();
@@ -302,11 +316,104 @@ describe('FormInput', () => {
           className: 'label-class-name',
           htmlFor: 'input-id',
         }}
+        hiddenErrorText=""
       />
     );
     const placeholder = container.querySelector('.dcx-form-input--placeholder');
     expect(screen.getByLabelText('this is a label')).toBeInTheDocument();
     expect(placeholder).toBeTruthy();
+  });
+
+  it('should display the formInput error static message', async () => {
+    const { container } = render(
+      <FormInput
+        containerClassName="container"
+        label="label"
+        name="name"
+        type="text"
+        inputClassName="inputClass"
+        inputProps={{
+          defaultValue: 'default value',
+        }}
+        hint={{
+          position: 'above',
+          text: 'hint',
+          className: 'hint-class',
+        }}
+        errorProps={{
+          className: '',
+        }}
+        staticErrorMessage="we have a problem"
+        errorPosition={ErrorPosition.AFTER_LABEL}
+        containerClassNameError=""
+        hiddenErrorText=""
+      />
+    );
+
+    expect(container.querySelector('[role=alert]')?.innerHTML).toBe(
+      'we have a problem'
+    );
+  });
+
+  it('should display the formInput error static message with a visually hidden', async () => {
+    const { container } = render(
+      <FormInput
+        containerClassName="container"
+        label="label"
+        name="name"
+        type="text"
+        inputClassName="inputClass"
+        inputProps={{
+          defaultValue: 'default value',
+        }}
+        hint={{
+          position: 'above',
+          text: 'hint',
+          className: 'hint-class',
+        }}
+        errorProps={{
+          className: '',
+        }}
+        hiddenErrorText="Error:"
+        hiddenErrorTextProps={{ className: 'visually-hidden' }}
+        staticErrorMessage="we have a problem"
+        errorPosition={ErrorPosition.AFTER_LABEL}
+        containerClassNameError=""
+      />
+    );
+
+    expect(container.querySelector('[role=alert]')?.innerHTML).toBe(
+      '<span class="visually-hidden">Error: </span>we have a problem'
+    );
+  });
+
+  it('should display the formInput error static message with a visually hidden with no error props', async () => {
+    const { container } = render(
+      <FormInput
+        containerClassName="container"
+        label="label"
+        name="name"
+        type="text"
+        inputClassName="inputClass"
+        inputProps={{
+          defaultValue: 'default value',
+        }}
+        hint={{
+          position: 'above',
+          text: 'hint',
+          className: 'hint-class',
+        }}
+        hiddenErrorText="Error:"
+        hiddenErrorTextProps={{ className: 'visually-hidden' }}
+        staticErrorMessage="we have a problem"
+        errorPosition={ErrorPosition.AFTER_LABEL}
+        containerClassNameError=""
+      />
+    );
+
+    expect(container.querySelector('[role=alert]')?.innerHTML).toBe(
+      '<span class="visually-hidden">Error: </span>we have a problem'
+    );
   });
 
   it('should not render the formInput with an alert', () => {
@@ -332,6 +439,7 @@ describe('FormInput', () => {
         staticErrorMessage={}
         errorPosition={ErrorPosition.AFTER_LABEL}
         containerClassNameError=""
+        hiddenErrorText=""
       />
     );
 
@@ -360,6 +468,7 @@ describe('FormInput', () => {
         staticErrorMessage=""
         errorPosition={ErrorPosition.AFTER_LABEL}
         containerClassNameError=""
+        hiddenErrorText=""
       />
     );
 
@@ -385,25 +494,48 @@ describe('FormInput', () => {
   it('should display the formInput error message on top', async () => {
     const user = userEvent.setup();
     const { container } = render(
-      <DummyComponent pos={ErrorPosition.BEFORE_LABEL} />
+      <DummyComponent
+        pos={ErrorPosition.BEFORE_LABEL}
+        hiddenErrorText="Error:"
+      />
     );
     const input = screen.getByRole('textbox');
     await user.type(input, 'TEST VALUE');
     let error: any;
-    if (container.firstChild && container.firstChild.firstChild)
-      error = container.firstChild.firstChild.childNodes[0];
-    expect(error.innerHTML).toBe('is invalid');
+    if (container.firstChild) error = container.firstChild.childNodes[0];
+    expect(error.innerHTML).toBe('<span>Error: </span>is invalid');
   });
 
   it('should display the formInput error message on the bottom', async () => {
     const user = userEvent.setup();
-    const { container } = render(<DummyComponent pos={ErrorPosition.BOTTOM} />);
+    const { container } = render(
+      <DummyComponent
+        pos={ErrorPosition.BOTTOM}
+        errProp={null}
+        hiddenErrorText="Error:"
+      />
+    );
     const input = screen.getByRole('textbox');
     await user.type(input, 'TEST VALUE');
     let error: any;
-    if (container.firstChild && container.firstChild.lastChild)
-      error = container.firstChild.lastChild.childNodes[0];
-    expect(error.innerHTML).toBe('is invalid');
+    if (container.firstChild) error = container.firstChild.lastChild;
+    expect(error.innerHTML).toBe('<span>Error: </span>is invalid');
+  });
+
+  it('should display the formInput error message on the bottom with a span', async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <DummyComponent
+        pos={ErrorPosition.BOTTOM}
+        errProp={null}
+        hiddenErrorText={'Error:'}
+      />
+    );
+    const input = screen.getByRole('textbox');
+    await user.type(input, 'TEST VALUE');
+    let error: any;
+    if (container.firstChild) error = container.firstChild.lastChild;
+    expect(error.innerHTML).toBe('<span>Error: </span>is invalid');
   });
 
   it('should return validation false on startup if the validation rules are not met', async () => {
@@ -592,6 +724,7 @@ describe('FormInput', () => {
           },
           content: 'prefix',
         }}
+        hiddenErrorText=""
       />
     );
     const input = screen.getByRole('textbox');
@@ -599,14 +732,24 @@ describe('FormInput', () => {
   });
 
   it('should have a 0 tabIndex value by default', () => {
-    render(<FormInput name="password" type="text" value="test" />);
+    render(
+      <FormInput name="password" type="text" value="test" hiddenErrorText="" />
+    );
 
     const input: any = screen.getByRole('textbox');
     expect(input.getAttribute('tabindex')).toBe('0');
   });
 
   it('should accept tabIndex attribute', () => {
-    render(<FormInput name="password" type="text" value="test" tabIndex={1} />);
+    render(
+      <FormInput
+        name="password"
+        type="text"
+        value="test"
+        tabIndex={1}
+        hiddenErrorText=""
+      />
+    );
 
     const input: any = screen.getByRole('textbox');
     expect(input.getAttribute('tabindex')).toBe('1');

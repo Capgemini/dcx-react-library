@@ -49,7 +49,7 @@ type FormInputProps = {
   /**
    * allow to customise the error message with all the properites needed
    **/
-  errorProps?: any;
+  errorProps?: React.AllHTMLAttributes<HTMLDivElement>;
   /**
    * allow to customise the input with all the properites needed
    **/
@@ -97,10 +97,6 @@ type FormInputProps = {
    **/
   isValid?: (valid: boolean, errorMessageVisible?: boolean) => void;
   /**
-   * error message
-   **/
-  errorMessage?: any;
-  /**
    * allow to specify an error message coming from another source
    */
   staticErrorMessage?: string;
@@ -136,6 +132,14 @@ type FormInputProps = {
    * if a variant floating is specified it will add a class 'dcx-floating-label' for supporting a floating label feature
    */
   variant?: 'floating' | 'floating-filled' | 'normal';
+  /**
+   * visually hidden text for screen readers
+   */
+  hiddenErrorText: string;
+  /**
+   * visually hidden span attributes
+   */
+  hiddenErrorTextProps?: React.HTMLAttributes<HTMLSpanElement>;
 };
 
 const floatVariants = ['floating', 'floating-filled'];
@@ -162,7 +166,6 @@ export const FormInput = ({
   onFocus,
   onBlur,
   isValid,
-  errorMessage,
   staticErrorMessage,
   errorPosition,
   ariaLabel,
@@ -177,6 +180,8 @@ export const FormInput = ({
   variant = 'normal',
   inputDivProps = { style: { display: 'flex' } },
   tabIndex = 0,
+  hiddenErrorText = '',
+  hiddenErrorTextProps,
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
 
@@ -209,24 +214,43 @@ export const FormInput = ({
   const isStaticMessageValid = (): boolean =>
     typeof staticErrorMessage === 'string' && !isEmpty(staticErrorMessage);
 
-  const ErrorMessage = () => (
-    <div
-      {...{
-        ...errorProps,
-        className: classNames(['dcx-error-message', errorProps?.className]),
-      }}
-    >
-      {isStaticMessageValid() ? (
-        <div role={Roles.alert} {...errorMessage}>
+  const ErrorMessage = () => {
+    if (isStaticMessageValid()) {
+      return (
+        <p
+          {...{
+            ...errorProps,
+            className: classNames(['dcx-error-message', errorProps?.className]),
+            role: Roles.alert,
+          }}
+        >
+          {!isEmpty(hiddenErrorText) && (
+            <span {...hiddenErrorTextProps}>{hiddenErrorText + ' '}</span>
+          )}
           {staticErrorMessage}
-        </div>
-      ) : validity && !validity.valid && showError ? (
-        <div role={Roles.alert} {...errorMessage}>
+        </p>
+      );
+    }
+
+    if (validity && !validity.valid && showError) {
+      return (
+        <p
+          {...{
+            ...errorProps,
+            className: classNames(['dcx-error-message', errorProps?.className]),
+            role: Roles.alert,
+          }}
+        >
+          {!isEmpty(hiddenErrorText) && (
+            <span {...hiddenErrorTextProps}>{hiddenErrorText + ' '}</span>
+          )}
           {validity.message}
-        </div>
-      ) : null}
-    </div>
-  );
+        </p>
+      );
+    }
+
+    return null;
+  };
 
   const isStaticOrDynamicError = (): boolean =>
     isStaticMessageValid() || (validity && !validity.valid) || false;
