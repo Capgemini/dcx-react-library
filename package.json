@@ -97,7 +97,7 @@
     "commitlint": "19.3.0",
     "cssnano": "6.1.2",
     "cssnano-preset-default": "6.1.2",
-    "eslint": "9.1.1",
+    "eslint": "8.57.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-flowtype": "8.0.3",
     "eslint-plugin-import": "2.29.1",
