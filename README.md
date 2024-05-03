@@ -1,14 +1,16 @@
-[![CircleCI](https://circleci.com/gh/Capgemini/dcx-react-library.svg?style=svg&circle-token=c05d3eb49441c9985f5424f28f788f1a31556503)](LINK)
+[![CircleCI](https://circleci.com/gh/Capgemini/dcx-react-library.svg?style=svg)](https://circleci.com/gh/Capgemini/dcx-react-library)
 
 # DCX React library
 
 ## Motivation
 
-`dcx-react-library` is a React library with a set of components ready to use in your project.
+`dcx-react-library` is a React library with a set of components ready to use in your project.  
+There are plenty of libraries available in React that can help to increase your productivity however most of them contain lots of css and are hard to style based on your project's requirements.  
+dcx-react-library is **UI/UX agnostic**, this allows the dcx-react-library to be easily integrated into any project.  
+You have few options to make your components good looking :lipstick::
 
-There are plenty of libraries available in React that can help to increase your productivity however most of them contain lots of css and are hard to style based on your project's requirements.
-
-dcx-react-library is **UI/UX agnostic** so you need to provide styling to match the look and feel of your application. This allows the dcx-react-library to be easily integrated into any project.
+1. You can provide the styling to match the look and feel of your application passing the class to every component :construction_worker:
+2. :fire: :fire:You can use the design system tokens that we built for you - from version 1.0.0 :fire: :fire:
 
 ## Components
 
@@ -19,10 +21,12 @@ In Storybook, each component is presented with 4 main sections:
 - **live**: you can play directly with all the properties and see the component's behaviour;
 - **unstyled**: the bare component without any styling applied;
 - **styled**: an example (mainly based on GDS) of how to style the component and the final result.
+- **design system**: an example of how to style the component using the tokens exposed by the design system.
 
 ## How to use it
 
-Using dcx-react-library should not require any particular setup. You only need to import the component and use it :smiley:
+Using dcx-react-library should not require any particular setup.  
+You only need to import the component and use it :smiley:
 
 Steps:
 
@@ -46,20 +50,49 @@ We don't ship `dcx-react-library` with any included CSS. However, some styleshee
 import '@capgeminiuk/dcx-react-library/dist/dcx-react-library.css';
 ```
 
+## Design System
+
+The `dcx-react-library` supports opt-in styling customizable via [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
+
+To keep the library **UI/UX agnostic** the styles are not shipped by default. In order to include them in your project you can import them as follows:
+
+```jsx
+/* main.jsx */
+
+import '@capgeminiuk/dcx-react-library/design-system/index.css';
+```
+
+Note that this will setup the styling for all the components in the library. You may want to fine-tune the imports if performance is critical for your application.
+
+All the components have their own stylesheet and can be imported individually when needed:
+
+```jsx
+/* Needed for core styles */
+import '@capgeminiuk/dcx-react-library/design-system/base.css';
+
+/* Individual imports, works well with tree-shaking */
+import '@capgeminiuk/dcx-react-library/design-system/form-control.css';
+import '@capgeminiuk/dcx-react-library/design-system/button.css';
+// ...
+```
+
+Don't forget to add the `base.css` import before loading the individual stylesheets. It contains the core definitions used for the design system to work.
+
 ## Contributing
 
 If you'd like to contribute, please follow our [CONTRIBUTING section](https://github.com/Capgemini/dcx-react-library/blob/main/CONTRIBUTING.md).
 
 ## Blog posts
 
-For an introduction to the DCX React Library please read our [Introducing the DCX React Library blog post](https://capgemini.github.io/development/dcx-react-library/).
-For tips on how you can contribute to the DCX React Library please read our [Contributing to the DCX React Library blog post](https://capgemini.github.io/development/contributing-to-dcx-react-library/).
+- For an introduction to the DCX React Library please read our [Introducing the DCX React Library blog post](https://capgemini.github.io/development/dcx-react-library/).
+- For tips on how you can contribute to the DCX React Library please read our [Contributing to the DCX React Library blog post](https://capgemini.github.io/development/contributing-to-dcx-react-library/).
+- If you want to know more about the DCX React Library 1.0.0 release please read our [1.0.0 release update blog post](https://capgemini.github.io/development/dcx-react-library-v1-is-here)
 
 ## Raise a bug or enhancement
 
 If you find a bug or you would like to recommend an improvement, please raise an _issue_ and use the appropriate template. We will be more than happy to improve the library, smashing all the bugs found and improve the functionality.
 
-## Contributors ✨
+## Contributors ✨ ✨
 
 Thanks goes to these wonderful people
 
@@ -237,6 +270,36 @@ Thanks goes to these wonderful people
         <img src="https://avatars.githubusercontent.com/u/121889403?v=4" width="100px;" alt="ismael-akhtaab"/>
         <br />
         <sub><b>Ismael Akhtaab</b></sub>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/ybayraktutan">
+        <img src="https://avatars.githubusercontent.com/u/74928622?v=4" width="100px;" alt="ybayraktutan"/>
+        <br />
+        <sub><b>Bayraktutan Yasemin</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/shivammuttoo">
+        <img src="https://avatars.githubusercontent.com/u/5648449?v=4" width="100px;" alt="shivammuttoo"/>
+        <br />
+        <sub><b>Muttoo Shivam</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/josepholdfield">
+        <img src="https://avatars.githubusercontent.com/u/48091537?v=4" width="100px;" alt="Joseph-Oldfield"/>
+        <br />
+        <sub><b>Joseph Oldfield</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/AranzazuVM">
+        <img src="https://avatars.githubusercontent.com/u/148540415?v=4" width="100px;" alt="AranzazuVM"/>
+        <br />
+        <sub><b>Aranzazu Vázquez Moreno</b></sub>
       </a>
     </td>
   </tr>

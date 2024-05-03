@@ -1,3 +1,78 @@
+## 1.0.0 (15/04/2024)
+
+<a name="1.0.0" />
+
+**Design System**
+
+- [Highlight](https://github.com/Capgemini/dcx-react-library/issues/535)
+- [KeyboardInput](https://github.com/Capgemini/dcx-react-library/issues/534)
+- [Link](https://github.com/Capgemini/dcx-react-library/issues/533)
+- [Paragraph](https://github.com/Capgemini/dcx-react-library/issues/566)
+- [Abbreviate](https://github.com/Capgemini/dcx-react-library/issues/530)
+- [Code Snippet](https://github.com/Capgemini/dcx-react-library/issues/532)
+- [Preformatted Text](https://github.com/Capgemini/dcx-react-library/issues/536)
+- [Description List](https://github.com/Capgemini/dcx-react-library/issues/502)
+- [Blockquote](https://github.com/Capgemini/dcx-react-library/issues/531)
+- [Form Input](https://github.com/Capgemini/dcx-react-library/issues/578)
+- [DescriptionList](https://github.com/Capgemini/dcx-react-library/issues/587)
+- [Radio Button](https://github.com/Capgemini/dcx-react-library/issues/580)
+- [RadioGroup](https://github.com/Capgemini/dcx-react-library/issues/608)
+- [Checkbox](https://github.com/Capgemini/dcx-react-library/issues/598)
+- [Checkbox Group](https://github.com/Capgemini/dcx-react-library/issues/579)
+
+**New Components**
+
+- [Accordion](https://github.com/Capgemini/dcx-react-library/issues/209)
+- [ButtonGroup](https://github.com/Capgemini/dcx-react-library/issues/458)
+- [Card](https://github.com/Capgemini/dcx-react-library/issues/550)
+
+**Enhancement**
+
+- [Autocomplete - Add option to show all values](https://github.com/Capgemini/dcx-react-library/issues/292)
+- [Button - should allow to pass an html content](https://github.com/Capgemini/dcx-react-library/issues/563)
+- [Checkbox - add error state](https://github.com/Capgemini/dcx-react-library/issues/581)
+
+**A11y**
+
+- [remove tab index if not set](https://github.com/Capgemini/dcx-react-library/pull/630)
+- [Button component - does not render the aria-label attribute properly](https://github.com/Capgemini/dcx-react-library/issues/618)
+- [Tab - Actionable Element](https://github.com/Capgemini/dcx-react-library/issues/629)
+- [FormRadio and FormInput - does not offer a capability to not add an aria-label](https://github.com/Capgemini/dcx-react-library/issues/621)
+- [FormInput - should not have a tabindex defined](https://github.com/Capgemini/dcx-react-library/issues/623)
+- [FormInput - An aria attribute has been given an invalid value](https://github.com/Capgemini/dcx-react-library/issues/631)
+- [Autocomplete - is not accessible and needs to be adjusted](https://github.com/Capgemini/dcx-react-library/issues/624)
+- [Details - contains a default TabIndex](https://github.com/Capgemini/dcx-react-library/issues/640)
+
+**Bug**
+
+- [TabGroup - key prop](https://github.com/Capgemini/dcx-react-library/issues/538)
+- [TabGroup - displaying incorrect CSS](https://github.com/Capgemini/dcx-react-library/issues/565)
+- [Select - when you pass the default value it doesn't allow to change on select](https://github.com/Capgemini/dcx-react-library/issues/572)
+- [Heading - does no apply the css correctly](https://github.com/Capgemini/dcx-react-library/issues/610)
+- [Form input - props wrong typing and expose input ref](https://github.com/Capgemini/dcx-react-library/issues/626)
+
+**Documentation**
+
+- [design system](https://github.com/Capgemini/dcx-react-library/issues/517)
+- [Group new components within Storybook](https://github.com/Capgemini/dcx-react-library/issues/513)
+- [google crowler](https://github.com/Capgemini/dcx-react-library/issues/548)
+- [Update storybook documentation to include design system](https://github.com/Capgemini/dcx-react-library/issues/547)
+
+**Dependencies**
+
+- [remove CRA from Example and replace with Vite](https://github.com/Capgemini/dcx-react-library/issues/599)
+- [Close vulnerabilities](https://github.com/Capgemini/dcx-react-library/issues/526)
+
+**Breaking Changes**
+
+- [Autocomplete - adding hiddenErrorText as mandatory](https://github.com/Capgemini/dcx-react-library/issues/638)
+
+**Upgrade notes**
+
+- If you upgrading from a previous release and you use the Autocomplete component it will requires the addition of a new property called **hiddenErrorText**.
+  This property will require a string value to be set and provides a visually hidden text for screen readers to make your component fully accessible
+  å
+
 ## 0.8.0 (15/09/2023)
 
 <a name="0.8.0"></a>
