@@ -1279,4 +1279,39 @@ describe('Autocomplete', () => {
     const options: any = container.querySelector('li');
     expect(options).not.toBeInTheDocument();
   });
+
+  it('should make sure status container is in the correct position', async () => {
+    const change = jest.fn();
+    const hint =
+      'When autocomplete results are available use up and down arrows to review and enter to select.';
+    const { container } = render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+        statusUpdate={(length, property, position) => {
+          change(length, property, position);
+        }}
+        accessibilityStatus="status message"
+        accessibilityHintText={hint}
+      />
+    );
+
+    let statusElements = screen.getAllByRole('status');
+    expect(statusElements.length).toBe(2);
+    expect(
+      container.querySelector('label + div > div[role="status"]')
+    ).toBeInTheDocument();
+  });
 });
