@@ -468,6 +468,7 @@ export const Autocomplete = ({
 
   const onBlur = () => {
     setShowPrompt(false);
+    setShowOptions(false);
   };
 
   const setAccessibilityStatus = (newStatus: string) => {
@@ -621,6 +622,37 @@ export const Autocomplete = ({
             visuallyHiddenText={errorVisuallyHiddenText}
           />
         )}
+      <div
+        style={{
+          border: '0px',
+          clip: 'rect(0px, 0px, 0px, 0px)',
+          height: '1px',
+          marginBottom: '-1px',
+          marginRight: '-1px',
+          overflow: 'hidden',
+          padding: '0px',
+          position: 'absolute',
+          whiteSpace: 'nowrap',
+          width: '1px',
+        }}
+      >
+        <div
+          id={`autocomplete-status-${id}-A`}
+          role="status"
+          aria-atomic="true"
+          aria-live="polite"
+        >
+          {accessibilityStatusA}
+        </div>
+        <div
+          id={`autocomplete-status-${id}-B`}
+          role="status"
+          aria-atomic="true"
+          aria-live="polite"
+        >
+          {accessibilityStatusB}
+        </div>
+      </div>
       {!hydrated ? (
         <FormSelect
           name={name || 'select'}
@@ -646,37 +678,6 @@ export const Autocomplete = ({
         />
       )}
       <div className={containerClassName} style={{ ...searchContainerStyle }}>
-        <div
-          style={{
-            border: '0px',
-            clip: 'rect(0px, 0px, 0px, 0px)',
-            height: '1px',
-            marginBottom: '-1px',
-            marginRight: '-1px',
-            overflow: 'hidden',
-            padding: '0px',
-            position: 'absolute',
-            whiteSpace: 'nowrap',
-            width: '1px',
-          }}
-        >
-          <div
-            id={`autocomplete-status-${id}-A`}
-            role="status"
-            aria-atomic="true"
-            aria-live="polite"
-          >
-            {accessibilityStatusA}
-          </div>
-          <div
-            id={`autocomplete-status-${id}-B`}
-            role="status"
-            aria-atomic="true"
-            aria-live="polite"
-          >
-            {accessibilityStatusB}
-          </div>
-        </div>
         {searchEl}
         {displayResultList() && (
           <ResultList

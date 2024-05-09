@@ -31,6 +31,7 @@
 - [Autocomplete - Add option to show all values](https://github.com/Capgemini/dcx-react-library/issues/292)
 - [Button - should allow to pass an html content](https://github.com/Capgemini/dcx-react-library/issues/563)
 - [Checkbox - add error state](https://github.com/Capgemini/dcx-react-library/issues/581)
+- [Autocomplete - Adds close on blur and moves accessibility status text to new location](https://github.com/Capgemini/dcx-react-library/pull/643)
 
 **A11y**
 
@@ -77,38 +78,40 @@
 
 <a name="0.8.0"></a>
 
-[Autocomplete - changing defaultValue prop has no affect](https://github.com/Capgemini/dcx-react-library/issues/455)
-[Autocomplete - doesn't auto scroll for filtered list on keydown](https://github.com/Capgemini/dcx-react-library/issues/470)
-[Button - add new properties](https://github.com/Capgemini/dcx-react-library/issues/466)
-[Tabs - non-js compliant](https://github.com/Capgemini/dcx-react-library/issues/283)
+- [Autocomplete - changing defaultValue prop has no affect](https://github.com/Capgemini/dcx-react-library/issues/455)
+- [Autocomplete - doesn't auto scroll for filtered list on keydown](https://github.com/Capgemini/dcx-react-library/issues/470)
+- [Button - add new properties](https://github.com/Capgemini/dcx-react-library/issues/466)
+- [Tabs - non-js compliant](https://github.com/Capgemini/dcx-react-library/issues/283)
 
 **New components**
-[Code Snippet](https://github.com/Capgemini/dcx-react-library/issues/500)
-[Breadcrumbs](https://github.com/Capgemini/dcx-react-library/issues/415)
-[Preformatted Text](https://github.com/Capgemini/dcx-react-library/issues/503)
-[Abbreviate](https://github.com/Capgemini/dcx-react-library/issues/497)
-[Highlight](https://github.com/Capgemini/dcx-react-library/issues/498)
-[List item](https://github.com/Capgemini/dcx-react-library/issues/453)
-[Blockquote](https://github.com/Capgemini/dcx-react-library/issues/499)
-[Keyboard Shortcut](https://github.com/Capgemini/dcx-react-library/issues/501)
-[Paragraph](https://github.com/Capgemini/dcx-react-library/issues/455)
-[Insert Text](https://github.com/Capgemini/dcx-react-library/issues/452)
-[Link](https://github.com/Capgemini/dcx-react-library/issues/467)
-[Label](https://github.com/Capgemini/dcx-react-library/issues/466)
-[Heading](https://github.com/Capgemini/dcx-react-library/issues/450)
+
+- [Code Snippet](https://github.com/Capgemini/dcx-react-library/issues/500)
+- [Breadcrumbs](https://github.com/Capgemini/dcx-react-library/issues/415)
+- [Preformatted Text](https://github.com/Capgemini/dcx-react-library/issues/503)
+- [Abbreviate](https://github.com/Capgemini/dcx-react-library/issues/497)
+- [Highlight](https://github.com/Capgemini/dcx-react-library/issues/498)
+- [List item](https://github.com/Capgemini/dcx-react-library/issues/453)
+- [Blockquote](https://github.com/Capgemini/dcx-react-library/issues/499) -[Keyboard Shortcut](https://github.com/Capgemini/dcx-react-library/issues/501)
+- [Paragraph](https://github.com/Capgemini/dcx-react-library/issues/455)
+- [Insert Text](https://github.com/Capgemini/dcx-react-library/issues/452)
+- [Link](https://github.com/Capgemini/dcx-react-library/issues/467)
+- [Label](https://github.com/Capgemini/dcx-react-library/issues/466)
+- [Heading](https://github.com/Capgemini/dcx-react-library/issues/450)
 
 **Documentation**
-[clientOnly](https://github.com/Capgemini/dcx-react-library/issues/459)
-[Storybook - v7](https://github.com/Capgemini/dcx-react-library/issues/473)
+
+- [clientOnly](https://github.com/Capgemini/dcx-react-library/issues/459)
+- [Storybook - v7](https://github.com/Capgemini/dcx-react-library/issues/473)
 
 **Design system - not publicly available yet... stay tuned ;)**
-[Button](https://github.com/Capgemini/dcx-react-library/issues/468)
-[Select](https://github.com/Capgemini/dcx-react-library/issues/469)
-[List Item](https://github.com/Capgemini/dcx-react-library/issues/487)
-[Heading](https://github.com/Capgemini/dcx-react-library/issues/484)
-[Insert Text](https://github.com/Capgemini/dcx-react-library/issues/486)
-[Paragraph](https://github.com/Capgemini/dcx-react-library/issues/488)
-[Label](https://github.com/Capgemini/dcx-react-library/issues/485)
+
+- [Button](https://github.com/Capgemini/dcx-react-library/issues/468)
+- [Select](https://github.com/Capgemini/dcx-react-library/issues/469)
+- [List Item](https://github.com/Capgemini/dcx-react-library/issues/487)
+- [Heading](https://github.com/Capgemini/dcx-react-library/issues/484)
+- [Insert Text](https://github.com/Capgemini/dcx-react-library/issues/486)
+- [Paragraph](https://github.com/Capgemini/dcx-react-library/issues/488)
+- [Label](https://github.com/Capgemini/dcx-react-library/issues/485)
 
 ## 0.7.0 (27/03/2023)
 
