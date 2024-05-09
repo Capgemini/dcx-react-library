@@ -31,7 +31,7 @@
 - [Autocomplete - Add option to show all values](https://github.com/Capgemini/dcx-react-library/issues/292)
 - [Button - should allow to pass an html content](https://github.com/Capgemini/dcx-react-library/issues/563)
 - [Checkbox - add error state](https://github.com/Capgemini/dcx-react-library/issues/581)
-- [Autocomplete - Adds close on blur and moves accessibility status text to new location](https://github.com/Capgemini/dcx-react-library/pull/643)
+- [Autocomplete - Adds close on blur and moves accessibility status text to new location](https://github.com/Capgemini/dcx-react-library/issues/644)
 
 **A11y**
 
