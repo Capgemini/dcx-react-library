@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { FormEvent, useRef, useState } from 'react';
 import { FormInput } from '../formInput';
 import { FormSelect } from '../formSelect';
 import { ErrorMessage, Hint, Roles, useHydrated, debounce } from '../common';
@@ -468,7 +468,6 @@ export const Autocomplete = ({
 
   const onBlur = () => {
     setShowPrompt(false);
-    setShowOptions(false);
   };
 
   const setAccessibilityStatus = (newStatus: string) => {
