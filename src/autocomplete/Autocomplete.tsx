@@ -466,17 +466,17 @@ export const Autocomplete = ({
     }
   };
 
-  const onBlur = (event: any) => {
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     setShowPrompt(false);
     let focusingOnInput = false;
-    let focusingOnOptions: any = false;
+    let focusingOnOptions = false;
     if (event.relatedTarget !== null) {
       // checks to see if the element comming into focus is the specific input element
       focusingOnInput = event.relatedTarget.id === id;
       // checks to see if the element comming into focus is an option
       focusingOnOptions = Object.keys(resultRef.current)
-        .map((value: any) => resultRef.current[value])
-        .includes(event.relatedTarget);
+        .map((value: string) => resultRef.current[parseInt(value, 10)])
+        .includes(event.relatedTarget as HTMLLIElement);
     }
     if (
       !(focusingOnInput || focusingOnOptions) ||
