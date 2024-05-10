@@ -468,7 +468,6 @@ export const Autocomplete = ({
 
   const onBlur = () => {
     setShowPrompt(false);
-    setShowOptions(false);
   };
 
   const setAccessibilityStatus = (newStatus: string) => {

@@ -1248,38 +1248,6 @@ describe('Autocomplete', () => {
     expect(change.mock.calls[3][2]).toBe(0);
   });
 
-  it('should close the options list on blur', async () => {
-    const user = userEvent.setup();
-    const { container } = render(
-      <Autocomplete
-        options={[
-          'Papaya',
-          'Persimmon',
-          'Paw Paw',
-          'Prickly Pear',
-          'Peach',
-          'Pomegranate',
-          'Pineapple',
-        ]}
-        id="fruitTest"
-        labelText="search the list of fruits"
-        notFoundText="No fruit found"
-        resultId="fruit-options-container"
-        optionsId="fruit-option"
-      />
-    );
-
-    const inputElm = screen.getByRole('combobox');
-    await user.type(inputElm, 'p');
-    expect(screen.getAllByRole('option').length).toBe(7);
-
-    act(() => {
-      fireEvent.blur(inputElm);
-    });
-    const options: any = container.querySelector('li');
-    expect(options).not.toBeInTheDocument();
-  });
-
   it('should make sure status container is in the correct position', async () => {
     const change = jest.fn();
     const hint =
