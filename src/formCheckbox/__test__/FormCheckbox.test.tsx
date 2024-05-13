@@ -133,7 +133,7 @@ describe('FormCheckbox', () => {
     expect(checkbox).toBeDisabled();
   });
 
-  it('should render a checkbox with aria label match name if unspecified', () => {
+  it('should render a checkbox with aria label being null if unspecified', () => {
     const handleChange = jest.fn();
 
     render(
@@ -146,9 +146,9 @@ describe('FormCheckbox', () => {
       />
     );
 
-    expect(screen.getByLabelText('my label').getAttribute('aria-label')).toBe(
-      'group1'
-    );
+    expect(
+      screen.getByLabelText('my label').getAttribute('aria-label')
+    ).toBeNull();
   });
 
   it('should render a checkbox with aria-data-controls and aria-labelledby as empty if unspecified', () => {
@@ -474,7 +474,6 @@ describe('FormCheckbox', () => {
     expect(input.className.trim()).toBe('my-input-class');
   });
 
-
   it('should render a checkbox with a custom label', () => {
     const handleChange = jest.fn();
     render(
@@ -482,13 +481,12 @@ describe('FormCheckbox', () => {
         id="myId"
         name="group1"
         value="choice 1"
-        label=
-          <>
-            This is a custom label{' '}
-            <a data-testid="mylink" href="link">
-              hello
-            </a>
-          </>
+        label=<>
+          This is a custom label{' '}
+          <a data-testid="mylink" href="link">
+            hello
+          </a>
+        </>
         onChange={handleChange}
       />
     );
@@ -511,9 +509,8 @@ describe('FormCheckbox', () => {
     );
 
     const checkboxContainer = container.querySelector('.dcx-checkbox--error');
-    
+
     expect(checkboxContainer).toBeInTheDocument();
-    
   });
 
   it('should not apply error styling when isError is false', () => {
@@ -548,5 +545,4 @@ describe('FormCheckbox', () => {
 
     expect(container.querySelector('.dcx-checkbox--error')).toBeNull();
   });
-
 });
