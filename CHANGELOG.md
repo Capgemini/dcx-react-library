@@ -39,6 +39,8 @@
 - [Button component - does not render the aria-label attribute properly](https://github.com/Capgemini/dcx-react-library/issues/618)
 - [Tab - Actionable Element](https://github.com/Capgemini/dcx-react-library/issues/629)
 - [FormRadio and FormInput - does not offer a capability to not add an aria-label](https://github.com/Capgemini/dcx-react-library/issues/621)
+- [Checkbox - does not offer a capability to not add an aria-label](https://github.com/Capgemini/dcx-react-library/issues/650)
+- [FormInput - does not offer a capability to not add an aria-label](https://github.com/Capgemini/dcx-react-library/issues/650)
 - [FormInput - should not have a tabindex defined](https://github.com/Capgemini/dcx-react-library/issues/623)
 - [FormInput - An aria attribute has been given an invalid value](https://github.com/Capgemini/dcx-react-library/issues/631)
 - [Autocomplete - is not accessible and needs to be adjusted](https://github.com/Capgemini/dcx-react-library/issues/624)

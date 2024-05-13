@@ -49,9 +49,8 @@ export const FormInputMasked = ({
   ...props
 }: FormInputMaskedProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [mask, setMask] = useState<IMask.InputMask<
-    IMask.AnyMaskedOptions
-  > | null>(null);
+  const [mask, setMask] =
+    useState<IMask.InputMask<IMask.AnyMaskedOptions> | null>(null);
 
   useEffect(() => {
     if (mask && value) {
@@ -83,7 +82,7 @@ export const FormInputMasked = ({
       {...props}
       name={name}
       type={type}
-      aria-label={ariaLabel || name}
+      aria-label={ariaLabel}
     />
   );
 };
