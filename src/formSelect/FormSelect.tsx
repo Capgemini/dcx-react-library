@@ -4,7 +4,6 @@ import {
   OptionGroup,
   Hint,
   Option,
-  Roles,
   Label,
   classNames,
 } from '../common';
@@ -242,7 +241,7 @@ export const FormSelect = ({
         name={name || 'formSelect'}
         id={id || 'formSelect'}
         className={selectClassName}
-        aria-label={ariaLabel || Roles.list}
+        aria-label={ariaLabel}
         onChange={handleChange}
         style={style}
         tabIndex={tabIndex}
