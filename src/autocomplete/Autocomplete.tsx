@@ -478,10 +478,7 @@ export const Autocomplete = ({
         .map((value: string) => resultRef.current[parseInt(value, 10)])
         .includes(event.relatedTarget as HTMLLIElement);
     }
-    if (
-      !(focusingOnInput || focusingOnOptions) ||
-      (!focusingOnOptions && event.relatedTarget === null)
-    ) {
+    if (!(focusingOnInput || focusingOnOptions)) {
       setShowOptions(false);
     }
   };
