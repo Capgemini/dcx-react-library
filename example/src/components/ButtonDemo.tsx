@@ -62,12 +62,21 @@ export const ButtonDemo = () => {
         }
       />
       <h1>Button with children element</h1>
-      <Button isLoading={isLoading} onClick={() => {}} label="">
+      <Button isLoading={isLoading} onClick={() => {}}>
         <span>
           this is the content
           <strong> passed as children</strong>
         </span>
       </Button>
+      <h1>Button with visually hidden text</h1>
+      <Button
+        label="label"
+        onClick={() => {}}
+        visuallyHiddenText={{
+          text: 'this text is hidden',
+          className: 'visually-hidden',
+        }}
+      />
     </>
   );
 };

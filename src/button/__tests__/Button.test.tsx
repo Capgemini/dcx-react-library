@@ -319,4 +319,20 @@ describe('Button', () => {
     const button: any = screen.getByRole('button');
     expect(button.getAttribute('aria-label')).toBe('Registers');
   });
+
+  it('should render a button with visually hidden text', () => {
+    const handleClick = jest.fn();
+    const { getByText } = render(
+      <Button
+        label="label"
+        onClick={handleClick}
+        visuallyHiddenText={{
+          text: 'this text is hidden',
+          className: 'visually-hidden',
+        }}
+      />
+    );
+
+    expect(getByText('this text is hidden')).toBeInTheDocument();
+  });
 });
