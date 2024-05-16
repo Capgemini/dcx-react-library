@@ -91,7 +91,7 @@ type FormInputProps = {
   /**
    * function that will trigger when the input loses focus
    **/
-  onBlur?: (event: React.FormEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /**
    * function that will check if is vald or not based on the validation rules
    **/
@@ -207,7 +207,7 @@ export const FormInput = ({
     if (onFocus) onFocus(event);
   };
 
-  const handleBlur = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     if (onBlur) onBlur(event);
   };
 
