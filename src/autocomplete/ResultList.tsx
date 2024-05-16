@@ -67,6 +67,7 @@ export const ResultList = ({
             aria-selected={index === activeOption}
             aria-setsize={list.length}
             aria-posinset={index + 1}
+            tabIndex={-1}
           >
             {optionName}
           </li>

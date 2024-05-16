@@ -1282,4 +1282,165 @@ describe('Autocomplete', () => {
       container.querySelector('label + div > div[role="status"]')
     ).toBeInTheDocument();
   });
+
+  it('should close the options list on blur', async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+      />
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'p');
+    expect(screen.getAllByRole('option').length).toBe(7);
+
+    act(() => {
+      fireEvent.blur(inputElm);
+    });
+    const options: any = container.querySelector('li');
+    expect(options).not.toBeInTheDocument();
+  });
+
+  it('should not close the options if the user clicks inside the input', async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+      />
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'p');
+    expect(screen.getAllByRole('option').length).toBe(7);
+    userEvent.click(inputElm);
+    const options: any = container.querySelector('li');
+    expect(options).toBeInTheDocument();
+  });
+
+  it('should select the correct option and then close the options list', async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <Autocomplete
+        options={[
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ]}
+        id="fruitTest"
+        labelText="search the list of fruits"
+        notFoundText="No fruit found"
+        resultId="fruit-options-container"
+        optionsId="fruit-option"
+      />
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    await user.type(inputElm, 'p');
+    expect(screen.getAllByRole('option').length).toBe(7);
+    await userEvent.click(screen.getAllByRole('option')[2]);
+    const options: any = container.querySelector('li');
+    expect(options).not.toBeInTheDocument();
+    expect(inputElm.getAttribute('value')).toEqual('Paw Paw');
+  });
+
+  it('should close the options list when the user clicks on an uninteractive element', async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <>
+        <Autocomplete
+          options={[
+            'Papaya',
+            'Persimmon',
+            'Paw Paw',
+            'Prickly Pear',
+            'Peach',
+            'Pomegranate',
+            'Pineapple',
+          ]}
+          id="fruitTest"
+          labelText="search the list of fruits"
+          notFoundText="No fruit found"
+          resultId="fruit-options-container"
+          optionsId="fruit-option"
+        />
+        <div>test</div>
+      </>
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    const testElm = screen.getByText('test');
+    await user.type(inputElm, 'p');
+    expect(screen.getAllByRole('option').length).toBe(7);
+    await userEvent.click(testElm);
+    const options: any = container.querySelector('li');
+    expect(options).not.toBeInTheDocument();
+    // Shows that an option was not selected
+    expect(inputElm.getAttribute('value')).toEqual('p');
+  });
+
+  it('should close the options list when the user clicks on another input element', async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <>
+        <Autocomplete
+          options={[
+            'Papaya',
+            'Persimmon',
+            'Paw Paw',
+            'Prickly Pear',
+            'Peach',
+            'Pomegranate',
+            'Pineapple',
+          ]}
+          id="fruitTest"
+          labelText="search the list of fruits"
+          notFoundText="No fruit found"
+          resultId="fruit-options-container"
+          optionsId="fruit-option"
+        />
+        <input type="text" id="country" name="country" />
+      </>
+    );
+
+    const inputElm = screen.getByRole('combobox');
+    const otherInputElm = screen.getAllByRole('textbox')[1];
+    await user.type(inputElm, 'p');
+    expect(screen.getAllByRole('option').length).toBe(7);
+    await userEvent.click(otherInputElm);
+    const options: any = container.querySelector('li');
+    expect(options).not.toBeInTheDocument();
+    // Shows that an option was not selected
+    expect(inputElm.getAttribute('value')).toEqual('p');
+  });
 });
