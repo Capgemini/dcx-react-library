@@ -1,5 +1,6 @@
 import React from 'react';
 import { classNames, debounce } from '../common';
+import { VisuallyHidden } from '../common/components/commonTypes';
 
 export enum BUTTON_TYPE {
   BUTTON = 'button',
@@ -80,6 +81,10 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    * allow to specify a custom content
    */
   children?: string | number | JSX.Element | JSX.Element[];
+  /**
+   * allows the addition of visually hidden text
+   */
+  visuallyHiddenText?: VisuallyHidden;
 };
 
 export const Button = ({
@@ -101,6 +106,7 @@ export const Button = ({
   className,
   variant,
   children,
+  visuallyHiddenText,
   ...props
 }: ButtonProps) => {
   const [disable, setDisable] = React.useState<boolean>(disabled);
@@ -170,6 +176,11 @@ export const Button = ({
     >
       {prefix}
       {isLoading && loadingLabel ? loadingLabel : label}
+      {visuallyHiddenText && (
+        <span className={visuallyHiddenText.className}>
+          {visuallyHiddenText.text}
+        </span>
+      )}
       {!isLoading && children}
       {postfix}
     </button>

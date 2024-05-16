@@ -89,3 +89,19 @@ export const CustomContent = {
     children: [<strong>Login</strong>],
   },
 };
+
+/**
+ * Button allows the addition of visually hidden text for screen readers.
+ */
+export const WithVisuallyHiddenText = {
+  name: 'With Visually Hidden Text',
+  args: {
+    label: 'Edit',
+    className: 'govuk-button',
+    visuallyHiddenText: {
+      text: 'Visually Hidden Text',
+      className: 'govuk-visually-hidden',
+    },
+  },
+  argTypes: { onClick: { action: 'clicked' } },
+};
