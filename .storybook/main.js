@@ -19,7 +19,8 @@ const config = {
       },
     },
     '@storybook/addon-mdx-gfm',
-    '@storybook/addon-webpack5-compiler-babel'
+    '@storybook/addon-webpack5-compiler-babel',
+    'storybook-addon-mdx-embed'
   ],
   framework: {
     name: '@storybook/react-webpack5',
