@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/blocks';
+import {YouTube} from 'mdx-embed';
 import TokensList from '../core/storybook/TokensList';
 
 <Meta title="DCXLibrary/Introduction" />
@@ -8,9 +9,9 @@ import TokensList from '../core/storybook/TokensList';
 [dcx-react-library](https://github.com/capgemini/dcx-react-library) is a React library with a set of components ready to use in your project.  
 There are plenty of libraries available in React that can help to increase your productivity however most of them contain lots of css and are hard to style based on your project's requirements.  
 dcx-react-library is **UI/UX agnostic**, this allows the dcx-react-library to be easily integrated into any project.  
-You have few options to make your components good looking :lipstick::
-1. You provide the styling to match the look and feel of your application passing the class to every component :construction_worker:
-2. :fire: :fire:You use the design system tokens that we built for you (from version 1.0.0) :fire: :fire:
+You have few options to make your components good looking 💄:
+1. You provide the styling to match the look and feel of your application passing the class to every component 👷‍♀️
+2. 🔥 🔥 You use the design system tokens that we built for you (from version 1.0.0) 🔥 🔥
 
 ## Installation
 
@@ -35,6 +36,9 @@ function App() {
   )
 }
 ```
+
+Have a look on this quick video for a quick introduction:
+<YouTube youTubeId="kVjvOPd_rW4" />
 
 ## Styling
 
@@ -72,6 +76,9 @@ import '@capgeminiuk/dcx-react-library/design-system/button.css'
 ```
 
 Don't forget to add the `base.css` import before loading the individual stylesheets. It contains the core definitions used for the design system to work.
+
+Have a look on this quick video for a quick introduction on the design system:
+<YouTube youTubeId="KjYL9fzxdxw" />
 
 
 ### Customization
@@ -178,9 +185,6 @@ All components that support the design system will have the token definitions di
 It is an interactive UI that displays the available custom properties for a given component.
 
 To find the properties list use the `Toggle Available Tokens` button, then you can use the filter by scope and apply your own values for a quick preview.
-
-<video src="/design-system-playground.mp4" style={{width: '100%'}} controls />
-
 
 ##### Predefined themes
 
