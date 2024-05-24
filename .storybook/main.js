@@ -1,6 +1,7 @@
 process.env.DESIGN_TOKEN_GLOB = "**/tokens.css";
 const config = {
   stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -22,14 +23,19 @@ const config = {
     '@storybook/addon-webpack5-compiler-babel',
     'storybook-addon-mdx-embed'
   ],
+
   framework: {
     name: '@storybook/react-webpack5',
     options: {}
   },
-  docs: {
-    autodocs: true
-  },
+
+  docs: {},
+
   staticDirs: ["../static"],
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript'
+  }
 };
 
 export default config;

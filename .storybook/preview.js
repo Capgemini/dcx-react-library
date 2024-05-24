@@ -161,3 +161,4 @@ export const decorators = [
     return storyFn();
   },
 ];
+export const tags = ['autodocs'];
