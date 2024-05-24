@@ -1,7 +1,7 @@
 import { Table } from '../../src/table/Table';
 
 export default {
-  title: 'DCXLibrary/Table/Without style',
+  title: 'DCXLibrary/Layout/Table/Without style',
   component: Table,
   parameters: {
     options: {
@@ -12,7 +12,7 @@ export default {
 
 export const Unstyled = {
   args: {
-    dataSource:[
+    dataSource: [
       {
         id: 1,
         position: 1,
@@ -34,6 +34,6 @@ export const Unstyled = {
         weight: 6.941,
         symbol: 'Li',
       },
-    ]
+    ],
   },
 };

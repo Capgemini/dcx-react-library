@@ -451,6 +451,16 @@ describe('FormSelect', () => {
     expect(option.selected).toBe(true);
   });
 
+  it('should allow to change the default value on select', async () => {
+    const user = userEvent.setup();
+    render(
+      <FormSelect options={['first', 'second', 'third']} defaultValue="third" />
+    );
+    await user.selectOptions(screen.getByRole('combobox'), 'first');
+    const option: any = screen.getByRole('option', { name: 'first' });
+    expect(option.selected).toBe(true);
+  });
+
   it('should read the containerProps', () => {
     render(
       <FormSelect
@@ -461,10 +471,10 @@ describe('FormSelect', () => {
     expect(container).toBeInTheDocument();
   });
 
-  it('should have a 0 tabIndex value by default', () => {
+  it('should have a null tabIndex value by default', () => {
     const { container } = render(<FormSelect id="select" />);
     const select: any = container.querySelector('#select');
-    expect(select.getAttribute('tabindex')).toBe('0');
+    expect(select.getAttribute('tabindex')).toBeNull();
   });
 
   it('should take tabIndex attribute', () => {

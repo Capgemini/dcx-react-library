@@ -1,5 +1,6 @@
 import React from 'react';
 import { classNames, debounce } from '../common';
+import { VisuallyHidden } from '../common/components/commonTypes';
 
 export enum BUTTON_TYPE {
   BUTTON = 'button',
@@ -76,6 +77,14 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
    * allows to specify a variant
    */
   variant?: 'primary' | 'secondary' | 'tertiary';
+  /**
+   * allow to specify a custom content
+   */
+  children?: string | number | JSX.Element | JSX.Element[];
+  /**
+   * allows the addition of visually hidden text
+   */
+  visuallyHiddenText?: VisuallyHidden;
 };
 
 export const Button = ({
@@ -83,7 +92,7 @@ export const Button = ({
   onClick,
   type = BUTTON_TYPE.BUTTON,
   disabled = false,
-  ariaLabel = `${type}-button`,
+  ariaLabel = `${label}`,
   disableClickForMs,
   customPrefixImg,
   customPostfixImg,
@@ -96,6 +105,8 @@ export const Button = ({
   value,
   className,
   variant,
+  children,
+  visuallyHiddenText,
   ...props
 }: ButtonProps) => {
   const [disable, setDisable] = React.useState<boolean>(disabled);
@@ -141,16 +152,22 @@ export const Button = ({
     'dcx-button',
     className,
     {
-      [`dcx-button--${variant}`]:  variant !== undefined,
+      [`dcx-button--${variant}`]: variant !== undefined,
     },
   ]);
+
+  if (label !== undefined && children !== undefined) {
+    throw new Error(
+      'You can use label or children but not both at the same time'
+    );
+  }
 
   return (
     <button
       onClick={handleClick}
       disabled={disable}
       type={type}
-      {...(label ? {} : { 'aria-label': ariaLabel })}
+      aria-label={ariaLabel}
       formAction={formAction}
       name={name}
       className={btnClassName}
@@ -159,6 +176,12 @@ export const Button = ({
     >
       {prefix}
       {isLoading && loadingLabel ? loadingLabel : label}
+      {visuallyHiddenText && (
+        <span className={visuallyHiddenText.className}>
+          {visuallyHiddenText.text}
+        </span>
+      )}
+      {!isLoading && children}
       {postfix}
     </button>
   );

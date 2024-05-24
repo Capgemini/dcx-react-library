@@ -3,26 +3,25 @@ import { LiveProvider, LiveEditor } from 'react-live';
 import style from '!raw-loader!../../themes/material.theme.css';
 
 /**
- * This a theme showcases an appearance similar to Material UI can be achieved.  
+ * This a theme showcases an appearance similar to Material UI can be achieved.
  * If you copy paste this snippet inside your css file you'll get a material design style
-*/
+ */
 export default {
-  title: "DCXLibrary/Form/Select/Design system/Material",
+  title: 'DCXLibrary/Form/Select/Design system/Material',
   component: FormSelect,
   decorators: [
     (getStory) => {
       require('../../../dist/design-system/index.css');
       require('../../themes/material.theme.css');
       return getStory();
-    }
+    },
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs']
-}
-
+  tags: ['autodocs'],
+};
 
 export const ShowCase = {
   parameters: {
@@ -35,68 +34,71 @@ export const ShowCase = {
     },
   },
   render: () => (
-    <LiveProvider code={style.replace('.dcx-formselect', ':root')} disabled={true} language="css">
+    <LiveProvider
+      code={style.replace('.dcx-formselect', ':root')}
+      disabled={true}
+      language="css"
+    >
       <LiveEditor className="liveEditor" aria-label="editor" />
     </LiveProvider>
-  )
-}
+  ),
+};
 
 export const Default = {
   name: 'Default',
   args: {
-    label: "My label",
+    label: 'My label',
     options: ['Option 1', 'Option 2'],
-    nullOption: "Select an option...",
-    variant: "floating"
-  }
+    nullOption: 'Select an option...',
+    variant: 'floating',
+  },
 };
 
 export const Hint = {
   name: 'Hint',
   args: {
-    label: "My label",
+    label: 'My label',
     options: ['Option 1', 'Option 2'],
-    nullOption: "Select an option...",
+    nullOption: 'Select an option...',
     hint: {
       text: 'This is and example of hintText/description of what we need from you',
     },
-    variant: "floating"
-  }
+    variant: 'floating',
+  },
 };
 
 export const Error = {
   name: 'Error',
   args: {
-    label: "My label",
+    label: 'My label',
     options: ['Option 1', 'Option 2'],
-    nullOption: "Select an option...",
-    errorMessage: "Some error",
-    variant: "floating"
-  }
+    nullOption: 'Select an option...',
+    errorMessage: 'Some error',
+    variant: 'floating',
+  },
 };
 
 export const HintAndError = {
   name: 'Hint and error',
   args: {
-    label: "My label",
+    label: 'My label',
     options: ['Option 1', 'Option 2'],
-    nullOption: "Select an option...",
+    nullOption: 'Select an option...',
     hint: {
       text: 'This is and example of hintText/description of what we need from you',
     },
-    errorMessage: "Some error",
-    variant: "floating"
-  }
+    errorMessage: 'Some error',
+    variant: 'floating',
+  },
 };
 
 export const Value = {
   name: 'With Value',
   args: {
-    label: "My label",
+    label: 'My label',
     options: ['Option 1', 'Option 2'],
-    nullOption: "Select an option...",
-    value: "Option 1",
-    variant: "floating"
-  }
+    nullOption: 'Select an option...',
+    value: 'Option 1',
+    variant: 'floating',
+  },
 };
-

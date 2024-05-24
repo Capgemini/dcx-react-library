@@ -20,27 +20,32 @@ export const Unstyled = {
         console.log(conditional);
         return;
       }
-      setArgs({ value: evt.currentTarget.value, selected:  evt.currentTarget.checked});
+      setArgs({
+        value: evt.currentTarget.value,
+        selected: evt.currentTarget.checked,
+        isError: true,
+      });
       setTimeout(() => setArgs({ isLoading: false }), 2000);
     };
     return <FormCheckbox {...args} onChange={checkboxHandler} />;
   },
   args: {
-    label:"checkbox label",
-    value:'',
-    id:"checkbox-6",
-    inputProps:{
+    label: 'checkbox label',
+    value: '',
+    id: 'checkbox-6',
+    inputProps: {
       name: 'checkbox-6',
     },
-    selected:false,
-    conditional:{
+    selected: false,
+    conditional: {
       value: '',
       name: 'conditional-6',
       label: 'condition label',
       type: 'text',
       id: 'checkbox-6',
       inputId: 'input-6',
-    }
+    },
+    isError: false,
   },
   argTypes: { onChange: { action: 'changed' } },
 };

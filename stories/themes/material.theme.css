@@ -7,6 +7,18 @@
   --dcx-color-chevron-formcontrol-floating-filled: rgba(0, 0, 0, 0.6);
 }
 
+.dcx-form-input {
+  --dcx-color-text-formcontrol-filled: #000000de;
+  --dcx-color-text-formcontrol_hint: #000000de;
+  --dcx-border-color-formcontrol: #00000099;
+  --dcx-border-radius-formcontrol-floating: 6px;
+  --dcx-color-background-formcontrol_label-floating-filled: #f5f5f5;
+  --dcx-color-text-formcontrol: #00000099;
+  --dcx-color-textformcontrol_label--floating: #00000099;
+  --dcx-border-width-formcontrol_prefix: 0;
+  --dcx-border-width-formcontrol_suffix: 0;
+}
+
 .dcx-button {
   --dcx-box-shadow-action: 0px 8px 15px rgba(0, 0, 0, 0.6);
   --dcx-border-radius-action: 20px;
@@ -15,7 +27,53 @@
   --dcx-spacing-x-action: 20px;
 }
 
+.dcx-button-group .dcx-button {
+  --dcx-box-shadow-action: 10px 8px 15px rgba(0, 0, 0, 0.6);
+}
+
 .dcx-list {
   --dcx-color-text-body: rgba(0, 0, 0, 0.6);
   --dcx-color-marker: rgba(0, 0, 0, 0.6);
+}
+
+.dcx-pre {
+  --dcx-color-text-pre_body: rgba(0, 0, 0, 0.6);
+}
+
+.dcx-abbreviate {
+  --dcx-border-radius-abbreviate: 8px;
+}
+
+.dcx-description-list {
+  --dcx-color-text-body: #00000099;
+}
+
+.dcx-checkbox {
+  --dcx-color-text-formcontrol: #000000de;
+  --dcx-color-text-formcontrol_hint: #000000de;
+  --dcx-border-color-formcontrol: #00000099;
+  --dcx-border-radius-formcontrol: 6px;
+  --dcx-color-text-formcontrol: #00000099;
+  --dcx-color-text-formcontrol_label: #00000099;
+  --dcx-clip-path-formcontrol_checkmark: inset(4px 1px);
+}
+
+.dcx-radio-button-group {
+  --dcx-color-text-formcontrol: #000000de;
+  --dcx-color-text-formcontrol_hint: #000000de;
+  --dcx-color-text-formcontrol_error: #f44336;
+  --dcx-border-color-formcontrol: #00000099;
+  --dcx-border-radius-formcontrol: 6px;
+  --dcx-color-text-formcontrol: #00000099;
+  --dcx-color-text-formcontrol_label: #00000099;
+}
+
+.dcx-checkbox-group {
+  --dcx-color-text-formcontrol: #000000de;
+  --dcx-color-text-formcontrol_hint: #000000de;
+  --dcx-color-text-formcontrol_error: #f44336;
+  --dcx-border-color-formcontrol: #00000099;
+  --dcx-border-radius-formcontrol: 6px;
+  --dcx-color-text-formcontrol: #00000099;
+  --dcx-color-text-formcontrol_label: #00000099;
 }

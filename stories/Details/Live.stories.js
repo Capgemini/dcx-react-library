@@ -2,7 +2,7 @@ import { Details } from '../../src/details/Details';
 import DetailsLive from '../liveEdit/DetailsLive';
 
 export default {
-  title: 'DCXLibrary/Details/Live',
+  title: 'DCXLibrary/Layout/Details/Live',
   component: Details,
 
   parameters: {
@@ -19,5 +19,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <DetailsLive />
+  render: () => <DetailsLive />,
 };

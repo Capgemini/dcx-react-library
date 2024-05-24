@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta
+  title="DCXLibrary/Utils/classNames"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# `classNames` utility
+
+A JavaScript utility created for joining multiple class names and conditional class names.
+
+## Usage
+
+The `classNames` function takes an array as its argument.
+The array can contain elements with string or object types.
+String in the case of simply joining multiple class names and object when there is a condition to which the class name should be applied.
+If the value belonging to a given key is falsy, the key will not be included in the className.
+
+### Joining multiple class names
+
+```js
+<div className={classNames(['first-class', 'second-class'])}></div> // ==> which becomes className="first-class second-class"
+```
+
+### Conditional class names
+
+```js
+<div
+  className={classNames([
+    'first-class',
+    { 'second-class': condition, 'third-class': !condition },
+  ])}
+></div>
+// => where if the condition is true, this becomes className="first-class second-class"
+// => and if the condition is false, it class name becomes className="first-class third-class"
+```
+
+### Dynamic class names
+
+```js
+const messageType = 'error'
+
+<div
+  className={classNames([
+    'first-class',
+    { [`${messageType}-message`]: true },
+  ])}
+></div>
+// => where this becomes className="first-class error-message"
+```

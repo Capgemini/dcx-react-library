@@ -1,0 +1,42 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as CardStories from './UnStyled.stories.js';
+
+<Meta title="DCXLibrary/Layout/Card/Documentation" />
+
+# Card
+
+A Card component ready to use in your projects.  
+The Card component is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
+It allows you to set a 'layout' prop between vertical or horizontal, when provided it adds a className that you can use
+to align the content in your card.
+There is also the possibility to use the prop 'variant' based on the Card functionality.
+Card is already setted up to receive the 'selected' prop if you need it.
+When you import the Card component without providing any className or style associated will looks as following:
+
+<Canvas of={CardStories.Unstyled} />
+
+```js
+<Card
+  className="my-card-class"
+  layout="horizontal"
+  variant="interact"
+  selected={true}
+>
+  <CardHeader className="my-card-header-class">Header</CardHeader>
+  <CardImage
+    src="https://placehold.co/100"
+    alt="alt text describing the image"
+  />
+  <CardContent className="my-card-content-class">
+    <p>Content text</p>
+  </CardContent>
+  <CardActions className="my-card-content-class">
+    <button>Submit</button>
+  </CardActions>
+  <CardFooter>Footer</CardFooter>
+</Card>
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={CardStories} />

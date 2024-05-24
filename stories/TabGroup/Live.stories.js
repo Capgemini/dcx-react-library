@@ -1,7 +1,7 @@
 import { TabGroup } from '../../src/tabGroup';
 import TabGroupLive from '../liveEdit/TabGroupLive';
 export default {
-  title: 'DCXLibrary/Tabs/Live',
+  title: 'DCXLibrary/Layout/Tabs/Live',
   component: TabGroup,
 
   parameters: {
@@ -18,5 +18,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <TabGroupLive />
-}
+  render: () => <TabGroupLive />,
+};

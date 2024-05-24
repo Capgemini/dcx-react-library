@@ -1,3 +1,6 @@
+/* eslint-disable import/no-webpack-loader-syntax */
+import style from '!raw-loader!../../../dist/design-system/list.css';
+import TokensDecorator from '../../../core/storybook/TokensDecorator';
 import { List } from '../../../src/list/List';
 import { ListItem } from '../../../src/list/ListItem';
 
@@ -5,10 +8,7 @@ export default {
   title: 'DCXLibrary/Typography/List/Design system',
   component: List,
   decorators: [
-    (getStory) => {
-      require('../../../dist/design-system/index.css');
-      return getStory();
-    },
+    (getStory) => <TokensDecorator style={style}>{getStory()}</TokensDecorator>,
   ],
   parameters: {
     options: { showPanel: true },

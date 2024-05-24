@@ -49,19 +49,22 @@ type FormInputProps = {
   /**
    * allow to customise the error message with all the properites needed
    **/
-  errorProps?: any;
+  errorProps?: React.AllHTMLAttributes<HTMLDivElement>;
   /**
    * allow to customise the input with all the properites needed
    **/
-  inputDivProps?: React.AllHTMLAttributes<HTMLDivElement>;
+  inputDivProps?: React.HTMLAttributes<HTMLDivElement>;
   /**
   /**
    * allow to customise the input with all the properites needed
    **/
-  inputProps?: React.AllHTMLAttributes<HTMLInputElement>;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement> & {
+    ref?: React.RefObject<HTMLInputElement>;
+  };
   /**
    * allow to customise the label with all the properites needed
    */
+  //labelProps?: React.HTMLAttributes<HTMLLabelElement> & { htmlFor?: string };
   labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
   /**
    * generic parameter to pass whatever element before the input
@@ -88,15 +91,11 @@ type FormInputProps = {
   /**
    * function that will trigger when the input loses focus
    **/
-  onBlur?: (event: React.FormEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /**
    * function that will check if is vald or not based on the validation rules
    **/
   isValid?: (valid: boolean, errorMessageVisible?: boolean) => void;
-  /**
-   * error message
-   **/
-  errorMessage?: any;
   /**
    * allow to specify an error message coming from another source
    */
@@ -129,7 +128,21 @@ type FormInputProps = {
    * tab index value
    */
   tabIndex?: number;
+  /**
+   * if a variant floating is specified it will add a class 'dcx-floating-label' for supporting a floating label feature
+   */
+  variant?: 'floating' | 'floating-filled' | 'normal';
+  /**
+   * visually hidden text for screen readers
+   */
+  hiddenErrorText: string;
+  /**
+   * visually hidden span attributes
+   */
+  hiddenErrorTextProps?: React.HTMLAttributes<HTMLSpanElement>;
 };
+
+const floatVariants = ['floating', 'floating-filled'];
 
 export enum ErrorPosition {
   BEFORE_LABEL = 'before-label',
@@ -153,7 +166,6 @@ export const FormInput = ({
   onFocus,
   onBlur,
   isValid,
-  errorMessage,
   staticErrorMessage,
   errorPosition,
   ariaLabel,
@@ -165,8 +177,11 @@ export const FormInput = ({
   labelClassName,
   required,
   hint,
+  variant = 'normal',
   inputDivProps = { style: { display: 'flex' } },
-  tabIndex = 0,
+  tabIndex,
+  hiddenErrorText = '',
+  hiddenErrorTextProps,
 }: FormInputProps) => {
   const { validity, onValueChange } = useValidationOnChange(validation, value);
 
@@ -192,26 +207,53 @@ export const FormInput = ({
     if (onFocus) onFocus(event);
   };
 
-  const handleBlur = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     if (onBlur) onBlur(event);
   };
 
-  const ErrorMessage = () => (
-    <div {...errorProps}>
-      {staticErrorMessage !== undefined ? (
-        <div role={Roles.error} {...errorMessage}>
+  const isStaticMessageValid = (): boolean =>
+    typeof staticErrorMessage === 'string' && !isEmpty(staticErrorMessage);
+
+  const ErrorMessage = () => {
+    if (isStaticMessageValid()) {
+      return (
+        <p
+          {...{
+            ...errorProps,
+            className: classNames(['dcx-error-message', errorProps?.className]),
+            role: Roles.alert,
+          }}
+        >
+          {!isEmpty(hiddenErrorText) && (
+            <span {...hiddenErrorTextProps}>{hiddenErrorText + ' '}</span>
+          )}
           {staticErrorMessage}
-        </div>
-      ) : validity && !validity.valid && showError ? (
-        <div role={Roles.error} {...errorMessage}>
+        </p>
+      );
+    }
+
+    if (validity && !validity.valid && showError) {
+      return (
+        <p
+          {...{
+            ...errorProps,
+            className: classNames(['dcx-error-message', errorProps?.className]),
+            role: Roles.alert,
+          }}
+        >
+          {!isEmpty(hiddenErrorText) && (
+            <span {...hiddenErrorTextProps}>{hiddenErrorText + ' '}</span>
+          )}
           {validity.message}
-        </div>
-      ) : null}
-    </div>
-  );
+        </p>
+      );
+    }
+
+    return null;
+  };
 
   const isStaticOrDynamicError = (): boolean =>
-    staticErrorMessage !== undefined || (validity && !validity.valid) || false;
+    isStaticMessageValid() || (validity && !validity.valid) || false;
 
   const inputEl: JSX.Element = (
     <input
@@ -223,29 +265,43 @@ export const FormInput = ({
       onBlur={handleBlur}
       required={required}
       className={inputClassName}
-      aria-label={ariaLabel || name}
+      aria-label={ariaLabel}
       aria-required={ariaRequired}
       tabIndex={tabIndex}
       {...inputProps}
     />
   );
 
+  const labelEl: JSX.Element = (
+    <Label
+      label={label}
+      labelProperties={labelProps}
+      htmlFor={inputProps?.id}
+      className={labelClassName}
+    />
+  );
+
+  const containerClasses = classNames([
+    'dcx-form-input',
+    containerClassName,
+    {
+      'dcx-form-input--filled': !!value,
+      'dcx-form-input--placeholder': !!inputProps?.placeholder,
+      'dcx-error-bottom': errorPosition === ErrorPosition.BOTTOM,
+      'dcx-hint-bottom': hint && hint.position !== 'above',
+      'dcx-floating-label': floatVariants.includes(variant),
+      'dcx-floating-label-filled': variant === 'floating-filled',
+      [`dcx-form-input--error ${containerClassNameError}`]:
+        isStaticOrDynamicError(),
+    },
+  ]);
+
   return (
-    <div
-      className={classNames([
-        containerClassName,
-        { [`${containerClassNameError}`]: isStaticOrDynamicError() },
-      ])}
-    >
+    <div className={containerClasses}>
       {errorPosition && errorPosition === ErrorPosition.BEFORE_LABEL && (
         <ErrorMessage />
       )}
-      <Label
-        label={label}
-        labelProperties={labelProps}
-        htmlFor={inputProps?.id}
-        className={labelClassName}
-      />
+      {!floatVariants.includes(variant) && labelEl}
       {errorPosition && errorPosition === ErrorPosition.AFTER_LABEL && (
         <ErrorMessage />
       )}
@@ -256,12 +312,44 @@ export const FormInput = ({
       {prefix || suffix ? (
         <div {...inputDivProps}>
           {prefix && !isEmpty(prefix) && (
-            <div {...prefix.properties}>{prefix.content}</div>
+            <div
+              {...{
+                ...prefix.properties,
+                className: classNames([
+                  'dcx-form-input__prefix',
+                  prefix.properties.className,
+                ]),
+              }}
+            >
+              {prefix.content}
+            </div>
           )}
-          {inputEl}
+          {floatVariants.includes(variant) ? (
+            <div className="dcx-wrapper-label">
+              {labelEl}
+              {inputEl}
+            </div>
+          ) : (
+            inputEl
+          )}
           {suffix && !isEmpty(suffix) && (
-            <div {...suffix.properties}>{suffix.content}</div>
+            <div
+              {...{
+                ...suffix.properties,
+                className: classNames([
+                  'dcx-form-input__suffix',
+                  suffix.properties.className,
+                ]),
+              }}
+            >
+              {suffix.content}
+            </div>
           )}
+        </div>
+      ) : floatVariants.includes(variant) ? (
+        <div className="dcx-wrapper-label">
+          {labelEl}
+          {inputEl}
         </div>
       ) : (
         inputEl

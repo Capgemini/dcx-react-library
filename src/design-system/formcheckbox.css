@@ -1,0 +1,142 @@
+.dcx-checkbox {
+  column-gap: token('spacing-y-formcontrol');
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  & .dcx-hint {
+    flex-basis: 100%;
+    font-size: token('font-formcontrol_hint-size');
+    line-height: token('font-formcontrol_hint-line-height');
+    color: token('color-text-formcontrol_hint');
+    padding-left: calc(
+      token('font-formcontrol_label-line-height') +
+        token('spacing-y-formcontrol')
+    );
+  }
+
+  & label {
+    font-weight: token('font-weight-formcontrol_label');
+    font-size: token('font-size-formcontrol_label');
+    background: token('color-background-formcontrol_label');
+    color: token('color-text-formcontrol_label');
+  }
+
+  & input[type='checkbox'] {
+    appearance: none;
+    background-color: token('color-background-formcontrol');
+    margin: 0;
+    color: currentColor;
+    width: token('font-formcontrol_label-line-height');
+    height: token('font-formcontrol_label-line-height');
+    border-radius: token('border-radius-formcontrol');
+    border-width: token('border-width-formcontrol');
+    border-style: solid;
+    border-color: token('border-color-formcontrol');
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+
+    &:focus {
+      border-color: token('color-outline-formcontrol');
+      border-width: calc(token('border-width-formcontrol') * 2);
+    }
+
+    &:checked {
+      border-color: token('color-outline-formcontrol');
+      background-color: token('color-outline-formcontrol');
+    }
+    &:hover {
+      border-color: token('color-outline-formcontrol');
+      border-width: calc(token('border-width-formcontrol') * 2);
+      opacity: 0.8;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      &:hover {
+        opacity: 0.5;
+        border-radius: token('border-radius-formcontrol');
+        border-width: token('border-width-formcontrol');
+        border-style: solid;
+        border-color: token('border-color-formcontrol');
+      }
+    }
+
+    &:disabled:hover {
+      cursor: not-allowed;
+    }
+
+    &::before {
+      content: '';
+      width: 0.8em;
+      height: 0.8em;
+      clip-path: token('clip-path-formcontrol_checkmark');
+      transform: scale(0);
+      transform-origin: bottom left;
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em token('color-background-formcontrol_checkmark');
+    }
+    &:checked::before {
+      transform: scale(1);
+    }
+  }
+
+  &.dcx-checkbox--error {
+    & label {
+      color: token('color-text-formcontrol_label-error');
+    }
+    & input {
+      border-color: token('color-text-formcontrol_error');
+
+      &:focus {
+        border-color: token('color-text-formcontrol_error');
+      }
+
+      &:checked {
+        border-color: token('color-text-formcontrol_error');
+        background-color: token('color-text-formcontrol_error');
+      }
+      &:hover {
+        border-color: token('color-text-formcontrol_error');
+      }
+    }
+  }
+
+  &:has(input:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  & .dcx-conditional-input {
+    flex-basis: 100%;
+    & div {
+      display: flex;
+      flex-direction: column;
+      padding-left: calc(
+        token('font-formcontrol_label-line-height') +
+          token('spacing-y-formcontrol') * 2
+      );
+      & label {
+        font-size: token('font-size-formcontrol_label');
+        line-height: token('font-formcontrol_label-line-height');
+        background: token('color-background-formcontrol_label');
+        color: token('color-text-formcontrol_label');
+      }
+
+      & input {
+        background: token('color-background-formcontrol');
+        box-sizing: border-box;
+        color: token('color-text-formcontrol');
+        font-size: token('font-formcontrol-size');
+        line-height: token('font-formcontrol-line-height');
+        margin: token('color-outline-formcontrol');
+        padding-left: token('spacing-x-formcontrol');
+        padding-right: token('spacing-x-formcontrol');
+        border-radius: token('border-radius-formcontrol');
+        max-width: 400px;
+      }
+    }
+  }
+}

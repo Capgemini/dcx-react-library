@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas, ArgTypes } from '@storybook/addon-docs';
+import * as AccordionStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Layout/Accordion/Documentation" />
+
+# Accordion
+
+An Accordion component ready to use in your application.  
+This Accordion component allows multiple sections to be open at the same time (multipleOpen), and uses a custom icon for the collapsed state (collapsedIcon). The expanded prop is an array that determines which sections are expanded by default.
+
+Each AccordionItem represents a section in the accordion. It has a title prop that is used as the identifier for the section. The AccordionTitle and AccordionDetails components are used to define the content of the section title and details, respectively.
+
+This documentation provides an overview of the Accordion component, how to use it, and the available properties.
+In order to use the accordion component in your project, you should import all the following necessary components to use the Accordion in your project::
+
+```js
+  import { Accordion, AccordionDetails, AccordionItem, AccordionTitle } from '@capgeminiuk/dcx-react-library`;
+```
+
+
+When you import the Accordion component without providing any className or style associated will looks as following;
+
+<Canvas of={AccordionStories.Unstyled} />
+
+An example with all the available properties is:
+
+```js
+<Accordion
+  expanded={['1']}
+  expandIcon={<span>Expand</span>}
+  collapsedIcon={<span>Collapse</span>}
+  titleClassName="titleClass"
+  detailsClassName="detailsClass"
+  multipleOpen=true
+>
+  <AccordionItem title="1">
+    <AccordionTitle><span>Section 1 Title</span></AccordionTitle>
+    <AccordionDetails><span>This is the details for Section 1.</span></AccordionDetails>
+  </AccordionItem>
+  <AccordionItem title="section2">
+    <AccordionTitle><span>Section 2 Title</span></AccordionTitle>
+    <AccordionDetails><span>This is the details for Section 2.</span></AccordionDetails>
+  </AccordionItem>
+</Accordion>  
+
+```
+
+<ArgTypes of={AccordionStories} />

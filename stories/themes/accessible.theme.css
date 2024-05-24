@@ -7,6 +7,15 @@
   --dcx-font-formcontrol_error-line-height: 20px;
 }
 
+.dcx-form-input {
+  --dcx-border-radius-formcontrol: 0px;
+  --dcx-spacing-y-formcontrol: 30px;
+  --dcx-font-formcontrol_hint-size: 16px;
+  --dcx-font-formcontrol_hint-line-height: 20px;
+  --dcx-font-formcontrol_error-size: 16px;
+  --dcx-font-formcontrol_error-line-height: 20px;
+}
+
 .dcx-button {
   --dcx-border-radius-action: 0px;
   --dcx-spacing-y-action: 15px;
@@ -22,4 +31,38 @@
 .dcx-list {
   --dcx-color-text-body: #000;
   --dcx-color-marker: #000;
+}
+
+.dcx-abbreviate {
+  --dcx-spacing-y-abbreviate: 5px;
+  --dcx-spacing-x-abbreviate: 5px;
+}
+
+.dcx-checkbox {
+  --dcx-border-radius-formcontrol: 0px;
+  --dcx-font-formcontrol_hint-size: 16px;
+  --dcx-font-formcontrol_hint-line-height: 20px;
+  --dcx-font-formcontrol_error-size: 16px;
+  --dcx-font-size-formcontrol_label: 18px;
+  --dcx-font-formcontrol_label-line-height: 22px;
+}
+
+.dcx-radio-button-group {
+  --dcx-border-radius-formcontrol: 0px;
+  --dcx-font-formcontrol_hint-size: 20px;
+  --dcx-font-formcontrol_hint-line-height: 20px;
+  --dcx-font-formcontrol_error-size: 18px;
+  --dcx-font-formcontrol_error-line-height: 20px;
+  --dcx-font-size-formcontrol_label: 20px;
+  --dcx-font-formcontrol_label-line-height: 24px;
+}
+
+.dcx-checkbox-group {
+  --dcx-border-radius-formcontrol: 0px;
+  --dcx-font-formcontrol_hint-size: 20px;
+  --dcx-font-formcontrol_hint-line-height: 20px;
+  --dcx-font-formcontrol_error-size: 18px;
+  --dcx-font-formcontrol_error-line-height: 20px;
+  --dcx-font-size-formcontrol_label: 20px;
+  --dcx-font-formcontrol_label-line-height: 24px;
 }

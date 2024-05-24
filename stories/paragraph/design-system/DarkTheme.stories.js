@@ -5,8 +5,8 @@ import { LiveProvider, LiveEditor } from 'react-live';
 import { StorybookUtils } from '../../../core/storybook/StorybookUtils';
 
 /**
-* This a theme showcases how to customize the component so it can be used on dark backgrounds.
-*/
+ * This a theme showcases how to customize the component so it can be used on dark backgrounds.
+ */
 export default {
   title: 'DCXLibrary/Typography/Paragraph/Design system/Dark',
   component: Paragraph,
@@ -15,13 +15,13 @@ export default {
       require('../../../dist/design-system/index.css');
       require('../../themes/dark.theme.css');
       return getStory();
-    }
+    },
   ],
   parameters: {
     options: { showPanel: true },
     actions: { disable: true },
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export const ShowCase = {
@@ -35,15 +35,34 @@ export const ShowCase = {
     },
   },
   render: () => (
-    <LiveProvider code={StorybookUtils.getThemeCode('dcx-paragraph', style)} disabled={true} language="css">
+    <LiveProvider
+      code={StorybookUtils.getThemeCode('dcx-paragraph', style)}
+      disabled={true}
+      language="css"
+    >
       <LiveEditor className="liveEditor" aria-label="editor" />
     </LiveProvider>
-  )
+  ),
 };
-
 
 export const Default = {
   name: 'Default',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#282c34' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  args: {
+    children: 'This is the content of the paragraph.',
+  },
+};
+
+export const Value = {
+  name: 'Value',
   parameters: {
     backgrounds: {
       default: 'dark',
@@ -58,3 +77,21 @@ export const Default = {
   },
 };
 
+export const CustomContent = {
+  name: 'CustomContent',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#282c34' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  args: {
+    children: [
+      'This is the simple custom-content of the ',
+      <strong>paragraph</strong>,
+    ],
+  },
+};

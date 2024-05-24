@@ -4,7 +4,6 @@ import {
   OptionGroup,
   Hint,
   Option,
-  Roles,
   Label,
   classNames,
 } from '../common';
@@ -132,7 +131,9 @@ export type FormSelectProps = {
   /**
    * will allow to extend the select
    */
-  selectProps?: React.AllHTMLAttributes<HTMLSelectElement>;
+  selectProps?: React.SelectHTMLAttributes<HTMLSelectElement> & {
+    ref?: React.RefObject<HTMLSelectElement>;
+  };
 };
 
 export const FormSelect = ({
@@ -159,15 +160,17 @@ export const FormSelect = ({
   style,
   nullOption,
   containerProps,
-  defaultValue = '',
-  tabIndex = 0,
+  defaultValue,
+  tabIndex,
   variant = 'normal',
   disabled = false,
   selectProps,
 }: FormSelectProps) => {
   let initialValue: string | number = '';
 
-  if (value !== undefined) {
+  if (defaultValue !== undefined) {
+    initialValue = defaultValue;
+  } else if (value !== undefined) {
     initialValue = value;
   } else if (nullOption !== undefined) {
     initialValue = nullOption;
@@ -234,11 +237,11 @@ export const FormSelect = ({
         />
       )}
       <select
-        value={defaultValue !== '' ? defaultValue : selectValue}
+        value={selectValue}
         name={name || 'formSelect'}
         id={id || 'formSelect'}
         className={selectClassName}
-        aria-label={ariaLabel || Roles.list}
+        aria-label={ariaLabel}
         onChange={handleChange}
         style={style}
         tabIndex={tabIndex}

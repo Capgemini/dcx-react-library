@@ -3,7 +3,7 @@ import { FormCheckbox, CheckboxGroup } from '@capgeminiuk/dcx-react-library';
 
 export const FormCheckboxDemo = () => {
   const [value, setValue] = React.useState('');
-  const [checked, setChecked] = React.useState<boolean>(true);
+  const [checked, setChecked] = React.useState<boolean>(false);
   const handleChange = (event: any) => {
     setValue(event.currentTarget.value);
     setChecked(!checked);
@@ -47,6 +47,21 @@ export const FormCheckboxDemo = () => {
         onChange={handleChange}
         disabled={true}
       />
+      <h2 id="checkbox-with-error-tag">Checkbox with Error</h2>
+      <FormCheckbox
+        ariaDescribedBy="checkbox-with-error-tag"
+        id="checkbox-4"
+        name="group4"
+        value={value}
+        label="Checkbox 4 label text"
+        onChange={handleChange}
+        isError={!checked}
+      />
+      {checked && (
+        <div style={{ color: 'red', marginTop: '8px' }}>
+          Error: The checkbox is checked!
+        </div>
+      )}
       <h2>Group</h2>
       <CheckboxGroup
         name="name-of-group"

@@ -1,7 +1,7 @@
 import { Details } from '../../src/details/Details';
 
 export default {
-  title: 'DCXLibrary/Details/Without style',
+  title: 'DCXLibrary/Layout/Details/Without style',
   component: Details,
   parameters: {
     options: {
@@ -12,13 +12,9 @@ export default {
 
 export const Unstyled = {
   render: function (args) {
-    return (
-      <Details {...args}>
-        some detail information
-      </Details>
-    )
+    return <Details {...args}>some detail information</Details>;
   },
   args: {
-    summary:"some headline summary"
+    summary: 'some headline summary',
   },
 };

@@ -231,23 +231,6 @@ describe('Button', () => {
     expect(button.getAttribute('value')).toBe('buttonValue');
   });
 
-  it('should not render aria-label if label omitted', () => {
-    render(
-      <>
-        <Button label="buttonValue" />
-        <Button type={BUTTON_TYPE.BUTTON} />
-        <Button type={BUTTON_TYPE.SUBMIT} />
-        <Button type={BUTTON_TYPE.RESET} />
-      </>
-    );
-    const buttons: any = screen.getAllByRole('button');
-
-    expect(buttons[0].getAttribute('aria-label')).toBeNull();
-    expect(buttons[1].getAttribute('aria-label')).toBe('button-button');
-    expect(buttons[2].getAttribute('aria-label')).toBe('submit-button');
-    expect(buttons[3].getAttribute('aria-label')).toBe('reset-button');
-  });
-
   it('should render the default className dcx-button', () => {
     const handleClick = jest.fn();
     render(<Button onClick={handleClick} label="Register" />);
@@ -271,15 +254,85 @@ describe('Button', () => {
 
   it('should render the secondary variant to the className', () => {
     const handleClick = jest.fn();
-    render(<Button onClick={handleClick} variant="secondary" label="Register" />);
+    render(
+      <Button onClick={handleClick} variant="secondary" label="Register" />
+    );
     const button: any = screen.getByRole('button');
-    expect(button.getAttribute('class')).toBe('dcx-button dcx-button--secondary');
+    expect(button.getAttribute('class')).toBe(
+      'dcx-button dcx-button--secondary'
+    );
   });
 
   it('should render the default, user specified and variant className', () => {
     const handleClick = jest.fn();
-    render(<Button onClick={handleClick} className="active" variant="tertiary" label="Register" />);
+    render(
+      <Button
+        onClick={handleClick}
+        className="active"
+        variant="tertiary"
+        label="Register"
+      />
+    );
     const button: any = screen.getByRole('button');
-    expect(button.getAttribute('class')).toBe('dcx-button active dcx-button--tertiary');
+    expect(button.getAttribute('class')).toBe(
+      'dcx-button active dcx-button--tertiary'
+    );
+  });
+
+  it('renders JSX elements as children', () => {
+    const childElement = <span>Child Element</span>;
+    const { getByText } = render(<Button>{childElement}</Button>);
+    expect(getByText('Child Element')).toBeInTheDocument();
+  });
+
+  it('renders multiple JSX elements as children', () => {
+    const childElement1 = <span>Child Element 1</span>;
+    const childElement2 = <span>Child Element 2</span>;
+    const { getByText } = render(
+      <Button>
+        {childElement1}
+        {childElement2}
+      </Button>
+    );
+    expect(getByText('Child Element 1')).toBeInTheDocument();
+    expect(getByText('Child Element 2')).toBeInTheDocument();
+  });
+
+  it('should throws an error when both value and children are provided', () => {
+    expect(() => render(<Button label="test">Children test</Button>)).toThrow(
+      'You can use label or children but not both at the same time'
+    );
+  });
+
+  it('should default the aria-label to the label attribute if not defined', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick} label="Register" />);
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('aria-label')).toBe('Register');
+  });
+
+  it('should render the provided aria-label if the attribute is defined', () => {
+    const handleClick = jest.fn();
+    render(
+      <Button onClick={handleClick} ariaLabel="Registers" label="Register" />
+    );
+    const button: any = screen.getByRole('button');
+    expect(button.getAttribute('aria-label')).toBe('Registers');
+  });
+
+  it('should render a button with visually hidden text', () => {
+    const handleClick = jest.fn();
+    const { getByText } = render(
+      <Button
+        label="label"
+        onClick={handleClick}
+        visuallyHiddenText={{
+          text: 'this text is hidden',
+          className: 'visually-hidden',
+        }}
+      />
+    );
+
+    expect(getByText('this text is hidden')).toBeInTheDocument();
   });
 });

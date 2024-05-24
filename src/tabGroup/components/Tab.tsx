@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames, Roles } from '../../common';
+import { classNames, Roles, useHydrated } from '../../common';
 import { useTabGroup } from '../TabGroup';
 
 export type TabProps = {
@@ -71,7 +71,15 @@ export const Tab = ({
     event:
       | React.MouseEvent<HTMLAnchorElement>
       | React.TouchEvent<HTMLAnchorElement>
-  ) => changeActiveTab(event.currentTarget.dataset.tabId as string);
+    ) => changeActiveTab(event.currentTarget.dataset.tabId as string);
+
+  const hydrated = useHydrated();
+  let tabIndex;
+
+  // we don't want to set tab index if it is not hydrated - accessibility requirement
+  if (hydrated) {
+    tabIndex = !selected ? -1 : 0;
+  }
 
   return (
     <li role={Roles.presentation} className={classes}>
@@ -81,9 +89,10 @@ export const Tab = ({
         className={linkClassName}
         aria-controls={ariaControls}
         aria-selected={selected}
-        tabIndex={!selected ? -1 : 0}
+        tabIndex={tabIndex}
         onClick={!disabled ? onClickHandler : undefined}
         href={`#${eventKey}`}
+        target='_self'
       >
         {label}
       </a>

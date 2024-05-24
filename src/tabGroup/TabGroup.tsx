@@ -167,7 +167,7 @@ export const TabGroup = forwardRef(
           </TabContext.Provider>
         </ol>
         {tabPanels.map((tabPanel, index) => (
-          <>
+          <React.Fragment key={index}>
             {tabPanel && (
               <div
                 id={tabPanel.props.eventKey}
@@ -180,7 +180,7 @@ export const TabGroup = forwardRef(
                 {tabPanel.props.children}
               </div>
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
     );

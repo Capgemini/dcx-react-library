@@ -2,7 +2,7 @@ import { CopyToClipboard } from '../../src/copyToClipboard/CopyToClipboard';
 import CopyToClipboardLive from '../liveEdit/CopyToClipboardLive';
 
 export default {
-  title: 'DCXLibrary/CopyToClipboard/Live',
+  title: 'DCXLibrary/Utils/CopyToClipboard/Live',
   component: CopyToClipboard,
 
   parameters: {
@@ -19,5 +19,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <CopyToClipboardLive />
+  render: () => <CopyToClipboardLive />,
 };

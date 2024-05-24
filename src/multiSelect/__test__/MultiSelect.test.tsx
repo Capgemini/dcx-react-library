@@ -41,10 +41,10 @@ describe('MultiSelect', () => {
         />
       );
 
-      const input: Element = screen.getByRole('textbox');
+      const input: Element = screen.getByRole('combobox');
 
       const style: CSSStyleDeclaration = window.getComputedStyle(
-        screen.getByRole('textbox')
+        screen.getByRole('combobox')
       );
 
       expect(input.getAttribute('placeholder')).toBe('my-placeholder');
@@ -91,13 +91,13 @@ describe('MultiSelect', () => {
       );
     });
 
-    it('should have a 0 tabindex value by default', () => {
+    it('should have a null tabindex value by default', () => {
       const options: MultiSelectOption[] = [];
 
       render(<MultiSelect selectOptions={options} />);
 
-      const input = screen.getByRole('textbox');
-      expect(input.getAttribute('tabindex')).toBe('0');
+      const input = screen.getByRole('combobox');
+      expect(input.getAttribute('tabindex')).toBeNull();
     });
 
     it('should accept tabIndex attribute', () => {
@@ -105,7 +105,7 @@ describe('MultiSelect', () => {
 
       render(<MultiSelect selectOptions={options} tabIndex={1} />);
 
-      const input = screen.getByRole('textbox');
+      const input = screen.getByRole('combobox');
       expect(input.getAttribute('tabindex')).toBe('1');
     });
   });
@@ -350,15 +350,15 @@ describe('MultiSelect', () => {
       const user = userEvent.setup();
       render(<MultiSelect selectOptions={options} />);
 
-      const input = screen.getByRole('textbox');
+      const input = screen.getByRole('combobox');
 
       await user.type(input, 'o');
 
       expect(
-        within(screen.getByRole('list')).getAllByRole('listitem')
+        within(screen.getByRole('listbox')).getAllByRole('option')
       ).toBeDefined();
       expect(
-        within(screen.getByRole('list')).getAllByRole('listitem').length
+        within(screen.getByRole('listbox')).getAllByRole('option').length
       ).toBe(3);
     });
 
@@ -379,17 +379,17 @@ describe('MultiSelect', () => {
         />
       );
 
-      const input = screen.getByRole('textbox');
+      const input = screen.getByRole('combobox');
 
       await user.type(input, 'u');
 
       expect(
-        within(screen.getByRole('list')).getAllByRole('listitem')
+        within(screen.getByRole('listbox')).getAllByRole('option')
       ).toBeDefined();
 
       await waitFor(() => {
         expect(
-          within(screen.getByRole('list')).getAllByRole('listitem').length
+          within(screen.getByRole('listbox')).getAllByRole('option').length
         ).toBe(1);
       });
     });
@@ -401,12 +401,12 @@ describe('MultiSelect', () => {
         <MultiSelect selectOptions={options} onSelect={onSelectedHandler} />
       );
 
-      const input = screen.getByRole('textbox');
+      const input = screen.getByRole('combobox');
 
       await user.type(input, 'o');
 
       const liElements: HTMLElement[] = screen
-        .getAllByRole('listitem')
+        .getAllByRole('option')
         .filter(
           (listitem: HTMLElement) => listitem.textContent === 'option 1 label'
         );
@@ -426,11 +426,11 @@ describe('MultiSelect', () => {
 
       render(<MultiSelect selectOptions={options} />);
 
-      const input = screen.getByRole('textbox');
+      const input = screen.getByRole('combobox');
 
       await user.type(input, 'o');
       const liElements: HTMLElement[] = screen
-        .getAllByRole('listitem')
+        .getAllByRole('option')
         .filter(
           (listitem: HTMLElement) => listitem.textContent === 'option 1 label'
         );
@@ -452,12 +452,12 @@ describe('MultiSelect', () => {
 
       render(<MultiSelect selectOptions={options} />);
 
-      const input = screen.getByRole('textbox');
+      const input = screen.getByRole('combobox');
 
       await user.type(input, 'o');
 
       const liElements: HTMLElement[] = screen
-        .getAllByRole('listitem')
+        .getAllByRole('option')
         .filter(
           (listitem: HTMLElement) => listitem.textContent === 'option 1 label'
         );

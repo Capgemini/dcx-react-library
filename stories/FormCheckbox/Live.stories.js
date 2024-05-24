@@ -19,5 +19,5 @@ export default {
 };
 
 export const Live = {
-  render: () => <FormCheckboxLive />
-}
+  render: () => <FormCheckboxLive />,
+};

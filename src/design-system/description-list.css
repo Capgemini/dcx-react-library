@@ -1,0 +1,27 @@
+.dcx-description-list {
+  flex-wrap: wrap;
+  color: token('color-text-body');
+  font-family: token('font-family-body');
+  font-size: token('font-size-body');
+  font-weight: token('font-weight-body');
+  margin: 0;
+  padding: token('spacing-y-desc_list_box') token('spacing-x-desc_list_box');
+}
+
+.dcx-description-term {
+  color: token('color-text-paragraph');
+  font-family: token('font-family-paragraph');
+  font-size: token('font-size-paragraph');
+  font-weight: token('font-weight-paragraph');
+  margin: 0;
+  padding: token('spacing-y-desc_term_box') token('spacing-x-desc_term_box');
+}
+
+.dcx-description-detail {
+  color: token('color-text-body');
+  font-family: token('font-family-body');
+  font-size: token('font-size-body');
+  font-weight: token('font-weight-body');
+  margin: 0;
+  padding: token('spacing-y-desc_detail_box') token('spacing-x-desc_detail_box');
+}

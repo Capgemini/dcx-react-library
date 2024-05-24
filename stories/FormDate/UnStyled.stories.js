@@ -1,5 +1,5 @@
 import { FormDate } from '../../src/formDate/FormDate';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 export default {
   title: 'DCXLibrary/Form/Date/Without style',
@@ -29,10 +29,10 @@ export const Unstyled = {
         <pre>isValid: {isValid.toString()}</pre>
         <pre>date: {JSON.stringify(new Date(date))}</pre>
       </div>
-    )
+    );
   },
   args: {
-    dateFormat:"dd/mm/yyyy"
+    dateFormat: 'dd/mm/yyyy',
   },
   argTypes: { onClick: { action: 'onClick' } },
 };

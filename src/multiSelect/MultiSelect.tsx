@@ -160,7 +160,7 @@ export const MultiSelect = ({
   onRemove,
   onRemoveAll,
   onSelect,
-  tabIndex = 0,
+  tabIndex,
 }: MultiSelectProps) => {
   const [state, dispatch] = useReducer(multiSelectReducer, {
     selected: selectOptions
@@ -236,13 +236,14 @@ export const MultiSelect = ({
 
   const populateOptions = (): string[] =>
     selectOptions
-      .map((_: MultiSelectOption) => _.label)
+      .map((selectOption: MultiSelectOption) => selectOption.label)
       .filter(
-        (_: string) => !searchTerm || _.toLowerCase().startsWith(searchTerm)
+        (label: string) =>
+          !searchTerm || label.toLowerCase().startsWith(searchTerm)
       )
       .filter(
-        (_: string) =>
-          !selected.some((select: MultiSelectOption) => select.label === _)
+        (label: string) =>
+          !selected.some((select: MultiSelectOption) => select.label === label)
       );
 
   return (
