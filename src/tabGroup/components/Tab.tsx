@@ -51,7 +51,7 @@ export const Tab = ({
   className,
   linkClassName,
 }: TabProps) => {
-  const { activeTab, changeActiveTab } = useTabGroup();
+  const { activeTab, nextTab, previousTab, changeActiveTab } = useTabGroup();
 
   const selected = activeTab === eventKey;
 
@@ -73,6 +73,30 @@ export const Tab = ({
       | React.TouchEvent<HTMLAnchorElement>
     ) => changeActiveTab(event.currentTarget.dataset.tabId as string);
 
+    const onKeyDownHandler: (event: React.KeyboardEvent<HTMLAnchorElement>) => void = (event: React.KeyboardEvent) => {
+      switch (event.key) {
+        // 'Left', 'Right', 'Up' and 'Down' required for Edge 16 support.
+        case 'ArrowLeft':
+        case 'ArrowUp':
+        case 'Left':
+        case 'Up':
+          if (previousTab) {
+            changeActiveTab(previousTab);
+          }
+          event.preventDefault();
+          break;
+        case 'ArrowRight':
+        case 'ArrowDown':
+        case 'Right':
+        case 'Down':
+          if (nextTab) {
+            changeActiveTab(nextTab);
+          }
+          event.preventDefault();
+          break;
+      }
+    };
+
   const hydrated = useHydrated();
   let tabIndex;
 
@@ -91,6 +115,7 @@ export const Tab = ({
         aria-selected={selected}
         tabIndex={tabIndex}
         onClick={!disabled ? onClickHandler : undefined}
+        onKeyDown={!disabled ? onKeyDownHandler : undefined}
         href={`#${eventKey}`}
         target='_self'
       >
