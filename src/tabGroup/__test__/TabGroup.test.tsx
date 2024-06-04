@@ -360,7 +360,7 @@ describe('TabGroup', () => {
   });
 
 
-  it('should handle a keyDown right', () => {
+  it('should handle a keyDown right event with an disabled test', () => {
 
     render(
       <TabGroup
