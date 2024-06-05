@@ -66,3 +66,15 @@
   --dcx-font-size-formcontrol_label: 20px;
   --dcx-font-formcontrol_label-line-height: 24px;
 }
+
+.dcx-card {
+  --dcx-spacing-x-card_box: 25px;
+  --dcx-spacing-y-card_box: 25px;
+  --dcx-border-radius-card_box: 0;
+  --dcx-border-width-card_box: 2px;
+  --dcx-border-style-card_box: solid;
+  --dcx-border-color-card_box-selected: black;
+  --dcx-border-color-card_box-hover: black;
+  --dcx-color-background-card_box-selected: transparent;
+  --dcx-color-background-card_box-hover: #f5f5f5;
+}
