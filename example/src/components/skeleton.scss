@@ -1,0 +1,53 @@
+.dcx-skeleton {
+  background-color: rgb(199, 199, 199);
+  margin: 0.75rem 0;
+  border-radius: 0.25rem;
+}
+
+.dcx-skeleton-text {
+  height: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.dcx-skeleton-circular {
+  border-radius: 50%;
+}
+
+.dcx-skeleton-rectangular {
+  border-radius: 0;
+}
+
+.dcx-skeleton-rounded {
+  border-radius: 1rem;
+}
+
+/* animation */
+@keyframes pulsate {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.dcx-skeleton-pulsate {
+  animation: pulsate 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes wave {
+  0% {
+    background-position: -500px 0;
+  }
+
+  100% {
+    background-position: 500px 0;
+  }
+}
+
+.dcx-skeleton-wave {
+  background: linear-gradient(
+    to right,
+    rgba(130, 130, 130, 0.2) 8%,
+    rgba(130, 130, 130, 0.3) 18%,
+    rgba(130, 130, 130, 0.2) 33%
+  );
+  animation: wave 2s infinite ease-out;
+}
