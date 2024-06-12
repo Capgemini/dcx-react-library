@@ -10,6 +10,7 @@ import '@testing-library/jest-dom';
 import { Autocomplete, AutoCompleteErrorPosition } from '../';
 import userEvent from '@testing-library/user-event';
 import * as hooks from '../../common/utils/clientOnly';
+import { FormInput } from '../../formInput';
 
 const firstSearch = [
   'Papaya',
@@ -1442,5 +1443,19 @@ describe('Autocomplete', () => {
     expect(options).not.toBeInTheDocument();
     // Shows that an option was not selected
     expect(inputElm.getAttribute('value')).toEqual('p');
+  });
+
+  it('should render the customNonJSComp component when JS is disabled', () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
+    render(<Autocomplete options={['orange', 'papaya']} customNonJSComp={<FormInput name={'searchfruit'} type={'text'} hiddenErrorText={'errorFruit'}/>}/>);
+    const inputBox: any = screen.getByRole('textbox');
+    expect(inputBox).toBeDefined();
+  });
+
+  it('should not render customNonJSComp component when JS is not disabled', () => {
+    jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+    render(<Autocomplete options={['orange', 'papaya']} customNonJSComp={<FormInput name={'searchfruit'} type={'text'} hiddenErrorText={'errorFruit'}/>}/>);
+    const comboBox: any = screen.getByRole('combobox');
+    expect(comboBox).toBeDefined();
   });
 });
