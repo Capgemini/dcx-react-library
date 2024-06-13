@@ -238,7 +238,7 @@ type autocompleteProps = {
    * if this property is passed the Autocomplete component will NOT display the select by default but
    * will render whatever custom component is passed
    */
-  customNonJSComp?: any;
+  customNonJSComp?: JSX.Element;
 };
 
 export enum AutoCompleteErrorPosition {
