@@ -7,8 +7,9 @@ import * as AutocompleteStories from './UnStyled.stories';
 
 An Input autocomplete component ready to use in your form.  
 Autocomplete is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
-The autocomplete is a progressive component that will automatically detect if your browser support or not js. It will render as an input when javascript is enabled, a select otherwise  
-When you import the button component without providing any className or style associated will looks as following:
+The autocomplete is a <b>progressive</b> component that will automatically detect if your browser supports javascript or not. By default, it will render as an input when javascript is enabled, a select otherwise. A custom component can be passed in place of select when javascript is disabled using customNonJSComp attribute.
+When this attribute is passed the Autcomplete component will NOT display the select by default but will render whatever custom component is passed. 
+When you import the autocomplete component without providing any className or style associated will looks as following:
 
 <Canvas of={AutocompleteStories.Unstyled} />
 
