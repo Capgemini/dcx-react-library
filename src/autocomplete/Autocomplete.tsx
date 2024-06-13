@@ -331,7 +331,7 @@ export const Autocomplete = ({
         } else {
           return (
             <FormSelect
-              name={name || 'select'}
+              name={name ?? 'select'}
               options={options}
               id={id}
               defaultValue={defaultValue}
