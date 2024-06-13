@@ -77,3 +77,16 @@
   --dcx-color-text-formcontrol: #00000099;
   --dcx-color-text-formcontrol_label: #00000099;
 }
+
+.dcx-card {
+  --dcx-color-background-card_box-hover: #454545;
+  --dcx-color-text-body: #000000de;
+  --dcx-color-text-heading-level_1: #000000de;
+  --dcx-color-text-heading-level_2: #000000de;
+  --dcx-color-text-heading-level_3: #000000de;
+  --dcx-color-text-heading-level_4: #000000de;
+  --dcx-color-text-heading-level_5: #000000de;
+  --dcx-color-text-heading-level_6: #000000de;
+  --dcx-box-shadow-card_box: 0 10px 20px #00000030, 0 6px 6px #0000003b;
+  --dcx-border-radius-card_box: 12px;
+}

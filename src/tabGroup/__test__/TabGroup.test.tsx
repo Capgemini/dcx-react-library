@@ -330,6 +330,151 @@ describe('TabGroup', () => {
     expect(tabItems[1].getAttribute('class')).toBe('tab-class-active');
   });
 
+  it('should handle a keyDown right', () => {
+
+    render(
+      <TabGroup
+        activeTabClassName="tab-class-active"
+      >
+        <Tab
+          eventKey="tab-1-id"
+          label="tab 1 label"
+          className="tab-1-class-name"
+        >
+          <div>This is the content for tab 1</div>
+        </Tab>
+        <Tab eventKey="tab-2-id" label="tab 2 label">
+          <div>This is the content for tab 2</div>
+        </Tab>
+      </TabGroup>
+    );
+
+    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabItems: HTMLElement[] = screen.getAllByRole('presentation');
+
+    fireEvent.keyDown(tabs[0], { key: 'Right', code: 'Right', charCode: 39 });
+
+    expect(tabs[1]).toBeInTheDocument();
+    expect(tabItems[1]).toBeInTheDocument();
+    expect(tabItems[1].getAttribute('class')).toBe('tab-class-active');
+  });
+
+  it('should handle a keyDown down', () => {
+
+    render(
+      <TabGroup
+        activeTabClassName="tab-class-active"
+      >
+        <Tab
+          eventKey="tab-1-id"
+          label="tab 1 label"
+          className="tab-1-class-name"
+        >
+          <div>This is the content for tab 1</div>
+        </Tab>
+        <Tab eventKey="tab-2-id" label="tab 2 label">
+          <div>This is the content for tab 2</div>
+        </Tab>
+      </TabGroup>
+    );
+
+    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabItems: HTMLElement[] = screen.getAllByRole('presentation');
+
+    fireEvent.keyDown(tabs[0], { key: 'Down', code: 'Down', charCode: 40 });
+
+    expect(tabs[1]).toBeInTheDocument();
+    expect(tabItems[1]).toBeInTheDocument();
+    expect(tabItems[1].getAttribute('class')).toBe('tab-class-active');
+  });
+
+  it('should handle a keyDown right event with an disabled test', () => {
+
+    render(
+      <TabGroup
+        activeTabClassName="tab-class-active"
+      >
+        <Tab
+          eventKey="tab-1-id"
+          label="tab 1 label"
+          className="tab-1-class-name"
+        >
+          <div>This is the content for tab 1</div>
+        </Tab>
+        <Tab eventKey="tab-2-id" label="tab 2 label" disabled>
+          <div>This is the content for tab 2</div>
+        </Tab>
+      </TabGroup>
+    );
+
+    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabItems: HTMLElement[] = screen.getAllByRole('presentation');
+
+    fireEvent.keyDown(tabs[0], { key: 'Right', code: 'Right', charCode: 39 });
+
+    expect(tabs[1]).toBeInTheDocument();
+    expect(tabItems[1]).toBeInTheDocument();
+    expect(tabItems[1].getAttribute('class')).not.toBe('tab-class-active');
+  });
+
+  it('should handle a keyDown left', () => {
+
+    render(
+      <TabGroup
+        activeTabClassName="tab-class-active"
+        activeKey="tab-2-id"
+      >
+        <Tab
+          eventKey="tab-1-id"
+          label="tab 1 label"
+        >
+          <div>This is the content for tab 1</div>
+        </Tab>
+        <Tab eventKey="tab-2-id" label="tab 2 label">
+          <div>This is the content for tab 2</div>
+        </Tab>
+      </TabGroup>
+    );
+
+    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabItems: HTMLElement[] = screen.getAllByRole('presentation');
+
+    fireEvent.keyDown(tabs[1], { key: 'Left', code: 'Left', charCode: 37 });
+
+    expect(tabs[0]).toBeInTheDocument();
+    expect(tabItems[0]).toBeInTheDocument();
+    expect(tabItems[0].getAttribute('class')).toBe('tab-class-active');
+  });
+
+  it('should handle a keyDown up', () => {
+
+    render(
+      <TabGroup
+        activeTabClassName="tab-class-active"
+        activeKey="tab-2-id"
+      >
+        <Tab
+          eventKey="tab-1-id"
+          label="tab 1 label"
+        >
+          <div>This is the content for tab 1</div>
+        </Tab>
+        <Tab eventKey="tab-2-id" label="tab 2 label">
+          <div>This is the content for tab 2</div>
+        </Tab>
+      </TabGroup>
+    );
+
+    const tabs: HTMLElement[] = screen.getAllByRole('tab');
+    const tabItems: HTMLElement[] = screen.getAllByRole('presentation');
+
+    fireEvent.keyDown(tabs[0], { key: 'Up', code: 'Up', charCode: 38 });
+
+    expect(tabs[0]).toBeInTheDocument();
+    expect(tabItems[0]).toBeInTheDocument();
+    expect(tabItems[0].getAttribute('class')).toBe('tab-class-active');
+  });
+
   it('should not call the onSelect for a tab group if not provided', () => {
     const tabGroupClickHandler = jest.fn();
 
