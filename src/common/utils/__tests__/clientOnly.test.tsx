@@ -19,4 +19,24 @@ describe('useHydrated hook', () => {
       expect(renderedHydratedValue).toBe(true);
     });
   });
+
+  it('should test the useSyncExternalStore function', async () => {
+    const mockUseSyncExternalStore = jest.spyOn(React, 'useSyncExternalStore');
+    //@ts-ignore
+    const mockFunction = (subscribe: any, param1: any, param2: any) => param2();
+    mockUseSyncExternalStore.mockImplementation(mockFunction);
+
+    let renderedHydratedValue: boolean | undefined = undefined;
+
+    const TestComponent = () => {
+      const hydrated = useHydrated();
+      renderedHydratedValue = hydrated;
+      return null;
+    };
+
+    render(<TestComponent />);
+
+    expect(mockUseSyncExternalStore).toHaveBeenCalled();
+    expect(renderedHydratedValue).toBe(false);
+  });
 });

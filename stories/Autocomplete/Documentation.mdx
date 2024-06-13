@@ -5,10 +5,13 @@ import * as AutocompleteStories from './UnStyled.stories';
 
 # Autocomplete
 
-An Input autocomplete component ready to use in your form.  
-Autocomplete is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.
-The autocomplete is a progressive component that will automatically detect if your browser support or not js. It will render as an input when javascript is enabled, a select otherwise  
-When you import the button component without providing any className or style associated will looks as following:
+An Input autocomplete component ready to use in your form. Autocomplete is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+The autocomplete is a <b>progressive</b> component that will automatically detect if your browser supports javascript or not.  
+If javascript is disabled:
+- it will render as an select (default behaviour)
+- if the *customNonJSComp* attribute is passed, it will display whatever you prefer based on your requirements (input, etc).  
+
+When you import the autocomplete component without providing any className or style associated will looks as following:  
 
 <Canvas of={AutocompleteStories.Unstyled} />
 
@@ -62,6 +65,7 @@ An example with all the available properties is:
   accessibilityHintText="When autocomplete results are available use up and down arrows to
   review and enter to select. Touch device users, explore by touch or
   with swipe gestures."
+  customNonJSComp={<FormInput name={'searchfruit'} type={'text'} hiddenErrorText={''}/>}
 />
 ```
 
@@ -155,5 +159,15 @@ const change = (length: number, option: string, position: number) => {
 By default the status has to be blank, this is to avoid confusion when the user either selects an item, deletes their previously typed text or when the component first loads.
 Each propery coming back gives an insight into the state of the autocomplete. Length is how many results are available for the user to see after typing and any filtering has been done,
 property is the currently highlighted property in the autocomplete. The user can change this by using the up or down arrow keys and position is where the currently highlighted property is located in the reslt list.
+
+# Autocomplete with customNonJSComp
+
+When this property is passed the Autocomplete component will NOT display the select by default but
+will render whatever custom component is passed. This is only applicable when javascript is disabled.
+
+An example of how to pass value to customNonJSComp attribute. In this example a form input will be rendered when javascript is turned off.
+```js
+<Autocomplete options={['orange', 'papaya']} customNonJSComp={<FormInput name={'searchfruit'} type={'text'} hiddenErrorText={'errorfruit'}/>}/>
+```
 
 <ArgTypes of={AutocompleteStories} />

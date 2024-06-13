@@ -234,6 +234,11 @@ type autocompleteProps = {
    * One usage of this method could be to update the value of the accessibilityStatus
    */
   statusUpdate?: (length: number, optionText: string, position: number) => void;
+  /**
+   * if this property is passed the Autocomplete component will NOT display the select by default but
+   * will render whatever custom component is passed
+   */
+  customNonJSComp?: JSX.Element;
 };
 
 export enum AutoCompleteErrorPosition {
@@ -296,6 +301,7 @@ export const Autocomplete = ({
   accessibilityStatus = '',
   accessibilityHintText = '',
   statusUpdate,
+  customNonJSComp = undefined,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
@@ -310,6 +316,32 @@ export const Autocomplete = ({
   const [accessibilityStatusA, setAccessibilityStatusA] = useState<string>('');
   const [accessibilityStatusB, setAccessibilityStatusB] = useState<string>('');
   let hydrated = useHydrated();
+
+  const displayComp = () => {
+    if (hydrated) {
+      return formInput;
+    } else {
+      if (customNonJSComp !== undefined) {
+        return customNonJSComp;
+      } else {
+        if (multiSelect) {
+          return (
+            <FormSelect name="multiSelect" options={options} {...inputProps} />
+          );
+        } else {
+          return (
+            <FormSelect
+              name={name ?? 'select'}
+              options={options}
+              id={id}
+              defaultValue={defaultValue}
+              {...selectProps}
+            />
+          );
+        }
+      }
+    }
+  };
 
   const showPromptMessage = (inputValue = userInput): boolean =>
     inputValue.trim().length === 0 &&
@@ -570,11 +602,7 @@ export const Autocomplete = ({
               />
             )
           )}
-        {!hydrated ? (
-          <FormSelect name="multiSelect" options={options} {...inputProps} />
-        ) : (
-          formInput
-        )}
+        {displayComp()}
       </div>
       <div>
         <SelectedItem
@@ -665,17 +693,7 @@ export const Autocomplete = ({
           {accessibilityStatusB}
         </div>
       </div>
-      {!hydrated ? (
-        <FormSelect
-          name={name || 'select'}
-          options={options}
-          id={id}
-          defaultValue={defaultValue}
-          {...selectProps}
-        />
-      ) : (
-        formInput
-      )}
+      {displayComp()}
     </div>
   );
 
