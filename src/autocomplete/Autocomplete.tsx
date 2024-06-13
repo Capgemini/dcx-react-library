@@ -235,7 +235,7 @@ type autocompleteProps = {
    */
   statusUpdate?: (length: number, optionText: string, position: number) => void;
   /**
-   * if this property is passed the Autcomplete component will NOT display the select by default but
+   * if this property is passed the Autocomplete component will NOT display the select by default but
    * will render whatever custom component is passed
    */
   customNonJSComp?: any;
