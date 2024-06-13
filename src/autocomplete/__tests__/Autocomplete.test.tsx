@@ -1445,16 +1445,38 @@ describe('Autocomplete', () => {
     expect(inputElm.getAttribute('value')).toEqual('p');
   });
 
-  it('should render the customNonJSComp component when JS is disabled', () => {
+  it('should render a custom component when JS is disabled and the prop customNonJSComp is used', () => {
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);
-    render(<Autocomplete options={['orange', 'papaya']} customNonJSComp={<FormInput name={'searchfruit'} type={'text'} hiddenErrorText={'errorFruit'}/>}/>);
+    render(
+      <Autocomplete
+        options={['orange', 'papaya']}
+        customNonJSComp={
+          <FormInput
+            name={'searchfruit'}
+            type={'text'}
+            hiddenErrorText={'errorFruit'}
+          />
+        }
+      />
+    );
     const inputBox: any = screen.getByRole('textbox');
     expect(inputBox).toBeDefined();
   });
 
-  it('should not render customNonJSComp component when JS is not disabled', () => {
+  it('should render the autcomplete when JS is enabled and customNonJSComp attribute is passed', () => {
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
-    render(<Autocomplete options={['orange', 'papaya']} customNonJSComp={<FormInput name={'searchfruit'} type={'text'} hiddenErrorText={'errorFruit'}/>}/>);
+    render(
+      <Autocomplete
+        options={['orange', 'papaya']}
+        customNonJSComp={
+          <FormInput
+            name={'searchfruit'}
+            type={'text'}
+            hiddenErrorText={'errorFruit'}
+          />
+        }
+      />
+    );
     const comboBox: any = screen.getByRole('combobox');
     expect(comboBox).toBeDefined();
   });
