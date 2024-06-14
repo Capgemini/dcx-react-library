@@ -5,8 +5,7 @@
 }
 
 .dcx-skeleton-text {
-  height: 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .dcx-skeleton-circular {
@@ -49,5 +48,5 @@
     rgba(130, 130, 130, 0.3) 18%,
     rgba(130, 130, 130, 0.2) 33%
   );
-  animation: wave 2s infinite ease-out;
+  animation: wave 3.5s infinite linear;
 }
