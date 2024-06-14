@@ -236,6 +236,94 @@ describe('Tab', () => {
     expect(onClickHandler).toBeCalledWith('tab 1');
   });
 
+  it('should render a tab with an onKeyDown left', () => {
+    const onClickHandler = jest.fn();
+
+    render(
+      <TabContext.Provider
+        value={{
+          previousTab: 'tab 1',
+          activeTab: 'tab 2',
+          nextTab: 'tab 3',
+          changeActiveTab: onClickHandler,
+        }}
+      >
+        <Tab
+          eventKey="tab 1"
+          activeTabClassName="tabActive"
+          label="tab 1"
+          className="myClassName"
+          ariaControls="tabParent"
+        />
+        <Tab
+          eventKey="tab 2"
+          activeTabClassName="tabActive"
+          label="tab 2"
+          className="myClassName"
+          ariaControls="tabParent"
+        />
+        <Tab
+          eventKey="tab 3"
+          activeTabClassName="tabActive"
+          label="tab 3"
+          className="myClassName"
+          ariaControls="tabParent"
+        />
+      </TabContext.Provider>
+    );
+
+    expect(screen.getAllByRole('presentation')[1].className).toContain('tabActive');
+
+    fireEvent.keyDown(screen.getAllByRole('tab')[1], { key: 'Left', code: 'Left', charCode: 37 });
+
+    expect(onClickHandler).toBeCalled();
+    expect(onClickHandler).toBeCalledWith('tab 1');
+  });
+
+  it('should render a tab with an onKeyDown right', () => {
+    const onClickHandler = jest.fn();
+
+    render(
+      <TabContext.Provider
+        value={{
+          previousTab: 'tab 1',
+          activeTab: 'tab 2',
+          nextTab: 'tab 3',
+          changeActiveTab: onClickHandler,
+        }}
+      >
+        <Tab
+          eventKey="tab 1"
+          activeTabClassName="tabActive"
+          label="tab 1"
+          className="myClassName"
+          ariaControls="tabParent"
+        />
+        <Tab
+          eventKey="tab 2"
+          activeTabClassName="tabActive"
+          label="tab 2"
+          className="myClassName"
+          ariaControls="tabParent"
+        />
+        <Tab
+          eventKey="tab 3"
+          activeTabClassName="tabActive"
+          label="tab 3"
+          className="myClassName"
+          ariaControls="tabParent"
+        />
+      </TabContext.Provider>
+    );
+
+    expect(screen.getAllByRole('presentation')[1].className).toContain('tabActive');
+
+    fireEvent.keyDown(screen.getAllByRole('tab')[1], { key: 'Right', code: 'Right', charCode: 39 });
+
+    expect(onClickHandler).toBeCalled();
+    expect(onClickHandler).toBeCalledWith('tab 3');
+  });
+
   it('should not have the tabIndex property if js is disabled', () => {
     //@ts-ignore
     jest.spyOn(hooks, 'useHydrated').mockImplementation(() => false);

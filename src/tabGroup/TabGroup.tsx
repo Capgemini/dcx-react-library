@@ -66,6 +66,14 @@ type TabContextProps = {
    */
   activeTab: string;
   /**
+   * Tab previous tab
+   */
+  previousTab?: string;
+  /**
+   * Tab next tab
+   */
+  nextTab?: string
+  /**
    * Tab Context update selected tab
    */
   changeActiveTab: (label: string) => void;
@@ -104,18 +112,28 @@ export const TabGroup = forwardRef(
     const initialMount = useRef(true);
 
     const defaultActiveTabKey = activeKey || children[0].props.eventKey;
+    const defaultPreviousTabKey = children[children.findIndex((child: JSX.Element) => child.props.eventKey === defaultActiveTabKey) - 1]?.props.eventKey;
+    const defaultNextTabKey = children[children.findIndex((child: JSX.Element) => child.props.eventKey === defaultActiveTabKey) + 1]?.props.eventKey;
     const [activeTab, setActiveTab] = useState<string>(defaultActiveTabKey);
+    const [previousTab, setPreviousTab] = useState<string | undefined>(defaultPreviousTabKey);
+    const [nextTab, setNextTab] = useState<string| undefined>(defaultNextTabKey);
 
     const onClickHandler: (id: string) => void = (id: string) =>
-      setActiveTab(id);
+      updateActiveTab(id);
 
     const updateActiveTab: (id: string) => boolean = (id: string) => {
-      if (children.some((child: JSX.Element) => child.props.eventKey === id)) {
-        setActiveTab(id);
-        return true;
+      const index = children.findIndex((child: JSX.Element) => child.props.eventKey === id);
+      if (index < 0) {
+        return false;
       }
 
-      return false;
+      if (!children[index].props.disabled) {
+        setActiveTab(id);
+      }
+      
+      setPreviousTab(children[index - 1]?.props.eventKey);
+      setNextTab(children[index + 1]?.props.eventKey);
+      return true;
     };
 
     useImperativeHandle(ref, () => ({
@@ -144,7 +162,7 @@ export const TabGroup = forwardRef(
           aria-label={ariaLabelTabList}
         >
           <TabContext.Provider
-            value={{ activeTab, changeActiveTab: onClickHandler }}
+            value={{ activeTab, previousTab, nextTab, changeActiveTab: onClickHandler }}
           >
             {children.map((child: JSX.Element, index: number) => {
               const classes: string = classNames([
@@ -166,7 +184,7 @@ export const TabGroup = forwardRef(
             })}
           </TabContext.Provider>
         </ol>
-        {tabPanels.map((tabPanel, index) => (
+        {tabPanels.map((tabPanel: JSX.Element | undefined, index: number) => (
           <React.Fragment key={index}>
             {tabPanel && (
               <div

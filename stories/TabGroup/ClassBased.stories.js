@@ -128,6 +128,30 @@ export const Event = {
   args: {},
 };
 
+export const Keyboard = {
+  name: 'Keyboard event',
+  render: function () {
+    return (
+      <TabGroup
+        activeTabClassName="tab-list-active"
+        tabClassName="tab-list-item"
+        className="tab-list"
+      >
+        <Tab eventKey="tab-1" label="tab 1">
+          This the content for <em>tab 1</em>
+        </Tab>
+        <Tab eventKey="tab-2" label="tab 2">
+          This the content for <em>tab 2</em>
+        </Tab>
+        <Tab eventKey="tab-3" label="tab 3">
+          This the content for <em>tab 3</em>
+        </Tab>
+      </TabGroup>
+    );
+  },
+  args: {},
+};
+
 export const Programmatic = {
   name: 'Programatically controlled',
   render: function () {
