@@ -23,4 +23,3 @@ export const Playground = {
     min: '0'
   },
 };
- 

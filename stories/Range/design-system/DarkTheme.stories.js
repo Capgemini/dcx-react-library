@@ -132,22 +132,3 @@ export const SuffixAndPrefix = {
     )
   },
 };
- 
-// export const Custom = {
-//   name: 'Custom',
-//   parameters: {
-//     backgrounds: {
-//       default: 'dark',
-//       values: [
-//         { name: 'dark', value: '#333131' },
-//         { name: 'light', value: '#fff' },
-//       ],
-//     },
-//   },
-//   args: {
-//     min: 0,
-//     max: 100,
-//     ariaLabel: 'Range',
-//     inputClass: 'customRange'
-//   },
-// };

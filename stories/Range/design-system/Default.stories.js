@@ -70,13 +70,3 @@ export const SuffixAndPrefix = {
     )
   },
 };
- 
-// export const Custom = {
-//   name: 'Custom',
-//   args: {
-//     min: 0,
-//     max: 100,
-//     ariaLabel: 'Range',
-//     inputClass: 'customRange'
-//   },
-// };
