@@ -66,3 +66,7 @@
   --dcx-font-size-formcontrol_label: 20px;
   --dcx-font-formcontrol_label-line-height: 24px;
 }
+
+.dcx-range {
+  --dcx-focus-outline: 5px solid #04AA6D; 
+}

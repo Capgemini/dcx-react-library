@@ -152,3 +152,7 @@
   --dcx-color-text-heading-level_5: white;
   --dcx-color-text-heading-level_6: white;
 }
+
+.dcx-range {
+  --dcx-color-outline-formcontrol: red;
+}

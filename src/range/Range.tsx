@@ -120,6 +120,7 @@ export const Range = ({
         onChange={handleChange}
         disabled={disabled}
         className={classNames([
+          'dcx-range',
           inputClass,
           { [`${style.tooltip}`]: showTooltip },
         ])}
