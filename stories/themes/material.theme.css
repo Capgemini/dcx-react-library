@@ -80,7 +80,7 @@
 
 .dcx-range {
   --dcx-border-radius-formcontrol: 6px;
-  --dcx-box-shadow-action: 0px 8px 15px
+  --dcx-box-shadow-action: 0px 8px 15px;
   --dcx-border-color-formcontrol: #00000099;
   --dcx-border-width-formcontrol: 0;
 }
