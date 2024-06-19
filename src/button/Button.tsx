@@ -92,7 +92,7 @@ export const Button = ({
   onClick,
   type = BUTTON_TYPE.BUTTON,
   disabled = false,
-  ariaLabel = `${label}`,
+  ariaLabel,
   disableClickForMs,
   customPrefixImg,
   customPostfixImg,
