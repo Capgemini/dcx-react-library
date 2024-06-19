@@ -29,13 +29,12 @@ export const AccordionItem = ({
   children,
   ...props
 }: AccordionItemProps) => {
-  const { onClick } = useContext(AccordionContext);
   const [selected, setSelected] = React.useState(title);
 
   const handleClick = () => {
     setSelected(title);
-    onClick && onClick(title);
   };
+
   return (
     <AccordionItemContext.Provider value={{ title: selected }}>
       <div title={title} onClick={handleClick} {...props}>
