@@ -304,11 +304,11 @@ describe('Button', () => {
     );
   });
 
-  it('should default the aria-label to the label attribute if not defined', () => {
+  it('should not default the aria-label to the label attribute if not defined', () => {
     const handleClick = jest.fn();
     render(<Button onClick={handleClick} label="Register" />);
     const button: any = screen.getByRole('button');
-    expect(button.getAttribute('aria-label')).toBe('Register');
+    expect(button.getAttribute('aria-label')).toBeNull();
   });
 
   it('should render the provided aria-label if the attribute is defined', () => {
