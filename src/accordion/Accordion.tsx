@@ -87,6 +87,8 @@ export const Accordion = ({
     }
   };
 
+  console.log(expandedItems)
+
   return (
     <AccordionContext.Provider
       value={{

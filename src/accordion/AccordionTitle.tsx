@@ -32,6 +32,7 @@ export const AccordionTitle = ({
     onClick && onClick(title);
   };
   
+
   return (
     <div className={titleClasses} onClick={handleClick} {...props} >
       {children}
