@@ -1,0 +1,22 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as SkeletonStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Typography/Skeleton/Documentation" />
+
+# Skeleton
+
+A Skeleton component ready to use in your UI.  
+Skeleton is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the skeleton component without providing any className or style associated will looks as following:
+
+<Canvas of={SkeletonStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```jsx
+<Skeleton variant="rectangular" animation="wave" width="200px" height="40px" />
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={SkeletonStories} />
