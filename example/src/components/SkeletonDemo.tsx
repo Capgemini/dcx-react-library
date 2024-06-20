@@ -52,7 +52,7 @@ export const SkeletonDemo = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+    <div className="dcx-skeleton-container">
       <Card layout="vertical">
         {loading ? (
           <>

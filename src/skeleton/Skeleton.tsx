@@ -3,7 +3,7 @@ import { classNames } from '../common';
 
 type SkeletonProps = {
   className?: string;
-  //It will define the look and feel of the skeleton
+  //it will define the look and feel of the skeleton
   variant: 'text' | 'circular' | 'rectangular' | 'rounded';
   // this property is used only for the variant text and will define the size of it. If not specified will have 1rem
   fontSize?: string;
@@ -16,7 +16,7 @@ type SkeletonProps = {
   animation?: 'wave' | 'pulsate';
   //additional properties to support something else that we didn't plan
   props?: React.HTMLAttributes<HTMLElement>;
-  // Accessibility props
+  // accessibility props
   ariaBusy?: boolean;
   ariaLive?: 'polite' | 'assertive' | 'off';
 };
@@ -28,9 +28,9 @@ export const Skeleton = ({
   width = '40px',
   height = '40px',
   animation,
-  props,
   ariaBusy,
   ariaLive,
+  ...props
 }: SkeletonProps) => {
   return (
     <span
@@ -45,6 +45,8 @@ export const Skeleton = ({
       style={{
         height: `${variant === 'text' ? fontSize : height}`,
         width: `${variant === 'text' ? '100%' : width}`,
+        backgroundColor: 'rgb(199, 199, 199)',
+        display: 'block',
       }}
       {...props}
     ></span>

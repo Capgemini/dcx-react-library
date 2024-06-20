@@ -4,6 +4,12 @@
   border-radius: 0.25rem;
 }
 
+.dcx-skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
 .dcx-skeleton-text {
   margin-bottom: 0.5rem;
 }
