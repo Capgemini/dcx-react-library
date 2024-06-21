@@ -9,7 +9,7 @@ export default {
   component: Range,
   decorators: [
     (getStory) => {
-      require('../../../dist/design-system/index.css');
+      require('../../themes/design-system/index.css');
       return getStory();
     },
   ],

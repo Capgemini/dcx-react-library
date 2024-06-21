@@ -154,7 +154,13 @@
 }
 
 .dcx-range {
-  --dcx-color-outline-formcontrol: red;
+  --dcx-color-primary: darkorange; 
+  --dcx-color-secondary: #ddd; 
+  --dcx-thumb-color: orange; 
+  --dcx-thumb-width: 20px; 
+  --dcx-thumb-height: 20px; 
+  --dcx-track-height: 8px; 
+  --dcx-border-radius: 5px;
 }
 
 .dcx-card {

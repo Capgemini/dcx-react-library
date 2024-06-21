@@ -79,10 +79,16 @@
 }
 
 .dcx-range {
-  --dcx-border-radius-formcontrol: 6px;
-  --dcx-box-shadow-action: 0px 8px 15px;
-  --dcx-border-color-formcontrol: #00000099;
-  --dcx-border-width-formcontrol: 0;
+  --dcx-color-primary: #6200ee; 
+  --dcx-color-secondary: #e0e0e0; 
+  --dcx-thumb-color: #6200ee; 
+  --dcx-thumb-border-color: #6200ee; 
+  --dcx-thumb-width: 20px;
+  --dcx-thumb-height: 20px;
+  --dcx-track-height: 4px; 
+  --dcx-border-radius: 2px; 
+  --dcx-thumb-hover-color: #bb86fc; 
+  --dcx-thumb-focus-color: #3700b3; 
 }
 
 .dcx-card {
