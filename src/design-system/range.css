@@ -41,3 +41,17 @@
   border-radius: token('border-radius');
   z-index: 1; 
 }
+
+.dcx-range:disabled {
+  background-color: token('color-text-action-disabled-primary'); 
+  border: 1px solid;
+  border-color: token('color-background-action-disabled-primary');
+}
+
+.dcx-range:disabled::before {
+  background: token('color-background-action-disabled-primary'); 
+}
+
+.dcx-range:disabled::-webkit-slider-thumb {
+  background: token('color-background-action-disabled-primary'); 
+}
