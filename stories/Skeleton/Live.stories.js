@@ -2,7 +2,7 @@ import { Skeleton } from '../../src/skeleton/Skeleton';
 import SkeletonLive from '../liveEdit/SkeletonLive';
 
 export default {
-  title: 'DCXLibrary/Typography/Skeleton/Live',
+  title: 'DCXLibrary/Layout/Skeleton/Live',
   component: Skeleton,
 
   parameters: {

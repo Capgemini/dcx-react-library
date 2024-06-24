@@ -1,7 +1,7 @@
 import { Skeleton } from '../../src/skeleton/Skeleton';
 
 export default {
-  title: 'DCXLibrary/Typography/Skeleton/Without style',
+  title: 'DCXLibrary/Layout/Skeleton/Without style',
   component: Skeleton,
   parameters: {
     options: {
