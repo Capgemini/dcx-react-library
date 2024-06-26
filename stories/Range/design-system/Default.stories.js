@@ -1,5 +1,4 @@
 import { Range } from '../../../src/range/Range';
-// import '../style.css';
  
 /**
  * Here we display the component in its natural form, importing only the base Design System styles.
