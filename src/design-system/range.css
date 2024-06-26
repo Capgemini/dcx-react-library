@@ -2,32 +2,26 @@
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: token('track-height');
-  border-radius: token('border-radius');
-  background-color: token('color-secondary');
-  position: relative; 
+  height: token('range-track-height');
+  border-radius: token('border-radius-formcontrol');
+  background-color: token('color-background-formcontrol_label-floating-filled');
+  position: relative;
 }
 
 .dcx-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: token('thumb-width');
-  height: token('thumb-height');
-  background: token('thumb-color');
-  border-radius: 50%;
+  width: token('range-thumb-width');
+  height: token('range-thumb-height');
+  background: token('color-range-thumb');
+  border-radius: token('border-radius-range-thumb');
   cursor: pointer;
   position: relative; 
   z-index: 2; 
 }
 
 .dcx-range::-webkit-slider-thumb:hover {
-  background: token('thumb-hover-color'); 
-}
-
-.dcx-range::-webkit-slider-thumb:focus {
-  background: token('thumb-focus-color'); 
-  transform: scale(1.2); 
-  outline: 2px solid token('color-primary');
+  background: token('color-range-thumb-hover'); 
 }
 
 .dcx-range::before {
@@ -37,14 +31,15 @@
   left: 0;
   height: 100%;
   width: var(--left, 0%);
-  background: token('color-primary');
-  border-radius: token('border-radius');
+  background: token('color-background-action-default-primary');
+  border-radius: token('border-radius-formcontrol');
   z-index: 1; 
 }
 
 .dcx-range:disabled {
-  background-color: token('color-text-action-disabled-primary'); 
-  border: 1px solid;
+  background-color: token('color-text-action-disabled-primary');
+  border-style: token('border-style-action');
+  border-width: token('border-width-action');
   border-color: token('color-background-action-disabled-primary');
 }
 

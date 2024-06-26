@@ -1,5 +1,5 @@
 import { Range } from '../../../src/range/Range';
-import '../style.css';
+// import '../style.css';
  
 /**
  * Here we display the component in its natural form, importing only the base Design System styles.
@@ -9,7 +9,7 @@ export default {
   component: Range,
   decorators: [
     (getStory) => {
-      require('../../themes/design-system/index.css');
+      require('../../../dist/design-system/index.css');
       return getStory();
     },
   ],

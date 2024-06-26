@@ -79,16 +79,15 @@
 }
 
 .dcx-range {
-  --dcx-color-primary: #6200ee; 
-  --dcx-color-secondary: #e0e0e0; 
-  --dcx-thumb-color: #6200ee; 
-  --dcx-thumb-border-color: #6200ee; 
-  --dcx-thumb-width: 20px;
-  --dcx-thumb-height: 20px;
-  --dcx-track-height: 4px; 
-  --dcx-border-radius: 2px; 
-  --dcx-thumb-hover-color: #bb86fc; 
-  --dcx-thumb-focus-color: #3700b3; 
+  --dcx-color-background-action-default-primary: #6200ee; 
+  --dcx-color-background-formcontrol_label-floating-filled: #e0e0e0; 
+  --dcx-color-range-thumb: #6200ee; 
+  --dcx-range-thumb-border-color: #6200ee; 
+  --dcx-range-thumb-width: 12px;
+  --dcx-range-thumb-height: 12px;
+  --dcx-range-track-height: 4px; 
+  --dcx-border-radius-formcontrol: 2px; 
+  --dcx-color-range-thumb-hover: #bb86fc; 
 }
 
 .dcx-card {

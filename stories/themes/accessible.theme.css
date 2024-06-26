@@ -68,15 +68,15 @@
 }
 
 .dcx-range {
-  --dcx-color-primary: blue;
-  --dcx-color-secondary: #ddd;
-  --dcx-thumb-color: orange;
-  --dcx-thumb-width: 20px;
-  --dcx-thumb-height: 20px;
-  --dcx-track-height: 8px;
-  --dcx-border-radius: 5px;
-  --dcx-thumb-hover-color: darkorange; 
-  --dcx-thumb-focus-color: red; 
+  --dcx-color-background-action-default-primary: blue;
+  --dcx-color-background-formcontrol_label-floating-filled: #ddd;
+  --dcx-color-range-thumb: orange;
+  --dcx-range-thumb-width: 20px;
+  --dcx-range-thumb-height: 20px;
+  --dcx-range-track-height: 8px;
+  --dcx-border-radius-formcontrol: 5px;
+  --dcx-color-range-thumb-hover: darkorange; 
+  --dcx-border-width-action: 2px;
 }
 
 .dcx-card {

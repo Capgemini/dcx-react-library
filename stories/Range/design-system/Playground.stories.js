@@ -1,5 +1,5 @@
 /* eslint-disable import/no-webpack-loader-syntax */
-import style from '!raw-loader!../../../dist/design-system/formcheckbox.css';
+import style from '!raw-loader!../../../dist/design-system/range.css';
 import TokensDecorator from '../../../core/storybook/TokensDecorator';
 import { Range } from '../../../src/range/Range';
  
@@ -18,8 +18,9 @@ export default {
 export const Playground = {
   name: 'Playground',
   args: {
-    ariaLabel: "Range",
-    max: '100',
-    min: '0'
+    min: 0,
+    max: 100,
+    ariaLabel: 'Range',
+    value: 50
   },
 };
