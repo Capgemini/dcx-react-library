@@ -16,12 +16,11 @@
   background: token('color-range-thumb');
   border-radius: token('border-radius-range-thumb');
   cursor: pointer;
-  position: relative; 
-  z-index: 2; 
+  position: relative;
 }
 
 .dcx-range::-webkit-slider-thumb:hover {
-  background: token('color-range-thumb-hover'); 
+  background: token('color-range-thumb-hover');
 }
 
 .dcx-range::before {
@@ -33,7 +32,6 @@
   width: var(--left, 0%);
   background: token('color-background-action-default-primary');
   border-radius: token('border-radius-formcontrol');
-  z-index: 1; 
 }
 
 .dcx-range:disabled {
@@ -44,9 +42,9 @@
 }
 
 .dcx-range:disabled::before {
-  background: token('color-background-action-disabled-primary'); 
+  background: token('color-background-action-disabled-primary');
 }
 
 .dcx-range:disabled::-webkit-slider-thumb {
-  background: token('color-background-action-disabled-primary'); 
+  background: token('color-background-action-disabled-primary');
 }
