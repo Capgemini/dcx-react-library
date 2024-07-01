@@ -69,13 +69,13 @@
 
 .dcx-range {
   --dcx-color-background-action-default-primary: blue;
-  --dcx-color-background-formcontrol_label-floating-filled: #ddd;
-  --dcx-color-range-thumb: orange;
-  --dcx-range-thumb-width: 20px;
-  --dcx-range-thumb-height: 20px;
-  --dcx-range-track-height: 8px;
+  --dcx-color-background-formcontrol_track: #ddd;
+  --dcx-color-background-formcontrol_thumb: orange;
+  --dcx-width-formcontrol_thumb: 20px;
+  --dcx-height-formcontrol_thumb: 20px;
+  --dcx-height-formcontrol_track: 8px;
   --dcx-border-radius-formcontrol: 5px;
-  --dcx-color-range-thumb-hover: darkorange; 
+  --dcx-color-background-formcontrol_thumb-hover: darkorange; 
   --dcx-border-width-action: 2px;
 }
 

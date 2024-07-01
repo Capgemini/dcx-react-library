@@ -80,14 +80,13 @@
 
 .dcx-range {
   --dcx-color-background-action-default-primary: #6200ee; 
-  --dcx-color-background-formcontrol_label-floating-filled: #e0e0e0; 
-  --dcx-color-range-thumb: #6200ee; 
-  --dcx-range-thumb-border-color: #6200ee; 
-  --dcx-range-thumb-width: 12px;
-  --dcx-range-thumb-height: 12px;
-  --dcx-range-track-height: 4px; 
+  --dcx-color-background-formcontrol_track: #e0e0e0; 
+  --dcx-color-background-formcontrol_thumb: #6200ee; 
+  --dcx-width-formcontrol_thumb: 12px;
+  --dcx-height-formcontrol_thumb: 12px;
+  --dcx-height-formcontrol_track: 4px; 
   --dcx-border-radius-formcontrol: 2px; 
-  --dcx-color-range-thumb-hover: #bb86fc; 
+  --dcx-background-color-range_thumb-hover: #bb86fc; 
 }
 
 .dcx-card {
