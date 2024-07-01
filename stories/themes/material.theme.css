@@ -86,7 +86,7 @@
   --dcx-height-formcontrol_thumb: 12px;
   --dcx-height-formcontrol_track: 4px; 
   --dcx-border-radius-formcontrol: 2px; 
-  --dcx-background-color-range_thumb-hover: #bb86fc; 
+  --dcx-color-background-formcontrol_thumb-hover: #bb86fc; 
 }
 
 .dcx-card {
