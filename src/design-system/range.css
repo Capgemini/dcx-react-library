@@ -6,45 +6,45 @@
   border-radius: token('border-radius-formcontrol');
   background-color: token('color-background-formcontrol_label-floating-filled');
   position: relative;
-}
 
-.dcx-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: token('range-thumb-width');
-  height: token('range-thumb-height');
-  background: token('color-range-thumb');
-  border-radius: token('border-radius-range-thumb');
-  cursor: pointer;
-  position: relative;
-}
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: token('range-thumb-width');
+    height: token('range-thumb-height');
+    background: token('color-range-thumb');
+    border-radius: token('border-radius-range-thumb');
+    cursor: pointer;
+    position: relative;
 
-.dcx-range::-webkit-slider-thumb:hover {
-  background: token('color-range-thumb-hover');
-}
+    &:hover {
+      background: token('color-range-thumb-hover');
+    }
+  }
 
-.dcx-range::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: var(--left, 0%);
-  background: token('color-background-action-default-primary');
-  border-radius: token('border-radius-formcontrol');
-}
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--left, 0%);
+    background: token('color-background-action-default-primary');
+    border-radius: token('border-radius-formcontrol');
+  }
 
-.dcx-range:disabled {
-  background-color: token('color-text-action-disabled-primary');
-  border-style: token('border-style-action');
-  border-width: token('border-width-action');
-  border-color: token('color-background-action-disabled-primary');
-}
+  &:disabled {
+    background-color: token('color-text-action-disabled-primary');
+    border-style: token('border-style-action');
+    border-width: token('border-width-action');
+    border-color: token('color-background-action-disabled-primary');
 
-.dcx-range:disabled::before {
-  background: token('color-background-action-disabled-primary');
-}
+    &::before {
+      background: token('color-background-action-disabled-primary');
+    }
 
-.dcx-range:disabled::-webkit-slider-thumb {
-  background: token('color-background-action-disabled-primary');
+    &::-webkit-slider-thumb {
+      background: token('color-background-action-disabled-primary');
+    }
+  }
 }
