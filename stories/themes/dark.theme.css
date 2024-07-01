@@ -153,6 +153,17 @@
   --dcx-color-text-heading-level_6: white;
 }
 
+.dcx-range {
+  --dcx-color-background-action-default-primary: orange; 
+  --dcx-color-background-formcontrol_track: white;
+  --dcx-color-background-formcontrol_thumb-hover: red; 
+  --dcx-color-background-formcontrol_thumb: darkorange; 
+  --dcx-width-formcontrol_thumb: 20px; 
+  --dcx-height-formcontrol_thumb: 20px; 
+  --dcx-height-formcontrol_track: 8px; 
+  --dcx-border-radius-formcontrol: 5px;
+}
+
 .dcx-card {
   --dcx-color-background-card_box-default: #666;
   --dcx-color-background-card_box-hover: #454545;

@@ -78,6 +78,17 @@
   --dcx-color-text-formcontrol_label: #00000099;
 }
 
+.dcx-range {
+  --dcx-color-background-action-default-primary: #6200ee; 
+  --dcx-color-background-formcontrol_track: #e0e0e0; 
+  --dcx-color-background-formcontrol_thumb: #6200ee; 
+  --dcx-width-formcontrol_thumb: 12px;
+  --dcx-height-formcontrol_thumb: 12px;
+  --dcx-height-formcontrol_track: 4px; 
+  --dcx-border-radius-formcontrol: 2px; 
+  --dcx-color-background-formcontrol_thumb-hover: #bb86fc; 
+}
+
 .dcx-card {
   --dcx-color-background-card_box-hover: #454545;
   --dcx-color-text-body: #000000de;
