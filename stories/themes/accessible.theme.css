@@ -67,6 +67,13 @@
   --dcx-font-formcontrol_label-line-height: 24px;
 }
 
+.dcx-range {
+  --dcx-width-formcontrol_thumb: 30px;
+  --dcx-height-formcontrol_thumb: 30px;
+  --dcx-height-formcontrol_track: 10px;
+  --dcx-border-radius-formcontrol: 2px;
+}
+
 .dcx-card {
   --dcx-spacing-x-card_box: 25px;
   --dcx-spacing-y-card_box: 25px;

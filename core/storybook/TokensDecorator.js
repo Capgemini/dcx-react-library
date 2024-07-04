@@ -53,26 +53,28 @@ const TokensDecorator = (props) => {
     <div>
       <div className={`_tokens-table ${isTokensVisible && '_tokens-table--visible'}`}>
         <table>
-          {Object.entries(tokensByScope).map((entry) => (
-            <React.Fragment>
-              <tr>
-                <td colSpan={2}>{entry[0]}</td>
-              </tr>
-              {entry[1].map((pair) => (
+          <tbody>
+            {Object.entries(tokensByScope).map((entry, index) => (
+              <React.Fragment key={index}>
                 <tr>
-                  <td>
-                    <div className='_token-table__token-cell'>
-                      <span className={lastEdit === pair[0] ? '_active' : ''}>{pair[0]}</span>
-                      <button onClick={handleTokenSelection.bind(this, entry[0], pair[0])}>
-                        Edit
-                      </button>
-                    </div>
-                  </td>
-                  <td>{pair[1]}</td>
+                  <td colSpan={2}>{entry[0]}</td>
                 </tr>
-              ))}
-            </React.Fragment>
-          ))}
+                {entry[1].map((pair, index) => (
+                  <tr key={index}>
+                    <td>
+                      <div className='_token-table__token-cell'>
+                        <span className={lastEdit === pair[0] ? '_active' : ''}>{pair[0]}</span>
+                        <button onClick={handleTokenSelection.bind(this, entry[0], pair[0])}>
+                          Edit
+                        </button>
+                      </div>
+                    </td>
+                    <td>{pair[1]}</td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))}
+          </tbody>
         </table>
       </div>
       <button
