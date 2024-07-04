@@ -154,13 +154,12 @@
 }
 
 .dcx-range {
-  --dcx-color-background-action-default-primary: orange; 
+  --dcx-color-outline-formcontrol: orange;
   --dcx-color-background-formcontrol_track: white;
-  --dcx-color-background-formcontrol_thumb-hover: red; 
-  --dcx-color-background-formcontrol_thumb: darkorange; 
-  --dcx-width-formcontrol_thumb: 20px; 
-  --dcx-height-formcontrol_thumb: 20px; 
-  --dcx-height-formcontrol_track: 8px; 
+  --dcx-color-background-formcontrol_thumb-hover: darkorange;
+  --dcx-width-formcontrol_thumb: 20px;
+  --dcx-height-formcontrol_thumb: 20px;
+  --dcx-height-formcontrol_track: 8px;
   --dcx-border-radius-formcontrol: 5px;
 }
 
