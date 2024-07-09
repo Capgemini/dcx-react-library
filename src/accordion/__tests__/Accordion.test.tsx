@@ -526,7 +526,7 @@ describe('Accordion Component', () => {
   it('should allow to specify an expandIcon at the root level and to be visible in every component when it is expanded', () => {
     const expandIcon = <span data-testid="expand-icon">+</span>;
     render(
-      <Accordion multipleOpen expandIcon={expandIcon} expanded={['1', '2']}>
+      <Accordion expandIcon={expandIcon} expanded={['1', '2']}>
         <AccordionItem title="1">
           <AccordionTitle>
             <span>Item 1</span>

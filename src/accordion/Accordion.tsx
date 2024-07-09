@@ -61,9 +61,7 @@ export const Accordion = ({
   className,
   ...props
 }: AccordionProps) => {
-  const [expandedItems, setExpandedItems] = useState<string[]>(
-    expanded.length >= 1 && !multipleOpen ? [expanded[0]] : ([] as string[])
-  );
+  const [expandedItems, setExpandedItems] = useState<string[]>(expanded);
 
   const handleClick = (title: string) => {
     if (multipleOpen) {

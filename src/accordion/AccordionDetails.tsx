@@ -25,15 +25,6 @@ export const AccordionDetails = ({
 }: AccordionDetailsProps) => {
   const { expanded, detailsClassName } = useContext(AccordionContext);
   const { title } = useContext(AccordionItemContext);
-
-  expanded.forEach((item, index) => {
-    console.log('expanded' + index + ': ' + item)
-  })
-
-  console.log('expanded length: ' + expanded.length)
-  
-  console.log('title:' + title)
-
   const detailsClasses = classNames([className, detailsClassName]);
 
   return (

@@ -31,6 +31,8 @@ export const AccordionTitle = ({
   const handleClick = () => {
     onClick && onClick(title);
   };
+
+  console.log(title)
   
 
   return (
