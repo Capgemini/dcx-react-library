@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Accordion,
   AccordionItem,
@@ -8,6 +8,9 @@ import {
 import './accordion.scss';
 
 export const AccordionDemo = () => {
+
+  const [sectionToggle, setSectionToggle] = useState(false);
+
   return (
     <>
       <h1>Accordion with single open - default</h1>
@@ -239,6 +242,38 @@ export const AccordionDemo = () => {
           </AccordionDetails>
         </AccordionItem>
       </Accordion>
+
+      <h1>Accordion with single open and controlled by DOM button</h1>
+      <Accordion expanded={sectionToggle ? ['1'] : ['2']}>
+        <AccordionItem title="1">
+          <AccordionTitle className="accordion">
+            <>Section 1</>
+          </AccordionTitle>
+          <AccordionDetails className="panel">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </AccordionDetails>
+        </AccordionItem>
+        <AccordionItem title="2">
+          <AccordionTitle className="accordion">
+            <>Section 2</>
+          </AccordionTitle>
+          <AccordionDetails className="panel">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam.
+            </p>
+          </AccordionDetails>
+        </AccordionItem>
+      </Accordion>
+      <br />
+      <button onClick={() => setSectionToggle(!sectionToggle)}>Toggle</button>
+      <br />
     </>
   );
 };

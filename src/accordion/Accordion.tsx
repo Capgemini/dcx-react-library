@@ -52,7 +52,7 @@ interface AccordionProps {
 
 export const Accordion = ({
   multipleOpen = false,
-  expanded = [],
+  expanded,
   children,
   expandIcon,
   collapsedIcon,
@@ -61,12 +61,15 @@ export const Accordion = ({
   className,
   ...props
 }: AccordionProps) => {
-  const [expandedItems, setExpandedItems] = useState<string[]>(
-    expanded.length > 1 && !multipleOpen ? [expanded[0]] : expanded
-  );
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   useEffect(() => {
-      setExpandedItems( expanded.length > 1 && !multipleOpen ? [expanded[0]] : expanded)
+    if (expanded) {
+      setExpandedItems( (expanded.length > 1 && !multipleOpen) ? [expanded[0]] : expanded);
+    } else {
+      setExpandedItems([]);
+    }
+  
   }, [expanded, multipleOpen])
 
   const handleClick = (title: string) => {
