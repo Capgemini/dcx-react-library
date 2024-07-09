@@ -574,4 +574,58 @@ describe('Accordion Component', () => {
     const collapseIcons = screen.getAllByTestId('collapse-icon');
     expect(collapseIcons.length).toBe(2);
   });
+
+  it('should open or close the accordion if the accordion title is clicked', () => {
+    render(
+      <Accordion>
+        <AccordionItem title="1">
+          <AccordionTitle>
+            <span>Item 1</span>
+          </AccordionTitle>
+          <AccordionDetails>
+            <span>Details 1</span>
+          </AccordionDetails>
+        </AccordionItem>
+        <AccordionItem title="2">
+          <AccordionTitle>
+            <span>Item 2</span>
+          </AccordionTitle>
+          <AccordionDetails>
+            <span>Details 2</span>
+          </AccordionDetails>
+        </AccordionItem>
+      </Accordion>
+    );
+    expect(screen.queryByText('Details 2')).not.toBeVisible();
+    fireEvent.click(screen.getByText('Item 2'));
+    expect(screen.queryByText('Details 2')).toBeVisible();
+    fireEvent.click(screen.getByText('Item 2'));
+    expect(screen.queryByText('Details 2')).not.toBeVisible();
+  });
+
+  it('should not open or close the accordion if the accordion details are clicked', () => {
+    render(
+      <Accordion>
+        <AccordionItem title="1">
+          <AccordionTitle>
+            <span>Item 1</span>
+          </AccordionTitle>
+          <AccordionDetails>
+            <span>Details 1</span>
+          </AccordionDetails>
+        </AccordionItem>
+        <AccordionItem title="2">
+          <AccordionTitle>
+            <span>Item 2</span>
+          </AccordionTitle>
+          <AccordionDetails>
+            <span>Details 2</span>
+          </AccordionDetails>
+        </AccordionItem>
+      </Accordion>
+    );
+    expect(screen.queryByText('Details 2')).not.toBeVisible();
+    fireEvent.click(screen.getByText('Details 2'));
+    expect(screen.queryByText('Details 2')).not.toBeVisible();
+  });
 });
