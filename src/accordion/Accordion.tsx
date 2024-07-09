@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AccordionContext from './AccordionContext';
 import { AccordionItemProps } from './AccordionItem';
 import { classNames } from '../common';
@@ -61,7 +61,13 @@ export const Accordion = ({
   className,
   ...props
 }: AccordionProps) => {
-  const [expandedItems, setExpandedItems] = useState<string[]>(expanded);
+  const [expandedItems, setExpandedItems] = useState<string[]>(
+    expanded.length > 1 && !multipleOpen ? [expanded[0]] : expanded
+  );
+
+  useEffect(() => {
+      setExpandedItems( expanded.length > 1 && !multipleOpen ? [expanded[0]] : expanded)
+  }, [expanded, multipleOpen])
 
   const handleClick = (title: string) => {
     if (multipleOpen) {

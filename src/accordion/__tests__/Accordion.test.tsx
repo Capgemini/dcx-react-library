@@ -190,8 +190,8 @@ describe('Accordion Component', () => {
     expect(getByText('Section 2 Details')).toBeVisible();
   });
 
-  it('should expands the correct item when the multipleOpen and expanded prop changes', () => {
-    const { rerender, getByText } = render(
+  it('should expand the correct item when the multipleOpen and expanded prop changes', () => {
+    const { rerender } = render(
       <Accordion expanded={['1']} multipleOpen={false}>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -212,10 +212,10 @@ describe('Accordion Component', () => {
       </Accordion>
     );
 
-    expect(getByText('Section 1 Details')).toBeVisible();
+    expect(screen.getByText('Section 1 Details')).toBeVisible();
 
     rerender(
-      <Accordion multipleOpen={true} expanded={['1', '2']}>
+      <Accordion expanded={['2']} multipleOpen={true}>
         <AccordionItem title="1">
           <AccordionTitle>
             <>Section 1</>
@@ -235,8 +235,7 @@ describe('Accordion Component', () => {
       </Accordion>
     );
 
-    expect(getByText('Section 2 Details')).toBeVisible();
-    expect(getByText('Section 2 Details')).toBeVisible();
+    expect(screen.getByText('Section 2 Details')).toBeVisible();
   });
 });
 
@@ -526,7 +525,7 @@ describe('Accordion Component', () => {
   it('should allow to specify an expandIcon at the root level and to be visible in every component when it is expanded', () => {
     const expandIcon = <span data-testid="expand-icon">+</span>;
     render(
-      <Accordion expandIcon={expandIcon} expanded={['1', '2']}>
+      <Accordion multipleOpen expandIcon={expandIcon} expanded={['1', '2']}>
         <AccordionItem title="1">
           <AccordionTitle>
             <span>Item 1</span>
