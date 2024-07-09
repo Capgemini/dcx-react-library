@@ -57,10 +57,18 @@ export const AccordionDemo = () => {
             <p>Panel 2 Details</p>
           </AccordionDetails>
         </AccordionItem>
+        <AccordionItem title="3">
+          <AccordionTitle className="accordion">
+            <>Title 3</>
+          </AccordionTitle>
+          <AccordionDetails className="panel">
+            <p>Panel 3 Details</p>
+          </AccordionDetails>
+        </AccordionItem>
       </Accordion>
 
       <h1>
-        Accordion with the second accordion item expanded by defaul - expanded
+        Accordion with the second accordion item expanded by default - expanded
       </h1>
       <Accordion expanded={['2']}>
         <AccordionItem title="1">
@@ -82,7 +90,7 @@ export const AccordionDemo = () => {
       </Accordion>
 
       <h1>Accordion with common title classes - titleClassName</h1>
-      <Accordion expanded={['2']} titleClassName="accordion">
+      <Accordion expanded={['2']} titleClassName="accordion-common-title-class">
         <AccordionItem title="1">
           <AccordionTitle>
             <>Section 1</>
@@ -107,8 +115,8 @@ export const AccordionDemo = () => {
       </h1>
       <Accordion
         expanded={['2']}
-        titleClassName="accordion"
-        detailsClassName="panel"
+        titleClassName="accordion-common-title-classes"
+        detailsClassName="details-class"
       >
         <AccordionItem title="1">
           <AccordionTitle>
@@ -133,7 +141,7 @@ export const AccordionDemo = () => {
         expanded={['2']}
         titleClassName="accordion"
         detailsClassName="panel"
-        expandIcon={<span>&#94;</span>}
+        expandIcon={<span> &#94;</span>}
       >
         <AccordionItem title="1">
           <AccordionTitle>
