@@ -14,7 +14,7 @@ export interface AccordionItemProps {
    */
   children: [
     React.ReactElement<AccordionTitleProps>,
-    React.ReactElement<AccordionDetailsProps>
+    React.ReactElement<AccordionDetailsProps>,
   ];
 
   /**
@@ -27,12 +27,10 @@ export const AccordionItem = ({
   title,
   children,
   ...props
-}: AccordionItemProps) => {
-  return (
-    <AccordionItemContext.Provider value={{ title }}>
-      <div title={title} {...props}>
-        {children}
-      </div>
-    </AccordionItemContext.Provider>
-  );
-};
+}: AccordionItemProps) => (
+  <AccordionItemContext.Provider value={{ title }}>
+    <div title={title} {...props}>
+      {children}
+    </div>
+  </AccordionItemContext.Provider>
+);

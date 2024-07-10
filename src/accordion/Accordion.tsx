@@ -65,12 +65,13 @@ export const Accordion = ({
 
   useEffect(() => {
     if (expanded) {
-      setExpandedItems( (expanded.length > 1 && !multipleOpen) ? [expanded[0]] : expanded);
+      setExpandedItems(
+        expanded.length > 1 && !multipleOpen ? [expanded[0]] : expanded
+      );
     } else {
       setExpandedItems([]);
     }
-  
-  }, [expanded, multipleOpen])
+  }, [expanded, multipleOpen]);
 
   const handleClick = (title: string) => {
     if (multipleOpen) {
@@ -82,7 +83,6 @@ export const Accordion = ({
     } else {
       setExpandedItems(expandedItems.includes(title) ? [] : [title]);
     }
-
   };
 
   return (
