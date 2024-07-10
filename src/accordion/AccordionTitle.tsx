@@ -23,13 +23,22 @@ export const AccordionTitle = ({
   children,
   props,
 }: AccordionTitleProps) => {
-  const { expanded, titleClassName, expandIcon, collapsedIcon } = useContext(AccordionContext);
+  const { expanded, titleClassName, expandIcon, collapsedIcon } =
+    useContext(AccordionContext);
   const { title } = useContext(AccordionItemContext);
   const titleClasses = classNames([className, titleClassName]);
+  const { onClick } = useContext(AccordionContext);
+
+  const handleClick = () => {
+    onClick && onClick(title);
+  };
+
   return (
-    <div className={titleClasses} {...props}>
+    <div className={titleClasses} onClick={handleClick} {...props}>
       {children}
-      {expanded.includes(title) ? (expandIcon && expandIcon) : (collapsedIcon && collapsedIcon)}
+      {expanded.includes(title)
+        ? expandIcon && expandIcon
+        : collapsedIcon && collapsedIcon}
     </div>
   );
 };
