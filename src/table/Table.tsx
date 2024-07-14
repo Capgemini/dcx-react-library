@@ -4,6 +4,8 @@ import { Body } from './Body';
 import { Header } from './Header';
 import { useSortableData } from './useSortable';
 import { useTableSearch } from './useTableSearch';
+import { classNames } from '../common';
+
 type CustomHeaderLabel = {
   label: string;
   data: string;
@@ -90,6 +92,26 @@ type TableProps = {
    * tab index value
    */
   tabIndex?: number;
+  /**
+   * allow to specify custom Thead classes
+   */
+  customTheadClassName?: string[];
+  /**
+   * allow to specify custom Tr classes
+   */
+  customTrClassName?: string[];
+  /**
+   * allow to specify custom Th classes
+   */
+  customThClassName?: string[];
+  /**
+   * allow to specify custom Tbody classes
+   */
+  customTbodyClassName?: string[];
+  /**
+   * allow to specify custom Td classes
+   */
+  customTdClassName?: string[];
 };
 
 const keys = (dataSource: any[], columnsToOmit?: string[]): string[] =>
@@ -116,6 +138,11 @@ export const Table = ({
   customHeaderLabels,
   trProps,
   tabIndex,
+  customTheadClassName,
+  customTrClassName,
+  customThClassName,
+  customTbodyClassName,
+  customTdClassName
 }: TableProps) => {
   const { items, requestSort, sortConfig } = useSortableData(dataSource);
   const [selectedHeader, setSelectedHeader] = React.useState('');
@@ -198,9 +225,9 @@ export const Table = ({
       <table className={tableClassName}>
         <Header
           onClick={handleClick}
-          theadClassName={theadClassName}
-          trClassName={trClassName}
-          thClassName={thClassName}
+          theadClassName={classNames([theadClassName, customTheadClassName])}
+          trClassName={classNames([trClassName, customTrClassName])}
+          thClassName={classNames([thClassName, customThClassName])}
           values={getHeaderValues()}
           keySorted={getClassNamesFor(selectedHeader)}
           sortAscIcon={sortAscIcon}
@@ -213,9 +240,9 @@ export const Table = ({
           handleCellClick={handleCellClick}
           selectedRowClassName={selectedRowClassName}
           columnsToOmit={columnsToOmit}
-          tbodyClassName={tbodyClassName}
-          trClassName={trClassName}
-          tdClassName={tdClassName}
+          tbodyClassName={classNames([tbodyClassName ,customTbodyClassName])}
+          trClassName={classNames([trClassName, customTrClassName])}
+          tdClassName={classNames([tdClassName, customTdClassName])}
           trProps={trProps}
         />
       </table>

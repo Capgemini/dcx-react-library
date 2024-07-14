@@ -302,4 +302,87 @@ describe('Table', () => {
     const container = screen.getByTestId('table-container');
     expect(container.getAttribute('tabindex')).toBe('1');
   });
+
+  describe('Table', () => {
+    it('should apply customTheadClassName', () => {
+      const { container } = render(
+        <Table
+          dataSource={values}
+          theadClassName='class1'
+          customTheadClassName={['class2', 'class3', 'class4']}
+        />
+      );
+  
+      const thead = container.querySelector('thead');
+      expect(thead).toHaveClass('class1');
+      expect(thead).toHaveClass('class2');
+      expect(thead).toHaveClass('class3');
+      expect(thead).toHaveClass('class4');
+    });
+  
+    it('should apply customTrClassName', () => {
+      const { container } = render(
+        <Table
+          dataSource={values}
+          trClassName='class1'
+          customTrClassName={['class2', 'class3', 'class4']}
+        />
+      );
+  
+      const tr = container.querySelector('tr');
+      expect(tr).toHaveClass('class1');
+      expect(tr).toHaveClass('class2');
+      expect(tr).toHaveClass('class3');
+      expect(tr).toHaveClass('class4');
+    });
+  
+    it('should apply customThClassName', () => {
+      const { container } = render(
+        <Table
+          dataSource={values}
+          thClassName='class1'
+          customThClassName={['class2', 'class3', 'class4']}
+        />
+      );
+  
+      const th = container.querySelector('th');
+      expect(th).toHaveClass('class1');
+      expect(th).toHaveClass('class2');
+      expect(th).toHaveClass('class3');
+      expect(th).toHaveClass('class4');
+    });
+
+    it('should apply customTbodyClassName', () => {
+      const { container } = render(
+        <Table
+          dataSource={values}
+          tbodyClassName='class1'
+          customTbodyClassName={['class2', 'class3', 'class4']}
+        />
+      );
+  
+      const tbody = container.querySelector('tbody');
+      expect(tbody).toHaveClass('class1');
+      expect(tbody).toHaveClass('class2');
+      expect(tbody).toHaveClass('class3');
+      expect(tbody).toHaveClass('class4');
+    });
+
+    it('should apply customTdClassName', () => {
+      const { container } = render(
+        <Table
+          dataSource={values}
+          tdClassName='class1'
+          customTdClassName={['class2', 'class3', 'class4']}
+        />
+      );
+  
+      const td = container.querySelector('td');
+      expect(td).toHaveClass('class1');
+      expect(td).toHaveClass('class2');
+      expect(td).toHaveClass('class3');
+      expect(td).toHaveClass('class4');
+    });
+  });
+
 });

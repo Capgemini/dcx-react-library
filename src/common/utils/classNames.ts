@@ -1,7 +1,9 @@
 export const classNames = (classes: any[]) => {
   let result = '';
   classes.forEach((c: any) => {
-    if (c !== null && typeof c === 'object') {
+    if (Array.isArray(c)) { 
+      result = result.concat(classNames(c)).concat(' '); 
+    } else if (c !== null && typeof c === 'object') {
       for (const v in c) {
         if (c[v] === true) {
           result = result.concat(classNames(v.split(' '))).concat(' ');
