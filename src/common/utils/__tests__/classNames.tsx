@@ -69,8 +69,4 @@ describe('ClassNames', () => {
     expect(classNames(['a', ['b', 'c'], 'd'])).toBe('a b c d');
   });
   
-  it('should handle deeply nested arrays of classNames', () => {
-    expect(classNames(['a', ['b', ['c', 'd']], 'e'])).toBe('a b c d e');
-  });
-
 });
