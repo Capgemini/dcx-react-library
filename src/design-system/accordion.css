@@ -1,0 +1,33 @@
+.dcx-accordion {
+  /*
+ * Default
+ */
+  box-sizing: border-box;
+  background: token('color-background-accordion_box-default');
+  padding: token('spacing-x-accordion_box')
+    token('spacing-y-accordion_item_box');
+  border-radius: token('border-radius-accordion_box');
+  border: token('border-width-accordion_box')
+    token('border-style-accordion_box') token('border-color-accordion_box');
+  box-shadow: token('box-shadow-accordion_box');
+
+  &.dcx-accordion--expanded {
+    background: token('color-background-accordion_box-selected');
+  }
+
+  .dcx-accordion-details {
+    display: none;
+    &.dcx-accordion-details--expanded {
+      display: block;
+    }
+  }
+
+  .dcx-accordion-item {
+    margin-bottom: token('spacing-y-accordion_item_box');
+  }
+
+  .dcx-accordion-title {
+    padding: token('spacing-x-accordion_title_box');
+    cursor: pointer;
+  }
+}
