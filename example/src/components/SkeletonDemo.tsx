@@ -10,7 +10,6 @@ import {
   Button,
   BUTTON_TYPE,
   ListItem,
-  Paragraph,
   Heading,
   CardActions,
 } from '@capgeminiuk/dcx-react-library';

@@ -17,11 +17,3 @@
   );
   animation: wave 4s infinite linear;
 }
-
-.circular {
-  border-radius: 50%;
-}
-
-.rounded {
-  border-radius: 1rem;
-}

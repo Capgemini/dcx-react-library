@@ -12,12 +12,36 @@ export default {
 
 export const Unstyled = {
   render: function (args) {
-    return <Skeleton {...args} />;
-  },
-  args: {
-    variant: 'rectangular',
-    width: '250px',
-    height: '40px',
-    animation: 'wave',
-  },
+    return (
+      <>
+        rectangular
+        <Skeleton
+          variant="rectangular"
+          width="250px"
+          height="250px"
+        />
+        <br/>
+        circular
+        <Skeleton
+          variant="circular"
+          width="20px"
+          height="20px"
+        />
+        <br/>
+        rounded
+        <Skeleton
+          variant="rounded"
+          width="250px"
+          height="20px"
+        />
+        <br/>
+        text
+        <Skeleton
+          variant="text"
+          fontSize="1rem"
+        />  
+      </>
+    )
+      
+  }
 };

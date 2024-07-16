@@ -15,7 +15,7 @@ type SkeletonProps = {
   // if not provided will disable the animation
   animation?: 'wave' | 'pulsate';
   //additional properties to support something else that we didn't plan
-  props?: React.HTMLAttributes<HTMLElement>;
+  props?: React.HTMLAttributes<HTMLSpanElement>;
   // accessibility props
   ariaBusy?: boolean;
   ariaLive?: 'polite' | 'assertive' | 'off';
@@ -31,24 +31,23 @@ export const Skeleton = ({
   ariaBusy,
   ariaLive,
   ...props
-}: SkeletonProps) => {
-  return (
-    <span
-      className={classNames([
-        'dcx-skeleton',
-        className,
-        `dcx-skeleton-${variant}`,
-        `dcx-skeleton-${animation ? animation : ''}`,
-      ])}
-      aria-live={ariaLive}
-      aria-busy={ariaBusy}
-      style={{
-        height: `${variant === 'text' ? fontSize : height}`,
-        width: `${variant === 'text' ? '100%' : width}`,
-        backgroundColor: 'rgb(199, 199, 199)',
-        display: 'block',
-      }}
-      {...props}
-    ></span>
-  );
-};
+}: SkeletonProps) => (
+  <span
+    className={classNames([
+      'dcx-skeleton',
+      className,
+      `dcx-skeleton-${variant}`,
+      `dcx-skeleton-${animation ? animation : ''}`,
+    ])}
+    aria-live={ariaLive}
+    aria-busy={ariaBusy}
+    style={{
+      height: `${variant === 'text' ? fontSize : height}`,
+      width: `${variant === 'text' ? '100%' : width}`,
+      backgroundColor: 'rgb(199, 199, 199)',
+      display: 'block',
+      borderRadius: `${variant === 'circular' ? '50%' : variant === 'rounded' ? '1rem' : null}`,
+    }}
+    {...props}
+  />
+);

@@ -29,17 +29,29 @@ export const Basic = {
 export const Circular = {
   name: 'Circular',
   args: {
+    variant: 'circular',
     width: '100px',
     height: '100px',
-    className: 'circular wave-animation',
+    className: 'wave-animation',
   },
 };
 
 export const Rounded = {
   name: 'Rounded',
   args: {
+    variant: 'rounded',
     width: '250px',
     height: '40px',
-    className: 'rounded wave-animation',
+    className: 'wave-animation',
   },
 };
+
+export const Text = {
+  name: 'text',
+  args: {
+    variant: 'text',
+    fontSize: '16px',
+    className: 'wave-animation',
+  },
+};
+
