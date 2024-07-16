@@ -16,8 +16,9 @@ type SkeletonProps = {
   animation?: 'wave' | 'pulsate';
   //additional properties to support something else that we didn't plan
   props?: React.HTMLAttributes<HTMLSpanElement>;
-  // accessibility props
+  // accessibility props for aria
   ariaBusy?: boolean;
+  // accessibility props for aria
   ariaLive?: 'polite' | 'assertive' | 'off';
 };
 
