@@ -63,7 +63,7 @@ describe('Range', () => {
   it('should accept className as attribute', () => {
     render(<Range min={0} max={100} inputClass="test" />);
     const range: any = screen.getByRole('slider');
-    expect(range.getAttribute('class')).toBe('test');
+    expect(range.getAttribute('class')).toBe('dcx-range test');
   });
 
   it('should call onChange function', async () => {
