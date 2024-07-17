@@ -11,8 +11,23 @@
   transition: 0.4s;
 }
 
-.active, .accordion:hover {
-  background-color: #ccc; 
+.accordion-common-title-class {
+  background-color: rgb(142, 165, 250);
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+.active,
+.accordion:hover {
+  background-color: #ccc;
 }
 
 .panel {

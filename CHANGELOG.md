@@ -2,9 +2,12 @@
 
 <a name="1.1.0" />
 
+- [Accordion - closes when accordion item is clicked](https://github.com/Capgemini/dcx-react-library/issues/660)
+
 **A11y**
 
 - [Tab - Adding keyboard event listeners](https://github.com/Capgemini/dcx-react-library/issues/658)
+- [Button - removing label as default aria-label](https://github.com/Capgemini/dcx-react-library/issues/663)
 
 **New Components**
 

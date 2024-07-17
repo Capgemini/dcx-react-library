@@ -25,7 +25,6 @@ export const AccordionDetails = ({
 }: AccordionDetailsProps) => {
   const { expanded, detailsClassName } = useContext(AccordionContext);
   const { title } = useContext(AccordionItemContext);
-
   const detailsClasses = classNames([className, detailsClassName]);
 
   return (
