@@ -11,8 +11,7 @@ type SkeletonProps = {
   width?: string;
   // this property is used for the other variants ('circular' | 'rectangular' | 'rounded') and will define the width of it. If not specified will have 40px
   height?: string;
-  // this property is used to animate the skeleton component thought some css that we need to provide. We want to provide by default the wave and the pulsate animate. When this property is not passed that it will not animate
-  // if not provided will disable the animation
+  // this property is used to determine which animation style is used for the skeleton component (wave or pulsate). If this property is not provided then no animation will be used.
   animation?: 'wave' | 'pulsate';
   //additional properties to support something else that we didn't plan
   props?: React.HTMLAttributes<HTMLSpanElement>;
