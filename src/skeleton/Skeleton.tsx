@@ -16,10 +16,6 @@ type SkeletonProps = {
   animation?: 'wave' | 'pulsate';
   //additional properties to support something else that we didn't plan
   props?: React.HTMLAttributes<HTMLSpanElement>;
-  // accessibility props for aria
-  ariaBusy?: boolean;
-  // accessibility props for aria
-  ariaLive?: 'polite' | 'assertive' | 'off';
 };
 
 export const Skeleton = ({
@@ -29,19 +25,19 @@ export const Skeleton = ({
   width = '40px',
   height = '40px',
   animation,
-  ariaBusy,
-  ariaLive,
   ...props
 }: SkeletonProps) => (
   <span
     className={classNames([
       'dcx-skeleton',
       className,
-      `dcx-skeleton-${variant}`,
-      `dcx-skeleton-${animation ? animation : ''}`,
+      `dcx-skeleton-variant-${variant}`,
+      {
+        [`dcx-skeleton-animation-${animation}`]:
+          animation !== undefined || animation !== null,
+      },
     ])}
-    aria-live={ariaLive}
-    aria-busy={ariaBusy}
+    aria-busy={true}
     style={{
       height: `${variant === 'text' ? fontSize : height}`,
       width: `${variant === 'text' ? '100%' : width}`,

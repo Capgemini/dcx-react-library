@@ -5,9 +5,11 @@ import '@testing-library/jest-dom';
 import { Skeleton } from '../Skeleton';
 
 describe('Skeleton', () => {
- it('should renders with mandatory variant prop', () => {
+  it('should renders with mandatory variant prop', () => {
     const { container } = render(<Skeleton variant="text" />);
-    expect(container.firstChild).toHaveClass('dcx-skeleton dcx-skeleton-text');
+    expect(container.firstChild).toHaveClass(
+      'dcx-skeleton dcx-skeleton-variant-text'
+    );
   });
 
   it('should applies default width, and height if not provided', () => {
@@ -32,14 +34,25 @@ describe('Skeleton', () => {
     const { container } = render(
       <Skeleton variant="rounded" animation="wave" />
     );
-    expect(container.firstChild).toHaveClass('dcx-skeleton-wave');
+    expect(container.firstChild).toHaveClass(
+      'dcx-skeleton dcx-skeleton-variant-rounded dcx-skeleton-animation-wave'
+    );
   });
 
   it('should applies pulsate animation class if animation prop is "pulsate"', () => {
     const { container } = render(
       <Skeleton variant="text" animation="pulsate" />
     );
-    expect(container.firstChild).toHaveClass('dcx-skeleton-pulsate');
+    expect(container.firstChild).toHaveClass(
+      'dcx-skeleton dcx-skeleton-variant-text dcx-skeleton-animation-pulsate'
+    );
+  });
+
+  it('should not applies dcx-skeleton-animation class if no animation prop', () => {
+    const { container } = render(<Skeleton variant="text" />);
+    expect(container.firstChild).toHaveClass(
+      'dcx-skeleton dcx-skeleton-variant-text'
+    );
   });
 
   it('should not apply animation class if animation prop is not provided', () => {

@@ -6,6 +6,10 @@
 
 - [Tab - Adding keyboard event listeners](https://github.com/Capgemini/dcx-react-library/issues/658)
 
+**New Components**
+
+- [Skeleton](https://github.com/Capgemini/dcx-react-library/issues/549)
+
 ## 1.0.0 (15/04/2024)
 
 <a name="1.0.0" />

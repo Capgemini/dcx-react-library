@@ -17,3 +17,9 @@
   );
   animation: wave 4s infinite linear;
 }
+
+.dcx-skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
