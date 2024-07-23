@@ -68,6 +68,8 @@ export const parameters = {
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Range',
             ['Documentation', 'Live', 'Without style', 'Class based'],
+            'StaticAutocomplete',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
             'Toggle',
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Tooltip',
