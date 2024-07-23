@@ -80,6 +80,123 @@ export const Default = {
           </Paragraph>
         </AccordionDetails>
       </AccordionItem>,
+      <AccordionItem title="Second Header" key="second-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Second Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+      <AccordionItem title="Another Header" key="another-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Another Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+    ],
+  },
+};
+
+export const MultipleExpanded = {
+  name: 'MultipleExpanded',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#333131' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  args: {
+    variant: 'default',
+    multipleOpen: true,
+    children: [
+      <AccordionItem title="Accordion Header" key="accordion-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Accordion Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+      <AccordionItem title="Second Header" key="second-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Second Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+      <AccordionItem title="Another Header" key="another-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Another Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+    ],
+  },
+};
+
+export const WithIcons = {
+  name: 'With Icons',
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#333131' },
+        { name: 'light', value: '#fff' },
+      ],
+    },
+  },
+  args: {
+    variant: 'default',
+    multipleOpen: true,
+    expandIcon: <span style={{ color: 'white' }}>▲</span>,
+    collapsedIcon: <span style={{ color: 'white' }}>▼</span>,
+    children: [
+      <AccordionItem title="Accordion Header" key="accordion-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Accordion Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+      <AccordionItem title="Second Header" key="second-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Second Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
       <AccordionItem title="Another Header" key="another-header">
         <AccordionTitle>
           <Heading level="h3" label="Another Header" />

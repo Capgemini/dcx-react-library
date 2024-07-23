@@ -6,10 +6,8 @@ import { Heading } from '../../../src/heading/Heading';
 import { Paragraph } from '../../../src/paragraph/Paragraph';
 import {
   Accordion,
-  AccordionContext,
   AccordionDetails,
   AccordionItem,
-  AccordionItemContext,
   AccordionTitle,
 } from '../../../src/accordion';
 
@@ -50,7 +48,6 @@ export const ShowCase = {
     </LiveProvider>
   ),
 };
-
 export const Default = {
   name: 'Default',
   args: {
@@ -59,6 +56,105 @@ export const Default = {
       <AccordionItem title="Accordion Header" key="accordion-header">
         <AccordionTitle>
           <Heading level="h3" label="Accordion Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+      <AccordionItem title="Second Header" key="second-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Second Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+      <AccordionItem title="Another Header" key="another-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Another Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+    ],
+  },
+};
+
+export const MultipleExpanded = {
+  name: 'MultipleExpanded',
+  args: {
+    variant: 'default',
+    multipleOpen: true,
+    children: [
+      <AccordionItem title="Accordion Header" key="accordion-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Accordion Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+      <AccordionItem title="Second Header" key="second-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Second Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+      <AccordionItem title="Another Header" key="another-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Another Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+    ],
+  },
+};
+
+export const WithIcons = {
+  name: 'With Icons',
+  args: {
+    variant: 'default',
+    multipleOpen: true,
+    expandIcon: <span>▲</span>,
+    collapsedIcon: <span>▼</span>,
+    children: [
+      <AccordionItem title="Accordion Header" key="accordion-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Accordion Header" />
+        </AccordionTitle>
+        <AccordionDetails>
+          <Paragraph>
+            Nullam sodales semper ipsum, et luctus lacus sodales in. Nulla nibh
+            nisl, egestas et elit et, interdum cursus massa.
+          </Paragraph>
+        </AccordionDetails>
+      </AccordionItem>,
+      <AccordionItem title="Second Header" key="second-header">
+        <AccordionTitle>
+          <Heading level="h3" label="Second Header" />
         </AccordionTitle>
         <AccordionDetails>
           <Paragraph>

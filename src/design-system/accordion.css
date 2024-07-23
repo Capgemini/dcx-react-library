@@ -1,33 +1,65 @@
 .dcx-accordion {
-  /*
- * Default
- */
   box-sizing: border-box;
-  background: token('color-background-accordion_box-default');
-  padding: token('spacing-x-accordion_box')
-    token('spacing-y-accordion_item_box');
-  border-radius: token('border-radius-accordion_box');
-  border: token('border-width-accordion_box')
-    token('border-style-accordion_box') token('border-color-accordion_box');
+  display: flex;
+  flex-direction: column;
+  background: token('color-background-accordion_box');
   box-shadow: token('box-shadow-accordion_box');
+  border-radius: token('border-radius-accordion');
 
-  &.dcx-accordion--expanded {
-    background: token('color-background-accordion_box-selected');
-  }
+  .dcx-accordion-item {
+    border-width: token('border-width-accordion_item_box');
+    border-style: token('border-style-accordion_item_box');
+    border-color: token('border-color-accordion_item_box');
+    box-shadow: token('box-shadow-accordion_item_box');
 
-  .dcx-accordion-details {
-    display: none;
-    &.dcx-accordion-details--expanded {
-      display: block;
+    &:first-child {
+      border-top-left-radius: token('border-radius-accordion');
+      border-top-right-radius: token('border-radius-accordion');
+      & .dcx-accordion-title {
+        border-top-left-radius: token('border-radius-accordion');
+        border-top-right-radius: token('border-radius-accordion');
+      }
+    }
+    &:last-child {
+      border-bottom-left-radius: token('border-radius-accordion');
+      border-bottom-right-radius: token('border-radius-accordion');
+      & .dcx-accordion-title {
+        border-bottom-left-radius: token('border-radius-accordion');
+        border-bottom-right-radius: token('border-radius-accordion');
+      }
+    }
+    &.dcx-accordion-item--expanded {
+      & .dcx-accordion-title {
+        background: token('color-background-accordion_title_box-expanded');
+        &:hover {
+          background: token('color-background-accordion_title_box-hover');
+        }
+      }
+      & .dcx-accordion-details {
+        padding: token('spacing-x-accordion_details_box')
+          token('spacing-y-accordion_details_box');
+      }
     }
   }
 
-  .dcx-accordion-item {
-    margin-bottom: token('spacing-y-accordion_item_box');
+  .dcx-accordion-details {
+    padding: 0px token('spacing-y-accordion_details_box');
+    transition:
+      grid-template-rows token('transition-duration-accordion')
+        token('transition-timing-function-accordion'),
+      padding token('transition-duration-accordion')
+        token('transition-timing-function-accordion');
   }
 
   .dcx-accordion-title {
-    padding: token('spacing-x-accordion_title_box');
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: token('spacing-x-accordion_title_box')
+      token('spacing-y-accordion_title_box');
     cursor: pointer;
+    &:hover {
+      background: token('color-background-accordion_title_box-hover');
+    }
   }
 }
