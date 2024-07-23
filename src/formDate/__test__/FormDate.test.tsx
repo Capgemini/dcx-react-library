@@ -118,9 +118,39 @@ describe('FormInput', () => {
     const month: any = container.querySelector('input[name="month"]');
     const day: any = container.querySelector('input[name="day"]');
 
-    expect(year.getAttribute('class')).toBe('year-input input');
-    expect(month.getAttribute('class')).toBe('month-input input');
-    expect(day.getAttribute('class')).toBe('day-input input');
+    expect(year.getAttribute('class')).toBe(
+      'year-input input dcx-form-date dcx-form-date--filled'
+    );
+    expect(month.getAttribute('class')).toBe(
+      'month-input input dcx-form-date dcx-form-date--filled'
+    );
+    expect(day.getAttribute('class')).toBe(
+      'day-input input dcx-form-date dcx-form-date--filled'
+    );
+  });
+
+  it('should render the correct error classes when error is provided', () => {
+    const { container } = render(
+      <FormDate
+        dateFormat="dd/mm/yyyy"
+        handleValidity={jest.fn()}
+        displayError
+      />
+    );
+
+    const year: any = container.querySelector('input[name="year"]');
+    const month: any = container.querySelector('input[name="month"]');
+    const day: any = container.querySelector('input[name="day"]');
+
+    expect(year.getAttribute('class')).toBe(
+      'dcx-form-date dcx-form-date--error dcx-form-date--filled'
+    );
+    expect(month.getAttribute('class')).toBe(
+      'dcx-form-date dcx-form-date--error dcx-form-date--filled'
+    );
+    expect(day.getAttribute('class')).toBe(
+      'dcx-form-date dcx-form-date--error dcx-form-date--filled'
+    );
   });
 
   it('should render dd/mm/yyyy inputs in the order specified by the user', () => {
