@@ -72,6 +72,61 @@ An example with all the available properties is:
 />
 ```
 
+# StaticAutocomplete with Dynamic values (options)
+
+StaticAutocomplete will work with dynamic values in case you need to provide the results from an exteral source like a server API.  
+The usage is quite similar to the previous documentation but you'll use the method **search** to populate dyanically the **options** list
+
+```js
+export const StaticAutocompleteDemo = () => {
+  const [selected, setSelected] = React.useState('');
+  const handleSelected = (value: string) => setSelected(value);
+
+  const [serverOptions, setServerOptions] = React.useState<String[]>([]);
+
+  const handleInputChange = (value: string, _options: string[]) => {
+    let result: string[] = []
+    switch (value) {
+      case 'p':
+        result = [
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ];
+        break;
+      case 'pe':
+        result = ['Persimmon', 'Peach'];
+        break;
+      case 'per':
+        result = ['Persimmon'];
+        break;
+      default:
+        result = ['no results'];
+    }
+
+    setServerOptions(result);
+    return result;
+  };
+
+  return (
+    <StaticAutocomplete
+      options={serverOptions}
+      minCharsBeforeSearch={1}
+      debounceMs={1000}
+      onSelected={handleSelected}
+      hintText="search the list of fruits dynamically"
+      notFoundText=" "
+      search={handleInputChange}
+    />
+  );
+};
+```
+
+
 # Accessible StaticAutocomplete
 
 To make the staticAutocomplete fully accessible you will need to add 3 properties and a function to handle the changes.

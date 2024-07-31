@@ -21,6 +21,36 @@ export const StaticAutocompleteDemo = () => {
   const [selected, setSelected] = React.useState('');
   const handleSelected = (value: string) => setSelected(value);
 
+  const [serverOptions, setServerOptions] = React.useState<String[]>([]);
+
+  const handleOnChange = (value: string, _options: string[]) => {
+    let result: string[] = []
+    switch (value) {
+      case 'p':
+        result = [
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ];
+        break;
+      case 'pe':
+        result = ['Persimmon', 'Peach'];
+        break;
+      case 'per':
+        result = ['Persimmon'];
+        break;
+      default:
+        result = ['no results'];
+    }
+
+    setServerOptions(result);
+    return result;
+  };
+
   const [status, setStatus] = React.useState('');
   const change = (length: number, property: string, position: number) => {
     let newText = '';
@@ -61,6 +91,20 @@ export const StaticAutocompleteDemo = () => {
         with swipe gestures."
       />
       selected: {selected}
+
+      <h2>Server fetch</h2>
+      <StaticAutocomplete
+        //@ts-ignore
+        options={serverOptions}
+        minCharsBeforeSearch={1}
+        debounceMs={1000}
+        onSelected={handleSelected}
+        hintText="search the list of fruits dynamically"
+        search={handleOnChange}
+        notFoundText=" "
+      />
+      selected: {selected}
+
       <h2>With conditional prompt</h2>
       <StaticAutocomplete
         options={[

@@ -12,6 +12,47 @@ import userEvent from '@testing-library/user-event';
 import * as hooks from '../../common/utils/clientOnly';
 import { FormInput } from '../../formInput';
 
+const DummyDynamicAutoComplete = () => {
+  const handleInputChange = (value: string, _options: string[]) => {
+    let result: string[] = []
+    switch (value) {
+      case 'p':
+        result = [
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ];
+        break;
+      case 'pe':
+        result = ['Persimmon', 'Peach'];
+        break;
+      case 'per':
+        result = ['Persimmon'];
+        break;
+      default:
+        result = ['no results'];
+    }
+
+    setServerOptions(result);
+    return result;
+  };
+  const [serverOptions, setServerOptions] = React.useState<string[]>([]);
+  return (
+    <StaticAutocomplete
+      options={serverOptions}
+      onSelected={() => {}}
+      hintText="search the list of fruits dynamically"
+      search={ handleInputChange }
+      debounceMs={100}
+      notFoundText=" "
+    />
+  );
+};
+
 describe('StaticAutocomplete', () => {
   beforeAll(() => {
     window.HTMLLIElement.prototype.scrollIntoView = jest.fn();
@@ -507,6 +548,23 @@ describe('StaticAutocomplete', () => {
 
     const listItems: any = screen.getAllByRole('option');
     expect(listItems.length).toBe(2);
+  });
+
+  it('should populate the list dynamically - i.e. fetch from the server', async () => {
+    const user = userEvent.setup();
+    render(<DummyDynamicAutoComplete />);
+    const input: any = screen.getByRole('combobox');
+    await user.type(input, 'p');
+    await waitFor(() => {
+      const listItemsFirst: any = screen.getAllByRole('option');
+
+      expect(listItemsFirst.length).toBe(7);
+    });
+    await user.type(input, 'e');
+    await waitFor(() => {
+      const listItemsSecond: any = screen.getAllByRole('option');
+      expect(listItemsSecond.length).toBe(2);
+    });
   });
 
   it('should check that required attribute is defaulted to false', () => {
