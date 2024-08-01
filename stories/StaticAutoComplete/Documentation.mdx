@@ -1,0 +1,182 @@
+import { Meta, Story, Canvas, ArgTypes } from '@storybook/addon-docs';
+import * as StaticAutocompleteStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/StaticAutocomplete/Documentation" />
+
+# StaticAutocomplete
+
+An Input autocomplete component ready to use in your form. StaticAutocomplete is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+The staticAutocomplete is a <b>progressive</b> component that will automatically detect if your browser supports javascript or not.  
+If javascript is disabled:
+
+- it will render as an select (default behaviour)
+- if the _customNonJSComp_ attribute is passed, it will display whatever you prefer based on your requirements (input, etc).
+
+When you import the staticAutocomplete component without providing any className or style associated will looks as following:
+
+<Canvas of={StaticAutocompleteStories.Unstyled} />
+
+An example with all the available properties is:
+
+```js
+<StaticAutocomplete
+  options={[
+    'Papaya',
+    'Persimmon',
+    'Paw Paw',
+    'Prickly Pear',
+    'Peach',
+    'Pomegranate',
+    'Pineapple',
+  ]}
+  optionsId="dcx-dynamic-id"
+  defaultValue="Papaya"
+  minCharsBeforeSearch={2}
+  debounceMs={2000}
+  hintText="search the list of fruits"
+  hintClass="hintClass"
+  hintId="hintId"
+  resultUlClass="resultUlClass"
+  resultlLiClass="resultlLiClass"
+  resultNoOptionClass="resultNoOptionClass"
+  resultActiveClass="resultActiveClass"
+  notFoundText="No fruit found"
+  onSelected={handleSelected}
+  required={false}
+  containerClassName=""
+  labelText=""
+  labelClassName=""
+  labelProps={{ id: 'labelid' }}
+  id=""
+  errorPosition={AutoCompleteErrorPosition.TOP}
+  errorMessageText=""
+  errorMessageClassName=""
+  errorId=""
+  errorMessageVisuallyHidden={{
+    text: '',
+    className: '',
+  }}
+  name=""
+  inputProps={{}}
+  selectProps={{}}
+  tabIndex={0}
+  search={handleSearch}
+  statusUpdate={(length, option, position) => change(length, option, position)}
+  accessibilityStatus={status}
+  accessibilityHintText="When autocomplete results are available use up and down arrows to
+  review and enter to select. Touch device users, explore by touch or
+  with swipe gestures."
+  customNonJSComp={
+    <FormInput name={'searchfruit'} type={'text'} hiddenErrorText={''} />
+  }
+/>
+```
+
+# StaticAutocomplete with Dynamic values (options)
+
+StaticAutocomplete will work with dynamic values in case you need to provide the results from an exteral source like a server API.  
+The usage is quite similar to the previous documentation but you'll use the method **search** to populate dyanically the **options** list
+
+```js
+export const StaticAutocompleteDemo = () => {
+  const [selected, setSelected] = React.useState('');
+  const handleSelected = (value: string) => setSelected(value);
+
+  const [serverOptions, setServerOptions] = React.useState<String[]>([]);
+
+  const handleInputChange = (value: string, _options: string[]) => {
+    let result: string[] = []
+    switch (value) {
+      case 'p':
+        result = [
+          'Papaya',
+          'Persimmon',
+          'Paw Paw',
+          'Prickly Pear',
+          'Peach',
+          'Pomegranate',
+          'Pineapple',
+        ];
+        break;
+      case 'pe':
+        result = ['Persimmon', 'Peach'];
+        break;
+      case 'per':
+        result = ['Persimmon'];
+        break;
+      default:
+        result = ['no results'];
+    }
+
+    setServerOptions(result);
+    return result;
+  };
+
+  return (
+    <StaticAutocomplete
+      options={serverOptions}
+      minCharsBeforeSearch={1}
+      debounceMs={1000}
+      onSelected={handleSelected}
+      hintText="search the list of fruits dynamically"
+      notFoundText=" "
+      search={handleInputChange}
+    />
+  );
+};
+```
+
+
+# Accessible StaticAutocomplete
+
+To make the staticAutocomplete fully accessible you will need to add 3 properties and a function to handle the changes.
+The properties are:
+
+- accessibilityStatus - A value to display to the users the current state of the staticAutocomplete, this is used for accessibility and is displayed in a hidden element above the input.
+  This should be used to display information such as how may results are being shown on screen, which element has been highlighted and what position it is in the reuslt list
+- accessibilityHintText - Gives the user a generic view of how to use the component
+- statusUpdate - When the user types or makes an action, it returns information abuot the staticAutocomplete so the accessibilityStatus attribute can be updated with updated information.
+  After this function is called you can update the accessibilityStatus attribute for example,
+  `"${length} result${length > 1 ? 's are' : ' is'} available. ${option} ${position} of ${length} is highlighted"`
+  Which to the user would look something like "7 Results are available. Papaya 1 of 7 is highlighted"
+
+An example of how to handle the statusUpdate function would be:
+
+```js
+const [status, setStatus] = React.useState('');
+const change = (length: number, option: string, position: number) => {
+  let newText = '';
+  if (length === 0) {
+    newText = 'No search results';
+  } else if (length > 0) {
+    newText = `${length} result${length > 1 ? 's are' : ' is'} available. ${option} ${position} of ${length} is highlighted`;
+  }
+  setStatus(newText);
+};
+```
+
+By default the status has to be blank, this is to avoid confusion when the user either selects an item, deletes their previously typed text or when the component first loads.
+Each propery coming back gives an insight into the state of the staticAutocomplete. Length is how many results are available for the user to see after typing and any filtering has been done,
+property is the currently highlighted property in the staticAutocomplete. The user can change this by using the up or down arrow keys and position is where the currently highlighted property is located in the reslt list.
+
+# StaticAutocomplete with customNonJSComp
+
+When this property is passed the StaticAutocomplete component will NOT display the select by default but
+will render whatever custom component is passed. This is only applicable when javascript is disabled.
+
+An example of how to pass value to customNonJSComp attribute. In this example a form input will be rendered when javascript is turned off.
+
+```js
+<StaticAutocomplete
+  options={['orange', 'papaya']}
+  customNonJSComp={
+    <FormInput
+      name={'searchfruit'}
+      type={'text'}
+      hiddenErrorText={'errorfruit'}
+    />
+  }
+/>
+```
+
+<ArgTypes of={StaticAutocompleteStories} />

@@ -21,6 +21,9 @@ export const Home = () => (
           <Link to="/AutocompleteDemo">AutocompleteDemo</Link>
         </li>
         <li>
+          <Link to="/StaticAutocompleteDemo">StaticAutocompleteDemo</Link>
+        </li>
+        <li>
           <Link to="/ButtonDemo">ButtonDemo</Link>
         </li>
         <li>

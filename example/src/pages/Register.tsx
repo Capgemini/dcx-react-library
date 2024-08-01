@@ -239,6 +239,7 @@ export const Register = () => {
             }}
             validation={usernameValidation}
             errorPosition={ErrorPosition.BOTTOM}
+            hiddenErrorText=""
           />
         </div>
 
@@ -284,6 +285,7 @@ export const Register = () => {
                 onClick: updatePasswordInput,
               },
             }}
+            hiddenErrorText=""
           />
         </div>
 
