@@ -27,7 +27,7 @@ describe('Accordion Component', () => {
   });
 
   it('should handle click when multipleOpen is false and title is already active', async () => {
-    render(
+    const { container } = render(
       <Accordion multipleOpen={false} expanded={['1']}>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -39,10 +39,13 @@ describe('Accordion Component', () => {
         </AccordionItem>
       </Accordion>
     );
+    const detailsElement = container.querySelector(
+      '.dcx-accordion-details'
+    ) as HTMLDivElement;
 
     userEvent.click(screen.getByText('Test Title'));
     await waitFor(() => {
-      expect(screen.queryByText('Test Details')).not.toBeVisible();
+      expect(detailsElement.getAttribute('aria-expanded')).toBe('false');
     });
   });
 
@@ -104,7 +107,7 @@ describe('Accordion Component', () => {
   });
 
   it('should handle click when multipleOpen is true and items are already active', async () => {
-    render(
+    const { container } = render(
       <Accordion multipleOpen expanded={['1', '2']}>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -133,17 +136,21 @@ describe('Accordion Component', () => {
       </Accordion>
     );
 
+    const detailsElement = container.querySelectorAll(
+      '.dcx-accordion-details'
+    ) as NodeListOf<HTMLDivElement>;
+
     userEvent.click(screen.getByText('Test Title 1'));
 
     await waitFor(() => {
-      expect(screen.queryByText('Test Details 1')).not.toBeVisible();
-      expect(screen.queryByText('Test Details 2')).toBeInTheDocument();
-      expect(screen.queryByText('Test Details 3')).not.toBeVisible();
+      expect(detailsElement[0].getAttribute('aria-expanded')).toBe('false');
+      expect(detailsElement[1].getAttribute('aria-expanded')).toBe('true');
+      expect(detailsElement[2].getAttribute('aria-expanded')).toBe('false');
     });
   });
 
   it('expands the correct item when the expanded prop changes', () => {
-    const { rerender, getByText } = render(
+    const { rerender, container } = render(
       <Accordion expanded={['1']} multipleOpen={false}>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -164,7 +171,11 @@ describe('Accordion Component', () => {
       </Accordion>
     );
 
-    expect(getByText('Section 1 Details')).toBeVisible();
+    const detailsElement = container.querySelectorAll(
+      '.dcx-accordion-details'
+    ) as NodeListOf<HTMLDivElement>;
+
+    expect(detailsElement[0].getAttribute('aria-expanded')).toBe('true');
 
     rerender(
       <Accordion multipleOpen={false} expanded={['2']}>
@@ -187,7 +198,7 @@ describe('Accordion Component', () => {
       </Accordion>
     );
 
-    expect(getByText('Section 2 Details')).toBeVisible();
+    expect(detailsElement[1].getAttribute('aria-expanded')).toBe('true');
   });
 
   it('should expand the correct item when the multipleOpen and expanded prop changes', () => {
@@ -241,7 +252,7 @@ describe('Accordion Component', () => {
 
 describe('Accordion Component', () => {
   it('should collapse the item when multipleOpen is true and the item is clicked again', async () => {
-    render(
+    const { container } = render(
       <Accordion multipleOpen={true} expanded={['1']}>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -262,15 +273,19 @@ describe('Accordion Component', () => {
       </Accordion>
     );
 
+    const detailsElement = container.querySelector(
+      '.dcx-accordion-details'
+    ) as HTMLDivElement;
+
     fireEvent.click(screen.getByText('Item 1'));
 
     await waitFor(() => {
-      expect(screen.getByText('Details 1')).not.toBeVisible();
+      expect(detailsElement.getAttribute('aria-expanded')).toBe('false');
     });
   });
 
   it('should collapse the item when multipleOpen is false and the item is clicked again', async () => {
-    render(
+    const { container } = render(
       <Accordion multipleOpen={false} expanded={['1']}>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -291,14 +306,17 @@ describe('Accordion Component', () => {
       </Accordion>
     );
 
+    const detailsElement = container.querySelector(
+      '.dcx-accordion-details'
+    ) as HTMLDivElement;
     userEvent.click(screen.getByText('Item 1'));
     await waitFor(() => {
-      expect(screen.getByText('Details 1')).not.toBeVisible();
+      expect(detailsElement.getAttribute('aria-expanded')).toBe('false');
     });
   });
 
   it('should only expand the first item when multipleOpen is false and expanded has more than one item', () => {
-    render(
+    const { container } = render(
       <Accordion multipleOpen={false} expanded={['1', '2']}>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -319,12 +337,16 @@ describe('Accordion Component', () => {
       </Accordion>
     );
 
-    expect(screen.getByText('Details 1')).toBeInTheDocument();
-    expect(screen.getByText('Details 2')).not.toBeVisible();
+    const detailsElement = container.querySelectorAll(
+      '.dcx-accordion-details'
+    ) as NodeListOf<HTMLDivElement>;
+
+    expect(detailsElement[0].getAttribute('aria-expanded')).toBe('true');
+    expect(detailsElement[1].getAttribute('aria-expanded')).toBe('false');
   });
 
   it('should expand the item when multipleOpen is true and the item is not expanded', async () => {
-    render(
+    const { container } = render(
       <Accordion multipleOpen={true} expanded={['1']}>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -347,13 +369,17 @@ describe('Accordion Component', () => {
 
     fireEvent.click(screen.getByText('Item 2'));
 
+    const detailsElement = container.querySelectorAll(
+      '.dcx-accordion-details'
+    ) as NodeListOf<HTMLDivElement>;
+
     await waitFor(() => {
-      expect(screen.getByText('Details 2')).toBeVisible();
+      expect(detailsElement[1].getAttribute('aria-expanded')).toBe('true');
     });
   });
 
   it('should expand the item when multipleOpen is false and the item is not expanded', async () => {
-    render(
+    const { container } = render(
       <Accordion multipleOpen={false} expanded={['1']}>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -376,13 +402,17 @@ describe('Accordion Component', () => {
 
     fireEvent.click(screen.getByText('Item 2'));
 
+    const detailsElement = container.querySelectorAll(
+      '.dcx-accordion-details'
+    ) as NodeListOf<HTMLDivElement>;
+
     await waitFor(() => {
-      expect(screen.getByText('Details 2')).toBeVisible();
+      expect(detailsElement[1].getAttribute('aria-expanded')).toBe('true');
     });
   });
 
   it('should handle click when multipleOpen is false and no item is already active', async () => {
-    render(
+    const { container } = render(
       <Accordion multipleOpen={false} expanded={[]}>
         <AccordionItem title="Test Title 1">
           <AccordionTitle>
@@ -410,18 +440,21 @@ describe('Accordion Component', () => {
         </AccordionItem>
       </Accordion>
     );
+    const detailsElement = container.querySelectorAll(
+      '.dcx-accordion-details'
+    ) as NodeListOf<HTMLDivElement>;
 
     userEvent.click(screen.getByText('Test Title 3'));
 
     await waitFor(() => {
-      expect(screen.queryByText('Test Details 1')).not.toBeVisible();
-      expect(screen.queryByText('Test Details 2')).not.toBeVisible();
-      expect(screen.queryByText('Test Details 3')).toBeInTheDocument();
+      expect(detailsElement[0].getAttribute('aria-expanded')).toBe('false');
+      expect(detailsElement[1].getAttribute('aria-expanded')).toBe('false');
+      expect(detailsElement[2].getAttribute('aria-expanded')).toBe('true');
     });
   });
 
   it('should handle click when multipleOpen is true and items are already active', async () => {
-    render(
+    const { container } = render(
       <Accordion multipleOpen expanded={['41', '52']}>
         <AccordionItem title="Test Title 1">
           <AccordionTitle>
@@ -450,15 +483,19 @@ describe('Accordion Component', () => {
       </Accordion>
     );
 
+    const detailsElement = container.querySelectorAll(
+      '.dcx-accordion-details'
+    ) as NodeListOf<HTMLDivElement>;
+
     await waitFor(() => {
       expect(screen.queryByText('Test Details 1')).toBeInTheDocument();
       expect(screen.queryByText('Test Details 2')).toBeInTheDocument();
-      expect(screen.queryByText('Test Details 3')).not.toBeVisible();
+      expect(detailsElement[2].getAttribute('aria-expanded')).toBe('false');
     });
   });
 
   it('should only expand the first item when multipleOpen is false and expanded has more than one item', async () => {
-    render(
+    const { container } = render(
       <Accordion multipleOpen={false} expanded={['1', '2']}>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -478,9 +515,12 @@ describe('Accordion Component', () => {
         </AccordionItem>
       </Accordion>
     );
+    const detailsElement = container.querySelectorAll(
+      '.dcx-accordion-details'
+    ) as NodeListOf<HTMLDivElement>;
     await waitFor(() => {
-      expect(screen.queryByText('Details 1')).toBeInTheDocument();
-      expect(screen.queryByText('Details 2')).not.toBeVisible();
+      expect(detailsElement[0].getAttribute('aria-expanded')).toBe('true');
+      expect(detailsElement[1].getAttribute('aria-expanded')).toBe('false');
     });
   });
 
@@ -576,7 +616,7 @@ describe('Accordion Component', () => {
   });
 
   it('should open or close the accordion if the accordion title is clicked', () => {
-    render(
+    const { container } = render(
       <Accordion>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -596,15 +636,21 @@ describe('Accordion Component', () => {
         </AccordionItem>
       </Accordion>
     );
-    expect(screen.queryByText('Details 2')).not.toBeVisible();
+    const detailsElement = container.querySelectorAll(
+      '.dcx-accordion-details'
+    ) as NodeListOf<HTMLDivElement>;
+
+    expect(detailsElement[1].getAttribute('aria-expanded')).toBe('false');
+
     fireEvent.click(screen.getByText('Item 2'));
-    expect(screen.queryByText('Details 2')).toBeVisible();
+    expect(detailsElement[1].getAttribute('aria-expanded')).toBe('true');
+
     fireEvent.click(screen.getByText('Item 2'));
-    expect(screen.queryByText('Details 2')).not.toBeVisible();
+    expect(detailsElement[1].getAttribute('aria-expanded')).toBe('false');
   });
 
   it('should not open or close the accordion if the accordion details are clicked', () => {
-    render(
+    const { container } = render(
       <Accordion>
         <AccordionItem title="1">
           <AccordionTitle>
@@ -624,8 +670,13 @@ describe('Accordion Component', () => {
         </AccordionItem>
       </Accordion>
     );
-    expect(screen.queryByText('Details 2')).not.toBeVisible();
+    const detailsElement = container.querySelectorAll(
+      '.dcx-accordion-details'
+    ) as NodeListOf<HTMLDivElement>;
+
+    expect(detailsElement[1].getAttribute('aria-expanded')).toBe('false');
+
     fireEvent.click(screen.getByText('Details 2'));
-    expect(screen.queryByText('Details 2')).not.toBeVisible();
+    expect(detailsElement[1].getAttribute('aria-expanded')).toBe('false');
   });
 });

@@ -16,35 +16,46 @@ describe('AccordionDetails', () => {
   });
 
   it('should apply the detailsClassName from context', () => {
-    const { getByText } = render(
+    const { container } = render(
       <AccordionContext.Provider
-        value={{ multipleOpen: false, onClick: jest.fn(), expanded: [], detailsClassName: 'context-class' }}
+        value={{
+          multipleOpen: false,
+          onClick: jest.fn(),
+          expanded: [],
+          detailsClassName: 'context-class',
+        }}
       >
         <AccordionDetails>
           <>Test Details</>
         </AccordionDetails>
       </AccordionContext.Provider>
     );
-    expect(getByText('Test Details')).toHaveClass('context-class');
+    const detailsElement = container.querySelector('.dcx-accordion-details');
+    expect(detailsElement).toHaveClass('context-class');
   });
-  
+
   it('should apply both className and detailsClassName', () => {
-    const { getByText } = render(
+    const { container } = render(
       <AccordionContext.Provider
-        value={{ multipleOpen: false, onClick: jest.fn(), expanded: [], detailsClassName: 'context-class' }}
+        value={{
+          multipleOpen: false,
+          onClick: jest.fn(),
+          expanded: [],
+          detailsClassName: 'context-class',
+        }}
       >
         <AccordionDetails className="prop-class">
           <>Test Details</>
         </AccordionDetails>
       </AccordionContext.Provider>
     );
-    const detailsElement = getByText('Test Details');
+    const detailsElement = container.querySelector('.dcx-accordion-details');
     expect(detailsElement).toHaveClass('context-class');
     expect(detailsElement).toHaveClass('prop-class');
   });
-  
+
   it('should be visible when title is in the expanded array', () => {
-    const { getByText } = render(
+    const { container } = render(
       <AccordionContext.Provider
         value={{ multipleOpen: false, onClick: jest.fn(), expanded: ['1'] }}
       >
@@ -55,11 +66,14 @@ describe('AccordionDetails', () => {
         </AccordionItemContext.Provider>
       </AccordionContext.Provider>
     );
-    expect(getByText('Test Details')).toBeVisible();
+    const detailsElement = container.querySelector(
+      '.dcx-accordion-details'
+    ) as HTMLDivElement;
+    expect(detailsElement.getAttribute('aria-expanded')).toBe('true');
   });
-  
+
   it('should not be visible when title is not in the expanded array', () => {
-    const { getByText } = render(
+    const { container } = render(
       <AccordionContext.Provider
         value={{ multipleOpen: false, onClick: jest.fn(), expanded: ['2'] }}
       >
@@ -70,7 +84,10 @@ describe('AccordionDetails', () => {
         </AccordionItemContext.Provider>
       </AccordionContext.Provider>
     );
-    expect(getByText('Test Details')).not.toBeVisible();
+    const detailsElement = container.querySelector(
+      '.dcx-accordion-details'
+    ) as HTMLDivElement;
+    expect(detailsElement.getAttribute('aria-expanded')).toBe('false');
   });
 
   it('should allow to pass extra props', () => {

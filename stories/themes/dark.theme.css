@@ -174,3 +174,12 @@
   --dcx-color-text-heading-level_5: white;
   --dcx-color-text-heading-level_6: white;
 }
+
+.dcx-accordion {
+  --dcx-color-background-accordion_box: #666;
+  --dcx-border-color-accordion_item_box: #f5f5f5;
+  --dcx-color-background-accordion_title_box-expanded: #999;
+  --dcx-color-background-accordion_title_box-hover: #999;
+  --dcx-color-text-heading-level_3: white;
+  --dcx-color-text-body: white;
+}

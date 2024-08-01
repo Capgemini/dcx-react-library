@@ -85,3 +85,16 @@
   --dcx-color-background-card_box-selected: transparent;
   --dcx-color-background-card_box-hover: #f5f5f5;
 }
+
+.dcx-accordion {
+  --dcx-border-width-accordion_item_box: 0 0 2px 0;
+  --dcx-border-color-accordion_item_box: black;
+  --dcx-transition-duration-accordion: 400ms;
+  --dcx-spacing-y-accordion_details_box: 14px;
+  --dcx-spacing-x-accordion_details_box: 7px;
+  --dcx-spacing-y-accordion_title_box: 30px;
+  --dcx-spacing-x-accordion_title_box: 15px;
+  --dcx-color-background-accordion_title_box-hover: transparent;
+  --dcx-color-background-accordion_title_box-expanded: transparent;
+  --dcx-cox-shadow-accordion_box: none;
+}
