@@ -37,3 +37,4 @@ export * from './codesnippet';
 export * from './highlight';
 export * from './buttonGroup';
 export * from './card';
+export * from './skeleton';

@@ -1,0 +1,22 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as SkeletonStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Layout/Skeleton/Documentation" />
+
+# Skeleton
+
+The Skeleton component is useful for when you need to display a blocking element whilst other parts of the application are still loading.
+The Skeleton component is UI/UX agnostic so you will need to provide your own styling to make sure it matches the rest of your application.
+By default if you don't provide any classes the skeleton component will look like the example below:
+
+<Canvas of={SkeletonStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```jsx
+<Skeleton variant="rectangular" animation="wave" width="200px" height="40px" />
+```
+
+Below a list of all the available properties:
+
+<ArgTypes of={SkeletonStories} />
