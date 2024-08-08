@@ -1,27 +1,61 @@
 import React from 'react';
-import { renderHook } from '@testing-library/react';
-import { StepperContext, useStepper } from '../UseStepper';
+import { render } from '@testing-library/react';
+import { StepperContext, StepperContextProps, useStepper } from '../UseStepper';
+import '@testing-library/jest-dom';
+
+const TestComponent: React.FC = () => {
+  const { activeStep, changeActiveStep } = useStepper();
+
+  return (
+    <div>
+      <span data-testid="active-step">{activeStep}</span>
+      <button onClick={() => changeActiveStep(2)}>Change Step</button>
+    </div>
+  );
+};
 
 describe('useStepper', () => {
-  const wrapper = ({ children }: { children: React.ReactNode }) => (
-    <StepperContext.Provider value={{ activeStep: 0, changeActiveStep: jest.fn() }}>
-      {children}
-    </StepperContext.Provider>
-  );
-
   it('provides activeStep as a number', () => {
-    const { result } = renderHook(() => useStepper(), { wrapper });
-    expect(typeof result.current.activeStep).toBe('number');
+    const mockContextValue: StepperContextProps = {
+      activeStep: 0,
+      changeActiveStep: jest.fn(),
+    };
+
+    const { getByTestId } = render(
+      <StepperContext.Provider value={mockContextValue}>
+        <TestComponent />
+      </StepperContext.Provider>
+    );
+
+    expect(getByTestId('active-step')).toHaveTextContent('0');
   });
 
-  it('provides changeActiveStep as a function', () => {
-    const { result } = renderHook(() => useStepper(), { wrapper });
-    expect(typeof result.current.changeActiveStep).toBe('function');
+  it('calls changeActiveStep when the button is clicked', () => {
+    const mockChangeActiveStep = jest.fn();
+    const mockContextValue: StepperContextProps = {
+      activeStep: 0,
+      changeActiveStep: mockChangeActiveStep,
+    };
+
+    const { getByText } = render(
+      <StepperContext.Provider value={mockContextValue}>
+        <TestComponent />
+      </StepperContext.Provider>
+    );
+
+    const button = getByText('Change Step');
+    button.click();
+
+    expect(mockChangeActiveStep).toHaveBeenCalledWith(2);
   });
 
   it('throws an error if used outside of StepperContext', () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    
     expect(() => {
-      renderHook(() => useStepper());
+      render(<TestComponent />);
     }).toThrow('Step must be used within a Stepper');
+
+    consoleErrorSpy.mockRestore();
   });
 });

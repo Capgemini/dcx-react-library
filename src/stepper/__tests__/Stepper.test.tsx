@@ -53,7 +53,7 @@ describe('Stepper Component', () => {
       </Stepper>
     );
 
-    expect(screen.getByText('Step 2').parentElement).toHaveClass('dcx-stepper-header-container');
+    expect(screen.getByText('Step 2').parentElement).toHaveClass('dcx-step');
   });
 
   it('changes active step on header click', () => {
@@ -71,7 +71,7 @@ describe('Stepper Component', () => {
     );
 
     fireEvent.click(screen.getByText('Step 2'));
-    expect(screen.getByText('Step 2').parentElement).toHaveClass('dcx-stepper-header-container');
+    expect(screen.getByText('Step 2').parentElement).toHaveClass('dcx-step');
   });
 
   it('applies custom class names', () => {
@@ -92,8 +92,8 @@ describe('Stepper Component', () => {
       </Stepper>
     );
 
-    expect(screen.getByText('Step 1').parentElement?.parentElement).toHaveClass('dcx-stepper dcx-horizontal-stepper custom-stepper');
-    expect(screen.getByText('Content 1').parentElement?.parentElement).toHaveClass('dcx-stepper dcx-horizontal-stepper custom-stepper');
+    expect(screen.getByText('Step 1').parentElement?.parentElement).toHaveClass('dcx-stepper custom-stepper');
+    expect(screen.getByText('Content 1').parentElement?.parentElement).toHaveClass('dcx-stepper custom-stepper');
   });
 
   it('renders custom separator', () => {
@@ -129,7 +129,7 @@ describe('Stepper Component', () => {
       </Stepper>
     );
 
-    expect(screen.getByText('Step 1').parentElement).toHaveClass('dcx-stepper-header-container');
+    expect(screen.getByText('Step 1').parentElement).toHaveClass('dcx-step');
 
     rerender(
       <Stepper selectedStep={1}>
@@ -144,7 +144,7 @@ describe('Stepper Component', () => {
       </Stepper>
     );
 
-    expect(screen.getByText('Step 2').parentElement).toHaveClass('dcx-stepper-header-container');
+    expect(screen.getByText('Step 2').parentElement).toHaveClass('dcx-step');
   });
 
   it('renders correctly with no steps', () => {
@@ -183,7 +183,7 @@ describe('Stepper Component', () => {
       </Stepper>
     );
 
-    expect(screen.getByText('Step 2').parentElement).toHaveClass('dcx-stepper-header-container');
+    expect(screen.getByText('Step 2').parentElement).toHaveClass('dcx-step');
   });
 
   it('updates context when step header is clicked', () => {
@@ -201,6 +201,73 @@ describe('Stepper Component', () => {
     );
 
     fireEvent.click(screen.getByText('Step 2'));
-    expect(screen.getByText('Content 2').parentElement).toHaveClass('dcx-stepper-content-container');
+    expect(screen.getByText('Content 2').parentElement).toHaveClass('dcx-step');
+  });
+
+  it('applies activeStepClass to the active step', () => {
+    render(
+      <Stepper selectedStep={1} activeStepClass="custom-active-step">
+        <Step>
+          <StepHeader>Step 1</StepHeader>
+          <StepContent>Content 1</StepContent>
+        </Step>
+        <Step>
+          <StepHeader>Step 2</StepHeader>
+          <StepContent>Content 2</StepContent>
+        </Step>
+      </Stepper>
+    );
+
+    expect(screen.getByText('Step 2').parentElement).toHaveClass('dcx-step');
+  });
+
+  it('applies headerClassName and contentClassName to StepHeader and StepContent', () => {
+    render(
+      <Stepper headerClassName="custom-header" contentClassName="custom-content">
+        <Step>
+          <StepHeader>Step 1</StepHeader>
+          <StepContent>Content 1</StepContent>
+        </Step>
+        <Step>
+          <StepHeader>Step 2</StepHeader>
+          <StepContent>Content 2</StepContent>
+        </Step>
+      </Stepper>
+    );
+
+    expect(screen.getByText('Step 1')).toHaveClass('custom-header');
+    expect(screen.getByText('Content 1')).toHaveClass('custom-content');
+  });
+
+  it('applies orientation class based on orientation prop', () => {
+    const { rerender } = render(
+      <Stepper orientation="horizontal">
+        <Step>
+          <StepHeader>Step 1</StepHeader>
+          <StepContent>Content 1</StepContent>
+        </Step>
+        <Step>
+          <StepHeader>Step 2</StepHeader>
+          <StepContent>Content 2</StepContent>
+        </Step>
+      </Stepper>
+    );
+
+    expect(screen.getByText('Step 1').parentElement?.parentElement).toHaveClass('dcx-horizontal-stepper');
+
+    rerender(
+      <Stepper orientation="vertical">
+        <Step>
+          <StepHeader>Step 1</StepHeader>
+          <StepContent>Content 1</StepContent>
+        </Step>
+        <Step>
+          <StepHeader>Step 2</StepHeader>
+          <StepContent>Content 2</StepContent>
+        </Step>
+      </Stepper>
+    );
+
+    expect(screen.getByText('Step 1').parentElement?.parentElement).toHaveClass('dcx-vertical-stepper');
   });
 });
