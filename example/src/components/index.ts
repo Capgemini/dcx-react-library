@@ -29,3 +29,4 @@ export { ButtonGroupDemo } from './ButtonGroupDemo';
 export { CardDemo } from './CardDemo';
 export { SkeletonDemo } from './SkeletonDemo';
 export { LoadingSpinnerDemo } from './LoadingSpinnerDemo';
+export { default as StepperDemo } from './StepperDemo';

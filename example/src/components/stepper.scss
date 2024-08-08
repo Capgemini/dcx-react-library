@@ -1,0 +1,46 @@
+.dcx-horizontal-stepper {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.dcx-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.dcx-stepper-header-button {
+  color: #a7a8ab;
+  margin-bottom: 10px;
+}
+
+.dcx-stepper-header-button > .stepNumber {
+  background-color: #a7a8ab;
+}
+
+.dcx-active-step {
+  color: black;
+}
+
+.dcx-active-step > .stepNumber {
+  background-color: #1876d2;
+}
+
+.stepNumber {
+  width: 20px;
+  height: 20px;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  background-color: rgba(0, 0, 0, 0.54);
+}
+
+.separator {
+  border-color: #a7a8ab;
+  width: 120px;
+  margin: 20px 8px;
+}

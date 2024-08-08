@@ -27,7 +27,8 @@ import {
   TableDemo,
   ToggleDemo,
   TooltipDemo,
-  LoadingSpinnerDemo
+  LoadingSpinnerDemo,
+  StepperDemo,
 } from './components';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -83,6 +84,7 @@ const App = () => (
         <Route path="/paginator" element={<PaginatorDemo />} />
         <Route path="/skeleton" element={<SkeletonDemo />} />
         <Route path="/loadingSpinner" element={<LoadingSpinnerDemo />} />
+        <Route path="/stepper" element={<StepperDemo />} />
       </Routes>
     </BrowserRouter>
   </div>
