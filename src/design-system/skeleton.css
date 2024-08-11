@@ -1,0 +1,36 @@
+@keyframes wave {
+  0% {
+    background-position: -500px 0;
+  }
+
+  100% {
+    background-position: 500px 0;
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.dcx-skeleton {
+  opacity: 1;
+
+  &.dcx-skeleton-animation-wave {
+    background: token(animation-background-color-skeleton-wave);
+    animation: wave token(animation-duration-skeleton-wave) infinite linear;
+  }
+  &.dcx-skeleton-animation-pulsate {
+    animation: pulsate token(animation-duration-skeleton-pulsate) infinite
+      linear forwards;
+  }
+}

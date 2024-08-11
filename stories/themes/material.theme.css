@@ -112,3 +112,12 @@
   --dcx-color-background-accordion_title_box-expanded: transparent;
   --dcx-color-background-accordion_title_box-hover: #f5f5f5;
 }
+
+.dcx-skeleton {
+  --dcx-animation-background-color-skeleton-wave: linear-gradient(
+    to right,
+    #f5f5f5 8%,
+    #e0e0e0 18%,
+    #f5f5f5 33%
+  );
+}

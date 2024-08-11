@@ -5,6 +5,8 @@ type SkeletonProps = {
   className?: string;
   //it will define the look and feel of the skeleton
   variant: 'text' | 'circular' | 'rectangular' | 'rounded';
+  //it will define the background color of the skeleton
+  bgColor?: string;
   // this property is used only for the variant text and will define the size of it. If not specified will have 1rem
   fontSize?: string;
   // this property is used for the other variants ('circular' | 'rectangular' | 'rounded') and will define the width of it. If not specified will have 40px
@@ -20,6 +22,7 @@ type SkeletonProps = {
 export const Skeleton = ({
   className,
   variant,
+  bgColor = 'rgb(199, 199, 199)',
   fontSize = '1rem',
   width = '40px',
   height = '40px',
@@ -40,7 +43,7 @@ export const Skeleton = ({
     style={{
       height: `${variant === 'text' ? fontSize : height}`,
       width: `${variant === 'text' ? '100%' : width}`,
-      backgroundColor: 'rgb(199, 199, 199)',
+      backgroundColor: bgColor,
       display: 'block',
       borderRadius: `${variant === 'circular' ? '50%' : variant === 'rounded' ? '1rem' : null}`,
     }}

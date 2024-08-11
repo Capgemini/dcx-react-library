@@ -183,3 +183,12 @@
   --dcx-color-text-heading-level_3: white;
   --dcx-color-text-body: white;
 }
+
+.dcx-skeleton {
+  --dcx-animation-background-color-skeleton-wave: linear-gradient(
+    to right,
+    #454545 8%,
+    #333131 18%,
+    #454545 33%
+  );
+}

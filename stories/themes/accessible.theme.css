@@ -98,3 +98,8 @@
   --dcx-color-background-accordion_title_box-expanded: transparent;
   --dcx-cox-shadow-accordion_box: none;
 }
+
+.dcx-skeleton {
+  --dcx-animation-duration-skeleton-wave: 6s;
+  --dcx-animation-duration-skeleton-pulsate: 4s;
+}
