@@ -3,19 +3,33 @@ import { classNames } from '../common';
 
 type SkeletonProps = {
   className?: string;
-  //it will define the look and feel of the skeleton
+  /*
+   * it will define the look and feel of the skeleton
+   **/
   variant: 'text' | 'circular' | 'rectangular' | 'rounded';
-  //it will define the background color of the skeleton
+  /**
+   * it will define the background color of the skeleton
+   */
   bgColor?: string;
-  // this property is used only for the variant text and will define the size of it. If not specified will have 1rem
+  /**
+   * only for the variant text and will define the size of it.
+   */
   fontSize?: string;
-  // this property is used for the other variants ('circular' | 'rectangular' | 'rounded') and will define the width of it. If not specified will have 40px
+  /**
+   * used for 'circular' | 'rectangular' | 'rounded' variants and will define the width of it.
+   */
   width?: string;
-  // this property is used for the other variants ('circular' | 'rectangular' | 'rounded') and will define the width of it. If not specified will have 40px
+  /**
+   * used fot 'circular' | 'rectangular' | 'rounded' variants and will define the width of it.
+   */
   height?: string;
-  // this property is used to determine which animation style is used for the skeleton component (wave or pulsate). If this property is not provided then no animation will be used.
+  /**
+   * determine which animation style is used for the skeleton component (wave or pulsate). If this property is not provided then no animation will be used.
+   */
   animation?: 'wave' | 'pulsate';
-  //additional properties to support something else that we didn't plan
+  /**
+   * additional properties to support something else that we didn't plan
+   */
   props?: React.HTMLAttributes<HTMLSpanElement>;
 };
 
