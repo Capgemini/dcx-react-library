@@ -1,3 +1,4 @@
+export { PaginatorDemo } from './PaginatorDemo';
 export { FormInputDemo } from './FormInputDemo';
 export { FormInputMaskedDemo } from './FormInputMaskedDemo';
 export { AutocompleteDemo } from './AutocompleteDemo';
