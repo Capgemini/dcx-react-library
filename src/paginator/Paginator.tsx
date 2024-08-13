@@ -34,7 +34,7 @@ type PaginatorProps = {
   /**
    * general className for page number buttons within the paginator component
    */
-  pageNumbersClassName: string;
+  pageNumbersClassName?: string;
 };
 
 export const Paginator: React.FC<PaginatorProps> = ({
@@ -46,24 +46,61 @@ export const Paginator: React.FC<PaginatorProps> = ({
   pageNumbersClassName,
 }: PaginatorProps): JSX.Element => {
   const [current, setCurrent] = useState<ICurrentButton>(currentPage);
-  const pages = Array.from({ length: totalPages }, (_, index) => (
-    <div
-      className={
-        index + 1 === current.page
-          ? `${pageNumbersClassName} ${current.className}`
-          : pageNumbersClassName
-      }
-      onClick={() =>
-        pageHandler({ page: index + 1, className: 'current-page' }, setCurrent)
-      }
-    >
-      {index + 1}
-    </div>
-  ));
+
+  const calculatePageNumbers = (
+    currentPage: number,
+    totalPages: number
+  ): (number | string)[] => {
+    const pageNumbers: (number | string)[] = [];
+    const firstPage = 1;
+    const lastPage = totalPages;
+
+    const startPage = Math.max(currentPage - 1, firstPage);
+    const endPage = Math.min(currentPage + 1, lastPage);
+
+    if (startPage > firstPage + 1) {
+      pageNumbers.push(firstPage, '...');
+    } else if (startPage === firstPage + 1) {
+      pageNumbers.push(firstPage);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+
+    if (endPage < lastPage - 1) {
+      pageNumbers.push('...', lastPage);
+    } else if (endPage === lastPage - 1) {
+      pageNumbers.push(lastPage);
+    }
+
+    return pageNumbers;
+  };
+
+  const pages = calculatePageNumbers(current.page, totalPages);
+  console.log(pages[0]);
   return (
     <section className={paginatorClassName}>
       <div className={previousButton.className}>{previousButton.text}</div>
-      {pages}
+      {pages.map((page, index) =>
+        typeof page === 'number' ? (
+          <div
+            key={index}
+            className={
+              page === current.page
+                ? `${pageNumbersClassName} ${current.className}`
+                : pageNumbersClassName
+            }
+            onClick={() =>
+              pageHandler({ page, className: 'current-page' }, setCurrent)
+            }
+          >
+            {page}
+          </div>
+        ) : (
+          <span key={index}>{page}</span>
+        )
+      )}
       <div className={nextButton.className}>{nextButton.text}</div>
     </section>
   );
