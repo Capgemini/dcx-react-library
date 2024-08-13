@@ -1,0 +1,30 @@
+.paginator-container {
+  width: 100%;
+  border: 2px solid rgb(188, 188, 188);
+  display: flex;
+  font-size: 1rem;
+  cursor: pointer;
+  align-items: center;
+}
+.previous-button,
+.next-button {
+  font-weight: 600;
+  padding: 0.6em;
+  align-content: center;
+}
+.previous-button {
+  border-right: 2px solid rgb(188, 188, 188);
+}
+.next-button {
+  border-left: 2px solid rgb(188, 188, 188);
+}
+.buttons,
+.current-page {
+  padding: 1em;
+}
+.buttons:hover {
+  background: rgba(188, 188, 188, 0.65);
+}
+.current-page {
+  border: 2px solid black;
+}
