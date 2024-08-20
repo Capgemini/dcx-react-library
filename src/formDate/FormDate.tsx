@@ -224,10 +224,8 @@ export const FormDate = ({
             classNameInput={classNames([
               yearProps?.classNameInput,
               inputClass,
-              'dcx-form-date',
               {
-                'dcx-form-date--error': displayError,
-                'dcx-form-date--filled': !!value,
+                'dcx-form-date--filled': !!state.year,
               },
             ])}
             disabled={disabled}
@@ -249,10 +247,8 @@ export const FormDate = ({
             classNameInput={classNames([
               monthProps?.classNameInput,
               inputClass,
-              'dcx-form-date',
               {
-                'dcx-form-date--error': displayError,
-                'dcx-form-date--filled': !!value,
+                'dcx-form-date--filled': !!state.month,
               },
             ])}
             disabled={disabled}
@@ -274,10 +270,8 @@ export const FormDate = ({
             classNameInput={classNames([
               dayProps?.classNameInput,
               inputClass,
-              'dcx-form-date',
               {
-                'dcx-form-date--error': displayError,
-                'dcx-form-date--filled': !!value,
+                'dcx-form-date--filled': !!state.day,
               },
             ])}
             disabled={disabled}
@@ -293,7 +287,15 @@ export const FormDate = ({
       {errorPosition === 'top' && showError && (
         <ErrorMessage text={errorMessage} className={errorClass} />
       )}
-      <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto' }}>
+      <div
+        style={{ display: 'grid', gridTemplateColumns: 'auto auto auto' }}
+        className={classNames([
+          'dcx-form-date',
+          {
+            'dcx-form-date--error': displayError,
+          },
+        ])}
+      >
         {DateComp}
       </div>
       {errorPosition === 'bottom' && showError && (

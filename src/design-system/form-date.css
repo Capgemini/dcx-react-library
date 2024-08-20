@@ -1,3 +1,83 @@
-.dcx-form-date { 
-    color: red;
+.dcx-form-date {
+  --label-height: token('font-formcontrol_label-line-height');
+  --input-height: calc(
+    token('font-formcontrol-line-height') + token('spacing-y-formcontrol')
+  );
+  gap: 15px;
+
+  & label {
+    font-size: token('font-size-formcontrol_label');
+    line-height: var(--label-height);
+    background: token('color-background-formcontrol_label');
+    color: token('color-text-formcontrol_label');
+    position: relative;
+    &::after {
+      content: '';
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      border-radius: token('border-radius-formcontrol');
+      border-style: solid;
+      border-width: token('border-width-formcontrol');
+      border-color: token('border-color-formcontrol');
+      width: 100%;
+      height: var(--input-height);
+      right: 0;
+      bottom: 0;
+    }
+    &:has(input:focus) {
+      &::after {
+        border-color: token('color-outline-formcontrol');
+        border-width: calc(token('border-width-formcontrol') * 2);
+      }
+    }
+    &:has(input:disabled) {
+      &::after {
+        opacity: 0.5;
+      }
+      opacity: 0.5;
+    }
+  }
+
+  & input {
+    all: unset;
+    appearance: none;
+    background: token('color-background-formcontrol');
+    border: none;
+    box-sizing: border-box;
+    color: token('color-text-formcontrol');
+    flex: 2 1 auto;
+    font-size: token('font-formcontrol-size');
+    height: var(--input-height);
+    line-height: token('font-formcontrol-line-height');
+    outline: none;
+    margin: token('color-outline-formcontrol');
+    padding-left: token('spacing-x-formcontrol');
+    padding-right: token('spacing-x-formcontrol');
+    border-radius: token('border-radius-formcontrol');
+    z-index: 1;
+  }
+
+  &.dcx-form-date--error label:has(input) {
+    color: token('color-text-formcontrol_error');
+    & input {
+      color: token('color-text-formcontrol_error');
+    }
+    &::after {
+      border-color: token('color-text-formcontrol_error');
+      border-width: token('border-width-formcontrol');
+    }
+  }
+
+  @media (max-width: 700px) {
+    & input {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: 400px) {
+    & input {
+      width: 60%;
+    }
+  }
 }
