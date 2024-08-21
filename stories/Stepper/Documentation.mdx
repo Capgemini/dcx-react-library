@@ -1,0 +1,57 @@
+import { Meta, Story, Canvas, ArgTypes } from '@storybook/addon-docs';
+import * as StepperStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Layout/Stepper/Documentation" />
+
+# Stepper
+
+The Stepper component is designed to facilitate the creation of multi-step workflows in your application. It provides a structured way to guide users through a series of steps, ensuring a smooth and intuitive process.
+The `Stepper` component handles the active step state and offers navigation controls to move between steps seamlessly.
+
+Each `Step` represents a step in the process. It has a `StepHeader` for the title and a `StepContent` for the details of the step.
+
+This documentation provides an overview of the Stepper component, how to use it, and the available properties.
+In order to use the Stepper component in your project, you should import all the following necessary components to use the Stepper in your project:
+
+```js
+  import { Stepper, Step, StepHeader, StepContent } from '@capgeminiuk/dcx-react-library';
+```
+
+
+When you import the Stepper component without providing any className or style associated, it will look as follows:
+
+<Canvas of={StepperStories.Unstyled} />
+
+An example with all the available properties is:
+
+```js
+<Stepper
+  selectedStep={0}
+  activeStepClass="active-step"
+  stepperClassName="custom-stepper"
+  headerClassName="custom-header"
+  contentClassName="custom-content"
+>
+  <Step key="1">
+    <StepHeader>Step 1</StepHeader>
+    <StepContent>
+      <p>This is the content for step 1. Here you can provide detailed instructions or information.</p>
+    </StepContent>
+  </Step>
+  <Step key="2">
+    <StepHeader>Step 2</StepHeader>
+    <StepContent>
+      <p>This is the content for step 2. Continue providing information or instructions here.</p>
+    </StepContent>
+  </Step>
+  <Step key="3">
+    <StepHeader>Step 3</StepHeader>
+    <StepContent>
+      <p>This is the content for step 3. Finalize your instructions or information here.</p>
+    </StepContent>
+  </Step>
+</Stepper>  
+
+```
+
+<ArgTypes of={StepperStories} />
