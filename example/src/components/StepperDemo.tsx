@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Step,
   Stepper,
@@ -7,159 +7,360 @@ import {
 } from '@capgeminiuk/dcx-react-library';
 import './stepper.scss';
 
-export const StepperDemo = () => {
-  const [activeStepHorizontal, setActiveStepHorizontal] = React.useState(0);
-  const [activeStepVertical, setActiveStepVertical] = React.useState(0);
-  const [activeStepCustomSeparator, setActiveStepCustomSeparator] = React.useState(0);
+const StepperDemo: React.FC = () => {
+  const [activeStepHorizontal, setActiveStepHorizontal] = useState(0);
+  const [activeStepVertical, setActiveStepVertical] = useState(0);
+  const [activeStepCustomSeparator, setActiveStepCustomSeparator] = useState(0);
+  const [activeStepItems, setActiveStepItems] = useState(0);
 
-  const moveNextHorizontal = () => {
-    setActiveStepHorizontal(activeStepHorizontal + 1);
+  const handleStepChange = (
+    setter: React.Dispatch<React.SetStateAction<number>>,
+    step: number
+  ) => {
+    setter(step);
   };
 
-  const movePrevHorizontal = () => {
-    setActiveStepHorizontal(activeStepHorizontal - 1);
-  };
+  const steps = [
+    {
+      header: 'Campaign Settings',
+      content: (
+        <div className="step-content">
+          <label className="form-label">
+            Campaign Name:{' '}
+            <input type="text" name="campaignName" className="form-input" />
+          </label>
+          <label className="form-label">
+            Budget: <input type="number" name="budget" className="form-input" />
+          </label>
+          <label className="form-label">
+            Schedule:{' '}
+            <input type="date" name="schedule" className="form-input" />
+          </label>
+        </div>
+      ),
+    },
+    {
+      header: 'Target Audience',
+      content: (
+        <div className="step-content">
+          <label className="form-label">
+            Age Range:
+            <select name="ageRange" className="form-select">
+              <option value="18-24">18-24</option>
+              <option value="25-34">25-34</option>
+              <option value="35-44">35-44</option>
+              <option value="45-54">45-54</option>
+              <option value="55-64">55-64</option>
+              <option value="65+">65+</option>
+            </select>
+          </label>
+          <label className="form-label">
+            Location:{' '}
+            <input type="text" name="location" className="form-input" />
+          </label>
+          <label className="form-label">
+            Interests:{' '}
+            <input type="text" name="interests" className="form-input" />
+          </label>
+        </div>
+      ),
+    },
+    {
+      header: 'Ad Design',
+      content: (
+        <div className="step-content">
+          <label className="form-label">
+            Ad Title:{' '}
+            <input type="text" name="adTitle" className="form-input" />
+          </label>
+          <label className="form-label">
+            Ad Description:{' '}
+            <textarea name="adDescription" className="form-textarea"></textarea>
+          </label>
+          <label className="form-label">
+            Call to Action:
+            <select name="callToAction" className="form-select">
+              <option value="buy_now">Buy Now</option>
+              <option value="learn_more">Learn More</option>
+              <option value="sign_up">Sign Up</option>
+            </select>
+          </label>
+        </div>
+      ),
+    },
+    {
+      header: 'Review & Submit',
+      content: (
+        <div className="step-content">
+          <p>
+            Please review your campaign settings, target audience, and ad design
+            before submitting.
+          </p>
+          <button type="submit" className="form-button">
+            Submit Campaign
+          </button>
+        </div>
+      ),
+    },
+  ];
 
-  const moveNextVertical = () => {
-    setActiveStepVertical(activeStepVertical + 1);
-  };
+  const items = [
+    {
+      header: 'Order Summary',
+      content: (
+        <div className="step-content">
+          <label className="form-label">
+            Product Name:{' '}
+            <input
+              type="text"
+              name="productName"
+              className="form-input"
+              aria-label="Product Name"
+            />
+          </label>
+          <label className="form-label">
+            Quantity:{' '}
+            <input
+              type="number"
+              name="quantity"
+              className="form-input"
+              aria-label="Quantity"
+            />
+          </label>
+          <label className="form-label">
+            Price:{' '}
+            <input
+              type="number"
+              name="price"
+              className="form-input"
+              aria-label="Price"
+            />
+          </label>
+        </div>
+      ),
+    },
+    {
+      header: 'Shipping Information',
+      content: (
+        <div className="step-content">
+          <label className="form-label">
+            Shipping Method:
+            <select
+              name="shippingMethod"
+              className="form-select"
+              aria-label="Shipping Method"
+            >
+              <option value="standard">Standard</option>
+              <option value="express">Express</option>
+            </select>
+          </label>
+          <label className="form-label">
+            Address:{' '}
+            <input
+              type="text"
+              name="address"
+              className="form-input"
+              aria-label="Shipping Address"
+            />
+          </label>
+        </div>
+      ),
+    },
+    {
+      header: 'Payment Information',
+      content: (
+        <div className="step-content">
+          <label className="form-label">
+            Credit Card Number:{' '}
+            <input
+              type="text"
+              name="cardNumber"
+              className="form-input"
+              aria-label="Credit Card Number"
+            />
+          </label>
+          <label className="form-label">
+            Expiration Date:{' '}
+            <input
+              type="month"
+              name="expirationDate"
+              className="form-input"
+              aria-label="Expiration Date"
+            />
+          </label>
+          <label className="form-label">
+            CVV:{' '}
+            <input
+              type="text"
+              name="cvv"
+              className="form-input"
+              aria-label="CVV"
+            />
+          </label>
+        </div>
+      ),
+    },
+    {
+      header: 'Billing Information',
+      content: (
+        <div className="step-content">
+          <label className="form-label">
+            Street Address:{' '}
+            <input
+              type="text"
+              name="billingStreet"
+              className="form-input"
+              aria-label="Billing Street Address"
+            />
+          </label>
+          <label className="form-label">
+            City:{' '}
+            <input
+              type="text"
+              name="billingCity"
+              className="form-input"
+              aria-label="Billing City"
+            />
+          </label>
+          <label className="form-label">
+            County:{' '}
+            <input
+              type="text"
+              name="billingState"
+              className="form-input"
+              aria-label="Billing County"
+            />
+          </label>
+          <label className="form-label">
+            Post Code:{' '}
+            <input
+              type="text"
+              name="billingZip"
+              className="form-input"
+              aria-label="Billing Post Code"
+            />
+          </label>
+        </div>
+      ),
+    },
+    {
+      header: 'Review and Confirm',
+      content: (
+        <div className="step-content">
+          <label className="form-label">
+            Order Notes:{' '}
+            <textarea
+              name="orderNotes"
+              className="form-textarea"
+              aria-label="Order Notes"
+            ></textarea>
+          </label>
+          <label className="form-label">
+            Agree to Terms:{' '}
+            <input
+              type="checkbox"
+              name="terms"
+              className="form-checkbox"
+              aria-label="Agree to Terms"
+            />
+          </label>
+        </div>
+      ),
+    },
+    {
+      header: 'Place Order',
+      content: (
+        <div className="step-content">
+          <button
+            type="submit"
+            className="form-button"
+            aria-label="Submit Order"
+          >
+            Submit Order
+          </button>
+        </div>
+      ),
+    },
+  ];
 
-  const movePrevVertical = () => {
-    setActiveStepVertical(activeStepVertical - 1);
-  };
-
-  const moveNextCustomSeparator = () => {
-    setActiveStepCustomSeparator(activeStepCustomSeparator + 1);
-  };
-
-  const movePrevCustomSeparator = () => {
-    setActiveStepCustomSeparator(activeStepCustomSeparator - 1);
-  };
+  const renderStepper = (
+    activeStep: number,
+    setter: React.Dispatch<React.SetStateAction<number>>,
+    items: any[],
+    orientation: 'horizontal' | 'vertical',
+    customSeparator: JSX.Element | undefined = undefined
+  ) => (
+    <Stepper
+      orientation={orientation}
+      selectedStep={activeStep}
+      separator={customSeparator || <hr className="separator" />}
+    >
+      {items.map((item, index) => (
+        <Step
+          key={index}
+          className={`step ${activeStep === index ? 'active' : ''}`}
+        >
+          <StepHeader className="step-header">
+            <div className="step-number" aria-label={`Step ${index + 1}`}>
+              {activeStep > index ? '✔️' : index + 1}
+            </div>
+            {item.header}
+          </StepHeader>
+          <StepContent className="step-content">
+            <div>{item.content}</div>
+            <div className="button-container">
+              {index > 0 && (
+                <button
+                  onClick={() => handleStepChange(setter, index - 1)}
+                  aria-label="Previous Step"
+                >
+                  Prev
+                </button>
+              )}
+              {index < items.length - 1 && (
+                <button
+                  onClick={() => handleStepChange(setter, index + 1)}
+                  aria-label="Next Step"
+                >
+                  Next
+                </button>
+              )}
+            </div>
+          </StepContent>
+        </Step>
+      ))}
+    </Stepper>
+  );
 
   return (
-    <div>
+    <div className="stepper-demo">
       <h1>Horizontal Stepper</h1>
-      <Stepper orientation="horizontal" selectedStep={activeStepHorizontal} separator={<hr className="separator" />}>
-        <Step>
-          <StepHeader>
-            <div className="stepNumber">1</div>
-            Select campaign settings
-          </StepHeader>
-          <StepContent>
-            <div>Configure the basic settings for your campaign, such as name, budget, and duration.</div>
-            <div>
-              <button onClick={moveNextHorizontal} aria-label="Go to next step">Next</button>
-            </div>
-          </StepContent>
-        </Step>
-        <Step>
-          <StepHeader>
-            <div className="stepNumber">2</div>
-            Create an ad group
-          </StepHeader>
-          <StepContent>
-            <div>Define the target audience and bidding strategy for your ad group.</div>
-            <div>
-              <button onClick={movePrevHorizontal} aria-label="Go to previous step">Prev</button>
-              <button onClick={moveNextHorizontal} aria-label="Go to next step">Next</button>
-            </div>
-          </StepContent>
-        </Step>
-        <Step>
-          <StepHeader>
-            <div className="stepNumber">3</div>
-            Create an ad
-          </StepHeader>
-          <StepContent>
-            <div>Design your ad content, including images, text, and call-to-action.</div>
-            <div>
-              <button onClick={movePrevHorizontal} aria-label="Go to previous step">Prev</button>
-            </div>
-          </StepContent>
-        </Step>
-      </Stepper>
+      {renderStepper(
+        activeStepHorizontal,
+        setActiveStepHorizontal,
+        steps,
+        'horizontal'
+      )}
 
       <h1>Vertical Stepper</h1>
-      <Stepper orientation="vertical" selectedStep={activeStepVertical} separator={<hr className="separator" />}>
-        <Step>
-          <StepHeader>
-            <div className="stepNumber">1</div>
-            Select campaign settings
-          </StepHeader>
-          <StepContent>
-            <div>Configure the basic settings for your campaign, such as name, budget, and duration.</div>
-            <div>
-              <button onClick={moveNextVertical} aria-label="Go to next step">Next</button>
-            </div>
-          </StepContent>
-        </Step>
-        <Step>
-          <StepHeader>
-            <div className="stepNumber">2</div>
-            Create an ad group
-          </StepHeader>
-          <StepContent>
-            <div>Define the target audience and bidding strategy for your ad group.</div>
-            <div>
-              <button onClick={movePrevVertical} aria-label="Go to previous step">Prev</button>
-              <button onClick={moveNextVertical} aria-label="Go to next step">Next</button>
-            </div>
-          </StepContent>
-        </Step>
-        <Step>
-          <StepHeader>
-            <div className="stepNumber">3</div>
-            Create an ad
-          </StepHeader>
-          <StepContent>
-            <div>Design your ad content, including images, text, and call-to-action.</div>
-            <div>
-              <button onClick={movePrevVertical} aria-label="Go to previous step">Prev</button>
-            </div>
-          </StepContent>
-        </Step>
-      </Stepper>
+      {renderStepper(
+        activeStepVertical,
+        setActiveStepVertical,
+        steps,
+        'vertical'
+      )}
 
       <h1>Stepper with Custom Separator</h1>
-      <Stepper orientation="horizontal" selectedStep={activeStepCustomSeparator} separator={<div className="custom-separator">|</div>}>
-        <Step>
-          <StepHeader>
-            <div className="stepNumber">1</div>
-            Select campaign settings
-          </StepHeader>
-          <StepContent>
-            <div>Configure the basic settings for your campaign, such as name, budget, and duration.</div>
-            <div>
-              <button onClick={moveNextCustomSeparator} aria-label="Go to next step">Next</button>
-            </div>
-          </StepContent>
-        </Step>
-        <Step>
-          <StepHeader>
-            <div className="stepNumber">2</div>
-            Create an ad group
-          </StepHeader>
-          <StepContent>
-            <div>Define the target audience and bidding strategy for your ad group.</div>
-            <div>
-              <button onClick={movePrevCustomSeparator} aria-label="Go to previous step">Prev</button>
-              <button onClick={moveNextCustomSeparator} aria-label="Go to next step">Next</button>
-            </div>
-          </StepContent>
-        </Step>
-        <Step>
-          <StepHeader>
-            <div className="stepNumber">3</div>
-            Create an ad
-          </StepHeader>
-          <StepContent>
-            <div>Design your ad content, including images, text, and call-to-action.</div>
-            <div>
-              <button onClick={movePrevCustomSeparator} aria-label="Go to previous step">Prev</button>
-            </div>
-          </StepContent>
-        </Step>
-      </Stepper>
+      {renderStepper(
+        activeStepCustomSeparator,
+        setActiveStepCustomSeparator,
+        steps,
+        'horizontal',
+        <span className="custom-separator">|</span>
+      )}
+
+      <h1>Order Process Stepper</h1>
+      {renderStepper(activeStepItems, setActiveStepItems, items, 'horizontal')}
     </div>
   );
 };

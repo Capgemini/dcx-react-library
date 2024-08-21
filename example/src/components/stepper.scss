@@ -1,46 +1,105 @@
+.stepper-demo {
+  padding: 20px;
+}
+
 .dcx-horizontal-stepper {
   display: flex;
   flex-direction: row;
-  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
-.dcx-step {
+.dcx-vertical-stepper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-right: 20px;
-  position: relative;
-  z-index: 1;
+  align-items: flex-start;
 }
 
-.dcx-stepper-header-button {
-  color: #a7a8ab;
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  margin-right: 20px; /* Add spacing between horizontal steps */
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-.dcx-stepper-header-button > .stepNumber {
-  background-color: #a7a8ab;
-}
-
-.dcx-active-step {
-  color: black;
-}
-
-.dcx-active-step > .stepNumber {
-  background-color: #1876d2;
-}
-
-.stepNumber {
-  width: 20px;
-  height: 20px;
+.step-number {
+  width: 25px;
+  height: 25px;
   color: white;
-  border-radius: 10px;
-  margin-bottom: 5px;
+  border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.54);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
 }
 
-.separator {
-  border-color: #a7a8ab;
-  width: 120px;
-  margin: 20px 8px;
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.separator,
+.custom-separator {
+  margin: 0 10px;
+  border: 0;
+  height: 1px;
+  background: #ccc;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Adjusted to align buttons better */
+  margin-top: 15px;
+  width: 100%;
+}
+
+.button-container button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-checkbox {
+  margin-top: 10px;
+}
+
+.step-separator {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 20px 0;
+  width: 100%;
 }

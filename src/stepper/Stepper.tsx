@@ -16,9 +16,9 @@ export type StepperProps = {
    */
   selectedStep?: number;
   /**
-   * Specifies a specific class for the selected step.
+   * Specifies a specific className for the selected step.
    */
-  activeStepClass?: string;
+  activeStepClassName?: string;
   /**
    * Defines the className of the entire stepper.
    */
@@ -51,7 +51,7 @@ export const Stepper = memo(({
   children,
   separator,
   selectedStep = 0,
-  activeStepClass,
+  activeStepClassName,
   stepperClassName,
   headerClassName,
   contentClassName,
@@ -76,7 +76,7 @@ export const Stepper = memo(({
         if (child.type.name === 'StepHeader') {
           const headerClasses = classNames([
             { 'dcx-active-step': index === activeStep },
-            { [`${activeStepClass}`]: index === activeStep },
+            { [`${activeStepClassName}`]: index === activeStep },
             headerClassName,
           ]);
 

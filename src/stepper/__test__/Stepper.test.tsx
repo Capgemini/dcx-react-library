@@ -204,9 +204,9 @@ describe('Stepper Component', () => {
     expect(screen.getByText('Content 2').parentElement).toHaveClass('dcx-step');
   });
 
-  it('applies activeStepClass to the active step', () => {
+  it('applies activeStepClassName to the active step', () => {
     render(
-      <Stepper selectedStep={1} activeStepClass="custom-active-step">
+      <Stepper selectedStep={1} activeStepClassName="custom-active-step">
         <Step>
           <StepHeader>Step 1</StepHeader>
           <StepContent>Content 1</StepContent>
