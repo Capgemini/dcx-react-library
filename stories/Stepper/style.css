@@ -1,0 +1,254 @@
+/* Container */
+.stepper-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Header */
+.stepper-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: nowrap;
+}
+
+.step-header-item {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  position: relative;
+}
+
+.step-header-item.active {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.step-header-item.inactive {
+  color: #666;
+}
+
+.step-header-item.completed {
+  color: #28a745;
+}
+
+/* Step Number Container */
+.step-number-container {
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.54);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.step-header-item.completed .step-number-container {
+  background-color: #28a745;
+}
+
+.step-header-item.active .step-number-container {
+  background-color: #007bff;
+}
+
+/* Content */
+.step-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-content {
+  padding: 20px;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.nav-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.nav-button:hover {
+  background-color: #0056b3;
+}
+
+.nav-button.prev {
+  background-color: #6c757d;
+}
+
+.nav-button.prev:hover {
+  background-color: #5a6268;
+}
+
+.nav-button.next {
+  background-color: #28a745;
+}
+
+.nav-button.next:hover {
+  background-color: #218838;
+}
+
+.nav-button.submit {
+  background-color: #007bff;
+}
+
+.nav-button.submit:hover {
+  background-color: #0056b3;
+}
+
+/* Forms */
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-label {
+  width: 200px;
+  text-align: right;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.form-textarea {
+  resize: vertical;
+  height: 80px;
+}
+
+.form-checkbox {
+  margin-top: 10px;
+}
+
+/* Separator */
+.separator {
+  width: 100%;
+  border: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.custom-separator {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+
+/* custom separtator stepper */
+
+.stepper-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.stepper-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px; /* Adjust spacing between steps */
+  width: 150px; /* Set a fixed width for steps to ensure horizontal alignment */
+}
+
+.step-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px; /* Space between header and content */
+}
+
+.step-number-badge {
+  font-size: 24px;
+  background-color: #007bff;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.step-item.active .step-number-badge {
+  background-color: #28a745; /* Green for active step */
+}
+
+.step-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  text-align: center; /* Center content text */
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adjust spacing between buttons */
+  margin-top: 20px; /* More space above buttons */
+}
+
+.navigation-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px; /* Adjust button text size */
+}
+
+.navigation-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.navigation-button:disabled {
+  background-color: #cccccc; /* Grey when disabled */
+  cursor: not-allowed;
+}
+
+.separator-custom {
+  margin: 0 20px;
+  font-size: 24px;
+  color: #cccccc;
+}
