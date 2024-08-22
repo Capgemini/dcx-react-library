@@ -1,0 +1,36 @@
+/* Container for the basic stepper */
+.basic-stepper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Basic stepper specific styles */
+.basic-stepper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.basic-stepper__step {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.basic-stepper__step-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.basic-stepper__step-content {
+  margin-top: 10px;
+}
+
+.basic-body {
+  font-size: 16px;
+}
+

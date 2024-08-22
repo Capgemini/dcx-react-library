@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import {
   Stepper,
@@ -5,7 +6,9 @@ import {
   StepHeader,
   StepContent,
 } from '../../src/stepper';
-import './style.css';
+import './StepperDemo.css';
+import './VerticalStepper.css';
+import './BasicStepper.css';
 
 /**
  * In this section, we are using the Stepper component styled with custom style. Feel free to use your own CSS and style the Stepper component as you prefer.
@@ -24,192 +27,61 @@ export default {
 /**
  * By default, the Stepper is designed to have only one step active at a time.
  */
+
 export const BasicStepper = {
   name: 'Basic',
   render: function (args) {
+    const [activeStep, setActiveStep] = useState(0);
+
     return (
-      <Stepper className="govuk-stepper" {...args}>
-        <Step className="govuk-stepper__step" title="Step 1">
-          <StepHeader className="govuk-stepper__step-header">
-            Step 1: Introduction
-          </StepHeader>
-          <StepContent className="govuk-stepper__step-content">
-            <p className="govuk-body">
-              This is the content for Step 1: Introduction.
-            </p>
-          </StepContent>
-        </Step>
-        <Step className="govuk-stepper__step" title="Step 2">
-          <StepHeader className="govuk-stepper__step-header">
-            Step 2: Details
-          </StepHeader>
-          <StepContent className="govuk-stepper__step-content">
-            <p className="govuk-body">
-              This is the content for Step 2: Details.
-            </p>
-          </StepContent>
-        </Step>
-        <Step className="govuk-stepper__step" title="Step 3">
-          <StepHeader className="govuk-stepper__step-header">
-            Step 3: Confirmation
-          </StepHeader>
-          <StepContent className="govuk-stepper__step-content">
-            <p className="govuk-body">
-              This is the content for Step 3: Confirmation.
-            </p>
-          </StepContent>
-        </Step>
-      </Stepper>
+      <div className="basic-stepper-container">
+        <Stepper className="basic-stepper" {...args}>
+          <Step className={`basic-stepper__step ${activeStep === 0 ? 'active' : ''}`} title="Step 1">
+            <StepHeader className="basic-stepper__step-header">
+              Step 1: Introduction
+            </StepHeader>
+            <StepContent className="basic-stepper__step-content">
+              <p className="basic-body">
+                This is the content for Step 1: Introduction.
+              </p>
+            </StepContent>
+          </Step>
+          <Step className={`basic-stepper__step ${activeStep === 1 ? 'active' : ''}`} title="Step 2">
+            <StepHeader className="basic-stepper__step-header">
+              Step 2: Details
+            </StepHeader>
+            <StepContent className="basic-stepper__step-content">
+              <p className="basic-body">
+                This is the content for Step 2: Details.
+              </p>
+            </StepContent>
+          </Step>
+          <Step className={`basic-stepper__step ${activeStep === 2 ? 'active' : ''}`} title="Step 3">
+            <StepHeader className="basic-stepper__step-header">
+              Step 3: Confirmation
+            </StepHeader>
+            <StepContent className="basic-stepper__step-content">
+              <p className="basic-body">
+                This is the content for Step 3: Confirmation.
+              </p>
+            </StepContent>
+          </Step>
+        </Stepper>
+      </div>
     );
   },
   args: {
     activeStep: 0,
   },
 };
+
+
 
 /**
  * This component renders a vertical stepper with custom class names.
  */
 export const VerticalStepper = {
   name: 'Vertical Stepper',
-  render: function (args) {
-    const [activeStep, setActiveStep] = useState(0);
-
-    const handleStepChange = (step) => {
-      setActiveStep(step);
-    };
-
-    return (
-      <Stepper
-        orientation="vertical"
-        selectedStep={activeStep}
-        separator={<hr className="separator" />}
-      >
-        {args.steps.map((step, index) => (
-          <Step
-            key={index}
-            className={`step ${activeStep === index ? 'active' : ''}`}
-          >
-            <StepHeader className="step-header">
-              <div className="step-number" aria-label={`Step ${index + 1}`}>
-                {activeStep > index ? '✔️' : index + 1}
-              </div>
-              {step.header}
-            </StepHeader>
-            <StepContent className="step-content">
-              <div>{step.content}</div>
-              <div className="button-container">
-                {index > 0 && (
-                  <button
-                    onClick={() => handleStepChange(index - 1)}
-                    aria-label="Previous Step"
-                  >
-                    Prev
-                  </button>
-                )}
-                {index < args.steps.length - 1 && (
-                  <button
-                    onClick={() => handleStepChange(index + 1)}
-                    aria-label="Next Step"
-                  >
-                    Next
-                  </button>
-                )}
-              </div>
-            </StepContent>
-          </Step>
-        ))}
-      </Stepper>
-    );
-  },
-  args: {
-    activeStep: 0,
-    steps: [
-      {
-        header: 'Campaign Settings',
-        content: (
-          <div className="step-content">
-            <label className="form-label">
-              Campaign Name: <input type="text" name="campaignName" className="form-input" />
-            </label>
-            <label className="form-label">
-              Budget: <input type="number" name="budget" className="form-input" />
-            </label>
-            <label className="form-label">
-              Schedule: <input type="date" name="schedule" className="form-input" />
-            </label>
-          </div>
-        ),
-      },
-      {
-        header: 'Target Audience',
-        content: (
-          <div className="step-content">
-            <label className="form-label">
-              Age Range:
-              <select name="ageRange" className="form-select">
-                <option value="18-24">18-24</option>
-                <option value="25-34">25-34</option>
-                <option value="35-44">35-44</option>
-                <option value="45-54">45-54</option>
-                <option value="55-64">55-64</option>
-                <option value="65+">65+</option>
-              </select>
-            </label>
-            <label className="form-label">
-              Location: <input type="text" name="location" className="form-input" />
-            </label>
-            <label className="form-label">
-              Interests: <input type="text" name="interests" className="form-input" />
-            </label>
-          </div>
-        ),
-      },
-      {
-        header: 'Ad Design',
-        content: (
-          <div className="step-content">
-            <label className="form-label">
-              Ad Title: <input type="text" name="adTitle" className="form-input" />
-            </label>
-            <label className="form-label">
-              Ad Description: <textarea name="adDescription" className="form-textarea"></textarea>
-            </label>
-            <label className="form-label">
-              Call to Action:
-              <select name="callToAction" className="form-select">
-                <option value="buy_now">Buy Now</option>
-                <option value="learn_more">Learn More</option>
-                <option value="sign_up">Sign Up</option>
-              </select>
-            </label>
-          </div>
-        ),
-      },
-      {
-        header: 'Review & Submit',
-        content: (
-          <div className="step-content">
-            <p>
-              Please review your campaign settings, target audience, and ad design
-              before submitting.
-            </p>
-            <button type="submit" className="form-button">
-              Submit Campaign
-            </button>
-          </div>
-        ),
-      },
-    ],
-  },
-};
-
-
-/**
- * This component renders a horizontal stepper with a custom separator and custom class names.
- */
-export const CustomSeparatorStepper = {
-  name: 'Stepper with Custom Separator',
   render: function (args) {
     const [activeStep, setActiveStep] = useState(0);
 
@@ -222,31 +94,32 @@ export const CustomSeparatorStepper = {
     const isLastStep = activeStep === args.steps.length - 1;
 
     return (
-      <div className="stepper-wrapper">
+      <div className="custom-stepper-container">
         <Stepper
-          orientation="horizontal"
+          orientation="vertical" /* Ensure vertical orientation */
           selectedStep={activeStep}
-          separator={<span className="separator-custom">|</span>}
-          className="stepper-horizontal"
+          className="custom-stepper-horizontal"
         >
           {args.steps.map((step, index) => (
             <Step
               key={index}
-              className={`step-item ${activeStep === index ? 'active' : ''}`}
+              className={`custom-step-item ${activeStep === index ? 'custom-active' : ''}`}
             >
-              <StepHeader className="step-header-wrapper">
-                <div className="step-number-badge" aria-label={`Step ${index + 1}`}>
+              <StepHeader className="custom-step-header-wrapper">
+                <div className="custom-step-number-badge" aria-label={`Step ${index + 1}`}>
                   {activeStep > index ? '✔️' : index + 1}
                 </div>
-                {step.header}
+                <div className="custom-step-header-text">
+                  {step.header}
+                </div>
               </StepHeader>
-              <StepContent className="step-content-wrapper">
+              <StepContent className="custom-step-content-wrapper">
                 {step.content}
-                <div className="navigation-buttons">
+                <div className="custom-navigation-buttons">
                   <button
                     onClick={() => handleStepChange(index - 1)}
                     aria-label="Previous Step"
-                    className="navigation-button"
+                    className="custom-navigation-button"
                     disabled={index === 0}
                   >
                     Prev
@@ -255,7 +128,7 @@ export const CustomSeparatorStepper = {
                     <button
                       onClick={() => handleStepChange(index + 1)}
                       aria-label="Next Step"
-                      className="navigation-button"
+                      className="custom-navigation-button"
                     >
                       Next
                     </button>
@@ -264,7 +137,7 @@ export const CustomSeparatorStepper = {
                     <button
                       onClick={() => args.onSubmit && args.onSubmit()}
                       aria-label="Submit"
-                      className="navigation-button"
+                      className="custom-navigation-button custom-submit"
                     >
                       Submit
                     </button>
@@ -283,7 +156,7 @@ export const CustomSeparatorStepper = {
       {
         header: 'Campaign Settings',
         content: (
-          <div className="step-content-wrapper">
+          <div className="custom-step-content-wrapper">
             <p>Configure your campaign settings including name, budget, and schedule.</p>
           </div>
         ),
@@ -291,7 +164,7 @@ export const CustomSeparatorStepper = {
       {
         header: 'Target Audience',
         content: (
-          <div className="step-content-wrapper">
+          <div className="custom-step-content-wrapper">
             <p>Define your target audience by specifying age range, location, and interests.</p>
           </div>
         ),
@@ -299,7 +172,7 @@ export const CustomSeparatorStepper = {
       {
         header: 'Ad Design',
         content: (
-          <div className="step-content-wrapper">
+          <div className="custom-step-content-wrapper">
             <p>Design your ad by providing a title, description, and call to action.</p>
           </div>
         ),
@@ -307,7 +180,7 @@ export const CustomSeparatorStepper = {
       {
         header: 'Review & Submit',
         content: (
-          <div className="step-content-wrapper">
+          <div className="custom-step-content-wrapper">
             <p>Review all your settings and submit your campaign for approval.</p>
           </div>
         ),
@@ -316,6 +189,8 @@ export const CustomSeparatorStepper = {
     onSubmit: () => alert('Campaign Submitted!'),
   },
 };
+
+
 
 /**
  * This is a demo component for the Stepper with multiple form sections.
@@ -333,7 +208,7 @@ export const StepperDemo = {
       {
         header: 'Personal Information',
         content: (
-          <div className="step-content">
+          <div className="form">
             <div className="form-row">
               <label className="form-label">First Name:</label>
               <input type="text" name="firstName" className="form-input" aria-label="First Name" />
@@ -352,7 +227,7 @@ export const StepperDemo = {
       {
         header: 'Address Details',
         content: (
-          <div className="step-content">
+          <div className="form">
             <div className="form-row">
               <label className="form-label">Street Address:</label>
               <input type="text" name="streetAddress" className="form-input" aria-label="Street Address" />
@@ -375,7 +250,7 @@ export const StepperDemo = {
       {
         header: 'Payment Information',
         content: (
-          <div className="step-content">
+          <div className="form">
             <div className="form-row">
               <label className="form-label">Credit Card Number:</label>
               <input type="text" name="cardNumber" className="form-input" aria-label="Credit Card Number" />
@@ -394,7 +269,7 @@ export const StepperDemo = {
       {
         header: 'Shipping Details',
         content: (
-          <div className="step-content">
+          <div className="form">
             <div className="form-row">
               <label className="form-label">Shipping Method:</label>
               <select name="shippingMethod" className="form-select" aria-label="Shipping Method">
@@ -412,7 +287,7 @@ export const StepperDemo = {
       {
         header: 'Review and Submit',
         content: (
-          <div className="step-content">
+          <div className="form">
             <div className="form-row">
               <label className="form-label">Comments:</label>
               <textarea name="comments" className="form-textarea" aria-label="Comments"></textarea>
@@ -428,58 +303,57 @@ export const StepperDemo = {
 
     return (
       <div className="stepper-container">
-        <div className="stepper-header">
+        <Stepper className="stepper" selectedStep={activeStep} orientation="horizontal">
           {steps.map((step, index) => (
-            <div
+            <Step
               key={index}
               className={`step-header-item ${activeStep > index ? 'completed' : activeStep === index ? 'active' : 'inactive'}`}
               onClick={() => handleStepChange(index)}
               aria-label={`Step ${index + 1}`}
             >
-              <div className="step-number-container">
-                {activeStep > index ? '✔️' : index + 1}
-              </div>
-              <div className="step-header-text">
-                {step.header}
-              </div>
-            </div>
+              <StepHeader className="step-header">
+                <div className="step-number-container">
+                  {activeStep > index ? '✔️' : index + 1}
+                </div>
+                <div className="step-header-text">
+                  {step.header}
+                </div>
+              </StepHeader>
+              <StepContent className="step-content-wrapper">
+                {step.content}
+              </StepContent>
+            </Step>
           ))}
-        </div>
+        </Stepper>
 
-        <div className="step-content-wrapper">
-          <div className="step-content">
-            {steps[activeStep].content}
-          </div>
-
-          <div className="button-container">
-            {activeStep > 0 && (
-              <button
-                className="nav-button prev"
-                onClick={() => handleStepChange(activeStep - 1)}
-                aria-label="Previous Step"
-              >
-                &lt;
-              </button>
-            )}
-            {activeStep < steps.length - 1 && (
-              <button
-                className="nav-button next"
-                onClick={() => handleStepChange(activeStep + 1)}
-                aria-label="Next Step"
-              >
-                &gt;
-              </button>
-            )}
-            {activeStep === steps.length - 1 && (
-              <button
-                className="nav-button submit"
-                onClick={() => alert('Form Submitted')}
-                aria-label="Submit Form"
-              >
-                Submit
-              </button>
-            )}
-          </div>
+        <div className="button-container">
+          {activeStep > 0 && (
+            <button
+              className="nav-button prev"
+              onClick={() => handleStepChange(activeStep - 1)}
+              aria-label="Previous Step"
+            >
+              &lt;
+            </button>
+          )}
+          {activeStep < steps.length - 1 && (
+            <button
+              className="nav-button next"
+              onClick={() => handleStepChange(activeStep + 1)}
+              aria-label="Next Step"
+            >
+              &gt;
+            </button>
+          )}
+          {activeStep === steps.length - 1 && (
+            <button
+              className="nav-button submit"
+              onClick={() => alert('Form Submitted')}
+              aria-label="Submit Form"
+            >
+              Submit
+            </button>
+          )}
         </div>
       </div>
     );

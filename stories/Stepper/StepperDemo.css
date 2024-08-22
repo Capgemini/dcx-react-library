@@ -1,0 +1,139 @@
+.stepper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.dcx-stepper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.dcx-horizontal-stepper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.dcx-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+  flex: 1;
+  text-align: center;
+}
+
+.step-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 10px;
+}
+
+.step-header .step-number-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ddd;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.step-header .step-number-container.completed,
+.step-header .step-number-container.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.step-header .step-header-text {
+  font-size: 14px;
+  text-align: center;
+}
+
+.dcx-step .dcx-stepper-content {
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.nav-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #0056b3;
+}
+
+.nav-button.submit {
+  background-color: #28a745;
+}
+
+.nav-button.submit:hover {
+  background-color: #218838;
+}
+
+/* Forms */
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-label {
+  width: 200px;
+  text-align: right;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.form-textarea {
+  resize: vertical;
+  height: 80px;
+}
+
+.form-checkbox {
+  margin-top: 10px;
+}

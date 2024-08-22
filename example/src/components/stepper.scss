@@ -1,127 +1,85 @@
-.stepper-container {
-  max-width: 800px;
-  margin: 0 auto;
+.stepper-demo {
   padding: 20px;
-  text-align: center;
 }
 
-.stepper-header {
+.dcx-horizontal-stepper {
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   flex-wrap: nowrap;
 }
 
-.step-header-item {
-  flex: 1;
-  text-align: center;
-  cursor: pointer;
+.dcx-vertical-stepper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 10px;
-  position: relative;
+  margin-right: 20px;
 }
 
-.step-header-item.active {
-  color: #007bff;
+.step-header {
+  display: flex;
+  align-items: center;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.step-header-item.inactive {
-  color: #666;
-}
-
-.step-header-item.completed {
-  color: #28a745;
-}
-
-.step-number-container {
-  width: 30px;
-  height: 30px;
+.step-number {
+  width: 25px;
+  height: 25px;
   color: white;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.54);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-}
-
-.step-header-item.completed .step-number-container {
-  background-color: #28a745;
-}
-
-.step-header-item.active .step-number-container {
-  background-color: #007bff;
-}
-
-.step-content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-right: 10px;
 }
 
 .step-content {
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  max-width: 600px;
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.separator,
+.custom-separator {
+  margin: 0 10px;
+  border: 0;
+  height: 1px;
+  background: #ccc;
 }
 
 .button-container {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between;
+  margin-top: 15px;
+  width: 100%;
 }
 
-.nav-button {
+.button-container button {
   padding: 8px 16px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 18px;
 }
 
-.nav-button:hover {
+.button-container button:hover {
   background-color: #0056b3;
-}
-
-.nav-button.prev {
-  background-color: #6c757d;
-}
-
-.nav-button.prev:hover {
-  background-color: #5a6268;
-}
-
-.nav-button.next {
-  background-color: #28a745;
-}
-
-.nav-button.next:hover {
-  background-color: #218838;
-}
-
-.nav-button.submit {
-  background-color: #007bff;
-}
-
-.nav-button.submit:hover {
-  background-color: #0056b3;
-}
-
-.form-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
 }
 
 .form-label {
-  width: 200px;
-  text-align: right;
-  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
   font-weight: bold;
 }
 
@@ -129,16 +87,19 @@
 .form-select,
 .form-textarea {
   padding: 8px;
+  margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  flex: 1;
-}
-
-.form-textarea {
-  resize: vertical;
-  height: 80px;
 }
 
 .form-checkbox {
   margin-top: 10px;
+}
+
+.step-separator {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 20px 0;
+  width: 100%;
 }

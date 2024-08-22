@@ -1,0 +1,91 @@
+/* Container for the vertical stepper */
+.custom-stepper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+/* Vertical stepper specific styles */
+.custom-stepper-horizontal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.custom-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.custom-step-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: bold;
+  width: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.custom-step-number-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ddd;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.custom-step-header-text {
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.custom-step-content-wrapper {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.custom-navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.custom-navigation-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px;
+}
+
+.custom-navigation-button:hover {
+  background-color: #0056b3;
+}
+
+.custom-navigation-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.custom-navigation-button.custom-submit {
+  background-color: #28a745;
+}
+
+.custom-navigation-button.custom-submit:hover {
+  background-color: #218838;
+}

@@ -26,14 +26,14 @@ const StepperDemo: React.FC = () => {
       content: (
         <div className="step-content">
           <label className="form-label">
-            Campaign Name:{' '}
+            Campaign Name:
             <input type="text" name="campaignName" className="form-input" />
           </label>
           <label className="form-label">
             Budget: <input type="number" name="budget" className="form-input" />
           </label>
           <label className="form-label">
-            Schedule:{' '}
+            Schedule:
             <input type="date" name="schedule" className="form-input" />
           </label>
         </div>
@@ -55,11 +55,11 @@ const StepperDemo: React.FC = () => {
             </select>
           </label>
           <label className="form-label">
-            Location:{' '}
+            Location:
             <input type="text" name="location" className="form-input" />
           </label>
           <label className="form-label">
-            Interests:{' '}
+            Interests:
             <input type="text" name="interests" className="form-input" />
           </label>
         </div>
@@ -70,11 +70,11 @@ const StepperDemo: React.FC = () => {
       content: (
         <div className="step-content">
           <label className="form-label">
-            Ad Title:{' '}
+            Ad Title:
             <input type="text" name="adTitle" className="form-input" />
           </label>
           <label className="form-label">
-            Ad Description:{' '}
+            Ad Description:
             <textarea name="adDescription" className="form-textarea"></textarea>
           </label>
           <label className="form-label">
@@ -110,7 +110,7 @@ const StepperDemo: React.FC = () => {
       content: (
         <div className="step-content">
           <label className="form-label">
-            Product Name:{' '}
+            Product Name:
             <input
               type="text"
               name="productName"
@@ -119,7 +119,7 @@ const StepperDemo: React.FC = () => {
             />
           </label>
           <label className="form-label">
-            Quantity:{' '}
+            Quantity:
             <input
               type="number"
               name="quantity"
@@ -128,7 +128,7 @@ const StepperDemo: React.FC = () => {
             />
           </label>
           <label className="form-label">
-            Price:{' '}
+            Price:
             <input
               type="number"
               name="price"
@@ -155,7 +155,7 @@ const StepperDemo: React.FC = () => {
             </select>
           </label>
           <label className="form-label">
-            Address:{' '}
+            Address:
             <input
               type="text"
               name="address"
@@ -171,7 +171,7 @@ const StepperDemo: React.FC = () => {
       content: (
         <div className="step-content">
           <label className="form-label">
-            Credit Card Number:{' '}
+            Credit Card Number:
             <input
               type="text"
               name="cardNumber"
@@ -180,7 +180,7 @@ const StepperDemo: React.FC = () => {
             />
           </label>
           <label className="form-label">
-            Expiration Date:{' '}
+            Expiration Date:
             <input
               type="month"
               name="expirationDate"
@@ -189,7 +189,7 @@ const StepperDemo: React.FC = () => {
             />
           </label>
           <label className="form-label">
-            CVV:{' '}
+            CVV:
             <input
               type="text"
               name="cvv"
@@ -205,7 +205,7 @@ const StepperDemo: React.FC = () => {
       content: (
         <div className="step-content">
           <label className="form-label">
-            Street Address:{' '}
+            Street Address:
             <input
               type="text"
               name="billingStreet"
@@ -214,7 +214,7 @@ const StepperDemo: React.FC = () => {
             />
           </label>
           <label className="form-label">
-            City:{' '}
+            City:
             <input
               type="text"
               name="billingCity"
@@ -223,7 +223,7 @@ const StepperDemo: React.FC = () => {
             />
           </label>
           <label className="form-label">
-            County:{' '}
+            County:
             <input
               type="text"
               name="billingState"
@@ -232,7 +232,7 @@ const StepperDemo: React.FC = () => {
             />
           </label>
           <label className="form-label">
-            Post Code:{' '}
+            Post Code:
             <input
               type="text"
               name="billingZip"
@@ -248,7 +248,7 @@ const StepperDemo: React.FC = () => {
       content: (
         <div className="step-content">
           <label className="form-label">
-            Order Notes:{' '}
+            Order Notes:
             <textarea
               name="orderNotes"
               className="form-textarea"
@@ -256,7 +256,7 @@ const StepperDemo: React.FC = () => {
             ></textarea>
           </label>
           <label className="form-label">
-            Agree to Terms:{' '}
+            Agree to Terms:
             <input
               type="checkbox"
               name="terms"

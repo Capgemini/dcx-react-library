@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Step } from '../Step';
 
@@ -21,5 +21,16 @@ describe('Step', () => {
     );
     expect(getByText('Step 1')).toBeInTheDocument();
     expect(getByText('Step 2')).toBeInTheDocument();
+  });
+
+  it('applies additional props correctly', () => {
+    render(
+      <Step className="custom-step" data-testid="step">
+        {[<div>Step 1</div>]}
+      </Step>
+    );
+
+    const stepElement = screen.getByTestId('step');
+    expect(stepElement).toHaveClass('custom-step');
   });
 });
