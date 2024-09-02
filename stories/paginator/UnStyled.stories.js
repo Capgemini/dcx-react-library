@@ -14,12 +14,15 @@ export default {
  * For a list of all the possible usage please look the Class based folder
  */
 export const Unstyled = {
+  name: 'Un-styled',
   args: {
+    paginatorSectionClassName: '',
+    paginatorClassName: '',
     currentPage: {
-      page: 10,
+      page: 5,
       className: '',
     },
-    totalPages: 20,
+    totalPages: 18,
     previousButton: {
       text: '< Previous ',
       className: '',
@@ -28,6 +31,6 @@ export const Unstyled = {
       text: 'Next >',
       className: '',
     },
-    pageNumbersClassName: 'buttons',
+    pageNumbersClassName: '',
   },
 };
