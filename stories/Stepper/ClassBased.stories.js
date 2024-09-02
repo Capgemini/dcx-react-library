@@ -8,7 +8,6 @@ import {
 } from '../../src/stepper';
 import './StepperDemo.css';
 import './VerticalStepper.css';
-import './BasicStepper.css';
 
 /**
  * In this section, we are using the Stepper component styled with custom style. Feel free to use your own CSS and style the Stepper component as you prefer.
@@ -29,44 +28,83 @@ export default {
  */
 
 export const BasicStepper = {
-  name: 'Basic',
+  name: 'Horizontal Stepper',
   render: function (args) {
     const [activeStep, setActiveStep] = useState(0);
 
+    const handleStepChange = (step) => {
+      setActiveStep(step);
+    };
+
+    const steps = [
+      {
+        header: 'Introduction',
+        content: 'This is the content for the Introduction step.',
+      },
+      {
+        header: 'Details',
+        content: 'This is the content for the Details step.',
+      },
+      {
+        header: 'Confirmation',
+        content: 'This is the content for the Confirmation step.',
+      },
+    ];
+
     return (
-      <div className="basic-stepper-container">
-        <Stepper className="basic-stepper" {...args}>
-          <Step className={`basic-stepper__step ${activeStep === 0 ? 'active' : ''}`} title="Step 1">
-            <StepHeader className="basic-stepper__step-header">
-              Step 1: Introduction
-            </StepHeader>
-            <StepContent className="basic-stepper__step-content">
-              <p className="basic-body">
-                This is the content for Step 1: Introduction.
-              </p>
-            </StepContent>
-          </Step>
-          <Step className={`basic-stepper__step ${activeStep === 1 ? 'active' : ''}`} title="Step 2">
-            <StepHeader className="basic-stepper__step-header">
-              Step 2: Details
-            </StepHeader>
-            <StepContent className="basic-stepper__step-content">
-              <p className="basic-body">
-                This is the content for Step 2: Details.
-              </p>
-            </StepContent>
-          </Step>
-          <Step className={`basic-stepper__step ${activeStep === 2 ? 'active' : ''}`} title="Step 3">
-            <StepHeader className="basic-stepper__step-header">
-              Step 3: Confirmation
-            </StepHeader>
-            <StepContent className="basic-stepper__step-content">
-              <p className="basic-body">
-                This is the content for Step 3: Confirmation.
-              </p>
-            </StepContent>
-          </Step>
+      <div className="stepper-container">
+        <Stepper className="stepper" selectedStep={activeStep} orientation="horizontal">
+          {steps.map((step, index) => (
+            <Step
+              key={index}
+              className='step-header-item'
+              onClick={() => handleStepChange(index)}
+              aria-label={`Step ${index + 1}`}
+            >
+              <StepHeader className="step-header">
+                <div className={`step-number-container ${activeStep > index ? 'completed' : activeStep === index ? 'active' : 'inactive'}`}>
+                  {activeStep > index ? '✔️' : index + 1}
+                </div>
+                <div className="step-header-text">
+                  {step.header}
+                </div>
+              </StepHeader>
+              <StepContent className="step-content-wrapper">
+                {step.content}
+              </StepContent>
+            </Step>
+          ))}
         </Stepper>
+
+        <div className="button-container">
+          {activeStep > 0 && (
+            <button
+              className="nav-button prev"
+              onClick={() => handleStepChange(activeStep - 1)}
+              aria-label="Previous Step"
+            >
+              Back
+            </button>
+          )}
+          {activeStep < steps.length - 1 && (
+            <button
+              className="nav-button next"
+              onClick={() => handleStepChange(activeStep + 1)}
+              aria-label="Next Step"
+            >
+              Next
+            </button>
+          )}
+          {activeStep === steps.length - 1 && (
+            <button
+              className="nav-button submit"
+              onClick={() => alert('Form Submitted')}
+              aria-label="Submit Form"
+            >
+              Submit
+            </button>
+          )}
+        </div>
       </div>
     );
   },
@@ -74,9 +112,6 @@ export const BasicStepper = {
     activeStep: 0,
   },
 };
-
-
-
 /**
  * This component renders a vertical stepper with custom class names.
  */
@@ -307,12 +342,12 @@ export const StepperDemo = {
           {steps.map((step, index) => (
             <Step
               key={index}
-              className={`step-header-item ${activeStep > index ? 'completed' : activeStep === index ? 'active' : 'inactive'}`}
+              className='step-header-item'
               onClick={() => handleStepChange(index)}
               aria-label={`Step ${index + 1}`}
             >
               <StepHeader className="step-header">
-                <div className="step-number-container">
+                <div className={`step-number-container ${activeStep > index ? 'completed' : activeStep === index ? 'active' : 'inactive'}`}>
                   {activeStep > index ? '✔️' : index + 1}
                 </div>
                 <div className="step-header-text">
