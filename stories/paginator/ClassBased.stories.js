@@ -16,12 +16,13 @@ export default {
 export const Basic = {
   name: 'Basic',
   args: {
-    paginatorClassName: 'paginator-container',
+    paginatorSectionClassName: 'paginator-container',
+    paginatorClassName: 'paginator',
     currentPage: {
       page: 7,
       className: 'current-page',
     },
-    totalPages: 10,
+    totalPages: 18,
     previousButton: {
       text: '< Previous ',
       className: 'previous-button',
