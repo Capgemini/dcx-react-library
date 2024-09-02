@@ -1,0 +1,42 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs';
+import * as PaginatorStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Layout/Paginator/Documentation" />
+
+# Paginator
+
+Paginator component ready to use in your project  
+Paginator is a UI/UX agnostic component so you need to provide your style to create the look and feel that you need.  
+Use the Paginator component to efficiently navigate through content spread across multiple pages, ensuring users can easily access relevant information without overwhelming them with too much data at once.  
+When you import the Paginator component without providing any className or style associated will looks as following:
+
+<Canvas of={PaginatorStories.Unstyled} />
+
+An example with all the available properties is:
+
+```jsx
+<Paginator
+  paginatorSectionClassName=""
+  paginatorClassName=""
+  currentPage={{
+    page: 5,
+    className: '',
+  }}
+  totalPages={10}
+  previousButton={{
+    text: 'Prev',
+    className: '',
+  }}
+  nextButton={{
+    text: 'Next',
+    className: '',
+  }}
+  pageNumbersClassName=""
+/>
+```
+
+## Properties
+
+described below are the list of all the available properties of a Paginator component, the one marked with (\*) are mandatory the other instead are optional.
+
+<ArgTypes of={PaginatorStories} />
