@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-import { pageHandler } from './helper';
+import { calculatePageNumbers, pageHandler } from './helper';
 
 interface IControlButton {
   text: string;
@@ -14,9 +13,13 @@ type PaginatorProps = {
   /**
    * Optional CSS class names
    */
+  paginatorSectionClassName?: string;
+  /**
+   * Optional CSS class names
+   */
   paginatorClassName?: string;
   /**
-   * Current page number
+   * Current page object that includes current page number and className
    */
   currentPage: ICurrentButton;
   /**
@@ -24,11 +27,11 @@ type PaginatorProps = {
    */
   totalPages: number;
   /**
-   * Previous button text
+   * Previous button object that includes button text and className
    */
   previousButton: IControlButton;
   /**
-   * Next button text
+   * Next button object that includes button text and className
    */
   nextButton: IControlButton;
   /**
@@ -38,6 +41,7 @@ type PaginatorProps = {
 };
 
 export const Paginator: React.FC<PaginatorProps> = ({
+  paginatorSectionClassName,
   paginatorClassName,
   currentPage,
   totalPages,
@@ -47,61 +51,60 @@ export const Paginator: React.FC<PaginatorProps> = ({
 }: PaginatorProps): JSX.Element => {
   const [current, setCurrent] = useState<ICurrentButton>(currentPage);
 
-  const calculatePageNumbers = (
-    currentPage: number,
-    totalPages: number
-  ): (number | string)[] => {
-    const pageNumbers: (number | string)[] = [];
-    const firstPage = 1;
-    const lastPage = totalPages;
-
-    const startPage = Math.max(currentPage - 1, firstPage);
-    const endPage = Math.min(currentPage + 1, lastPage);
-
-    if (startPage > firstPage + 1) {
-      pageNumbers.push(firstPage, '...');
-    } else if (startPage === firstPage + 1) {
-      pageNumbers.push(firstPage);
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      pageNumbers.push(i);
-    }
-
-    if (endPage < lastPage - 1) {
-      pageNumbers.push('...', lastPage);
-    } else if (endPage === lastPage - 1) {
-      pageNumbers.push(lastPage);
-    }
-
-    return pageNumbers;
-  };
-
   const pages = calculatePageNumbers(current.page, totalPages);
-  console.log(pages[0]);
+
   return (
-    <section className={paginatorClassName}>
-      <div className={previousButton.className}>{previousButton.text}</div>
-      {pages.map((page, index) =>
-        typeof page === 'number' ? (
-          <div
-            key={index}
-            className={
-              page === current.page
-                ? `${pageNumbersClassName} ${current.className}`
-                : pageNumbersClassName
+    <section className={paginatorSectionClassName}>
+      <div className={paginatorClassName}>
+        <div
+          className={previousButton.className}
+          onClick={() => {
+            if (current.page > 1) {
+              pageHandler(
+                { page: current.page - 1, className: currentPage.className },
+                setCurrent
+              );
             }
-            onClick={() =>
-              pageHandler({ page, className: 'current-page' }, setCurrent)
+          }}
+        >
+          {previousButton.text}
+        </div>
+        {pages.map((page, index) =>
+          typeof page === 'number' ? (
+            <div
+              key={index}
+              className={
+                page === current.page
+                  ? `${pageNumbersClassName} ${current.className}`
+                  : pageNumbersClassName
+              }
+              onClick={() =>
+                pageHandler(
+                  { page, className: currentPage.className },
+                  setCurrent
+                )
+              }
+            >
+              {page}
+            </div>
+          ) : (
+            <span key={index}>{page}</span>
+          )
+        )}
+        <div
+          className={nextButton.className}
+          onClick={() => {
+            if (current.page < totalPages) {
+              pageHandler(
+                { page: current.page + 1, className: currentPage.className },
+                setCurrent
+              );
             }
-          >
-            {page}
-          </div>
-        ) : (
-          <span key={index}>{page}</span>
-        )
-      )}
-      <div className={nextButton.className}>{nextButton.text}</div>
+          }}
+        >
+          {nextButton.text}
+        </div>
+      </div>
     </section>
   );
 };
