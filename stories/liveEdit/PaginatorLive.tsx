@@ -7,19 +7,20 @@ const PaginatorDemo = `
 function PaginatorDemo() {
   return (
     <Paginator 
-    paginatorClassName= ""
-    currentPage = {
-      page: 5,
-      className: ""
+    paginatorSectionClassName="paginator-container"
+    paginatorClassName="paginator"
+    currentPage={{
+      page:5,
+      className:"current-page"}
     }
-    totalPages = {10}
-    previousButton = {
-      text: "test back",
-      className: ""
-    }
-    nextButton = {
-      text: "test next",
-      calssName: ""
+    totalPages ={10}
+    previousButton={{
+      text:"Pre",
+      className:"previous-button"
+    }}
+    nextButton ={{
+      text:"Next",
+      className:"next-button"}
     }
     pageNumbersClassName = "buttons"
     />
