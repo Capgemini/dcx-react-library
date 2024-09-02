@@ -9,7 +9,8 @@ export const PaginatorDemo: React.FC<ReactElement> = () => {
       nextButton={{ text: 'Next >', className: 'next-button' }}
       previousButton={{ text: '< Previous', className: 'previous-button' }}
       totalPages={10}
-      paginatorClassName="paginator-container"
+      paginatorSectionClassName="paginator-container"
+      paginatorClassName="paginator"
       pageNumbersClassName="buttons"
     />
   );
