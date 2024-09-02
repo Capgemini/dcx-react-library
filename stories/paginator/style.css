@@ -1,10 +1,13 @@
 .paginator-container {
-  width: 100%;
-  border: 2px solid rgb(188, 188, 188);
+  display: flex;
+  justify-content: center;
+}
+.paginator {
   display: flex;
   font-size: 1rem;
   cursor: pointer;
   align-items: center;
+  border: 2px solid rgb(188, 188, 188);
 }
 .previous-button,
 .next-button {
