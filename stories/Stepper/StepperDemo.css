@@ -37,15 +37,9 @@
   flex: 1;
   text-align: center;
   padding: 10px;
-  background-color: #ffffff;
   border-radius: 4px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease-in-out;
 }
 
-.dcx-step:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
 
 .step-header {
   display: flex;
@@ -55,7 +49,7 @@
   border: none;
   background: none;
   padding: 10px;
-  transition: color 0.3s ease;
+  
 }
 
 .step-header .step-number-container {
@@ -65,7 +59,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #9494b8;
+  background-color: #D1D0CE;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -112,7 +106,6 @@
   border-radius: 4px;
   cursor: pointer;
   margin: 0 5px;
-  transition: background-color 0.3s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -151,7 +144,6 @@
   border-radius: 4px;
   flex: 1;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s ease;
 }
 
 .form-input:focus,

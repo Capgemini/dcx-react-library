@@ -141,7 +141,7 @@ export const VerticalStepper = {
               className={`custom-step-item ${activeStep === index ? 'custom-active' : ''}`}
             >
               <StepHeader className="custom-step-header-wrapper">
-                <div className="custom-step-number-badge" aria-label={`Step ${index + 1}`}>
+                <div className={`custom-step-number-badge ${activeStep > index ? 'completed' : activeStep === index ? 'active' : 'inactive'}`} aria-label={`Step ${index + 1}`}>
                   {activeStep > index ? '✔️' : index + 1}
                 </div>
                 <div className="custom-step-header-text">

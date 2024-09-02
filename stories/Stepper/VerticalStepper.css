@@ -39,6 +39,7 @@
   flex-direction: row;
   align-items: center;
   font-weight: bold;
+  border: none;
   width: 100%;
   padding: 8px 0;
   box-sizing: border-box;
@@ -52,12 +53,18 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: #1976d2;
+  background-color: #D1D0CE;
   color: white;
   font-size: 16px;
   font-weight: bold;
   margin-right: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-step-header-wrapper .custom-step-number-badge.completed,
+.custom-step-header-wrapper .custom-step-number-badge.active {
+  background-color: #1976d2;
+  color: white;
 }
 
 .custom-step-header-text {
