@@ -68,12 +68,12 @@ export const Stepper = memo(({
   const steps: JSX.Element[] = [];
 
   Children.forEach(children, (child, index) => {
-    if (child?.type?.name === 'Step') {
+    if (child.type.name === 'Step') {
       let stepHeader: JSX.Element | null = null;
       let stepContent: JSX.Element | null = null;
 
       Children.forEach(child.props.children, (child) => {
-        if (child?.type?.name === 'StepHeader') {
+        if (child.type.name === 'StepHeader') {
           const headerClasses = classNames([
             { 'dcx-active-step': index === activeStep },
             { [`${activeStepClassName}`]: index === activeStep },
@@ -90,7 +90,7 @@ export const Stepper = memo(({
             tabIndex: index === activeStep ? '0' : '-1',
             onClick: () => onClickHandler(index),
           });
-        } else if (child?.type?.name === 'StepContent') {
+        } else if (child.type.name === 'StepContent') {
           stepContent = cloneElement(child, {
             key: `content-${index}`,
             className: contentClassName,

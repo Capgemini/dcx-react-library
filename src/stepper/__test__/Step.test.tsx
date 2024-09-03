@@ -26,7 +26,7 @@ describe('Step', () => {
   it('applies additional props correctly', () => {
     render(
       <Step className="custom-step" data-testid="step">
-        {[<div>Step 1</div>]}
+        {[<div key='1'>Step 1</div>]}
       </Step>
     );
 

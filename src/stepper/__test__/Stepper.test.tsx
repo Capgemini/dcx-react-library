@@ -169,6 +169,35 @@ describe('Stepper Component', () => {
     expect(screen.getByText('Content 1')).toBeInTheDocument();
   });
 
+  it('handles Step with no StepHeader or StepContent', () => {
+    render(
+      <Stepper selectedStep={1}>
+        {[
+          <Step key={1}>
+            {/* No StepHeader or StepContent */}
+            <></>
+            <></>
+          </Step>
+        ]}
+      </Stepper>
+    );
+
+    expect(screen.queryByText('Step 1')).not.toBeInTheDocument();
+    expect(screen.queryByText('Content 2')).not.toBeInTheDocument();
+  });
+
+  it('Stepper ignores non-Step child component', () => {
+    render(
+      <Stepper selectedStep={1}>
+        <p>Hello</p>
+        <div>Non-Step Component</div>
+      </Stepper>
+    );
+  
+    expect(screen.queryByText('Hello')).not.toBeInTheDocument();
+    expect(screen.queryByText('Non-Step Component')).not.toBeInTheDocument();
+  });
+
   it('handles out of bounds selectedStep prop', () => {
     render(
       <Stepper selectedStep={3}>
