@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { calculatePageNumbers, pageHandler } from './helper';
 
-interface IControlButton {
+export interface IControlButton {
   text: string;
   className: string;
 }
@@ -9,7 +9,7 @@ export interface ICurrentButton {
   page: number;
   className: string;
 }
-type PaginatorProps = {
+export type PaginatorProps = {
   /**
    * Optional CSS class names
    */
