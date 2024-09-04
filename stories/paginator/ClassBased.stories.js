@@ -18,10 +18,8 @@ export const Basic = {
   args: {
     paginatorSectionClassName: 'paginator-container',
     paginatorClassName: 'paginator',
-    currentPage: {
-      page: 2,
-      className: 'current-page',
-    },
+    currentPage: 2,
+    currentClassName: 'current-page',
     totalPages: 7,
     previousButton: {
       text: '< Previous ',

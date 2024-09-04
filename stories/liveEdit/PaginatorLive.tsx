@@ -9,10 +9,8 @@ function PaginatorDemo() {
     <Paginator 
     paginatorSectionClassName="paginator-container"
     paginatorClassName="paginator"
-    currentPage={{
-      page:5,
-      className:"current-page"}
-    }
+    currentPage={5}
+    currentPageClassName="current-page"
     totalPages ={10}
     previousButton={{
       text:"Pre",

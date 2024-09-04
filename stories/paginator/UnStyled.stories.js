@@ -18,10 +18,8 @@ export const Unstyled = {
   args: {
     paginatorSectionClassName: '',
     paginatorClassName: '',
-    currentPage: {
-      page: 5,
-      className: '',
-    },
+    currentPage: 5,
+    currentPageClassName: '',
     totalPages: 18,
     previousButton: {
       text: '< Previous ',

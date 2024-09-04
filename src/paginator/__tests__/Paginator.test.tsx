@@ -35,7 +35,8 @@ const renderPaginator = (props: Partial<PaginatorProps> = {}) => {
   const defaultProps: PaginatorProps = {
     paginatorSectionClassName: '',
     paginatorClassName: '',
-    currentPage: { page: 1, className: 'current-page' },
+    currentPage: 1,
+    currentPageClassName: 'current-page',
     totalPages: 10,
     previousButton: { text: 'Pre', className: 'prev-button' },
     nextButton: { text: 'Next', className: 'next-button' },
@@ -69,20 +70,18 @@ test('clicking next button moves to the next page', () => {
 
   const nextButton = screen.getByText('Next');
   fireEvent.click(nextButton);
+  expect(pageHandler).toHaveBeenCalledWith(2, expect.any(Function));
 
   expect(screen.getByText('2')).toHaveClass('current-page');
 });
 test('clicking Prev button moves to the previous page', () => {
   renderPaginator({
-    currentPage: { page: 4, className: 'current-page' },
+    currentPage: 4,
   });
 
   const prevButton = screen.getByText('Pre');
   fireEvent.click(prevButton);
-  expect(pageHandler).toHaveBeenCalledWith(
-    { page: 3, className: 'current-page' },
-    expect.any(Function)
-  );
+  expect(pageHandler).toHaveBeenCalledWith(3, expect.any(Function));
 
   expect(screen.getByText('3')).toHaveClass('current-page');
 });
@@ -98,7 +97,7 @@ test('clicking on a specific page number updates the active page', () => {
 
 test('renders paginator with last page active', () => {
   renderPaginator({
-    currentPage: { page: 10, className: 'current-page' },
+    currentPage: 10,
   });
 
   expect(screen.getByText('Pre')).toBeInTheDocument();
@@ -122,7 +121,7 @@ test('clicking previous button when on first page does not change the page', () 
 
 test('clicking next button when on last page does not change the page', () => {
   renderPaginator({
-    currentPage: { page: 10, className: 'current-page' },
+    currentPage: 10,
   });
 
   const nextButton = screen.getByText('Next');

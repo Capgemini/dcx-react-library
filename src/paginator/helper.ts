@@ -1,13 +1,11 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import { ICurrentButton } from './Paginator';
-
 export const pageHandler = (
-  page: ICurrentButton,
-  setCurrent: Dispatch<SetStateAction<ICurrentButton>>
+  page: number,
+  setCurrent: Dispatch<SetStateAction<number>>
 ): number => {
   setCurrent(page);
-  return page.page;
+  return page;
 };
 export const calculatePageNumbers = (
   currentPage: number,
