@@ -11,11 +11,11 @@ export interface ICurrentButton {
 }
 export type PaginatorProps = {
   /**
-   * Optional CSS class names
+   * Optional CSS class name belongs to section tag(parent) that includes paginator div inside.
    */
   paginatorSectionClassName?: string;
   /**
-   * Optional CSS class names
+   * Optional CSS class name for paginator div that can controll the paginator and the buttons inside.
    */
   paginatorClassName?: string;
   /**
