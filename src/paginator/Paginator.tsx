@@ -28,13 +28,21 @@ export type PaginatorProps = {
    */
   totalPages: number;
   /**
-   * Previous button object that includes button text and className
+   * Previous button content
    */
-  previousButton: IControlButton;
+  previousButton: JSX.Element;
   /**
-   * Next button object that includes button text and className
+   * Next button content
    */
-  nextButton: IControlButton;
+  nextButton: JSX.Element;
+  /**
+   * Paginator next button className
+   */
+  nextButtonClassName?: string;
+  /**
+   * Previous button className
+   */
+  previousButtonClassName?: string;
   /**
    * general className for page number buttons within the paginator component
    */
@@ -50,6 +58,8 @@ export const Paginator: React.FC<PaginatorProps> = ({
   previousButton,
   nextButton,
   pageNumbersClassName,
+  previousButtonClassName,
+  nextButtonClassName,
 }: PaginatorProps): JSX.Element => {
   const [current, setCurrent] = useState<number>(currentPage);
 
@@ -59,14 +69,14 @@ export const Paginator: React.FC<PaginatorProps> = ({
     <section className={paginatorSectionClassName}>
       <div className={paginatorClassName}>
         <div
-          className={previousButton.className}
+          className={previousButtonClassName}
           onClick={() => {
             if (current > 1) {
               pageHandler(current - 1, setCurrent);
             }
           }}
         >
-          {previousButton.text}
+          {previousButton}
         </div>
         {pages.map((page, index) =>
           typeof page === 'number' ? (
@@ -86,14 +96,14 @@ export const Paginator: React.FC<PaginatorProps> = ({
           )
         )}
         <div
-          className={nextButton.className}
+          className={nextButtonClassName}
           onClick={() => {
             if (current < totalPages) {
               pageHandler(current + 1, setCurrent);
             }
           }}
         >
-          {nextButton.text}
+          {nextButton}
         </div>
       </div>
     </section>

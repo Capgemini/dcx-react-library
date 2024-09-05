@@ -21,14 +21,10 @@ export const Unstyled = {
     currentPage: 5,
     currentPageClassName: '',
     totalPages: 18,
-    previousButton: {
-      text: '< Previous ',
-      className: '',
-    },
-    nextButton: {
-      text: 'Next >',
-      className: '',
-    },
+    previousButton: <>Prev</>,
+    previousButtonClassName: '',
+    nextButton: <>Next</>,
+    nextButtonClassName: '',
     pageNumbersClassName: '',
   },
 };

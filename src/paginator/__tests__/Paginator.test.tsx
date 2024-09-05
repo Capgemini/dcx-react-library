@@ -38,8 +38,10 @@ const renderPaginator = (props: Partial<PaginatorProps> = {}) => {
     currentPage: 1,
     currentPageClassName: 'current-page',
     totalPages: 10,
-    previousButton: { text: 'Pre', className: 'prev-button' },
-    nextButton: { text: 'Next', className: 'next-button' },
+    previousButton: <>Prev</>,
+    previousButtonClassName: 'previous-button',
+    nextButton: <>Next</>,
+    nextButtonClassName: 'next-button',
     pageNumbersClassName: 'page-number',
   };
   return render(<Paginator {...defaultProps} {...props} />);
@@ -55,7 +57,7 @@ jest.mock('../helper', () => ({
 test('renders paginator with first page active', () => {
   renderPaginator();
 
-  expect(screen.getByText('Pre')).toBeInTheDocument();
+  expect(screen.getByText('Prev')).toBeInTheDocument();
   expect(screen.getByText('1')).toHaveClass('current-page');
   expect(screen.getByText('2')).toBeInTheDocument();
   expect(screen.getByText('3')).toBeInTheDocument();
@@ -79,7 +81,7 @@ test('clicking Prev button moves to the previous page', () => {
     currentPage: 4,
   });
 
-  const prevButton = screen.getByText('Pre');
+  const prevButton = screen.getByText('Prev');
   fireEvent.click(prevButton);
   expect(pageHandler).toHaveBeenCalledWith(3, expect.any(Function));
 
@@ -100,7 +102,7 @@ test('renders paginator with last page active', () => {
     currentPage: 10,
   });
 
-  expect(screen.getByText('Pre')).toBeInTheDocument();
+  expect(screen.getByText('Prev')).toBeInTheDocument();
   expect(screen.getByText('1')).toBeInTheDocument();
   expect(screen.getByText('...')).toBeInTheDocument();
   expect(screen.getByText('7')).toBeInTheDocument();
@@ -113,7 +115,7 @@ test('renders paginator with last page active', () => {
 test('clicking previous button when on first page does not change the page', () => {
   renderPaginator();
 
-  const prevButton = screen.getByText('Pre');
+  const prevButton = screen.getByText('Prev');
   fireEvent.click(prevButton);
 
   expect(screen.getByText('1')).toHaveClass('current-page');

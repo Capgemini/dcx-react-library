@@ -19,16 +19,12 @@ export const Basic = {
     paginatorSectionClassName: 'paginator-container',
     paginatorClassName: 'paginator',
     currentPage: 2,
-    currentClassName: 'current-page',
+    currentPageClassName: 'current-page',
     totalPages: 7,
-    previousButton: {
-      text: '< Previous ',
-      className: 'previous-button',
-    },
-    nextButton: {
-      text: 'Next >',
-      className: 'next-button',
-    },
+    previousButton: <>&lt;= Prev</>,
+    previousButtonClassName: 'previous-button',
+    nextButton: <>Next =&gt;</>,
+    nextButtonClassName: 'next-button',
     pageNumbersClassName: 'buttons',
   },
 };

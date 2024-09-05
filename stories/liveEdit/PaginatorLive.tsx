@@ -12,14 +12,10 @@ function PaginatorDemo() {
     currentPage={5}
     currentPageClassName="current-page"
     totalPages ={10}
-    previousButton={{
-      text:"Pre",
-      className:"previous-button"
-    }}
-    nextButton ={{
-      text:"Next",
-      className:"next-button"}
-    }
+    previousButton={<>Prev</>}
+    previousButtonClassName="previous-button"
+    nextButton= {<>Next</>}
+    nextButtonClassName= "next-button"
     pageNumbersClassName = "buttons"
     />
   );
