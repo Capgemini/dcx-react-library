@@ -7,27 +7,27 @@
   font-size: 1rem;
   cursor: pointer;
   align-items: center;
-  border: 2px solid rgb(188, 188, 188);
 }
 .previous-button,
 .next-button {
   font-weight: 600;
-  padding: 0.6em;
+  padding: 0.6em 1em;
   align-content: center;
+  color: #1d70b8;
 }
-.previous-button {
-  border-right: 2px solid rgb(188, 188, 188);
-}
-.next-button {
-  border-left: 2px solid rgb(188, 188, 188);
-}
+
 .buttons,
 .current-page {
-  padding: 1em;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  align-content: center;
+  text-decoration: underline;
+  color: #1d70b8;
 }
-.buttons:hover {
-  background: rgba(188, 188, 188, 0.65);
-}
+
 .current-page {
-  border: 2px solid black;
+  font-weight: bold;
+  color: white;
+  background: #1d70b8;
 }
