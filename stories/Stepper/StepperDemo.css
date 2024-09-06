@@ -38,8 +38,9 @@
   text-align: center;
   padding: 10px;
   border-radius: 4px;
+  width: 300px;
+  box-sizing: border-box;
 }
-
 
 .step-header {
   display: flex;
@@ -49,7 +50,8 @@
   border: none;
   background: none;
   padding: 10px;
-  
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .step-header .step-number-container {
@@ -64,7 +66,7 @@
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .step-header .step-number-container.completed,
@@ -77,6 +79,8 @@
   font-size: 14px;
   text-align: center;
   color: #333;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .dcx-step .dcx-stepper-content {
@@ -87,7 +91,9 @@
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 8px;
+  box-sizing: border-box;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 /* Button container */
@@ -126,11 +132,13 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  width: 50%;
+  box-sizing: border-box;
 }
 
 .form-label {
-  width: 200px;
-  text-align: right;
+  width: 100px;
+  text-align: left;
   padding-right: 10px;
   font-weight: bold;
   color: #333;
@@ -143,6 +151,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   flex: 1;
+  box-sizing: border-box;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 

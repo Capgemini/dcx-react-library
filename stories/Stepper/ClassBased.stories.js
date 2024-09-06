@@ -133,7 +133,7 @@ export const VerticalStepper = {
         <Stepper
           orientation="vertical" /* Ensure vertical orientation */
           selectedStep={activeStep}
-          className="custom-stepper-horizontal"
+          className="custom-stepper-vertical"
         >
           {args.steps.map((step, index) => (
             <Step
@@ -213,7 +213,7 @@ export const VerticalStepper = {
         ),
       },
       {
-        header: 'Review & Submit',
+        header: 'Review and Submit',
         content: (
           <div className="custom-step-content-wrapper">
             <p>Review all your settings and submit your campaign for approval.</p>
