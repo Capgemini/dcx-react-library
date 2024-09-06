@@ -63,7 +63,7 @@ export const BasicStepper = {
             >
               <StepHeader className="step-header">
                 <div className={`step-number-container ${activeStep > index ? 'completed' : activeStep === index ? 'active' : 'inactive'}`}>
-                  {activeStep > index ? '✔️' : index + 1}
+                  {activeStep > index ? '' : index + 1}
                 </div>
                 <div className="step-header-text">
                   {step.header}
@@ -143,7 +143,7 @@ export const VerticalStepper = {
             >
               <StepHeader className="custom-step-header-wrapper">
                 <div className={`custom-step-number-badge ${activeStep > index ? 'completed' : activeStep === index ? 'active' : 'inactive'}`} aria-label={`Step ${index + 1}`}>
-                  {activeStep > index ? '✔️' : index + 1}
+                  {activeStep > index ? '' : index + 1}
                 </div>
                 <div className="custom-step-header-text">
                   {step.header}
@@ -349,7 +349,7 @@ export const StepperDemo = {
             >
               <StepHeader className="step-header">
                 <div className={`step-number-container ${activeStep > index ? 'completed' : activeStep === index ? 'active' : 'inactive'}`}>
-                  {activeStep > index ? '✔️' : index + 1}
+                  {activeStep > index ? '' : index + 1}
                 </div>
                 <div className="step-header-text">
                   {step.header}

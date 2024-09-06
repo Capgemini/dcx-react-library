@@ -67,12 +67,22 @@
   font-weight: bold;
   margin-bottom: 8px;
   box-sizing: border-box;
+  position: relative;
 }
-
 .step-header .step-number-container.completed,
 .step-header .step-number-container.active {
   background-color: #1976d2;
   color: white;
+}
+
+.step-header .step-number-container.completed::after {
+  content: '✓';
+  font-size: 18px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .step-header .step-header-text {
@@ -117,6 +127,11 @@
 
 .nav-button:hover {
   background-color: #1565c0;
+}
+
+.nav-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }
 
 .nav-button.submit {
