@@ -77,15 +77,16 @@ export const BasicStepper = {
         </Stepper>
 
         <div className="button-container">
-          {activeStep > 0 && (
+          {
             <button
               className="nav-button prev"
               onClick={() => handleStepChange(activeStep - 1)}
               aria-label="Previous Step"
+              disabled={activeStep === 0}
             >
-              Back
+              Prev
             </button>
-          )}
+          }
           {activeStep < steps.length - 1 && (
             <button
               className="nav-button next"

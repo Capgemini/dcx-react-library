@@ -72,9 +72,9 @@
 }
 
 .custom-step-content-wrapper {
-  margin-top: 16px;
-  padding-left: 48px;
-  width: 300px;
+  margin-top: 5px;
+  padding-left: 5px;
+  width: 500px;
   color: #666;
   box-sizing: border-box;
 }
@@ -82,12 +82,14 @@
 .custom-navigation-buttons {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 12px;
   margin-top: 24px;
 }
 
 .custom-navigation-button {
-  padding: 10px 20px;
+  height: 40px;
+  padding: 0 20px;
   background-color: #1976d2;
   color: white;
   border: none;
