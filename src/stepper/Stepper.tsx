@@ -1,4 +1,10 @@
-import React, { useState, useEffect, Children, cloneElement, memo } from 'react';
+import React, {
+  useState,
+  useEffect,
+  Children,
+  cloneElement,
+  memo,
+} from 'react';
 import { StepperContext } from './UseStepper';
 import { classNames } from '../common';
 
@@ -24,18 +30,10 @@ export type StepperProps = {
    */
   stepperClassName?: string;
   /**
-   * Defines the className of the header container.
-   */
-  headerContainerClassNames?: string;
-  /**
    * Defines the style of all StepHeader elements from the parent.
    * To style them independently, use className on the StepHeader element.
    */
   headerClassName?: string;
-  /**
-   * Defines the className of the content container.
-   */
-  contentContainerClassNames?: string;
   /**
    * Defines the style of all StepContent elements from the parent.
    * To style them independently, use className on the StepContent element.
@@ -47,86 +45,97 @@ export type StepperProps = {
   orientation?: 'horizontal' | 'vertical';
 };
 
-export const Stepper = memo(({
-  children,
-  separator,
-  selectedStep = 0,
-  activeStepClassName,
-  stepperClassName,
-  headerClassName,
-  contentClassName,
-  orientation = 'horizontal',
-}: StepperProps) => {
-  const [activeStep, setActiveStep] = useState(selectedStep);
+export const Stepper = memo(
+  ({
+    children,
+    separator,
+    selectedStep = 0,
+    activeStepClassName,
+    stepperClassName,
+    headerClassName,
+    contentClassName,
+    orientation = 'horizontal',
+  }: StepperProps) => {
+    const [activeStep, setActiveStep] = useState(selectedStep);
 
-  useEffect(() => {
-    setActiveStep(selectedStep);
-  }, [selectedStep]);
+    useEffect(() => {
+      setActiveStep(selectedStep);
+    }, [selectedStep]);
 
-  const onClickHandler = (index: number) => setActiveStep(index);
+    const onClickHandler = (index: number) => setActiveStep(index);
 
-  const steps: JSX.Element[] = [];
+    const steps: JSX.Element[] = [];
 
-  Children.forEach(children, (child, index) => {
-    if (child.type.name === 'Step') {
-      let stepHeader: JSX.Element | null = null;
-      let stepContent: JSX.Element | null = null;
+    Children.forEach(children, (child, index) => {
+      if (child.type.name === 'Step') {
+        let stepHeader: JSX.Element | null = null;
+        let stepContent: JSX.Element | null = null;
 
-      Children.forEach(child.props.children, (child) => {
-        if (child.type.name === 'StepHeader') {
-          const headerClasses = classNames([
-            { 'dcx-active-step': index === activeStep },
-            { [`${activeStepClassName}`]: index === activeStep },
-            headerClassName,
-          ]);
+        Children.forEach(child.props.children, (child) => {
+          if (child.type.name === 'StepHeader') {
+            const headerClasses = classNames([
+              { 'dcx-active-step': index === activeStep },
+              { [`${activeStepClassName}`]: index === activeStep },
+              headerClassName,
+            ]);
 
-          stepHeader = cloneElement(child, {
-            key: `header-${index}`,
-            _index: index,
-            headerClassName: headerClasses,
-            'aria-selected': index === activeStep ? 'true' : 'false',
-            'aria-posinset': index + 1,
-            'aria-setsize': Children.count(children),
-            tabIndex: index === activeStep ? '0' : '-1',
-            onClick: () => onClickHandler(index),
-          });
-        } else if (child.type.name === 'StepContent') {
-          stepContent = cloneElement(child, {
-            key: `content-${index}`,
-            className: contentClassName,
-            visible: index === activeStep,
-          });
-        }
-      });
+            stepHeader = cloneElement(child, {
+              key: `header-${index}`,
+              _index: index,
+              headerClassName: headerClasses,
+              'aria-selected': index === activeStep ? 'true' : 'false',
+              'aria-posinset': index + 1,
+              'aria-setsize': Children.count(children),
+              tabIndex: index === activeStep ? '0' : '-1',
+              onClick: () => onClickHandler(index),
+            });
+          } else if (child.type.name === 'StepContent') {
+            stepContent = cloneElement(child, {
+              key: `content-${index}`,
+              className: contentClassName,
+              visible: index === activeStep,
+            });
+          }
+        });
 
-      if (stepHeader && stepContent) {
-        steps.push(
-          <div key={`step-${index}`} className="dcx-step">
-            {stepHeader}
-            {stepContent}
-          </div>
-        );
-
-        if (separator && index < children.length - 1) {
+        if (stepHeader && stepContent) {
           steps.push(
-            cloneElement(separator, { key: `separator-${index}`, className: 'dcx-separator' })
+            <div key={`step-${index}`} className="dcx-step">
+              <div key={`header-${index}`} className="dcx-step-header">
+                {stepHeader}
+              </div>
+              <div key={`content-${index}`} className="dcx-step-content">
+                {stepContent}
+              </div>
+            </div>
           );
+
+          if (separator && index < children.length - 1) {
+            steps.push(
+              cloneElement(separator, {
+                key: `separator-${index}`,
+                className: 'dcx-separator',
+              })
+            );
+          }
         }
       }
-    }
-  });
+    });
 
-  const containerClasses = classNames([
-    'dcx-stepper',
-    orientation === 'horizontal' ? 'dcx-horizontal-stepper' : 'dcx-vertical-stepper',
-    stepperClassName,
-  ]);
+    const containerClasses = classNames([
+      'dcx-stepper',
+      orientation === 'horizontal'
+        ? 'dcx-horizontal-stepper'
+        : 'dcx-vertical-stepper',
+      stepperClassName,
+    ]);
 
-  return (
-    <StepperContext.Provider value={{ activeStep, changeActiveStep: onClickHandler }}>
-      <div className={containerClasses}>
-        {steps}
-      </div>
-    </StepperContext.Provider>
-  );
-});
+    return (
+      <StepperContext.Provider
+        value={{ activeStep, changeActiveStep: onClickHandler }}
+      >
+        <div className={containerClasses}>{steps}</div>
+      </StepperContext.Provider>
+    );
+  }
+);
