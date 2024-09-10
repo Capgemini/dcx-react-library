@@ -5,13 +5,17 @@ import { Paginator } from '@capgeminiuk/dcx-react-library';
 export const PaginatorDemo: React.FC<ReactElement> = () => {
   return (
     <Paginator
-      currentPage={{ page: 3, className: 'current-page' }}
-      nextButton={{ text: 'Next >', className: 'next-button' }}
-      previousButton={{ text: '< Previous', className: 'previous-button' }}
+      paginatorSectionClassName=""
+      paginatorClassName=""
+      currentPage={5}
+      currentPageClassName=""
       totalPages={10}
-      paginatorSectionClassName="paginator-container"
-      paginatorClassName="paginator"
-      pageNumbersClassName="buttons"
+      previousButton={<>Prev</>}
+      previousButtonClassName=""
+      nextButton={<>Next</>}
+      nextButtonClassName=""
+      pageNumbersClassName=""
+      onPageChange={(page: number) => alert(page)}
     />
   );
 };
