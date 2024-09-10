@@ -1,12 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
-
-export const pageHandler = (
-  page: number,
-  setCurrent: Dispatch<SetStateAction<number>>
-): number => {
-  setCurrent(page);
-  return page;
-};
 export const calculatePageNumbers = (
   currentPage: number,
   totalPages: number

@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 
 import { Paginator, PaginatorProps } from '../Paginator';
-import { calculatePageNumbers, pageHandler } from '../helper';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import React from 'react';
+import { calculatePageNumbers } from '../helper';
 
 test('calculatePageNumbers returns [1] when totalPages is 1', () => {
   const result = calculatePageNumbers(1, 1);
@@ -72,7 +72,6 @@ test('clicking next button moves to the next page', () => {
 
   const nextButton = screen.getByText('Next');
   fireEvent.click(nextButton);
-  expect(pageHandler).toHaveBeenCalledWith(2, expect.any(Function));
 
   expect(screen.getByText('2')).toHaveClass('current-page');
 });
@@ -83,7 +82,6 @@ test('clicking Prev button moves to the previous page', () => {
 
   const prevButton = screen.getByText('Prev');
   fireEvent.click(prevButton);
-  expect(pageHandler).toHaveBeenCalledWith(3, expect.any(Function));
 
   expect(screen.getByText('3')).toHaveClass('current-page');
 });
