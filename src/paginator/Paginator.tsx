@@ -2,11 +2,6 @@ import React, { useState } from 'react';
 
 import { calculatePageNumbers } from './helper';
 
-export interface IControlButton {
-  text: string;
-  className: string;
-}
-
 export type PaginatorProps = {
   /**
    * Optional CSS class name belongs to section tag(parent) that includes paginator div inside.

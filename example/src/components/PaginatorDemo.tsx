@@ -15,7 +15,7 @@ export const PaginatorDemo = () => {
       nextButton={<>Next</>}
       nextButtonClassName=""
       pageNumbersClassName=""
-      onPageChange={(page: number) => alert(page)}
+      onPageChange={(page) => alert(page)}
     />
   );
 };
