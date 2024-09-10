@@ -17,6 +17,7 @@ function PaginatorDemo() {
     nextButton= {<>Next</>}
     nextButtonClassName= "next-button"
     pageNumbersClassName = "buttons"
+    onPageChange={(page)=>alert(page)}
     />
   );
 }

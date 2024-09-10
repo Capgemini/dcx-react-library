@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { calculatePageNumbers, pageHandler } from './helper';
+
+import { calculatePageNumbers } from './helper';
 
 export interface IControlButton {
   text: string;
@@ -12,7 +13,7 @@ export type PaginatorProps = {
    */
   paginatorSectionClassName?: string;
   /**
-   * Optional CSS class name for paginator div that can controll the paginator and the buttons inside.
+   * Optional CSS class name for paginator div that can control the paginator and the buttons inside.
    */
   paginatorClassName?: string;
   /**
@@ -44,9 +45,14 @@ export type PaginatorProps = {
    */
   previousButtonClassName?: string;
   /**
-   * general className for page number buttons within the paginator component
+   * General className for page number buttons within the paginator component
    */
   pageNumbersClassName?: string;
+
+  /**
+   * Callback function that is triggered when the page changes
+   */
+  onPageChange?: (page: number) => void;
 };
 
 export const Paginator: React.FC<PaginatorProps> = ({
@@ -60,10 +66,18 @@ export const Paginator: React.FC<PaginatorProps> = ({
   pageNumbersClassName,
   previousButtonClassName,
   nextButtonClassName,
+  onPageChange,
 }: PaginatorProps): JSX.Element => {
   const [current, setCurrent] = useState<number>(currentPage);
 
   const pages = calculatePageNumbers(current, totalPages);
+
+  const handlePageChange = (page: number) => {
+    setCurrent(page);
+    if (onPageChange) {
+      onPageChange(page);
+    }
+  };
 
   return (
     <section className={paginatorSectionClassName}>
@@ -72,7 +86,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
           className={previousButtonClassName}
           onClick={() => {
             if (current > 1) {
-              pageHandler(current - 1, setCurrent);
+              handlePageChange(current - 1);
             }
           }}
         >
@@ -87,7 +101,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
                   ? `${pageNumbersClassName} ${currentPageClassName}`
                   : pageNumbersClassName
               }
-              onClick={() => pageHandler(page, setCurrent)}
+              onClick={() => handlePageChange(page)}
             >
               {page}
             </div>
@@ -99,7 +113,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
           className={nextButtonClassName}
           onClick={() => {
             if (current < totalPages) {
-              pageHandler(current + 1, setCurrent);
+              handlePageChange(current + 1);
             }
           }}
         >
