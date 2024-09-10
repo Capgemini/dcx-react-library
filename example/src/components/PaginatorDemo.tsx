@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 
 import { Paginator } from '@capgeminiuk/dcx-react-library';
 
-export const PaginatorDemo: React.FC<ReactElement> = () => {
+export const PaginatorDemo = () => {
   return (
     <Paginator
       paginatorSectionClassName=""
