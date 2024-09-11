@@ -101,3 +101,23 @@
   --dcx-box-shadow-card_box: 0 10px 20px #00000030, 0 6px 6px #0000003b;
   --dcx-border-radius-card_box: 12px;
 }
+
+.dcx-accordion {
+  --dcx-color-text-heading-level_3: #000000de;
+  --dcx-color-text-body: #000000de;
+  --dcx-border-width-accordion_item_box: 0;
+  --dcx-border-radius-accordion: 10px;
+  --dcx-box-shadow-accordion_box: none;
+  --dcx-box-shadow-accordion_item_box: 0px 2px 4px #00000030;
+  --dcx-color-background-accordion_title_box-expanded: transparent;
+  --dcx-color-background-accordion_title_box-hover: #f5f5f5;
+}
+
+.dcx-skeleton {
+  --dcx-animation-background-color-skeleton-wave: linear-gradient(
+    to right,
+    #f5f5f5 8%,
+    #e0e0e0 18%,
+    #f5f5f5 33%
+  );
+}

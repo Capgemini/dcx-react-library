@@ -22,6 +22,7 @@ import {
   PaginatorDemo,
   ProgressDemo,
   RangeDemo,
+  SkeletonDemo,
   TabGroupDemo,
   TableDemo,
   ToggleDemo,
@@ -78,7 +79,8 @@ const App = () => (
         <Route path="/accordion" element={<AccordionDemo />} />
         <Route path="/buttonGroup" element={<ButtonGroupDemo />} />
         <Route path="/card" element={<CardDemo />} />
-        <Route path="/paginator" element={<PaginatorDemo />}></Route>
+        <Route path="/paginator" element={<PaginatorDemo />} />
+        <Route path="/skeleton" element={<SkeletonDemo />} />
       </Routes>
     </BrowserRouter>
   </div>

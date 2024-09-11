@@ -38,3 +38,4 @@ export * from './highlight';
 export * from './buttonGroup';
 export * from './card';
 export * from './paginator';
+export * from './skeleton';

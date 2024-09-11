@@ -26,7 +26,11 @@ export const AccordionTitle = ({
   const { expanded, titleClassName, expandIcon, collapsedIcon } =
     useContext(AccordionContext);
   const { title } = useContext(AccordionItemContext);
-  const titleClasses = classNames([className, titleClassName]);
+  const titleClasses = classNames([
+    className,
+    titleClassName,
+    'dcx-accordion-title',
+  ]);
   const { onClick } = useContext(AccordionContext);
 
   const handleClick = () => {

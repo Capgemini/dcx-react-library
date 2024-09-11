@@ -27,3 +27,4 @@ export { AccordionDemo } from './AccordionDemo';
 export * from './library-candidates';
 export { ButtonGroupDemo } from './ButtonGroupDemo';
 export { CardDemo } from './CardDemo';
+export { SkeletonDemo } from './SkeletonDemo';

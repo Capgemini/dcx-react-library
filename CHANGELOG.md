@@ -9,6 +9,10 @@
 - [Tab - Adding keyboard event listeners](https://github.com/Capgemini/dcx-react-library/issues/658)
 - [Button - removing label as default aria-label](https://github.com/Capgemini/dcx-react-library/issues/663)
 
+**New Components**
+
+- [Skeleton](https://github.com/Capgemini/dcx-react-library/issues/549)
+
 ## 1.0.0 (15/04/2024)
 
 <a name="1.0.0" />
