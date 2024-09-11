@@ -13,6 +13,14 @@ type SharedProps = React.HTMLAttributes<HTMLElement> & {
    * The predefined background colours that can be set. These can be overwritten with the 'style' prop.
    */
   backgroundColourOption?: 'default' | 'light' | 'dark';
+  /**
+   * A href property to use on an anchor tag that wraps the avatars child components
+   */
+  wrappingAnchorHref?: string;
+  /**
+   * A target property to use on an anchor tag that wraps the avatars child components
+   */
+  wrappingAnchorTarget?: '_blank' | '_self' | '_parent' | '_top';
 };
 
 type AvatarProps = SharedProps & {
@@ -62,23 +70,37 @@ export const Avatar = ({
   children,
   src,
   alt,
+  wrappingAnchorHref,
+  wrappingAnchorTarget,
   ...props
-}: AvatarProps | ImageAvatarProps) => (
-  <div
-    className={className}
-    {...props}
-    style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      overflow: 'hidden',
-      width: '40px',
-      height: '40px',
-      backgroundColor: backgroundColourOptions[backgroundColourOption],
-      ...shapeStyles[shape],
-      ...props.style,
-    }}
-  >
-    {src ? <img src={src} alt={alt} /> : children}
-  </div>
-);
+}: AvatarProps | ImageAvatarProps) => {
+  let contents = src ? <img src={src} alt={alt} /> : children;
+
+  if (wrappingAnchorHref) {
+    contents = (
+      <a href={wrappingAnchorHref} target={wrappingAnchorTarget}>
+        {contents}
+      </a>
+    );
+  }
+
+  return (
+    <div
+      className={className}
+      {...props}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        width: '40px',
+        height: '40px',
+        backgroundColor: backgroundColourOptions[backgroundColourOption],
+        ...shapeStyles[shape],
+        ...props.style,
+      }}
+    >
+      {contents}
+    </div>
+  );
+};

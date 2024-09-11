@@ -93,4 +93,32 @@ describe('Avatar', () => {
     divPointer = containerPointer.querySelector('div');
     expect(divPointer?.style.backgroundColor).toBe('rgb(255, 255, 255)');
   });
+
+  it('should render an anchor tag if wrappingAnchorHref and wrappingAnchorTarget prop is passed', () => {
+    const testUrl = 'http://test.url/';
+
+    const { container } = render(
+      <Avatar
+        className="test"
+        wrappingAnchorHref={testUrl}
+        wrappingAnchorTarget="_blank"
+      >
+        text
+      </Avatar>
+    );
+    const anchor = container.querySelector('a');
+    expect(anchor?.href).toBe(testUrl);
+    expect(anchor?.target).toBe('_blank');
+  });
+
+  it('should not render wrappingAnchorTarget if wrappingAnchorHref prop is not passed', () => {
+    const { container } = render(
+      <Avatar className="test" wrappingAnchorTarget="_blank">
+        text
+      </Avatar>
+    );
+    const anchor = container.querySelector('a');
+    expect(anchor?.href).toBeUndefined();
+    expect(anchor?.target).toBeUndefined();
+  });
 });

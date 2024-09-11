@@ -24,6 +24,8 @@ export const parameters = {
           ],
           'Form',
           [
+            'Avatar',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
             'Autocomplete',
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Button',
