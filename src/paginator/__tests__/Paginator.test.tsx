@@ -129,3 +129,21 @@ test('clicking next button when on last page does not change the page', () => {
 
   expect(screen.getByText('10')).toHaveClass('current-page');
 });
+test('calls onPageChange with the correct page number', () => {
+  const onPageChangeMock = jest.fn();
+  renderPaginator({
+    currentPage: 2,
+    totalPages: 5,
+    previousButton: <button>Previous</button>,
+    nextButton: <button>Next</button>,
+    onPageChange: onPageChangeMock,
+  });
+
+  const previousButton = screen.getByText('Previous');
+  fireEvent.click(previousButton);
+  expect(onPageChangeMock).toHaveBeenCalledWith(1);
+});
+test('If currentPage props is undefined, default sate sets to 1', () => {
+  renderPaginator({ currentPage: undefined });
+  expect(screen.getByText('1')).toHaveClass('current-page');
+});
