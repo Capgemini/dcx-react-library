@@ -31,6 +31,6 @@ export const WithImage = {
  */
 export const CustomContent = {
   args: {
-    children: <a href="#">External link</a>,
+    children: <a href="#" target="_blank">EL</a>,
   },
 };

@@ -68,6 +68,6 @@ export const DefaultImageSquare = {
 export const CustomContent = {
   name: 'Custom Content',
   args: {
-    children: [<a href="#">External link</a>],
+    children: [<a href="#" target="_blank">EL</a>],
   },
 };

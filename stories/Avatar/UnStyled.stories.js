@@ -18,7 +18,7 @@ export default {
 export const Unstyled = {
   args: {
     children: [
-      <a href="">External link</a>,
+      <a href="#" target="_blank">EL</a>,
     ],
   },
 };
