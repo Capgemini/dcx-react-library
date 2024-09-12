@@ -14,6 +14,10 @@ type SharedProps = React.HTMLAttributes<HTMLElement> & {
    */
   backgroundColourOption?: 'default' | 'light' | 'dark';
   /**
+   * The custom background colour
+   */
+  backgroundColour?: string;
+  /**
    * A href property to use on an anchor tag that wraps the avatars child components
    */
   wrappingAnchorHref?: string;
@@ -82,6 +86,7 @@ export const Avatar = ({
   wrappingAnchorTarget,
   width = '40px',
   height = '40px',
+  backgroundColour,
   ...props
 }: AvatarProps | ImageAvatarProps) => {
   let contents = src ? <img src={src} alt={alt} /> : children;
@@ -105,7 +110,8 @@ export const Avatar = ({
         overflow: 'hidden',
         width,
         height,
-        backgroundColor: backgroundColourOptions[backgroundColourOption],
+        backgroundColor:
+          backgroundColour || backgroundColourOptions[backgroundColourOption],
         ...shapeStyles[shape],
         ...props.style,
       }}
