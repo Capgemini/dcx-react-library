@@ -21,6 +21,14 @@ type SharedProps = React.HTMLAttributes<HTMLElement> & {
    * A target property to use on an anchor tag that wraps the avatars child components
    */
   wrappingAnchorTarget?: '_blank' | '_self' | '_parent' | '_top';
+  /**
+   * The desired width of the avatar component
+   */
+  width?: string;
+  /**
+   * The desired height of the avatar component
+   */
+  height?: string;
 };
 
 type AvatarProps = SharedProps & {
@@ -72,6 +80,8 @@ export const Avatar = ({
   alt,
   wrappingAnchorHref,
   wrappingAnchorTarget,
+  width = '40px',
+  height = '40px',
   ...props
 }: AvatarProps | ImageAvatarProps) => {
   let contents = src ? <img src={src} alt={alt} /> : children;
@@ -93,8 +103,8 @@ export const Avatar = ({
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
-        width: '40px',
-        height: '40px',
+        width,
+        height,
         backgroundColor: backgroundColourOptions[backgroundColourOption],
         ...shapeStyles[shape],
         ...props.style,
