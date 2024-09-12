@@ -1,19 +1,3 @@
-import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
-import * as AvatarStories from './UnStyled.stories';
-
-<Meta title="DCXLibrary/Form/Avatar/Documentation" />
-
-# Avatar
-
-An Avatar component to display either an image or child component such as initials or an svg.
-
-When you import the avatar component without providing any className or style associated will looks as following:
-
-<Canvas of={AvatarStories.Unstyled} />
-
-A more complex example with all the possible properties is:
-
-```js
 import React from 'react';
 
 type SharedProps = React.HTMLAttributes<HTMLElement> & {
@@ -30,6 +14,10 @@ type SharedProps = React.HTMLAttributes<HTMLElement> & {
    */
   backgroundColourOption?: 'default' | 'light' | 'dark';
   /**
+   * The custom background colour
+   */
+  backgroundColour?: string;
+  /**
    * A href property to use on an anchor tag that wraps the avatars child components
    */
   wrappingAnchorHref?: string;
@@ -37,6 +25,14 @@ type SharedProps = React.HTMLAttributes<HTMLElement> & {
    * A target property to use on an anchor tag that wraps the avatars child components
    */
   wrappingAnchorTarget?: '_blank' | '_self' | '_parent' | '_top';
+  /**
+   * The desired width of the avatar component
+   */
+  width?: string;
+  /**
+   * The desired height of the avatar component
+   */
+  height?: string;
 };
 
 type AvatarProps = SharedProps & {
@@ -88,8 +84,14 @@ export const Avatar = ({
   alt,
   wrappingAnchorHref,
   wrappingAnchorTarget,
+  width = '40px',
+  height = '40px',
+  backgroundColour,
   ...props
 }: AvatarProps | ImageAvatarProps) => {
+  const backgroundColor =
+    backgroundColour || backgroundColourOptions[backgroundColourOption];
+
   let contents = src ? <img src={src} alt={alt} /> : children;
 
   if (wrappingAnchorHref) {
@@ -109,9 +111,9 @@ export const Avatar = ({
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
-        width: '40px',
-        height: '40px',
-        backgroundColor: backgroundColourOptions[backgroundColourOption],
+        width,
+        height,
+        backgroundColor,
         ...shapeStyles[shape],
         ...props.style,
       }}

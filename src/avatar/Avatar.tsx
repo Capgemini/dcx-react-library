@@ -89,6 +89,9 @@ export const Avatar = ({
   backgroundColour,
   ...props
 }: AvatarProps | ImageAvatarProps) => {
+  const backgroundColor =
+    backgroundColour || backgroundColourOptions[backgroundColourOption];
+
   let contents = src ? <img src={src} alt={alt} /> : children;
 
   if (wrappingAnchorHref) {
@@ -110,8 +113,7 @@ export const Avatar = ({
         overflow: 'hidden',
         width,
         height,
-        backgroundColor:
-          backgroundColour || backgroundColourOptions[backgroundColourOption],
+        backgroundColor,
         ...shapeStyles[shape],
         ...props.style,
       }}
