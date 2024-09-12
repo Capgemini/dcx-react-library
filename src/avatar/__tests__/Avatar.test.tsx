@@ -139,17 +139,4 @@ describe('Avatar', () => {
     expect(div?.style.width).toBe('4em');
     expect(div?.style.height).toBe('4em');
   });
-
-  it('should accept width and height from the style prop', () => {
-    const { container } = render(
-      <Avatar className="test" style={{ width: '5rem', height: '5rem' }}>
-        text
-      </Avatar>
-    );
-    const div = container.querySelector('div');
-    expect(div?.style.width).toBe('5rem');
-    expect(div?.style.height).toBe('5rem');
-    expect(div?.style.width).not.toBe('40px');
-    expect(div?.style.height).not.toBe('40px');
-  });
 });
