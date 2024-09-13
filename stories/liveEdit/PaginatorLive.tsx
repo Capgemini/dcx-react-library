@@ -7,7 +7,6 @@ const PaginatorDemo = `
 function PaginatorDemo() {
   return (
     <Paginator 
-    paginatorSectionClassName="paginator-container"
     paginatorClassName="paginator"
     currentPage={5}
     currentPageClassName="current-page"

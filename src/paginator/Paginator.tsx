@@ -4,10 +4,6 @@ import { calculatePageNumbers } from './helper';
 
 export type PaginatorProps = {
   /**
-   * Optional CSS class name belongs to section tag(parent) that includes paginator div inside.
-   */
-  paginatorSectionClassName?: string;
-  /**
    * Optional CSS class name for paginator div that can control the paginator and the buttons inside.
    */
   paginatorClassName?: string;
@@ -51,7 +47,6 @@ export type PaginatorProps = {
 };
 
 export const Paginator: React.FC<PaginatorProps> = ({
-  paginatorSectionClassName,
   paginatorClassName,
   currentPage,
   currentPageClassName,
@@ -73,48 +68,45 @@ export const Paginator: React.FC<PaginatorProps> = ({
       onPageChange(page);
     }
   };
-
   return (
-    <section className={paginatorSectionClassName}>
-      <div className={paginatorClassName}>
-        <div
-          className={previousButtonClassName}
-          onClick={() => {
-            if (current > 1) {
-              handlePageChange(current - 1);
-            }
-          }}
-        >
-          {previousButton}
-        </div>
-        {pages.map((page, index) =>
-          typeof page === 'number' ? (
-            <div
-              key={index}
-              className={
-                page === current
-                  ? `${pageNumbersClassName} ${currentPageClassName}`
-                  : pageNumbersClassName
-              }
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </div>
-          ) : (
-            <span key={index}>{page}</span>
-          )
-        )}
-        <div
-          className={nextButtonClassName}
-          onClick={() => {
-            if (current < totalPages) {
-              handlePageChange(current + 1);
-            }
-          }}
-        >
-          {nextButton}
-        </div>
+    <div className={paginatorClassName}>
+      <div
+        className={previousButtonClassName}
+        onClick={() => {
+          if (current > 1) {
+            handlePageChange(current - 1);
+          }
+        }}
+      >
+        {previousButton}
       </div>
-    </section>
+      {pages.map((page, index) =>
+        typeof page === 'number' ? (
+          <div
+            key={index}
+            className={
+              page === current
+                ? `${pageNumbersClassName} ${currentPageClassName}`
+                : pageNumbersClassName
+            }
+            onClick={() => handlePageChange(page)}
+          >
+            {page}
+          </div>
+        ) : (
+          <span key={index}>{page}</span>
+        )
+      )}
+      <div
+        className={nextButtonClassName}
+        onClick={() => {
+          if (current < totalPages) {
+            handlePageChange(current + 1);
+          }
+        }}
+      >
+        {nextButton}
+      </div>
+    </div>
   );
 };

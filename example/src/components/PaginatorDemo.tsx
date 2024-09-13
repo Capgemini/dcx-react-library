@@ -5,7 +5,6 @@ import { Paginator } from '@capgeminiuk/dcx-react-library';
 export const PaginatorDemo = () => {
   return (
     <Paginator
-      paginatorSectionClassName=""
       paginatorClassName=""
       currentPage={5}
       currentPageClassName=""

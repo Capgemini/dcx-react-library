@@ -33,7 +33,6 @@ test('calculatePageNumbers handles large totalPages correctly', () => {
 
 const renderPaginator = (props: Partial<PaginatorProps> = {}) => {
   const defaultProps: PaginatorProps = {
-    paginatorSectionClassName: '',
     paginatorClassName: '',
     currentPage: 1,
     currentPageClassName: 'current-page',

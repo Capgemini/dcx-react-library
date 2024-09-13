@@ -16,7 +16,6 @@ export default {
 export const Basic = {
   name: 'Basic',
   args: {
-    paginatorSectionClassName: 'paginator-container',
     paginatorClassName: 'paginator',
     currentPage: 2,
     currentPageClassName: 'current-page',

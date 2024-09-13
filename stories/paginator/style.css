@@ -1,9 +1,6 @@
-.paginator-container {
-  display: flex;
-  justify-content: center;
-}
 .paginator {
   display: flex;
+  justify-content: center;
   font-size: 1rem;
   cursor: pointer;
   align-items: center;

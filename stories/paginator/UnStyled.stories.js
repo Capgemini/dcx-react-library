@@ -16,7 +16,6 @@ export default {
 export const Unstyled = {
   name: 'Un-styled',
   args: {
-    paginatorSectionClassName: '',
     paginatorClassName: '',
     currentPage: 5,
     currentPageClassName: '',
