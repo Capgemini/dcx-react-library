@@ -54,7 +54,7 @@ describe('Stepper Component', () => {
     );
 
     expect(screen.getByText('Step 2').parentElement).toHaveClass(
-      'dcx-step-header'
+      'dcx-header-wrapper'
     );
   });
 
@@ -74,7 +74,7 @@ describe('Stepper Component', () => {
 
     fireEvent.click(screen.getByText('Step 2'));
     expect(screen.getByText('Step 2').parentElement).toHaveClass(
-      'dcx-step-header'
+      'dcx-header-wrapper'
     );
   });
 
@@ -133,7 +133,7 @@ describe('Stepper Component', () => {
       </Stepper>
     );
 
-    expect(screen.getByText('Step 1').parentElement).toHaveClass('dcx-step-header');
+    expect(screen.getByText('Step 1').parentElement).toHaveClass('dcx-header-wrapper');
 
     rerender(
       <Stepper selectedStep={1}>
@@ -149,7 +149,7 @@ describe('Stepper Component', () => {
     );
 
     expect(screen.getByText('Step 2').parentElement).toHaveClass(
-      'dcx-step-header'
+      'dcx-header-wrapper'
     );
   });
 
@@ -219,7 +219,7 @@ describe('Stepper Component', () => {
     );
 
     expect(screen.getByText('Step 2').parentElement).toHaveClass(
-      'dcx-step-header'
+      'dcx-header-wrapper'
     );
   });
 
@@ -239,7 +239,7 @@ describe('Stepper Component', () => {
 
     fireEvent.click(screen.getByText('Step 2'));
     expect(screen.getByText('Content 2').parentElement).toHaveClass(
-      'dcx-step-content'
+      'dcx-content-wrapper'
     );
   });
 
@@ -258,7 +258,7 @@ describe('Stepper Component', () => {
     );
 
     expect(screen.getByText('Step 2').parentElement).toHaveClass(
-      'dcx-step-header'
+      'dcx-header-wrapper'
     );
   });
 

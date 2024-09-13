@@ -7,18 +7,11 @@ import {
 } from '@capgeminiuk/dcx-react-library';
 import './stepper.scss';
 
-const StepperDemo: React.FC = () => {
+const StepperDemo = () => {
   const [activeStepHorizontal, setActiveStepHorizontal] = useState(0);
   const [activeStepVertical, setActiveStepVertical] = useState(0);
   const [activeStepCustomSeparator, setActiveStepCustomSeparator] = useState(0);
   const [activeStepItems, setActiveStepItems] = useState(0);
-
-  const handleStepChange = (
-    setter: React.Dispatch<React.SetStateAction<number>>,
-    step: number
-  ) => {
-    setter(step);
-  };
 
   const steps = [
     {
@@ -285,8 +278,8 @@ const StepperDemo: React.FC = () => {
 
   const renderStepper = (
     activeStep: number,
-    setter: React.Dispatch<React.SetStateAction<number>>,
-    items: any[],
+    setActiveStep: React.Dispatch<React.SetStateAction<number>>,
+    steps: { header: string; content: React.ReactNode }[],
     orientation: 'horizontal' | 'vertical',
     customSeparator: JSX.Element | undefined = undefined
   ) => (
@@ -295,34 +288,88 @@ const StepperDemo: React.FC = () => {
       selectedStep={activeStep}
       separator={customSeparator || <hr className="separator" />}
     >
-      {items.map((item, index) => (
+      {steps.map((step, index) => (
         <Step
           key={index}
           className={`step ${activeStep === index ? 'active' : ''}`}
+          style={{ display: orientation === 'horizontal' ? 'inline-flex' : 'flex' }}
         >
-          <StepHeader className="step-header">
-            <div className="step-number" aria-label={`Step ${index + 1}`}>
-              {activeStep > index ? '✔️' : index + 1}
+          <StepHeader onClick={() => setActiveStep(index)} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+            <div style={{
+              width: '30px',
+              height: '30px',
+              borderRadius: '50%',
+              backgroundColor: activeStep >= index ? '#1976d2' : '#D1D0CE',
+              color: 'white',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: '10px',
+              fontSize: '14px',
+              fontWeight: 'bold'
+            }}>
+              {activeStep > index ? '✓' : index + 1}
             </div>
-            {item.header}
+            <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#333' }}>{step.header}</div>
           </StepHeader>
-          <StepContent className="step-content">
-            <div>{item.content}</div>
-            <div className="button-container">
+          <StepContent>
+            <div>{step.content}</div>
+            <div className="button-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
               {index > 0 && (
                 <button
-                  onClick={() => handleStepChange(setter, index - 1)}
+                  onClick={() => setActiveStep(index - 1)}
                   aria-label="Previous Step"
+                  style={{
+                    padding: '10px 20px',
+                    fontSize: '14px',
+                    backgroundColor: '#1976d2',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                    margin: '0 5px',
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                  }}
                 >
                   Prev
                 </button>
               )}
-              {index < items.length - 1 && (
+              {index < steps.length - 1 && (
                 <button
-                  onClick={() => handleStepChange(setter, index + 1)}
+                  onClick={() => setActiveStep(index + 1)}
                   aria-label="Next Step"
+                  style={{
+                    padding: '10px 20px',
+                    fontSize: '14px',
+                    backgroundColor: '#1976d2',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                    margin: '0 5px',
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                  }}
                 >
                   Next
+                </button>
+              )}
+              {index === steps.length - 1 && (
+                <button
+                  onClick={() => alert('Form Submitted')}
+                  aria-label="Submit Form"
+                  style={{
+                    padding: '10px 20px',
+                    fontSize: '14px',
+                    backgroundColor: '#28a745',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                    margin: '0 5px',
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                  }}
+                >
+                  Submit
                 </button>
               )}
             </div>
@@ -333,22 +380,12 @@ const StepperDemo: React.FC = () => {
   );
 
   return (
-    <div className="stepper-demo">
+    <div style={{ padding: '20px', backgroundColor: '#f9f9f9', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)' }}>
       <h1>Horizontal Stepper</h1>
-      {renderStepper(
-        activeStepHorizontal,
-        setActiveStepHorizontal,
-        steps,
-        'horizontal'
-      )}
+      {renderStepper(activeStepHorizontal, setActiveStepHorizontal, steps, 'horizontal')}
 
       <h1>Vertical Stepper</h1>
-      {renderStepper(
-        activeStepVertical,
-        setActiveStepVertical,
-        steps,
-        'vertical'
-      )}
+      {renderStepper(activeStepVertical, setActiveStepVertical, steps, 'vertical')}
 
       <h1>Stepper with Custom Separator</h1>
       {renderStepper(
@@ -360,7 +397,12 @@ const StepperDemo: React.FC = () => {
       )}
 
       <h1>Order Process Stepper</h1>
-      {renderStepper(activeStepItems, setActiveStepItems, items, 'horizontal')}
+      {renderStepper(
+        activeStepItems,
+        setActiveStepItems,
+        items,
+        'horizontal'
+      )}
     </div>
   );
 };
