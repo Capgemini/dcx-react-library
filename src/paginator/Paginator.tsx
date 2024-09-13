@@ -41,9 +41,14 @@ export type PaginatorProps = {
   pageNumbersClassName?: string;
 
   /**
-   * Callback function that is triggered when the page changes
+   * Callback function that is triggered when the page changes and returns the updated current page
    */
-  onPageChange?: (page: number) => void;
+  onPageChange?: (page: number) => number;
+
+  /**
+   * The page number that elipses will be shown from
+   */
+  startElipseFromPage: number;
 };
 
 export const Paginator: React.FC<PaginatorProps> = ({
@@ -56,11 +61,12 @@ export const Paginator: React.FC<PaginatorProps> = ({
   pageNumbersClassName,
   previousButtonClassName,
   nextButtonClassName,
+  startElipseFromPage,
   onPageChange,
 }: PaginatorProps): JSX.Element => {
   const [current, setCurrent] = useState<number>(currentPage || 1);
 
-  const pages = calculatePageNumbers(current, totalPages);
+  const pages = calculatePageNumbers(current, totalPages, startElipseFromPage);
 
   const handlePageChange = (page: number) => {
     setCurrent(page);

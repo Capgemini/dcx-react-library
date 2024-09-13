@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
 import { Paginator } from '@capgeminiuk/dcx-react-library';
 
@@ -14,7 +14,10 @@ export const PaginatorDemo = () => {
       nextButton={<>Next</>}
       nextButtonClassName=""
       pageNumbersClassName=""
-      onPageChange={(page) => alert(page)}
+      onPageChange={(page) => {
+        alert(page);
+        return page;
+      }}
     />
   );
 };
