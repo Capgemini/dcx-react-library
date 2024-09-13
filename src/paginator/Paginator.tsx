@@ -20,11 +20,11 @@ export type PaginatorProps = {
    */
   totalPages: number;
   /**
-   * Previous button content
+   * Previous button content that reduce the current page count by 1
    */
   previousButton: JSX.Element;
   /**
-   * Next button content
+   * Next button content that increase the current page count by 1
    */
   nextButton: JSX.Element;
   /**
@@ -80,7 +80,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
       >
         {previousButton}
       </div>
-      {pages.map((page, index) =>
+      {pages.map((page: number | string, index: number) =>
         typeof page === 'number' ? (
           <div
             key={index}
