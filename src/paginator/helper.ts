@@ -1,6 +1,7 @@
 export const calculatePageNumbers = (
   currentPage: number,
-  totalPages: number
+  totalPages: number,
+  startElipseFromPage: number = 5
 ): (number | string)[] => {
   const pageNumbers: (number | string)[] = [];
   const firstPage = 1;
@@ -10,7 +11,7 @@ export const calculatePageNumbers = (
 
   pageNumbers.push(firstPage);
 
-  if (totalPages <= 5) {
+  if (totalPages <= startElipseFromPage) {
     for (let i = 2; i <= lastPage; i++) {
       pageNumbers.push(i);
     }

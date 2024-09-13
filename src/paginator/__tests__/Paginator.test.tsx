@@ -42,6 +42,7 @@ const renderPaginator = (props: Partial<PaginatorProps> = {}) => {
     nextButton: <>Next</>,
     nextButtonClassName: 'next-button',
     pageNumbersClassName: 'page-number',
+    startElipseFromPage: 5,
   };
   return render(<Paginator {...defaultProps} {...props} />);
 };
