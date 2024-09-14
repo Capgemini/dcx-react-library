@@ -1,9 +1,9 @@
+import React from 'react';
 import '@testing-library/jest-dom';
 
 import { Paginator, PaginatorProps } from '../Paginator';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import React from 'react';
 import { calculatePageNumbers } from '../helper';
 
 test('calculatePageNumbers returns [1] when totalPages is 1', () => {
@@ -43,6 +43,7 @@ const renderPaginator = (props: Partial<PaginatorProps> = {}) => {
     nextButtonClassName: 'next-button',
     pageNumbersClassName: 'page-number',
     startElipseFromPage: 5,
+    onPageChange: (page: number) => alert(page),
   };
   return render(<Paginator {...defaultProps} {...props} />);
 };

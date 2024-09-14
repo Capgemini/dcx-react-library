@@ -25,9 +25,7 @@ export const Unstyled = {
     nextButton: <>Next</>,
     nextButtonClassName: '',
     pageNumbersClassName: '',
-    onPageChange: (page) => {
-      alert(page);
-      return page;
-    },
+    onPageChange: (page) => page,
+    startElipseFromPage: 5,
   },
 };

@@ -5,6 +5,8 @@ import React from 'react';
 
 const PaginatorDemo = `
 function PaginatorDemo() {
+  const [currentPage, setCurrentPage] = React.useState<number>(1);
+
   return (
     <Paginator 
     paginatorClassName="paginator"
@@ -16,7 +18,8 @@ function PaginatorDemo() {
     nextButton= {<>Next</>}
     nextButtonClassName= "next-button"
     pageNumbersClassName = "buttons"
-    onPageChange={(page)=>{alert(page); return page}}
+    onPageChange={(page)=>setCurrentPage(page)}
+    startElipseFromPage = {5}
     />
   );
 }

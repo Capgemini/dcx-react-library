@@ -25,9 +25,7 @@ export const Basic = {
     nextButton: <>Next =&gt;</>,
     nextButtonClassName: 'next-button',
     pageNumbersClassName: 'buttons',
-    onPageChange: (page) => {
-      alert(page);
-      return page;
-    },
+    onPageChange: (page) => page,
+    startElipseFrom: 5,
   },
 };

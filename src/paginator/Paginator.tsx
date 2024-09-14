@@ -43,10 +43,10 @@ export type PaginatorProps = {
   /**
    * Callback function that is triggered when the page changes and returns the updated current page
    */
-  onPageChange?: (page: number) => number;
+  onPageChange?: (page: number) => void;
 
   /**
-   * The page number that elipses will be shown from
+   * The page number that elipses will be shown from. By default it's set to 5
    */
   startElipseFromPage: number;
 };
@@ -67,7 +67,6 @@ export const Paginator: React.FC<PaginatorProps> = ({
   const [current, setCurrent] = useState<number>(currentPage || 1);
 
   const pages = calculatePageNumbers(current, totalPages, startElipseFromPage);
-
   const handlePageChange = (page: number) => {
     setCurrent(page);
     if (onPageChange) {
