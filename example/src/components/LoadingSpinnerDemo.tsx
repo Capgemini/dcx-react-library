@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingSpinner } from '../../../src/spinner/LoadingSpinner';
+import { LoadingSpinner } from '@capgeminiuk/dcx-react-library';
 
 export const LoadingSpinnerDemo = () => {
     return (
