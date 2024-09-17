@@ -5,9 +5,13 @@
   --spinner-rotation-speed: 2s;
 }
 
-.loading-spinner__spinner {
-    margin-left: auto;
-    margin-right: auto;
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loading-spinner__spinner {  
     border: 8px solid var(--spinner-border-color);
     border-radius: 50%;
     border-top-color: var(--spinner-border-top-color);
