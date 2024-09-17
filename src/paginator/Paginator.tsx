@@ -8,11 +8,11 @@ export type PaginatorProps = {
    */
   paginatorClassName?: string;
   /**
-   * Current page number
+   * It will set the initial page where the paginator will position at the beginning
    */
   currentPage: number;
   /**
-   * Current page className
+   * Class name that will apply the style to the current page
    */
   currentPageClassName?: string;
   /**
@@ -20,23 +20,23 @@ export type PaginatorProps = {
    */
   totalPages: number;
   /**
-   * Previous button content that reduce the current page count by 1
+   * Allow to pass a custom component to define the previous button
    */
   previousButton: JSX.Element;
   /**
-   * Next button content that increase the current page count by 1
+   * Allow to pass a custom component to define the next button
    */
   nextButton: JSX.Element;
   /**
-   * Paginator next button className
+   * It will allow to style the container of the next button
    */
   nextButtonClassName?: string;
   /**
-   * Previous button className
+   * It will allow to style the container of the previous button
    */
   previousButtonClassName?: string;
   /**
-   * General className for page number buttons within the paginator component
+   * It will allow to style every single page number
    */
   pageNumbersClassName?: string;
 
