@@ -4,7 +4,7 @@ import { calculatePageNumbers } from './helper';
 
 export type PaginatorProps = {
   /**
-   * Optional CSS class name for paginator div that can control the paginator and the buttons inside.
+   * Class name to style the outer container
    */
   paginatorClassName?: string;
   /**
