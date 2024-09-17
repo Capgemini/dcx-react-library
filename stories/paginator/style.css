@@ -1,9 +1,11 @@
 .paginator {
   display: flex;
-  justify-content: center;
   font-size: 1rem;
   cursor: pointer;
   align-items: center;
+  border: 1px solid gray;
+  width: fit-content;
+  margin: auto;
 }
 .previous-button,
 .next-button {
@@ -12,15 +14,17 @@
   align-content: center;
   color: #1d70b8;
 }
-
+.paginator div:nth-child(2) {
+  border-left: 1px solid gray;
+}
 .buttons,
 .current-page {
   width: 45px;
   height: 45px;
   text-align: center;
   align-content: center;
-  text-decoration: underline;
   color: #1d70b8;
+  border-right: 1px solid gray;
 }
 
 .current-page {

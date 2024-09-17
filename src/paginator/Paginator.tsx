@@ -75,16 +75,16 @@ export const Paginator: React.FC<PaginatorProps> = ({
   };
   return (
     <div className={paginatorClassName}>
-      <div
-        className={previousButtonClassName}
-        onClick={() => {
-          if (current > 1) {
+      {current > 1 && (
+        <div
+          className={previousButtonClassName}
+          onClick={() => {
             handlePageChange(current - 1);
-          }
-        }}
-      >
-        {previousButton}
-      </div>
+          }}
+        >
+          {previousButton}
+        </div>
+      )}
       {pages.map((page: number | string, index: number) =>
         typeof page === 'number' ? (
           <div
@@ -99,19 +99,23 @@ export const Paginator: React.FC<PaginatorProps> = ({
             {page}
           </div>
         ) : (
-          <span key={index}>{page}</span>
+          <span className="buttons" key={index}>
+            {page}
+          </span>
         )
       )}
-      <div
-        className={nextButtonClassName}
-        onClick={() => {
-          if (current < totalPages) {
-            handlePageChange(current + 1);
-          }
-        }}
-      >
-        {nextButton}
-      </div>
+      {current !== totalPages && (
+        <div
+          className={nextButtonClassName}
+          onClick={() => {
+            if (current < totalPages) {
+              handlePageChange(current + 1);
+            }
+          }}
+        >
+          {nextButton}
+        </div>
+      )}
     </div>
   );
 };
