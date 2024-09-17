@@ -1,9 +1,10 @@
 .paginator {
   display: flex;
   justify-content: center;
-  font-size: 1rem;
   cursor: pointer;
   align-items: center;
+  padding: 1em;
+  font-size: 1.5rem;
 }
 .previous-button,
 .next-button {
