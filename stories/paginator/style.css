@@ -1,21 +1,20 @@
 .paginator {
   display: flex;
-  font-size: 1rem;
+  font-size: 22px;
   cursor: pointer;
   align-items: center;
-  border: 1px solid gray;
+  border: 1px solid #ddd;
   width: fit-content;
   margin: auto;
 }
 .previous-button,
 .next-button {
-  font-weight: 600;
-  padding: 0.6em 1em;
+  padding: 8px 16px;
   align-content: center;
   color: #1d70b8;
 }
 .paginator div:nth-child(2) {
-  border-left: 1px solid gray;
+  border-left: 1px solid #ddd;
 }
 .buttons,
 .current-page {
@@ -24,11 +23,10 @@
   text-align: center;
   align-content: center;
   color: #1d70b8;
-  border-right: 1px solid gray;
+  border-right: 1px solid #ddd;
 }
 
 .current-page {
-  font-weight: bold;
   color: white;
   background: #1d70b8;
 }
