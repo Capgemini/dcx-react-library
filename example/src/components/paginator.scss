@@ -1,0 +1,30 @@
+.paginator {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  align-items: center;
+}
+.previous-button,
+.next-button {
+  font-weight: 600;
+  padding: 0.6em 1em;
+  align-content: center;
+  color: #1d70b8;
+}
+
+.buttons,
+.current-page {
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  align-content: center;
+  text-decoration: underline;
+  color: #1d70b8;
+}
+
+.current-page {
+  font-weight: bold;
+  color: white;
+  background: #1d70b8;
+}
