@@ -61,7 +61,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
   pageNumbersClassName,
   previousButtonClassName,
   nextButtonClassName,
-  startElipseFromPage,
+  startElipseFromPage = 5,
   onPageChange,
 }: PaginatorProps): JSX.Element => {
   const [current, setCurrent] = useState<number>(currentPage || 1);
