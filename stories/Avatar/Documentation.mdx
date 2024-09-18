@@ -1,3 +1,19 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as AvatarStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/Avatar/Documentation" />
+
+# Avatar
+
+An Avatar component to display either an image or child component such as initials or an svg.
+
+When you import the avatar component without providing any className or style associated will looks as following:
+
+<Canvas of={AvatarStories.Unstyled} />
+
+A more complex example with all the possible properties is:
+
+```
 import React from 'react';
 
 type SharedProps = React.HTMLAttributes<HTMLElement> & {
