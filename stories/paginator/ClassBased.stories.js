@@ -19,15 +19,15 @@ export const Basic = {
   name: 'Basic',
   args: {
     paginatorClassName: 'paginator',
-    currentPage: 2,
+    currentPage: 1,
     currentPageClassName: 'current-page',
-    totalPages: 7,
+    totalPages: 8,
     previousButton: <>&laquo;</>,
     previousButtonClassName: 'previous-button',
     nextButton: <>&raquo;</>,
     nextButtonClassName: 'next-button',
     pageNumbersClassName: 'buttons',
     onPageChange: (page) => page,
-    startElipseFrom: 5,
+    startElipseFromPage: 1,
   },
 };
