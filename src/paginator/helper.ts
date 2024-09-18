@@ -1,7 +1,7 @@
 export const calculatePageNumbers = (
   currentPage: number,
   totalPages: number,
-  startElipseFromPage: number = 5
+  startElipseFromPage: number
 ): (number | string)[] => {
   const pageNumbers: (number | string)[] = [];
   const firstPage = 1;
