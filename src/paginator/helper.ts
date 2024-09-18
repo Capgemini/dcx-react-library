@@ -7,22 +7,43 @@ export const calculatePageNumbers = (
   const firstPage = 1;
   const lastPage = totalPages;
 
-  if (totalPages <= 1) return [firstPage];
-
+  if (totalPages <= 1) {
+    return [firstPage];
+  }
+  if (
+    startElipseFromPage < 4 ||
+    startElipseFromPage === totalPages ||
+    startElipseFromPage > totalPages
+  ) {
+    startElipseFromPage = 4;
+  }
+  if (totalPages - startElipseFromPage === 1) {
+    startElipseFromPage -= 1;
+  }
   pageNumbers.push(firstPage);
-
-  if (totalPages <= startElipseFromPage) {
+  if (totalPages <= 5) {
     for (let i = 2; i <= lastPage; i++) {
       pageNumbers.push(i);
     }
   } else {
-    if (currentPage <= 3) {
-      for (let i = 2; i <= 4; i++) {
-        pageNumbers.push(i);
+    if (currentPage < startElipseFromPage) {
+      for (let i = 2; i <= startElipseFromPage + 1; i++) {
+        if (
+          typeof i === 'number' &&
+          !pageNumbers.includes(i) &&
+          lastPage - i > 1
+        ) {
+          pageNumbers.push(i);
+        }
       }
+
       pageNumbers.push('...');
       pageNumbers.push(lastPage);
-    } else if (currentPage > 3 && currentPage < lastPage - 2) {
+    } else if (
+      (currentPage > startElipseFromPage && currentPage < lastPage - 2) ||
+      (currentPage === startElipseFromPage &&
+        totalPages / 2 === startElipseFromPage)
+    ) {
       pageNumbers.push('...');
       pageNumbers.push(currentPage - 1);
       pageNumbers.push(currentPage);
@@ -31,7 +52,7 @@ export const calculatePageNumbers = (
       pageNumbers.push(lastPage);
     } else {
       pageNumbers.push('...');
-      for (let i = lastPage - 3; i <= lastPage; i++) {
+      for (let i = lastPage - startElipseFromPage + 1; i <= lastPage; i++) {
         pageNumbers.push(i);
       }
     }
