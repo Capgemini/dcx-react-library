@@ -13,9 +13,9 @@ function PaginatorDemo() {
     currentPage={5}
     currentPageClassName="current-page"
     totalPages ={10}
-    previousButton={<>Prev</>}
+    previousButton={<>&laquo;</>}
     previousButtonClassName="previous-button"
-    nextButton= {<>Next</>}
+    nextButton= {<>&raquo;</>}
     nextButtonClassName= "next-button"
     pageNumbersClassName = "buttons"
     onPageChange={(page)=>setCurrentPage(page)}
