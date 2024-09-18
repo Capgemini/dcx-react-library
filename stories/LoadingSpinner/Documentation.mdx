@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import { LoadingSpinner } from '../../src/spinner/LoadingSpinner';
+import * as LoadingSpinnerStories from './UnStyled.stories';
+
+<Meta title="DCXLibrary/Form/LoadingSpinner/Documentation" />
+
+# Loading Spinner
+
+Loading Spinner component ready to use in your UI  
+Loading Spinner is UI/UX agnostic so you need to provide your style to have the look and feel you prefer.  
+When you import the component without providing any style associated will looks as following:
+
+<Canvas of={LoadingSpinnerStories.Unstyled} />
+
+## Usage
+
+Use the Loading Spinner component when expressing an unspecified wait time or display the length of a process.
+An example with all the available properties is:
+
+```js
+<LoadingSpinner
+  message="Please wait..."
+  color='blue'
+  background='lightgrey'
+  speed="5s"
+/>
+```
+
+<ArgTypes of={LoadingSpinnerStories} />

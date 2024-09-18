@@ -27,6 +27,7 @@ import {
   ButtonGroupDemo,
   CardDemo,
   SkeletonDemo,
+  LoadingSpinnerDemo
 } from './components';
 import './global-styles.scss';
 import { Login } from './pages/Login';
@@ -77,6 +78,7 @@ const App = () => (
         <Route path="/buttonGroup" element={<ButtonGroupDemo />} />
         <Route path="/card" element={<CardDemo />} />
         <Route path="/skeleton" element={<SkeletonDemo />} />
+        <Route path="/loadingSpinner" element={<LoadingSpinnerDemo />} />
       </Routes>
     </BrowserRouter>
   </div>

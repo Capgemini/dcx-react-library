@@ -38,3 +38,4 @@ export * from './highlight';
 export * from './buttonGroup';
 export * from './card';
 export * from './skeleton';
+export * from './spinner';
