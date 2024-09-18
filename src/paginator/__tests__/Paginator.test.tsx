@@ -7,27 +7,31 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { calculatePageNumbers } from '../helper';
 
 test('calculatePageNumbers returns [1] when totalPages is 1', () => {
-  const result = calculatePageNumbers(1, 1);
+  const result = calculatePageNumbers(1, 1, 1);
   expect(result).toEqual([1]);
 });
 
 test('calculatePageNumbers returns correct pages when totalPages is less than or equal to 5', () => {
-  const result = calculatePageNumbers(2, 5);
+  const result = calculatePageNumbers(2, 5, 5);
   expect(result).toEqual([1, 2, 3, 4, 5]);
 });
 
 test('calculatePageNumbers returns correct pages when totalPages > 5 and currentPage is near the start', () => {
-  const result = calculatePageNumbers(2, 10);
-  expect(result).toEqual([1, 2, 3, 4, '...', 10]);
+  const result = calculatePageNumbers(2, 10, 5);
+  expect(result).toEqual([1, 2, 3, 4, 5, 6, '...', 10]);
 });
 
 test('calculatePageNumbers returns correct pages when totalPages > 5 and currentPage is near the end', () => {
-  const result = calculatePageNumbers(9, 10);
-  expect(result).toEqual([1, '...', 7, 8, 9, 10]);
+  const result = calculatePageNumbers(9, 10, 5);
+  expect(result).toEqual([1, '...', 6, 7, 8, 9, 10]);
+});
+test('calculatePageNumbers returns correct pages when totalPages / startElipseFromPage === 2 and currentPage === startElipseFromPage ', () => {
+  const result = calculatePageNumbers(9, 18, 9);
+  expect(result).toEqual([1, '...', 8, 9, 10, '...', 18]);
 });
 
 test('calculatePageNumbers handles large totalPages correctly', () => {
-  const result = calculatePageNumbers(50, 100);
+  const result = calculatePageNumbers(50, 100, 5);
   expect(result).toEqual([1, '...', 49, 50, 51, '...', 100]);
 });
 
