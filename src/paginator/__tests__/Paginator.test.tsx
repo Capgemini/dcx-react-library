@@ -55,23 +55,25 @@ jest.mock('../helper', () => ({
   }),
 }));
 
-test('renders paginator with first page active', () => {
+test('renders paginator with first page active and previous button is disabled', () => {
   renderPaginator();
 
-  expect(screen.getByText('Prev')).toBeInTheDocument();
+  expect(screen.getByTestId('prev-btn')).toBeInTheDocument();
   expect(screen.getByText('1')).toHaveClass('current-page');
   expect(screen.getByText('2')).toBeInTheDocument();
   expect(screen.getByText('3')).toBeInTheDocument();
   expect(screen.getByText('4')).toBeInTheDocument();
   expect(screen.getByText('...')).toBeInTheDocument();
   expect(screen.getByText('10')).toBeInTheDocument();
-  expect(screen.getByText('Next')).toBeInTheDocument();
+  expect(screen.getByTestId('next-btn')).toBeInTheDocument();
+  expect(screen.getByTestId('prev-btn')).toBeDisabled();
+  expect(screen.getByTestId('next-btn')).not.toBeDisabled();
 });
 
 test('clicking next button moves to the next page', () => {
   renderPaginator();
 
-  const nextButton = screen.getByText('Next');
+  const nextButton = screen.getByTestId('next-btn');
   fireEvent.click(nextButton);
 
   expect(screen.getByText('2')).toHaveClass('current-page');
@@ -81,7 +83,7 @@ test('clicking Prev button moves to the previous page', () => {
     currentPage: 4,
   });
 
-  const prevButton = screen.getByText('Prev');
+  const prevButton = screen.getByTestId('prev-btn');
   fireEvent.click(prevButton);
 
   expect(screen.getByText('3')).toHaveClass('current-page');
@@ -101,31 +103,33 @@ test('renders paginator with last page active', () => {
     currentPage: 10,
   });
 
-  expect(screen.getByText('Prev')).toBeInTheDocument();
+  expect(screen.getByTestId('prev-btn')).toBeInTheDocument();
   expect(screen.getByText('1')).toBeInTheDocument();
   expect(screen.getByText('...')).toBeInTheDocument();
   expect(screen.getByText('7')).toBeInTheDocument();
   expect(screen.getByText('8')).toBeInTheDocument();
   expect(screen.getByText('9')).toBeInTheDocument();
   expect(screen.getByText('10')).toHaveClass('current-page');
-  expect(screen.getByText('Next')).toBeInTheDocument();
+  expect(screen.getByTestId('next-btn')).toBeInTheDocument();
 });
 
-test('clicking previous button when on first page does not change the page', () => {
+test('Previous button is disabled if current page equals to the first page', () => {
   renderPaginator();
 
-  const prevButton = screen.getByText('Prev');
+  const prevButton = screen.getByTestId('prev-btn');
+  expect(prevButton).toBeDisabled();
   fireEvent.click(prevButton);
 
   expect(screen.getByText('1')).toHaveClass('current-page');
 });
 
-test('clicking next button when on last page does not change the page', () => {
+test('Next button is disabled if current page equals to the last page', () => {
   renderPaginator({
     currentPage: 10,
   });
 
-  const nextButton = screen.getByText('Next');
+  const nextButton = screen.getByTestId('next-btn');
+  expect(nextButton).toBeDisabled();
   fireEvent.click(nextButton);
 
   expect(screen.getByText('10')).toHaveClass('current-page');
