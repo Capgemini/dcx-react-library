@@ -10,16 +10,16 @@ export const calculatePageNumbers = (
   if (totalPages <= 1) {
     return [firstPage];
   }
-  if (
-    startElipseFromPage < 4 ||
-    startElipseFromPage === totalPages ||
-    startElipseFromPage > totalPages
-  ) {
-    startElipseFromPage = 4;
-  }
-  if (totalPages - startElipseFromPage === 1) {
-    startElipseFromPage -= 1;
-  }
+  // if (
+  //   startElipseFromPage < 4 ||
+  //   startElipseFromPage === totalPages ||
+  //   startElipseFromPage > totalPages
+  // ) {
+  //   startElipseFromPage = 4;
+  // }
+  // if (totalPages - startElipseFromPage === 1) {
+  //   startElipseFromPage -= 1;
+  // }
   pageNumbers.push(firstPage);
   if (totalPages <= 5) {
     for (let i = 2; i <= lastPage; i++) {

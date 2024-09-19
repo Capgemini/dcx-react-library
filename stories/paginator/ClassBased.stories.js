@@ -21,13 +21,12 @@ export const Basic = {
     paginatorClassName: 'paginator',
     currentPage: 1,
     currentPageClassName: 'current-page',
-    totalPages: 8,
+    totalPages: 9,
     previousButton: <>&laquo;</>,
     previousButtonClassName: 'previous-button',
     nextButton: <>&raquo;</>,
     nextButtonClassName: 'next-button',
     pageNumbersClassName: 'buttons',
-    onPageChange: (page) => page,
-    startElipseFromPage: 1,
+    onPageChange: (page) => page
   },
 };
