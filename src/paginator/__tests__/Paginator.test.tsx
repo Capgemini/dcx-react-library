@@ -34,7 +34,112 @@ test('calculatePageNumbers handles large totalPages correctly', () => {
   const result = calculatePageNumbers(50, 100, 5);
   expect(result).toEqual([1, '...', 49, 50, 51, '...', 100]);
 });
+test('calculatePageNumbers generates correct page numbers', () => {
+  expect(calculatePageNumbers(2, 4, 4)).toEqual([1, 2, 3, 4]);
+  expect(calculatePageNumbers(1, 4, 4)).toEqual([1, 2, 3, 4]);
+  expect(calculatePageNumbers(2, 4, 0)).toEqual([1, 2, 3, 4]);
+  expect(calculatePageNumbers(2, 5, 4)).toEqual([1, 2, 3, 4, 5]);
+  expect(calculatePageNumbers(1, 5, 4)).toEqual([1, 2, 3, 4, 5]);
+  expect(calculatePageNumbers(1, 5, 8)).toEqual([1, 2, 3, 4, 5]);
+  expect(calculatePageNumbers(2, 5, 5)).toEqual([1, 2, 3, 4, 5]);
+  expect(calculatePageNumbers(5, 5, 5)).toEqual([1, 2, 3, 4, 5]);
+  expect(calculatePageNumbers(1, 8, 4)).toEqual([1, 2, 3, 4, 5, '...', 8]);
+  expect(calculatePageNumbers(2, 8, 5)).toEqual([1, 2, 3, 4, 5, 6, '...', 8]);
+  expect(calculatePageNumbers(4, 8, 4)).toEqual([1, '...', 3, 4, 5, '...', 8]);
+  expect(calculatePageNumbers(2, 8, 8)).toEqual([1, 2, 3, 4, 5, '...', 8]);
+  expect(calculatePageNumbers(2, 4, 1)).toEqual([1, 2, 3, 4]);
+  expect(calculatePageNumbers(2, 9, 4)).toEqual([1, 2, 3, 4, '...', 9]);
+  expect(calculatePageNumbers(6, 9, 2)).toEqual([1, '...', 5, 6, 7, '...', 9]);
+  expect(calculatePageNumbers(3, 9, 4)).toEqual([1, '...', 5, 6, 7, '...', 9]);
+  expect(calculatePageNumbers(2, 9, 3)).toEqual([1, '...', 5, 6, 7, '...', 9]);
+  expect(calculatePageNumbers(4, 9, 4)).toEqual([1, '...', 5, 6, 7, '...', 9]);
 
+  expect(calculatePageNumbers(6, 9, 5)).toEqual([1, '...', 5, 6, 7, '...', 9]);
+
+  expect(calculatePageNumbers(5, 9, 4)).toEqual([1, '...', 4, 5, 6, '...', 9]);
+  expect(calculatePageNumbers(4, 9, 4)).toEqual([1, '...', 3, 4, 5, '...', 9]);
+  expect(calculatePageNumbers(50, 100, 20)).toEqual([
+    1,
+    '...',
+    49,
+    50,
+    51,
+    '...',
+    100,
+  ]);
+  expect(calculatePageNumbers(50, 100, 50)).toEqual([
+    1,
+    '...',
+    49,
+    50,
+    51,
+    '...',
+    100,
+  ]);
+  expect(calculatePageNumbers(70, 100, 51)).toEqual([
+    1,
+    '...',
+    69,
+    70,
+    71,
+    '...',
+    100,
+  ]);
+  expect(calculatePageNumbers(100, 100, 49)).toEqual([
+    1,
+    '...',
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+  ]);
+  expect(calculatePageNumbers(4, 9, 4)).toEqual([1, '...', 3, 4, 5, '...', 9]);
+});
 const renderPaginator = (props: Partial<PaginatorProps> = {}) => {
   const defaultProps: PaginatorProps = {
     paginatorClassName: '',
