@@ -53,17 +53,17 @@ export const Avatar = ({
   children,
   src,
   alt,
-  wrappingAnchorHref,
-  wrappingAnchorTarget,
+  avatarLink,
+  avatarLinkTarget,
   width = '40px',
   height = '40px',
   ...props
 }: AvatarProps) => {
   let contents = src ? <img src={src} alt={alt} /> : children;
 
-  if (wrappingAnchorHref) {
+  if (avatarLink) {
     contents = (
-      <a href={wrappingAnchorHref} target={wrappingAnchorTarget}>
+      <a href={avatarLink} target={avatarLinkTarget}>
         {contents}
       </a>
     );
