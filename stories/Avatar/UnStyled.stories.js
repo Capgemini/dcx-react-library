@@ -17,8 +17,9 @@ export default {
 
 export const Unstyled = {
   args: {
+    avatarLink: 'http://localhost/',
     children: [
-      <a href="#" target="_blank">EL</a>,
+      'EL',
     ],
   },
 };
