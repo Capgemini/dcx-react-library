@@ -10,14 +10,6 @@ type SharedProps = React.HTMLAttributes<HTMLElement> & {
    */
   shape?: 'circle' | 'rounded' | 'square';
   /**
-   * The predefined background colours that can be set. These can be overwritten with the 'style' prop.
-   */
-  backgroundColourOption?: 'default' | 'light' | 'dark';
-  /**
-   * The custom background colour
-   */
-  backgroundColour?: string;
-  /**
    * A href property to use on an anchor tag that wraps the avatars child components
    */
   wrappingAnchorHref?: string;
@@ -69,16 +61,9 @@ const shapeStyles = {
   },
 };
 
-const backgroundColourOptions = {
-  default: '#bdbdbd',
-  dark: '#000',
-  light: '#fff',
-};
-
 export const Avatar = ({
   className,
   shape = 'circle',
-  backgroundColourOption = 'default',
   children,
   src,
   alt,
@@ -86,12 +71,8 @@ export const Avatar = ({
   wrappingAnchorTarget,
   width = '40px',
   height = '40px',
-  backgroundColour,
   ...props
 }: AvatarProps | ImageAvatarProps) => {
-  const backgroundColor =
-    backgroundColour || backgroundColourOptions[backgroundColourOption];
-
   let contents = src ? <img src={src} alt={alt} /> : children;
 
   if (wrappingAnchorHref) {
@@ -113,7 +94,6 @@ export const Avatar = ({
         overflow: 'hidden',
         width,
         height,
-        backgroundColor,
         ...shapeStyles[shape],
         ...props.style,
       }}

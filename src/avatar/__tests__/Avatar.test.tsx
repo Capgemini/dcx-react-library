@@ -69,41 +69,6 @@ describe('Avatar', () => {
     expect(div?.className).toBe('test');
   });
 
-  it('should render with a default background colour', () => {
-    const { container } = render(<Avatar className="test">text</Avatar>);
-    const div = container.querySelector('div');
-    expect(div?.style.backgroundColor).toBe('rgb(189, 189, 189)');
-  });
-
-  it('should render with the selected preset background colour', () => {
-    let divPointer;
-    let containerPointer;
-
-    //dark theme
-    containerPointer = render(
-      <Avatar backgroundColourOption="dark">text</Avatar>
-    ).container;
-    divPointer = containerPointer.querySelector('div');
-    expect(divPointer?.style.backgroundColor).toBe('rgb(0, 0, 0)');
-
-    // light theme
-    containerPointer = render(
-      <Avatar backgroundColourOption="light">text</Avatar>
-    ).container;
-    divPointer = containerPointer.querySelector('div');
-    expect(divPointer?.style.backgroundColor).toBe('rgb(255, 255, 255)');
-  });
-
-  it('should render with a custom background colour', () => {
-    const { container } = render(
-      <Avatar className="test" backgroundColour="green">
-        text
-      </Avatar>
-    );
-    const div = container.querySelector('div');
-    expect(div?.style.backgroundColor).toBe('green');
-  });
-
   it('should render an anchor tag if wrappingAnchorHref and wrappingAnchorTarget prop is passed', () => {
     const testUrl = 'http://test.url/';
 
