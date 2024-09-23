@@ -69,14 +69,14 @@ describe('Avatar', () => {
     expect(div?.className).toBe('test');
   });
 
-  it('should render an anchor tag if wrappingAnchorHref and wrappingAnchorTarget prop is passed', () => {
+  it('should render an anchor tag if avatarLink and avatarLinkTarget prop is passed', () => {
     const testUrl = 'http://test.url/';
 
     const { container } = render(
       <Avatar
         className="test"
-        wrappingAnchorHref={testUrl}
-        wrappingAnchorTarget="_blank"
+        avatarLink={testUrl}
+        avatarLinkTarget="_blank"
       >
         text
       </Avatar>
@@ -86,9 +86,9 @@ describe('Avatar', () => {
     expect(anchor?.target).toBe('_blank');
   });
 
-  it('should not render wrappingAnchorTarget if wrappingAnchorHref prop is not passed', () => {
+  it('should not render avatarLinkTarget if avatarLink prop is not passed', () => {
     const { container } = render(
-      <Avatar className="test" wrappingAnchorTarget="_blank">
+      <Avatar className="test" avatarLinkTarget="_blank">
         text
       </Avatar>
     );
