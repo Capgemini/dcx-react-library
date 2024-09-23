@@ -10,13 +10,13 @@ type AvatarProps = React.HTMLAttributes<HTMLElement> & {
    */
   shape?: 'circle' | 'rounded' | 'square';
   /**
-   * A href property to use on an anchor tag that wraps the avatars child components
+   * A target url that the avatar should link to
    */
-  wrappingAnchorHref?: string;
+  avatarLink?: string;
   /**
-   * A target property to use on an anchor tag that wraps the avatars child components
+   * The target behaviour that should be used with the `avatarLink` prop
    */
-  wrappingAnchorTarget?: '_blank' | '_self' | '_parent' | '_top';
+  avatarLinkTarget?: '_blank' | '_self' | '_parent' | '_top';
   /**
    * The desired width of the avatar component
    */
