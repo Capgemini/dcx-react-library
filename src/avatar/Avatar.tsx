@@ -1,6 +1,6 @@
 import React from 'react';
 
-type SharedProps = React.HTMLAttributes<HTMLElement> & {
+type AvatarProps = React.HTMLAttributes<HTMLElement> & {
   /**
    * The class to pass to the parent div
    */
@@ -25,24 +25,10 @@ type SharedProps = React.HTMLAttributes<HTMLElement> & {
    * The desired height of the avatar component
    */
   height?: string;
-};
-
-type AvatarProps = SharedProps & {
-  /**
-   * Src not used on non image avatars
-   */
-  src?: never;
-  /**
-   * Alt not used on non image avatars
-   */
-  alt?: never;
-};
-
-type ImageAvatarProps = SharedProps & {
   /**
    * The src of an image we would like to display.
    */
-  src: string;
+  src?: string;
   /**
    * The alt text for the image element.
    */
@@ -72,7 +58,7 @@ export const Avatar = ({
   width = '40px',
   height = '40px',
   ...props
-}: AvatarProps | ImageAvatarProps) => {
+}: AvatarProps) => {
   let contents = src ? <img src={src} alt={alt} /> : children;
 
   if (wrappingAnchorHref) {
