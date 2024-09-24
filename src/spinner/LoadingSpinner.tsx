@@ -32,9 +32,7 @@ export const LoadingSpinner = ({
     speed,
     message,
     ...props
-}: SpinnerProps) => {
-  
-  return (
+  }: SpinnerProps) => 
     <div className={`${styles['loading-spinner']}`}>
       <div
         className={`${styles['loading-spinner__spinner']}`}
@@ -45,14 +43,11 @@ export const LoadingSpinner = ({
         }}
         aria-live="polite"
         role="status"
-         {...props}
+        {...props}
       ></div>
       {message? <div className={`${styles['loading-spinner__content']}`}>
         <h3>
           {message}
         </h3>
       </div>:'' }
-      
-    </div>
-  );
-};
+    </div>;
