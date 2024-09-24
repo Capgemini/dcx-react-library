@@ -14,9 +14,11 @@ export default {
   },
   tags: ['autodocs'],
 };
-
+/**
+Pagination with the values of currentPage = 1, totalPages = 14, sibilingCount = 1 and boundaryCount = 1
+*/
 export const Basic = {
-  name: 'Basic',
+  name: 'Basic pagination',
   args: {
     paginatorClassName: 'paginator',
     currentPage: 1,
@@ -26,12 +28,14 @@ export const Basic = {
     nextButtonClassName: 'next-button',
     pageNumbersClassName: 'buttons',
     sibilingCount: 1,
-    boundryCount: 2,
+    boundaryCount: 1,
   },
 };
-
+/**
+Pagination with the custom buttons
+*/
 export const CustomPrevNextButton = {
-  name: 'CustomPrevNextButton',
+  name: 'Pagination with custom buttons',
   args: {
     paginatorClassName: 'paginator',
     currentPage: 1,
@@ -43,12 +47,14 @@ export const CustomPrevNextButton = {
     nextButtonClassName: 'next-button',
     pageNumbersClassName: 'buttons',
     sibilingCount: 1,
-    boundryCount: 2,
+    boundaryCount: 1,
   },
 };
-
+/**
+Pagination with the values of currentPage = 7, totalPages = 14, sibilingCount = 2 and boundaryCount = 1
+*/
 export const BasicWithTwoSiblings = {
-  name: 'Basic with 2 siblings',
+  name: 'Pagination with 2 siblings',
   args: {
     paginatorClassName: 'paginator',
     currentPage: 7,
@@ -60,14 +66,17 @@ export const BasicWithTwoSiblings = {
     nextButtonClassName: 'next-button',
     pageNumbersClassName: 'buttons',
     sibilingCount: 2,
-    boundryCount: 2,
+    boundaryCount: 1,
   },
 };
+/**
+Pagination with the values of currentPage = 7, totalPages = 14, sibilingCount = 3 and boundaryCount = 1
+*/
 export const BasicWithThreeSiblings = {
-  name: 'Basic with 3 siblings',
+  name: 'Pagination with 3 siblings',
   args: {
     paginatorClassName: 'paginator',
-    currentPage: 1,
+    currentPage: 7,
     currentPageClassName: 'current-page',
     totalPages: 14,
     previousButton: <>&laquo;</>,
@@ -76,11 +85,14 @@ export const BasicWithThreeSiblings = {
     nextButtonClassName: 'next-button',
     pageNumbersClassName: 'buttons',
     sibilingCount: 3,
-    boundryCount: 2,
+    boundaryCount: 1,
   },
 };
+/**
+Pagination with currentPage set to 3
+*/
 export const BasicWithCurrentPageThree = {
-  name: 'Basic with current page set to 3',
+  name: 'Pagination with current page set to 3',
   args: {
     paginatorClassName: 'paginator',
     currentPage: 3,
@@ -92,6 +104,25 @@ export const BasicWithCurrentPageThree = {
     nextButtonClassName: 'next-button',
     pageNumbersClassName: 'buttons',
     sibilingCount: 1,
-    boundryCount: 2,
+    boundaryCount: 1,
+  },
+};
+/**
+Pagination with the values of currentPage = 7, totalPages = 14, sibilingCount = 1 and boundaryCount = 2
+*/
+export const BasicWithTwoboundary = {
+  name: 'Pagination with 2 boundaryCount',
+  args: {
+    paginatorClassName: 'paginator',
+    currentPage: 6,
+    currentPageClassName: 'current-page',
+    totalPages: 14,
+    previousButton: <>&laquo;</>,
+    previousButtonClassName: 'previous-button',
+    nextButton: <>&raquo;</>,
+    nextButtonClassName: 'next-button',
+    pageNumbersClassName: 'buttons',
+    sibilingCount: 1,
+    boundaryCount: 2,
   },
 };

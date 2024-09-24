@@ -17,7 +17,7 @@ function PaginatorDemo() {
     nextButtonClassName= "next-button"
     pageNumbersClassName = "buttons"
     sibilingCount= {1}
-    boundryCount= {2}
+    boundaryCount= {2}
     />
   );
 }

@@ -26,6 +26,6 @@ export const Unstyled = {
     nextButtonClassName: '',
     pageNumbersClassName: '',
     sibilingCount: 2,
-    boundryCount: 1,
+    boundaryCount: 1,
   },
 };
