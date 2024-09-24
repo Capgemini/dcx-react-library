@@ -12,17 +12,21 @@ export type PaginatorProps = {
    */
   currentPage: number;
   /**
-   * Class name to style the outer container
-   */
-  paginatorClassName?: string;
-  /**
    * Class name that will apply the style to the current page
    */
   currentPageClassName?: string;
   /**
+   * Class name to style the outer container
+   */
+  paginatorClassName?: string;
+  /**
    * Allow to pass a custom component to define the previous button
    */
   previousButton?: JSX.Element;
+  /**
+   * It will allow to style the container of the previous button
+   */
+  previousButtonClassName?: string;
   /**
    * Allow to pass a custom component to define the next button
    */
@@ -32,17 +36,9 @@ export type PaginatorProps = {
    */
   nextButtonClassName?: string;
   /**
-   * It will allow to style the container of the previous button
-   */
-  previousButtonClassName?: string;
-  /**
    * It will allow to style every single page number
    */
   pageNumbersClassName?: string;
-  /**
-   * Callback function that is triggered when the page changes and returns the updated current page
-   */
-  onPageChange?: (page: number) => void;
   /**
    * Number of always visible pages before and after the current page.
    * @default 1
@@ -53,13 +49,17 @@ export type PaginatorProps = {
    * @default 1
    */
   boundryCount?: number;
+  /**
+   * Callback function that is triggered when the page changes and returns the updated current page
+   */
+  onPageChange?: (page: number) => void;
 };
 
 export const Paginator: React.FC<PaginatorProps> = ({
-  paginatorClassName,
-  currentPage,
-  currentPageClassName,
   totalPages,
+  currentPage,
+  paginatorClassName,
+  currentPageClassName,
   previousButton = <>Prev</>,
   nextButton = <>Next</>,
   pageNumbersClassName,
