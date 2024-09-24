@@ -5,21 +5,19 @@ import React from 'react';
 
 const PaginatorDemo = `
 function PaginatorDemo() {
-  const [currentPage, setCurrentPage] = React.useState<number>(1);
-
   return (
     <Paginator 
     paginatorClassName="paginator"
     currentPage={5}
     currentPageClassName="current-page"
-    totalPages ={10}
+    totalPages ={15}
     previousButton={<>&laquo;</>}
     previousButtonClassName="previous-button"
     nextButton= {<>&raquo;</>}
     nextButtonClassName= "next-button"
     pageNumbersClassName = "buttons"
-    onPageChange={(page)=>setCurrentPage(page)}
-    startElipseFromPage = {5}
+    sibilingCount= {1}
+    boundryCount= {2}
     />
   );
 }

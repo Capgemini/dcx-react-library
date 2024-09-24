@@ -46,9 +46,15 @@ export type PaginatorProps = {
   onPageChange?: (page: number) => void;
 
   /**
-   * The page number that elipses will be shown from. By default it's set to 5
+   * Number of always visible pages before and after the current page.
+   * @default 1
    */
-  startElipseFromPage?: number;
+  sibilingCount?: number;
+  /**
+   * Number of always visible pages at the beginning and end.
+   * @default 1
+   */
+  boundryCount?: number;
 };
 
 export const Paginator: React.FC<PaginatorProps> = ({
@@ -61,17 +67,23 @@ export const Paginator: React.FC<PaginatorProps> = ({
   pageNumbersClassName,
   previousButtonClassName,
   nextButtonClassName,
-  startElipseFromPage = totalPages > 5 ? parseInt('' + totalPages / 2) - 1 : 0,
+  sibilingCount = 1,
+  boundryCount = 1,
   onPageChange,
 }: PaginatorProps): JSX.Element => {
   const [current, setCurrent] = useState<number>(currentPage || 1);
 
-  const pages = calculatePageNumbers(current, totalPages, startElipseFromPage);
+  const pages: any = calculatePageNumbers(
+    current,
+    totalPages,
+    sibilingCount,
+    boundryCount
+  );
   const handlePageChange = (page: number) => {
-    setCurrent(page);
     if (onPageChange) {
       onPageChange(page);
     }
+    setCurrent(page);
   };
   return (
     <div className={paginatorClassName}>
