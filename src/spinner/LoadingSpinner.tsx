@@ -23,7 +23,7 @@ export type SpinnerProps = {
         * Additional props/attributes
     */
    
-    props?: React.HTMLAttributes<HTMLParagraphElement>;
+    props?: React.HTMLAttributes<HTMLElement>;
 } ;
 
 export const LoadingSpinner = ({
