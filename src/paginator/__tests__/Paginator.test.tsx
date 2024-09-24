@@ -10,9 +10,7 @@ const renderPaginator = (props: Partial<PaginatorProps> = {}) => {
     currentPage: 1,
     currentPageClassName: 'current-page',
     totalPages: 15,
-    previousButton: <>Prev</>,
     previousButtonClassName: 'previous-button',
-    nextButton: <>Next</>,
     nextButtonClassName: 'next-button',
     pageNumbersClassName: 'page-number',
     onPageChange: (page: number) => alert(page),
@@ -41,6 +39,14 @@ describe('Paginator', () => {
     expect(screen.getByTestId('next-btn')).toBeInTheDocument();
     expect(screen.getByTestId('prev-btn')).toBeDisabled();
     expect(screen.getByTestId('next-btn')).not.toBeDisabled();
+  });
+  it('Should render pagination with the passed button props as "Next btn" and "Prev btn"', () => {
+    renderPaginator({
+      nextButton: <>Next btn</>,
+      previousButton: <>Prev btn</>,
+    });
+    expect(screen.getByTestId('next-btn')).toHaveTextContent('Next btn');
+    expect(screen.getByTestId('prev-btn')).toHaveTextContent('Prev btn');
   });
 
   it('should moves to the next page clicking next button', () => {
