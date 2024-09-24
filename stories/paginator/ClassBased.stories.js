@@ -29,6 +29,24 @@ export const Basic = {
     boundryCount: 2,
   },
 };
+
+export const CustomPrevNextButton = {
+  name: 'CustomPrevNextButton',
+  args: {
+    paginatorClassName: 'paginator',
+    currentPage: 1,
+    currentPageClassName: 'current-page',
+    totalPages: 14,
+    previousButton: <>&laquo;</>,
+    previousButtonClassName: 'previous-button',
+    nextButton: <>&raquo;</>,
+    nextButtonClassName: 'next-button',
+    pageNumbersClassName: 'buttons',
+    sibilingCount: 1,
+    boundryCount: 2,
+  },
+};
+
 export const BasicWithTwoSiblings = {
   name: 'Basic with 2 siblings',
   args: {
