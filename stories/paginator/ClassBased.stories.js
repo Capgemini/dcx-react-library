@@ -31,3 +31,51 @@ export const Basic = {
     boundryCount: 2,
   },
 };
+export const BasicWithTwoSiblings = {
+  name: 'Basic with 2 siblings',
+  args: {
+    paginatorClassName: 'paginator',
+    currentPage: 7,
+    currentPageClassName: 'current-page',
+    totalPages: 14,
+    previousButton: <>&laquo;</>,
+    previousButtonClassName: 'previous-button',
+    nextButton: <>&raquo;</>,
+    nextButtonClassName: 'next-button',
+    pageNumbersClassName: 'buttons',
+    sibilingCount: 2,
+    boundryCount: 2,
+  },
+};
+export const BasicWithThreeSiblings = {
+  name: 'Basic with 3 siblings',
+  args: {
+    paginatorClassName: 'paginator',
+    currentPage: 1,
+    currentPageClassName: 'current-page',
+    totalPages: 14,
+    previousButton: <>&laquo;</>,
+    previousButtonClassName: 'previous-button',
+    nextButton: <>&raquo;</>,
+    nextButtonClassName: 'next-button',
+    pageNumbersClassName: 'buttons',
+    sibilingCount: 3,
+    boundryCount: 2,
+  },
+};
+export const BasicWithCurrentPageThree = {
+  name: 'Basic with current page set to 3',
+  args: {
+    paginatorClassName: 'paginator',
+    currentPage: 3,
+    currentPageClassName: 'current-page',
+    totalPages: 14,
+    previousButton: <>&laquo;</>,
+    previousButtonClassName: 'previous-button',
+    nextButton: <>&raquo;</>,
+    nextButtonClassName: 'next-button',
+    pageNumbersClassName: 'buttons',
+    sibilingCount: 1,
+    boundryCount: 2,
+  },
+};
