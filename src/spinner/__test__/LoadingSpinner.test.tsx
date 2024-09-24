@@ -4,28 +4,37 @@ import '@testing-library/jest-dom';
 import { LoadingSpinner } from '../LoadingSpinner';
 
 describe('LoadingSpinner Component', () => {
-  test('renders spinner without crashing', () => {
+
+  test('should render spinner without crashing', () => {
     render(<LoadingSpinner />);
     const spinnerElement = screen.getByRole('status');
     expect(spinnerElement).toBeInTheDocument();
   });
 
-  test('applies correct styles based on props', () => {
+  test('should apply correct styles for color, background, and speed based on props', () => {
     render(
       <LoadingSpinner
         color="red"
         background="blue"
-        speed="2s"
+        speed="3s"
       />
     );
     const spinnerElement = screen.getByRole('status');
-
     expect(spinnerElement).toHaveStyle('--spinner-border-top-color: red');
     expect(spinnerElement).toHaveStyle('--spinner-border-color: blue');
-    expect(spinnerElement).toHaveStyle('--spinner-rotation-speed: 2s');
+    expect(spinnerElement).toHaveStyle('--spinner-rotation-speed: 3s');
+    
   });
 
-  test('renders loading message when provided', () => {
+  test('should apply the correct speed to the spinner when speed is provided', () => {
+    render(
+      <LoadingSpinner speed='4s'/>
+    );
+    const spinnerElement = screen.getByRole('status');
+    expect(spinnerElement).toHaveStyle('--spinner-rotation-speed: 4s');
+  });
+
+  test('should load the message when provided', () => {
     const message = 'Loading... Please wait';
     render(<LoadingSpinner message={message} />);
     
@@ -33,7 +42,7 @@ describe('LoadingSpinner Component', () => {
     expect(messageElement).toBeInTheDocument();
   });
 
-  test('does not render message when no message is provided', () => {
+  test('should not render message when no message is provided', () => {
     render(<LoadingSpinner />);
     const messageElement = screen.queryByText(/Loading.../);
     expect(messageElement).not.toBeInTheDocument();
