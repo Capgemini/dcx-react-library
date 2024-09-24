@@ -2,29 +2,31 @@ import React from 'react';
 import styles from './spinner.module.css';
 
 export type SpinnerProps = {
+  /**
+  * allow user to define the spinner color
+  */
+  color?: string;
 
-    /**
-    * allow user to define the spinner color
-    */
-    color?: string,
-    /**
-    * allow user to define the background spinner color
-    */
-    background?: string,
-    /**
-    * allow user to define the spinner rotation speed in seconds
-    */
-    speed?: string,
-    /**
-     * allow user to define loading message
-     */
-    message?: string,
-    /**
-        * Additional props/attributes
-    */
-   
-    props?: React.HTMLAttributes<HTMLElement>;
-} ;
+  /**
+  * allow user to define the background spinner color
+  */
+  background?: string;
+  
+  /**
+  * allow user to define the spinner rotation speed in seconds
+  */
+  speed?: string;
+
+  /**
+   * allow user to define loading message
+   */
+  message?: string;
+
+  /**
+      * Additional props/attributes
+  */
+  props?: React.HTMLAttributes<HTMLElement>;
+};
 
 export const LoadingSpinner = ({
     color,
