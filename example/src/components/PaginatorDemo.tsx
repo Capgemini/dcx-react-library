@@ -16,7 +16,7 @@ export const PaginatorDemo = () => {
       nextButtonClassName="next-button"
       pageNumbersClassName="buttons"
       onPageChange={(page) => setCurrentPage(page)}
-      startElipseFromPage={5}
+      sibilingCount={3}
     />
   );
 };
