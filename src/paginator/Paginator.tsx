@@ -22,7 +22,7 @@ export type PaginatorProps = {
   /**
    * Allow to pass a custom component to define the previous button
    */
-  previousButton?: JSX.Element;
+  previousButton?: JSX.Element | string;
   /**
    * It will allow to style the container of the previous button
    */
@@ -30,7 +30,7 @@ export type PaginatorProps = {
   /**
    * Allow to pass a custom component to define the next button
    */
-  nextButton?: JSX.Element;
+  nextButton?: JSX.Element | string;
   /**
    * It will allow to style the container of the next button
    */
@@ -60,8 +60,8 @@ export const Paginator: React.FC<PaginatorProps> = ({
   currentPage,
   paginatorClassName,
   currentPageClassName,
-  previousButton = <>Prev</>,
-  nextButton = <>Next</>,
+  previousButton = 'Prev',
+  nextButton = 'Next',
   pageNumbersClassName,
   previousButtonClassName,
   nextButtonClassName,
