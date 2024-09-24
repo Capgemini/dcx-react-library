@@ -4,21 +4,21 @@ import { calculatePageNumbers } from './helper';
 
 export type PaginatorProps = {
   /**
-   * Class name to style the outer container
+   * Total pages count
    */
-  paginatorClassName?: string;
+  totalPages: number;
   /**
    * It will set the initial page where the paginator will position at the beginning
    */
   currentPage: number;
   /**
+   * Class name to style the outer container
+   */
+  paginatorClassName?: string;
+  /**
    * Class name that will apply the style to the current page
    */
   currentPageClassName?: string;
-  /**
-   * Total pages count
-   */
-  totalPages: number;
   /**
    * Allow to pass a custom component to define the previous button
    */
@@ -39,12 +39,10 @@ export type PaginatorProps = {
    * It will allow to style every single page number
    */
   pageNumbersClassName?: string;
-
   /**
    * Callback function that is triggered when the page changes and returns the updated current page
    */
   onPageChange?: (page: number) => void;
-
   /**
    * Number of always visible pages before and after the current page.
    * @default 1
