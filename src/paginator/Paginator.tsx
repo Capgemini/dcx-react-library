@@ -48,7 +48,7 @@ export type PaginatorProps = {
    * Number of always visible pages at the beginning and end.
    * @default 1
    */
-  boundryCount?: number;
+  boundaryCount?: number;
   /**
    * Callback function that is triggered when the page changes and returns the updated current page
    */
@@ -66,7 +66,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
   previousButtonClassName,
   nextButtonClassName,
   sibilingCount = 1,
-  boundryCount = 1,
+  boundaryCount = 1,
   onPageChange,
 }: PaginatorProps): JSX.Element => {
   const [current, setCurrent] = useState<number>(currentPage || 1);
@@ -75,7 +75,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
     current,
     totalPages,
     sibilingCount,
-    boundryCount
+    boundaryCount
   );
   const handlePageChange = (page: number) => {
     if (onPageChange) {
