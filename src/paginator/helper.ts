@@ -28,24 +28,20 @@ export function calculatePageNumbers(
     totalPages - boundaryCount - 1
   );
 
-  let startSiblingsToAdd: (number | string)[];
+  let startSiblingsToAdd: (number | string)[] = [];
 
   if (siblingStart > boundaryCount + 2) {
     startSiblingsToAdd = ['...'];
   } else if (boundaryCount + 1 < totalPages - boundaryCount) {
     startSiblingsToAdd = [boundaryCount + 1];
-  } else {
-    startSiblingsToAdd = [];
   }
 
-  let endSiblingsToAdd: (number | string)[];
+  let endSiblingsToAdd: (number | string)[] = [];
 
   if (siblingEnd < totalPages - boundaryCount - 1) {
     endSiblingsToAdd = ['...'];
   } else if (totalPages - boundaryCount > boundaryCount) {
     endSiblingsToAdd = [totalPages - boundaryCount];
-  } else {
-    endSiblingsToAdd = [];
   }
 
   const itemList = [
