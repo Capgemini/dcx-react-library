@@ -6,7 +6,7 @@
     "import/no-anonymous-default-export": 0,
     "no-console": "error",
     "no-debugger": "error",
-    "array-bracket-newline": "error",
+    "array-bracket-newline": "off",
     "array-bracket-spacing": "error",
     "array-callback-return": "error",
     "arrow-body-style": "error",
@@ -52,7 +52,6 @@
       "always"
     ],
     // turning off the following
-    "react-hooks/exhaustive-deps": "off",
-    "linebreak-style": 0
+    "react-hooks/exhaustive-deps": "off"
   }
 }
