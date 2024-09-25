@@ -52,6 +52,7 @@
       "always"
     ],
     // turning off the following
-    "react-hooks/exhaustive-deps": "off"
+    "react-hooks/exhaustive-deps": "off",
+    "linebreak-style": 0
   }
 }
