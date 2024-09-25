@@ -10,7 +10,7 @@ export type PaginatorProps = {
   /**
    * It will set the initial page where the paginator will position at the beginning
    */
-  currentPage: number;
+  currentPage?: number;
   /**
    * Class name that will apply the style to the current page
    */
@@ -57,7 +57,7 @@ export type PaginatorProps = {
 
 export const Paginator: React.FC<PaginatorProps> = ({
   totalPages,
-  currentPage,
+  currentPage = 1,
   paginatorClassName,
   currentPageClassName,
   previousButton = 'Prev',
