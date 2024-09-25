@@ -9,23 +9,24 @@ Paginator is a UI/UX agnostic component so you need to provide your style to cre
 Use the Paginator component to efficiently navigate through content spread across multiple pages, ensuring users can easily access relevant information without overwhelming them with too much data at once.  
 When you import the Paginator component without providing any className or style associated will looks as following:
 
-<Canvas of={PaginatorStories.Unstyled} />
+<Canvas of={PaginatorStories.Basic} />
 
 An example with all the available properties is:
 
 ```jsx
 <Paginator
-  paginatorClassName=""
-  currentPage={5}
+  totalPages={5}
+  currentPage={2}
   currentPageClassName=""
-  totalPages={15}
-  previousButton={<>Prev</>}
+  paginatorClassName=""
+  previousButton="Prev";
   previousButtonClassName=""
-  nextButton={<>Next</>}
+  nextButton="Next";
   nextButtonClassName=""
   pageNumbersClassName=""
-  sibilingCount= {3}
-  boundaryCount {2}
+  sibilingCount={1}
+  boundaryCount={1}
+  onPageChange= {(page: number) => {}}
 />
 ```
 
