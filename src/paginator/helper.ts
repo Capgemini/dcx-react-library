@@ -28,26 +28,31 @@ export function calculatePageNumbers(
     totalPages - boundaryCount - 1
   );
 
+  let startSiblingsToAdd: (number | string)[];
+
+  if (siblingStart > boundaryCount + 2) {
+    startSiblingsToAdd = ['...'];
+  } else if (boundaryCount + 1 < totalPages - boundaryCount) {
+    startSiblingsToAdd = [boundaryCount + 1];
+  } else {
+    startSiblingsToAdd = [];
+  }
+
+  let endSiblingsToAdd: (number | string)[];
+
+  if (siblingEnd < totalPages - boundaryCount - 1) {
+    endSiblingsToAdd = ['...'];
+  } else if (totalPages - boundaryCount > boundaryCount) {
+    endSiblingsToAdd = [totalPages - boundaryCount];
+  } else {
+    endSiblingsToAdd = [];
+  }
+
   const itemList = [
     ...startPages,
-
-    ...(siblingStart > boundaryCount + 2
-      ? ['...']
-      : boundaryCount + 1 < totalPages - boundaryCount
-        ? [boundaryCount + 1]
-        : []),
-
-    // Sibling pages
+    ...startSiblingsToAdd,
     ...range(siblingStart, siblingEnd),
-
-    // End ellipsis
-    // eslint-disable-next-line no-nested-ternary
-    ...(siblingEnd < totalPages - boundaryCount - 1
-      ? ['...']
-      : totalPages - boundaryCount > boundaryCount
-        ? [totalPages - boundaryCount]
-        : []),
-
+    ...endSiblingsToAdd,
     ...endPages,
   ];
   return itemList;
