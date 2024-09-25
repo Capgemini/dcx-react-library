@@ -69,7 +69,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
   boundaryCount = 1,
   onPageChange,
 }: PaginatorProps): JSX.Element => {
-  const [current, setCurrent] = useState<number>(currentPage || 1);
+  const [current, setCurrent] = useState<number>(currentPage);
 
   const pages: any = calculatePageNumbers(
     current,
