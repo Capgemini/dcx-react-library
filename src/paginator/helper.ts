@@ -3,7 +3,7 @@ export function calculatePageNumbers(
   totalPages: number,
   siblingCount: number,
   boundaryCount: number
-): (number | string | null)[] {
+): (number | string)[] {
   const range = (start: number, end: number) => {
     const length = end - start + 1;
     return Array.from({ length }, (_, i) => start + i);

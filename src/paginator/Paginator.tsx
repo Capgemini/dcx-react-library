@@ -71,12 +71,13 @@ export const Paginator: React.FC<PaginatorProps> = ({
 }: PaginatorProps): JSX.Element => {
   const [current, setCurrent] = useState<number>(currentPage);
 
-  const pages: any = calculatePageNumbers(
+  const pages = calculatePageNumbers(
     current,
     totalPages,
     sibilingCount,
     boundaryCount
   );
+
   const handlePageChange = (page: number) => {
     if (onPageChange) {
       onPageChange(page);
