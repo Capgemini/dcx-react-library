@@ -10,3 +10,4 @@ example/.parcel-cache/*
 example/build
 storybook-static
 package-lock.json
+rollup.config-*
