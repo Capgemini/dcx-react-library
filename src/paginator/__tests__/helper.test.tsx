@@ -34,21 +34,15 @@ describe('Helper for Paginator', () => {
   });
 
   it('should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] when currentPage = 3, totalPages = 10, siblingCount = 2, and boundaryCount = 2', () => {
-    expect(calculatePageNumbers(3, 10, 2, 2)).toEqual([
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    ]);
+    expect(calculatePageNumbers(3, 10, 2, 2)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10,]);
   });
 
   it('should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] when currentPage = 2, totalPages = 10, siblingCount = 2, and boundaryCount = 2', () => {
-    expect(calculatePageNumbers(2, 10, 2, 2)).toEqual([
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    ]);
+    expect(calculatePageNumbers(2, 10, 2, 2)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10,]);
   });
 
   it('should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] when currentPage = 9, totalPages = 10, siblingCount = 2, and boundaryCount = 2', () => {
-    expect(calculatePageNumbers(9, 10, 2, 2)).toEqual([
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    ]);
+    expect(calculatePageNumbers(9, 10, 2, 2)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10,]);
   });
 
   it('should return [1, 2, 3, 4, 5, 6, 7, 8, "...", 19, 20] when currentPage = 5, totalPages = 20, siblingCount = 2, and boundaryCount = 2', () => {
@@ -88,9 +82,7 @@ describe('Helper for Paginator', () => {
   });
 
   it('should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] when currentPage = 4, totalPages = 10, siblingCount = 2, and boundaryCount = 2', () => {
-    expect(calculatePageNumbers(4, 10, 2, 2)).toEqual([
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    ]);
+    expect(calculatePageNumbers(4, 10, 2, 2)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10,]);
   });
 
   it('should return [1, 2, 3] when currentPage = 1, totalPages = 3, siblingCount = 1, and boundaryCount = 1', () => {

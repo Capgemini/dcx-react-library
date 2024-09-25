@@ -1,12 +1,10 @@
 {
-  "extends": [
-    "react-app"
-  ],
+  "extends": ["react-app"],
   "rules": {
     "import/no-anonymous-default-export": 0,
     "no-console": "error",
     "no-debugger": "error",
-    "array-bracket-newline": "off",
+    "array-bracket-newline": "error",
     "array-bracket-spacing": "error",
     "array-callback-return": "error",
     "arrow-body-style": "error",
@@ -27,9 +25,7 @@
     "no-unused-expressions": "error",
     "no-unused-labels": "error",
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "error"
-    ],
+    "@typescript-eslint/no-unused-vars": "error",
     "no-use-before-define": "off",
     "no-useless-call": "error",
     "no-useless-catch": "error",
@@ -47,10 +43,7 @@
         "avoidEscape": true
       }
     ],
-    "semi": [
-      2,
-      "always"
-    ],
+    "semi": [2, "always"],
     // turning off the following
     "react-hooks/exhaustive-deps": "off"
   }
