@@ -1,44 +1,47 @@
-import reportWebVitals from './reportWebVitals';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './global-styles.scss';
+
 import {
-  FormInputMaskedDemo,
-  AutocompleteDemo,
-  FormRadioDemo,
-  FormCheckboxDemo,
-  ButtonDemo,
-  ProgressDemo,
-  ToggleDemo,
-  FormSelectDemo,
-  MultiUploadDemo,
-  MultiSelectDemo,
-  FormDateDemo,
-  FormInputDemo,
-  TabGroupDemo,
-  CopyToClipboardDemo,
-  TableDemo,
-  TooltipDemo,
-  RangeDemo,
-  DetailsDemo,
-  CharacterCountDemo,
-  LinkDemo,
-  ListDemo,
   AccordionDemo,
+  AutocompleteDemo,
+  ButtonDemo,
   ButtonGroupDemo,
   CardDemo,
+  CharacterCountDemo,
+  CopyToClipboardDemo,
+  DetailsDemo,
+  FormCheckboxDemo,
+  FormDateDemo,
+  FormInputDemo,
+  FormInputMaskedDemo,
+  FormRadioDemo,
+  FormSelectDemo,
+  LinkDemo,
+  ListDemo,
+  MultiSelectDemo,
+  MultiUploadDemo,
+  PaginatorDemo,
+  ProgressDemo,
+  RangeDemo,
   SkeletonDemo,
+  TabGroupDemo,
+  TableDemo,
+  ToggleDemo,
+  TooltipDemo,
 } from './components';
-import './global-styles.scss';
-import { Login } from './pages/Login';
-import { Home } from './pages/HomePage';
-import { Register } from './pages/Register';
-import { InsertTextDemo } from './components/InsertTextDemo';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { LabelDemo } from './components/LabelDemo';
-import { KeyboardInputDemo } from './components/KeyboardInputDemo';
-import { PreformattedTextDemo } from './components/PreformattedTextDemo';
 import { BreadcrumbDemo } from './components/BreadcrumbDemo';
 import DescriptionListDemo from './components/DescriptionListDemo';
+import { Home } from './pages/HomePage';
+import { InsertTextDemo } from './components/InsertTextDemo';
+import { KeyboardInputDemo } from './components/KeyboardInputDemo';
+import { LabelDemo } from './components/LabelDemo';
+import { Login } from './pages/Login';
+import { PreformattedTextDemo } from './components/PreformattedTextDemo';
+import ReactDOM from 'react-dom/client';
+import { Register } from './pages/Register';
+import reportWebVitals from './reportWebVitals';
+
 const App = () => (
   <div>
     <BrowserRouter>
@@ -76,6 +79,7 @@ const App = () => (
         <Route path="/accordion" element={<AccordionDemo />} />
         <Route path="/buttonGroup" element={<ButtonGroupDemo />} />
         <Route path="/card" element={<CardDemo />} />
+        <Route path="/paginator" element={<PaginatorDemo />} />
         <Route path="/skeleton" element={<SkeletonDemo />} />
       </Routes>
     </BrowserRouter>
