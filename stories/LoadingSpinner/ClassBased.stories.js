@@ -19,7 +19,7 @@ export const Customised = {
 };
 
 export const UnCustomised = {
-  name: 'Loading no message',
+  name: 'Loading with no message',
 };
 
 export const CustomisedColors = {
@@ -35,6 +35,13 @@ export const CustomisedSpeed = {
   name: 'Customised speed',
   args: {
     speed: '0.5s'
+  },
+};
+
+export const CustomiseDiameter = {
+  name: 'Customised diamter',
+  args: {
+    diameter: '100px'
   },
   
 };

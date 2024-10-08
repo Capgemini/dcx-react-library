@@ -18,6 +18,11 @@ export type SpinnerProps = {
   speed?: string;
 
   /**
+    * The diameter of the progress spinner (will set width and height)
+  */
+  diameter?: string;
+
+  /**
    * allow user to define loading message
    */
   message?: string;
@@ -33,6 +38,7 @@ export const LoadingSpinner = ({
   background,
   speed,
   message,
+  diameter,
   ...props
 }: SpinnerProps) => (
   <div className={`${styles['loading-spinner']}`}>
@@ -42,17 +48,15 @@ export const LoadingSpinner = ({
         ['--spinner-border-top-color' as any]: color,
         ['--spinner-border-color' as any]: background,
         ['--spinner-rotation-speed' as any]: speed,
+        ['--spinner-diameter' as any]: diameter,
       }}
       aria-live="polite"
       role="status"
       {...props}
     ></div>
-    {message ? (
+    {message && (
       <div className={`${styles['loading-spinner__content']}`}>
         <h3>{message}</h3>
-      </div>
-    ) : (
-      ''
-    )}
+      </div>)}
   </div>
 );

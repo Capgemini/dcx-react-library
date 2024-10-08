@@ -24,10 +24,16 @@ describe('LoadingSpinner Component', () => {
     expect(spinnerElement).toHaveStyle('--spinner-rotation-speed: 4s');
   });
 
+
+  test('should apply the correct diameter to the spinner when diameter is provided', () => {
+    render(<LoadingSpinner diameter="200px" />);
+    const spinnerElement = screen.getByRole('status');
+    expect(spinnerElement).toHaveStyle('--spinner-diameter: 200px');
+  });
+
   test('should load the message when provided', () => {
     const message = 'Loading... Please wait';
     render(<LoadingSpinner message={message} />);
-
     const messageElement = screen.getByText(message);
     expect(messageElement).toBeInTheDocument();
   });
