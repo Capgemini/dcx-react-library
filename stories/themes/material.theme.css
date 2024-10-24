@@ -19,6 +19,13 @@
   --dcx-border-width-formcontrol_suffix: 0;
 }
 
+.dcx-form-date {
+  --dcx-color-text-formcontrol-filled: #000000de;
+  --dcx-border-color-formcontrol: #00000099;
+  --dcx-border-radius-formcontrol: 6px;
+  --dcx-color-text-formcontrol: #00000099;
+}
+
 .dcx-button {
   --dcx-box-shadow-action: 0px 8px 15px rgba(0, 0, 0, 0.6);
   --dcx-border-radius-action: 20px;

@@ -16,6 +16,13 @@
   --dcx-font-formcontrol_error-line-height: 20px;
 }
 
+.dcx-form-date {
+  --dcx-border-radius-formcontrol: 0px;
+  --dcx-spacing-y-formcontrol: 30px;
+  --dcx-font-formcontrol_error-size: 16px;
+  --dcx-font-formcontrol_error-line-height: 20px;
+}
+
 .dcx-button {
   --dcx-border-radius-action: 0px;
   --dcx-spacing-y-action: 15px;
