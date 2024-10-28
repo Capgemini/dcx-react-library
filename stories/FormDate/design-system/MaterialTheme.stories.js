@@ -71,7 +71,6 @@ export const PreSetDate = {
   args: {
     dateFormat: 'dd/mm/yyyy',
     inputClass: 'govuk-date-input',
-    variant: 'floating',
     day: '29',
     month: '07',
     year: '1982',
@@ -132,7 +131,6 @@ export const CustomDate = {
   args: {
     dateFormat: 'yyyy/mm/dd',
     inputClass: 'govuk-date-input',
-    variant: 'floating',
     yearProps: {
       label: 'Year',
       classNameLabel: 'govuk-date-yearLabel',

@@ -120,13 +120,7 @@ type FormDateProps = {
    * allow to disable the input
    */
   disabled?: boolean;
-  /**
-   * if a variant floating is specified it will add a class 'dcx-floating-label' for supporting a floating label feature
-   */
-  variant?: 'floating' | 'floating-filled' | 'normal';
 };
-
-const floatVariants = ['floating', 'floating-filled'];
 
 const initialState = (
   day: string | undefined,
@@ -177,7 +171,6 @@ export const FormDate = ({
   month,
   year,
   disabled = false,
-  variant = 'normal',
 }: FormDateProps) => {
   const dateSplit: string[] = dateFormat.toLowerCase().split('/');
   const [state, dispatch] = React.useReducer(
@@ -224,13 +217,7 @@ export const FormDate = ({
             name="year"
             maxLength={value.length}
             handleChange={handleChange}
-            classNameLabel={classNames([
-              yearProps?.classNameLabel,
-              {
-                'dcx-floating-label': floatVariants.includes(variant),
-                'dcx-floating-label-filled': variant === 'floating-filled',
-              },
-            ])}
+            classNameLabel={yearProps?.classNameLabel}
             customLabel={yearProps?.customLabel}
             classNameSpan={yearProps?.classNameSpan}
             label={yearProps?.label}
@@ -253,13 +240,7 @@ export const FormDate = ({
             value={state.month || ''}
             name="month"
             handleChange={handleChange}
-            classNameLabel={classNames([
-              monthProps?.classNameLabel,
-              {
-                'dcx-floating-label': floatVariants.includes(variant),
-                'dcx-floating-label-filled': variant === 'floating-filled',
-              },
-            ])}
+            classNameLabel={monthProps?.classNameLabel}
             customLabel={monthProps?.customLabel}
             classNameSpan={monthProps?.classNameSpan}
             label={monthProps?.label}
@@ -282,13 +263,7 @@ export const FormDate = ({
             value={state.day || ''}
             name="day"
             handleChange={handleChange}
-            classNameLabel={classNames([
-              dayProps?.classNameLabel,
-              {
-                'dcx-floating-label': floatVariants.includes(variant),
-                'dcx-floating-label-filled': variant === 'floating-filled',
-              },
-            ])}
+            classNameLabel={dayProps?.classNameLabel}
             customLabel={dayProps?.customLabel}
             classNameSpan={dayProps?.classNameSpan}
             label={dayProps?.label}
