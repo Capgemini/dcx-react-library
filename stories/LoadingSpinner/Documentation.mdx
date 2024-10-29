@@ -24,10 +24,18 @@ import '@capgeminiuk/dcx-react-library/dist/dcx-react-library.css';
 ## Usage
 
 Use the Loading Spinner component when expressing an unspecified wait time or display the length of a process.
+You can decide to use value as property to display a message or an embedded one if you want more control on the html/style.
 An example with all the available properties is:
 
 ```js
-<LoadingSpinner color="blue" background="lightgrey" speed="5s">
+<LoadingSpinner
+  color="blue"
+  background="lightgrey"
+  speed="5s"
+  diameter="60px"
+  props={{}}
+  value=""
+>
   Please wait...
 </LoadingSpinner>
 ```
