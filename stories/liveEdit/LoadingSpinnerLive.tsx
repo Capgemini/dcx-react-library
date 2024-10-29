@@ -8,9 +8,10 @@ const LoadingSpinnerDemo = `
       <LoadingSpinner
         color="darkgrey"
         background="lightgrey"
-        message="Loading..."
         speed="1s"
-      />
+      >
+        Loading...
+      </LoadingSpinner>
     );
   }
 `.trim();

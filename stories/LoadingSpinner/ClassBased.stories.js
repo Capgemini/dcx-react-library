@@ -14,7 +14,14 @@ export default {
 export const Customised = {
   name: 'Loading with message',
   args: {
-    message: 'Please wait....',
+    children: 'Please wait....',
+  },
+};
+
+export const CustomisedValue = {
+  name: 'Loading with message as a value',
+  args: {
+    value: 'Please wait....',
   },
 };
 
@@ -27,7 +34,7 @@ export const CustomisedColors = {
   args: {
     color: 'red',
     background: 'pink',
-    message: 'Loading... ',
+    children: 'Please wait....',
   },
 };
 

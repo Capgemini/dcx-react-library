@@ -5,7 +5,9 @@ export const LoadingSpinnerDemo = () => (
   <>
     <LoadingSpinner />
     <LoadingSpinner color="black" background="#89CFF0" />
-    <LoadingSpinner color="#1d70b8" speed="0.5s" message="Loading..." />
+    <LoadingSpinner color="#1d70b8" speed="0.5s">
+      Loading...
+    </LoadingSpinner>
     <LoadingSpinner diameter="120px" />
   </>
 );
