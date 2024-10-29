@@ -38,9 +38,6 @@ export const Home = () => (
         <li>
           <Link to="/formDate">FormDateDemo</Link>
         </li>
-        <li>
-          <Link to="/loadingSpinner">LoadingSpinner</Link>
-        </li>
       </ul>
     </nav>
     <h1>Example pages using 0.1 DCX library components</h1>
@@ -114,6 +111,9 @@ export const Home = () => (
       <ul>
         <li>
           <Link to="/paginator">PaginatorDemo</Link>
+        </li>
+        <li>
+          <Link to="/loadingSpinner">LoadingSpinner</Link>
         </li>
       </ul>
     </nav>
