@@ -18,8 +18,8 @@ export type SpinnerProps = {
   speed?: string;
 
   /**
-    * The diameter of the progress spinner (will set width and height)
-  */
+   * The diameter of the progress spinner (will set width and height)
+   */
   diameter?: string;
 
   /**
@@ -38,7 +38,7 @@ export const LoadingSpinner = ({
   background,
   speed,
   message,
-  diameter,
+  diameter = '60px',
   ...props
 }: SpinnerProps) => (
   <div className={`${styles['loading-spinner']}`}>
@@ -57,6 +57,7 @@ export const LoadingSpinner = ({
     {message && (
       <div className={`${styles['loading-spinner__content']}`}>
         <h3>{message}</h3>
-      </div>)}
+      </div>
+    )}
   </div>
 );

@@ -1,4 +1,4 @@
-import { LoadingSpinner } from '../../src/spinner/LoadingSpinner'
+import { LoadingSpinner } from '../../src/spinner/LoadingSpinner';
 import LoadingSpinnerLive from '../liveEdit/LoadingSpinnerLive';
 
 export default {

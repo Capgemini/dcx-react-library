@@ -12,6 +12,15 @@ When you import the component without providing any style associated will looks 
 
 <Canvas of={LoadingSpinnerStories.Unstyled} />
 
+## Styling
+
+The loading spinner does not include any built-in CSS. To ensure the loading spinner is styled correctly, you need to import the relevant stylesheet.
+
+```js
+/* The following line can be included in your src/index.js or App.js file */
+import '@capgeminiuk/dcx-react-library/dist/dcx-react-library.css';
+```
+
 ## Usage
 
 Use the Loading Spinner component when expressing an unspecified wait time or display the length of a process.
@@ -20,8 +29,8 @@ An example with all the available properties is:
 ```js
 <LoadingSpinner
   message="Please wait..."
-  color='blue'
-  background='lightgrey'
+  color="blue"
+  background="lightgrey"
   speed="5s"
 />
 ```

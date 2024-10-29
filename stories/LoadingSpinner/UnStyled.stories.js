@@ -1,4 +1,4 @@
-import { LoadingSpinner } from '../../src/spinner/LoadingSpinner'
+import { LoadingSpinner } from '../../src/spinner/LoadingSpinner';
 
 export default {
   title: 'DCXLibrary/Form/LoadingSpinner/Without style',
