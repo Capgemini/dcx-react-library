@@ -72,6 +72,8 @@ export const parameters = {
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Tooltip',
             ['Documentation', 'Live', 'Class based'],
+            'LoadingSpinner',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
           ],
           'Layout',
           [
