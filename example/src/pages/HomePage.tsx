@@ -112,6 +112,9 @@ export const Home = () => (
         <li>
           <Link to="/paginator">PaginatorDemo</Link>
         </li>
+        <li>
+          <Link to="/loadingSpinner">LoadingSpinner</Link>
+        </li>
       </ul>
     </nav>
   </>

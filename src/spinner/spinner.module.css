@@ -1,0 +1,36 @@
+:root {
+  --spinner-border-top-color: #1d70b8;
+  --spinner-border-color: #dee0e2;
+  --spinner-rotation-speed: 2s;
+  --spinner-diameter: 60px;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-spinner__spinner {
+  border: 8px solid var(--spinner-border-color);
+  border-radius: 50%;
+  border-top-color: var(--spinner-border-top-color);
+  width: var(--spinner-diameter);
+  height: var(--spinner-diameter);
+  animation: loading-spinner-animation var(--spinner-rotation-speed) linear
+    infinite;
+}
+
+.loading-spinner__content {
+  padding-top: 8px;
+  text-align: center;
+}
+
+@keyframes loading-spinner-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

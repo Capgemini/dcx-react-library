@@ -27,6 +27,7 @@ import {
   TableDemo,
   ToggleDemo,
   TooltipDemo,
+  LoadingSpinnerDemo
 } from './components';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -81,6 +82,7 @@ const App = () => (
         <Route path="/card" element={<CardDemo />} />
         <Route path="/paginator" element={<PaginatorDemo />} />
         <Route path="/skeleton" element={<SkeletonDemo />} />
+        <Route path="/loadingSpinner" element={<LoadingSpinnerDemo />} />
       </Routes>
     </BrowserRouter>
   </div>
