@@ -178,6 +178,24 @@ describe('FormInput', () => {
     expect(daySpan).toBeInTheDocument();
   });
 
+  it('should render the correct placeholder for Date, Month and Year', () => {
+    render(
+      <FormDate
+        dateFormat="dd/mm/yyyy"
+        handleValidity={jest.fn()}
+        yearProps={{ placeholder: 'Year' }}
+        monthProps={{ placeholder: 'Month' }}
+        dayProps={{ placeholder: 'Day' }}
+      />
+    );
+    const yearSpan: any = screen.getByPlaceholderText('Year');
+    const monthSpan: any = screen.getByPlaceholderText('Month');
+    const daySpan: any = screen.getByPlaceholderText('Day');
+    expect(yearSpan).toBeInTheDocument();
+    expect(monthSpan).toBeInTheDocument();
+    expect(daySpan).toBeInTheDocument();
+  });
+
   it('should render the optional properties for the labels', () => {
     const { container } = render(
       <FormDate
