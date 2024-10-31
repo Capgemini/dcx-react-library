@@ -34,9 +34,9 @@ export const FormDateDemo = () => {
         //@ts-ignore
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
-        yearProps={{ placeholder: 'Year' }}
-        monthProps={{ placeholder: 'Month' }}
-        dayProps={{ placeholder: 'Day' }}
+        yearPlaceholder="Year"
+        monthPlaceholder="Month"
+        dayPlaceholder="Day"
       />
       <h1>Pre set date</h1>
       <label htmlFor="preSetNoLabelDate" style={{ display: 'none' }}>

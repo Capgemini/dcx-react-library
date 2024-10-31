@@ -54,8 +54,6 @@ type FormDateProps = {
    * customLabel?: JSX.Element;
    * // if you want to pass tab index for the input
    * tabIndex?: number;
-   * // if you want to pass placeholder for the input
-   * placeholder?: string;
    */
   yearProps?: DateType;
   /**
@@ -72,8 +70,6 @@ type FormDateProps = {
    * customLabel?: JSX.Element;
    * // if you want to pass tab index for the input
    * tabIndex?: number;
-   * * // if you want to pass placeholder for the input
-   * placeholder?: string;
    */
   monthProps?: DateType;
   /**
@@ -90,11 +86,8 @@ type FormDateProps = {
    * customLabel?: JSX.Element;
    * // if you want to pass tab index for the input
    * tabIndex?: number;
-   * * // if you want to pass placeholder for the input
-   * placeholder?: string;
    */
   dayProps?: DateType;
-
   /**
    * show hide error
    */
@@ -123,6 +116,18 @@ type FormDateProps = {
    * define a pre-set year
    */
   year?: string;
+  /**
+   * define a placeholder for Day
+   */
+  dayPlaceholder?: string;
+  /**
+   * define a placeholder for Month
+   */
+  monthPlaceholder?: string;
+  /**
+   * define a placeholder for Year
+   */
+  yearPlaceholder?: string;
   /**
    * allow to disable the input
    */
@@ -178,6 +183,9 @@ export const FormDate = ({
   month,
   year,
   disabled = false,
+  yearPlaceholder,
+  monthPlaceholder,
+  dayPlaceholder,
 }: FormDateProps) => {
   const dateSplit: string[] = dateFormat.toLowerCase().split('/');
   const [state, dispatch] = React.useReducer(
@@ -231,7 +239,7 @@ export const FormDate = ({
             classNameInput={classNames([yearProps?.classNameInput, inputClass])}
             disabled={disabled}
             tabIndex={yearProps?.tabIndex}
-            placeholder={yearProps?.placeholder}
+            placeholder={yearPlaceholder}
           />
         );
       case 'm':
@@ -252,7 +260,7 @@ export const FormDate = ({
             ])}
             disabled={disabled}
             tabIndex={monthProps?.tabIndex}
-            placeholder={monthProps?.placeholder}
+            placeholder={monthPlaceholder}
           />
         );
       case 'd':
@@ -270,7 +278,7 @@ export const FormDate = ({
             classNameInput={classNames([dayProps?.classNameInput, inputClass])}
             disabled={disabled}
             tabIndex={dayProps?.tabIndex}
-            placeholder={dayProps?.placeholder}
+            placeholder={dayPlaceholder}
           />
         );
       default:

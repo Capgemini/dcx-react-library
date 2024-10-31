@@ -183,9 +183,9 @@ describe('FormInput', () => {
       <FormDate
         dateFormat="dd/mm/yyyy"
         handleValidity={jest.fn()}
-        yearProps={{ placeholder: 'Year' }}
-        monthProps={{ placeholder: 'Month' }}
-        dayProps={{ placeholder: 'Day' }}
+        yearPlaceholder="Year"
+        monthPlaceholder="Month"
+        dayPlaceholder="Day"
       />
     );
     const yearSpan: any = screen.getByPlaceholderText('Year');
