@@ -24,6 +24,7 @@ export const DateComponent = ({
   disabled,
   maxLength = 2,
   tabIndex,
+  placeholder,
 }: DateProps) => (
   <label
     style={{ display: 'flex', flexDirection: 'column' }}
@@ -44,6 +45,7 @@ export const DateComponent = ({
       maxLength={maxLength}
       pattern="[0-9]*"
       tabIndex={tabIndex}
+      placeholder={placeholder}
     />
   </label>
 );

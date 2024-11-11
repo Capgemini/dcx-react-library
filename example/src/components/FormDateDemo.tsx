@@ -24,6 +24,20 @@ export const FormDateDemo = () => {
         handleValidity={(v, d) => handleValidity(v, d)}
         dateFormat="dd/mm/yyyy"
       />
+      <h1>Placeholder</h1>
+      <label htmlFor="dateWithPlaceholder" style={{ display: 'none' }}>
+        Date with placeholder
+      </label>
+      <FormDate
+        //@ts-ignore
+        id="dateWithPlaceholder"
+        //@ts-ignore
+        handleValidity={(v, d) => handleValidity(v, d)}
+        dateFormat="dd/mm/yyyy"
+        yearPlaceholder="Year"
+        monthPlaceholder="Month"
+        dayPlaceholder="Day"
+      />
       <h1>Pre set date</h1>
       <label htmlFor="preSetNoLabelDate" style={{ display: 'none' }}>
         Pre set no label date

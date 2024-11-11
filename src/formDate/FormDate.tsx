@@ -9,6 +9,7 @@ export type DateType = {
   classNameSpan?: string;
   customLabel?: JSX.Element;
   tabIndex?: number;
+  placeholder?: string;
 };
 
 type ErrorPosition = 'top' | 'bottom';
@@ -87,7 +88,6 @@ type FormDateProps = {
    * tabIndex?: number;
    */
   dayProps?: DateType;
-
   /**
    * show hide error
    */
@@ -116,6 +116,18 @@ type FormDateProps = {
    * define a pre-set year
    */
   year?: string;
+  /**
+   * define a placeholder for Day
+   */
+  dayPlaceholder?: string;
+  /**
+   * define a placeholder for Month
+   */
+  monthPlaceholder?: string;
+  /**
+   * define a placeholder for Year
+   */
+  yearPlaceholder?: string;
   /**
    * allow to disable the input
    */
@@ -171,6 +183,9 @@ export const FormDate = ({
   month,
   year,
   disabled = false,
+  yearPlaceholder,
+  monthPlaceholder,
+  dayPlaceholder,
 }: FormDateProps) => {
   const dateSplit: string[] = dateFormat.toLowerCase().split('/');
   const [state, dispatch] = React.useReducer(
@@ -224,6 +239,7 @@ export const FormDate = ({
             classNameInput={classNames([yearProps?.classNameInput, inputClass])}
             disabled={disabled}
             tabIndex={yearProps?.tabIndex}
+            placeholder={yearPlaceholder}
           />
         );
       case 'm':
@@ -244,6 +260,7 @@ export const FormDate = ({
             ])}
             disabled={disabled}
             tabIndex={monthProps?.tabIndex}
+            placeholder={monthPlaceholder}
           />
         );
       case 'd':
@@ -261,6 +278,7 @@ export const FormDate = ({
             classNameInput={classNames([dayProps?.classNameInput, inputClass])}
             disabled={disabled}
             tabIndex={dayProps?.tabIndex}
+            placeholder={dayPlaceholder}
           />
         );
       default:

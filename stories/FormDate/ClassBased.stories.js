@@ -100,6 +100,45 @@ export const PreSetDateDisabled = {
   argTypes: { onClick: { action: 'onClick' } },
 };
 
+export const PlaceholderDate = {
+  name: 'Date with placeholder',
+  render: function ({ onChange, ...args }) {
+    const [isValid, setIsValid] = useState(false);
+    const [date, setDate] = useState(0);
+    const handleValidity = (valid, date) => {
+      setIsValid(valid);
+      setDate(date);
+    };
+    return (
+      <div>
+        <FormDate {...args} handleValidity={(v, d) => handleValidity(v, d)} />
+        <pre>isValid: {isValid.toString()}</pre>
+        <pre>date: {JSON.stringify(new Date(date))}</pre>
+      </div>
+    );
+  },
+  args: {
+    dateFormat: 'yyyy/mm/dd',
+    inputClass: 'govuk-date-input',
+    yearPlaceholder: 'Year',
+    monthPlaceholder: 'Month',
+    dayPlaceholder: 'Day',
+    yearProps: {
+      classNameLabel: 'govuk-date-yearLabel',
+      classNameSpan: 'govuk-date-span',
+    },
+    monthProps: {
+      classNameLabel: 'govuk-date-yearLabel',
+      classNameSpan: 'govuk-date-span',
+    },
+    dayProps: {
+      classNameLabel: 'govuk-date-yearLabel',
+      classNameSpan: 'govuk-date-span',
+    },
+  },
+  argTypes: { onClick: { action: 'onClick' } },
+};
+
 /**
  * In the following example we specified as format: `yyyy/mm/dd`
  */

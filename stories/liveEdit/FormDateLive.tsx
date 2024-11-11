@@ -17,6 +17,9 @@ function FormDateDemo() {
         handleValidity={(v, d) => handleValidity(v, d)}
         inputContainerClass=""
         inputClass=""
+        yearPlaceholder="Year"
+        monthPlaceholder="Month"
+        dayPlaceholder="Day"
         yearProps={{
           label: "",
           classNameInput: "",
