@@ -106,5 +106,16 @@ export const Home = () => (
         </li>
       </ul>
     </nav>
+    <h1>List of release 1.1 DCX library components</h1>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/paginator">PaginatorDemo</Link>
+        </li>
+        <li>
+          <Link to="/loadingSpinner">LoadingSpinner</Link>
+        </li>
+      </ul>
+    </nav>
   </>
 );

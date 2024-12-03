@@ -37,5 +37,8 @@ export * from './codesnippet';
 export * from './highlight';
 export * from './buttonGroup';
 export * from './card';
+export * from './paginator';
 export * from './skeleton';
+export * from './spinner';
+
 export * from './avatar';

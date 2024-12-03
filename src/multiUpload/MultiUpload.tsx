@@ -75,14 +75,15 @@ export const MultiUpload = ({
     }
   }, [selectedFiles]);
 
-  const onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void =
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const { files } = event.target;
+  const onChangeHandler: (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => void = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = event.target;
 
-      if (files) {
-        setSelectedFile(files);
-      }
-    };
+    if (files) {
+      setSelectedFile(files);
+    }
+  };
 
   const renderFileData = () =>
     selectedFiles &&
