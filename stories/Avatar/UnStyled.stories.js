@@ -17,9 +17,17 @@ export default {
 
 export const Unstyled = {
   args: {
-    avatarLink: 'http://localhost/',
     children: [
       'EL',
     ],
+    style:{
+      background: 'lightGrey',
+    },
+    shape: 'circle',
+    width: '3em',
+    height: '3em',
+    avatarLink: 'http://localhost/',
+    avatarLinkTarget: '_blank',
+    alt: 'A sample avatar element',
   },
 };

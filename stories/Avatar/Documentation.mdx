@@ -7,6 +7,13 @@ import * as AvatarStories from './UnStyled.stories';
 
 An Avatar component to display either an image or child component such as initials or an svg.
 
+Passing an `avatarLink` to props will cause the avatar to be wrapped in an anchor tag.
+An additional `avatarLinkTarget` can be passed to control the anchor tags target attribute.
+
+When it comes to the contents of the avatar you can either pass an `src` prop or children props.
+If an `src` prop is passed an img tag is rendered instead of child components passed in.
+In addition an `alt` prop can be passed and rendered to the img tag.
+
 When you import the avatar component without providing any className or style associated it will look like this:
 
 <Canvas of={AvatarStories.Unstyled} />
@@ -17,10 +24,13 @@ Styles can be passed as a prop to customise the look and feel.
 <Avatar
   style={{
     background: 'lightGrey',
-    width: '3em',
-    height: '3em',
   }}
+  shape={'circle'}
+  width={'3em'}
+  height={'3em'}
   avatarLink={'http://localhost/'}
+  avatarLinkTarget={'_blank'}
+  alt={'A sample avatar element'}
 >EL</Avatar>
 ```
 
