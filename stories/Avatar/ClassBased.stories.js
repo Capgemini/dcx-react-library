@@ -21,9 +21,12 @@ export const Basic = {
   },
 };
 
-export const WithLogo = {
-  name: 'With Logo',
+export const WithImage = {
+  name: 'With Image',
   args: {
+    style: {
+      border: '1px solid #326fa9'
+    },  
     src: 'https://avatars.githubusercontent.com/u/1049773?s=40',
   },
 };
@@ -90,7 +93,6 @@ export const CustomContent = {
           }
         ]}
       />
-      
     </>,
   },
 };

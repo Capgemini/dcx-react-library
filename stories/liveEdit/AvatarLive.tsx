@@ -10,7 +10,15 @@ function AvatarDemo() {
   }
 
   return (
-    <Avatar style={style}>JB</Avatar>
+    <Avatar style={style}
+      src='https://avatars.githubusercontent.com/u/1049773?s=40'
+      shape='circle'
+      width='3em'
+      height='3em'
+      avatarLink='http://localhost/'
+      avatarLinkTarget='_blank'
+      alt='A sample avatar element'
+    >JB</Avatar>
   )
 }
 `.trim();

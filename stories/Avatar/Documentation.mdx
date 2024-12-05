@@ -14,11 +14,21 @@ When it comes to the contents of the avatar you can either pass an `src` prop or
 If an `src` prop is passed an img tag is rendered instead of child components passed in.
 In addition an `alt` prop can be passed and rendered to the img tag.
 
-When you import the avatar component without providing any className or style associated it will look like this:
+When you import the avatar component without providing any className or style associated it will look like one of the following examples:
+(Styles have been passed as a prop to customise the look and feel.)
+
+<Canvas of={AvatarStories.WithImage} />
+
+```js
+<Avatar
+    style={{
+      border: '1px solid blue'
+    }}
+    src={'https://avatars.githubusercontent.com/u/1049773?s=40'}
+/>
+```
 
 <Canvas of={AvatarStories.Unstyled} />
-
-Styles can be passed as a prop to customise the look and feel.
 
 ```js
 <Avatar
