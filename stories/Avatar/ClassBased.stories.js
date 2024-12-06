@@ -1,23 +1,68 @@
-import { background } from '@storybook/theming';
 import { Avatar } from '../../src/avatar/Avatar';
 import { FormSelect } from '../../src/formSelect/FormSelect';
-import { useArgs } from '@storybook/preview-api';
 
 export default {
-  title: 'DCXLibrary/Form/Avatar/Class based',
+  title: 'DCXLibrary/Form/Avatar/Without style',
   component: Avatar,
   parameters: {
     options: {
       showPanel: true,
     },
   },
-  tags: ['autodocs'],
+  argTypes: {
+    children: {
+      description: 'Allows you to add an element as children',
+    },
+  },
 };
 
-export const Basic = {
-  name: 'Basic',
+export const Unstyled = {
   args: {
-    children: 'JB'
+    children: [
+      'JB',
+    ],
+    style:{
+      background: 'lightGrey',
+      border: '1px solid #326fa9'
+    },
+    shape: 'circle',
+    width: '3em',
+    height: '3em',
+    avatarLink: 'http://localhost/',
+    avatarLinkTarget: '_blank',
+    alt: 'A sample avatar element',
+  },
+};
+
+export const Rounded = {
+  args: {
+    children: [
+      'JB',
+    ],
+    style:{
+      background: 'lightGrey',
+      border: '1px solid #326fa9'
+    },
+    shape: 'rounded',
+    avatarLink: 'http://localhost/',
+    avatarLinkTarget: '_blank',
+    alt: 'A sample rounded avatar element',
+  },
+};
+
+export const Square = {
+  args: {
+    children: [
+      'JB',
+    ],
+    style:{
+      background: 'lightGrey',
+      border: '1px solid #326fa9'
+    },
+    shape: 'square',
+    avatarLink: 'http://localhost/',
+    avatarLinkTarget: '_blank',
+    alt: 'A sample square avatar element',
   },
 };
 

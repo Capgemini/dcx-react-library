@@ -19,10 +19,11 @@ export default {
 export const Unstyled = {
   args: {
     children: [
-      'EL',
+      'JB',
     ],
     style:{
       background: 'lightGrey',
+      border: '1px solid #326fa9'
     },
     shape: 'circle',
     width: '3em',
@@ -30,6 +31,38 @@ export const Unstyled = {
     avatarLink: 'http://localhost/',
     avatarLinkTarget: '_blank',
     alt: 'A sample avatar element',
+  },
+};
+
+export const Rounded = {
+  args: {
+    children: [
+      'JB',
+    ],
+    style:{
+      background: 'lightGrey',
+      border: '1px solid #326fa9'
+    },
+    shape: 'rounded',
+    avatarLink: 'http://localhost/',
+    avatarLinkTarget: '_blank',
+    alt: 'A sample rounded avatar element',
+  },
+};
+
+export const Square = {
+  args: {
+    children: [
+      'JB',
+    ],
+    style:{
+      background: 'lightGrey',
+      border: '1px solid #326fa9'
+    },
+    shape: 'square',
+    avatarLink: 'http://localhost/',
+    avatarLinkTarget: '_blank',
+    alt: 'A sample square avatar element',
   },
 };
 
@@ -105,7 +138,6 @@ export const CustomContent = {
           }
         ]}
       />
-      
     </>,
   },
 };
