@@ -73,11 +73,7 @@ describe('Avatar', () => {
     const testUrl = 'http://test.url/';
 
     const { container } = render(
-      <Avatar
-        className="test"
-        avatarLink={testUrl}
-        avatarLinkTarget="_blank"
-      >
+      <Avatar className="test" avatarLink={testUrl} avatarLinkTarget="_blank">
         text
       </Avatar>
     );
@@ -115,12 +111,12 @@ describe('Avatar', () => {
     expect(div?.style.height).toBe('4em');
   });
 
-  it('should accept background [color, width, style] props', () => {
+  it('should accept border [color, width, style] props', () => {
     const { container } = render(
-      <Avatar 
+      <Avatar
         className="test"
-        borderWidth='2px'
-        borderStyle='dashed'
+        borderWidth="2px"
+        borderStyle="dashed"
         borderColor="#66cc00"
       >
         text
