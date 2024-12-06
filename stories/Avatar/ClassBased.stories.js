@@ -23,30 +23,10 @@ export const Unstyled = {
     ],
     style:{
       background: 'lightGrey',
-      border: '1px solid #326fa9'
     },
-    shape: 'circle',
-    width: '3em',
-    height: '3em',
     avatarLink: 'http://localhost/',
     avatarLinkTarget: '_blank',
     alt: 'A sample avatar element',
-  },
-};
-
-export const Circle = {
-  args: {
-    children: [
-      'JB',
-    ],
-    style:{
-      background: 'lightGrey',
-      border: '1px solid #326fa9'
-    },
-    shape: 'circle',
-    avatarLink: 'http://localhost/',
-    avatarLinkTarget: '_blank',
-    alt: 'A sample circle avatar element',
   },
 };
 
@@ -56,9 +36,11 @@ export const Rounded = {
       'JB',
     ],
     style:{
-      background: 'lightGrey',
-      border: '1px solid #326fa9'
+      background: '#66CC00',
     },
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#326fa9',
     shape: 'rounded',
     avatarLink: 'http://localhost/',
     avatarLinkTarget: '_blank',
@@ -72,9 +54,11 @@ export const Square = {
       'JB',
     ],
     style:{
-      background: 'lightGrey',
-      border: '1px solid #326fa9'
+      background: '#ff5722',
     },
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#326fa9',
     shape: 'square',
     avatarLink: 'http://localhost/',
     avatarLinkTarget: '_blank',
@@ -82,12 +66,30 @@ export const Square = {
   },
 };
 
+export const Circle = {
+  args: {
+    children: [
+      'JB',
+    ],
+    style:{
+      background: 'white',
+    },
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#326fa9',
+    shape: 'circle',
+    avatarLink: 'http://localhost/',
+    avatarLinkTarget: '_blank',
+    alt: 'A sample circle avatar element',
+  },
+};
+
 export const WithImage = {
   name: 'With Image',
   args: {
-    style: {
-      border: '1px solid #326fa9'
-    },  
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#326fa9',  
     src: 'https://avatars.githubusercontent.com/u/1049773?s=40',
   },
 };
