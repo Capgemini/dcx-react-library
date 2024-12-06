@@ -121,7 +121,7 @@ describe('Avatar', () => {
         className="test"
         borderWidth='2px'
         borderStyle='dashed'
-        borderColor="#66CC00"
+        borderColor="#66cc00"
       >
         text
       </Avatar>
@@ -129,7 +129,6 @@ describe('Avatar', () => {
     const div = container.querySelector('div');
     expect(div?.style.borderWidth).toBe('2px');
     expect(div?.style.borderStyle).toBe('dashed');
-    expect(div?.style.borderColor).toBe('#66CC00');
-    
+    expect(div?.style.borderColor).toBe('#66cc00');
   });
 });
