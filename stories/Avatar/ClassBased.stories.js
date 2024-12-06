@@ -34,6 +34,22 @@ export const Unstyled = {
   },
 };
 
+export const Circle = {
+  args: {
+    children: [
+      'JB',
+    ],
+    style:{
+      background: 'lightGrey',
+      border: '1px solid #326fa9'
+    },
+    shape: 'circle',
+    avatarLink: 'http://localhost/',
+    avatarLinkTarget: '_blank',
+    alt: 'A sample circle avatar element',
+  },
+};
+
 export const Rounded = {
   args: {
     children: [
