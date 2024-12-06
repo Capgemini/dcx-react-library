@@ -6,7 +6,7 @@ const AvatarDemo = `
 function AvatarDemo() {
    
   const style = {
-    border: '1px solid black'
+    
   }
 
   return (
@@ -18,6 +18,9 @@ function AvatarDemo() {
       avatarLink='http://localhost/'
       avatarLinkTarget='_blank'
       alt='A sample avatar element'
+      borderColor=''
+      borderWidth=''
+      borderStyle=''
     >JB</Avatar>
   )
 }

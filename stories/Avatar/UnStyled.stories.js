@@ -100,6 +100,16 @@ export const InitialsLarge = {
   }
 }
 
+export const BorderColor = {
+  name: 'Border Color',
+  args: {
+    children: 'JB',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: '#66CC00',
+  }
+}
+
 /**
  * Avatar can be passed in different child properties such as links to external websites or custom components.
  */
@@ -120,7 +130,7 @@ export const CustomContent = {
         backgroundColor: 'rebeccapurple',
         color: 'white'
       }}
-      >EL</a>
+      >JB</a>
       <FormSelect 
         onChange={ e => { e.preventDefault() } }
         options={[

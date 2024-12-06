@@ -26,6 +26,18 @@ type AvatarProps = React.HTMLAttributes<HTMLElement> & {
    */
   height?: string;
   /**
+   * The desired borderColor of the avatar component
+   */
+  borderColor?: string;
+  /**
+   * The desired borderWidth of the avatar component
+   */
+  borderWidth?: string;
+  /**
+   * The desired borderStyle of the avatar component
+   */
+  borderStyle?: string;
+  /**
    * The src of an image we would like to display.
    */
   src?: string;
@@ -57,6 +69,9 @@ export const Avatar = ({
   avatarLinkTarget,
   width = '40px',
   height = '40px',
+  borderColor,
+  borderStyle,
+  borderWidth,
   ...props
 }: AvatarProps) => {
   let contents = src ? <img src={src} alt={alt} /> : children;
@@ -80,6 +95,9 @@ export const Avatar = ({
         overflow: 'hidden',
         width,
         height,
+        borderColor,
+        borderWidth,
+        borderStyle,
         ...shapeStyles[shape],
         ...props.style,
       }}
