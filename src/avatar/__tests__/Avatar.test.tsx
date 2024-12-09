@@ -127,4 +127,24 @@ describe('Avatar', () => {
     expect(div?.style.borderStyle).toBe('dashed');
     expect(div?.style.borderColor).toBe('#66cc00');
   });
+
+  it('should pass classname to child components', () => {
+    render(
+      <Avatar childClassName="test" src="test.jpg" />
+    );
+    const img = screen.getByRole('img');
+    expect(img).toHaveClass('test');
+  });
+
+  it('should pass styles to child components', () => {
+    const { container } = render(
+      <Avatar
+        childClassName="childComponent"
+        childStyle={{ backgroundColor: 'red' }}
+        src="test.jpg"
+      ></Avatar>
+    );
+    const div = container.querySelector('.childComponent');
+    expect(div).toHaveStyle('background-color: red');
+  });
 });

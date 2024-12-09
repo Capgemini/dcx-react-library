@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 type AvatarProps = React.HTMLAttributes<HTMLElement> & {
   /**
    * The class to pass to the parent div
    */
   className?: string;
+  /**
+   * The class to pass to the (default) anchor / img element 
+   */
+  childClassName?: string;
+  /**
+  * CSS Styles to pass to the (default) anchor / img element with inline style
+  */
+  childStyle?: CSSProperties;
   /**
    * The shape variant we want to display (circle, rounded or square)
    */
@@ -61,6 +69,8 @@ const shapeStyles = {
 
 export const Avatar = ({
   className,
+  childClassName,
+  childStyle,
   shape = 'circle',
   children,
   src,
@@ -74,11 +84,20 @@ export const Avatar = ({
   borderWidth,
   ...props
 }: AvatarProps) => {
-  let contents = src ? <img src={src} alt={alt} /> : children;
+  let contents = src ? (
+    <img src={src} alt={alt} className={childClassName} style={childStyle} />
+  ) : (
+    children
+  );
 
   if (avatarLink) {
     contents = (
-      <a href={avatarLink} target={avatarLinkTarget}>
+      <a
+        href={avatarLink}
+        target={avatarLinkTarget}
+        className={childClassName}
+        style={childStyle}
+      >
         {contents}
       </a>
     );

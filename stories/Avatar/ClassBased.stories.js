@@ -23,6 +23,8 @@ export const Unstyled = {
     ],
     style:{
       background: 'lightGrey',
+      color: 'white',
+      textDecoration: 'none'
     },
     avatarLink: 'http://localhost/',
     avatarLinkTarget: '_blank',
@@ -36,11 +38,12 @@ export const Rounded = {
       'JB',
     ],
     style:{
-      background: '#4caf51',
+      background: '#66CC00',
+      color: 'white',
     },
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#4caf51',
+    borderColor: '#326fa9',
     shape: 'rounded',
     avatarLink: 'http://localhost/',
     avatarLinkTarget: '_blank',
@@ -54,11 +57,13 @@ export const Square = {
       'JB',
     ],
     style:{
-      background: '#ff5721',
+      background: '#ff5722',
+      color: 'white',
+      textDecoration: 'none'
     },
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#ff5721',
+    borderColor: '#326fa9',
     shape: 'square',
     avatarLink: 'http://localhost/',
     avatarLinkTarget: '_blank',
@@ -73,6 +78,8 @@ export const Circle = {
     ],
     style:{
       background: 'white',
+      color: 'white',
+      textDecoration: 'none'
     },
     borderWidth: '1px',
     borderStyle: 'solid',

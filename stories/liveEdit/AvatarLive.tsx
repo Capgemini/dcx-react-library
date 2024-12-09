@@ -21,6 +21,8 @@ function AvatarDemo() {
       borderColor=''
       borderWidth=''
       borderStyle=''
+      childClassName=''
+      childStyle={{}}
     >JB</Avatar>
   )
 }
