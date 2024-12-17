@@ -6,12 +6,12 @@ type AvatarProps = React.HTMLAttributes<HTMLElement> & {
    */
   className?: string;
   /**
-   * The class to pass to the (default) anchor / img element 
+   * The class to pass to the (default) anchor / img element
    */
   childClassName?: string;
   /**
-  * CSS Styles to pass to the (default) anchor / img element with inline style
-  */
+   * CSS Styles to pass to the (default) anchor / img element with inline style
+   */
   childStyle?: CSSProperties;
   /**
    * The shape variant we want to display (circle, rounded or square)
