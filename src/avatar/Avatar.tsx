@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useState } from 'react';
 
 type AvatarProps = React.HTMLAttributes<HTMLElement> & {
   /**
@@ -84,24 +84,44 @@ export const Avatar = ({
   borderWidth,
   ...props
 }: AvatarProps) => {
-  let contents = src ? (
-    <img src={src} alt={alt} className={childClassName} style={childStyle} />
-  ) : (
-    children
-  );
+  const [hasError, setHasError] = useState(false);
 
-  if (avatarLink) {
-    contents = (
-      <a
-        href={avatarLink}
-        target={avatarLinkTarget}
+  const handleError = () => {
+    setHasError(true);
+  };
+
+  const renderContents = () => {
+    if (hasError) {
+      if (children) {
+        return children;
+      }
+
+      if (alt) {
+        return <>{alt[0]}</>;
+      }
+
+      return (
+        <img
+          src={`${process.env.BASE_URL}/${process.env.AVATAR_FALLBACK_IMAGE}`}
+          alt={alt}
+          className={childClassName}
+          style={childStyle}
+        />
+      );
+    }
+
+    return src ? (
+      <img
+        src={src}
+        alt={alt}
         className={childClassName}
         style={childStyle}
-      >
-        {contents}
-      </a>
+        onError={handleError}
+      />
+    ) : (
+      children
     );
-  }
+  };
 
   return (
     <div
@@ -121,7 +141,18 @@ export const Avatar = ({
         ...props.style,
       }}
     >
-      {contents}
+      {avatarLink ? (
+        <a
+          href={avatarLink}
+          target={avatarLinkTarget}
+          className={childClassName}
+          style={childStyle}
+        >
+          {renderContents()}
+        </a>
+      ) : (
+        renderContents()
+      )}
     </div>
   );
 };

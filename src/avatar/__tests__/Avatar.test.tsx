@@ -1,12 +1,16 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Avatar } from '../Avatar';
 
 describe('Avatar', () => {
   it('should render an image', () => {
-    const { container } = render(<Avatar src="test.jpg" />);
-    const img = screen.getByRole('img');
+    const { container } = render(
+      <Avatar src="http://somewebsite.io/test.jpg" alt="sample alt text" />
+    );
+    const img = container.querySelector('img');
+    expect(img?.src).toEqual('http://somewebsite.io/test.jpg');
+    expect(img?.alt).toEqual('sample alt text');
     expect(img).toBeInTheDocument();
     const div = container.querySelector('div');
     expect(div).toBeInTheDocument();
@@ -129,9 +133,7 @@ describe('Avatar', () => {
   });
 
   it('should pass classname to child components', () => {
-    render(
-      <Avatar childClassName="test" src="test.jpg" />
-    );
+    render(<Avatar childClassName="test" src="test.jpg" />);
     const img = screen.getByRole('img');
     expect(img).toHaveClass('test');
   });
@@ -146,5 +148,60 @@ describe('Avatar', () => {
     );
     const div = container.querySelector('.childComponent');
     expect(div).toHaveStyle('background-color: red');
+  });
+
+  describe('image failure fallbacks', () => {
+    const OLD_ENV = process.env;
+
+    beforeEach(() => {
+      jest.resetModules();
+      process.env = { ...OLD_ENV };
+      process.env.BASE_URL = 'http://test.url';
+      process.env.AVATAR_FALLBACK_IMAGE = 'fallback.png';
+    });
+
+    afterAll(() => {
+      process.env = OLD_ENV;
+    });
+
+    it('should render the provided children', () => {
+      const { container } = render(
+        <Avatar src="samplewebsite.com/wont-load.jpg">test</Avatar>
+      );
+
+      fireEvent.error(screen.getByRole('img'));
+      const div = container.querySelector('div');
+      expect(div?.innerHTML).toEqual('test');
+    });
+
+    it('should render the provided children even if alt text is provided', () => {
+      const { container } = render(
+        <Avatar src="samplewebsite.com/wont-load.jpg" alt="sample alt text">
+          test
+        </Avatar>
+      );
+      fireEvent.error(screen.getByRole('img'));
+
+      const div = container.querySelector('div');
+      expect(div?.innerHTML).toEqual('test');
+    });
+
+    it('should render the first letter of the alt text', () => {
+      const { container } = render(
+        <Avatar src="samplewebsite.com/wont-load.jpg" alt="sample alt text" />
+      );
+      const div = container.querySelector('div');
+      fireEvent.error(screen.getByRole('img'));
+
+      expect(div?.innerHTML).toEqual('s');
+    });
+
+    it('should render a generic avatar icon', () => {
+      const { container } = render(<Avatar src="wont-load.jpg" />);
+      const img = container.querySelector('img');
+      fireEvent.error(screen.getByRole('img'));
+
+      expect(img?.src).toEqual('http://test.url/fallback.png');
+    });
   });
 });
