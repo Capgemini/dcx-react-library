@@ -10,9 +10,16 @@ An Avatar component to display either an image or child component such as initia
 Passing an `avatarLink` to props will cause the avatar to be wrapped in an anchor tag.
 An additional `avatarLinkTarget` can be passed to control the anchor tags target attribute.
 
-When it comes to the contents of the avatar you can either pass an `src` prop or children props.
-If an `src` prop is passed an img tag is rendered instead of child components passed in.
-In addition an `alt` prop can be passed and rendered to the img tag.
+* When it comes to the contents of the avatar you can either pass an `src` prop or children props.
+* If an `src` prop is passed, an img tag is rendered instead of child components passed in.
+
+### Image failure fallback.
+
+If the `src` results in a `404` and fails to load one of the following fallback behaviours will occur.
+
+* If `children` props are passed they will be rendered.
+* If no `children` props are passed then the first letter of the `alt` prop will be rendered.
+* If the `alt` prop is not present then a default image will be loaded.
 
 When you import the avatar component without providing any className or style associated it will look like one of the following examples:
 (Styles have been passed as a prop to customise the look and feel.)
