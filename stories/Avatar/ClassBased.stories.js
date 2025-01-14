@@ -1,5 +1,5 @@
 import { Avatar } from '../../src/avatar/Avatar';
-import { FormSelect } from '../../src/formSelect/FormSelect';
+import { Button } from '../../src/button/Button';
 
 export default {
   title: 'DCXLibrary/Form/Avatar/Class based',
@@ -156,23 +156,7 @@ export const CustomContent = {
         color: 'white'
       }}
       >JB</a>
-      <FormSelect 
-        onChange={ e => { e.preventDefault() } }
-        options={[
-          {
-            label: 'Away from keyboard',
-            value: 'AFK'
-          },
-          {
-            label: 'Online',
-            value: 'online'
-          },
-          {
-            label: 'Offline',
-            value: 'offline'
-          }
-        ]}
-      />
+      <Button>+</Button>
     </>,
   },
 };
