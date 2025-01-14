@@ -236,7 +236,13 @@ export const FormDate = ({
             customLabel={yearProps?.customLabel}
             classNameSpan={yearProps?.classNameSpan}
             label={yearProps?.label}
-            classNameInput={classNames([yearProps?.classNameInput, inputClass])}
+            classNameInput={classNames([
+              yearProps?.classNameInput,
+              inputClass,
+              {
+                'dcx-form-date--filled': !!state.year,
+              },
+            ])}
             disabled={disabled}
             tabIndex={yearProps?.tabIndex}
             placeholder={yearPlaceholder}
@@ -257,6 +263,9 @@ export const FormDate = ({
             classNameInput={classNames([
               monthProps?.classNameInput,
               inputClass,
+              {
+                'dcx-form-date--filled': !!state.month,
+              },
             ])}
             disabled={disabled}
             tabIndex={monthProps?.tabIndex}
@@ -275,7 +284,13 @@ export const FormDate = ({
             customLabel={dayProps?.customLabel}
             classNameSpan={dayProps?.classNameSpan}
             label={dayProps?.label}
-            classNameInput={classNames([dayProps?.classNameInput, inputClass])}
+            classNameInput={classNames([
+              dayProps?.classNameInput,
+              inputClass,
+              {
+                'dcx-form-date--filled': !!state.day,
+              },
+            ])}
             disabled={disabled}
             tabIndex={dayProps?.tabIndex}
             placeholder={dayPlaceholder}
@@ -290,7 +305,15 @@ export const FormDate = ({
       {errorPosition === 'top' && showError && (
         <ErrorMessage text={errorMessage} className={errorClass} />
       )}
-      <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto' }}>
+      <div
+        style={{ display: 'grid', gridTemplateColumns: 'auto auto auto' }}
+        className={classNames([
+          'dcx-form-date',
+          {
+            'dcx-form-date--error': displayError,
+          },
+        ])}
+      >
         {DateComp}
       </div>
       {errorPosition === 'bottom' && showError && (

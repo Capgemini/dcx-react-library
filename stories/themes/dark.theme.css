@@ -16,6 +16,15 @@
   --dcx-color-background-formcontrol_suffix: #999;
 }
 
+.dcx-form-date {
+  --dcx-color-text-formcontrol: white;
+  --dcx-color-text-formcontrol_label: white;
+  --dcx-border-color-formcontrol: white;
+  --dcx-color-outline-formcontrol: darkorange;
+  --dcx-font-formcontrol_error-size: 16px;
+  --dcx-font-formcontrol_error-line-height: 20px;
+}
+
 .dcx-button {
   --dcx-color-text-action-default-primary: white;
   --dcx-color-text-action-default-secondary: #000;
