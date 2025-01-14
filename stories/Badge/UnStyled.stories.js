@@ -17,6 +17,7 @@ export default {
 
 export const Unstyled = {
   args: {
-    badgeContents: '5'
+    badgeContents: '5',
+    badgeClassName: 'badge'
   },
 };

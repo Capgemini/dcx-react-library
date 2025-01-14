@@ -33,11 +33,7 @@ type BadgeProps = {
 
 const containerStyles: React.CSSProperties = {
   position: 'absolute',
-  backgroundColor: 'green',
-  color: 'white',
   borderRadius: '50%',
-  fontSize: '12px',
-  fontWeight: 'bold',
   minWidth: '20px',
   minHeight: '20px',
   textAlign: 'center',
