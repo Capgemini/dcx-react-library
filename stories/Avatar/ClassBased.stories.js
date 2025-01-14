@@ -1,5 +1,6 @@
 import { Avatar } from '../../src/avatar/Avatar';
 import { Button } from '../../src/button/Button';
+import { Badge } from '../../src/badge/Badge';
 
 export default {
   title: 'DCXLibrary/Form/Avatar/Class based',
@@ -110,6 +111,19 @@ export const Initials = {
       color: 'white'
     }
   }
+}
+
+export const WithBadge = {
+  render: () => (
+    <Badge badgeContents='5'>
+      <Avatar
+        style={{
+          backgroundColor: '#663399',
+          color: 'white'
+        }}
+      >JB</Avatar>
+    </Badge>
+  )
 }
 
 export const InitialsLarge = {
