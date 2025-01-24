@@ -23,8 +23,10 @@ export const Unstyled = {
       'JB',
     ],
     style:{
-      background: 'lightGrey',
-      color: 'white',
+      background: '#F3F4F6',
+    },
+    childStyle: {
+      color: '#4B5563',
       textDecoration: 'none'
     },
     avatarLink: 'http://localhost/',
@@ -42,9 +44,13 @@ export const Rounded = {
       background: '#66CC00',
       color: 'white',
     },
-    borderWidth: '1px',
+    childStyle: {
+      color: 'white',
+      textDecoration: 'none'
+    },
+    borderWidth: '2px',
     borderStyle: 'solid',
-    borderColor: '#326fa9',
+    borderColor: '#8bc34a',
     shape: 'rounded',
     avatarLink: 'http://localhost/',
     avatarLinkTarget: '_blank',
@@ -59,12 +65,14 @@ export const Square = {
     ],
     style:{
       background: '#ff5722',
+    },
+    childStyle: {
       color: 'white',
       textDecoration: 'none'
     },
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#326fa9',
+    borderColor: 'cornsilk',
     shape: 'square',
     avatarLink: 'http://localhost/',
     avatarLinkTarget: '_blank',
@@ -79,7 +87,9 @@ export const Circle = {
     ],
     style:{
       background: 'white',
-      color: 'white',
+    },
+    childStyle: {
+      color: '#4B5563',
       textDecoration: 'none'
     },
     borderWidth: '1px',
@@ -115,7 +125,12 @@ export const Initials = {
 
 export const WithBadge = {
   render: () => (
-    <Badge badgeContents='5'>
+    <Badge badgeContents={<div style={{
+      color: 'white',
+      borderRadius: '12px',
+      background: '#FFC107',
+      padding: '3px 7px',
+    }}>2</div>}>  
       <Avatar
         style={{
           backgroundColor: '#663399',
