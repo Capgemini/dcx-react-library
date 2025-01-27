@@ -28,7 +28,7 @@ export const Dot = {
   args: {
     children: <Avatar
         style={{
-          border: '1px solid blue'
+          border: '1px solid #03A9F4'
         }}
         src={'https://avatars.githubusercontent.com/u/1049773?s=40'}
     />,
@@ -41,7 +41,7 @@ export const LeftAligned = {
   args: {
     children: <Avatar
         style={{
-          border: '1px solid blue'
+          border: '1px solid #03A9F4'
         }}
         src={'https://avatars.githubusercontent.com/u/1049773?s=40'}
     />,
@@ -55,7 +55,7 @@ export const RightAligned = {
   args: {
     children: <Avatar
         style={{
-          border: '1px solid blue'
+          border: '1px solid #03A9F4'
         }}
         src={'https://avatars.githubusercontent.com/u/1049773?s=40'}
     />,
@@ -69,7 +69,7 @@ export const TopAligned = {
   args: {
     children: <Avatar
         style={{
-          border: '1px solid blue'
+          border: '1px solid #03A9F4'
         }}
         src={'https://avatars.githubusercontent.com/u/1049773?s=40'}
     />,
@@ -83,7 +83,7 @@ export const BottomAligned = {
   args: {
     children: <Avatar
         style={{
-          border: '1px solid blue'
+          border: '1px solid #03A9F4'
         }}
         src={'https://avatars.githubusercontent.com/u/1049773?s=40'}
     />,

@@ -28,6 +28,8 @@ export const parameters = {
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'Autocomplete',
             ['Documentation', 'Live', 'Without style', 'Class based'],
+            'Badge',
+            ['Documentation', 'Live', 'Without style', 'Class based'],
             'Button',
             ['Documentation', 'Live', 'Without style', 'Class based'],
             'ButtonGroup',
