@@ -151,22 +151,12 @@ describe('Avatar', () => {
   });
 
   describe('image failure fallbacks', () => {
-    const OLD_ENV = process.env;
-
-    beforeEach(() => {
-      jest.resetModules();
-      process.env = { ...OLD_ENV };
-      process.env.BASE_URL = 'http://test.url';
-      process.env.AVATAR_FALLBACK_IMAGE = 'fallback.png';
-    });
-
-    afterAll(() => {
-      process.env = OLD_ENV;
-    });
-
     it('should render the provided children', () => {
       const { container } = render(
-        <Avatar src="samplewebsite.com/wont-load.jpg">test</Avatar>
+        <Avatar 
+          defaultAvatarImg="http://test.url/fallback.png"
+          src="samplewebsite.com/wont-load.jpg" 
+        >test</Avatar>
       );
 
       fireEvent.error(screen.getByRole('img'));
@@ -176,7 +166,11 @@ describe('Avatar', () => {
 
     it('should render the provided children even if alt text is provided', () => {
       const { container } = render(
-        <Avatar src="samplewebsite.com/wont-load.jpg" alt="sample alt text">
+        <Avatar
+          alt="sample alt text"
+          defaultAvatarImg="http://test.url/fallback.png"
+          src="samplewebsite.com/wont-load.jpg"
+        >
           test
         </Avatar>
       );
@@ -188,7 +182,11 @@ describe('Avatar', () => {
 
     it('should render the first letter of the alt text', () => {
       const { container } = render(
-        <Avatar src="samplewebsite.com/wont-load.jpg" alt="sample alt text" />
+        <Avatar
+          alt="sample alt text"
+          defaultAvatarImg="http://test.url/fallback.png"
+          src="samplewebsite.com/wont-load.jpg" 
+        />
       );
       const div = container.querySelector('div');
       fireEvent.error(screen.getByRole('img'));
@@ -197,7 +195,7 @@ describe('Avatar', () => {
     });
 
     it('should render a generic avatar icon', () => {
-      const { container } = render(<Avatar src="wont-load.jpg" />);
+      const { container } = render(<Avatar defaultAvatarImg="http://test.url/fallback.png" src="wont-load.jpg" />);
       const img = container.querySelector('img');
       fireEvent.error(screen.getByRole('img'));
 

@@ -53,6 +53,10 @@ type AvatarProps = React.HTMLAttributes<HTMLElement> & {
    * The alt text for the image element.
    */
   alt?: string;
+  /**
+   * A default avatar image to use as a fallback if image loading fails.
+   */
+  defaultAvatarImg?: string;
 };
 
 const shapeStyles = {
@@ -82,6 +86,7 @@ export const Avatar = ({
   borderColor,
   borderStyle,
   borderWidth,
+  defaultAvatarImg,
   ...props
 }: AvatarProps) => {
   const [hasError, setHasError] = useState(false);
@@ -102,7 +107,7 @@ export const Avatar = ({
 
       return (
         <img
-          src={`${process.env.BASE_URL}/${process.env.AVATAR_FALLBACK_IMAGE}`}
+          src={defaultAvatarImg}
           alt={alt}
           className={childClassName}
           style={childStyle}
