@@ -68,13 +68,13 @@ export const Badge = ({
     ...(dot ? dotStyles : {}),
   };
 
-  if (verticalAlignment == 'top') {
+  if (verticalAlignment === 'top') {
     mergedStyles.top = '-5px';
   } else {
     mergedStyles.bottom = '-5px';
   }
 
-  if (horizontalAlignment == 'right') {
+  if (horizontalAlignment === 'right') {
     mergedStyles.right = '-5px';
   } else {
     mergedStyles.left = '-5px';
