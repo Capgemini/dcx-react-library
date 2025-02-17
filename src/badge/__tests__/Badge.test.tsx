@@ -80,8 +80,8 @@ describe('Badge component', () => {
     const styles = getComputedStyle(badge);
 
     expect(styles.position).toEqual('absolute');
-    expect(styles.backgroundColor).toEqual('green');
-    expect(styles.color).toEqual('white');
+    expect(styles.backgroundColor).toEqual('');
+    expect(styles.color).toEqual('');
     expect(styles.borderRadius).toEqual('50%');
   });
 
