@@ -112,6 +112,39 @@ export const WithImage = {
   },
 };
 
+export const WithImageFallbackToChildren = {
+  name: 'Image load failure - render children',
+  args: {
+    children: (<p>Example child contents</p>),
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#326fa9',  
+    src: 'fail-to-load',
+  },
+};
+
+export const WithImageFallbackToAltFirstLetter = {
+  name: 'Image load failure - render alt first letter',
+  args: {
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#326fa9',  
+    src: 'fail-to-load',
+    alt: 'Example alt'
+  },
+};
+
+export const WithImageFallbackToDefaultImage = {
+  name: 'Image load failure - render fallback image',
+  args: {
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#326fa9',  
+    src: 'fail-to-load',
+    defaultAvatarImg: 'https://avatars.githubusercontent.com/u/1049773?s=40'
+  },
+};
+
 export const Initials = {
   name: 'Initials',
   args: {
