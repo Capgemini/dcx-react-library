@@ -11,6 +11,7 @@ function AvatarDemo() {
 
   return (
     <Avatar style={style}
+      defaultAvatarImg='https://avatars.githubusercontent.com/u/1049773?s=40'
       src='https://avatars.githubusercontent.com/u/1049773?s=40'
       shape='circle'
       width='3em'
