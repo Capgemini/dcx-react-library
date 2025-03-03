@@ -19,7 +19,8 @@ If the `src` results in a `404` and fails to load one of the following fallback 
 
 * If `children` props are passed they will be rendered.
 * If no `children` props are passed then the first letter of the `alt` prop will be rendered.
-* If the `alt` prop is not present then a default image will be loaded (configurable via the `defaultAvatarImg` prop).
+* If the `alt` prop is not present then a default image will be loaded.
+* PLEASE NOTE: The `defaultAvatarImg` prop must be set in order to render a fallback image. It is not completely automatic.
 
 When you import the avatar component without providing any className or style associated it will look like one of the following examples:
 (Styles have been passed as a prop to customise the look and feel.)
@@ -52,6 +53,7 @@ When you import the avatar component without providing any className or style as
   avatarLink={'http://localhost/'}
   avatarLinkTarget={'_blank'}
   alt={'A sample avatar element'}
+  defaultAvatarImg=''
 >EL</Avatar>
 ```
 
