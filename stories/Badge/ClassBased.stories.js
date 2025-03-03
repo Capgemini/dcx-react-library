@@ -35,7 +35,7 @@ export const Dot = {
     badgeClassName: 'badge',
     dot: true,
   }
-}
+};
 
 export const LeftAligned = {
   args: {
@@ -49,7 +49,7 @@ export const LeftAligned = {
     badgeContents: '5',
     horizontalAlignment: 'left'
   }
-}
+};
 
 export const RightAligned = {
   args: {
@@ -63,7 +63,7 @@ export const RightAligned = {
     badgeContents: '5',
     horizontalAlignment: 'right'
   }
-}
+};
 
 export const TopAligned = {
   args: {
@@ -77,7 +77,7 @@ export const TopAligned = {
     badgeContents: '5',
     verticalAlignment: 'top'
   }
-}
+};
 
 export const BottomAligned = {
   args: {
@@ -91,4 +91,4 @@ export const BottomAligned = {
     badgeContents: '5',
     verticalAlignment: 'bottom'
   }
-}
+};
