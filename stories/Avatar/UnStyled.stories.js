@@ -1,5 +1,4 @@
 import { Avatar } from '../../src/avatar/Avatar';
-import { FormSelect } from '../../src/formSelect/FormSelect';
 
 export default {
   title: 'DCXLibrary/Form/Avatar/Without style',
