@@ -15,12 +15,12 @@ An additional `avatarLinkTarget` can be passed to control the anchor tags target
 
 ### Image failure fallback.
 
-If the `src` results in a `404` and fails to load one of the following fallback behaviours will occur.
+If the `src` results in a `404`, you can protect the look and feel of your component passing `defaultAvatarImg`. 
+If instead you don't specify a default avatar image the component will try to fallback as follow:
 
 * If `children` props are passed they will be rendered.
 * If no `children` props are passed then the first letter of the `alt` prop will be rendered.
 * If the `alt` prop is not present then a default image will be loaded.
-* PLEASE NOTE: The `defaultAvatarImg` prop must be set in order to render a fallback image. It is not completely automatic.
 
 When you import the avatar component without providing any className or style associated it will look like one of the following examples:
 (Styles have been passed as a prop to customise the look and feel.)
