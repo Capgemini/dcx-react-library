@@ -27,6 +27,7 @@ When you import the avatar component without providing any className or style as
 
 <Canvas of={AvatarStories.Unstyled} />
 
+You can pass the `src` property to render your image:
 ```js
 <Avatar
     style={{
@@ -36,7 +37,7 @@ When you import the avatar component without providing any className or style as
 />
 ```
 
-
+If your avatar component require some custom content you can pass children props:
 ```js
 <Avatar
   style={{
