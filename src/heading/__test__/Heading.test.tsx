@@ -89,7 +89,7 @@ describe('Heading', () => {
     expect(container.querySelector('h1[role="heading"]')).toBeInTheDocument();
   });
 
-  it('should provid the ability to pass a label', () => {
+  it('should provide the ability to pass a label', () => {
     render(
       <Heading
         id="first"
@@ -107,21 +107,6 @@ describe('Heading', () => {
         <h2>child component</h2>
       </Heading>
     );
-    expect(screen.getByText('child component')).toBeInTheDocument();
-  });
-
-  it('should render children and label', () => {
-    render(
-      <Heading
-        id="first"
-        className="heading"
-        label="This is a Level 1 Heading"
-        level="h1"
-      >
-        <h2>child component</h2>
-      </Heading>
-    );
-    expect(screen.getByText('This is a Level 1 Heading')).toBeInTheDocument();
     expect(screen.getByText('child component')).toBeInTheDocument();
   });
 });
