@@ -100,4 +100,28 @@ describe('Heading', () => {
     );
     expect(screen.getByText('This is a Level 1 Heading')).toBeInTheDocument();
   });
+
+  it('should render children', () => {
+    render(
+      <Heading id="first" className="heading" level="h1">
+        <h2>child component</h2>
+      </Heading>
+    );
+    expect(screen.getByText('child component')).toBeInTheDocument();
+  });
+
+  it('should render children and label', () => {
+    render(
+      <Heading
+        id="first"
+        className="heading"
+        label="This is a Level 1 Heading"
+        level="h1"
+      >
+        <h2>child component</h2>
+      </Heading>
+    );
+    expect(screen.getByText('This is a Level 1 Heading')).toBeInTheDocument();
+    expect(screen.getByText('child component')).toBeInTheDocument();
+  });
 });

@@ -7,7 +7,7 @@ type HeadingProps = {
   /**
    * Content of the Heading
    */
-  label: string;
+  label?: string;
 
   /**
    * Level of the heading (h1-h6)
@@ -28,6 +28,11 @@ type HeadingProps = {
    * Additional props/attributes
    */
   props?: React.HTMLAttributes<HTMLHeadingElement>;
+
+  /**
+   * Child components can also be included in the heading content
+   */
+  children?: React.ReactNode;
 };
 
 export const Heading = ({
@@ -35,6 +40,7 @@ export const Heading = ({
   level,
   className,
   id,
+  children,
   props,
 }: HeadingProps) => {
   const dynamicClassName = classNames([
@@ -48,6 +54,7 @@ export const Heading = ({
   return (
     <HeaderTag className={dynamicClassName} id={id} {...props}>
       {label}
+      {children}
     </HeaderTag>
   );
 };
