@@ -17,7 +17,6 @@ In order to use the accordion component in your project, you should import all t
   import { Accordion, AccordionDetails, AccordionItem, AccordionTitle } from '@capgeminiuk/dcx-react-library`;
 ```
 
-
 When you import the Accordion component without providing any className or style associated will looks as following;
 
 <Canvas of={AccordionStories.Unstyled} />
@@ -26,6 +25,7 @@ An example with all the available properties is:
 
 ```js
 <Accordion
+  onClick={(title) => console.log(`Accordion item ${title} clicked`)},
   expanded={['1']}
   expandIcon={<span>Expand</span>}
   collapsedIcon={<span>Collapse</span>}
@@ -41,7 +41,7 @@ An example with all the available properties is:
     <AccordionTitle><span>Section 2 Title</span></AccordionTitle>
     <AccordionDetails><span>This is the details for Section 2.</span></AccordionDetails>
   </AccordionItem>
-</Accordion>  
+</Accordion>
 
 ```
 
