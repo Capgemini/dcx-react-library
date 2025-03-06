@@ -5,6 +5,11 @@ import { classNames } from '../common';
 
 interface AccordionProps {
   /**
+   * Function to run when accordion is clicked
+   */
+  onClick?: () => void;
+
+  /**
    * Allows multiple sections of the accordion to be open at the same time
    */
   multipleOpen?: boolean;
@@ -51,6 +56,7 @@ interface AccordionProps {
 }
 
 export const Accordion = ({
+  onClick,
   multipleOpen = false,
   expanded,
   children,
@@ -74,6 +80,9 @@ export const Accordion = ({
   }, [expanded, multipleOpen]);
 
   const handleClick = (title: string) => {
+    if (onClick) {
+      onClick();
+    }
     if (multipleOpen) {
       setExpandedItems(
         expandedItems.includes(title)
