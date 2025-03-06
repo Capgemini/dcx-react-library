@@ -11,8 +11,13 @@ export default {
 };
 
 export const Unstyled = {
-  args: {
-    label: 'This is the content of the heading',
-    level: 'h1',
+  render: function() {
+    return (
+      <Heading label="This is the content of the heading" level="h1">
+        <div>
+          <p> This is a child component that is part of the heading </p>
+        </div>
+      </Heading>
+    );
   },
 };

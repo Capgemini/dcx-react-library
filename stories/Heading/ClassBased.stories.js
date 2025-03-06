@@ -31,3 +31,21 @@ export const H3 = createHeading('h3');
 export const H4 = createHeading('h4');
 export const H5 = createHeading('h5');
 export const H6 = createHeading('h6');
+
+export const HeadingWithChildren = {
+  name: 'Heading with children',
+  render: function(args) {
+    return (
+      <Heading {...args}>
+        <div>
+          <p>This is the child component</p>
+        </div>
+      </Heading>
+    );
+  },
+  args: {
+    className: 'govuk-body',
+    label: `This is the label`,
+    level: 'h1',
+  },
+};

@@ -11,22 +11,26 @@ function HeadingDemo() {
         label="This is a Level 1 Heading"
         className="govuk-body"
         props={{ role: 'heading' }}
-    />
+    >
+        <div>
+            <p> This is a child component that is part of the heading </p>  
+        </div>
+    </Heading>
   )
 }
 `.trim();
 
 const HeadingLive = () => {
-    const scope = { Heading };
-    return (
-        <LiveProvider code={HeadingDemo} scope={scope}>
-            <div className="container">
-                <LiveEditor className="liveEditor" aria-label="editor" />
-                <LivePreview className="livePreview" aria-label="preview" />
-            </div>
-            <LiveError className="liveError" aria-label="error" />
-        </LiveProvider>
-    );
+  const scope = { Heading };
+  return (
+    <LiveProvider code={HeadingDemo} scope={scope}>
+      <div className="container">
+        <LiveEditor className="liveEditor" aria-label="editor" />
+        <LivePreview className="livePreview" aria-label="preview" />
+      </div>
+      <LiveError className="liveError" aria-label="error" />
+    </LiveProvider>
+  );
 };
 
 export default HeadingLive;
