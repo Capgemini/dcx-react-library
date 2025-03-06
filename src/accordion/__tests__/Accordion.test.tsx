@@ -679,4 +679,22 @@ describe('Accordion Component', () => {
     fireEvent.click(screen.getByText('Details 2'));
     expect(detailsElement[1].getAttribute('aria-expanded')).toBe('false');
   });
+  it('should call onClick function when accordion is clicked', async () => {
+    const mockOnClick = jest.fn();
+
+    render(
+      <Accordion onClick={mockOnClick}>
+        <AccordionItem title="1">
+          <AccordionTitle>
+            <>Test Title</>
+          </AccordionTitle>
+          <AccordionDetails>
+            <>Test Details</>
+          </AccordionDetails>
+        </AccordionItem>
+      </Accordion>
+    );
+    await userEvent.click(screen.getByText('Test Title'));
+    expect(mockOnClick).toHaveBeenCalled();
+  });
 });

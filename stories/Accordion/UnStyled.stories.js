@@ -16,7 +16,7 @@ export default {
 };
 
 export const Unstyled = {
-  render: function (args) {
+  render: function(args) {
     return (
       <Accordion {...args}>
         <AccordionItem title="1">
@@ -45,6 +45,7 @@ export const Unstyled = {
     );
   },
   args: {
+    onClick: title => console.log(`Accordion item ${title} clicked`),
     expanded: ['1'],
     titleClassName: 'accordion',
     detailsClassName: 'panel',

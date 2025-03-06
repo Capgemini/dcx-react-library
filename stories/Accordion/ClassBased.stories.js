@@ -24,7 +24,7 @@ export default {
  */
 export const BasicAccordion = {
   name: 'Basic',
-  render: function (args) {
+  render: function(args) {
     return (
       <Accordion className="govuk-accordion" {...args}>
         <AccordionItem className="govuk-accordion__section" title="1">
@@ -40,7 +40,7 @@ export const BasicAccordion = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for Writing well for the web.
             </p>
           </AccordionDetails>
@@ -58,7 +58,7 @@ export const BasicAccordion = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for writing well for specialists.
             </p>
           </AccordionDetails>
@@ -76,7 +76,7 @@ export const BasicAccordion = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for Know your audience.
             </p>
           </AccordionDetails>
@@ -111,7 +111,7 @@ export const BasicAccordion = {
  */
 export const multipleOpen = {
   name: 'Multiple sections expanded',
-  render: function (args) {
+  render: function(args) {
     return (
       <Accordion className="govuk-accordion" {...args}>
         <AccordionItem className="govuk-accordion__section" title="1">
@@ -127,7 +127,7 @@ export const multipleOpen = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for Writing well for the web.
             </p>
           </AccordionDetails>
@@ -145,7 +145,7 @@ export const multipleOpen = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for writing well for specialists.
             </p>
           </AccordionDetails>
@@ -163,7 +163,7 @@ export const multipleOpen = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for Know your audience.
             </p>
           </AccordionDetails>
@@ -198,7 +198,7 @@ export const multipleOpen = {
  */
 export const defaultExpandedAccordion = {
   name: 'Expanded by default one at a time',
-  render: function (args) {
+  render: function(args) {
     return (
       <Accordion className="govuk-accordion" {...args}>
         <AccordionItem className="govuk-accordion__section" title="1">
@@ -214,7 +214,7 @@ export const defaultExpandedAccordion = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for Writing well for the web.
             </p>
           </AccordionDetails>
@@ -232,7 +232,7 @@ export const defaultExpandedAccordion = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for writing well for specialists.
             </p>
           </AccordionDetails>
@@ -250,7 +250,7 @@ export const defaultExpandedAccordion = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for Know your audience.
             </p>
           </AccordionDetails>
@@ -285,7 +285,7 @@ export const defaultExpandedAccordion = {
  */
 export const defaultExpandedWithMultipleSectionsAllowed = {
   name: 'Expanded by default multiple sections open',
-  render: function (args) {
+  render: function(args) {
     return (
       <Accordion className="govuk-accordion" {...args}>
         <AccordionItem className="govuk-accordion__section" title="1">
@@ -301,7 +301,7 @@ export const defaultExpandedWithMultipleSectionsAllowed = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for Writing well for the web.
             </p>
           </AccordionDetails>
@@ -319,7 +319,7 @@ export const defaultExpandedWithMultipleSectionsAllowed = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for writing well for specialists.
             </p>
           </AccordionDetails>
@@ -337,7 +337,7 @@ export const defaultExpandedWithMultipleSectionsAllowed = {
             </h2>
           </AccordionTitle>
           <AccordionDetails className="govuk-accordion__section-content">
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for Know your audience.
             </p>
           </AccordionDetails>
@@ -372,7 +372,7 @@ export const defaultExpandedWithMultipleSectionsAllowed = {
  */
 export const definedTitleAndDetailsClassNames = {
   name: 'Global classNames',
-  render: function (args) {
+  render: function(args) {
     return (
       <Accordion className="govuk-accordion" {...args}>
         <AccordionItem className="govuk-accordion__section" title="1">
@@ -388,7 +388,7 @@ export const definedTitleAndDetailsClassNames = {
             </h2>
           </AccordionTitle>
           <AccordionDetails>
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for Writing well for the web.
             </p>
           </AccordionDetails>
@@ -406,7 +406,7 @@ export const definedTitleAndDetailsClassNames = {
             </h2>
           </AccordionTitle>
           <AccordionDetails>
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for writing well for specialists.
             </p>
           </AccordionDetails>
@@ -424,7 +424,7 @@ export const definedTitleAndDetailsClassNames = {
             </h2>
           </AccordionTitle>
           <AccordionDetails>
-            <p class="govuk-body">
+            <p className="govuk-body">
               This is the content for Know your audience.
             </p>
           </AccordionDetails>
@@ -437,6 +437,94 @@ export const definedTitleAndDetailsClassNames = {
     expanded: [],
     titleClassName: 'govuk-accordion__section-header',
     detailsClassName: 'govuk-accordion__section-content',
+    expandIcon: (
+      <span className="govuk-accordion__section-toggle">
+        <span className="govuk-accordion__section-toggle-focus">
+          <span className="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"></span>
+          <span className="govuk-accordion__section-toggle-text">Hide</span>
+        </span>
+      </span>
+    ),
+    collapsedIcon: (
+      <span className="govuk-accordion__section-toggle">
+        <span className="govuk-accordion__section-toggle-focus">
+          <span className="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--up"></span>
+          <span className="govuk-accordion__section-toggle-text">Show</span>
+        </span>
+      </span>
+    ),
+  },
+};
+
+/**
+ * Function can be passed via onClick prop to run when the accordion is clicked
+ */
+export const AccordionTest = {
+  name: 'Function to run on click',
+  render: function(args) {
+    return (
+      <Accordion className="govuk-accordion" {...args}>
+        <AccordionItem className="govuk-accordion__section" title="1">
+          <AccordionTitle className="govuk-accordion__section-header">
+            <h2 className="govuk-accordion__section-heading">
+              <button type="button" className="govuk-accordion__section-button">
+                <span className="govuk-accordion__section-heading-text">
+                  <span className="govuk-accordion__section-heading-text-focus">
+                    Writing well for the web
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </AccordionTitle>
+          <AccordionDetails className="govuk-accordion__section-content">
+            <p className="govuk-body">
+              This is the content for Writing well for the web.
+            </p>
+          </AccordionDetails>
+        </AccordionItem>
+        <AccordionItem className="govuk-accordion__section" title="2">
+          <AccordionTitle className="govuk-accordion__section-header">
+            <h2 className="govuk-accordion__section-heading">
+              <button type="button" className="govuk-accordion__section-button">
+                <span className="govuk-accordion__section-heading-text">
+                  <span className="govuk-accordion__section-heading-text-focus">
+                    Writing well for specialists
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </AccordionTitle>
+          <AccordionDetails className="govuk-accordion__section-content">
+            <p className="govuk-body">
+              This is the content for writing well for specialists.
+            </p>
+          </AccordionDetails>
+        </AccordionItem>
+        <AccordionItem className="govuk-accordion__section" title="3">
+          <AccordionTitle className="govuk-accordion__section-header">
+            <h2 className="govuk-accordion__section-heading">
+              <button type="button" className="govuk-accordion__section-button">
+                <span className="govuk-accordion__section-heading-text">
+                  <span className="govuk-accordion__section-heading-text-focus">
+                    Know your audience
+                  </span>
+                </span>
+              </button>
+            </h2>
+          </AccordionTitle>
+          <AccordionDetails className="govuk-accordion__section-content">
+            <p className="govuk-body">
+              This is the content for Know your audience.
+            </p>
+          </AccordionDetails>
+        </AccordionItem>
+      </Accordion>
+    );
+  },
+  args: {
+    onClick: title => console.log(`Accordion item ${title} clicked`),
+    multipleOpen: false,
+    expanded: [],
     expandIcon: (
       <span className="govuk-accordion__section-toggle">
         <span className="govuk-accordion__section-toggle-focus">

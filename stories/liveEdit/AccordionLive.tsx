@@ -1,6 +1,11 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import { Accordion, AccordionDetails, AccordionItem, AccordionTitle } from '../../src/accordion';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionItem,
+  AccordionTitle,
+} from '../../src/accordion';
 
 const AccordionDemo = `
 function AccordionDemo() {
@@ -26,6 +31,7 @@ function AccordionDemo() {
   }
 
   return (<Accordion
+    onClick={() => console.log('clicked!')}
     multipleOpen={true}
     expanded={['1']}
     titleClassName="accordion"
