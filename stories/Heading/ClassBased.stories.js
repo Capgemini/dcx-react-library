@@ -39,7 +39,7 @@ export const HeadingWithLabel = {
   },
   args: {
     className: 'govuk-body',
-    label: `This is the content of the heading`,
+    label: `This is the content of the Heading`,
     level: 'h1',
   },
 };
@@ -50,7 +50,7 @@ export const HeadingWithChildren = {
     return (
       <Heading {...args}>
         <div>
-          <p>This is the content of the heading</p>
+          <p>This is the content of the Heading</p>
         </div>
       </Heading>
     );

@@ -15,7 +15,7 @@ export const Unstyled = {
     return (
       <Heading level="h1">
         <div>
-          <p> This is the content of the heading</p>
+          <p> This is the content of the Heading</p>
         </div>
       </Heading>
     );
