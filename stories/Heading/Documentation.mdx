@@ -11,9 +11,18 @@ When you import the Heading component without providing any className or style a
 
 <Canvas of={HeadingStories.Unstyled} />
 
-A more complex example with all the possible properties is:
+More complex examples with all the possible properties are:  
+Note that the Heading content can be passed to the component using the label prop, or as the child component within the Heading tags.
 
 ```js
+<Heading
+  level="h1"
+  className="title"
+  id="user-defined-id"
+  props={{ role: 'heading' }}
+  label="This is the content of the Heading"
+/>
+
 <Heading
   level="h1"
   className="title"
