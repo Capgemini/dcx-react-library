@@ -13,9 +13,9 @@ export default {
 export const Unstyled = {
   render: function() {
     return (
-      <Heading label="This is the content of the heading" level="h1">
+      <Heading level="h1">
         <div>
-          <p> This is a child component that is part of the heading </p>
+          <p> This is the content of the heading</p>
         </div>
       </Heading>
     );

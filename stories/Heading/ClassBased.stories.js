@@ -32,20 +32,31 @@ export const H4 = createHeading('h4');
 export const H5 = createHeading('h5');
 export const H6 = createHeading('h6');
 
+export const HeadingWithLabel = {
+  name: 'Heading rendering label prop',
+  render: function(args) {
+    return <Heading {...args} />;
+  },
+  args: {
+    className: 'govuk-body',
+    label: `This is the content of the heading`,
+    level: 'h1',
+  },
+};
+
 export const HeadingWithChildren = {
-  name: 'Heading with children',
+  name: 'Heading rendering child component',
   render: function(args) {
     return (
       <Heading {...args}>
         <div>
-          <p>This is the child component</p>
+          <p>This is the content of the heading</p>
         </div>
       </Heading>
     );
   },
   args: {
     className: 'govuk-body',
-    label: `This is the label`,
     level: 'h1',
   },
 };

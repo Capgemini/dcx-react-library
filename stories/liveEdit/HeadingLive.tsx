@@ -8,12 +8,11 @@ function HeadingDemo() {
   return (
     <Heading 
         level="h1"
-        label="This is a Level 1 Heading"
         className="govuk-body"
         props={{ role: 'heading' }}
     >
         <div>
-            <p> This is a child component that is part of the heading </p>  
+            <p> This is a Level 1 Heading </p>  
         </div>
     </Heading>
   )

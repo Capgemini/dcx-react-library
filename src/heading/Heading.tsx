@@ -5,7 +5,7 @@ export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 type Props = {
   /**
-   * Content of the Heading
+   * Label can be used for heading content
    */
   label: string;
 
@@ -25,7 +25,7 @@ type Props = {
   id?: string;
 
   /**
-   * Child components can also be included in the heading content
+   * Child components can also used for heading content
    */
   children: string | number | JSX.Element;
 
