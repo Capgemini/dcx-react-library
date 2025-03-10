@@ -5,11 +5,27 @@ import '@testing-library/jest-dom';
 
 describe('BlockQuote', () => {
   it('should render', () => {
-    const { container } = render(<Blockquote text="blockquote text"  footer="blockquote footer" />);
+    const { container } = render(
+      <Blockquote text="blockquote text" footer="blockquote footer" />
+    );
     expect(container.querySelector('blockquote')).toBeInTheDocument();
   });
   it('should allow to pass a value', () => {
-    render(<Blockquote className="blockquote" text="blockQuote text"  footer="blockquote footer" />);
+    render(
+      <Blockquote
+        className="blockquote"
+        text="blockQuote text"
+        footer="blockquote footer"
+      />
+    );
+    expect(screen.getByText('blockQuote text')).toBeInTheDocument();
+  });
+  it('should allow to pass children', () => {
+    render(
+      <Blockquote className="blockquote" footer="blockquote footer">
+        <p>blockQuote text</p>
+      </Blockquote>
+    );
     expect(screen.getByText('blockQuote text')).toBeInTheDocument();
   });
 
@@ -18,7 +34,7 @@ describe('BlockQuote', () => {
       <Blockquote
         className="blockquote"
         text="blockquote text"
-        footer="blockquote footer" 
+        footer="blockquote footer"
         props={{ id: 'my-blockquote' }}
       />
     );
@@ -26,12 +42,18 @@ describe('BlockQuote', () => {
   });
 
   it('should contains a class called dcx-blockquote', () => {
-    const { container } = render(<Blockquote text="blockQuote text"  footer="blockquote footer" />);
+    const { container } = render(
+      <Blockquote text="blockQuote text" footer="blockquote footer" />
+    );
     expect(container.querySelector('.dcx-blockquote')).toBeInTheDocument();
   });
   it('should contains the class dcx-blockquote and the class decided by the developer', () => {
     const { container } = render(
-      <Blockquote className="my-classname" text="blockQuote text"  footer="blockquote footer" />
+      <Blockquote
+        className="my-classname"
+        text="blockQuote text"
+        footer="blockquote footer"
+      />
     );
     expect(container.querySelector('.dcx-blockquote')).toBeInTheDocument();
     expect(container.querySelector('.my-classname')).toBeInTheDocument();

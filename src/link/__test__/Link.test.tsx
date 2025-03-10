@@ -10,6 +10,14 @@ describe('Link', () => {
     render(<Link to={link} value="Google" />);
     expect(screen.getByText('Google')).toBeInTheDocument();
   });
+  it('should display the child component', () => {
+    render(
+      <Link to={link}>
+        <p>Google</p>
+      </Link>
+    );
+    expect(screen.getByText('Google')).toBeInTheDocument();
+  });
 
   it('should renders anchor tag with correct href', () => {
     render(<Link to={link} value="Google" />);

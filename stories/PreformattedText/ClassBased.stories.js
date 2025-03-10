@@ -24,3 +24,22 @@ export const Basic = {
     className: 'customPreformattedText',
   },
 };
+
+export const PreformattedTextWithChild = {
+  name: 'PreformattedText rendering child component',
+  render: function(args) {
+    return (
+      <PreformattedText {...args}>
+        <p>
+          Text in a pre element is displayed in a fixed-width font, and it
+          preserves both spaces and line breaks.
+        </p>
+      </PreformattedText>
+    );
+  },
+  args: {
+    value:
+      'Text in a pre element is displayed in a fixed-width font, and it preserves both      spaces and line breaks.',
+    className: 'customPreformattedText',
+  },
+};

@@ -1,7 +1,7 @@
 import React from 'react';
 import { classNames } from '../common';
 
-type labelProps = {
+type Props = {
   /**
    * A CSS class for styling label
    */
@@ -10,6 +10,10 @@ type labelProps = {
    * define the value of the label
    */
   value: string;
+  /**
+   * Child components can also used for Label content
+   */
+  children: JSX.Element;
   /**
    * it will pass an id to the label element
    */
@@ -20,8 +24,22 @@ type labelProps = {
   props?: React.HtmlHTMLAttributes<HTMLLabelElement>;
 };
 
-export const Label = ({ className, value, id, props }: labelProps) => (
-  <label className={classNames(['dcx-label', className])} id={id} {...props}>
-    {value}
-  </label>
-);
+type LabelValue = Omit<Props, 'children'>;
+type LabelChildren = Omit<Props, 'value'>;
+type LabelProps = LabelValue | LabelChildren;
+
+const isValueType = (p: any): p is LabelValue => !!p.value;
+const isChildrenType = (p: any): p is LabelChildren => !!p.children;
+
+export const Label = ({ className, id, props, ...rest }: LabelProps) => {
+  let content!: string | number | JSX.Element;
+
+  if (isValueType(rest)) content = rest.value;
+  if (isChildrenType(rest)) content = rest.children;
+
+  return (
+    <label className={classNames(['dcx-label', className])} id={id} {...props}>
+      {content}
+    </label>
+  );
+};

@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 describe('Abbreviate', () => {
   it('should render', () => {
     const { container } = render(
-      <Abbreviate  title="Laugh Out Loud" value="LOL"/>
+      <Abbreviate title="Laugh Out Loud" value="LOL" />
     );
     expect(container.querySelector('abbr')).toBeInTheDocument();
   });
@@ -17,7 +17,16 @@ describe('Abbreviate', () => {
         value="WHO"
         title="World Health Organization"
       />
-      
+    );
+    expect(screen.getByText('WHO')).toBeInTheDocument();
+  });
+  it('should allow to pass children', () => {
+    render(
+      <Abbreviate className="abbreviate" title="World Health Organization">
+        <div>
+          <p>WHO</p>
+        </div>
+      </Abbreviate>
     );
     expect(screen.getByText('WHO')).toBeInTheDocument();
   });
@@ -42,11 +51,7 @@ describe('Abbreviate', () => {
   });
   it('should contains the class dcx-abbreviate and the class decided by the developer', () => {
     const { container } = render(
-      <Abbreviate
-        className="my-classname"
-        value="LOL"
-        title="Laugh Out Loud"
-      />
+      <Abbreviate className="my-classname" value="LOL" title="Laugh Out Loud" />
     );
     expect(container.querySelector('.dcx-abbreviate')).toBeInTheDocument();
     expect(container.querySelector('.my-classname')).toBeInTheDocument();

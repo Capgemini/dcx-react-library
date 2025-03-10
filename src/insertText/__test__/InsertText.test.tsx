@@ -9,6 +9,15 @@ describe('InsertText', () => {
 
     expect(screen.getByText('insert text')).toBeInTheDocument();
   });
+  it('should render child component', () => {
+    render(
+      <InsertText id="user-defined-id">
+        <p>insert text</p>
+      </InsertText>
+    );
+
+    expect(screen.getByText('insert text')).toBeInTheDocument();
+  });
 
   it('should have the class dcx-insert-text if the user does not specify any additional class', () => {
     render(<InsertText value="insert text" id="user-defined-id" />);
@@ -35,8 +44,9 @@ describe('InsertText', () => {
         props={{ style: { color: 'red' } }}
       />
     );
-    const inserttextElement =
-      container.getElementsByClassName('dcx-insert-text');
+    const inserttextElement = container.getElementsByClassName(
+      'dcx-insert-text'
+    );
     const style = window.getComputedStyle(inserttextElement[0]);
     expect(style.color).toBe('red');
   });

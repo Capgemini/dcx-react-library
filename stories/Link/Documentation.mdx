@@ -11,7 +11,7 @@ When you import the Link component without providing any className or style asso
 
 <Canvas of={LinkStories.Unstyled} />
 
-A more complex example with all the possible properties is:
+In the first example the content is passed as a value Prop:
 
 ```js
 <Link
@@ -20,6 +20,18 @@ A more complex example with all the possible properties is:
   className="myClass"
   props={{ target: '_blank' }}
 />
+```
+
+You can use the children feature but you should not use both, If you use both together, **value** take precedence.
+
+```js
+<Link
+  to={link}
+  className="myClass"
+  props={{ target: '_blank' }}
+>
+  <p>Google</p>
+</Link>
 ```
 
 Below a list of all the available properties:

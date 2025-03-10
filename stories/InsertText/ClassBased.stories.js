@@ -14,11 +14,28 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Basic = {
-  name: 'Basic',
+export const InsertTextWithValue = {
+  name: 'InsertText rendering value prop',
   args: {
     value:
       'It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.',
+    className: 'govuk-inset-text',
+  },
+};
+
+export const InsertTextWithChildren = {
+  name: 'InsertText rendering child component',
+  render: function(args) {
+    return (
+      <InsertText {...args}>
+        <p>
+          It can take up to 8 weeks to register a lasting power of attorney if
+          there are no mistakes in the application.
+        </p>
+      </InsertText>
+    );
+  },
+  args: {
     className: 'govuk-inset-text',
   },
 };

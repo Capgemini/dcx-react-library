@@ -14,11 +14,26 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Basic = {
-  name: 'Basic',
+export const BlockQuoteWithText = {
+  name: 'BlockQuote with Text',
   args: {
     className: 'blockquote',
     text: 'This is the content of the blockquote.',
+    footer: 'This is the footer of the blockquote.',
+  },
+};
+
+export const BlockQuoteWithChild = {
+  name: 'BlockQuote rendering child component',
+  render: function(args) {
+    return (
+      <Blockquote {...args}>
+        <p>This is the content of the blockquote.</p>
+      </Blockquote>
+    );
+  },
+  args: {
+    className: 'blockquote',
     footer: 'This is the footer of the blockquote.',
   },
 };

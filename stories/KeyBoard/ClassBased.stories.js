@@ -15,10 +15,24 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Basic = {
-  name: 'Basic',
+export const KeyboardInputWithValue = {
+  name: 'KeyboardInput rendering value prop',
   args: {
-    children: 'ctrl+p',
+    value: 'ctrl+p',
+    className: 'kbd',
+  },
+};
+
+export const KeyboardInputWithChildren = {
+  name: 'KeyboardInput rendering child component',
+  render: function(args) {
+    return (
+      <KeyboardInput {...args}>
+        <p>ctrl+p</p>
+      </KeyboardInput>
+    );
+  },
+  args: {
     className: 'kbd',
   },
 };

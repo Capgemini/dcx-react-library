@@ -14,10 +14,24 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Basic = {
-  name: 'Basic',
+export const CodeSnippetWithValue = {
+  name: 'CodeSnippet with value',
   args: {
     className: 'codesnippet',
     value: 'This is the content of the code snippet.',
+  },
+};
+
+export const CodeSnippetWithChildren = {
+  name: 'CodeSnippet rendering child component',
+  render: function(args) {
+    return (
+      <CodeSnippet {...args}>
+        <p>This is the content of the code snippet.</p>
+      </CodeSnippet>
+    );
+  },
+  args: {
+    className: 'codesnippet',
   },
 };

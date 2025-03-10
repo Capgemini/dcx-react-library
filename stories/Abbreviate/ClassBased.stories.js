@@ -14,11 +14,26 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Basic = {
-  name: 'Basic',
+export const AbbreviateWithLabel = {
+  name: 'Abbreviate with value',
   args: {
     className: 'abbreviate',
     title: 'Laugh Out Loud',
     value: 'LOL',
+  },
+};
+
+export const AbbreviateWithChildren = {
+  name: 'Abbreviate rendering child component',
+  render: function(args) {
+    return (
+      <Abbreviate {...args}>
+        <p>LOL</p>
+      </Abbreviate>
+    );
+  },
+  args: {
+    className: 'abbreviate',
+    title: 'Laugh Out Loud',
   },
 };

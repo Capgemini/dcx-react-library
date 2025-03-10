@@ -16,9 +16,23 @@ export default {
 };
 
 export const Basic = {
-  name: 'Basic',
+  name: 'Highlight rendering value prop',
   args: {
     className: 'highlight',
-    children: 'This is the content of the highlighted text.',
+    value: 'This is the content of the highlighted text.',
+  },
+};
+
+export const HighlightWithChildren = {
+  name: 'Highlight rendering child component',
+  render: function(args) {
+    return (
+      <Highlight {...args}>
+        This is the content of the highlighted text.
+      </Highlight>
+    );
+  },
+  args: {
+    className: 'highlight',
   },
 };
