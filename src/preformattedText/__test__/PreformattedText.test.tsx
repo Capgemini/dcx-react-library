@@ -8,10 +8,6 @@ describe('PreformattedText', () => {
     render(<PreformattedText value="Text in a pre element..." />);
     expect(screen.getByText('Text in a pre element...')).toBeInTheDocument();
   });
-  it('should render with the provided text as child', () => {
-    render(<PreformattedText>Text in a pre element...</PreformattedText>);
-    expect(screen.getByText('Text in a pre element...')).toBeInTheDocument();
-  });
   it('should have the embedded className "dcx-pre"', () => {
     render(<PreformattedText value="Text in a pre element..." />);
     expect(screen.getByText('Text in a pre element...')).toHaveClass('dcx-pre');

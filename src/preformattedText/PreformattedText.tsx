@@ -1,7 +1,7 @@
 import React from 'react';
 import { classNames } from '../common';
 
-type Props = {
+type preformattedTextProps = {
   /**
    * A CSS class for styling the preformatted text
    */
@@ -11,35 +11,17 @@ type Props = {
    */
   value: string;
   /**
-   * Child components can also used for Label content
-   */
-  children: number | string | JSX.Element;
-  /**
    * Additional props/attributes
    */
   props?: React.HTMLAttributes<HTMLPreElement>;
 };
 
-type PreFormattedTextValue = Omit<Props, 'children'>;
-type PreFormattedTextChildren = Omit<Props, 'value'>;
-type preformattedTextProps = PreFormattedTextValue | PreFormattedTextChildren;
-
-const isValueType = (p: any): p is PreFormattedTextValue => !!p.value;
-const isChildrenType = (p: any): p is PreFormattedTextChildren => !!p.children;
-
 export const PreformattedText = ({
   className,
+  value,
   props,
-  ...rest
-}: preformattedTextProps) => {
-  let content!: string | number | JSX.Element;
-
-  if (isChildrenType(rest)) content = rest.children;
-  if (isValueType(rest)) content = rest.value;
-
-  return (
-    <pre className={classNames(['dcx-pre', className])} {...props}>
-      {content}
-    </pre>
-  );
-};
+}: preformattedTextProps) => (
+  <pre className={classNames(['dcx-pre', className])} {...props}>
+    {value}
+  </pre>
+);
