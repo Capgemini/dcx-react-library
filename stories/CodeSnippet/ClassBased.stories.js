@@ -27,7 +27,9 @@ export const CodeSnippetWithChildren = {
   render: function(args) {
     return (
       <CodeSnippet {...args}>
-        <p>This is the content of the code snippet.</p>
+        <div>
+          <p>This is the content of the code snippet.</p>
+        </div>
       </CodeSnippet>
     );
   },
