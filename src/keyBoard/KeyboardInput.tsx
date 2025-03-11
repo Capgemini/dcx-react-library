@@ -41,8 +41,8 @@ export const KeyboardInput = ({
 
   let content!: React.ReactNode | JSX.Element;
 
-  if (isValueType(rest)) content = rest.value;
   if (isChildrenType(rest)) content = rest.children;
+  if (isValueType(rest)) content = rest.value;
 
   // Return a kbd element with the dynamic class name and any additional props passed to the component
   return (

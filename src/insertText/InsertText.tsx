@@ -45,8 +45,8 @@ export const InsertText = ({
 
   let content!: string | number | JSX.Element;
 
-  if (isValueType(rest)) content = rest.value;
   if (isChildrenType(rest)) content = rest.children;
+  if (isValueType(rest)) content = rest.value;
 
   return (
     <div className={classes} id={id} {...props}>

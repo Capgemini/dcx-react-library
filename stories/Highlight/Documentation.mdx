@@ -15,17 +15,7 @@ Note that the Highlight content can be passed to the component:
 - using the value prop
 - as the child component within the Highlight tags.
 
-In the first example the content is passed as a child:
-
-```js
-<Highlight
-  className="my-classname"
-  props={{ id: 'my-highlight' }}>
-  This is the content of the highlighted text.
-</Highlight>  
-```
-
-You can use the value prop but you should not use both, If you use both together, **children** take precedence.
+In the first example the content is passed as a value prop:
 
 ```js
 <Highlight
@@ -34,6 +24,15 @@ You can use the value prop but you should not use both, If you use both together
   props={{ id: 'my-highlight' }}/>
 ```
 
+You can use the child feature but you should not use both, If you use both together, **value** take precedence.
+
+```js
+<Highlight
+  className="my-classname"
+  props={{ id: 'my-highlight' }}>
+  This is the content of the highlighted text.
+</Highlight>  
+```
 Below a list of all the available properties:
 
 <ArgTypes of={HighlightStories} />

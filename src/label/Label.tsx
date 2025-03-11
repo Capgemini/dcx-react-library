@@ -34,8 +34,8 @@ const isChildrenType = (p: any): p is LabelChildren => !!p.children;
 export const Label = ({ className, id, props, ...rest }: LabelProps) => {
   let content!: string | number | JSX.Element;
 
-  if (isValueType(rest)) content = rest.value;
   if (isChildrenType(rest)) content = rest.children;
+  if (isValueType(rest)) content = rest.value;
 
   return (
     <label className={classNames(['dcx-label', className])} id={id} {...props}>

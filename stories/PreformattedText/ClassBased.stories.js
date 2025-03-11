@@ -17,7 +17,7 @@ export default {
 };
 
 export const Basic = {
-  name: 'Basic',
+  name: 'PreformattedText rendering value prop',
   args: {
     value:
       'Text in a pre element is displayed in a fixed-width font, and it preserves both      spaces and line breaks.',
@@ -38,8 +38,6 @@ export const PreformattedTextWithChild = {
     );
   },
   args: {
-    value:
-      'Text in a pre element is displayed in a fixed-width font, and it preserves both      spaces and line breaks.',
     className: 'customPreformattedText',
   },
 };

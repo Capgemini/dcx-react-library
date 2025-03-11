@@ -34,8 +34,8 @@ const isChildrenType = (p: any): p is LinkChildren => !!p.children;
 export const Link = ({ className, to, props, ...rest }: LinkProps) => {
   let content!: string | number | JSX.Element;
 
-  if (isValueType(rest)) content = rest.value;
   if (isChildrenType(rest)) content = rest.children;
+  if (isValueType(rest)) content = rest.value;
 
   return (
     <a href={to} className={classNames(['dcx-link', className])} {...props}>

@@ -15,7 +15,7 @@ export default {
 };
 
 export const AbbreviateWithLabel = {
-  name: 'Abbreviate with value',
+  name: 'Abbreviate rendering value prop',
   args: {
     className: 'abbreviate',
     title: 'Laugh Out Loud',

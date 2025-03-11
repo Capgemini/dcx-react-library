@@ -36,8 +36,8 @@ export const CodeSnippet = ({
 
   let content!: string | number | JSX.Element;
 
-  if (isValueType(rest)) content = rest.value;
   if (isChildrenType(rest)) content = rest.children;
+  if (isValueType(rest)) content = rest.value;
 
   return (
     <code className={dynamicClassName} {...props}>

@@ -15,7 +15,7 @@ export default {
 };
 
 export const BlockQuoteWithText = {
-  name: 'BlockQuote with Text',
+  name: 'Blockquote rendering text prop',
   args: {
     className: 'blockquote',
     text: 'This is the content of the blockquote.',
@@ -24,7 +24,7 @@ export const BlockQuoteWithText = {
 };
 
 export const BlockQuoteWithChild = {
-  name: 'BlockQuote rendering child component',
+  name: 'Blockquote rendering child component',
   render: function(args) {
     return (
       <Blockquote {...args}>

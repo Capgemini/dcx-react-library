@@ -34,8 +34,8 @@ export const PreformattedText = ({
 }: preformattedTextProps) => {
   let content!: string | number | JSX.Element;
 
-  if (isValueType(rest)) content = rest.value;
   if (isChildrenType(rest)) content = rest.children;
+  if (isValueType(rest)) content = rest.value;
 
   return (
     <pre className={classNames(['dcx-pre', className])} {...props}>

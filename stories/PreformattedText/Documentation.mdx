@@ -11,7 +11,22 @@ When you import the PreformattedText component without providing any className o
 
 <Canvas of={PreformattedTextStories.Unstyled} />
 
-A more complex example with all the possible properties is:
+
+Note that the PreformattedText content can be passed to the component:
+- using the value prop
+- as the child component within the PreformattedText tags.
+
+In the first example the content is passed as a value prop:
+
+```js
+<PreformattedText 
+    className="customPreformattedText" 
+    value="Text in a pre element is displayed in a fixed-width font, and it preserves 
+    both spaces and line breaks.">
+</PreformattedText>
+```
+
+You can use the child feature but you should not use both, If you use both together, **value** take precedence.
 
 ```js
 <PreformattedText className="customPreformattedText">
