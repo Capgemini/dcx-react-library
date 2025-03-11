@@ -13,7 +13,7 @@ type Props = {
   /**
    * define the value of the link
    */
-  value: string;
+  value: string | number;
   /**
    * Child components can also used for Label content
    */

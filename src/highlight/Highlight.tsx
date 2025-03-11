@@ -13,7 +13,7 @@ type Props = {
   /**
    * content of the highlight
    */
-  children: JSX.Element | string;
+  children: number | string | JSX.Element;
   /**
    * Additional props/attributes
    */

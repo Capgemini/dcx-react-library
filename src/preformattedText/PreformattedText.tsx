@@ -13,7 +13,7 @@ type Props = {
   /**
    * Child components can also used for Label content
    */
-  children: string | JSX.Element;
+  children: number | string | JSX.Element;
   /**
    * Additional props/attributes
    */

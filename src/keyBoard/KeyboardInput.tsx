@@ -13,7 +13,7 @@ export type Props = {
   /**
    * Child components can also used for KeyboardInput content
    */
-  children: JSX.Element;
+  children: React.ReactNode;
   /**
    * It will pass an id to the KeyboardInput element
    */
@@ -39,7 +39,7 @@ export const KeyboardInput = ({
 }: KeyboardInputProps) => {
   const classes = classNames(['dcx-keyboard-Input', className]);
 
-  let content!: React.ReactNode | JSX.Element;
+  let content!: React.ReactNode;
 
   if (isChildrenType(rest)) content = rest.children;
   if (isValueType(rest)) content = rest.value;

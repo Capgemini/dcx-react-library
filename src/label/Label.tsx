@@ -9,11 +9,11 @@ type Props = {
   /**
    * define the value of the label
    */
-  value: string;
+  value: string | number;
   /**
    * Child components can also used for Label content
    */
-  children: JSX.Element;
+  children: string | number | JSX.Element;
   /**
    * it will pass an id to the label element
    */
