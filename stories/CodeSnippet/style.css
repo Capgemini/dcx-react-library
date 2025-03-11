@@ -8,7 +8,7 @@
     border-radius: 3px;
 }
 
-.codesnippet div {
+.codesnippet * {
     margin: 0;
     padding: 0;
     display: inline-flex;

@@ -8,7 +8,7 @@
     border-radius: 3px;
 }
 
-.abbreviate div {
+.abbreviate * {
     text-decoration: underline dotted; 
     margin: 0;
     padding: 0;
