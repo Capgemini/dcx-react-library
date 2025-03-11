@@ -28,7 +28,9 @@ export const AbbreviateWithChildren = {
   render: function(args) {
     return (
       <Abbreviate {...args}>
-        <p>LOL</p>
+        <div>
+          <p>LOL</p>
+        </div>
       </Abbreviate>
     );
   },

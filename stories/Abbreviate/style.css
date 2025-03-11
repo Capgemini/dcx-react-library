@@ -7,3 +7,10 @@
     width: 500px;
     border-radius: 3px;
 }
+
+.abbreviate div {
+    text-decoration: underline dotted; 
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+}
