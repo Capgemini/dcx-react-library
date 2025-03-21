@@ -5,9 +5,18 @@ import '@testing-library/jest-dom';
 import { Label } from '../Label';
 
 describe('Label', () => {
-  it('should render', () => {
+  it('should render and allow to pass a value', () => {
     render(
       <Label className="additional classes" value="text" id="user-defined-id" />
+    );
+    expect(screen.getByText('text')).toBeInTheDocument();
+  });
+
+  it('should allow to pass a child component', () => {
+    render(
+      <Label className="additional classes" id="user-defined-id">
+        <p>text</p>
+      </Label>
     );
     expect(screen.getByText('text')).toBeInTheDocument();
   });

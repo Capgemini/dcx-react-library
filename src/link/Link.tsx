@@ -1,7 +1,7 @@
 import React from 'react';
 import { classNames } from '../common';
 
-type LinkProps = {
+type Props = {
   /**
    * A property to define a target URL
    */
@@ -13,15 +13,33 @@ type LinkProps = {
   /**
    * define the value of the link
    */
-  value: string;
+  value: string | number;
+  /**
+   * Child components can also used for Label content
+   */
+  children: string | number | JSX.Element;
   /**
    * Additional props/attributes
    */
   props?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
 };
 
-export const Link = ({ className, to, props, value }: LinkProps) => (
-  <a href={to} className={classNames(['dcx-link', className])} {...props}>
-    {value}
-  </a>
-);
+type LinkValue = Omit<Props, 'children'>;
+type LinkChildren = Omit<Props, 'value'>;
+type LinkProps = LinkValue | LinkChildren;
+
+const isValueType = (p: any): p is LinkValue => !!p.value;
+const isChildrenType = (p: any): p is LinkChildren => !!p.children;
+
+export const Link = ({ className, to, props, ...rest }: LinkProps) => {
+  let content!: string | number | JSX.Element;
+
+  if (isChildrenType(rest)) content = rest.children;
+  if (isValueType(rest)) content = rest.value;
+
+  return (
+    <a href={to} className={classNames(['dcx-link', className])} {...props}>
+      {content}
+    </a>
+  );
+};

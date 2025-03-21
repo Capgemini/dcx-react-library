@@ -12,6 +12,6 @@ export default {
 
 export const Unstyled = {
   args: {
-    children: 'ctrl+p',
+    value: 'ctrl+p',
   },
 };

@@ -15,11 +15,27 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Basic = {
-  name: 'Basic',
+export const LinkWithValue = {
+  name: 'Link rendereing value prop',
   args: {
     to: 'https://www.google.com/',
     value: 'Google',
+    props: { target: '_blank' },
+    className: 'govuk-link',
+  },
+};
+
+export const LinkWithChildren = {
+  name: 'Link rendering child component',
+  render: function(args) {
+    return (
+      <Link {...args}>
+        <p>Google</p>
+      </Link>
+    );
+  },
+  args: {
+    to: 'https://www.google.com/',
     props: { target: '_blank' },
     className: 'govuk-link',
   },

@@ -18,17 +18,32 @@ When you import the KeyboardInput component without providing any className or a
 
 <Canvas of={KeyboardInputStories.Unstyled} />
 
-A more complex example with all the possible properties is:
+Note that the KeyboardInput content can be passed to the component:
+- using the value prop
+- as the child component within the KeyboardInput tags.
+
+In the first example the content is passed as a value prop:
 
 ```js
 <KeyboardInput
   className="additional classes"
-  children="ctrl+p"
+  value="ctrl+p"
   id="user-defined-id"
   props={{ style: { color: red } }}
 />
 ```
 
+You can use the children feature but you should not use both, If you use both together, **value** take precedence.
+
+```js
+<KeyboardInput
+  className="additional classes"
+  id="user-defined-id"
+  props={{ style: { color: red } }}
+>
+  <p>ctrl+p</p>
+</KeyboardInput>
+```
 Below a list of all the available properties:
 
 <ArgTypes of={KeyboardInputStories} />

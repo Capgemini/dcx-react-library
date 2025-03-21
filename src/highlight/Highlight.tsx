@@ -1,27 +1,43 @@
 import React from 'react';
 import { classNames } from '../common/utils';
 
-type HighlightProps = {
+type Props = {
   /**
    * optional CSS class name
    */
   className?: string;
   /**
+   * define the value of the label
+   */
+  value: string;
+  /**
    * content of the highlight
    */
-  children: JSX.Element | string;
+  children: number | string | JSX.Element;
   /**
    * Additional props/attributes
    */
   props?: React.HTMLAttributes<HTMLElement>;
 };
 
-export const Highlight = ({ className, children, props }: HighlightProps) => {
+type HighlightValue = Omit<Props, 'children'>;
+type HighlightChildren = Omit<Props, 'value'>;
+type HighlightProps = HighlightValue | HighlightChildren;
+
+const isValueType = (p: any): p is HighlightValue => !!p.value;
+const isChildrenType = (p: any): p is HighlightChildren => !!p.children;
+
+export const Highlight = ({ className, props, ...rest }: HighlightProps) => {
   const dynamicClassName = classNames(['dcx-highlight', className]);
+
+  let content!: string | number | JSX.Element;
+
+  if (isChildrenType(rest)) content = rest.children;
+  if (isValueType(rest)) content = rest.value;
 
   return (
     <mark className={dynamicClassName} {...props}>
-      {children}
+      {content}
     </mark>
   );
 };

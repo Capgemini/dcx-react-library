@@ -9,11 +9,21 @@ describe('Highlight', () => {
     expect(container.querySelector('mark')).toBeInTheDocument();
   });
   it('should allow to pass a value', () => {
-    render(<Highlight className="highlight">Highlighted text</Highlight>);
+    render(<Highlight className="highlight" value="Highlighted text" />);
+    expect(screen.getByText('Highlighted text')).toBeInTheDocument();
+  });
+  it('should allow to pass a child component', () => {
+    render(
+      <Highlight className="highlight">
+        <p>Highlighted text</p>
+      </Highlight>
+    );
     expect(screen.getByText('Highlighted text')).toBeInTheDocument();
   });
   it('should contains a class called dcx-highlight', () => {
-    const { container } = render(<Highlight className="highlight">Highlighted text</Highlight>);
+    const { container } = render(
+      <Highlight className="highlight">Highlighted text</Highlight>
+    );
     expect(container.querySelector('.dcx-highlight')).toBeInTheDocument();
   });
   it('should contains the class dcx-highlight and relevant classes for shared / reusable styling', () => {

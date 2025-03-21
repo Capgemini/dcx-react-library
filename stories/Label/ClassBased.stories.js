@@ -15,10 +15,24 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Basic = {
-  name: 'Basic',
+export const LabelWithValue = {
+  name: 'Label rendering value prop',
   args: {
     value: 'text',
+    className: 'govuk-label',
+  },
+};
+
+export const LabelWithChildren = {
+  name: 'Label rendering child component',
+  render: function(args) {
+    return (
+      <Label {...args}>
+        <p>text</p>
+      </Label>
+    );
+  },
+  args: {
     className: 'govuk-label',
   },
 };

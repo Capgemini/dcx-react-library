@@ -1,29 +1,47 @@
 import React from 'react';
 import { classNames } from '../common/utils';
 
-
-type CodeSnippetProps = {
-    /**
+type Props = {
+  /**
    * optional CSS class name
    */
-    className?: string;
-    /**
+  className?: string;
+  /**
    * content of the code snippet
    */
-    value: string | number;
-    /**
+  value: string | number;
+  /**
+   * Child components can also used for CodeSnippet content
+   */
+  children: string | number | JSX.Element;
+  /**
    * Additional props/attributes
    */
-    props?: React.HTMLAttributes<HTMLElement>;
+  props?: React.HTMLAttributes<HTMLElement>;
 };
 
+type CodeSnippetValue = Omit<Props, 'children'>;
+type CodeSnippetChildren = Omit<Props, 'value'>;
+type CodeSnippetProps = CodeSnippetValue | CodeSnippetChildren;
 
-export const CodeSnippet = ({ className, value, props }: CodeSnippetProps) => {
-    const dynamicClassName = classNames(['dcx-code', className]);
+const isValueType = (p: any): p is CodeSnippetValue => !!p.value;
+const isChildrenType = (p: any): p is CodeSnippetChildren => !!p.children;
 
-    return (
-        <code className={dynamicClassName} {...props}>
-                {value}
-        </code>
-        );
+export const CodeSnippet = ({
+  className,
+  props,
+  ...rest
+}: CodeSnippetProps) => {
+  const dynamicClassName = classNames(['dcx-code', className]);
+
+  let content!: string | number | JSX.Element;
+
+  if (isChildrenType(rest)) content = rest.children;
+  if (isValueType(rest)) content = rest.value;
+
+  return (
+    <code className={dynamicClassName} {...props}>
+      {content}
+    </code>
+  );
 };
