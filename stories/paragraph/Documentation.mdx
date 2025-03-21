@@ -11,7 +11,11 @@ When you import the paragraph component without providing any className or style
 
 <Canvas of={ParagraphStories.Unstyled} />
 
-A more complex example with all the possible properties is:
+Note that the Paragraph content can be passed to the component:
+- using the value prop
+- as the child component within the Paragraph tags.
+
+In the first example the content is passed as a value Prop:
 
 ```js
 <Paragraph className="my-classname" props={{ id: 'my-paragraph' }}>
@@ -19,7 +23,7 @@ A more complex example with all the possible properties is:
 </Paragraph>
 ```
 
-You can use value prop or children feature but you should not use both, If you use both together, the value property takes precedence:
+You can use the children feature but you should not use both, If you use both together, the value property takes precedence:
 
 ```js
 <Paragraph
