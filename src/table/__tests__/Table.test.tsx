@@ -302,4 +302,11 @@ describe('Table', () => {
     const container = screen.getByTestId('table-container');
     expect(container.getAttribute('tabindex')).toBe('1');
   });
+
+  it('should accept paginator prop', () => {
+    render(<Table dataSource={values} paginator={{ totalPages: 5 }} />);
+
+    expect(screen.getByText('Prev')).toBeInTheDocument();
+    expect(screen.getByText('Next')).toBeInTheDocument();
+  });
 });

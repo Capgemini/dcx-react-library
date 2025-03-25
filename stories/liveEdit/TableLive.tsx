@@ -255,6 +255,7 @@ function TableDemo() {
              className: 'errorRow',
           }]}
         tabIndex={0}
+        paginator={{totalPages: 3}}
       />
     </div>
   );

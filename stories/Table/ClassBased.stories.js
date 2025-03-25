@@ -162,7 +162,7 @@ export const IconSort = {
 
 export const WithCustomElement = {
   name: 'Custom element',
-  render: function ({ onClick, ...args }) {
+  render: function({ onClick, ...args }) {
     const handleCellClick = (evt, value) => {
       if (evt.target.name === 'delete') {
         onClick(evt);
@@ -363,6 +363,57 @@ export const CustomHeader = {
     searchProps: {
       placeholder: 'Search...',
       className: 'searchClass',
+    },
+  },
+};
+
+export const Paginator = {
+  args: {
+    dataSource: [
+      {
+        id: 1,
+        position: 1,
+        name: 'Hydrogen',
+        weight: 1.0079,
+        symbol: 'H',
+      },
+      {
+        id: 2,
+        position: 2,
+        name: 'Helium',
+        weight: 4.0026,
+        symbol: 'He',
+      },
+      {
+        id: 3,
+        position: 3,
+        name: 'Lithium',
+        weight: 6.941,
+        symbol: 'Li',
+      },
+    ],
+    tableClassName: 'table',
+    theadClassName: 'thead',
+    trClassName: 'header-row',
+    thClassName: 'th',
+    tbodyClassName: 'tbody',
+    tdClassName: 'td',
+    selectedRowClassName: 'trSelected',
+    paginator: {
+      totalPages: 3,
+      currentPage: 2,
+      currentPageClassName: '',
+      paginatorClassName: '',
+      previousButton: 'Prev',
+      previousButtonClassName: '',
+      nextButton: 'Next',
+      nextButtonClassName: '',
+      pageNumbersClassName: '',
+      siblingCount: 1,
+      boundaryCount: 1,
+      onPageChange: page => {
+        console.log(`Page changed to ${page}`);
+      },
     },
   },
 };
