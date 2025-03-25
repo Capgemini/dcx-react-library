@@ -12,6 +12,7 @@ When you import the table component without providing any className or style ass
 <Canvas of={TableStories.Unstyled} />
 
 An example with all the available properties is:
+Note that there is the option to add a Paginator at the bottom of the table. This uses the Paginator component which is also part of this library. For more information see the Paginator documentation.
 
 ```js
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -78,13 +79,16 @@ const handleCellClick = (target: any, value: any) => {
   tabIndex={0}
   paginator={{
     currentPageClassName:"current-page",
+    nextButton:"Next",
     nextButtonClassName:"next-button",
     pageNumbersClassName:"buttons",
     paginatorClassName:"paginator",
     previousButtonClassName:"previous-button",
-    totalPages:14
+    previousButton:"Prev",
+    totalPages:14,
+    currentPage: 2,
+    siblingCount: 1, 
+    boundaryCount: 1, 
+    onPageChange: (page: number) => {},
   }}
-/>;
-```
-
 <ArgTypes of={TableStories} />

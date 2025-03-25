@@ -94,7 +94,7 @@ type TableProps = {
   tabIndex?: number;
 
   /**
-   * option to add a paginator to the bottom of the table
+   * option to add a paginator to the bottom of the table.
    */
   paginator?: PaginatorProps;
 };

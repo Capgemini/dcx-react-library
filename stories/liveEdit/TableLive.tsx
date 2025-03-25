@@ -261,7 +261,7 @@ function TableDemo() {
           pageNumbersClassName:"buttons",
           paginatorClassName:"paginator",
           previousButtonClassName:"previous-button",
-          totalPages:14
+          totalPages:14, 
         }}
       />
     </div>
