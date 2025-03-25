@@ -255,7 +255,14 @@ function TableDemo() {
              className: 'errorRow',
           }]}
         tabIndex={0}
-        paginator={{totalPages: 3}}
+        paginator={{
+          currentPageClassName:"current-page",
+          nextButtonClassName:"next-button",
+          pageNumbersClassName:"buttons",
+          paginatorClassName:"paginator",
+          previousButtonClassName:"previous-button",
+          totalPages:14
+        }}
       />
     </div>
   );

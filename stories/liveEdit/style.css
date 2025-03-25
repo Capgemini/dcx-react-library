@@ -66,3 +66,42 @@
   background-color: red;
   color: white;
 }
+
+.paginator {
+  display: flex;
+  font-size: 22px;
+  font-family: sans-serif;
+  cursor: pointer;
+  align-items: center;
+  border: 1px solid #ddd;
+  width: fit-content;
+  margin: 1em auto;
+}
+
+.previous-button,
+.next-button {
+  padding: 8px 16px;
+  align-content: center;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  font-size: inherit;
+  cursor: inherit;
+}
+.paginator div:nth-child(2) {
+  border-left: 1px solid #ddd;
+}
+.buttons,
+.current-page {
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  align-content: center;
+  border-right: 1px solid #ddd;
+}
+
+.current-page {
+  color: white;
+  background: #2d9df2;
+}
+

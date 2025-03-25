@@ -402,13 +402,13 @@ export const Paginator = {
     paginator: {
       totalPages: 3,
       currentPage: 2,
-      currentPageClassName: '',
-      paginatorClassName: '',
+      currentPageClassName: 'current-page',
+      paginatorClassName: 'paginator',
       previousButton: 'Prev',
-      previousButtonClassName: '',
+      previousButtonClassName: 'previous-button',
       nextButton: 'Next',
-      nextButtonClassName: '',
-      pageNumbersClassName: '',
+      nextButtonClassName: 'next-button',
+      pageNumbersClassName: 'buttons',
       siblingCount: 1,
       boundaryCount: 1,
       onPageChange: page => {

@@ -76,7 +76,14 @@ const handleCellClick = (target: any, value: any) => {
   }
   columnsWidth={['100px']}
   tabIndex={0}
-  paginator={{totalPages: 3}}
+  paginator={{
+    currentPageClassName:"current-page",
+    nextButtonClassName:"next-button",
+    pageNumbersClassName:"buttons",
+    paginatorClassName:"paginator",
+    previousButtonClassName:"previous-button",
+    totalPages:14
+  }}
 />;
 ```
 
