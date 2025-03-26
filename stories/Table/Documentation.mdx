@@ -13,8 +13,6 @@ When you import the table component without providing any className or style ass
 
 An example with all the available properties is:
 
-Note that there is the option to add a Paginator at the bottom of the table. This uses the Paginator component which is also part of this library. Documentation for the Paginator component can be found here: <a href="/?path=/docs/dcxlibrary-layout-table-documentation--docs">Paginator Component Docs</a>
-
 ```js
 const ELEMENT_DATA: PeriodicElement[] = [
   {
@@ -92,4 +90,8 @@ const handleCellClick = (target: any, value: any) => {
     boundaryCount: 1, 
     onPageChange: (page: number) => {},
   }}
-<ArgTypes of={TableStories} />
+```
+
+ **Note** that there is the option to add a Paginator at the bottom of the table. This uses the Paginator component which is also part of this library. Documentation for the Paginator component can be found here: <a href="/?path=/docs/dcxlibrary-layout-paginator-documentation--docs">Paginator Component Docs</a>
+
+ <ArgTypes of={TableStories} />
