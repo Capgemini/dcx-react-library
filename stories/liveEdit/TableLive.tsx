@@ -217,10 +217,20 @@ function TableDemo() {
         },
       ];  
   const [data, setData] = React.useState(ELEMENT_DATA);
+  const [currentPage, setCurrentPage] = React.useState(1);
+
+  const pageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   const handleSelect = row => {
     console.log(row);
   };
+
+  const finalRow = currentPage * 3; 
+  const firstRow = finalRow - 3; 
+  const visibleRows = data.slice(firstRow, finalRow);
+
   const handleCellClick = (evt, value) => {
     if (evt.target.name === 'delete') {
       setData(data.filter(v => v.id !== value.id));
@@ -232,7 +242,7 @@ function TableDemo() {
   return (
     <div className="App">
       <Table
-        dataSource={data}
+        dataSource={visibleRows}
         customHeaderLabels={['Test', 'position', 'name', 'weight', 'symbol', 'actions']}
         columnsToOmit={['symbol']}
         onSelect={handleSelect}
@@ -263,11 +273,11 @@ function TableDemo() {
           paginatorClassName:"paginator",
           previousButtonClassName:"previous-button",
           previousButton:"<",
-          totalPages:14, 
-          currentPage: 2,
+          totalPages:4, 
+          currentPage,
           siblingCount: 1, 
           boundaryCount: 1, 
-          onPageChange: (page: number) => {},
+          onPageChange: (page: number) => {pageChange(page)},
         }}
       />
     </div>

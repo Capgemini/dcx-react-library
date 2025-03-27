@@ -1,5 +1,6 @@
 import { Table } from '../../src/table/Table';
 import './tableStyle.css';
+import React, { useState } from 'react';
 
 /**
  * In this section we're using the Table component providing the **material style** passing the relative `className`. Feel free to use your own css and style the Table as you prefer
@@ -368,6 +369,26 @@ export const CustomHeader = {
 };
 
 export const Paginator = {
+  name: 'Table with paginator element',
+  render: function PaginatorComponent({ ...args }) {
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const pageChange = page => {
+      setCurrentPage(page);
+    };
+
+    const finalRow = currentPage * 2;
+    const firstRow = finalRow - 2;
+    const visibleRows = args.dataSource.slice(firstRow, finalRow);
+
+    return (
+      <Table
+        {...args}
+        dataSource={visibleRows}
+        onPageChange={page => pageChange(page)}
+      />
+    );
+  },
   args: {
     dataSource: [
       {
@@ -400,8 +421,8 @@ export const Paginator = {
     tdClassName: 'td',
     selectedRowClassName: 'trSelected',
     paginator: {
-      totalPages: 8,
-      currentPage: 2,
+      totalPages: 2,
+      currentPage: 1,
       currentPageClassName: 'current-page',
       paginatorClassName: 'paginator',
       previousButton: '<',
@@ -411,9 +432,6 @@ export const Paginator = {
       pageNumbersClassName: 'buttons',
       siblingCount: 1,
       boundaryCount: 1,
-      onPageChange: page => {
-        console.log(`Page changed to ${page}`);
-      },
     },
   },
 };
