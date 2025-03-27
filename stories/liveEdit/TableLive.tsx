@@ -258,11 +258,11 @@ function TableDemo() {
         paginator={{
           currentPageClassName:"current-page",
           nextButtonClassName:"next-button",
-          nextButton: "Next",
+          nextButton: ">",
           pageNumbersClassName:"buttons",
           paginatorClassName:"paginator",
           previousButtonClassName:"previous-button",
-          previousButton:"Prev",
+          previousButton:"<",
           totalPages:14, 
           currentPage: 2,
           siblingCount: 1, 
