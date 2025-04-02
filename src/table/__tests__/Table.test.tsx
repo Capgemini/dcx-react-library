@@ -309,4 +309,25 @@ describe('Table', () => {
     expect(screen.getByText('Prev')).toBeInTheDocument();
     expect(screen.getByText('Next')).toBeInTheDocument();
   });
+
+  it('should accept on Page Change prop', () => {
+    const onPageChangeMock = jest.fn();
+
+    render(
+      <Table
+        dataSource={values}
+        paginator={{
+          currentPage: 1,
+          currentPageClassName: 'current-page',
+          totalPages: 3,
+        }}
+        onPageChange={onPageChangeMock}
+      />
+    );
+
+    const pageTwo = screen.getByTestId('page-2-btn');
+    fireEvent.click(pageTwo);
+    expect(onPageChangeMock).toHaveBeenCalledWith(2);
+    expect(pageTwo).toHaveClass('current-page');
+  });
 });
