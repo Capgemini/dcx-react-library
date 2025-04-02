@@ -1,6 +1,6 @@
 import { Table } from '../../src/table/Table';
 import './tableStyle.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 /**
  * In this section we're using the Table component providing the **material style** passing the relative `className`. Feel free to use your own css and style the Table as you prefer
@@ -379,7 +379,7 @@ export const Paginator = {
     const finalRow = currentPage * 2;
     const firstRow = finalRow - 2;
     const visibleRows = args.dataSource.slice(firstRow, finalRow);
-      
+
     return (
       <Table
         {...args}
