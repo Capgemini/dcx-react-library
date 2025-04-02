@@ -227,8 +227,9 @@ function TableDemo() {
     console.log(row);
   };
 
-  const finalRow = currentPage * 3; 
-  const firstRow = finalRow - 3; 
+  const rowsPerPage = 3
+  const finalRow = currentPage * rowsPerPage; 
+  const firstRow = finalRow - rowsPerPage; 
   const visibleRows = data.slice(firstRow, finalRow);
 
   const handleCellClick = (evt, value) => {

@@ -98,12 +98,12 @@ If you want to connect the table with the Paginator component you can use the `o
 
 ```jsx
 const [currentPage, setCurrentPage] = useState(1);
-const rowPerPage = 2;
+const rowsPerPage = 2;
 const pageChange = page => {
   setCurrentPage(page);
 };
-const finalRow = currentPage * rowPerPage;
-const firstRow = finalRow - rowPerPage;
+const finalRows = currentPage * rowsPerPage;
+const firstRow = finalRow - rowsPerPage;
 const visibleRows = args.dataSource.slice(firstRow, finalRow);
   
 return (

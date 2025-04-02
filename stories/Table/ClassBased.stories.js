@@ -376,16 +376,13 @@ export const Paginator = {
     const pageChange = page => {
       setCurrentPage(page);
     };
-    const finalRow = currentPage * 2;
-    const firstRow = finalRow - 2;
+    const rowsPerPage = 2;
+    const finalRow = currentPage * rowsPerPage;
+    const firstRow = finalRow - rowsPerPage;
     const visibleRows = args.dataSource.slice(firstRow, finalRow);
 
     return (
-      <Table
-        {...args}
-        dataSource={visibleRows}
-        onPageChange={pageChange}
-      />
+      <Table {...args} dataSource={visibleRows} onPageChange={pageChange} />
     );
   },
   args: {
