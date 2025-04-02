@@ -278,8 +278,8 @@ function TableDemo() {
           currentPage,
           siblingCount: 1, 
           boundaryCount: 1, 
-          onPageChange: (page: number) => {pageChange(page)},
         }}
+        onPageChange={pageChange}
       />
     </div>
   );
