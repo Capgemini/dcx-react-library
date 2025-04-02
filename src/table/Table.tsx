@@ -97,6 +97,10 @@ type TableProps = {
    * option to add a paginator to the bottom of the table.
    */
   paginator?: PaginatorProps;
+  /**
+   * Callback function that is triggered when the page changes and returns the updated current page
+   */
+  onPageChange?: (page: number) => void;
 };
 
 const keys = (dataSource: any[], columnsToOmit?: string[]): string[] =>
@@ -124,6 +128,7 @@ export const Table = ({
   trProps,
   tabIndex,
   paginator,
+  onPageChange,
 }: TableProps) => {
   const { items, requestSort, sortConfig } = useSortableData(dataSource);
   const [selectedHeader, setSelectedHeader] = React.useState('');
@@ -227,7 +232,7 @@ export const Table = ({
           trProps={trProps}
         />
       </table>
-      {paginator && <Paginator {...paginator} />}
+      {paginator && <Paginator {...paginator} onPageChange={onPageChange} />}
     </div>
   );
 };

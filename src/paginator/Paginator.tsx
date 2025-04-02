@@ -79,6 +79,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
   );
 
   const handlePageChange = (page: number) => {
+    console.log('handlePageChange FROM TABLE', page);
     if (onPageChange) {
       onPageChange(page);
     }
