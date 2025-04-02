@@ -310,7 +310,7 @@ describe('Table', () => {
     expect(screen.getByText('Next')).toBeInTheDocument();
   });
 
-  it('should accept on Page Change prop', () => {
+  it('should accept onPageChange prop', () => {
     const onPageChangeMock = jest.fn();
 
     render(
