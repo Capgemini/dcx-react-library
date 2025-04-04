@@ -376,7 +376,10 @@ export const Paginator = {
     const pageChange = page => {
       setCurrentPage(page);
     };
-    const rowsPerPage = 2;
+
+    const rowsPerPage = Math.ceil(
+      args.dataSource.length / args.paginator.totalPages
+    );
     const finalRow = currentPage * rowsPerPage;
     const firstRow = finalRow - rowsPerPage;
     const visibleRows = args.dataSource.slice(firstRow, finalRow);

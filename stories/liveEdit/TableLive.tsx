@@ -227,7 +227,10 @@ function TableDemo() {
     console.log(row);
   };
 
-  const rowsPerPage = 3
+  const totalPages = 4;
+  const rowsPerPage = Math.ceil(
+    ELEMENT_DATA.length / totalPages
+  );
   const finalRow = currentPage * rowsPerPage; 
   const firstRow = finalRow - rowsPerPage; 
   const visibleRows = data.slice(firstRow, finalRow);
@@ -274,7 +277,7 @@ function TableDemo() {
           paginatorClassName:"paginator",
           previousButtonClassName:"previous-button",
           previousButton:"<",
-          totalPages:4, 
+          totalPages, 
           currentPage,
           siblingCount: 1, 
           boundaryCount: 1, 
