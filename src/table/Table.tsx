@@ -4,6 +4,8 @@ import { Body } from './Body';
 import { Header } from './Header';
 import { useSortableData } from './useSortable';
 import { useTableSearch } from './useTableSearch';
+import { Paginator, PaginatorProps } from '../paginator/Paginator';
+
 type CustomHeaderLabel = {
   label: string;
   data: string;
@@ -90,6 +92,15 @@ type TableProps = {
    * tab index value
    */
   tabIndex?: number;
+
+  /**
+   * option to add a paginator to the bottom of the table.
+   */
+  paginator?: PaginatorProps;
+  /**
+   * Callback function that is triggered when the page changes and returns the updated current page
+   */
+  onPageChange?: (page: number) => void;
 };
 
 const keys = (dataSource: any[], columnsToOmit?: string[]): string[] =>
@@ -116,6 +127,8 @@ export const Table = ({
   customHeaderLabels,
   trProps,
   tabIndex,
+  paginator,
+  onPageChange,
 }: TableProps) => {
   const { items, requestSort, sortConfig } = useSortableData(dataSource);
   const [selectedHeader, setSelectedHeader] = React.useState('');
@@ -219,6 +232,7 @@ export const Table = ({
           trProps={trProps}
         />
       </table>
+      {paginator && <Paginator {...paginator} onPageChange={onPageChange} />}
     </div>
   );
 };

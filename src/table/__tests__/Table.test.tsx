@@ -302,4 +302,32 @@ describe('Table', () => {
     const container = screen.getByTestId('table-container');
     expect(container.getAttribute('tabindex')).toBe('1');
   });
+
+  it('should accept paginator prop', () => {
+    render(<Table dataSource={values} paginator={{ totalPages: 5 }} />);
+
+    expect(screen.getByText('Prev')).toBeInTheDocument();
+    expect(screen.getByText('Next')).toBeInTheDocument();
+  });
+
+  it('should accept onPageChange prop', () => {
+    const onPageChangeMock = jest.fn();
+
+    render(
+      <Table
+        dataSource={values}
+        paginator={{
+          currentPage: 1,
+          currentPageClassName: 'current-page',
+          totalPages: 3,
+        }}
+        onPageChange={onPageChangeMock}
+      />
+    );
+
+    const pageTwo = screen.getByTestId('page-2-btn');
+    fireEvent.click(pageTwo);
+    expect(onPageChangeMock).toHaveBeenCalledWith(2);
+    expect(pageTwo).toHaveClass('current-page');
+  });
 });

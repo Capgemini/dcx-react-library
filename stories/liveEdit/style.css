@@ -66,3 +66,48 @@
   background-color: red;
   color: white;
 }
+
+.paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: Roboto, Helvetica Neue, sans-serif;
+}
+
+.previous-button,
+.next-button {
+  background-color: #c0c0c0;;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.8em 1em;
+  margin: 0 0.8em;
+  cursor: pointer;
+}
+
+.current-page {
+  color: white;
+  background: #2d9df2;
+}
+
+.previous-button:disabled,
+.next-button:disabled {
+  background-color: #c0c0c0;
+  cursor: not-allowed;
+}
+
+.buttons {
+  margin: 0 0.5em;
+  padding: 0.7em 1em;
+  cursor: pointer;
+  border-radius: 50px;
+  background-color: #f0f0f0;
+}
+
+.current-page {
+  background-color: #1976d2;
+  color: white;
+}

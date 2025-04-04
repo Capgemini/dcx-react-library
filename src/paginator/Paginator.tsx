@@ -108,6 +108,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
                 : pageNumbersClassName
             }
             onClick={() => handlePageChange(page)}
+            data-testid={'page-' + page + '-btn'}
           >
             {page}
           </div>

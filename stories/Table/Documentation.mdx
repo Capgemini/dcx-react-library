@@ -76,7 +76,64 @@ const handleCellClick = (target: any, value: any) => {
   }
   columnsWidth={['100px']}
   tabIndex={0}
-/>;
+  paginator={{
+    currentPageClassName:"current-page",
+    nextButton:"Next",
+    nextButtonClassName:"next-button",
+    pageNumbersClassName:"buttons",
+    paginatorClassName:"paginator",
+    previousButtonClassName:"previous-button",
+    previousButton:"Prev",
+    totalPages:14,
+    currentPage: 2,
+    siblingCount: 1, 
+    boundaryCount: 1, 
+    onPageChange: (page: number) => {},
+  }}
 ```
 
-<ArgTypes of={TableStories} />
+ **Note** that there is the option to add a Paginator at the bottom of the table. This uses the Paginator component which is also part of this library. Documentation for the Paginator component can be found here: <a href="/?path=/docs/dcxlibrary-layout-paginator-documentation--docs">Paginator Component Docs</a>
+
+If you want to connect the table with the Paginator component you can use the `onPageChange` prop to handle the page change and pass it to the Paginator component. The Paginator component will then handle the page change and update the table accordingly.
+
+```jsx
+const totalPages = 2;
+const dataSource = [
+  { id: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+  { id: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
+  { id: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
+  { id: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
+];
+const [currentPage, setCurrentPage] = useState(1);
+const rowsPerPage = Math.ceil(
+      dataSource.length / totalPages
+    );
+const pageChange = page => {
+  setCurrentPage(page);
+};
+const finalRows = currentPage * rowsPerPage;
+const firstRow = finalRow - rowsPerPage;
+const visibleRows = dataSource.slice(firstRow, finalRow);
+  
+return (
+  <Table
+    //all the table props
+    dataSource={dataSource}
+    paginator= {{
+      totalPages: totalPages,
+      currentPage: rowPerPage,
+      currentPageClassName: 'current-page',
+      paginatorClassName: 'paginator',
+      previousButton: '<',
+      previousButtonClassName: 'previous-button',
+      nextButton: '>',
+      nextButtonClassName: 'next-button',
+      pageNumbersClassName: 'buttons',
+      siblingCount: 1,
+      boundaryCount: 1,
+    }}
+    onPageChange={pageChange}
+  />
+```
+
+ <ArgTypes of={TableStories} />
