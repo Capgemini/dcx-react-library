@@ -1,17 +1,24 @@
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import { TabGroup } from '../../src/tabGroup/TabGroup';
+import { TabGroup, useTabGroup } from '../../src/tabGroup/TabGroup';
 import { Tab } from '../../src/tabGroup/components/Tab';
 
 const TabGroupDemo = `
 function TabGroupDemo() {
+    const [selectedTab, setSelectedTab] = React.useState('Tab 2');
+    
+    const handleSelect = (eventKey) => {
+      setSelectedTab(eventKey);
+    };
+
     return (
       <TabGroup
         activeTabClassName="tab-list-active"
-        activeKey="Tab 2"
+        activeKey={selectedTab}
         disabledClassName="tab-list-disabled"
         tabClassName="tab-list-item"
         className="tab-list"
+        onSelect={handleSelect}
       >
         <Tab eventKey="tab-1" label="Tab 1">This is content for <em>tab 1</em></Tab>
         <Tab eventKey="tab-2" label="Tab 2">This is content for <em>tab 2</em></Tab>
@@ -23,7 +30,7 @@ function TabGroupDemo() {
 `.trim();
 
 const TabGroupDemoLive = () => {
-  const scope = { TabGroup, Tab };
+  const scope = { TabGroup, Tab, useTabGroup };
   return (
     <LiveProvider code={TabGroupDemo} scope={scope}>
       <div className="container">

@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useImperativeHandle,
   useRef,
-  useState,
 } from 'react';
 import { classNames, Roles, useHydrated } from '../common';
 
@@ -72,7 +71,7 @@ type TabContextProps = {
   /**
    * Tab next tab
    */
-  nextTab?: string
+  nextTab?: string;
   /**
    * Tab Context update selected tab
    */
@@ -111,29 +110,18 @@ export const TabGroup = forwardRef(
 
     const initialMount = useRef(true);
 
-    const defaultActiveTabKey = activeKey || children[0].props.eventKey;
-    const defaultPreviousTabKey = children[children.findIndex((child: JSX.Element) => child.props.eventKey === defaultActiveTabKey) - 1]?.props.eventKey;
-    const defaultNextTabKey = children[children.findIndex((child: JSX.Element) => child.props.eventKey === defaultActiveTabKey) + 1]?.props.eventKey;
-    const [activeTab, setActiveTab] = useState<string>(defaultActiveTabKey);
-    const [previousTab, setPreviousTab] = useState<string | undefined>(defaultPreviousTabKey);
-    const [nextTab, setNextTab] = useState<string| undefined>(defaultNextTabKey);
+    const currentActiveKey = activeKey || children[0].props.eventKey;
 
-    const onClickHandler: (id: string) => void = (id: string) =>
-      updateActiveTab(id);
+    const onClickHandler: (id: string) => void = (id: string) => {
+      onSelect && onSelect(id);
+    };
 
     const updateActiveTab: (id: string) => boolean = (id: string) => {
-      const index = children.findIndex((child: JSX.Element) => child.props.eventKey === id);
-      if (index < 0) {
-        return false;
+      if (children.some((child: JSX.Element) => child.props.eventKey === id)) {
+        onSelect && onSelect(id);
+        return true;
       }
-
-      if (!children[index].props.disabled) {
-        setActiveTab(id);
-      }
-      
-      setPreviousTab(children[index - 1]?.props.eventKey);
-      setNextTab(children[index + 1]?.props.eventKey);
-      return true;
+      return false;
     };
 
     useImperativeHandle(ref, () => ({
@@ -141,12 +129,12 @@ export const TabGroup = forwardRef(
     }));
 
     useEffect(() => {
-      if (!initialMount.current) onSelect && onSelect(activeTab);
+      if (!initialMount.current) onSelect && onSelect(currentActiveKey);
       else initialMount.current = false;
-    }, [activeTab]);
+    }, [currentActiveKey]);
 
     const activeTabElement = children.find(
-      (child: JSX.Element) => activeTab === child.props.eventKey
+      (child: JSX.Element) => currentActiveKey === child.props.eventKey
     );
 
     const hydrated = useHydrated();
@@ -162,7 +150,10 @@ export const TabGroup = forwardRef(
           aria-label={ariaLabelTabList}
         >
           <TabContext.Provider
-            value={{ activeTab, previousTab, nextTab, changeActiveTab: onClickHandler }}
+            value={{
+              activeTab: currentActiveKey,
+              changeActiveTab: onClickHandler,
+            }}
           >
             {children.map((child: JSX.Element, index: number) => {
               const classes: string = classNames([
@@ -192,7 +183,6 @@ export const TabGroup = forwardRef(
                 key={index}
                 role={Roles.tabpanel}
                 className={contentClassName}
-                tabIndex={0}
                 aria-labelledby={tabPanel.props.eventKey}
               >
                 {tabPanel.props.children}
