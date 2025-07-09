@@ -1,11 +1,4 @@
-import React, {
-  createContext,
-  forwardRef,
-  useContext,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-} from 'react';
+import React, { createContext, useContext, useEffect, useRef } from 'react';
 import { classNames, Roles, useHydrated } from '../common';
 
 export type TabGroupProps = {
@@ -80,120 +73,103 @@ type TabContextProps = {
 
 export const TabContext = createContext<TabContextProps | undefined>(undefined);
 
-export const TabGroup = forwardRef(
-  (
-    {
-      children,
-      id,
-      ariaLabelTabList,
-      activeTabClassName,
-      disabledClassName,
-      activeKey,
-      className,
-      containerClassName,
-      contentClassName,
-      tabClassName,
-      tabLinkClassName,
-      onSelect,
-    }: TabGroupProps,
-    ref: any
-  ) => {
-    const hasUniqueEventKeys: (children: JSX.Element[]) => boolean = (
-      children: JSX.Element[]
-    ) =>
-      children.length ===
-      new Set(children.map((child: JSX.Element) => child.props.eventKey)).size;
+export const TabGroup = ({
+  children,
+  id,
+  ariaLabelTabList,
+  activeTabClassName,
+  disabledClassName,
+  activeKey,
+  className,
+  containerClassName,
+  contentClassName,
+  tabClassName,
+  tabLinkClassName,
+  onSelect,
+}: TabGroupProps) => {
+  const hasUniqueEventKeys: (children: JSX.Element[]) => boolean = (
+    children: JSX.Element[]
+  ) =>
+    children.length ===
+    new Set(children.map((child: JSX.Element) => child.props.eventKey)).size;
 
-    if (!hasUniqueEventKeys(children)) {
-      throw new Error('Tab event keys must be unique');
-    }
-
-    const initialMount = useRef(true);
-
-    const currentActiveKey = activeKey || children[0].props.eventKey;
-
-    const onClickHandler: (id: string) => void = (id: string) => {
-      onSelect && onSelect(id);
-    };
-
-    const updateActiveTab: (id: string) => boolean = (id: string) => {
-      if (children.some((child: JSX.Element) => child.props.eventKey === id)) {
-        onSelect && onSelect(id);
-        return true;
-      }
-      return false;
-    };
-
-    useImperativeHandle(ref, () => ({
-      updateActiveTab,
-    }));
-
-    useEffect(() => {
-      if (!initialMount.current) onSelect && onSelect(currentActiveKey);
-      else initialMount.current = false;
-    }, [currentActiveKey]);
-
-    const activeTabElement = children.find(
-      (child: JSX.Element) => currentActiveKey === child.props.eventKey
-    );
-
-    const hydrated = useHydrated();
-
-    const tabPanels = hydrated ? [activeTabElement] : children;
-
-    return (
-      <div className={containerClassName}>
-        <ol
-          role={Roles.tablist}
-          id={id}
-          className={className}
-          aria-label={ariaLabelTabList}
-        >
-          <TabContext.Provider
-            value={{
-              activeTab: currentActiveKey,
-              changeActiveTab: onClickHandler,
-            }}
-          >
-            {children.map((child: JSX.Element, index: number) => {
-              const classes: string = classNames([
-                tabClassName,
-                child.props.className,
-              ]);
-
-              return (
-                <child.type
-                  key={index}
-                  {...child.props}
-                  activeTabClassName={activeTabClassName}
-                  ariaControls={child.props.eventKey}
-                  disabledClassName={disabledClassName}
-                  className={classes}
-                  linkClassName={tabLinkClassName}
-                />
-              );
-            })}
-          </TabContext.Provider>
-        </ol>
-        {tabPanels.map((tabPanel: JSX.Element | undefined, index: number) => (
-          <React.Fragment key={index}>
-            {tabPanel && (
-              <div
-                id={tabPanel.props.eventKey}
-                key={index}
-                role={Roles.tabpanel}
-                className={contentClassName}
-                aria-labelledby={tabPanel.props.eventKey}
-              >
-                {tabPanel.props.children}
-              </div>
-            )}
-          </React.Fragment>
-        ))}
-      </div>
-    );
+  if (!hasUniqueEventKeys(children)) {
+    throw new Error('Tab event keys must be unique');
   }
-);
+
+  const initialMount = useRef(true);
+
+  const currentActiveKey = activeKey || children[0].props.eventKey;
+
+  const onClickHandler: (id: string) => void = (id: string) => {
+    onSelect && onSelect(id);
+  };
+
+  useEffect(() => {
+    if (!initialMount.current) onSelect && onSelect(currentActiveKey);
+    else initialMount.current = false;
+  }, [currentActiveKey]);
+
+  const activeTabElement = children.find(
+    (child: JSX.Element) => currentActiveKey === child.props.eventKey
+  );
+
+  const hydrated = useHydrated();
+
+  const tabPanels = hydrated ? [activeTabElement] : children;
+
+  return (
+    <div className={containerClassName}>
+      <ol
+        role={Roles.tablist}
+        id={id}
+        className={className}
+        aria-label={ariaLabelTabList}
+      >
+        <TabContext.Provider
+          value={{
+            activeTab: currentActiveKey,
+            changeActiveTab: onClickHandler,
+          }}
+        >
+          {children.map((child: JSX.Element, index: number) => {
+            const classes: string = classNames([
+              tabClassName,
+              child.props.className,
+            ]);
+
+            return (
+              <child.type
+                key={index}
+                {...child.props}
+                activeTabClassName={activeTabClassName}
+                ariaControls={child.props.eventKey}
+                disabledClassName={disabledClassName}
+                className={classes}
+                linkClassName={tabLinkClassName}
+              />
+            );
+          })}
+        </TabContext.Provider>
+      </ol>
+      {tabPanels.map((tabPanel: JSX.Element | undefined, index: number) => (
+        <React.Fragment key={index}>
+          {tabPanel && (
+            <div
+              id={tabPanel.props.eventKey}
+              key={index}
+              role={Roles.tabpanel}
+              className={contentClassName}
+              aria-labelledby={tabPanel.props.eventKey}
+            >
+              {tabPanel.props.children}
+            </div>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+};
 
 export const useTabGroup = () => {
   const context = useContext(TabContext);
