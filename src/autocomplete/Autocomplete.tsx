@@ -234,6 +234,11 @@ type autocompleteProps = {
    * One usage of this method could be to update the value of the accessibilityStatus
    */
   statusUpdate?: (length: number, optionText: string, position: number) => void;
+  /**
+   * when true (default), built-in inline styles are applied to the component's elements.
+   * Set to false to remove all hardcoded inline styles and rely entirely on CSS classes.
+   */
+  useDefaultStyles?: boolean;
 };
 
 export enum AutoCompleteErrorPosition {
@@ -296,6 +301,7 @@ export const Autocomplete = ({
   accessibilityStatus = '',
   accessibilityHintText = '',
   statusUpdate,
+  useDefaultStyles = true,
 }: autocompleteProps) => {
   const [activeOption, setActiveOption] = useState<number>(0);
   const [filterList, setFilterList] = useState<string[]>([]);
@@ -543,33 +549,41 @@ export const Autocomplete = ({
     <>
       <div
         role={Roles.presentation}
-        style={{
-          display: 'inline-flex',
-          flexDirection: 'row',
-          width: '100%',
-          flexWrap: 'wrap',
-          position: 'relative',
-        }}
+        id="dcx-autocomplete-multiselect-wrapper"
+        style={
+          useDefaultStyles
+            ? {
+                display: 'inline-flex',
+                flexDirection: 'row',
+                width: '100%',
+                flexWrap: 'wrap',
+                position: 'relative',
+              }
+            : undefined
+        }
       >
-        {selected &&
-          selected.map(
-            ({ id, label, value }: MultiSelectOption, index: number) => (
-              <Selected
-                key={index}
-                select={{
-                  id,
-                  label,
-                  value,
-                }}
-                onRemove={onRemove}
-                onFocus={onFocus}
-                style={{
-                  ...selectedListItemStyle,
-                  display: 'inline-flex',
-                }}
-              />
-            )
-          )}
+        {selected?.map(
+          ({ id, label, value }: MultiSelectOption, index: number) => (
+            <Selected
+              key={index}
+              select={{
+                id,
+                label,
+                value,
+              }}
+              onRemove={onRemove}
+              onFocus={onFocus}
+              style={
+                useDefaultStyles
+                  ? {
+                      ...selectedListItemStyle,
+                      display: 'inline-flex',
+                    }
+                  : selectedListItemStyle
+              }
+            />
+          )
+        )}
         {!hydrated ? (
           <FormSelect name="multiSelect" options={options} {...inputProps} />
         ) : (
@@ -582,18 +596,26 @@ export const Autocomplete = ({
           label="x"
           role="button"
           ariaLabel="Remove all"
+          id="dcx-autocomplete-remove-all"
           onClick={onRemoveAll}
-          style={{
-            marginLeft: '5px',
-            fontWeight: 'bold',
-            verticalAlign: '-webkit-baseline-middle',
-          }}
+          style={
+            useDefaultStyles
+              ? {
+                  marginLeft: '5px',
+                  fontWeight: 'bold',
+                  verticalAlign: '-webkit-baseline-middle',
+                }
+              : undefined
+          }
           tabIndex={0}
         />
       </div>
     </>
   ) : (
-    <div style={{ position: 'relative' }}>
+    <div
+      id="dcx-autocomplete-wrapper"
+      style={useDefaultStyles ? { position: 'relative' } : undefined}
+    >
       {errorPosition &&
         errorPosition === AutoCompleteErrorPosition.BEFORE_LABEL && (
           <ErrorMessage
@@ -635,18 +657,23 @@ export const Autocomplete = ({
           />
         )}
       <div
-        style={{
-          border: '0px',
-          clip: 'rect(0px, 0px, 0px, 0px)',
-          height: '1px',
-          marginBottom: '-1px',
-          marginRight: '-1px',
-          overflow: 'hidden',
-          padding: '0px',
-          position: 'absolute',
-          whiteSpace: 'nowrap',
-          width: '1px',
-        }}
+        id="dcx-autocomplete-status-container"
+        style={
+          useDefaultStyles
+            ? {
+                border: '0px',
+                clip: 'rect(0px, 0px, 0px, 0px)',
+                height: '1px',
+                marginBottom: '-1px',
+                marginRight: '-1px',
+                overflow: 'hidden',
+                padding: '0px',
+                position: 'absolute',
+                whiteSpace: 'nowrap',
+                width: '1px',
+              }
+            : undefined
+        }
       >
         <div
           id={`autocomplete-status-${id}-A`}
@@ -711,8 +738,8 @@ export const Autocomplete = ({
           />
         )}
         <span
-          id={`autocomplete-${id}-assistiveHint`}
-          style={{ display: 'none' }}
+          id="dcx-autocomplete-assistiveHint"
+          style={useDefaultStyles ? { display: 'none' } : undefined}
         >
           {accessibilityHintText}
         </span>
