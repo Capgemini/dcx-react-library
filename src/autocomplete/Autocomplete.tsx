@@ -606,10 +606,14 @@ export const Autocomplete = ({
                 }}
                 onRemove={onRemove}
                 onFocus={onFocus}
-                style={{
-                  ...selectedListItemStyle,
-                  display: 'inline-flex',
-                }}
+                style={
+                  useDefaultStyles
+                    ? {
+                        ...selectedListItemStyle,
+                        display: 'inline-flex',
+                      }
+                    : selectedListItemStyle
+                }
               />
             )
           )}
