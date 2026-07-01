@@ -3,6 +3,10 @@ import { Roles } from '../../common';
 
 export type SelectedItemProps = {
   /**
+   * Selected Item id
+   */
+  id?: string;
+  /**
    * Selected Item aria label
    */
   ariaLabel?: string;
@@ -42,6 +46,7 @@ export type SelectedItemProps = {
 };
 
 export const SelectedItem = ({
+  id,
   label,
   ariaLabel,
   className,
@@ -53,6 +58,7 @@ export const SelectedItem = ({
   onKeyDown,
 }: SelectedItemProps) => (
   <span
+    id={id}
     aria-label={ariaLabel || label}
     role={role || Roles.presentation}
     className={className}

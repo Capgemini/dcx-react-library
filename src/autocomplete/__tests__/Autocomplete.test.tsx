@@ -1001,7 +1001,7 @@ describe('Autocomplete', () => {
     expect(statusElements[0].id).toBe('autocomplete-status-fruitTest-A');
     expect(statusElements[1].id).toBe('autocomplete-status-fruitTest-B');
     const hiddenHintElm = document.getElementById(
-      'autocomplete-fruitTest-assistiveHint'
+      'dcx-autocomplete-assistiveHint'
     );
     expect(hiddenHintElm?.innerHTML).toBe(hint);
     const inputElm = screen.getByRole('combobox');
@@ -1479,5 +1479,199 @@ describe('Autocomplete', () => {
     );
     const comboBox: any = screen.getByRole('combobox');
     expect(comboBox).toBeDefined();
+  });
+
+  describe('useDefaultStyles prop', () => {
+    beforeEach(() => {
+      jest.spyOn(hooks, 'useHydrated').mockImplementation(() => true);
+    });
+
+    describe('single-select mode', () => {
+      it('should apply position:relative to the wrapper div by default', () => {
+        const { container } = render(
+          <Autocomplete options={['daniele', 'isaac']} id="test" />
+        );
+        const singleSelectWrapper = container.querySelector('div > div > div');
+        expect(singleSelectWrapper).toHaveStyle({ position: 'relative' });
+      });
+
+      it('should not apply position:relative to the wrapper div when useDefaultStyles is false', () => {
+        const { container } = render(
+          <Autocomplete
+            options={['daniele', 'isaac']}
+            id="test"
+            useDefaultStyles={false}
+          />
+        );
+        const singleSelectWrapper = container.querySelector('div > div > div');
+        expect(singleSelectWrapper).not.toHaveStyle({ position: 'relative' });
+      });
+
+      it('should apply visually-hidden styles to the accessibility container by default', () => {
+        const { container } = render(
+          <Autocomplete options={['daniele', 'isaac']} id="test" />
+        );
+        const statusContainer = container.querySelector(
+          '#autocomplete-status-test-A'
+        )?.parentElement;
+        expect(statusContainer).toHaveStyle({
+          position: 'absolute',
+          overflow: 'hidden',
+          width: '1px',
+          height: '1px',
+          clip: 'rect(0px, 0px, 0px, 0px)',
+        });
+      });
+
+      it('should not apply visually-hidden styles to the accessibility container when useDefaultStyles is false', () => {
+        const { container } = render(
+          <Autocomplete
+            options={['daniele', 'isaac']}
+            id="test"
+            useDefaultStyles={false}
+          />
+        );
+        const statusContainer = container.querySelector(
+          '#autocomplete-status-test-A'
+        )?.parentElement;
+        expect(statusContainer).not.toHaveStyle({ position: 'absolute' });
+        expect(statusContainer).not.toHaveStyle({ overflow: 'hidden' });
+      });
+
+      it('should apply display:none to the assistive hint span by default', () => {
+        const { container } = render(
+          <Autocomplete
+            options={['daniele', 'isaac']}
+            id="test"
+            accessibilityHintText="use up and down arrows to review results"
+          />
+        );
+        const hintSpan = container.querySelector(
+          '#dcx-autocomplete-assistiveHint'
+        );
+        expect(hintSpan).toHaveStyle({ display: 'none' });
+      });
+
+      it('should not apply display:none to the assistive hint span when useDefaultStyles is false', () => {
+        const { container } = render(
+          <Autocomplete
+            options={['daniele', 'isaac']}
+            id="test"
+            accessibilityHintText="use up and down arrows to review results"
+            useDefaultStyles={false}
+          />
+        );
+        const hintSpan = container.querySelector(
+          '#dcx-autocomplete-assistiveHint'
+        );
+        expect(hintSpan).not.toHaveStyle({ display: 'none' });
+      });
+    });
+
+    describe('multi-select mode', () => {
+      it('should apply inline-flex layout styles to the multiselect wrapper div by default', () => {
+        const { container } = render(
+          <Autocomplete options={['daniele', 'isaac']} multiSelect={true} />
+        );
+        const wrapperDiv = container.querySelector('[role="presentation"]');
+        expect(wrapperDiv).toHaveStyle({
+          display: 'inline-flex',
+          flexDirection: 'row',
+          width: '100%',
+          flexWrap: 'wrap',
+          position: 'relative',
+        });
+      });
+
+      it('should not apply inline-flex layout styles to the multiselect wrapper div when useDefaultStyles is false', () => {
+        const { container } = render(
+          <Autocomplete
+            options={['daniele', 'isaac']}
+            multiSelect={true}
+            useDefaultStyles={false}
+          />
+        );
+        const wrapperDiv = container.querySelector('[role="presentation"]');
+        expect(wrapperDiv).not.toHaveStyle({ display: 'inline-flex' });
+        expect(wrapperDiv).not.toHaveStyle({ position: 'relative' });
+      });
+
+      it('should apply margin and font styles to the remove-all button by default', () => {
+        render(
+          <Autocomplete
+            options={['daniele', 'isaac']}
+            multiSelect={true}
+            onRemoveAll={() => {}}
+          />
+        );
+        const removeAllBtn = screen.getByRole('button');
+        expect(removeAllBtn).toHaveStyle({
+          marginLeft: '5px',
+          fontWeight: 'bold',
+          verticalAlign: '-webkit-baseline-middle',
+        });
+      });
+
+      it('should not apply margin and font styles to the remove-all button when useDefaultStyles is false', () => {
+        render(
+          <Autocomplete
+            options={['daniele', 'isaac']}
+            multiSelect={true}
+            onRemoveAll={() => {}}
+            useDefaultStyles={false}
+          />
+        );
+        const removeAllBtn = screen.getByRole('button');
+        expect(removeAllBtn).not.toHaveStyle({ marginLeft: '5px' });
+        expect(removeAllBtn).not.toHaveStyle({ fontWeight: 'bold' });
+      });
+
+      it('should apply display:inline-flex to selected items by default', () => {
+        const selected = [{ id: '1', label: 'daniele', value: 'daniele' }];
+        const { container } = render(
+          <Autocomplete
+            options={['daniele', 'isaac']}
+            multiSelect={true}
+            selected={selected}
+            onRemove={() => {}}
+          />
+        );
+        const selectedItem = container.querySelector('[role="listitem"]');
+        expect(selectedItem).toHaveStyle({ display: 'inline-flex' });
+      });
+
+      it('should not apply display:inline-flex to selected items when useDefaultStyles is false', () => {
+        const selected = [{ id: '1', label: 'daniele', value: 'daniele' }];
+        const { container } = render(
+          <Autocomplete
+            options={['daniele', 'isaac']}
+            multiSelect={true}
+            selected={selected}
+            onRemove={() => {}}
+            useDefaultStyles={false}
+          />
+        );
+        const selectedItem = container.querySelector('[role="listitem"]');
+        expect(selectedItem).not.toHaveStyle({ display: 'inline-flex' });
+      });
+
+      it('should still pass selectedListItemStyle to selected items when useDefaultStyles is false', () => {
+        const selected = [{ id: '1', label: 'daniele', value: 'daniele' }];
+        const customStyle: React.CSSProperties = { backgroundColor: 'red' };
+        const { container } = render(
+          <Autocomplete
+            options={['daniele', 'isaac']}
+            multiSelect={true}
+            selected={selected}
+            onRemove={() => {}}
+            selectedListItemStyle={customStyle}
+            useDefaultStyles={false}
+          />
+        );
+        const selectedItem = container.querySelector('[role="listitem"]');
+        expect(selectedItem).toHaveStyle({ backgroundColor: 'red' });
+        expect(selectedItem).not.toHaveStyle({ display: 'inline-flex' });
+      });
+    });
   });
 });
