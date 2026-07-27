@@ -27,17 +27,19 @@ When you import the button component without providing any className or style as
 
 An example with all the available properties is:
 
-```js
+```jsx
+const [activeTab, setActiveTab] = React.useState('tab-1');
+
 <TabGroup
   activeTabClassName="tab-active-class"
   id="tab-label-id"
-  activeKey="tab label"
+  activeKey={activeTab}
   disabledClassName="disabled-class-name"
   className="class-name"
   containerClassName="container-class-name"
   contentClassName="content-class-name"
   tabClassName="common-tab-class"
-  onSelect={onChangeHandler}
+  onSelect={setActiveTab}
 >
   <Tab
     label="tab label"
@@ -47,7 +49,7 @@ An example with all the available properties is:
   >
     This the content for tab
   </Tab>
-</TabGroup>
+</TabGroup>;
 ```
 
 below are described the list of all available properties. the one marked with (\*) are mandatory the other instead are optional.

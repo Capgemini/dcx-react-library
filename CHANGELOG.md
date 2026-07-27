@@ -86,6 +86,8 @@
 
 - [Autocomplete - adding hiddenErrorText as mandatory](https://github.com/Capgemini/dcx-react-library/issues/638)
 
+- [Tabs - manage state outside component (from props) as mandatory](https://github.com/Capgemini/dcx-react-library/issues/705)
+
 **Upgrade notes**
 
 - If you upgrading from a previous release and you use the Autocomplete component it will requires the addition of a new property called **hiddenErrorText**.
